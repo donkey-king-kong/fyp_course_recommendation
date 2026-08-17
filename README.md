@@ -2,6 +2,11 @@
 
 Clean rebuild of a course recommendation system for NTU students.
 
+## Contents
+
+- [Backend Setup](#setup)
+- [Frontend Setup](#setup-frontend)
+
 ## Current Milestone
 
 Milestone 1 sets up the smallest possible FastAPI backend with a health check endpoint.
