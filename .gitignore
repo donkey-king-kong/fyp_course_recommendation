@@ -3,3 +3,10 @@
 __pycache__/
 *.py[cod]
 *.md
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.vite/
+frontend/logs/
+frontend/*.local
+frontend/*.log
