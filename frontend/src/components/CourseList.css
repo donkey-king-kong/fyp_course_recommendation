@@ -1,0 +1,22 @@
+.course-list {
+  width: min(100%, 48rem);
+  text-align: left;
+}
+
+.course-list h2 {
+  text-align: center;
+}
+
+.course-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.course-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}

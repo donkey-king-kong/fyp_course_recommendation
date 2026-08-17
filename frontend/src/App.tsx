@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
+import CourseList from './components/CourseList'
 import type { RoadmapResponse } from './types/roadmap'
 
 function App() {
@@ -31,12 +32,16 @@ function App() {
       {error && <p>{error}</p>}
 
       {roadmap && (
-        <section className="roadmap-summary">
-          <h2>Roadmap loaded</h2>
-          <p>Courses: {roadmap.nodes.length}</p>
-          <p>Prerequisite links: {roadmap.edges.length}</p>
-          <p>First course: {firstCourseCode}</p>
-        </section>
+        <>
+          <section className="roadmap-summary">
+            <h2>Roadmap loaded</h2>
+            <p>Courses: {roadmap.nodes.length}</p>
+            <p>Prerequisite links: {roadmap.edges.length}</p>
+            <p>First course: {firstCourseCode}</p>
+          </section>
+
+          <CourseList courses={roadmap.nodes} />
+        </>
       )}
     </main>
   )
