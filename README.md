@@ -82,3 +82,5 @@ The frontend will run at:
 ```text
 http://127.0.0.1:5173
 ```
+
+To load roadmap data in the frontend, run the backend and frontend at the same time.
