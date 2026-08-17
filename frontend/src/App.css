@@ -8,3 +8,14 @@
   padding: 2rem;
   text-align: center;
 }
+
+.roadmap-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.roadmap-summary h2,
+.roadmap-summary p {
+  margin: 0;
+}
