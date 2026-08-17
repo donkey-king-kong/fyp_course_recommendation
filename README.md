@@ -54,3 +54,26 @@ Expected response:
 ```json
 {"status":"ok"}
 ```
+
+## Setup Frontend
+
+Install frontend dependencies:
+
+```bash
+cd frontend
+npm install
+```
+
+## Run The Frontend
+
+Start the Vite development server:
+
+```bash
+npm run dev
+```
+
+The frontend will run at:
+
+```text
+http://127.0.0.1:5173
+```
