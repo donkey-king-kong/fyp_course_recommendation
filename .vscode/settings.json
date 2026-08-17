@@ -1,0 +1,6 @@
+{
+  "python.analysis.typeCheckingMode": "basic",
+  "python.languageServer": "None",
+  "basedpyright.disableLanguageServices": false,
+  "basedpyright.disableOrganizeImports": false
+}
