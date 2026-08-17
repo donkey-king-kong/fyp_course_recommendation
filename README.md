@@ -7,9 +7,11 @@ Clean rebuild of a course recommendation system for NTU students.
 - [Backend Setup](#setup)
 - [Frontend Setup](#setup-frontend)
 
-## Current Milestone
+## Current State
 
-Milestone 1 sets up the smallest possible FastAPI backend with a health check endpoint.
+- Backend exposes `GET /health` and `GET /roadmap`.
+- Frontend loads roadmap data from the backend.
+- Frontend displays a plain roadmap summary and course list.
 
 ## Setup
 
