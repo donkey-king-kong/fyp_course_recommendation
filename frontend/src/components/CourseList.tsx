@@ -41,7 +41,7 @@ function CourseList({ courses }: CourseListProps) {
   return (
     <section className="course-list">
       <h2>Course List</h2>
-q
+
       {/* Show this message when there are no courses to display */}
       {courses.length === 0 && <p className="course-list-empty">No courses found.</p>}
 
