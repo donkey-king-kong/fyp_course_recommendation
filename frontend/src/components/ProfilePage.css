@@ -2,10 +2,12 @@
   width: min(100%, 42rem);
   margin: 0 auto;
   padding: 2rem;
-  border: 1px solid rgba(148, 163, 184, 0.24);
+  border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: 1rem;
-  background: rgba(15, 23, 42, 0.86);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  background: linear-gradient(180deg, rgba(18, 31, 52, 0.98), rgba(10, 20, 36, 0.98));
+  box-shadow:
+    0 0 0 1px rgba(125, 211, 252, 0.08),
+    0 24px 70px rgba(0, 0, 0, 0.44);
 }
 
 .profile-header {
