@@ -291,7 +291,7 @@ Status: Complete
 
 ## Browser Login Page
 
-Status: Implemented locally
+Status: Complete
 
 ### Completed
 
@@ -355,6 +355,7 @@ Status: Ready for next work
 - Frontend loads roadmap data and manages profile records by Student ID using Zustand with `localStorage` persistence.
 - Frontend includes navigation tabs for Roadmap and Profile pages.
 - Roadmap courses can be toggled as completed, syncing with the global profile store.
+- Roadmap includes a "Clear completed" action to uncheck all completed courses for the active profile.
 - Profile page can upload an official PDF transcript and auto-mark completed roadmap courses.
 
 ### Next Recommended Work
