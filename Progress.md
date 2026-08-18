@@ -217,6 +217,33 @@ Status: Complete
 - No profile-specific completed course state yet.
 - No backend, database, recommendation, or AI changes.
 
+## Roadmap Graph Readability
+
+Status: Implemented locally
+
+### Completed
+
+- Marked the roadmap visualization foundation as complete after PR #9.
+- Increased graph node spacing.
+- Added clearer node labels with course code, academic units, and title.
+- Set graph nodes to connect from left to right.
+- Styled graph edges with smooth lines and arrow markers.
+- Improved the graph container height, border, radius, and background.
+
+### Verified
+
+- Frontend build passes.
+- Frontend lint passes.
+- Browser still shows the `Roadmap Graph` section.
+- Browser still shows ReactFlow controls after styling changes.
+
+### Not Included
+
+- No automatic layout library yet.
+- No custom ReactFlow node component yet.
+- No profile-specific completed course state yet.
+- No backend, database, recommendation, or AI changes.
+
 ## Current Handoff
 
 Status: Ready for next work
@@ -225,12 +252,13 @@ Status: Ready for next work
 
 - Backend has `GET /health` and `GET /roadmap`.
 - Frontend loads roadmap data from the backend.
-- Frontend displays a roadmap summary, basic graph, and grouped searchable course list.
+- Frontend displays a roadmap summary, more readable graph, and grouped searchable course list.
 - Markdown onboarding files are now intended to be tracked in Git.
 
 ### Next Recommended Work
 
-- Improve graph layout and node readability.
+- Review and merge roadmap graph readability, or
+- Plan profile page and state.
 
 ### Onboarding For Next Session
 
