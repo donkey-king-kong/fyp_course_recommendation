@@ -36,6 +36,8 @@ function CourseList({ courses }: CourseListProps) {
     <section className="course-list">
       <h2>Course List</h2>
 
+      {courses.length === 0 && <p className="course-list-empty">No courses found.</p>}
+
       <div className="course-groups">
         {courseGroups.map((group) => (
           <section
