@@ -27,7 +27,7 @@ function LoginPage() {
 
     // Student IDs currently follow a four-letter, four-digit format.
     if (!STUDENT_ID_PATTERN.test(normalizedStudentId)) {
-      setError('Enter a valid Student ID using 4 letters followed by 4 numbers.')
+      setError('Enter a valid Student ID.')
       return
     }
 
