@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
-import RoadmapGraph from './components/RoadmapGraph'
+import SemesterRoadmap from './components/SemesterRoadmap'
 import type { RoadmapResponse } from './types/roadmap'
 
 // Main page component
@@ -12,6 +12,7 @@ function App() {
   const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -26,8 +27,6 @@ function App() {
 
     void loadRoadmap()
   }, [])
-
-  const firstCourseCode = roadmap?.nodes[0]?.courseCode ?? 'None'
 
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
@@ -46,8 +45,31 @@ function App() {
     }) ?? []
 
   return (
-    <main className="app-shell">
-      <h1>FYP Course Recommendation</h1>
+    <main className="app-shell" data-theme={theme}>
+      <header className="app-header">
+        <div className="app-header-top">
+          <p className="app-eyebrow">Academic roadmap</p>
+          <label className="theme-switch"> 
+            {/* Moon icon for the theme toggle. */}
+            <span className="theme-switch-icon" aria-hidden="true">
+              ☾
+            </span>
+            <input
+              type="checkbox"
+              aria-label="Toggle dark mode"
+              checked={theme === 'dark'}
+              onChange={(event) => setTheme(event.target.checked ? 'dark' : 'light')}
+            />
+            <span className="theme-switch-control" />
+          </label>
+        </div>
+        <div className="app-header-copy">
+          <h1>NTU Course Recommender</h1>
+          <p className="app-subtitle">
+            Explore course progression, prerequisites, and semester placement.
+          </p>
+        </div>
+      </header>
 
       {/* Show this while the request is still pending. */}
       {!roadmap && !error && <p>Loading roadmap...</p>}
@@ -58,16 +80,8 @@ function App() {
       {/* Show roadmap content only after data has loaded successfully. */}
       {roadmap && (
         <>
-          {/* Summary of the loaded roadmap data. */}
-          <section className="roadmap-summary">
-            <h2>Roadmap loaded</h2>
-            <p>Courses: {roadmap.nodes.length}</p>
-            <p>Prerequisite links: {roadmap.edges.length}</p>
-            <p>First course: {firstCourseCode}</p>
-          </section>
-
-          {/* Passes prereq r/s into RoadmapGraph */}
-          <RoadmapGraph courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
+          {/* Shows the curriculum-style roadmap with semester bands and prerequisite arrows. */}
+          <SemesterRoadmap courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
 
           {/* Search input updates searchTerm */}
           <label className="course-search">

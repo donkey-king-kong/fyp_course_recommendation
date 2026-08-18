@@ -63,8 +63,9 @@ function CourseList({ courses }: CourseListProps) {
                   <strong>
                     {course.courseCode} - {course.title}
                   </strong>
-                  <span>
-                    {course.academicUnits} AU - {course.type}
+                  <span className="course-list-meta">
+                    <span>{course.academicUnits} AU</span>
+                    <span className="course-type-badge">{course.type}</span>
                   </span>
                 </li>
               ))}

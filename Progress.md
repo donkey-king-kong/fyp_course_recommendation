@@ -191,7 +191,7 @@ Status: Complete
 
 ## Roadmap Visualization Foundation
 
-Status: Implemented locally
+Status: Complete
 
 ### Completed
 
@@ -201,6 +201,7 @@ Status: Implemented locally
 - Converted roadmap prerequisite links into graph edges.
 - Added a simple manual layout based on year and semester.
 - Rendered the graph alongside the existing summary and searchable course list.
+- Opened and merged PR #9.
 
 ### Verified
 
@@ -216,6 +217,51 @@ Status: Implemented locally
 - No profile-specific completed course state yet.
 - No backend, database, recommendation, or AI changes.
 
+## Roadmap Graph Readability
+
+Status: Implemented locally
+
+### Completed
+
+- Marked the roadmap visualization foundation as complete after PR #9.
+- Added `Frontend_design.md` with project-specific frontend reference guidance.
+- Recorded the old frontend as a visual and behavior reference only.
+- Shifted the roadmap UI toward the old dark `NTU Course Recommender` style.
+- Increased graph node spacing.
+- Added clearer node labels with course code, academic units, and title.
+- Set graph nodes to connect from left to right.
+- Styled graph edges with smooth lines and arrow markers.
+- Improved the graph container height, border, radius, and background.
+- Added hover emphasis for connected roadmap courses and prerequisite arrows.
+- Added a semester-based roadmap component that groups courses by year and semester.
+- Added course cards with course code, title, type, AU, and checkbox-style completion indicators.
+- Added curved SVG prerequisite arrows behind the course cards.
+- Added an `All arrows` toggle for prerequisite arrow visibility.
+- Switched the main app view from `RoadmapGraph` to `SemesterRoadmap`.
+- Added frontend-only checkbox toggling for completed courses.
+- Added a light/dark theme toggle with a moon icon.
+- Refined hover behavior so unrelated arrows disappear while connected arrows stay sharp and visible.
+- Adjusted hover layering so active arrows render above faded cards while connected cards stay on top.
+- Set emphasized prerequisite arrows to clear white with no glow for the current dark-mode pass.
+
+### Verified
+
+- Frontend build passes.
+- Frontend lint passes.
+- Browser shows the `NTU Course Recommender` header.
+- Browser shows the semester-based roadmap layout.
+- Browser shows course cards grouped by year and semester.
+- Browser supports light and dark roadmap themes.
+- Browser hover behavior keeps only connected arrows visible.
+
+### Not Included
+
+- `RoadmapGraph` and ReactFlow are still kept for now as a possible future reference.
+- Completed-course checkbox state is frontend-only and resets on refresh.
+- No personalized roadmap generation yet.
+- No profile-specific completed course state yet.
+- No backend, database, recommendation, or AI changes.
+
 ## Current Handoff
 
 Status: Ready for next work
@@ -224,13 +270,13 @@ Status: Ready for next work
 
 - Backend has `GET /health` and `GET /roadmap`.
 - Frontend loads roadmap data from the backend.
-- Frontend displays a roadmap summary, basic graph, and grouped searchable course list.
+- Frontend displays a semester-based roadmap with light/dark theme support and grouped searchable course list.
 - Markdown onboarding files are now intended to be tracked in Git.
 
 ### Next Recommended Work
 
-- Review and merge roadmap visualization foundation, or
-- Improve graph layout and node readability.
+- Review and merge roadmap graph readability, or
+- Plan profile page and state for future personalization.
 
 ### Onboarding For Next Session
 
