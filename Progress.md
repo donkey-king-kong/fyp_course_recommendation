@@ -163,7 +163,7 @@ Year 1, Semester 1 - 3 AU - Core
 
 ## Roadmap List Improvements
 
-Status: Implemented locally
+Status: Complete
 
 ### Completed
 
@@ -173,6 +173,7 @@ Status: Implemented locally
 - Improved plain course list readability with spacing, separators, muted metadata, and an empty state.
 - Added explanatory comments to backend roadmap loading and frontend roadmap list code.
 - Kept changes frontend-only except for documentation.
+- Opened and merged PR #8.
 
 ### Verified
 
@@ -191,7 +192,7 @@ Status: Implemented locally
 
 ## Current Handoff
 
-Status: Ready for PR review
+Status: Ready for next work
 
 ### Current App State
 
@@ -202,7 +203,6 @@ Status: Ready for PR review
 
 ### Next Recommended Work
 
-- Push and review roadmap list improvements, or
 - Plan the first roadmap visualization step.
 
 ### Onboarding For Next Session
