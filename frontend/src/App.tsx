@@ -12,6 +12,7 @@ function App() {
   const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -44,13 +45,26 @@ function App() {
     }) ?? []
 
   return (
-    <main className="app-shell">
+    <main className="app-shell" data-theme={theme}>
       <header className="app-header">
-        <p className="app-eyebrow">Academic roadmap</p>
-        <h1>NTU Course Recommender</h1>
-        <p className="app-subtitle">
-          Explore course progression, prerequisites, and semester placement.
-        </p>
+        <div className="app-header-top">
+          <p className="app-eyebrow">Academic roadmap</p>
+          <label className="theme-switch">
+            <span>Dark mode</span>
+            <input
+              type="checkbox"
+              checked={theme === 'dark'}
+              onChange={(event) => setTheme(event.target.checked ? 'dark' : 'light')}
+            />
+            <span className="theme-switch-control" />
+          </label>
+        </div>
+        <div className="app-header-copy">
+          <h1>NTU Course Recommender</h1>
+          <p className="app-subtitle">
+            Explore course progression, prerequisites, and semester placement.
+          </p>
+        </div>
       </header>
 
       {/* Show this while the request is still pending. */}
