@@ -219,7 +219,7 @@ Status: Complete
 
 ## Roadmap Graph Readability
 
-Status: Implemented locally
+Status: Complete
 
 ### Completed
 
@@ -291,7 +291,7 @@ Status: Complete
 
 ## Browser Login Page
 
-Status: Implemented locally
+Status: Complete
 
 ### Completed
 
@@ -315,6 +315,35 @@ Status: Implemented locally
 - No backend user table.
 - No authentication session, JWT, or cookie handling.
 
+## Transcript Upload
+
+Status: Implemented locally
+
+### Completed
+
+- Added a backend `POST /transcript` endpoint that accepts official PDF transcripts.
+- Added PyMuPDF for PDF text extraction.
+- Added transcript row parsing based on `Code`, `Course`, `AU`, `Grade`, and `Grade Point`.
+- Treats `EX` as completed, like letter-graded passed modules.
+- Filters parsed transcript courses against the static CSC roadmap.
+- Added frontend transcript upload UI on the Profile page.
+- Updates completed roadmap courses in the active browser profile after upload.
+
+### Verified
+
+- Backend compiles successfully.
+- Transcript extraction service parses generated PDF text rows.
+- `POST /transcript` returns completed roadmap courses from a sample PDF.
+- `EX` grades are returned as completed courses with no grade point.
+- Frontend lint passes.
+- Frontend build passes.
+
+### Not Included
+
+- No OCR for scanned/image-only PDFs yet.
+- No backend database persistence yet.
+- No recommendation logic yet.
+
 ## Current Handoff
 
 Status: Ready for next work
@@ -326,10 +355,12 @@ Status: Ready for next work
 - Frontend loads roadmap data and manages profile records by Student ID using Zustand with `localStorage` persistence.
 - Frontend includes navigation tabs for Roadmap and Profile pages.
 - Roadmap courses can be toggled as completed, syncing with the global profile store.
+- Roadmap includes a "Clear completed" action to uncheck all completed courses for the active profile.
+- Profile page can upload an official PDF transcript and auto-mark completed roadmap courses.
 
 ### Next Recommended Work
 
-- Implement transcript upload and completed course extraction (Milestone 7), or
+- Review and merge transcript upload, or
 - Begin working on the Chat stub (Milestone 8).
 
 ### Onboarding For Next Session
