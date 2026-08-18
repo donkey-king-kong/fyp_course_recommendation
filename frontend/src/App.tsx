@@ -12,7 +12,7 @@ function App() {
   const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+  const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -49,10 +49,14 @@ function App() {
       <header className="app-header">
         <div className="app-header-top">
           <p className="app-eyebrow">Academic roadmap</p>
-          <label className="theme-switch">
-            <span>Dark mode</span>
+          <label className="theme-switch"> 
+            {/* Moon icon for the theme toggle. */}
+            <span className="theme-switch-icon" aria-hidden="true">
+              ☾
+            </span>
             <input
               type="checkbox"
+              aria-label="Toggle dark mode"
               checked={theme === 'dark'}
               onChange={(event) => setTheme(event.target.checked ? 'dark' : 'light')}
             />

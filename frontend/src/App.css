@@ -73,11 +73,17 @@
 
 .theme-switch {
   display: inline-flex;
-  gap: 0.55rem;
+  gap: 0.45rem;
   align-items: center;
   color: var(--muted-text);
   font-size: 0.78rem;
   font-weight: 800;
+}
+
+.theme-switch-icon {
+  color: var(--accent-text);
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .theme-switch input {
