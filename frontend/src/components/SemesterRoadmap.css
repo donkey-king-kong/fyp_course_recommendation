@@ -78,11 +78,9 @@
 
 .roadmap-arrow-highlighted {
   opacity: 1;
-  stroke: #22d3ee;
-  stroke-width: 4.5;
-  filter:
-    drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
-    drop-shadow(0 0 12px rgba(34, 211, 238, 0.95));
+  stroke: #67e8f9;
+  stroke-width: 3.2;
+  filter: drop-shadow(0 0 2px rgba(103, 232, 249, 0.82));
 }
 
 .roadmap-arrow-dimmed {
@@ -337,10 +335,8 @@
 }
 
 .app-shell[data-theme='dark'] .roadmap-arrow-highlighted {
-  stroke: #22d3ee;
-  filter:
-    drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
-    drop-shadow(0 0 12px rgba(34, 211, 238, 0.95));
+  stroke: #67e8f9;
+  filter: drop-shadow(0 0 2px rgba(103, 232, 249, 0.82));
 }
 
 .app-shell[data-theme='dark'] .semester-band {
