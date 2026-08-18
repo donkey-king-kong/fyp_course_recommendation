@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
+import LoginPage from './components/LoginPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
+import { useProfileStore } from './store/useProfileStore'
 import type { RoadmapResponse } from './types/roadmap'
 
 type ViewState = 'roadmap' | 'profile'
@@ -17,6 +19,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>('roadmap')
+  const studentId = useProfileStore((state) => state.profile.studentId)
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -47,6 +50,11 @@ function App() {
         title.includes(normalizedSearchTerm)
       )
     }) ?? []
+
+  // First-time visitors enter a Student ID before seeing the roadmap.
+  if (!studentId) {
+    return <LoginPage />
+  }
 
   return (
     <main className="app-shell" data-theme={theme}>

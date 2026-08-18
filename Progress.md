@@ -289,6 +289,23 @@ Status: Complete
 - No actual course recommendation logic yet.
 - No transcript upload or automated course extraction yet.
 
+## Browser Login Page
+
+Status: Implemented locally
+
+### Completed
+
+- Added a frontend-only login/onboarding screen.
+- Used the existing persisted Student ID as the temporary browser-side user identity.
+- Gated the main Roadmap/Profile application behind Student ID entry.
+- Kept this as browser persistence only, without backend authentication or database persistence.
+
+### Not Included
+
+- No password-based login.
+- No backend user table.
+- No authentication session, JWT, or cookie handling.
+
 ## Current Handoff
 
 Status: Ready for next work
@@ -296,6 +313,7 @@ Status: Ready for next work
 ### Current App State
 
 - Backend has `GET /health` and `GET /roadmap`.
+- Frontend asks first-time browser users for Student ID before showing the main app.
 - Frontend loads roadmap data and manages user profile state using Zustand with `localStorage` persistence.
 - Frontend includes navigation tabs for Roadmap and Profile pages.
 - Roadmap courses can be toggled as completed, syncing with the global profile store.
