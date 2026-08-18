@@ -150,6 +150,12 @@ Page -> Hook/Store -> API Client -> Backend -> Component UI
 - Do not use slashes in branch names.
 - Do not include milestone numbers in branch names.
 - Good branch names: `fastapi-health-check`, `router-structure`, `static-roadmap-api`, `react-frontend`, `profile-page`, `transcript-upload`, `chat-stub`.
+- Related small changes can be grouped into one themed branch once the foundation is stable.
+- Use an umbrella branch when several mini-features support the same user-facing goal.
+- Keep commits inside an umbrella branch small and logical.
+- Do not mix unrelated areas in one branch.
+- Good umbrella branch example: `roadmap-list-improvements` for grouping, search, and readability improvements to the roadmap course list.
+- Bad umbrella branch example: one branch that mixes roadmap UI, transcript upload, database setup, and AI logic.
 - Do not create commits unless I explicitly give the green light.
 - When creating commits, use Conventional Commits.
 - Prefer small, meaningful commits over large mixed commits.
