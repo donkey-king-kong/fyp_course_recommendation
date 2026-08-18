@@ -224,23 +224,33 @@ Status: Implemented locally
 ### Completed
 
 - Marked the roadmap visualization foundation as complete after PR #9.
+- Added `Frontend_design.md` with project-specific frontend reference guidance.
+- Recorded the old frontend as a visual and behavior reference only.
+- Shifted the roadmap UI toward the old dark `NTU Course Recommender` style.
 - Increased graph node spacing.
 - Added clearer node labels with course code, academic units, and title.
 - Set graph nodes to connect from left to right.
 - Styled graph edges with smooth lines and arrow markers.
 - Improved the graph container height, border, radius, and background.
+- Added hover emphasis for connected roadmap courses and prerequisite arrows.
+- Added a semester-based roadmap component that groups courses by year and semester.
+- Added course cards with course code, title, type, AU, and checkbox-style completion indicators.
+- Added curved SVG prerequisite arrows behind the course cards.
+- Added an `All arrows` toggle for prerequisite arrow visibility.
+- Switched the main app view from `RoadmapGraph` to `SemesterRoadmap`.
 
 ### Verified
 
 - Frontend build passes.
 - Frontend lint passes.
-- Browser still shows the `Roadmap Graph` section.
-- Browser still shows ReactFlow controls after styling changes.
+- Browser shows the dark `NTU Course Recommender` header.
+- Browser shows the semester-based roadmap layout.
+- Browser shows course cards grouped by year and semester.
 
 ### Not Included
 
-- No automatic layout library yet.
-- No custom ReactFlow node component yet.
+- `RoadmapGraph` and ReactFlow are still kept for now as a possible future reference.
+- No personalized roadmap generation yet.
 - No profile-specific completed course state yet.
 - No backend, database, recommendation, or AI changes.
 
@@ -252,13 +262,13 @@ Status: Ready for next work
 
 - Backend has `GET /health` and `GET /roadmap`.
 - Frontend loads roadmap data from the backend.
-- Frontend displays a roadmap summary, more readable graph, and grouped searchable course list.
+- Frontend displays a dark semester-based roadmap and grouped searchable course list.
 - Markdown onboarding files are now intended to be tracked in Git.
 
 ### Next Recommended Work
 
 - Review and merge roadmap graph readability, or
-- Plan profile page and state.
+- Plan profile page and state for future personalization.
 
 ### Onboarding For Next Session
 
