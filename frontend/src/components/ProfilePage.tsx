@@ -2,8 +2,13 @@ import { useProfileStore } from '../store/useProfileStore'
 import './ProfilePage.css'
 
 function ProfilePage() {
+  // Read the saved student profile from the shared Zustand store
   const profile = useProfileStore((state) => state.profile)
+
+  // Update profile fields
   const updateProfile = useProfileStore((state) => state.updateProfile)
+
+  // Read completed courses so the profile page can show a simple progress summary
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
 
   return (
@@ -14,17 +19,31 @@ function ProfilePage() {
       </div>
 
       <form className="profile-form" onSubmit={(e) => e.preventDefault()}>
+        {/* Student ID acts as the temporary unique user identifier for this frontend-only version */}
         <label className="profile-field">
-          <span>Name</span>
+          <span>Student ID</span>
           <input
             type="text"
-            value={profile.name}
-            onChange={(e) => updateProfile({ name: e.target.value })}
-            placeholder="Enter your name"
+            value={profile.studentId}
+            onChange={(e) => updateProfile({ studentId: e.target.value })}
+            placeholder="Enter your student ID"
           />
         </label>
 
         <div className="profile-row">
+          {/* Major is included now so future roadmap/recommendation logic can branch by programme */}
+          <label className="profile-field">
+            <span>Major</span>
+            <select
+              value={profile.major}
+              onChange={(e) => updateProfile({ major: e.target.value as 'CSC' })}
+            >
+              {/* Only CSC is available for now */}
+              <option value="CSC">CSC</option>
+            </select>
+          </label>
+
+          {/* Year and semester that student is currently in */}
           <label className="profile-field">
             <span>Year of Study</span>
             <select
@@ -39,6 +58,7 @@ function ProfilePage() {
             </select>
           </label>
 
+          {/* This value will later help recommendations target the student's next planning */}
           <label className="profile-field">
             <span>Current Semester</span>
             <select
@@ -55,6 +75,7 @@ function ProfilePage() {
         </div>
       </form>
 
+      {/* Count is shared with the Roadmap checkboxes through the same global store */}
       <div className="profile-stats">
         <div className="stat-card">
           <strong>{completedCourseIds.length}</strong>

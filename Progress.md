@@ -269,9 +269,9 @@ Status: Complete
 ### Completed
 
 - Installed Zustand for global state management.
-- Created `useProfileStore` with the `persist` middleware to track student profile (Name, Year, Semester) and completed course IDs across page reloads.
+- Created `useProfileStore` with the `persist` middleware to track student profile (normalized Student ID, Major, Year, Semester) and completed course IDs across page reloads.
 - Updated `SemesterRoadmap.tsx` to read and toggle completed courses via the global store instead of local component state.
-- Created a `ProfilePage` component with a form to view and edit student details, as well as a stats card showing the number of completed courses.
+- Created a `ProfilePage` component with a form to view and edit student details, including Student ID and Major, as well as a stats card showing the number of completed courses.
 - Updated `App.tsx` with a top navigation bar to switch between the "Roadmap" and "Profile" views.
 - Styled the Profile page to match both dark and light modes.
 

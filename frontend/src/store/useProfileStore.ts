@@ -2,7 +2,10 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
 export interface StudentProfile {
-  name: string
+  studentId: string
+  // CSC is the only supported major currently
+  // More majors can be added here once the roadmap data supports them.
+  major: 'CSC'
   yearOfStudy: number
   currentSemester: number
 }
@@ -15,11 +18,16 @@ interface ProfileState {
   setCompletedCourses: (courseIds: string[]) => void
 }
 
+function normalizeStudentId(studentId: string) {
+  return studentId.trim().toUpperCase()
+}
+
 export const useProfileStore = create<ProfileState>()(
   persist(
     (set) => ({
       profile: {
-        name: '',
+        studentId: '',
+        major: 'CSC',
         yearOfStudy: 1,
         currentSemester: 1,
       },
@@ -27,7 +35,14 @@ export const useProfileStore = create<ProfileState>()(
       
       updateProfile: (updates) =>
         set((state) => ({
-          profile: { ...state.profile, ...updates },
+          profile: {
+            ...state.profile,
+            ...updates,
+            studentId:
+              updates.studentId === undefined
+                ? state.profile.studentId
+                : normalizeStudentId(updates.studentId),
+          },
         })),
         
       toggleCourseCompletion: (courseId) =>
