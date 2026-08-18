@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
-import RoadmapGraph from './components/RoadmapGraph'
+import SemesterRoadmap from './components/SemesterRoadmap'
 import type { RoadmapResponse } from './types/roadmap'
 
 // Main page component
@@ -62,8 +62,8 @@ function App() {
       {/* Show roadmap content only after data has loaded successfully. */}
       {roadmap && (
         <>
-          {/* Passes prereq r/s into RoadmapGraph */}
-          <RoadmapGraph courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
+          {/* Shows the curriculum-style roadmap with semester bands and prerequisite arrows. */}
+          <SemesterRoadmap courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
 
           {/* Search input updates searchTerm */}
           <label className="course-search">
