@@ -178,12 +178,30 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
         </label>
       </div>
 
-      <div className="semester-roadmap" ref={roadmapRef}>
-        {/* SVG overlay draws curved prerequisite arrows behind the course cards. */}
+      <div
+        className={[
+          'semester-roadmap',
+          hoveredCourseId ? 'semester-roadmap-hovering' : '',
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        ref={roadmapRef}
+      >
+        {/* SVG overlay draws curved prerequisite arrows. */}
         <svg className="roadmap-arrows" aria-hidden="true">
           <defs>
             <marker
               id="roadmap-arrow"
+              markerHeight="8"
+              markerWidth="8"
+              orient="auto"
+              refX="7"
+              refY="4"
+            >
+              <path d="M 0 0 L 8 4 L 0 8 z" />
+            </marker>
+            <marker
+              id="roadmap-arrow-highlighted"
               markerHeight="8"
               markerWidth="8"
               orient="auto"

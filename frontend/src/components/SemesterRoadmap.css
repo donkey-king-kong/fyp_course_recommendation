@@ -60,6 +60,10 @@
   pointer-events: none;
 }
 
+.semester-roadmap-hovering .roadmap-arrows {
+  z-index: 5;
+}
+
 .roadmap-arrow {
   fill: none;
   marker-end: url("#roadmap-arrow");
@@ -77,15 +81,20 @@
 }
 
 .roadmap-arrow-highlighted {
+  marker-end: url("#roadmap-arrow-highlighted");
   opacity: 1;
-  stroke: #67e8f9;
+  stroke: #5eefff;
   stroke-width: 3.2;
-  filter: drop-shadow(0 0 2px rgba(103, 232, 249, 0.82));
+  filter: drop-shadow(0 0 3px rgba(94, 239, 255, 0.86));
 }
 
 .roadmap-arrow-dimmed {
   opacity: 0;
   marker-end: none;
+}
+
+.roadmap-arrows #roadmap-arrow-highlighted path {
+  fill: #5eefff;
 }
 
 .semester-band {
@@ -156,6 +165,7 @@
 
 .semester-course-card:hover,
 .semester-course-card-connected {
+  z-index: 6;
   border-color: rgba(34, 211, 238, 0.95);
   box-shadow:
     0 0 0 2px rgba(34, 211, 238, 0.42),
@@ -165,7 +175,8 @@
 }
 
 .semester-course-card-dimmed {
-  opacity: 0.22;
+  z-index: 1;
+  opacity: 0.18;
 }
 
 .semester-course-card-completed {
@@ -327,16 +338,22 @@
 
 .app-shell[data-theme='dark'] .roadmap-arrow {
   opacity: 0.22;
-  stroke: #0891b2;
+  stroke: #ffffff;
 }
 
 .app-shell[data-theme='dark'] .roadmap-arrows marker path {
-  fill: #0891b2;
+  fill: #ffffff;
 }
 
 .app-shell[data-theme='dark'] .roadmap-arrow-highlighted {
-  stroke: #67e8f9;
-  filter: drop-shadow(0 0 2px rgba(103, 232, 249, 0.82));
+  stroke: #00f5ff;
+  filter:
+    drop-shadow(0 0 2px rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 8px rgba(0, 245, 255, 0.95));
+}
+
+.app-shell[data-theme='dark'] .roadmap-arrows #roadmap-arrow-highlighted path {
+  fill: #00f5ff;
 }
 
 .app-shell[data-theme='dark'] .semester-band {
