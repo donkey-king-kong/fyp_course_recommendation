@@ -10,6 +10,7 @@ export interface StudentProfile {
   currentSemester: number
 }
 
+// Reuse these defaults when the app first loads or when the user logs out
 const DEFAULT_PROFILE: StudentProfile = {
   studentId: '',
   major: 'CSC',
@@ -20,17 +21,23 @@ const DEFAULT_PROFILE: StudentProfile = {
 interface ProfileState {
   profile: StudentProfile
   completedCourseIds: string[]
+  // Merge one or more profile fields into the existing profile
   updateProfile: (updates: Partial<StudentProfile>) => void
+  // Used by roadmap checkboxes to add/remove one completed course
   toggleCourseCompletion: (courseId: string) => void
+  // Used later by transcript upload to replace completed courses in bulk
   setCompletedCourses: (courseIds: string[]) => void
+  // Used by logout to clear the browser-stored profile state
   resetProfile: () => void
 }
 
 function normalizeStudentId(studentId: string) {
+  // Normalize studentIDs
   return studentId.trim().toUpperCase()
 }
 
 export const useProfileStore = create<ProfileState>()(
+  // persist saves this store to browser localStorage under the name below
   persist(
     (set) => ({
       profile: DEFAULT_PROFILE,
@@ -41,6 +48,7 @@ export const useProfileStore = create<ProfileState>()(
           profile: {
             ...state.profile,
             ...updates,
+            // Keep the existing Student ID unless this update specifically changes it
             studentId:
               updates.studentId === undefined
                 ? state.profile.studentId
@@ -74,6 +82,7 @@ export const useProfileStore = create<ProfileState>()(
         })),
     }),
     {
+      // Browser storage key. Changing this would make existing saved profiles invisible
       name: 'student-profile-storage',
     },
   ),
