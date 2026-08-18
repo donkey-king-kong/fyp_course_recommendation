@@ -1,6 +1,7 @@
-import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
+import { useLayoutEffect, useRef, useState, useEffect, type CSSProperties } from 'react'
 import './SemesterRoadmap.css'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
+import { useProfileStore } from '../store/useProfileStore'
 
 // Pass courses and prerequisite links into this component
 interface SemesterRoadmapProps {
@@ -59,9 +60,20 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
   const [hoveredCourseId, setHoveredCourseId] = useState<string | null>(null)
   const [showAllArrows, setShowAllArrows] = useState(true)
   const [arrowPaths, setArrowPaths] = useState<ArrowPath[]>([])
-  const [completedCourseIds, setCompletedCourseIds] = useState<Set<string>>(
-    () => new Set(courses.filter((course) => course.isCompleted).map((course) => course.id)),
-  )
+  
+  const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
+  const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
+  const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
+  
+  // Hydrate completed courses from roadmap if not already in store
+  useEffect(() => {
+    if (completedCourseIds.length === 0) {
+      const initialCompleted = courses.filter((c) => c.isCompleted).map((c) => c.id)
+      if (initialCompleted.length > 0) {
+        setCompletedCourses(initialCompleted)
+      }
+    }
+  }, [courses, completedCourseIds.length, setCompletedCourses])
 
   // Let us measure where each course card is on screen so SVG arrows can connect them
   const roadmapRef = useRef<HTMLDivElement | null>(null)
@@ -83,20 +95,6 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
         connectedCourseIds.add(link.source)
         connectedCourseIds.add(link.target)
       }
-    })
-  }
-
-  function toggleCompletedCourse(courseId: string) {
-    setCompletedCourseIds((currentCompletedCourseIds) => {
-      const nextCompletedCourseIds = new Set(currentCompletedCourseIds)
-
-      if (nextCompletedCourseIds.has(courseId)) {
-        nextCompletedCourseIds.delete(courseId)
-      } else {
-        nextCompletedCourseIds.add(courseId)
-      }
-
-      return nextCompletedCourseIds
     })
   }
 
@@ -246,7 +244,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                 {group.courses.map((course) => {
                   const isConnected = connectedCourseIds.has(course.id)
                   const isDimmed = Boolean(hoveredCourseId) && !isConnected
-                  const isCompleted = completedCourseIds.has(course.id)
+                  const isCompleted = completedCourseIds.includes(course.id)
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -283,7 +281,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                           type="checkbox"
                           className="completion-indicator"
                           checked={isCompleted}
-                          onChange={() => toggleCompletedCourse(course.id)}
+                          onChange={() => toggleCourseCompletion(course.id)}
                           aria-label={
                             isCompleted ? 'Mark course as incomplete' : 'Mark course as complete'
                           }

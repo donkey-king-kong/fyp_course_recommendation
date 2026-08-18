@@ -54,22 +54,71 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.app-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(15, 23, 42, 0.5);
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.nav-button {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 0.35rem;
+  cursor: pointer;
+  transition: all 160ms ease;
+  font-family: inherit;
+}
+
+.nav-button:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-button.active {
+  color: #0f172a;
+  background: #38bdf8;
+  box-shadow: 0 2px 4px rgba(56, 189, 248, 0.2);
+}
+
+.app-shell[data-theme='light'] .app-nav {
+  background: rgba(255, 248, 237, 0.6);
+  border-color: rgba(15, 124, 138, 0.2);
+}
+
+.app-shell[data-theme='light'] .nav-button {
+  color: #6b5f54;
+}
+
+.app-shell[data-theme='light'] .nav-button:hover {
+  color: #263238;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.app-shell[data-theme='light'] .nav-button.active {
+  color: #ffffff;
+  background: #0f7c8a;
+  box-shadow: 0 2px 4px rgba(15, 124, 138, 0.25);
+}
+
+.app-shell[data-theme='light'] .theme-switch-icon {
+  color: #0f7c8a;
 }
 
 .app-header-copy {
   text-align: center;
 }
 
-.app-eyebrow {
-  margin: 0;
-  color: var(--accent-text);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
+
 
 .theme-switch {
   display: inline-flex;

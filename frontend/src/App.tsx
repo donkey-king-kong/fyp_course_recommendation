@@ -3,7 +3,10 @@ import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
 import SemesterRoadmap from './components/SemesterRoadmap'
+import ProfilePage from './components/ProfilePage'
 import type { RoadmapResponse } from './types/roadmap'
+
+type ViewState = 'roadmap' | 'profile'
 
 // Main page component
 function App() {
@@ -13,6 +16,7 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
+  const [currentView, setCurrentView] = useState<ViewState>('roadmap')
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -48,7 +52,20 @@ function App() {
     <main className="app-shell" data-theme={theme}>
       <header className="app-header">
         <div className="app-header-top">
-          <p className="app-eyebrow">Academic roadmap</p>
+          <nav className="app-nav">
+            <button
+              className={`nav-button ${currentView === 'roadmap' ? 'active' : ''}`}
+              onClick={() => setCurrentView('roadmap')}
+            >
+              Roadmap
+            </button>
+            <button
+              className={`nav-button ${currentView === 'profile' ? 'active' : ''}`}
+              onClick={() => setCurrentView('profile')}
+            >
+              Profile
+            </button>
+          </nav>
           <label className="theme-switch"> 
             {/* Moon icon for the theme toggle. */}
             <span className="theme-switch-icon" aria-hidden="true">
@@ -78,7 +95,7 @@ function App() {
       {error && <p>{error}</p>}
 
       {/* Show roadmap content only after data has loaded successfully. */}
-      {roadmap && (
+      {roadmap && currentView === 'roadmap' && (
         <>
           {/* Shows the curriculum-style roadmap with semester bands and prerequisite arrows. */}
           <SemesterRoadmap courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
@@ -98,6 +115,9 @@ function App() {
           <CourseList courses={filteredCourses} />
         </>
       )}
+
+      {/* Show profile page when selected */}
+      {currentView === 'profile' && <ProfilePage />}
     </main>
   )
 }
