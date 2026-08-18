@@ -1,16 +1,25 @@
 .roadmap-graph-section {
-  width: min(100%, 64rem);
+  width: min(100%, 78rem);
+  padding: 1.5rem;
+  border: 1px solid #dbe3ef;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.07);
   text-align: left;
 }
 
 .roadmap-graph-section h2 {
+  margin: 0 0 1.25rem;
+  color: #111827;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.04em;
   text-align: center;
 }
 
 .roadmap-graph {
   width: 100%;
-  height: 36rem;
-  border: 1px solid #e5e7eb;
+  height: 42rem;
+  border: 1px solid #dbe3ef;
   border-radius: 0.75rem;
   overflow: hidden;
   background: #f8fafc;

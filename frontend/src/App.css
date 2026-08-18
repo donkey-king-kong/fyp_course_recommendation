@@ -1,23 +1,44 @@
 .app-shell {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.75rem;
   min-height: 100vh;
   align-items: center;
   justify-content: flex-start;
-  padding: 2rem;
+  padding: 3rem 1.5rem;
   text-align: center;
 }
 
-.roadmap-summary {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.app-header {
+  width: min(100%, 64rem);
+  padding: 2rem;
+  border: 1px solid #dbe3ef;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
 }
 
-.roadmap-summary h2,
-.roadmap-summary p {
+.app-eyebrow {
+  margin: 0 0 0.75rem;
+  color: #2563eb;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.app-header h1 {
   margin: 0;
+  font-size: clamp(2.25rem, 7vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.app-subtitle {
+  max-width: 36rem;
+  margin: 1rem auto 0;
+  color: #64748b;
+  font-size: 1.05rem;
 }
 
 .course-search {
@@ -25,10 +46,32 @@
   flex-direction: column;
   gap: 0.5rem;
   width: min(100%, 32rem);
+  color: #334155;
+  font-weight: 700;
   text-align: left;
 }
 
 .course-search input {
-  padding: 0.5rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.75rem;
   font: inherit;
+  font-weight: 400;
+  background: #ffffff;
+}
+
+.course-search input:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.18);
+  border-color: #2563eb;
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    padding: 1.5rem 1rem;
+  }
+
+  .app-header {
+    padding: 1.5rem;
+  }
+
 }

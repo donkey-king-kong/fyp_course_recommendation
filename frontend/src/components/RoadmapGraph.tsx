@@ -42,10 +42,14 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
       targetPosition: Position.Left,
       style: {
         width: 220,
+        padding: 10,
+        background: '#ffffff',
         borderColor: '#2563eb',
         borderRadius: 8,
+        boxShadow: '0 12px 28px rgba(37, 99, 235, 0.14)',
         color: '#111827',
         fontSize: 12,
+        lineHeight: 1.35,
         whiteSpace: 'pre-line',
       },
     }

@@ -1,9 +1,14 @@
 .course-list {
   width: min(100%, 48rem);
+  padding: 1.25rem;
+  border: 1px solid #dbe3ef;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.92);
   text-align: left;
 }
 
 .course-list h2 {
+  margin: 0 0 1.25rem;
   text-align: center;
 }
 
@@ -14,7 +19,13 @@
 }
 
 .course-group h3 {
+  display: inline-flex;
   margin: 0 0 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  color: #2563eb;
+  font-size: 0.85rem;
+  background: #eff6ff;
 }
 
 .course-group ul {
@@ -29,11 +40,25 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
+  padding: 0.875rem;
+  border: 1px solid #e5edf8;
+  border-radius: 0.75rem;
+  background: #ffffff;
+}
+
+.course-list-item strong {
+  color: #111827;
 }
 
 .course-list-item span,
 .course-list-empty {
-  color: #4b5563;
+  color: #64748b;
+}
+
+.course-list-empty {
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  text-align: center;
 }
