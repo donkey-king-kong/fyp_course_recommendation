@@ -241,6 +241,8 @@ Status: Implemented locally
 - Added frontend-only checkbox toggling for completed courses.
 - Added a light/dark theme toggle with a moon icon.
 - Refined hover behavior so unrelated arrows disappear while connected arrows stay sharp and visible.
+- Adjusted hover layering so active arrows render above faded cards while connected cards stay on top.
+- Set emphasized prerequisite arrows to clear white with no glow for the current dark-mode pass.
 
 ### Verified
 
@@ -250,6 +252,7 @@ Status: Implemented locally
 - Browser shows the semester-based roadmap layout.
 - Browser shows course cards grouped by year and semester.
 - Browser supports light and dark roadmap themes.
+- Browser hover behavior keeps only connected arrows visible.
 
 ### Not Included
 
