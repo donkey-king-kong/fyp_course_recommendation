@@ -1,0 +1,14 @@
+.roadmap-graph-section {
+  width: min(100%, 64rem);
+  text-align: left;
+}
+
+.roadmap-graph-section h2 {
+  text-align: center;
+}
+
+.roadmap-graph {
+  width: 100%;
+  height: 32rem;
+  border: 1px solid #e5e7eb;
+}
