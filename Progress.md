@@ -262,6 +262,33 @@ Status: Implemented locally
 - No profile-specific completed course state yet.
 - No backend, database, recommendation, or AI changes.
 
+## Profile Page and State
+
+Status: Complete
+
+### Completed
+
+- Installed Zustand for global state management.
+- Created `useProfileStore` with the `persist` middleware to track student profile (normalized Student ID, Major, Year, Semester) and completed course IDs across page reloads.
+- Updated `SemesterRoadmap.tsx` to read and toggle completed courses via the global store instead of local component state.
+- Created a `ProfilePage` component with a form to view and edit student details, including Student ID and Major, as well as a stats card showing the number of completed courses.
+- Updated `App.tsx` with a top navigation bar to switch between the "Roadmap" and "Profile" views.
+- Styled the Profile page to match both dark and light modes.
+
+### Verified
+
+- Frontend build and lint passes.
+- Zustand store persists data to `localStorage`.
+- Completing a course in the Roadmap instantly updates the count on the Profile page.
+- Modifying profile details on the Profile page persists through reloads.
+- Navigation correctly switches between views.
+
+### Not Included
+
+- No backend changes or persistence for user profiles (everything is frontend `localStorage` for now).
+- No actual course recommendation logic yet.
+- No transcript upload or automated course extraction yet.
+
 ## Current Handoff
 
 Status: Ready for next work
@@ -269,14 +296,14 @@ Status: Ready for next work
 ### Current App State
 
 - Backend has `GET /health` and `GET /roadmap`.
-- Frontend loads roadmap data from the backend.
-- Frontend displays a semester-based roadmap with light/dark theme support and grouped searchable course list.
-- Markdown onboarding files are now intended to be tracked in Git.
+- Frontend loads roadmap data and manages user profile state using Zustand with `localStorage` persistence.
+- Frontend includes navigation tabs for Roadmap and Profile pages.
+- Roadmap courses can be toggled as completed, syncing with the global profile store.
 
 ### Next Recommended Work
 
-- Review and merge roadmap graph readability, or
-- Plan profile page and state for future personalization.
+- Implement transcript upload and completed course extraction (Milestone 7), or
+- Begin working on the Chat stub (Milestone 8).
 
 ### Onboarding For Next Session
 
