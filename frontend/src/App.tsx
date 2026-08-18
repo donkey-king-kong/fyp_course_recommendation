@@ -46,8 +46,8 @@ function App() {
   return (
     <main className="app-shell">
       <header className="app-header">
-        <p className="app-eyebrow">Course roadmap planner</p>
-        <h1>FYP Course Recommendation</h1>
+        <p className="app-eyebrow">Academic roadmap</p>
+        <h1>NTU Course Recommender</h1>
         <p className="app-subtitle">
           Explore course progression, prerequisites, and semester placement.
         </p>

@@ -16,6 +16,18 @@ interface RoadmapGraphProps {
   prerequisiteLinks: RoadmapEdge[]
 }
 
+function getCourseAccent(type: string) {
+  if (type === 'Core') {
+    return '#38bdf8'
+  }
+
+  if (type === 'Common-Core') {
+    return '#a78bfa'
+  }
+
+  return '#94a3b8'
+}
+
 function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
   const groupCounts = new Map<string, number>()
 
@@ -25,6 +37,7 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
     const columnIndex = (course.year - 1) * 2 + (course.semester - 1)
     const groupKey = `${course.year}-${course.semester}`
     const rowIndex = groupCounts.get(groupKey) ?? 0
+    const accent = getCourseAccent(course.type)
 
     groupCounts.set(groupKey, rowIndex + 1)
 
@@ -43,11 +56,11 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
       style: {
         width: 220,
         padding: 10,
-        background: '#ffffff',
-        borderColor: '#2563eb',
+        background: '#0f172a',
+        borderColor: accent,
         borderRadius: 8,
-        boxShadow: '0 12px 28px rgba(37, 99, 235, 0.14)',
-        color: '#111827',
+        boxShadow: '0 16px 34px rgba(0, 0, 0, 0.28)',
+        color: '#e5eefb',
         fontSize: 12,
         lineHeight: 1.35,
         whiteSpace: 'pre-line',
@@ -65,7 +78,7 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
       type: MarkerType.ArrowClosed,
     },
     style: {
-      stroke: '#64748b',
+      stroke: '#94a3b8',
       strokeWidth: 2,
     },
   }))
