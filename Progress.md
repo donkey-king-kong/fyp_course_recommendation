@@ -296,8 +296,9 @@ Status: Implemented locally
 ### Completed
 
 - Added a frontend-only login/onboarding screen.
-- Used the existing persisted Student ID as the temporary browser-side user identity.
+- Used the existing persisted Student ID as the browser-side user identity.
 - Gated the main Roadmap/Profile application behind Student ID entry.
+- Added logout support to clear the browser-stored profile and return to the login screen.
 - Kept this as browser persistence only, without backend authentication or database persistence.
 
 ### Not Included

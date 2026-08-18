@@ -20,6 +20,7 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>('roadmap')
   const studentId = useProfileStore((state) => state.profile.studentId)
+  const resetProfile = useProfileStore((state) => state.resetProfile)
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -51,9 +52,14 @@ function App() {
       )
     }) ?? []
 
-  // First-time visitors enter a Student ID before seeing the roadmap.
+  // First-time students enter a Student ID before seeing the roadmap
   if (!studentId) {
     return <LoginPage />
+  }
+
+  function handleLogout() {
+    setCurrentView('roadmap')
+    resetProfile()
   }
 
   return (
@@ -72,6 +78,9 @@ function App() {
               onClick={() => setCurrentView('profile')}
             >
               Profile
+            </button>
+            <button className="nav-button logout-button" onClick={handleLogout}>
+              Log out
             </button>
           </nav>
           <label className="theme-switch"> 

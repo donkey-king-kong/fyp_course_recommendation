@@ -10,12 +10,20 @@ export interface StudentProfile {
   currentSemester: number
 }
 
+const DEFAULT_PROFILE: StudentProfile = {
+  studentId: '',
+  major: 'CSC',
+  yearOfStudy: 1,
+  currentSemester: 1,
+}
+
 interface ProfileState {
   profile: StudentProfile
   completedCourseIds: string[]
   updateProfile: (updates: Partial<StudentProfile>) => void
   toggleCourseCompletion: (courseId: string) => void
   setCompletedCourses: (courseIds: string[]) => void
+  resetProfile: () => void
 }
 
 function normalizeStudentId(studentId: string) {
@@ -25,12 +33,7 @@ function normalizeStudentId(studentId: string) {
 export const useProfileStore = create<ProfileState>()(
   persist(
     (set) => ({
-      profile: {
-        studentId: '',
-        major: 'CSC',
-        yearOfStudy: 1,
-        currentSemester: 1,
-      },
+      profile: DEFAULT_PROFILE,
       completedCourseIds: [],
       
       updateProfile: (updates) =>
@@ -62,6 +65,12 @@ export const useProfileStore = create<ProfileState>()(
       setCompletedCourses: (courseIds) =>
         set(() => ({
           completedCourseIds: courseIds,
+        })),
+
+      resetProfile: () =>
+        set(() => ({
+          profile: DEFAULT_PROFILE,
+          completedCourseIds: [],
         })),
     }),
     {
