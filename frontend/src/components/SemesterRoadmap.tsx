@@ -165,15 +165,28 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
       <div className="semester-roadmap-header">
         <h2>Roadmap</h2>
 
-        {/* Toggle between all prerequisite arrows and only the hovered course's arrows. */}
-        <label className="arrow-toggle">
-          All arrows
-          <input
-            type="checkbox"
-            checked={showAllArrows}
-            onChange={(event) => setShowAllArrows(event.target.checked)}
-          />
-        </label>
+        <div className="roadmap-actions">
+          {/* Clear the completed-course list so every roadmap checkbox becomes unchecked */}
+          <button
+            type="button"
+            className="clear-completed-button"
+            onClick={() => setCompletedCourses([])}
+            // Disable if no completed courses to clear
+            disabled={completedCourseIds.length === 0}
+          >
+            Clear completed
+          </button>
+
+          {/* Toggle between all prerequisite arrows and only the hovered course's arrows. */}
+          <label className="arrow-toggle">
+            All arrows
+            <input
+              type="checkbox"
+              checked={showAllArrows}
+              onChange={(event) => setShowAllArrows(event.target.checked)}
+            />
+          </label>
+        </div>
       </div>
 
       <div
