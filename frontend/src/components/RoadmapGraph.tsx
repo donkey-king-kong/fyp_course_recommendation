@@ -1,6 +1,8 @@
 import {
   Background,
   Controls,
+  MarkerType,
+  Position,
   ReactFlow,
   type Edge as ReactFlowEdge,
   type Node as ReactFlowNode,
@@ -17,8 +19,8 @@ interface RoadmapGraphProps {
 function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
   const groupCounts = new Map<string, number>()
 
-  // Give each course a graph position
-  // Same year/semester = same column, later courses go lower
+  // Give each course a graph position.
+  // Same year/semester = same column, later courses go lower.
   const graphNodes: ReactFlowNode[] = courses.map((course) => {
     const columnIndex = (course.year - 1) * 2 + (course.semester - 1)
     const groupKey = `${course.year}-${course.semester}`
@@ -30,11 +32,21 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
     return {
       id: course.id,
       position: {
-        x: columnIndex * 260,
-        y: rowIndex * 110,
+        x: columnIndex * 320,
+        y: rowIndex * 140,
       },
       data: {
-        label: `${course.courseCode}\n${course.title}`,
+        label: `${course.courseCode} - ${course.academicUnits} AU\n${course.title}`,
+      },
+      sourcePosition: Position.Right,
+      targetPosition: Position.Left,
+      style: {
+        width: 220,
+        borderColor: '#2563eb',
+        borderRadius: 8,
+        color: '#111827',
+        fontSize: 12,
+        whiteSpace: 'pre-line',
       },
     }
   })
@@ -44,6 +56,14 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
     id: `${link.source}-${link.target}`,
     source: link.source,
     target: link.target,
+    type: 'smoothstep',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
+    style: {
+      stroke: '#64748b',
+      strokeWidth: 2,
+    },
   }))
 
   return (
