@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
+import LoginPage from './components/LoginPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
+import { useProfileStore } from './store/useProfileStore'
 import type { RoadmapResponse } from './types/roadmap'
 
 type ViewState = 'roadmap' | 'profile'
@@ -17,6 +19,8 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>('roadmap')
+  const activeStudentId = useProfileStore((state) => state.activeStudentId)
+  const logout = useProfileStore((state) => state.logout)
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -48,6 +52,16 @@ function App() {
       )
     }) ?? []
 
+  // Show the login page until a studentID is entered
+  if (!activeStudentId) {
+    return <LoginPage />
+  }
+
+  function handleLogout() {
+    setCurrentView('roadmap')
+    logout()
+  }
+
   return (
     <main className="app-shell" data-theme={theme}>
       <header className="app-header">
@@ -64,6 +78,9 @@ function App() {
               onClick={() => setCurrentView('profile')}
             >
               Profile
+            </button>
+            <button className="nav-button logout-button" onClick={handleLogout}>
+              Log out
             </button>
           </nav>
           <label className="theme-switch"> 
