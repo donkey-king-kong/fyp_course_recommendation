@@ -171,6 +171,7 @@ Status: Implemented locally
 - Grouped roadmap courses by year and semester.
 - Added simple course search by course code or title.
 - Improved plain course list readability with spacing, separators, muted metadata, and an empty state.
+- Added explanatory comments to backend roadmap loading and frontend roadmap list code.
 - Kept changes frontend-only except for documentation.
 
 ### Verified
@@ -190,7 +191,7 @@ Status: Implemented locally
 
 ## Current Handoff
 
-Status: Ready for next work
+Status: Ready for PR review
 
 ### Current App State
 
@@ -201,7 +202,7 @@ Status: Ready for next work
 
 ### Next Recommended Work
 
-- Review and merge roadmap list improvements, or
+- Push and review roadmap list improvements, or
 - Plan the first roadmap visualization step.
 
 ### Onboarding For Next Session
