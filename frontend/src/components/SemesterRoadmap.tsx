@@ -129,7 +129,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
         const controlOffset = Math.max(80, Math.abs(endX - startX) * 0.45)
         const isHighlighted =
           hoveredCourseId === link.source || hoveredCourseId === link.target
-        const shouldShow = showAllArrows || isHighlighted
+        const shouldShow = hoveredCourseId ? isHighlighted : showAllArrows
 
         if (!shouldShow) {
           return []
