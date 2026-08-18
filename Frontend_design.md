@@ -53,3 +53,43 @@ Use active voice as default. A control should say exactly what happens when it's
 Treat failure and emptiness as moments for direction, not mood. Explain what went wrong and how to fix it, in the interface's voice rather than a person's. Errors don't apologize, and they are never vague about what happened. An empty screen is an invitation to act.
 
 Keep the register conversational and tuned: plain verbs, sentence case, no filler, with tone matched to the brand and the audience. Let each element do exactly one job. A label labels, an example demonstrates, and nothing quietly does double duty.
+
+## Project UI Reference
+
+Use the old repository frontend as a visual and behavior reference only:
+
+```text
+/Users/bytedance/Desktop/course-recommendation-system/frontend
+```
+
+Do not copy the entire old frontend in one step.
+
+Do not rebuild the frontend unless the current milestone asks for it.
+
+For now, keep backend milestone scope unchanged when working on backend tasks.
+
+### Target UI Direction
+
+The rebuild should eventually move toward the old frontend's style and behavior:
+
+- Dark theme.
+- Top header: `NTU Course Recommender`.
+- Roadmap canvas with courses grouped by year and semester.
+- Course cards showing course code, title, type, and AU.
+- Colored course categories.
+- Prerequisite arrows between courses.
+- Toggle for showing all arrows.
+- Checkbox-style completion indicators on course cards.
+
+### Incremental Frontend Rebuild Order
+
+When a frontend milestone asks for these pieces, rebuild them incrementally:
+
+1. Basic React app shell.
+2. Dark theme/header.
+3. Static roadmap page.
+4. Course card component.
+5. Semester/year grouping.
+6. Arrows/prerequisite visualization.
+7. Completion state.
+8. Chat/sidebar later.
