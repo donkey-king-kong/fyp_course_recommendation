@@ -7,6 +7,7 @@ import type { RoadmapResponse } from './types/roadmap'
 function App() {
   const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     async function loadRoadmap() {
@@ -22,6 +23,17 @@ function App() {
   }, [])
 
   const firstCourseCode = roadmap?.nodes[0]?.courseCode ?? 'None'
+  const normalizedSearchTerm = searchTerm.trim().toLowerCase()
+  const filteredCourses =
+    roadmap?.nodes.filter((course) => {
+      const courseCode = course.courseCode.toLowerCase()
+      const title = course.title.toLowerCase()
+
+      return (
+        courseCode.includes(normalizedSearchTerm) ||
+        title.includes(normalizedSearchTerm)
+      )
+    }) ?? []
 
   return (
     <main className="app-shell">
@@ -40,7 +52,17 @@ function App() {
             <p>First course: {firstCourseCode}</p>
           </section>
 
-          <CourseList courses={roadmap.nodes} />
+          <label className="course-search">
+            Search courses
+            <input
+              type="search"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Search by code or title"
+            />
+          </label>
+
+          <CourseList courses={filteredCourses} />
         </>
       )}
     </main>
