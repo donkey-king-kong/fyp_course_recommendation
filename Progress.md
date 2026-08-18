@@ -191,7 +191,7 @@ Status: Complete
 
 ## Roadmap Visualization Foundation
 
-Status: Implemented locally
+Status: Complete
 
 ### Completed
 
@@ -201,6 +201,7 @@ Status: Implemented locally
 - Converted roadmap prerequisite links into graph edges.
 - Added a simple manual layout based on year and semester.
 - Rendered the graph alongside the existing summary and searchable course list.
+- Opened and merged PR #9.
 
 ### Verified
 
@@ -229,7 +230,6 @@ Status: Ready for next work
 
 ### Next Recommended Work
 
-- Review and merge roadmap visualization foundation, or
 - Improve graph layout and node readability.
 
 ### Onboarding For Next Session
