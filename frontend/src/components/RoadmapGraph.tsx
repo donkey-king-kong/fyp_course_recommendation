@@ -17,7 +17,8 @@ interface RoadmapGraphProps {
 function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
   const groupCounts = new Map<string, number>()
 
-  // Place courses in columns by year/semester and stack courses within each column.
+  // Give each course a graph position
+  // Same year/semester = same column, later courses go lower
   const graphNodes: ReactFlowNode[] = courses.map((course) => {
     const columnIndex = (course.year - 1) * 2 + (course.semester - 1)
     const groupKey = `${course.year}-${course.semester}`
@@ -25,6 +26,7 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
 
     groupCounts.set(groupKey, rowIndex + 1)
 
+    // Returns 1 graph-node for 1 course
     return {
       id: course.id,
       position: {
@@ -37,6 +39,7 @@ function RoadmapGraph({ courses, prerequisiteLinks }: RoadmapGraphProps) {
     }
   })
 
+  // Create graph edges between courses based on prerequisite links
   const graphEdges: ReactFlowEdge[] = prerequisiteLinks.map((link) => ({
     id: `${link.source}-${link.target}`,
     source: link.source,

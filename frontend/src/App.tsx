@@ -66,6 +66,7 @@ function App() {
             <p>First course: {firstCourseCode}</p>
           </section>
 
+          {/* Passes prereq r/s into RoadmapGraph */}
           <RoadmapGraph courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
 
           {/* Search input updates searchTerm */}
