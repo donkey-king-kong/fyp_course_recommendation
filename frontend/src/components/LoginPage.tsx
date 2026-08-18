@@ -5,8 +5,8 @@ import './LoginPage.css'
 const STUDENT_ID_PATTERN = /^[A-Z]{4}\d{4}$/
 
 function LoginPage() {
-  // Write profile updates into the shared browser-persisted profile store
-  const updateProfile = useProfileStore((state) => state.updateProfile)
+  // Activate an existing browser-saved profile, or create one for this Student ID.
+  const loginWithStudentId = useProfileStore((state) => state.loginWithStudentId)
 
   // Keep what the user is typing before it is saved into the profile store
   const [studentIdInput, setStudentIdInput] = useState('')
@@ -33,8 +33,8 @@ function LoginPage() {
 
     setError('')
 
-    // Normalizes the Student ID again before saving it
-    updateProfile({ studentId: normalizedStudentId })
+    // Load the saved browser profile for this ID, or create one if it is new
+    loginWithStudentId(normalizedStudentId)
   }
 
   return (

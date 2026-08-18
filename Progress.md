@@ -297,9 +297,17 @@ Status: Implemented locally
 
 - Added a frontend-only login/onboarding screen.
 - Used the existing persisted Student ID as the browser-side user identity.
+- Store profile records by Student ID so one browser can remember more than one profile.
 - Gated the main Roadmap/Profile application behind Student ID entry.
-- Added logout support to clear the browser-stored profile and return to the login screen.
+- Added logout support to clear only the active user and return to the login screen.
 - Kept this as browser persistence only, without backend authentication or database persistence.
+
+### Verified
+
+- Frontend lint passes.
+- Frontend build passes.
+- Student ID login validates the entered ID before activating a profile.
+- Logout returns to the login screen without deleting browser-saved profile records.
 
 ### Not Included
 
@@ -315,7 +323,7 @@ Status: Ready for next work
 
 - Backend has `GET /health` and `GET /roadmap`.
 - Frontend asks first-time browser users for Student ID before showing the main app.
-- Frontend loads roadmap data and manages user profile state using Zustand with `localStorage` persistence.
+- Frontend loads roadmap data and manages profile records by Student ID using Zustand with `localStorage` persistence.
 - Frontend includes navigation tabs for Roadmap and Profile pages.
 - Roadmap courses can be toggled as completed, syncing with the global profile store.
 

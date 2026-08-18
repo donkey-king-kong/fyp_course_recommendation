@@ -19,8 +19,8 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>('roadmap')
-  const studentId = useProfileStore((state) => state.profile.studentId)
-  const resetProfile = useProfileStore((state) => state.resetProfile)
+  const activeStudentId = useProfileStore((state) => state.activeStudentId)
+  const logout = useProfileStore((state) => state.logout)
 
   useEffect(() => {
     // Load roadmap data once when the app first renders.
@@ -52,14 +52,14 @@ function App() {
       )
     }) ?? []
 
-  // First-time students enter a Student ID before seeing the roadmap
-  if (!studentId) {
+  // Show the login page until a studentID is entered
+  if (!activeStudentId) {
     return <LoginPage />
   }
 
   function handleLogout() {
     setCurrentView('roadmap')
-    resetProfile()
+    logout()
   }
 
   return (
