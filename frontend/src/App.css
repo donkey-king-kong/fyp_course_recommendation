@@ -19,3 +19,16 @@
 .roadmap-summary p {
   margin: 0;
 }
+
+.course-search {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(100%, 32rem);
+  text-align: left;
+}
+
+.course-search input {
+  padding: 0.5rem;
+  font: inherit;
+}

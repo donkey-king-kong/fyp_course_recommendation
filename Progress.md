@@ -159,23 +159,50 @@ Year 1, Semester 1 - 3 AU - Core
 ### Not Included
 
 - No ReactFlow graph yet.
-- No filtering or search yet.
+- No profile-specific completed course state yet.
+
+## Roadmap List Improvements
+
+Status: Implemented locally
+
+### Completed
+
+- Clarified the themed umbrella branch workflow in `AGENTS.md`.
+- Grouped roadmap courses by year and semester.
+- Added simple course search by course code or title.
+- Improved plain course list readability with spacing, separators, muted metadata, and an empty state.
+- Added explanatory comments to backend roadmap loading and frontend roadmap list code.
+- Kept changes frontend-only except for documentation.
+
+### Verified
+
+- Frontend build passes.
+- Frontend lint passes.
+- Browser shows semester groups.
+- Searching `SC1003` filters to the matching course.
+- Searching a non-matching term shows `No courses found.`
+
+### Not Included
+
+- No ReactFlow graph yet.
+- No Material-UI yet.
+- No backend changes.
 - No profile-specific completed course state yet.
 
 ## Current Handoff
 
-Status: Ready for next work
+Status: Ready for PR review
 
 ### Current App State
 
 - Backend has `GET /health` and `GET /roadmap`.
 - Frontend loads roadmap data from the backend.
-- Frontend displays a roadmap summary and plain course list.
+- Frontend displays a roadmap summary and grouped searchable course list.
 - Markdown onboarding files are now intended to be tracked in Git.
 
 ### Next Recommended Work
 
-- Improve the roadmap course list display, or
+- Push and review roadmap list improvements, or
 - Plan the first roadmap visualization step.
 
 ### Onboarding For Next Session

@@ -7,7 +7,17 @@
   text-align: center;
 }
 
-.course-list ul {
+.course-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.course-group h3 {
+  margin: 0 0 0.75rem;
+}
+
+.course-group ul {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -19,4 +29,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.course-list-item span,
+.course-list-empty {
+  color: #4b5563;
 }
