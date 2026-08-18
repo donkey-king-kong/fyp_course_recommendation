@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
+import RoadmapGraph from './components/RoadmapGraph'
 import type { RoadmapResponse } from './types/roadmap'
 
 // Main page component
@@ -64,6 +65,9 @@ function App() {
             <p>Prerequisite links: {roadmap.edges.length}</p>
             <p>First course: {firstCourseCode}</p>
           </section>
+
+          {/* Passes prereq r/s into RoadmapGraph */}
+          <RoadmapGraph courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
 
           {/* Search input updates searchTerm */}
           <label className="course-search">

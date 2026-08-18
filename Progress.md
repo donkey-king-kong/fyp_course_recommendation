@@ -163,7 +163,7 @@ Year 1, Semester 1 - 3 AU - Core
 
 ## Roadmap List Improvements
 
-Status: Implemented locally
+Status: Complete
 
 ### Completed
 
@@ -173,6 +173,7 @@ Status: Implemented locally
 - Improved plain course list readability with spacing, separators, muted metadata, and an empty state.
 - Added explanatory comments to backend roadmap loading and frontend roadmap list code.
 - Kept changes frontend-only except for documentation.
+- Opened and merged PR #8.
 
 ### Verified
 
@@ -184,26 +185,52 @@ Status: Implemented locally
 
 ### Not Included
 
-- No ReactFlow graph yet.
 - No Material-UI yet.
 - No backend changes.
 - No profile-specific completed course state yet.
 
+## Roadmap Visualization Foundation
+
+Status: Implemented locally
+
+### Completed
+
+- Added the ReactFlow package through `@xyflow/react`.
+- Added a `RoadmapGraph` component.
+- Converted roadmap courses into graph nodes.
+- Converted roadmap prerequisite links into graph edges.
+- Added a simple manual layout based on year and semester.
+- Rendered the graph alongside the existing summary and searchable course list.
+
+### Verified
+
+- Frontend build passes.
+- Frontend lint passes.
+- Browser shows the `Roadmap Graph` section.
+- Browser shows ReactFlow controls, confirming the graph is mounted.
+
+### Not Included
+
+- No advanced graph layout yet.
+- No custom node design yet.
+- No profile-specific completed course state yet.
+- No backend, database, recommendation, or AI changes.
+
 ## Current Handoff
 
-Status: Ready for PR review
+Status: Ready for next work
 
 ### Current App State
 
 - Backend has `GET /health` and `GET /roadmap`.
 - Frontend loads roadmap data from the backend.
-- Frontend displays a roadmap summary and grouped searchable course list.
+- Frontend displays a roadmap summary, basic graph, and grouped searchable course list.
 - Markdown onboarding files are now intended to be tracked in Git.
 
 ### Next Recommended Work
 
-- Push and review roadmap list improvements, or
-- Plan the first roadmap visualization step.
+- Review and merge roadmap visualization foundation, or
+- Improve graph layout and node readability.
 
 ### Onboarding For Next Session
 
