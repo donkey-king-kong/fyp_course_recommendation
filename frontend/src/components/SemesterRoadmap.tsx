@@ -59,6 +59,9 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
   const [hoveredCourseId, setHoveredCourseId] = useState<string | null>(null)
   const [showAllArrows, setShowAllArrows] = useState(true)
   const [arrowPaths, setArrowPaths] = useState<ArrowPath[]>([])
+  const [completedCourseIds, setCompletedCourseIds] = useState<Set<string>>(
+    () => new Set(courses.filter((course) => course.isCompleted).map((course) => course.id)),
+  )
 
   // Let us measure where each course card is on screen so SVG arrows can connect them
   const roadmapRef = useRef<HTMLDivElement | null>(null)
@@ -80,6 +83,20 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
         connectedCourseIds.add(link.source)
         connectedCourseIds.add(link.target)
       }
+    })
+  }
+
+  function toggleCompletedCourse(courseId: string) {
+    setCompletedCourseIds((currentCompletedCourseIds) => {
+      const nextCompletedCourseIds = new Set(currentCompletedCourseIds)
+
+      if (nextCompletedCourseIds.has(courseId)) {
+        nextCompletedCourseIds.delete(courseId)
+      } else {
+        nextCompletedCourseIds.add(courseId)
+      }
+
+      return nextCompletedCourseIds
     })
   }
 
@@ -211,6 +228,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                 {group.courses.map((course) => {
                   const isConnected = connectedCourseIds.has(course.id)
                   const isDimmed = Boolean(hoveredCourseId) && !isConnected
+                  const isCompleted = completedCourseIds.has(course.id)
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -223,6 +241,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                         'semester-course-card',
                         isConnected ? 'semester-course-card-connected' : '',
                         isDimmed ? 'semester-course-card-dimmed' : '',
+                        isCompleted ? 'semester-course-card-completed' : '',
                       ]
                         .filter(Boolean)
                         .join(' ')}
@@ -242,15 +261,13 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                         >
                           {course.type}
                         </span>
-                        <span
-                          className={[
-                            'completion-indicator',
-                            course.isCompleted ? 'completion-indicator-checked' : '',
-                          ]
-                            .filter(Boolean)
-                            .join(' ')}
+                        <input
+                          type="checkbox"
+                          className="completion-indicator"
+                          checked={isCompleted}
+                          onChange={() => toggleCompletedCourse(course.id)}
                           aria-label={
-                            course.isCompleted ? 'Completed course' : 'Incomplete course'
+                            isCompleted ? 'Mark course as incomplete' : 'Mark course as complete'
                           }
                         />
                       </div>
