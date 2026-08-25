@@ -1,0 +1,792 @@
+[
+  {
+    "code": "AB0602",
+    "title": "COMMUNICATION MANAGEMENT STRATEGIES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB0601 OR",
+      "CC0001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "BCE 1",
+      "BCG 1"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The purpose of this course is to prepare you for the communication challenges that you are likely to meet in rapidly evolving global business environments. It will help you to present yourself confidently and professionally in the way you speak, write and participate in your chosen profession. AB0602 is designed to build on the communication theory, strategies and skills learnt in AB0601. Theory provides a conceptual framework that guides strategy and skills. Strategy allows communicators to make intelligent choices about content, organisation, style, tone, delivery, and timing of messages. Skills are needed to craft effective written documents, give constructive feedback, and create as well as deliver persuasive business presentations. In addition, this course also offers you the opportunity to acquire an understanding of the method of Principled Negotiation developed at the Harvard Negotiation Project. You will gain hands-on experience in negotiation through engagement in negotiation simulations."
+  },
+  {
+    "code": "AB1201",
+    "title": "FINANCIAL MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BU5201",
+      "BU8201"
+    ],
+    "not_available_to_programme": [
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS(ITG)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "d Income Securities, Derivatives Securities, and International Financial Management.This course aims to provide business and accounting students with a broad understanding of all the important financial principles, concepts, and analytical tools. This is a first course in finance and is compulsory for all business and accounting students. For students intending to major in banking and finance, this course is an important foundation course in order to better prepare themselves for other advanced courses such as Advanced Corporate Finance, Financial Markets and Institutions, International Financial Management, Investments, Equity Securities, Fixed Income Securities, and Derivatives Securities."
+  },
+  {
+    "code": "AB2008",
+    "title": "CAREERS FUTURE FORWARD",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course will help you in your career development journey and prepares you for your future career. You will understand yourself better, realise your strengths and plan and map your career aspirations. Through this course, you will also have a broader understanding of the diverse industries, market requirements and current and future job trends. You will also learn how to stand out on LinkedIn, build your brand and be equipped with networking skills to engage employers and the business community for internships and job opportunities."
+  },
+  {
+    "code": "AD2101",
+    "title": "MANAGEMENT ACCOUNTING",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AD1101 OR",
+      "AB1101"
+    ],
+    "mutually_exclusive": [
+      "AB1102",
+      "AD2102",
+      "BU5101",
+      "BU8101"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS(ITG)",
+      "MS-2ndMaj/Spec(ITG)",
+      "MS-2ndMaj/Spec(MSB) 2",
+      "MS-2ndMaj/Spec(NULL)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC2402",
+    "title": "DESIGNING & DEVELOPING DATABASES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "ACBS-2ndMaj/Spec(BA) 4",
+      "ACC-2ndMaj/Spec(PFA) 2",
+      "BCE 1",
+      "BCE 3",
+      "BCE 4",
+      "BCG 1",
+      "BCG 3",
+      "BCG 4",
+      "BUS(BA) 3"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces participants to design, tools, techniques, and issues concerning the management of data. Data management is the foundation for organizations' business analytics; and for problem solving and decision-making. Participants will analyse a variety of business process, identify data requirements and develop an information system to support business processes and gather information for business analytics. In this course, participants will have an opportunity to apply their design and development competencies by implementing a database solution."
+  },
+  {
+    "code": "BC2406",
+    "title": "ANALYTICS I: VISUAL & PREDICTIVE TECHNIQUES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 2 standing"
+    ],
+    "mutually_exclusive": [
+      "BC3404"
+    ],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "ACBS-2ndMaj/Spec(BA) 4",
+      "ACC-2ndMaj/Spec(PFA) 2",
+      "BCE 1",
+      "BCE 3",
+      "BCE 4",
+      "BCG 1",
+      "BCG 3",
+      "BCG 4",
+      "BUS(BA) 3"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Most organizations are data rich and information poor. The large volumes of data in an organization are 'oilfields' rich in information content that are pending extraction with the right tools and models. Analytics involves the art of data exploration, visualization, communication and the science of analyzing large quantities of data in order to discover meaningful patterns and useful insights to support decision-making. The primary objective of this course is to introduce students to various techniques available to extract useful insights from the large volumes of data. At the end of the course, students will not only see the substantial opportunities that exist in real world, but also learn techniques that allow them to exploit these opportunities. This course focus on the use of open source R software, which is one of the key analytics software used in various industries and a critical skillset required in the job market for analytics and data science professionals."
+  },
+  {
+    "code": "BC3405",
+    "title": "LEAN OPERATIONS & ANALYTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202"
+    ],
+    "mutually_exclusive": [
+      "BC3411"
+    ],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 2",
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3",
+      "BUS(BA) 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3409",
+    "title": "AI IN ACCOUNTING & FINANCE",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BC2406"
+    ],
+    "mutually_exclusive": [
+      "BC3415",
+      "BF3222",
+      "BF3223"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3411",
+    "title": "LEAN OPERATIONS & ANALYTICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202"
+    ],
+    "mutually_exclusive": [
+      "BC3405"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The main objectives of this course are i) to appreciate the key principles/approaches of lean operations including waste elimination, increased speed and response, improved quality, and reduced cost & ii) to gain an understanding of the methodologies, tools, and techniques necessary for analyzing, implementing, managing, and continuously improving operations in both manufacturing and service industries. Topics covered in the course include Toyota Production System, Lean Principles, Value Stream Mapping, Pull Systems, Six Sigma, Lean thinking in manufacturing and service operations, and use of tools like optimization, queuing, simulation, and statistical analyses for modelling and analyzing real life systems. The course will use a mix of lectures, case studies, and problem-solving exercises, to introduce the students to the latest tools, techniques, issues, and strategies in lean operations management. A special focus of the course will be on the operations and technology function in both manufacturing and service sectors. This segment will provide rich opportunities for students to be exposed to challenges in manufacturing and service operations and gain insights through projects."
+  },
+  {
+    "code": "BC3415",
+    "title": "AI IN ACCOUNTING & FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BC2406"
+    ],
+    "mutually_exclusive": [
+      "BC3409",
+      "BF3223"
+    ],
+    "not_available_to_programme": [
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This is an introductory course designed for business or accountancy or Finance undergraduate students who are interested to learn how to manage data, conduct business analytics programmatically, create AI model to automate business processes and create predictive model to increase profitability or return. It is oriented to enhance their technical skillset. The aim of this course is to provide a broad understanding on how to manage data, the process of preparing data for analysis, basics of analytics, using AI to automate financial analysis process and generate accounting reports. This course will equip you with the ability to write customized solutions to make informed business decisions, integrate statistical libraries for data analysis, create AI models to automate accounting and financial process. This module will provide you with individual hands-on practices to hone your coding skills and opportunities to develop coding solutions in a team. We utilize R and Python language as the medium of learning because it is one of the most in-demand coding language and its user-friendly syntax is well suited for the beginner level. You will utilise modern development tools to turn information into insights including Keras' Deep Learning model, Google Brain TensorFlow, Hadoop, Spark and Cloud."
+  },
+  {
+    "code": "BT2403",
+    "title": "SERVICES OPERATIONS MANAGEMENT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BT2404"
+    ],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 2",
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3",
+      "BUS(BA) 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BT2404",
+    "title": "SERVICES OPERATIONS MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BT2403"
+    ],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 2",
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3",
+      "BUS(BA) 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Services make up over 75% of the Singapore economy both in GDP and in employment, with similar trends across the industrialized and developing/emerging nations within the global economy. However, Distinctive characteristics of services such as their intangibility, perishability, simultaneity, and heterogeneity, present unique challenges for managers in service organizations. The main aim of this course is twofold: to introduce you to the most important aspects and general principles of service management across different industries and economies, following a service-dominant logic on business; to provide you with an understanding and essential knowledge of the analysis, modelling, decision making and implementation for managing the operational issues of a service. Emphasis will be on developing your modelling skills with the use of mathematical tools and techniques to manage service operations. Topics include the service concept and operations strategy, the design of effective service delivery networks, service quality management, managing service inventory, waiting line analysis, capacity planning, and yield management."
+  },
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CZ2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 OR",
+      "CE1007 OR",
+      "CE1103 OR",
+      "CZ1103"
+    ],
+    "mutually_exclusive": [
+      "SC2002"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1006 & CZ1007 OR",
+      "CE1006 & CE1007 OR",
+      "CE1106 & CE1107 OR",
+      "CZ1106 & CZ1107"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "SC2005"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2002(Corequisite) OR",
+      "CE2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "SC2006"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2100",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "CZ2101",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1107 & MH1812"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "SC2001"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG(2011-2019)",
+      "CE",
+      "CEEC",
+      "CSC(2011-2019)",
+      "CSEC(2011-2019)",
+      "DSAI(2011-2019)",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "MACS(2011-2019)",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "ML0002",
+    "title": "CAREER POWER UP!",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [
+      "ML0001"
+    ],
+    "mutually_exclusive": [
+      "AB1001"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG",
+      "DSAI"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2018-onwards)-Non Direct Entry",
+      "(Admyr 2019-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In today's competitive world, it is essential that students learn the crucial career skills early to ensure they have a competitive edge sharpened with a heightened sense of workplace values and ethics. This course imparts to students practical skills needed to survive and succeed in the modern workplace while emphasizing on professional ethics. All students will be exposed to effective business communication and workplace skills ranging from building relationship with different personalities, understanding of cross-cultural diversity, inter-cultural communication, conflict management, problem solving and decision making, time management, planning and organization, team work, and more. Following which they will learn how to network and dine with proper etiquette in professional settings. Lastly, to aid them in their transition to the working life, the course will impart the skills behind coping and succeeding in a new workplace, while upholding high standard of work ethics."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) apply, design and analyse algorithms using a number of approaches to solve various problems like sorting, shortest-path, minimum spanning tree, optimal sequencing for matrix multiplication, the longest common subsequence, string matching. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CZ2002"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation; the use of inheritance and polymorphism. You will discover how to describe these concepts using appropriate UML diagrams. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "CZ2005"
+    ],
+    "not_available_to_programme": [
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your understanding of fundamental concepts and principles of modern operating systems, and to build your knowledge on the design and implementation of main operating system components."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  }
+]

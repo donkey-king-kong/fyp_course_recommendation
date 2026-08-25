@@ -1,0 +1,295 @@
+[
+  {
+    "code": "AB0602",
+    "title": "COMMUNICATION MANAGEMENT STRATEGIES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB0601 OR",
+      "CC0001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "BCE 1",
+      "BCG 1"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The purpose of this course is to prepare you for the communication challenges that you are likely to meet in rapidly evolving global business environments. It will help you to present yourself confidently and professionally in the way you speak, write and participate in your chosen profession. AB0602 is designed to build on the communication theory, strategies and skills learnt in AB0601. Theory provides a conceptual framework that guides strategy and skills. Strategy allows communicators to make intelligent choices about content, organisation, style, tone, delivery, and timing of messages. Skills are needed to craft effective written documents, give constructive feedback, and create as well as deliver persuasive business presentations. In addition, this course also offers you the opportunity to acquire an understanding of the method of Principled Negotiation developed at the Harvard Negotiation Project. You will gain hands-on experience in negotiation through engagement in negotiation simulations."
+  },
+  {
+    "code": "AB2008",
+    "title": "CAREERS FUTURE FORWARD",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course will help you in your career development journey and prepares you for your future career. You will understand yourself better, realise your strengths and plan and map your career aspirations. Through this course, you will also have a broader understanding of the diverse industries, market requirements and current and future job trends. You will also learn how to stand out on LinkedIn, build your brand and be equipped with networking skills to engage employers and the business community for internships and job opportunities."
+  },
+  {
+    "code": "AC1104",
+    "title": "ACCOUNTING II",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AC1103 OR",
+      "AC1101"
+    ],
+    "mutually_exclusive": [
+      "AC1102"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers two major parts, namely financial accounting and management accounting. For financial accounting, the aim is to provide you with necessary intermediate financial accounting knowledge continued from AC1103 Accounting I. You are to be equipped with strong conceptual and technical knowledge in the recognition and measurement of the elements of the financial statements, and understand how the quality of financial information could be affected by various factors, and thus affect the decision making process by both internal and external users of companies. For management accounting, the aim is to provide you with an introductory of cost management. The focuses are on basic cost concept, various costing systems and cost allocation."
+  },
+  {
+    "code": "AC2101",
+    "title": "ACCOUNTING RECOGNITION & MEASUREMENT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1102 OR",
+      "AC1102 OR",
+      "AC1104"
+    ],
+    "mutually_exclusive": [
+      "BF2101"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course equips students with a strong conceptual and technical knowledge of the recognition, measurement and disclosure of the financial statement elements, namely, assets, liabilities, equity, revenue and expenses."
+  },
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CS4022",
+    "title": "SOCIAL MEDIA MINING",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CS2405 OR",
+      "CZ4032 (Applicable to DSAI)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers how to analyse unstructured data such as social media content using text mining techniques. Students will learn various text mining techniques and tools both through lectures and hands-on exercises in labs. The course will also explore various usages of text mining techniques to real world applications."
+  },
+  {
+    "code": "MH2100",
+    "title": "CALCULUS III",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1101 OR",
+      "MH1802 (Applicable to DSAI) OR",
+      "MH1805 (Applicable to DSAI)"
+    ],
+    "mutually_exclusive": [
+      "CY1602",
+      "MH1803",
+      "MH210S",
+      "MH2800"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "PHY(2011-onwards)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Calculus III is a core Mathematics course that extends concepts and techniques developed in Calculus I and Calculus II to the case of functions of several real variables. In other words, we try to do the same things as in Calculus I and II, but in higher dimensions. In this course, we shall discuss the notions of limits, continuity, derivatives and integrals of real-valued and vector-valued functions of many variables. Most of the time, extending these familiar notions from one to several variables requires some degree of ingenuity, and we are going to have to spice up the material from Calculus I and II with a little bit of geometry and linear algebra. Techniques learned in Calculus III are essential for financial analysts, engineers, and for further study in mathematics."
+  },
+  {
+    "code": "MH2500",
+    "title": "PROBABILITY & INTRODUCTION TO STATISTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1100 & MH1101 OR",
+      "MH1800 & MH1801 OR",
+      "MH1101 & MH110S OR",
+      "MH1100 & MH111S OR",
+      "MH1802 OR",
+      "CY1601 OR",
+      "MH1805"
+    ],
+    "mutually_exclusive": [
+      "MH1820",
+      "MH2814"
+    ],
+    "not_available_to_programme": [
+      "CEE",
+      "CVEC",
+      "ENE",
+      "ENEC",
+      "MS"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a core mathematical course, aiming to develop your understanding of fundamental concepts in probability and statistics such as random variables, independence, basic probability distributions, and confidence intervals. The course also prepares you for further statistics courses such as MH3500 in the Statistics Track."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) apply, design and analyse algorithms using a number of approaches to solve various problems like sorting, shortest-path, minimum spanning tree, optimal sequencing for matrix multiplication, the longest common subsequence, string matching. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CZ2002"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation; the use of inheritance and polymorphism. You will discover how to describe these concepts using appropriate UML diagrams. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  },
+  {
+    "code": "SC2207",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001(Corequisite) OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CZ2007",
+      "EE4791",
+      "IE4791",
+      "IM4791"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Overview of Database Management Systems (DBMS); Entity-Relationship Data Model; Relational Data Model; Functional Dependencies (FD) and Normalization; Relational Algebra; Structured Query Language (SQL); Storage of Relational Data; Indexing Techniques; Query Processing and Optimization; Transaction Management and Concurrency Control"
+  }
+]

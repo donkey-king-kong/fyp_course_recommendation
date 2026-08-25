@@ -1,0 +1,482 @@
+[
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world. By the end of the course, you would have developed an awareness for, and a system thinking approach to, sustainability, which you can continue to develop no matter which discipline or career path you choose to embark on."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CE2003",
+    "title": "DIGITAL SYSTEMS DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1005 OR",
+      "CZ1005 OR",
+      "CE1105 OR",
+      "CZ1105"
+    ],
+    "mutually_exclusive": [
+      "SC2103"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CEE 1",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENE 1",
+      "ENG",
+      "ME 1",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE2002(Corequisite) OR",
+      "CZ2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CZ2006",
+      "SC2006"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CEE 1",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENE 1",
+      "ENG",
+      "ENG(EEE)",
+      "IEEC",
+      "IEM",
+      "ME 1",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE2101",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1107 & MH1812 OR",
+      "CE1007"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CZ2001",
+      "CZ2101",
+      "SC2001"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "DSAI",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "MACS",
+      "REP(CSC)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HW0288",
+    "title": "ENGINEERING COMMUNICATION",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "HW0188 (Not Applicable to IEM) OR",
+      "HW0111 (Not Applicable to IEM) OR",
+      "CC0001 (Not Applicable to IEM)"
+    ],
+    "mutually_exclusive": [
+      "HW0210"
+    ],
+    "not_available_to_programme": [
+      "AERO 1",
+      "AERO 2",
+      "ASEC 1",
+      "ASEC 2",
+      "BEEC 1",
+      "BEEC 2",
+      "BIE 1",
+      "BIE 2",
+      "CBE 1",
+      "CBE 2",
+      "CBEC 1",
+      "CBEC 2",
+      "CE 1",
+      "CE 2",
+      "CEE 1",
+      "CEE 2",
+      "CEEC 1",
+      "CEEC 2",
+      "CSC 1",
+      "CSC 2",
+      "CSEC 1",
+      "CSEC 2",
+      "CVEC 1",
+      "CVEC 2",
+      "EEE 2",
+      "ENE 1",
+      "ENE 2",
+      "ENEC 1",
+      "ENEC 2",
+      "IEM 2",
+      "MAT 1",
+      "MAT 2",
+      "ME(DES) 2",
+      "ME(IMS) 2",
+      "ME(NULL) 2",
+      "ME(RMS) 2",
+      "MEEC(DES) 2",
+      "MEEC(IMS) 2",
+      "MEEC(NULL) 2",
+      "MEEC(RMS) 2",
+      "MS 3",
+      "MS 4",
+      "MS(2019-onwards)",
+      "MTEC 1",
+      "MTEC 2"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HW0288 is an advanced course which aims to enhance the spoken and written abilities of engineering students when communicating in both academic and professional settings. In this course, the emphasis is on advanced skills in academic and professional communication. In the academic literacy and information literacy components of the course, you learn advanced skills for searching academic databases, evaluating sources and incorporating and citing them appropriately in your writing. In the professional communication component of the course, you learn written and oral workplace communication skills such as writing emails, participating at meetings, interacting with clients and projecting a professional image of yourself."
+  },
+  {
+    "code": "ML0003",
+    "title": "KICKSTART YOUR CAREER SUCCESS",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a foundation module on essential career preparation skills. This course equips you with practical skills needed in your personal development and job search to help you succeed in a new disruptive workplace. This course is open to all Year 2 students. In today's competitive world, it is crucial that career preparation skills are learnt early to ensure that competitive edge is sharpened with a heightened sense of workplace values and ethics."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101",
+      "SC2301"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) apply, design and analyse algorithms using a number of approaches to solve various problems like sorting, shortest-path, minimum spanning tree, optimal sequencing for matrix multiplication, the longest common subsequence, string matching. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003 OR",
+      "SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CT2003",
+      "CZ2002",
+      "SC2302"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation, the use of inheritance and polymorphism. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "CZ2005"
+    ],
+    "not_available_to_programme": [
+      "CEE 1",
+      "EEE 1",
+      "ENE 1",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ME 1",
+      "ME(DES) 1",
+      "ME(IMS) 1",
+      "ME(RMS) 1"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your understanding of fundamental concepts and principles of modern operating systems, and to build your knowledge on the design and implementation of main operating system components."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  },
+  {
+    "code": "SC2103",
+    "title": "DIGITAL SYSTEMS DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1005"
+    ],
+    "mutually_exclusive": [
+      "CE2003",
+      "CE2103"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ME",
+      "ME 1",
+      "ME(DES)",
+      "ME(DES) 1",
+      "ME(IMS)",
+      "ME(IMS) 1",
+      "ME(RMS)",
+      "ME(RMS) 1",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(RMS)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop skills in digital hardware design to meet basic industry expectations. Here, the principles established in CE1005/CZ1005/SC1005-Digital Logic will be extended to encompass circuits of greater complexity. These circuits are no longer implemented using multiple discrete logic elements, as presented in CE1005/CZ1005/SC1005, but rather use Application Specific Gate Array (ASIC) or Field Programmable Gate Array (FPGA) technologies. Both of these technologies can accommodate circuits of complexity equivalent to many millions of gates. This course will focus on FPGA technology as it is gaining commercial popularity (due to the cost of ASIC Implementations). The necessary logic and connectivity for both technologies is synthesised by software tools from code written in a Hardware Description Language. As such, this course presents you with circuit design techniques for more advanced systems in a methodical manner based on modern design techniques."
+  },
+  {
+    "code": "SC2104",
+    "title": "SENSORS, INTERFACING & DIGITAL CONTROL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE3002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The course aims to teach the students the operation principles of some common digital sensors used in today's control systems design and implementation. Students will also learn the interfacing techniques used to transfer data between the sensors and controller, and how the data can be processed by using appropriate digital signal processing algorithms. Student will then learn the basic operation principles of control systems, and how digital sensors are used in such systems to implement feedback control based on digital controller."
+  },
+  {
+    "code": "SC2107",
+    "title": "MICROPROCESSOR SYSTEM DESIGN & DEVELOPMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE2007",
+      "CE2107"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This core engineering course aims to develop your understanding of the architecture of a microprocessor system and the software development process of a microprocessor based embedded system. The course will expose you to various design and application considerations involved in developing the software and hardware. This includes power management, signal chain handling, memory interfacing and finite state machine design. All of which will be applied in the laboratory sessions using a microprocessor based robotic hardware as the platform."
+  }
+]

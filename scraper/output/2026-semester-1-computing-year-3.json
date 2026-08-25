@@ -1,0 +1,194 @@
+[
+  {
+    "code": "CT3102",
+    "title": "WORLD WIDE WEB TECHNOLOGIES & APPLICATIONS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2003 & CT2005"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of this course is to provide students with a solid foundation in the essential technologies and techniques used in web development. It will cover the core concepts of web architecture, web technologies, client-side and server-side programming. Through practical case studies and hands-on applications, students will develop the skills necessary to design, implement, and manage modern web applications."
+  },
+  {
+    "code": "CT3103",
+    "title": "ADVANCED SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to introduce software engineering management topics of Quality, Project Management, Configuration Management and Maintenance, according to the Software Engineering Body of Knowledge; equip you with in-depth knowledge on issues and techniques required for the design and implementation of quality software for large-scale systems; encourage you to study management issues, process issues and to practice test then code; and improve yourself-learning ability to dig deeper into the area."
+  },
+  {
+    "code": "CT3104",
+    "title": "SOFTWARE TESTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2004 & CT2006"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the Software Testing course is to provide students with a comprehensive understanding of software quality assurance principles, testing methodologies, and modern testing practices used throughout the software development lifecycle. The course equips students with the knowledge and practical skills required to design, execute, and evaluate effective software testing solutions using both manual and automated approaches. Students will learn fundamental testing concepts, black-box and white-box testing techniques, test planning, defect management, and software quality evaluation methods. The course also introduces modern industry practices such as UI and API testing, automated testing frameworks, performance and stress testing, and AI-assisted testing approaches. Emphasis is placed on developing analytical thinking, problem-solving abilities, and practical hands-on experience using modern testing tools and frameworks. Furthermore, students will understand how software testing integrates with Agile and quality engineering practices to improve software reliability, maintainability, and user satisfaction. By the end of the course, students will be able to apply professional software testing techniques to ensure the quality, functionality, security, and performance of modern software systems."
+  },
+  {
+    "code": "CT3105",
+    "title": "DATA SCIENCE & ANALYTICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2011"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Provide students with a foundational understanding of data analytics tools and techniques, focusing on their application in solving real life problems and generating insights. Through practical case studies and exposure to various analytical tools, students will learn how to manage data pipelines, formulate questions, and apply analytical skills to inform decision-making and drive positive outcomes."
+  },
+  {
+    "code": "CT3201",
+    "title": "INTRODUCTION TO ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2006"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide foundational knowledge of Artificial Intelligence (AI) principles, techniques, and applications relevant to modern computing systems. It introduces students to problem-solving paradigms, intelligent agents, and knowledge-based systems, while also emphasizing the AI lifecycle, neural network fundamentals, and ethical and governance considerations. The course prepares students to design and analyze intelligent solutions for real-world problems across domains such as healthcare, finance, and smart systems. It also fosters an understanding of how AI systems are developed, evaluated, deployed, and governed responsibly in society."
+  },
+  {
+    "code": "CT3203",
+    "title": "PRINCIPLES OF DEEP NEURAL NETWORK",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide students with a strong foundational understanding of neural networks and deep learning techniques. It introduces the principles of artificial neurons, learning algorithms, and modern neural network architectures used in real-world applications. The course emphasizes both conceptual understanding and practical implementation, enabling students to design, train, and evaluate deep learning models for tasks such as classification and regression. It also prepares students to apply deep neural networks effectively in emerging AI and data-driven domains."
+  },
+  {
+    "code": "CT3204",
+    "title": "NATURAL LANGUAGE PROCESSING FUNDAMENTALS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2006"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Natural language processing is becoming a very hot topic in both industrial practices and academic research. It finds many real-world applications such as information extraction, sentiment analysis, machine translation, question answering, and summarisation. Hence, it is an important subject to prepare you to cope with the huge amount of unstructured information in text, for example, in web pages and business documents. This course covers the basic concepts and computational methods for natural language processing. Techniques covered should be biased toward those generally accepted established traditional practices recommended by practitioners. This course will equip you with the basic concepts and techniques in natural language processing on different levels including words, syntax, and semantics. You will be able to apply the techniques to real-world problems and conduct evaluations of your solutions."
+  },
+  {
+    "code": "CT3205",
+    "title": "COMPUTER VISION FOR AI",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2006"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to introduce basic concepts and technologies of computer vision, and develop skills to implement widely used algorithms to process real vision tasks. This course presents you with digital image acquisition, representation, processing, recognition, and 3D reconstruction, to gain understanding of algorithm and system design, analytical tools, as well as practical implementations of various computer vision applications. In addition, it will also cover the recent computer vision development with deep learning technology. You will be equipped with fundamental knowledge, practical skills, and the insights for future development in this area."
+  },
+  {
+    "code": "CT3304",
+    "title": "APPLIED CRYPTOGRAPHY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2006"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed to equip learners with a practical understanding of how cryptography secures modern digital systems. It is intended for those involved in software development, IT, cybersecurity, or related fields who want to apply security techniques. Focusing on real-world use, the course explores how core methods such as encryption, hashing, and digital signatures protect data and communications?and how mistakes in their use can lead to serious vulnerabilities. Through guided examples and hands-on activities, participants will learn to think critically about security, recognise common pitfalls, and evaluate the effectiveness of different approaches. By the end of the course, participants should be able to make informed decisions about the use of cryptographic tools, apply them appropriately in practical settings, and better understand the standards and practices that underpin secure systems today."
+  },
+  {
+    "code": "CT3305",
+    "title": "SECURITY OPERATIONS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2005"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of this course is to provide students with a solid foundation in the essential technologies and techniques used in web development. It will cover the core concepts of web architecture, web technologies, client-side and server-side programming. Through practical case studies and hands-on applications, students will develop the skills necessary to design, implement, and manage modern web applications. This course equips you with a comprehensive understanding of cybersecurity operations, centred on threat detection, incident response, and the tools and techniques used in modern Security Operations Centres (SOCs). You will learn to identify and analyse diverse cyber threats and attack vectors, develop and execute incident response plans, and leverage industry-standard platforms such as XDR, SIEM, and SOAR to monitor, detect, and respond to security events in real time. The course also covers threat intelligence integration, proactive threat hunting, cloud security operations, and legal and regulatory compliance frameworks. A distinctive feature of this course is its focus on emerging trends-specifically the role of Agentic AI and automation in transforming security operations-preparing you for the evolving demands of the cybersecurity profession. This course is designed for students pursuing careers in cybersecurity operations, SOC analysis, incident response, and security engineering, and provides the practical skills and conceptual grounding needed to defend organizations against sophisticated and persistent threats."
+  },
+  {
+    "code": "CT3306",
+    "title": "CYBER THREAT INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2008"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The primary goal is to teach YOU how to turn raw, chaotic data into actionable intelligence. Rather than just identifying that a breach happened, this course empowers you to understand the who, why, and how behind an attack. You will master the Cyber Intelligence Lifecycle, learning to identify \"Indicators of Compromise\" (IoCs) and apply structural analysis to predict an adversary's next move. 1 Master \"Analyst Tradecraft\" - You won't just learn tools; you?ll learn how to think. By studying Cognitive Bias and Structural Analysis Techniques, you'll learn how to avoid common mental traps that lead to false conclusions during an investigation. 2 Gain High-Demand Technical Skills You will walk away with a toolkit that includes: OSINT Proficiency: Learning how to use tools like VirusTotal and navigate the criminal underground. 3 Threat Hunting: Mastering host-based and network-based indicators to find hidden threats. Confidence Scoring: Learning how to mathematically determine how much \"trust\" to put into a piece of intel."
+  },
+  {
+    "code": "CT3308",
+    "title": "DIGITAL FORENSIC",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide learners with the knowledge, skills, and applied competencies needed to an introductory but broad perspective of digital forensics supporting a wider incident response framework against evolving cyber threats. By adopting a flipped classroom model, the course ensures that: 1 Learners gain flexibility to study theoretical concepts (e.g., key IR phases, various investigation process, digital evidence, etc) at their own pace through online lectures and curated readings. 2 In-person sessions are dedicated to active learning, including hands-on labs, real-world case discussions, and project coaching. 3 The Course Project simulates a consultancy-style forensic analyst, allowing learners to apply analysis and propose mitigation strategies in a team-based environment. 4 The course builds both technical and professional skills: digital evidence handling, forensic analyse, critical analysis, teamwork, and communication."
+  }
+]

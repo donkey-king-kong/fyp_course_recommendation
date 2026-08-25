@@ -1,0 +1,138 @@
+[
+  {
+    "code": "AB3602",
+    "title": "STRATEGIC MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "AB1501 & AB1601"
+    ],
+    "mutually_exclusive": [
+      "AB3601"
+    ],
+    "not_available_to_programme": [
+      "ACBS(2011-2020)",
+      "ACC(2011-2020)",
+      "ACDA(2011-2019)",
+      "BCE(2011-2020)",
+      "BCG(2011-2020)",
+      "BUS(2011-2020)"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The purpose of the Strategic Management Course is to develop students' knowledge and skills to identify and evaluate the sources of superior firm performance through applying selected conceptual frameworks. Students will learn to analyse the external and internal environments of the firm, and formulate strategies with the consideration of good corporate governance. This course is appropriate for accounting and business students who have already taken entry-level courses in accounting ratio analyses, organizational behaviour, and marketing. Upon completion of the course, students will be able to critically analyse business issues from a strategic perspective such as why and how firms can achieve sustainable competitive advantages in a highly volatile and competitive global business environment."
+  },
+  {
+    "code": "AC2301",
+    "title": "PRINCIPLES OF TAXATION",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AD1102 OR",
+      "AC1101 OR",
+      "AD1101 OR",
+      "AC1103"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide you with a framework to understand the structure of the Singapore income tax and the goods and services tax, to enable you to obtain a working knowledge of key tax concepts and principles, and to instil an awareness in you of the impact that taxes may have on the decision-making processes of businesses and individuals. At the end of the course, you should be able to apply the tax laws to ascertain the tax treatment of common business and personal transactions, and to devise appropriate strategies for the minimization of tax costs."
+  },
+  {
+    "code": "AC2302",
+    "title": "COMPANY LAW & CORPORATE GOVERNANCE",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1301"
+    ],
+    "mutually_exclusive": [
+      "AC2312",
+      "BE3301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "As an accounting or business professional, it is essential for you to have a firm understanding of the legal and regulatory mechanisms that govern companies. In this course you will examine the legal framework and laws governing how companies may be constituted, the relationship between its various stakeholders, corporate governance mechanisms, corporate finance and insolvency."
+  },
+  {
+    "code": "CS4022",
+    "title": "SOCIAL MEDIA MINING",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CS2405 OR",
+      "CZ4032 (Applicable to DSAI)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers how to analyse unstructured data such as social media content using text mining techniques. Students will learn various text mining techniques and tools both through lectures and hands-on exercises in labs. The course will also explore various usages of text mining techniques to real world applications."
+  },
+  {
+    "code": "MH3510",
+    "title": "REGRESSION ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your understanding/grasping of the regression models of summarizing the relationship among variables. Linear regression models are widely used today in business, administration, economics, engineering, and the social, health and biological sciences. You should learn the rigorous way to approach regression models and be able to build regression models for real data."
+  },
+  {
+    "code": "MH4511",
+    "title": "SAMPLING & SURVEY",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500"
+    ],
+    "mutually_exclusive": [
+      "HE2020"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "1. Probability Sampling a Types of Probability Samples b Simple Random Sampling c Estimation of Population Mean, Proportion and Total d Sample Size Estimation e Systematic Sampling 2. Stratified Sampling a Theory of Stratified Sampling b Sampling Weights c Estimation of Population Mean, Proportion and Total d Allocating Observations to Strata e Sample Size Estimation f Defining Strata g Post-stratification 3. Ratio and Regression Estimations a Ratio Estimation b Regression Estimation c Selecting the Sample Size d Relative Efficiency of Estimators 4. Cluster Sampling a One-Stage and Two-Stage Cluster Samplings b Estimation of Population Mean, Proportion and Total c Selecting the Sample Size d Cluster Sampling with Probability Proportional to Size 5. Sampling with Unequal Probabilities a One-Stage Sampling with Replacement b Two-Stage Sampling with Replacement c Unequal-Probability Sampling without Replacement 6. Nonresponse a Effects of Ignoring Nonresponse b Call backs and Two-Phase Sampling c Weighting Methods for Nonresponse d Imputation"
+  },
+  {
+    "code": "MH4513",
+    "title": "SURVIVAL ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 & MH3510"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course will introduce statistical methods used to analysis time-to-event data. Time-to-event or failure time data, and associated covariate data can be collected under a variety of sampling schemes and very commonly involves right censoring. The distribution of a time-to-event variable is often characterized in terms of its survival or hazard function. The course will cover fundamentals in survival analysis, with emphasis on statistical principal, methods and real life applications. The course will also motivate students to work closely with data and make inference nonparametrically and/or parametrically in the fields of study."
+  }
+]

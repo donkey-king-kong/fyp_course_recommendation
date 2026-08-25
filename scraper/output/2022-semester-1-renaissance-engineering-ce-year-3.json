@@ -1,0 +1,244 @@
+[
+  {
+    "code": "BU5502",
+    "title": "MARKETING COMMUNICATIONS: AN INTEGRATED APPROACH",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BM2504",
+      "BM2512",
+      "CS2058",
+      "CS4035"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "BCE",
+      "BCG",
+      "BUS",
+      "CS",
+      "MS-2ndMaj/Spec(MSB)"
+    ],
+    "not_available_to_all_programme_with": [
+      "2nd Maj/Spec(ACC)",
+      "2nd Maj/Spec(BAF)",
+      "2nd Maj/Spec(BAT)",
+      "2nd Maj/Spec(BUS)",
+      "2nd Maj/Spec(ITG)",
+      "2nd Maj/Spec(MKG)",
+      "2nd Maj/Spec(OM)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Communication with the market is an important activity for many businesses and organizations. It is also relevant to us as consumers because we are exposed to hundreds of messages from marketers every day. The course is aimed at enabling students to learn in depth the development, implementation and evaluation of marketing communication (marcom) activities. The course provides students with relevant knowledge about how businesses interact or communicate with the market. In particular, because planning and executing marketing communication programs are typically the responsibilities of marketing executives, the course can help students to prepare for a job position that involves marketing communications. It can help them deepen their understanding of marketing - in particular, what marketing communications involve and how marketing communications enable an organisation to achieve its objectives. The course is designed to foster your logical thinking and creativity regarding marketing communications. Although this course is oriented towards practice, we still cover theories and concepts essential to your understanding of marketing communication (marcom) practices (e.g., how they work and their applicability). Learning these theories and concepts is also important because they facilitate you to choose and justify your choice and design of marcom activities. Instead of treating marcom as a set of stand-alone tools or activities, the course regards it as a blended mix of coordinated activities. The course put roughly equal emphasis on both traditional marcom tools (e.g., advertising and sales promotion) and non-traditional tools (e.g., search engine marketing and social media marketing). The course compares the similarities and differences of these tools, and discusses how they can be integrated for achieving the marketer's objectives. While non-traditional marcom tools catch marketers' attention nowadays, traditional marcom tools are indispensable for particular purposes and under certain circumstances."
+  },
+  {
+    "code": "CE3102",
+    "title": "SIGNALS, SYSTEMS & TRANSFORMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1104"
+    ],
+    "mutually_exclusive": [
+      "SC3102"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEEC",
+      "ENG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the students to the basic concepts and theory behind techniques and algorithms used in signal processing systems, a topic that forms an integral part of engineering systems in many diverse areas. Emphasis is on different types of signals and systems, and their interrelation and representation using different orthogonal components. Upon completion, the student should be able to understand the fundaments of signals and linear time invariant (LTI) systems, understand and apply Fourier transforms, Laplace transforms, and Z-transform to the analysis and description of signals and LTI systems, and take advanced level courses on the systems area."
+  },
+  {
+    "code": "CE4010",
+    "title": "APPLIED CRYPTOGRAPHY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE1011 OR",
+      "CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ4010"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4070",
+    "title": "CYBER THREAT INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Study Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CZ4070",
+      "SC4016"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "REP(CSC)"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CS5060",
+    "title": "INTRODUCTION TO ADVERTISING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CS"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a general education elective course that will introduce you to the principles and practices of advertising including marketing communication and public relations. You will learn about the sources of change and trends in the industry; the business of advertising management; the application of media strategy and the nature of consumer behaviour; socio-economic implications as well as media ethics. Local examples shall be used to illustrate the development in this evolving business practice. This course covers the principles and practices of advertising. It also covers related aspects of marketing communications and public relations. Students will learn about the sources of change and trends in the industry, the business of advertising management, the application of media strategy and the nature of consumer behavior, socio-economic implications as well as media ethics."
+  },
+  {
+    "code": "CZ2003",
+    "title": "COMPUTER GRAPHICS & VISUALISATION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1008 OR",
+      "CZ1008 OR",
+      "CE1011 OR",
+      "CZ1011"
+    ],
+    "mutually_exclusive": [
+      "SC3060"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2007",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 & CZ2001(Corequisite) OR",
+      "CE1007 & CE2001(Corequisite) OR",
+      "CE1007 & CZ2001(Corequisite) OR",
+      "CE2001(Corequisite) & CZ1007 OR",
+      "CE2101(Corequisite) OR",
+      "CZ2101(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "EE4791",
+      "IE4791",
+      "IM4791",
+      "SC2207"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "MA2012",
+    "title": "INTRODUCTION TO MECHATRONICS SYSTEMS DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MA8002"
+    ],
+    "not_available_to_programme": [
+      "ME(DES)",
+      "ME(NULL)",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The lecture parts of course will introduce the concept of mechatronics and the elements of mechatronics system or product. It will also dwell on the basics of motors, sensors, methods of interfacing them to an embedded processor, and the various forms of inputs and output devices that allow for human interface in addition to automation. Tutorials are to be conducted in laboratory where students are given exercises to implement and practiced. It involves the use of bread boards for development of interfacing circuits and inputs and output devices. Students are required to complete a group project where they are to design, fabricate and demonstrate your product to the class."
+  },
+  {
+    "code": "MA2014",
+    "title": "PRODUCT PRESENTATION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MA8004"
+    ],
+    "not_available_to_programme": [
+      "ME(NULL)",
+      "ME(RMS)",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course contains 26 hours allocated to lectures and 26 hours allocated to weekly assignments to reinforce learning of the skills of product presentation, which comprises drawing and model-making. Students will be assessed based entirely on coursework."
+  }
+]

@@ -1,0 +1,67 @@
+[
+  {
+    "code": "CT2001",
+    "title": "DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SC1007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to teach the concepts, implementations and applications of data structures such as arrays, linked lists, stacks, queues and trees that are important for building effi cient algorithms; It will develop your knowledge, understanding and skills about three algorithm design approaches to solve sorting problems (incremental, data structures and divide-and-conquer). It will also teach you how to select and implement appropriate searching algorithms (sequential search, binary search, search using hash tables), as part of a problem solution."
+  },
+  {
+    "code": "CT2002",
+    "title": "INTRODUCTION TO COMPUTER ARCHITECTURE & NETWORKS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to give a broad knowledge of computer architecture, modern networking technologies and network-based applications. The course will cover the basic computer organization and computer architecture concepts and components, mechanisms and protocols of computer networks and Internet."
+  },
+  {
+    "code": "CT2003",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2001(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "SC2002",
+      "SC2302"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation, the use of inheritance and polymorphism. You will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java."
+  },
+  {
+    "code": "CT2004",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2003(Corequisite)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip students with foundation knowledge on issues and techniques required for the design and implementation of quality software. You will learn how to choose a suitable software process model for the development of a software system, how to engineer quality software using the Agile methods and techniques, Agile project management, scaling Agile methods, and other Agile techniques (e.g., Scrum). You will also learn requirements engineering, software design concepts and basic software testing strategies."
+  }
+]

@@ -1,0 +1,1089 @@
+[
+  {
+    "code": "CZ3005",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1003 & CZ2001 OR",
+      "CE1003 & CE2001 OR",
+      "CE1003 & CZ2001 OR",
+      "CZ1107 & CZ1115 OR",
+      "CE1107 & CE1115 OR",
+      "CZ1103 & CZ2101"
+    ],
+    "mutually_exclusive": [
+      "SC3000"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4031",
+    "title": "DATABASE SYSTEM PRINCIPLES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 & CZ2007 OR",
+      "BC2402 OR",
+      "CZ2007 & CZ2101"
+    ],
+    "mutually_exclusive": [
+      "CE4031",
+      "SC3020"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4034",
+    "title": "INFORMATION RETRIEVAL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 OR",
+      "CZ2101"
+    ],
+    "mutually_exclusive": [
+      "CE4034",
+      "SC4021"
+    ],
+    "not_available_to_programme": [
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4041",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CZ1007 & CZ1011 OR",
+      "CZ1107 & CZ2100 OR",
+      "CZ1007 & MH2500 OR",
+      "CZ1107 & MH2500"
+    ],
+    "mutually_exclusive": [
+      "CE4041",
+      "MH4510",
+      "SC4000"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO(AMAS)",
+      "MAEO(NULL)",
+      "MAEO(PMAS)",
+      "MAEO(STAT)",
+      "MAT",
+      "MATH(AMAS)",
+      "MATH(NULL)",
+      "MATH(PMAS)",
+      "MATH(STAT)",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS",
+      "MAEO(BA)",
+      "MATH(BA)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4046",
+    "title": "INTELLIGENT AGENTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CZ1007 & CZ1011 OR",
+      "CZ1107 & CZ2100 OR",
+      "CZ1007 & MH2500 OR",
+      "CZ1107 & MH2500"
+    ],
+    "mutually_exclusive": [
+      "CE4046",
+      "SC4003"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4052",
+    "title": "CLOUD COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CZ1104 OR",
+      "CZ1012 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [
+      "CE4052"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4123",
+    "title": "BIG DATA MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Study Year 3 Standing",
+      "CZ2007"
+    ],
+    "mutually_exclusive": [
+      "SC4023"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "We are in the 'Big Data' era - an extremely large amount of data is created every day. The world of data management has dramatically changed in the 'Big Data' era. This is primarily driven by multiple factors including cheaper storage costs, increasing availability of sensors, smart devices, social software, and availability of cloud computing infrastructure, and cheaper processing cost of large volumes of data due to dramatic advances in modern hardware (e.g., solid state disk, multicore CPUs, large memory). This seismic impact of big data has led to increasing demand in building scalable data infrastructures toward supporting real-world applications. This course aims to provide a broad understanding of big data and current technologies in managing and processing them. Key topics covered in this course include big data 5V's, memory hierarchy and its relation to big data systems, distributed storage and computation of big data, as well as NoSQL key-value stores. Upon completion of this course, you will learn to evaluate issues associated with big data management, learn how the data is stored in a distributed system and how queries and analytics run in parallel, and understand the design philosophy of real-world key-value stores."
+  },
+  {
+    "code": "ET0001",
+    "title": "ENTERPRISE & INNOVATION",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CSC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "EEE(2019-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "ME(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This online course aims to provide you with a basic appreciation of the key concepts of enterprise and innovation. The course will focus on empowering you to gain practical insights on the relevance of enterprise and innovation in your lives by introducing you to the enterprise and innovation ecosystem of the University, the Singapore society, and beyond."
+  },
+  {
+    "code": "GC0001",
+    "title": "SUSTAINABILITY: SEEING THROUGH THE HAZE",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CEE(2019-onwards)(Direct Entry)",
+      "CEE(2019-onwards)(Non Direct Entry)",
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CVEC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "ENE(2019-onwards)(Direct Entry)",
+      "ENE(2019-onwards)(Non Direct Entry)",
+      "ENEC(2019-onwards)",
+      "ENG(CEE)(2019-onwards)",
+      "ENG(ENE)(2019-onwards)",
+      "ENG(NULL)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "MS(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course wi ll discuss sustainability from perspectives of various disciplines, including humanities, business, policy, economics, and science. Students will learn about sustainability through a case study of oil palm plantation. The course will be composed of the following 6 modules. The course is supplemented by Module SI , which helps broadening students' perspectives on sustainability. Module I : General Introduction Module 2: The Global Seeding of Oil Palm Module 3: Recent Expansion of Oil Palm in South East Asia: How and Why did this happen? Module 4: How is Oil Palm Production Affecting Environment, Climate and Human Society? Module 5: Making Oil Palm More Sustainable Module 6: General Conclusions Module SI: National Geographic (Nat. Geo) talk"
+  },
+  {
+    "code": "HY0001",
+    "title": "ETHICS & MORAL REASONING",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HY0001 will introduce students to three major ethical theories' utilitarianism, Kant's deontology, and virtue ethics. Then, four weeks will be devoted to teaching the ethical principles underlying academic integrity, research ethics, and intellectual property. Finally, students will discuss issues related to the ethics of environmental sustainability and conservation. All the while, students will be challenged apply the ethical theories learned to concrete moral problems, including world poverty, corporate accountability and whistleblowing, and workplace discrimination."
+  },
+  {
+    "code": "MH3500",
+    "title": "STATISTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your understanding of the statistical concepts of parameter estimation and hypothesis testing that are fundamental for real life applications of statistics as well as for numerous further courses in the curriculum of the statistics track."
+  },
+  {
+    "code": "MH3511",
+    "title": "DATA ANALYSIS WITH COMPUTER",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 OR",
+      "BS1008"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In today's business, data analysis plays an important role in making decisions more scientific and helping the business achieve effective operation. By closely examining data we can find patterns to perceive information, and the information can be used to enhance knowledge. This course provides basic concepts for data analysis with the usage of the R programming language. You will learn the skills of plotting, summarising, making inferences, and presenting various types of data."
+  },
+  {
+    "code": "MH3701",
+    "title": "BASIC OPTIMIZATION",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1201 OR",
+      "MH2800 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a first course in mathematical optimization. It builds the basic knowledge and skills in the theory and techniques of analysing and solving simple optimization models. With these foundations, you will be able to deepen your understanding of more complex optimization models, and their applications to various disciplines in subsequent mathematical optimization and operations research courses."
+  },
+  {
+    "code": "MH4500",
+    "title": "TIME SERIES ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 & MH3510"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides an introduction to various time series models. It aims to develop your understanding of fundamental models in time series analysis and enable you to build time series models for read data."
+  },
+  {
+    "code": "MH4501",
+    "title": "MULTIVARIATE ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 & MH3510"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course focuses on the standard methods of multivariate statistical analysis. Many essential data analysis techniques, such as principal component analysis and discriminant analysis, will be covered. This course equips students with the necessary skills for being data analysts."
+  },
+  {
+    "code": "MH4517",
+    "title": "DATA APPLICATIONS IN NATURAL SCIENCES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1402 OR",
+      "MH1403 OR",
+      "CZ2001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "MAEO(2011-2020)",
+      "MATH(2011-2020)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide the recent progress on geometric data analysis, topological data analysis, the combination with machine learning models, and their applications in nature data analysis. In this course you will develop skills in geometric and topological modeling, and the analysis of complicated physical/chemical/biological data."
+  },
+  {
+    "code": "SC3000",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1007 & SC1015 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CZ3005"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer / software engineers are involved in effective and efficient building of knowledge agent systems that satisfy the requirements of users; possibly software for intelligent embedded and intelligent information systems. General awareness of theory, knowledge, and practice in all phases of the knowledge based systems and representation techniques for problem solving are necessary for those of you who wants to get into the field artificial intelligence. These are advanced intelligent systems that are finding widespread applications in finance, banking, manufacturing industries."
+  },
+  {
+    "code": "SC4000",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1004 & SC1007 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CE4041",
+      "CZ4041",
+      "MH4510"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS",
+      "MAEO(BA)",
+      "MATH(BA)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces basic concepts and methodologies for machine learning as well as their applications. Clustering. Dimension Reduction. Classification. Decision Theory. Density Estimation. Classifier Evaluation."
+  },
+  {
+    "code": "SC4003",
+    "title": "INTELLIGENT AGENTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1007 & SC2000 OR",
+      "MH2500 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE4046",
+      "CZ4046"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Intelligent Agents; Deductive Reasoning Agents; Practical Reasoning Agents; Reactive and Hybrid Architectures; Introduction to Multi-Agent Systems and Applications; Working Together; Multi-Agent Interaction; Allocating Scarce Resources ? Auctions; Making Group Decisions; Forming Coalitions."
+  },
+  {
+    "code": "SC4012",
+    "title": "SOFTWARE SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002 & SC2005"
+    ],
+    "mutually_exclusive": [
+      "CE4067",
+      "CZ4067"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop skills in software security. It focuses on security attacks launched by supplying specially crafted inputs to software components that modify the intended behaviours of those components, and the secure coding techniques (defences). The modified behaviours of the software components become security critical in a connected world where application systems are constructed from a collection of software components. Software developers who are not familiar with software security are likely to omit suitable defences out of ignorance. As such, this course will equip you with the deep knowledge about software security attack and defence techniques, a skill necessary to become IT security experts or professional software developers."
+  },
+  {
+    "code": "SC4015",
+    "title": "CYBER PHYSICAL SYSTEM SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE4055",
+      "CZ4055"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Cyber physical systems are typically designed as a network of interacting elements with physical input and output, and are characterized by the interaction between the physical world (sensors, user inputs, actuators) and the cyber world (processing, decision making). Cyber physical systems are the driving force behind modern civilization, being integral part of technologies, such as additive manufacturing, smartcard-based payment, power delivery systems, drone-based operations, and smart home automation. Cyber physical systems are characterized by stringent performance requirements, such as, extremely low energy budget, small area footprint and often hard real-time constraints. Due to the pervasive nature of the cyber physical systems in our everyday lives, it also runs the risk of huge security hazards. In this course, we will learn about the basics of cyber physical systems, including the design principles and methodologies. Further, there will be a detailed treatment of the security challenges for cyber physical systems, which vary in practice due to the diverse nature of the application environment of cyber physical systems. These different forms of security breaches, observed across diverse cyber physical systems, will be put in a well-characterized taxonomy, to be systematically identified as attack surfaces. The techniques to handle these attacks will be described in a generic manner, including key management and wireless/RFID communication. The attack surfaces and protection/mitigation principles will then be elaborated with practical case studies, from the representative cyber physical systems such as automotive, smart card systems and smart grid."
+  },
+  {
+    "code": "SC4021",
+    "title": "INFORMATION RETRIEVAL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001 OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CE4034",
+      "CZ4034"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to involve students in a technical way to understand and build information retrieval systems. They were expected to master the basic concepts and building blocks for information retrieval systems. In addition, applications in artificial intelligence were also introduced to get students acquainted with state of the arts."
+  },
+  {
+    "code": "SC4023",
+    "title": "BIG DATA MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 Standing",
+      "SC2207"
+    ],
+    "mutually_exclusive": [
+      "CE4123",
+      "CZ4123"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ACDA",
+      "BCE",
+      "BCG",
+      "CE",
+      "CEEC",
+      "CSC",
+      "CSEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "We are in the 'Big Data' era - an extremely large amount of data is created every day. The world of data management has dramatically changed in the 'Big Data' era. This is primarily driven by multiple factors including cheaper storage costs, increasing availability of sensors, smart devices, social software, and availability of cloud computing infrastructure, and cheaper processing cost of large volumes of data due to dramatic advances in modern hardware (e.g., solid state disk, multicore CPUs, large memory). This seismic impact of big data has led to increasing demand in building scalable data infrastructures toward supporting real-world applications. This course aims to provide a broad understanding of big data and current technologies in managing and processing them. Key topics covered in this course include big data 5V's, memory hierarchy and its relation to big data systems, distributed storage and computation of big data, as well as NoSQL key-value stores. Upon completion of this course, you will learn to evaluate issues associated with big data management, learn how the data is stored in a distributed system and how queries and analytics run in parallel, and understand the design philosophy of real-world key-value stores."
+  },
+  {
+    "code": "SC4031",
+    "title": "INTERNET OF THINGS: COMMUNICATIONS & NETWORKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2008"
+    ],
+    "mutually_exclusive": [
+      "CE4171",
+      "CZ4171"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCE",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The objective of this course is to introduce Internet of Things (IoT) technologies with the focus on data communications and networking. The course consists of two complementary components, i.e., wireless communications and wireless networking to support IoT applications and systems. The wireless communications part includes the basics and concepts of wireless transmission technologies such as frequency, power consumption, wireless performance, mobility, wireless standards, medium access control protocols including fixed assignment and random access techniques. The wireless networking part includes the introduction and basics of wireless ad hoc routing, and cellular networks such as cellular system architecture, frequency reuse concept, hexagon geometry, co-channel interference, capacity expansion techniques. In addition to these two major components, the course will also discuss the IoT network architecture, IoT devices and IoT application use cases to provide comprehensive understandings of the entire IoT ecosystem. After attending this course, the students will be able to address the various technical challenges associated with wireless communications and networking to support IoT applications by solving such challenges using the principles learned. In addition, the students will be able to design and evaluate wireless communications and networking systems to support specific IoT applications. The concepts covered in this course are particularly important for those working in fields such as IoT network development, wireless IoT apps implementations, and mobile IoT services."
+  },
+  {
+    "code": "SC4051",
+    "title": "DISTRIBUTED SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2005 & SC2008"
+    ],
+    "mutually_exclusive": [
+      "CE4013",
+      "CZ4013"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces the concepts and design of distributed systems. 1. Foundations: characteristics of distributed systems, architectural models, fundamental models, interprocess communication. 2. Middleware: remote method invocation, remote procedure call, name services, CORBA. 3. System Infrastructure: distributed file systems, peer-to-peer systems. 4. Distributed Algorithms: clock synchronization, logical and vector clocks, distributed mutual exclusion, election algorithms, consensus algorithms, replication and fault tolerance."
+  },
+  {
+    "code": "SC4054",
+    "title": "SIMULATION & MODELLING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1007 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CE4015",
+      "CZ4015"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Basic concepts: system, model, simulation. Different types of simulation: Monte Carlo simulation, continuous system simulation, discrete event simulation. Simulation software: modelling and simulation using Arena. Generating random numbers and random variables for simulation study: LCG, inverse transform, convolution. Analysis of input and output data: MLE, Goodness-of-fit test, confidence interval. Verification and validation: concepts and techniques. Queuing models: properties, performance measures and basic formulas. Comparison of alternative designs: paired-t approach, multiple comparison problem. Variance reduction: CRN, AV."
+  },
+  {
+    "code": "SC4060",
+    "title": "VIRTUAL & AUGMENTED REALITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE4001",
+      "CZ4001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Definition of augmented and virtual reality; Human factors and sensory conflict; A generic VR system; 3D real-time computer graphics for VR systems; Physically-based simulation; Virtual reality hardware; Virtual reality software; Virtual reality applications; VRML and X3D; Shared virtual spaces. Each lecture module will be accompanied by typical examination problems and their model solutions which will be studied as hands-on experiences."
+  },
+  {
+    "code": "SC4242",
+    "title": "COMPILER TECHNIQUES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001 & SC2006"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": null
+  }
+]

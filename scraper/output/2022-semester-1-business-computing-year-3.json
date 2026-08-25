@@ -1,0 +1,1572 @@
+[
+  {
+    "code": "AB0602",
+    "title": "COMMUNICATION MANAGEMENT STRATEGIES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB0601 OR",
+      "CC0001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "BCE 1",
+      "BCG 1"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The purpose of this course is to prepare you for the communication challenges that you are likely to meet in rapidly evolving global business environments. It will help you to present yourself confidently and professionally in the way you speak, write and participate in your chosen profession. AB0602 is designed to build on the communication theory, strategies and skills learnt in AB0601. Theory provides a conceptual framework that guides strategy and skills. Strategy allows communicators to make intelligent choices about content, organisation, style, tone, delivery, and timing of messages. Skills are needed to craft effective written documents, give constructive feedback, and create as well as deliver persuasive business presentations. In addition, this course also offers you the opportunity to acquire an understanding of the method of Principled Negotiation developed at the Harvard Negotiation Project. You will gain hands-on experience in negotiation through engagement in negotiation simulations."
+  },
+  {
+    "code": "AB1501",
+    "title": "MARKETING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BU5501",
+      "BU8501"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide you with the opportunity to learn and the application of the basic principles of marketing in the Singapore market. A good understanding of marketing, by itself and in relation to other disciplines, is critical for anyone interested in developing successful and sustainable business enterprises. Hence, this course is a foundational course for marketing that is suitable for all students interested in business and accountancy. At the end of this course, you will be able to develop suitable customer-driven strategies to take advantage of potential market opportunities and manage the marketing process."
+  },
+  {
+    "code": "AB3602",
+    "title": "STRATEGIC MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "AB1501 & AB1601"
+    ],
+    "mutually_exclusive": [
+      "AB3601"
+    ],
+    "not_available_to_programme": [
+      "ACBS(2011-2020)",
+      "ACC(2011-2020)",
+      "ACDA(2011-2019)",
+      "BCE(2011-2020)",
+      "BCG(2011-2020)",
+      "BUS(2011-2020)"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The purpose of the Strategic Management Course is to develop students' knowledge and skills to identify and evaluate the sources of superior firm performance through applying selected conceptual frameworks. Students will learn to analyse the external and internal environments of the firm, and formulate strategies with the consideration of good corporate governance. This course is appropriate for accounting and business students who have already taken entry-level courses in accounting ratio analyses, organizational behaviour, and marketing. Upon completion of the course, students will be able to critically analyse business issues from a strategic perspective such as why and how firms can achieve sustainable competitive advantages in a highly volatile and competitive global business environment."
+  },
+  {
+    "code": "BC3405",
+    "title": "LEAN OPERATIONS & ANALYTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202"
+    ],
+    "mutually_exclusive": [
+      "BC3411"
+    ],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 2",
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3",
+      "BUS(BA) 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3409",
+    "title": "AI IN ACCOUNTING & FINANCE",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BC2406"
+    ],
+    "mutually_exclusive": [
+      "BC3415",
+      "BF3222",
+      "BF3223"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3411",
+    "title": "LEAN OPERATIONS & ANALYTICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202"
+    ],
+    "mutually_exclusive": [
+      "BC3405"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The main objectives of this course are i) to appreciate the key principles/approaches of lean operations including waste elimination, increased speed and response, improved quality, and reduced cost & ii) to gain an understanding of the methodologies, tools, and techniques necessary for analyzing, implementing, managing, and continuously improving operations in both manufacturing and service industries. Topics covered in the course include Toyota Production System, Lean Principles, Value Stream Mapping, Pull Systems, Six Sigma, Lean thinking in manufacturing and service operations, and use of tools like optimization, queuing, simulation, and statistical analyses for modelling and analyzing real life systems. The course will use a mix of lectures, case studies, and problem-solving exercises, to introduce the students to the latest tools, techniques, issues, and strategies in lean operations management. A special focus of the course will be on the operations and technology function in both manufacturing and service sectors. This segment will provide rich opportunities for students to be exposed to challenges in manufacturing and service operations and gain insights through projects."
+  },
+  {
+    "code": "BC3415",
+    "title": "AI IN ACCOUNTING & FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BC2406"
+    ],
+    "mutually_exclusive": [
+      "BC3409",
+      "BF3223"
+    ],
+    "not_available_to_programme": [
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This is an introductory course designed for business or accountancy or Finance undergraduate students who are interested to learn how to manage data, conduct business analytics programmatically, create AI model to automate business processes and create predictive model to increase profitability or return. It is oriented to enhance their technical skillset. The aim of this course is to provide a broad understanding on how to manage data, the process of preparing data for analysis, basics of analytics, using AI to automate financial analysis process and generate accounting reports. This course will equip you with the ability to write customized solutions to make informed business decisions, integrate statistical libraries for data analysis, create AI models to automate accounting and financial process. This module will provide you with individual hands-on practices to hone your coding skills and opportunities to develop coding solutions in a team. We utilize R and Python language as the medium of learning because it is one of the most in-demand coding language and its user-friendly syntax is well suited for the beginner level. You will utilise modern development tools to turn information into insights including Keras' Deep Learning model, Google Brain TensorFlow, Hadoop, Spark and Cloud."
+  },
+  {
+    "code": "BT2403",
+    "title": "SERVICES OPERATIONS MANAGEMENT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BT2404"
+    ],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 2",
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3",
+      "BUS(BA) 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BT2404",
+    "title": "SERVICES OPERATIONS MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BT2403"
+    ],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 2",
+      "ACBS-2ndMaj/Spec(BA) 3",
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3",
+      "BUS(BA) 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Services make up over 75% of the Singapore economy both in GDP and in employment, with similar trends across the industrialized and developing/emerging nations within the global economy. However, Distinctive characteristics of services such as their intangibility, perishability, simultaneity, and heterogeneity, present unique challenges for managers in service organizations. The main aim of this course is twofold: to introduce you to the most important aspects and general principles of service management across different industries and economies, following a service-dominant logic on business; to provide you with an understanding and essential knowledge of the analysis, modelling, decision making and implementation for managing the operational issues of a service. Emphasis will be on developing your modelling skills with the use of mathematical tools and techniques to manage service operations. Topics include the service concept and operations strategy, the design of effective service delivery networks, service quality management, managing service inventory, waiting line analysis, capacity planning, and yield management."
+  },
+  {
+    "code": "CZ2003",
+    "title": "COMPUTER GRAPHICS & VISUALISATION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1008 OR",
+      "CZ1008 OR",
+      "CE1011 OR",
+      "CZ1011"
+    ],
+    "mutually_exclusive": [
+      "SC3060"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2004",
+    "title": "HUMAN COMPUTER INTERACTION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SC3061"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2100",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "CZ3001",
+    "title": "ADVANCED COMPUTER ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1006 OR",
+      "CE1006 OR",
+      "CE1106 OR",
+      "CZ1106"
+    ],
+    "mutually_exclusive": [
+      "CE3001",
+      "SC3050"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3002",
+    "title": "ADVANCED SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2006 OR",
+      "CE2006"
+    ],
+    "mutually_exclusive": [
+      "SC3040"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3003",
+    "title": "SOFTWARE SYSTEMS ANALYSIS & DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2006(Corequisite) OR",
+      "CE2006(Corequisite)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG(2020-onwards)",
+      "CE",
+      "CEEC",
+      "CSC(2020-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3004",
+    "title": "MULTIDISCIPLINARY DESIGN PROJECT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE3004",
+      "SC2079"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG 1",
+      "BCG 2",
+      "CE",
+      "CEEC",
+      "CSC 1"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Seminars and Workshops - Throughout the MDP, students will be required to attend relevant seminars and workshops that would help them understand the process and tools for designing, developing and marketing of real-world multidisciplinary products. These include both general and technical seminars. General seminars may cover topics such as guided innovation, multidisciplinary problem solving, working effectively in engineering teams, understanding effective marketing strategies, project management, professional, ethical and moral responsibilities etc. Technical seminars and workshops will be related to specific engineering methodology and tools that can help students implement their respective ideas. These may include systems engineering and design, large-scale web systems, embedded systems development tools, etc. In their implementation, students will have to factor in appropriate considerations for public health and safety, cultural, societal factors, environmental and other constraints as well as the needs for sustainable development. Laboratories - Laboratory during MDP will be a mixed of guided and open accessed sessions. Teams - Students will be grouped into teams of about 6-7 member. The composition of these team members will consist of a multidisciplinary mix of CS, CE and BCG students. Supervision - Each team will be assigned a faculty mentor during the MDP."
+  },
+  {
+    "code": "CZ3005",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1003 & CZ2001 OR",
+      "CE1003 & CE2001 OR",
+      "CE1003 & CZ2001 OR",
+      "CZ1107 & CZ1115 OR",
+      "CE1107 & CE1115 OR",
+      "CZ1103 & CZ2101"
+    ],
+    "mutually_exclusive": [
+      "SC3000"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3006",
+    "title": "COMPUTER NETWORK",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1011 & CZ1012 OR",
+      "CZ1104 & CZ2100"
+    ],
+    "mutually_exclusive": [
+      "CE3005",
+      "SC2008"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3007",
+    "title": "COMPILER TECHNIQUES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 & CZ2006 OR",
+      "CE2001 & CE2006 OR",
+      "CE2006 & CE2101 OR",
+      "CZ2006 & CZ2101"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4003",
+    "title": "COMPUTER VISION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE4003",
+      "SC4061"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4010",
+    "title": "APPLIED CRYPTOGRAPHY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CZ1011 OR",
+      "CZ2100 OR",
+      "MH2500 (Applicable to DSAI)"
+    ],
+    "mutually_exclusive": [
+      "CE4010"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4016",
+    "title": "ADVANCED TOPICS IN ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 OR",
+      "CZ2101"
+    ],
+    "mutually_exclusive": [
+      "CE4016",
+      "SC4040"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4022",
+    "title": "WIRELESS & MOBILE NETWORKS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ3006"
+    ],
+    "mutually_exclusive": [
+      "SC4030"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4023",
+    "title": "ADVANCED COMPUTER NETWORKS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE3005 OR",
+      "CZ3006"
+    ],
+    "mutually_exclusive": [
+      "CE4023",
+      "SC3030"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4031",
+    "title": "DATABASE SYSTEM PRINCIPLES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 & CZ2007 OR",
+      "BC2402 OR",
+      "CZ2007 & CZ2101"
+    ],
+    "mutually_exclusive": [
+      "CE4031",
+      "SC3020"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4032",
+    "title": "DATA ANALYTICS & MINING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 OR",
+      "CZ2101"
+    ],
+    "mutually_exclusive": [
+      "CE4032",
+      "CE9010",
+      "SC4020",
+      "SC5010"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4041",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CZ1007 & CZ1011 OR",
+      "CZ1107 & CZ2100 OR",
+      "CZ1007 & MH2500 OR",
+      "CZ1107 & MH2500"
+    ],
+    "mutually_exclusive": [
+      "CE4041",
+      "MH4510",
+      "SC4000"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO(AMAS)",
+      "MAEO(NULL)",
+      "MAEO(PMAS)",
+      "MAEO(STAT)",
+      "MAT",
+      "MATH(AMAS)",
+      "MATH(NULL)",
+      "MATH(PMAS)",
+      "MATH(STAT)",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS",
+      "MAEO(BA)",
+      "MATH(BA)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4042",
+    "title": "NEURAL NETWORK & DEEP LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 & CZ1011 & CZ1012 OR",
+      "CZ1104 & CZ1107 OR",
+      "CZ1007 & MH2802 OR",
+      "CZ1107 & MH2802"
+    ],
+    "mutually_exclusive": [
+      "CE4042",
+      "SC4001"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO(BA)",
+      "MAEO(PMAS)",
+      "MAEO(STAT)",
+      "MAT",
+      "MATH(BA)",
+      "MATH(PMAS)",
+      "MATH(STAT)",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4045",
+    "title": "NATURAL LANGUAGE PROCESSING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 OR",
+      "CZ2101"
+    ],
+    "mutually_exclusive": [
+      "CE4045",
+      "SC4002"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCE",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4062",
+    "title": "COMPUTER SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2005"
+    ],
+    "mutually_exclusive": [
+      "CE4062",
+      "SC3010"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCE",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4064",
+    "title": "SECURITY MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2006"
+    ],
+    "mutually_exclusive": [
+      "CE4064",
+      "SC4011"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCE",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4069",
+    "title": "CONCEPTS & TECHNIQUES FOR MALWARE ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1006 & CZ2005 OR",
+      "CZ1106 & CZ2005"
+    ],
+    "mutually_exclusive": [
+      "CE4069",
+      "SC4014"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4070",
+    "title": "CYBER THREAT INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Study Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE4070",
+      "SC4016"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ4124",
+    "title": "DATA VISUALISATION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1103 & MH2500 OR",
+      "CZ1103 & CZ2100 OR",
+      "CZ1003 & MH2500 OR",
+      "CZ1003 & CZ2100"
+    ],
+    "mutually_exclusive": [
+      "SC4024"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCE",
+      "BCG",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The data visualisation course aims to provide computer science-oriented students with the principles and practice to design and present effective data visualisation solutions for different datasets and visualisation objectives. The course focuses on applying design considerations which take into account the human's visual and psychological characteristics, with the goal of designing effective and ethical visuals. The course also introduces students to the large variety of techniques and tools for visualising, exploring and interacting with both abstract and scientific data."
+  },
+  {
+    "code": "CZ4153",
+    "title": "BLOCKCHAIN TECHNOLOGY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1007 & CE2001 & MH1812 OR",
+      "CZ1007 & CZ2001 & MH1812 OR",
+      "CZ1107 & CZ2101 & MH1812"
+    ],
+    "mutually_exclusive": [
+      "CE4153",
+      "SC4053"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Blockchain Technology has taken the world by storm with its proliferation in an astoundingly diverse array of applications. Cryptocurrencies and a plethora of business use-cases paved the way for inclusive decentralization through innovative incentives and smart contracts. In its modern incarnation, Blockchain offers the promise of immutability, consistency, attribution, authenticity and automation of record-keeping as well as computations within an inherently decentralized operating environment. This elective course in Computer Science and Engineering aims to introduce you to the core technical framework of Blockchain Technology and Cryptocurrencies, encompassing distributed systems, consensus protocols, incentive mechanisms and decentralized applications. You will also learn the major anonymity, security, privacy, scalability and interoperability issues in modern Blockchain, in addition to the relevant enterprise platforms, solutions, applications and regulatory aspects of the technology."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC2008",
+    "title": "COMPUTER NETWORK",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1004 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CE3005",
+      "CZ3006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "ENG(EEE)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "BCE"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course serves as a foundation for computer and communication networks. Emphasis is placed on concepts, protocols and technologies, which formulate various Local Area Networks (LANs), Wide area Networks (WANs), and their interconnections. Emphasis is also placed on the fundamentals of the Internet, and includes laboratory sessions on socket programming. Advanced materials, such as, cloud computing, will also be covered to prepare you well for your future career."
+  }
+]

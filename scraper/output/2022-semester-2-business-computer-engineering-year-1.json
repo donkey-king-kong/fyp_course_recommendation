@@ -1,0 +1,2120 @@
+[
+  {
+    "code": "AB1202",
+    "title": "STATISTICS & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1008",
+      "HE1004",
+      "MH1820"
+    ],
+    "not_available_to_programme": [
+      "ASEC",
+      "BCE 2",
+      "BCE 3",
+      "BCE 4",
+      "BCG 2",
+      "BCG 3",
+      "BCG 4",
+      "BEEC",
+      "CBEC",
+      "CEEC",
+      "CSEC",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEEC",
+      "ENEC",
+      "IEEC",
+      "MEEC",
+      "MTEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "2nd Maj/Spec(ECON)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the concepts and methods of statistical inferences: the process of inferring unknowns under uncertainty. Students of this course will also learn programming skills in the R environment for basic statistical analyses. This course consists of three main sections. Section 1 covers elements of probability models. Section 2 covers the basic theories in statistical inferences. Section 3 introduces the basic of two powerful and widely used analytic tools: regression and simulation analysis. Each weekly topic will be supplemented with relevant computer applications in the R environment."
+  },
+  {
+    "code": "AB1301",
+    "title": "BUSINESS LAW",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BU8301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of this course is to provide students with the foundational and intellectual skills to navigate the legal aspects of business. Specifically, this course provides a solid foundation on the legal methodology and the main principles of law relating to business transactions. A number of topics will be discussed in this course ranging from the formation of contracts, terms of a contract, breach and termination of a contract, law of agency, business organisations and torts. At the completion of this course, students will gain foundational competencies in how commercial law and business practices inter-relate and often influence each other in shaping modern commerce and industry. Key legal topics will be explained and illustrated from a business perspective. At the completion of this course, students will also gain a deeper understanding of the legal issues impacting on businesses"
+  },
+  {
+    "code": "AB1601",
+    "title": "ORGANISATIONAL BEHAVIOUR & DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BU5601",
+      "CE8003",
+      "CZ8003",
+      "EE4041",
+      "MS2030",
+      "MS3030"
+    ],
+    "not_available_to_programme": [
+      "BCE 1",
+      "BCE 2",
+      "BCE 3",
+      "BCE 4",
+      "BCG 1",
+      "BCG 2",
+      "BCG 3",
+      "BCG 4"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Business is in the midst of a revolutionary transformation. Emerging technologies that combine AI, machine learning, cutting-edge visualization techniques, and social robots are fast revolutionizing the business workplace globally. Building a motived workforce is a critical responsibility of managers. To do so, managers must know why people behave in organizations the way they do. Research in cognitive sciences, artificial intelligence and neuroscience has generated significant insights that can enrich our knowledge of people. This course is designed to focus on processes and methods that can improve the attitudes and behaviors of organizational members. You will learn to know more about yourself and others. You will also learn how to influence and predict your own behaviours as well as those of others. Within the context of a world of social media, AI, and machine learning, you will learn various organizational behaviour theories and concepts, and then apply them appropriately to real-life situations to make sense of human behaviours and human-robots interactions at work. This course adopts a flipped classroom approach, which will give you ample opportunity to share your knowledge with others and also learn with them collaboratively."
+  },
+  {
+    "code": "AD1101",
+    "title": "FINANCIAL ACCOUNTING",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1101",
+      "AC1101",
+      "AC1103",
+      "AD1102",
+      "BU5101",
+      "BU8101",
+      "EE8062"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC(GA) 1",
+      "ACC(GA) 2",
+      "ACC(GA) 3",
+      "ACC(GB) 1",
+      "ACC(GB) 2",
+      "ACC(GB) 3",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS(ITG)(2017-onwards)",
+      "MS(NULL)",
+      "MTEC",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "AD1102",
+    "title": "FINANCIAL ACCOUNTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AC1101",
+      "AC1103",
+      "AD1101",
+      "BU5101",
+      "BU8101"
+    ],
+    "not_available_to_programme": [
+      "ACBS(GA) 1",
+      "ACBS(GA) 2",
+      "ACBS(GA) 3",
+      "ACBS(GA) 4",
+      "ACBS(GB) 1",
+      "ACBS(GB) 2",
+      "ACBS(GB) 3",
+      "ACBS(GB) 4",
+      "ACC(GA) 1",
+      "ACC(GA) 2",
+      "ACC(GA) 3",
+      "ACC(GB) 1",
+      "ACC(GB) 2",
+      "ACC(GB) 3",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCG 2",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS(ITG)(2017-onwards)",
+      "MS(NULL)",
+      "MTEC",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to provide you with the necessary introductory accounting knowledge to understand how to use financial statement information to make economic decisions from a user perspective such as investors and creditors. In the process, you will learn to prepare a basic set of financial statements in accordance with the Singapore Financial Reporting Standards. The course also examines the impact of various accounting choices on the financial statements and the incentives that contracts based on accounting numbers can create for different stakeholders. This will help you understand why managers choose certain accounting methods and avoid others. This learning forms the foundation for further studies in areas which require accounting knowledge."
+  },
+  {
+    "code": "CC0001",
+    "title": "INQUIRY & COMMUNICATION IN AN INTERDISCIPLINARY WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0601",
+      "HW0105",
+      "HW0106",
+      "HW0111",
+      "HW0128",
+      "HW0188",
+      "HW0209"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Researchers agree that writing is a tool for thinking (Menary, 2007; Klein & Boscolo, 2016; Miller and Jurecic, 2016; Reis, n.d.). As Reis explains, 'The bodily act of writing externalizes our thoughts, and the imposed structure (the written word) provides a vehicle by which those thoughts may be reorganized into new thinking, a new way of seeing the thoughts or a new way of organizing thoughts.' Miller and Jurecic similarly argue that 'writers discover what they think not before they write but in the act of writing' (2016, p. 60). One of the main aims of this course is to allow you to experience writing as a tool for thinking and to practice expressing ideas in formal writing and oral communication. While you will have the opportunity to understand and practice the genre conventions that are specific to your discipline later in your studies, this first common communication course is designed to help you form habits of mind that will serve you across the university and even in the world outside of the university. Taken by all first-year undergraduates, this foundational course will develop your written and oral communication skills, as well as your ability to read and analyze texts. It will help you to understand revision as integral to the process of composition, to convey your interpretations and ideas with confidence and clarity, and to consider audience and purpose when you communicate."
+  },
+  {
+    "code": "CC0002",
+    "title": "NAVIGATING THE DIGITAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1401"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "With digitalization now becoming the new normal in our daily life, this course seeks to equip students from different disciplines with problem-solving techniques with the aid of computers and to enable them to acquire some common but essential digital skills that are crucial in today's workforce. In this course, students will learn how to apply the concept of computational thinking and quantitative reasoning to solve problem and analyse data. They will also learn how to identify online threats and understand the principles of ethics and intellectual property rights in the digital world. They will also be exposed to current issues in the digital world, which they can better understand through the logics of computational thinking and quantitative reasoning, such as cybersecurity and the rise of fake news. In addition, students will also learn how to use some of the latest online tools for effective presentation, communication, and collaborative skills in teams while learning the course."
+  },
+  {
+    "code": "CC0003",
+    "title": "ETHICS & CIVICS IN A MULTICULTURAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip students with the philosophical foundations necessary to understand theories of ethics and subsequently apply those theories to real-life scenarios and issues. It also aims to enable students to critically assess the civic institutions that structure their local and global communities. To these ends, the course will examine the nature of ethics, its understanding across different cultures, and how it is manifested in concepts, social structures, and governance institutions. Topics to be explored include human rights, democracy, freedom of speech, inequality, and sexuality. The rights and duties of citizenship shall be a unifying theme. Students will think through assumptions they hold on all of these matters. They will be provided with the tools to understand various and even contradictory perspectives on these important issues."
+  },
+  {
+    "code": "CC0005",
+    "title": "HEALTHY LIVING & WELLBEING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is part of the NTU 2025 Education - Common Foundational & Interdisciplinary Collaborative Curriculum (ICC). It aims to provide multi-disciplinary competence in a cross-disciplinary, collaborative learning environment, with student interaction and collaboration across schools as a key learning foundation. As the title connotes, the main objective of this undergraduate course is to examine what constitutes living a good, healthy and flourishing life. According to research, individuals around the world pursue this 'flourishing life' in different ways, be it through improving one's physical fitness, seeking authentic relationships with others, or making a positive change in the environment. Thus, knowing and understanding how the different components of a 'good life' contribute to one's overall functioning is critical to one's healthy wellbeing. The latter, in turn, affords many benefits such as better health (physical, mental and emotional health) and stronger relationships. By the end of this course, you would have developed an awareness of what constitutes living a healthy and flourishing life, both of which indirectly contribute to a successful undergraduate education."
+  },
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CE1115",
+    "title": "INTRODUCTION TO DATA SCIENCE & ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1103 OR",
+      "CE1003 OR",
+      "BG2211 OR",
+      "CH2107 OR",
+      "CV1014 OR",
+      "MS1008 OR",
+      "MA1008 OR",
+      "EE1005 OR",
+      "RE1016 OR",
+      "CZ1003 OR",
+      "CZ1103"
+    ],
+    "mutually_exclusive": [
+      "CB0494",
+      "CE1015",
+      "CE4073",
+      "CH0494",
+      "CV0003",
+      "CZ1015",
+      "CZ1016",
+      "CZ1115",
+      "CZ4073",
+      "EE0005",
+      "IE0005",
+      "MA0218",
+      "MS0003",
+      "PS0002",
+      "SC1015"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course will start with the core principles of Data Science, and will equip you with the basic tool and techniques of data handling, exploratory data analysis, data visualization, data-based inference, and data-focussed communication. The course will also introduce you to the fundamentals of Artificial Intelligence - state space representation, uninformed search, and reinforcement learning. The course will motivate you to work closely with data and make data-driven decisions in your field of study. The course will also touch upon ethical issues in Data Science and Artificial Intelligence, and motivate you to explore the cutting-edge applications related to Big Data, Neural Networks and Deep Learning. Python will be the language of choice to introduce hands-on computational techniques."
+  },
+  {
+    "code": "CE2100",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CZ2100",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "CH1104",
+    "title": "MATERIALS & ENERGY BALANCES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CH1119"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This subject focuses on the material and energy balances in chemical processes and lays that foundation in other chemical engineering subjects such as thermodynamics, unit operations, reaction kinetics, etc. It introduces the engineering approach to problem solving: Breaking a process down into its components, establishing the relations between known and unknown process variables, assembling the information needed to solve for the unknowns, and finally obtaining the solution using appropriate computational methods."
+  },
+  {
+    "code": "CV1011",
+    "title": "MECHANICS OF MATERIALS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2141",
+      "BG2209",
+      "CV2101",
+      "MA2001"
+    ],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ME",
+      "ME(DES)",
+      "ME(RMS)",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(RMS)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers the basic topics of mechanics of materials. The principal topics are force vectors, equilibrium of rigid body, stress and strain, mechanical properties of materials, analysis and design of structural members subjected to tension, compression, torsion, bending and shear, the transformation of stress (strain) components, and the stability of columns."
+  },
+  {
+    "code": "EE1102",
+    "title": "PHYSICS FOUNDATION FOR ELECTRICAL & ELECTRONIC ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "PH1011 OR",
+      "PH1012 OR",
+      "CE1013 OR",
+      "CZ1013 OR",
+      "CE1113 OR",
+      "CZ1113 OR",
+      "SC1013"
+    ],
+    "mutually_exclusive": [
+      "EE1002"
+    ],
+    "not_available_to_programme": [
+      "CSC",
+      "ENE(Direct Entry)",
+      "ME",
+      "ME(DES)",
+      "ME(RMS)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to build a strong foundation in the relevant physics principles used in the design of common electrical and electronic devices. The course builds on the concepts learned in the common engineering curriculum's first semester physics course. This course focuses on fundamental concepts that are key to EEE students in preparation for subsequent studies, and are utilized daily by electrical and electronics engineering professionals. Students will learn the relationship between physics concepts and their applications in EEE. Contents: Introduction of electromagnetic fields and applications Electromagnetic in electronics, circuits and communications Introduction to light and principles of geometric optics Principles of wave optics Introduction to quantum physics and applications Applications of quantum physics in electronics and lasers"
+  },
+  {
+    "code": "EG0001",
+    "title": "ENGINEERS & SOCIETY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG0491",
+      "CE0001",
+      "CH0491",
+      "CV0002",
+      "CZ0001",
+      "EE0002",
+      "IM0002",
+      "MA0101",
+      "MS0002",
+      "MT0002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry",
+      "(Admyr 2022-onwards)-Non Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide a general understanding of the society we live in and the engineers' roles and responsibilities towards society's well-being. The course is part of broadening education objective in the engineering curriculum. The course covers a wide range of topics including history, political, social and economic development, foreign policy and defence of Singapore and the issues confronting it, the history of engineering, engineering ethics and practices, international politics and globalization and contributions by engineers towards society. The students will have a holistic understanding of Singapore's past and present situation and on the impact of industry to the society."
+  },
+  {
+    "code": "EG1001",
+    "title": "ENGINEERS IN SOCIETY",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)-Non Direct Entry",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide a general understanding of the society we live in and the engineers' roles and responsibilities towards society's well-being. The course is part of broadening education objective in the engineering curriculum. The course covers a wide range of topics including the history of engineering, engineering ethics and practices, sustainability, and contributions by engineers towards society in the future. The students will have a holistic understanding of the role played by engineers and on their impact in society."
+  },
+  {
+    "code": "ET0001",
+    "title": "ENTERPRISE & INNOVATION",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CSC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "EEE(2019-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "ME(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This online course aims to provide you with a basic appreciation of the key concepts of enterprise and innovation. The course will focus on empowering you to gain practical insights on the relevance of enterprise and innovation in your lives by introducing you to the enterprise and innovation ecosystem of the University, the Singapore society, and beyond."
+  },
+  {
+    "code": "GC0001",
+    "title": "SUSTAINABILITY: SEEING THROUGH THE HAZE",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CEE(2019-onwards)(Direct Entry)",
+      "CEE(2019-onwards)(Non Direct Entry)",
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CVEC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "ENE(2019-onwards)(Direct Entry)",
+      "ENE(2019-onwards)(Non Direct Entry)",
+      "ENEC(2019-onwards)",
+      "ENG(CEE)(2019-onwards)",
+      "ENG(ENE)(2019-onwards)",
+      "ENG(NULL)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "MS(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course wi ll discuss sustainability from perspectives of various disciplines, including humanities, business, policy, economics, and science. Students will learn about sustainability through a case study of oil palm plantation. The course will be composed of the following 6 modules. The course is supplemented by Module SI , which helps broadening students' perspectives on sustainability. Module I : General Introduction Module 2: The Global Seeding of Oil Palm Module 3: Recent Expansion of Oil Palm in South East Asia: How and Why did this happen? Module 4: How is Oil Palm Production Affecting Environment, Climate and Human Society? Module 5: Making Oil Palm More Sustainable Module 6: General Conclusions Module SI: National Geographic (Nat. Geo) talk"
+  },
+  {
+    "code": "HC5901",
+    "title": "CHINESE LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [
+      "LC9001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "CHIN"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is an elementary Chinese course for beginners with no previous knowledge of the language. It aims to introduce Chinese language and culture through practical use of the language to students. The learning activities are designed to develop students? listening, speaking, reading and writing skills and gradually build up students? confidence in using Putonghua for daily communication. In order to establish a solid foundation for long-term study, the learning of Chinese characters is an essential part of this course."
+  },
+  {
+    "code": "HC5902",
+    "title": "CHINESE LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "HC9901 OR",
+      "LC9001 OR",
+      "HC5901"
+    ],
+    "mutually_exclusive": [
+      "LC9002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "CHIN"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a continuation of the Chinese Language level 1 course or the equivalent. It aims to improve and enhance the skills of speaking, listening, reading and writing in an integrated manner, with emphasis on developing communicative skills in order to carry out conversations on a range of topics related to daily life. The course will also enable students to acquire skills to speak and write Chinese paragraphs with confidence. Students will learn to read and write Chinese texts with minimal help and will try to learn Chinese texts without the aid of pinyin."
+  },
+  {
+    "code": "HC5903",
+    "title": "CHINESE LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "HC9902 OR",
+      "LC9002 OR",
+      "HC5902"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "CHIN"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a continuation of the Chinese Language level 1 course. It aims to improve and enhance the skills of speaking, listening, reading and writing in an integrated manner, with emphasis on developing communicative skills in order to carry out conversations on a range of topics related to daily life. The course will also enable students to acquire skills to speak and write Chinese paragraphs with confidence. Students will learn to read and write Chinese texts with minimal help and will try to learn Chinese texts without the aid of pinyin."
+  },
+  {
+    "code": "HW0001",
+    "title": "INTRODUCTION TO ACADEMIC COMMUNICATION",
+    "no_of_credits": "0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [
+      "for students who fail QET"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to support you in your academic writing and reading skills across a wide range of disciplines. This course will provide opportunities for you to read current event articles widely and critically. As a result, you will learn to evaluate opinions and formulate well-substantiated arguments."
+  },
+  {
+    "code": "HY0001",
+    "title": "ETHICS & MORAL REASONING",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HY0001 will introduce students to three major ethical theories' utilitarianism, Kant's deontology, and virtue ethics. Then, four weeks will be devoted to teaching the ethical principles underlying academic integrity, research ethics, and intellectual property. Finally, students will discuss issues related to the ethics of environmental sustainability and conservation. All the while, students will be challenged apply the ethical theories learned to concrete moral problems, including world poverty, corporate accountability and whistleblowing, and workplace discrimination."
+  },
+  {
+    "code": "LA5001",
+    "title": "ARABIC LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed for beginners with no previous knowledge of Arabic. It will introduce students to the Arabic alphabet, vowels and tones as well as help them to construct simple sentences using basic vocabulary and expressions related to everyday communicative situations. Through theme-based classroom activities, students will develop the four skills of listening, speaking, reading and writing. By the end of the course, students will be able to read, write and talk in Arabic about simple topics related to their daily lives."
+  },
+  {
+    "code": "LA5002",
+    "title": "ARABIC LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or Able to read simple Arabic scripts or",
+      "LA9001 OR",
+      "LA5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an unrestricted elective (UE) for any undergraduate student who completed LA9001 or who have basic knowledge of Arabic Letters. It begins with summarised revision of what have been covered in level 1 to acquiring more proficiency of basic Arabic language daily conversations and sentence structures that will be taught in a progressive manner. A comprehensive range of teaching aids & activities are used to engage you in interactive learning."
+  },
+  {
+    "code": "LA5003",
+    "title": "ARABIC LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LA9002 OR",
+      "LA5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a continuation of the previous two Arabic courses offered by CML. The course consolidates and extends the skills acquired on Arabic Language Levels 1 and 2 (ie, LA9001 and LA9002 respectively). In this course, the usage of various grammatical constructions learnt in LA9002 are strengthened and expanded, enabling students to express themselves better in their written and oral expressions using the past, present and future tenses. The course will enable learners to use Modern Standard Arabic in various real life situations and further enhance their ability in the four skills: listening, speaking, reading and writing. The course teaches students to express themselves effectively in everyday communicative interactions beyond basic survival requirements. It enables students to use a range of complex phrases and sentence structures as well as build on their vocabulary and idiomatic expressions. It also further develops students' ability in reading and writing in the Arabic writing system so that they can successfully read and write. Furthermore the course focuses on the expansion of vocabulary through the usage of more complex audio and written texts."
+  },
+  {
+    "code": "LA5101",
+    "title": "ADVANCED ARABIC LANGUAGE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Abrabic O level 3180 or 1135 or Placement Test"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an unrestricted elective (UE) for any undergraduate student who has sat for the `O' Level Arabic 3180 & 1135 examinations or any equivalent Arabic Language assessment. You will develop an understanding of spoken and written forms of Arabic Language from a variety of registers. This will enable you to communicate confidently and clearly in the foreign language. You should expect lessons which reinforce previous knowledge and exposure to new elements of morphology and lexicon of the Arabic Language. You will gain confidence and fluency in speaking Arabic in authentic settings as well as form a sound base of skills, language and attitudes required for further study, work and leisure. This module also aims to further your intellectual and personal development by promoting learning, gaining social skills as well as encouraging positive attitudes to language learning and a sympathetic approach to other cultures and civilisations. It will also help you develop greater insights into the culture and civilisation of the Arabs. The module matches the level B2 for CEFR"
+  },
+  {
+    "code": "LF5001",
+    "title": "FRENCH LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the French language, culture and civilization to complete beginners. Students will learn the basics of the French language through a textbook and a work book developed specifically for the needs of NTU students. Audio and video resources are also integrated into the course to expose students to authentic language use. They will learn the most common verbs, words and sentence constructions in French. During class, they will role-play, answer simple questions orally, watch videos, read texts and dialogues, and write simple essays."
+  },
+  {
+    "code": "LF5002",
+    "title": "FRENCH LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LF9001 OR",
+      "LF5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a continuation of Level 1. It is constructed following the same structure as Level 1, using the same textbook. The vocabulary is broadened allowing more complex class discussions and conversations. Students learn about French culture and civilization through videos and class discussions. Students also learn about the culture and the customs of French people through extracts of French movies."
+  },
+  {
+    "code": "LF5003",
+    "title": "FRENCH LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LF9002 OR",
+      "LF5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a continuation of Level 1 and Level 2 courses. The structure of this course is similar to the previous 2 levels and it uses the same textbook. Students are exposed to the culture and civilization of France through videos, films and class discussions. Students have an opportunity to role-play various situations and learn to interact effectively in these situations. During the course, they further develop the 4 skills of speaking, listening, reading and writing. As a result, they are able to read and understand written documents on varied topics in different forms: emails, correspondence and short articles."
+  },
+  {
+    "code": "LF5004",
+    "title": "FRENCH LANGUAGE LEVEL 4",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LF9003 OR",
+      "LF5003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to improve the fluency of the students in the French language and their knowledge of the French culture and civilization. Upon its completion, students will be able to express themselves orally and in writing in a more detailed manner about daily life topics and current affairs. They will also improve their reading and listening comprehension skills through more challenging materials, such as adapted journalistic texts on current affairs. Through books, videos, films, articles and class debates, it is hoped that they will gain further insight into French life and culture. During this course, students are expected to use little or no English as the course is taught solely in French. This course will also prepare the students for the higher levels of the international French exams DELF (Dipltme ilimentaire de langue frangaise)."
+  },
+  {
+    "code": "LF5005",
+    "title": "FRENCH LANGUAGE LEVEL 5",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LF9004 OR",
+      "LF5004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to improve the fluency of students in the French language and their knowledge of French culture and civilization. Upon its completion, students will be able to express themselves in writing or by speaking in a more elaborate manner about common topics and current affairs. They will also improve their reading and listening comprehension skills through more challenging materials, such as adapted media texts on current affairs. Through books, videos, films, articles and class debates, they will gain further insight into French life and culture. During this course students are expected to use little or no English as the course is taught solely in French. This course will also prepare the students for standardized French exams DELF (Diplome elementaire de langue francaise) Unit B1 and B2."
+  },
+  {
+    "code": "LF5006",
+    "title": "FRENCH LANGUAGE LEVEL 6",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LF9005 OR",
+      "LF5005"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to improve the fluency of students in the French language and their knowledge of French culture and civilization. Upon its completion, students will be able to express themselves in writing or by speaking in a more elaborate manner about common topics and current affairs. They will also improve their reading and listening comprehension skills through more challenging materials, such as adapted media texts on current affairs. Through books, videos, films, articles and class debates, they will gain further insight into French life and culture. During this course students are expected to use little or no English as the course is taught solely in French. This course will also prepare the students for standardized French exams DELF (Diplome elementaire de langue francaise) B2."
+  },
+  {
+    "code": "LG5001",
+    "title": "GERMAN LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an unrestricted elective (UE) for any undergraduate student with an interest in the German language, culture, study and work life, but with no previous knowledge of the language. LG9001 will teach you basic German to the level of A1.1 according to the Common European Framework of Reference for Languages (CEFR). Using a learner-centric teaching approach and a broad range of classroom and online activities, you will learn the basics of German through the four fundamental language skills; reading, writing, listening, and speaking. Thus, this course will be beneficial for you to travel, study, and work in Germany or for German companies. Learning German might make you more employable in a globalised economy."
+  },
+  {
+    "code": "LG5002",
+    "title": "GERMAN LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LG9001 OR",
+      "LG5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an unrestricted elective (UE) for any undergraduate student who already possess an introductory level of proficiency in the language equivalent to LG9001. LG9002 will teach you the fundamentals of the German language to the level of A1.2 (CEFR). Through facilitation and a learner-centric teaching approach you will develop your German language ability in the four fundamental language skills; reading, writing, listening, and speaking. Thus, this course will enhance your understanding of the German language and culture through a variety of classroom and online exercises and experiences."
+  },
+  {
+    "code": "LG5003",
+    "title": "GERMAN LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LG9002 OR",
+      "LG5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is meant for students who already possess a good introductory level of proficiency in the language but are highly motivated to further improve their language proficiency and expand their knowledge of German culture. The class is conducted mainly in German. Topics include: past events, directions, means of transport, places of interest, gifts, needs and preferences, and information on German-speaking countries."
+  },
+  {
+    "code": "LG5004",
+    "title": "GERMAN LANGUAGE LEVEL 4",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LG9003 OR",
+      "LG5003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This German course is a continuation of the previous three courses offered by CML. In this course the fourth case (Genitive) is introduced and the usage of various grammatical constructions learnt in LG9003 are strengthened and expanded, enabling extensive written and oral expression in past, present and future tenses. Furthermore the course focuses on the expansion of vocabulary through the usage of more complex texts (reading and listening), which will enable a more complex and diverse understanding and use of the language in a variety of daily situations and discussions. Although the course develops all four language skills (listening, speaking, reading, and writing) a special emphasis is placed on the active language production, especially the oral aspect. Audio-visual materials are used extensively and German is used almost exclusively as the language of instruction in the classroom. This course is equivalent to Level A2.2 of the Common European Framework of Reference for Languages (CEFR) and it prepares students to sit for the official external examination Start Deutsch 2 (SD2). The examination is the official accreditation of the degree of fluency of the German Language, issued and recognized by the German government and conducted at the Goethe Institut Singapur."
+  },
+  {
+    "code": "LG5005",
+    "title": "GERMAN LANGUAGE LEVEL 5",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LG9004 OR",
+      "LG5004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an unrestricted elective (UE) for any undergraduate student who already possess a level of proficiency in the language equivalent to LG9004. LG9005 will teach you the German language to the level of B1 (CEFR). Through a facilitation and learner-centric teaching approach you will further develop your German language ability at an intermediate level. You will train the four fundamental language skills; reading, writing, listening, and speaking. This course will enhance your understanding of the German language and culture through a variety of classroom discussions, peer-teaching, and presentations."
+  },
+  {
+    "code": "LH5001",
+    "title": "HINDI LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course, designed for complete beginners, introduces the students to the basic structures of Hindi language and the key aspects of Hindi culture such as arts, gastronomy, fashion, music, festivals and traditions. The course develops listening, reading, speaking and writing skills for an effective interaction in Hindi. Through the use of a textbook and various audio-visual materials specifically tailored for NTU, students will work with activities designed to train them to deal with simple everyday situations and to master basic Hindi grammar. They will read texts, answer simple questions orally, role-play, watch videos and write simple essays. Students will be also engaged in information-based tasks, working collaboratively to achieve individual and collective goals."
+  },
+  {
+    "code": "LI5001",
+    "title": "ITALIAN LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course, designed for complete beginners, introduces the students to the basic structures of Italian language and the key aspects of Italian culture such as arts, gastronomy, fashion, music, festivals and traditions. The course develops listening, reading, speaking and writing skills for an effective interaction in Italian. Through the use of a textbook and various audio-visual materials specifically tailored for NTU, students will work with activities designed to train them to deal with simple everyday situations and to master basic Italian grammar. They will read texts, answer simple questions orally, role-play, watch videos and write simple essays. Students will be also engaged in information-based tasks, working collaboratively to achieve individual and collective goals."
+  },
+  {
+    "code": "LI5002",
+    "title": "ITALIAN LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LI9001 OR",
+      "LI5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is meant for students who already possess an introductory level of proficiency in the language. The course is constructed following the same structure as Level 1, using the same textbook. The various topics of daily life introduced in Italian Level 1 will be broadened allowing more class discussions and conversations. Throughout the course, students will learn to use more complex grammar and structures to express likes, dislikes and preferences, relate events in the past, give commands and suggestions, use polite expressions and talk about their town, country and celebrations. Role-plays, team-work and project works will engage the students in meaningful and authentic communicative activities. They will be using the language in different scenarios and real-life situations such as going shopping, buying clothes, buying groceries, collecting information from travel agencies, ordering food at a restaurant etc. Students will enhance their knowledge of Italian culture and customs as well through class discussions, videos and extracts of Italian movies. Upon completion of the course, students will have completed writing a fifteen minute adaptation of a play. The students will understand and be able to defend the use of the concept of cultural mobility in their choice of interpretational work so as to present their play in its optimal cultural context."
+  },
+  {
+    "code": "LJ5001",
+    "title": "JAPANESE LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces students to the Japanese language, culture and customs. It begins with the learning of the Japanese Standard Writing System, which is a combination of Hiragana, Katakana, and Kanji. Basic greetings and sentence structures are taught in a progressive manner from recognition to guided and independent reproduction. Apart from grammar explanations, the tasks incorporated in the course include exercises in listening comprehension, reading comprehension and conversational practice through role-play activities. Approximately 40 sentence patterns and 300 words/phrases are covered under this introductory syllabus. A comprehensive range of teaching aids are used to engage students in interactive learning."
+  },
+  {
+    "code": "LJ5002",
+    "title": "JAPANESE LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LJ9001 OR",
+      "LJ5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a progression from the Japanese Language Level 1 course. In this course, additional grammar and sentence construction are taught to strengthen the learners' basic language skills of reading, writing, speaking and listening. Language practice and exercises help to further hone students' fluency in oral skills. Entertaining and lively classroom activities are tailored to provide a conducive setting for a fulfilling learning experience. An addition of approximately 350 words, 35 sentence patterns and 60 kanji characters will be covered in this syllabus. Students will be given an enhanced understanding of Japanese culture and way of life to supplement their learning in this course."
+  },
+  {
+    "code": "LJ5003",
+    "title": "JAPANESE LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LJ9002 OR",
+      "LJ5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a progression from the Level 2 course. In this course, students are introduced to a more advanced level of sentence construction and patterns. These are taught through the exploration of interesting and current topics of interest, which provide a stimulus to conversation. Learners' language competency will be enhanced through drills and practices, using a guided imitation method followed by situational applications to enable immediate practical usage. Through the introduction of formal and informal expressions, students will have a deeper understanding of the more complex Japanese social practices where the mode of speech is determined by corresponding variations in human relationships and behaviour. Students are exposed to more sophisticated dialogues recorded for listening practice with question drills to familiarize them to native-spoken Japanese. An addition of approximately 330 words, 30 sentence patterns and 60 kanji characters will be covered in the syllabus."
+  },
+  {
+    "code": "LJ5004",
+    "title": "JAPANESE LANGUAGE LEVEL 4",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LJ9003 OR",
+      "LJ5003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a progression from the Level 3 course where most of the syllabus under the JLPT (Japanese Language Proficiency Test) Level 4 will be covered. Conversation practices are taught through the exploration of interesting and relevant topics enabling immediate practical usage. Students will also gain deeper understanding of complex Japanese social practices where the mode of speech is determined by corresponding variations in human relationships and behavior. An addition of approximately 280 words, 20 sentence patterns and 60 kanji characters will be covered in the syllabus."
+  },
+  {
+    "code": "LJ5005",
+    "title": "JAPANESE LANGUAGE LEVEL 5",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LJ9004 OR",
+      "LJ5004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide for students valuable opportunities to better engage in Japanese language learning through conversational use, greater insights into the Japanese culture and way of life, and access to a broader spectrum of language skills. For instance, a measurable advancement would be the expectation for students at this stage of learning to be able to comfortably compose an essay of 500 words, among other aspects of learning progression. Students will be equipped with an enhanced knowledge and broadened command of the Japanese language upon the successful completion of this course."
+  },
+  {
+    "code": "LJ5006",
+    "title": "JAPANESE LANGUAGE LEVEL 6",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LJ9005 OR",
+      "LJ5005"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "As a progression from the Level 5 course, this course syllabus will introduce and cover approximately 300 new words, 20 sentence patterns and 96 kanji characters. Innovative teaching tools and interesting topics will be deployed to engage students in conversational practice. Students will continue to gain deeper understanding of complex Japanese social practices where the mode of speech is determined by corresponding variations in human relationships and behavior. They will also be able to apply their basic understanding of the language to practical use."
+  },
+  {
+    "code": "LK5001",
+    "title": "KOREAN LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed for beginners with no prior knowledge of Korean. It introduces students to the Korean language and covers reading and writing of the Hangul script as well as pronunciation. Starting with greetings, the course proceeds to develop communication through basic grammar, vocabulary and reading skills for simple sentences. Students will develop the four skills of listening, speaking, reading and writing in an interactive and integrated manner through theme-based activities that relate to daily life. By the end of the course, students will be able to read, write, and talk about topics such as identities, everyday activities, time, numbers, weather and location in basic Korean."
+  },
+  {
+    "code": "LK5002",
+    "title": "KOREAN LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LK9001 OR",
+      "LK5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a continuation from the Korean Language Level 1 course. In this course, students will become more familiar with the morphology of spoken and written Korean. Students will further develop their proficiency in the skills of listening, speaking, reading and writing. These skills will be taught in an interactive and integrated manner through theme-based activities related to everyday life. The course will also enable students to acquire more accurate pronunciation and articulation of Korean words and sentence patterns. By the end of the course, they will have a better understanding of Korean lifestyle and culture and they will be able to use Korean in a variety of social contexts."
+  },
+  {
+    "code": "LK5003",
+    "title": "KOREAN LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LK9002 OR",
+      "LK5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Any student who has successfully passed the Level 2 course (or its equivalent) is eligible for this course. This course aims to expand students language skills by introducing more complex sentence structures, colloquial expressions and language use in different cultural contexts. Students are introduced to the more stylistic intricacies of the language as idioms and metaphors are integrated into the syllabus. Classroom tasks in this course naturally demand a higher level of participation and hence incorporate learning through the use of audio-visual materials and class discussion. During the course, students are expected to use little or no English as the course is mainly taught in Korean. By the end of the course, students should be able to read, speak, write and understand written documents on varied topics in different forms. This course gives students practice in the skills required for TOPIK, a standardized Korean language test."
+  },
+  {
+    "code": "LK5004",
+    "title": "KOREAN LANGUAGE LEVEL 4",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LK9003 OR",
+      "LK5003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "LK9004 is the continuation of LK9003. This course aims to improve students? language skills and use in more authentic context by introducing various sentence structures and as well as more challenging texts. Classroom tasks in this course demand a higher level of participation and class discussion. The course is mainly taught in Korean. By the end of the course, students should be able to read, speak, write and understand written documents on varied topics in different forms and have the skills required for TOPIK, a standardized Korean language proficiency test."
+  },
+  {
+    "code": "LK5005",
+    "title": "KOREAN LANGUAGE LEVEL 5",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LK9004 OR",
+      "LK5004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the following items at a more advanced level. 1) Traveling, 2) House Chores, 3) Activities as Hobbies, 4) Everyday Life. Students learn additional vocabulary and idiomatic expressions pertaining to everyday life and hobby related topics, allowing them to conduct everyday conversations freely. They will learn and be able to conduct conversations regarding various topics and express their opinions comfortably. In addition, learners will be exposed to contemporary issues or traditional values embedded in cultural lessons. Such cultural lessons would involve basic familiarization with Korean history and customs, made more accessible through audio-visual aids."
+  },
+  {
+    "code": "LK5006",
+    "title": "KOREAN LANGUAGE LEVEL 6",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LK9005 OR",
+      "LK5005"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the following items at a more advanced level. 1) relationships and community, 2) problems and solutions in daily life, 3) careers, 4) food and health and 5) festivals and holidays. Students will learn enough vocabulary and idiomatic expressions to be able to engage in discussions and express their views on the topics outlined above. Classroom tasks in this course demand a higher level of participation in Korean."
+  },
+  {
+    "code": "LM5001",
+    "title": "MALAY LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course covers: The pronunciation system, basic language patterns and essential vocabulary (words and phrases ) to achieve basic competence in listening, speaking, reading and writing skills; Study of dialogues and graded readings covering common and everyday practices aimed at providing some insight into Malay culture; Basic communication skills such as understanding and conveying simple messages and ideas through lessons on greetings and meeting people, telling of time, numerals, colours and nature; and Writing of postcards, e-mail and beginners' composition in the form of paragraphs. This course is tailored for new learners who do not have any prior knowledge of the Malay Language. A Placement test or interview is required for all students with a Malay parent, and all Malaysian and Indonesian students, including those whose parent(s) are Malaysian or Indonesian."
+  },
+  {
+    "code": "LM5002",
+    "title": "MALAY LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LM9001 OR",
+      "LM5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course includes: Use of an expanded list of `essential' vocabulary to facilitate learning of the four language skills, viz listening, speaking, reading and writing at the post-basic level; Malay grammar comprising use of affixes, sentence construction, parts of speech, proverbs, numeral classifiers and duplicated words; Reading and understanding of graded texts (dialogues, expository materials, advertisements, posters, etc) to develop comprehension skills; and Writing of simple formal and informal letters and elementary composition."
+  },
+  {
+    "code": "LM5003",
+    "title": "MALAY LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LM9002 OR",
+      "LM5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course is a continuation of the current two levels, where more verb tenses in the past (simple past, imperfect) and future (simple future) are introduced, along with extensive vocabulary, grammar and expressions. This course focuses mainly on communication skills as it seeks to enhance students' competency in using the language. The course would provide a natural progression for students who wish to take their learning of the language to a higher level, especially for those who might need the language skills in the pursuits of their career. The course aims to provide students who have taken Malay Language level two or those with post-basic knowledge of the language, enhanced competency through wider exposure in using the language. These will be achieved by introducing students to enhanced grammar rules, wider vocabulary and more authentic learning."
+  },
+  {
+    "code": "LM5004",
+    "title": "MALAY LANGUAGE LEVEL 4",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LM9003 OR",
+      "LM5003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an unrestricted elective (UE) for any undergraduate student who already possess a level of proficiency in the language equivalent to LM9003. Through task-based learning and flipped classroom approaches, LM9004 will teach you the standards of Malay language to the level of B1.1 (CEFR). Through a facilitation and learner-centric teaching approach, you will further develop your Malay language ability at a lower-intermediate level. You will train the four fundamental language skills: reading, writing, listening, and speaking. This course will enhance your understanding of the Malay language and culture through a variety of classroom discussions and presentations. Thus, this course will be beneficial for you to travel, study and work in Malaysia or Indonesia or for Malay companies. Learning Malay also makes you more employable in a globalised economy."
+  },
+  {
+    "code": "LR5001",
+    "title": "RUSSIAN LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Students will study the Russian alphabet, numbers, greetings, the politeness system, directions and places in the city, family members and professions. Throughout the course students will learn to use basic sentence structures to express present and future actions, describe themselves and their families, to ask and answer simple questions about people, weather, hobbies, and occupations. Grammatical topics introduced in LR9001 include pronouns, cases, verb conjunctions and question forms. Through the use of authentic texts and audio-visual materials the students' knowledge of the culture in Russia and Russian speaking countries will also be enhanced and expanded."
+  },
+  {
+    "code": "LR5002",
+    "title": "RUSSIAN LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LR9001 OR",
+      "LR5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to build on language skills and cultural knowledge acquired either through the beginners' courses (LR9001) or equivalent skills attained in Russia during their student exchange programmes. In addition, they will be introduced to more facets of Russian culture, tradition and mentality of its people. Upon its completion, students will have improved their reading, listening, writing and speaking skills. Through a wide range of teaching materials, such as books, videos, web tutorials, articles, group and paired work and class debates, they will gain further insight into Russian life and culture. The language of instruction will be Russian."
+  },
+  {
+    "code": "LS5001",
+    "title": "SPANISH LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Designed for beginner students, this course in basic Spanish teaches the four skills in an integrated manner, using a communicative approach. Through the use of various written and audio-visual materials, students are trained to: provide personal information about themselves (name, address, nationality, occupation, studies, etc.), describe things and people (physical appearance and personality), locate things and people, express habitual actions at specific times, talk about festivities and special events, and express their hobbies and likes/dislikes. In addition to teaching the language, this course also aims at providing students with a global vision of the Spanish and Latin American culture from various perspectives (arts, music, festivals, gastronomy, etc.)."
+  },
+  {
+    "code": "LS5002",
+    "title": "SPANISH LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LS9001 OR",
+      "LS5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Any student, who has successfully passed Spanish Language Level 1 (or equivalent), is eligible to take this course. It is a continuation of the previous level, where more verb tenses (present progressive and imperative) are introduced along with extensive vocabulary, grammar and expressions. This course mainly focuses on communication, where audio-visual materials play a more important role than written materials. Students are supposed to have a basic knowledge of the language in order to be able to cope with this level. Throughout the course, students will learn to use more complex grammar and structures to express actions such as asking for a favour, and giving commands and suggestions. They will also be able to create dialogues based on real-life situations (buying food and clothes, visiting the doctor, asking for and giving directions, ordering food at a restaurant). Issues about Hispanic culture will be used for listening comprehension and oral interaction to help students to increase their knowledge and gain a better understanding of this rich culture."
+  },
+  {
+    "code": "LS5003",
+    "title": "SPANISH LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LS9002 OR",
+      "LS5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This Spanish course is a continuation of the previous two levels, where more verb tenses in the past (present perfect and simple past) and future (simple future) are introduced, along with extensive vocabulary, grammar and expressions. This course focuses mainly on communication, where audio-visual materials play a very important role and Spanish is the main language of instruction in the classroom. Throughout the course, students will learn to use more complex grammar and structures to express past, present and future actions, personal experiences and opinions on everyday issues. Through audio-visual and written materials, students will be exposed to Hispanic culture."
+  },
+  {
+    "code": "LS5004",
+    "title": "SPANISH LANGUAGE LEVEL 4",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LS9003 OR",
+      "LS5003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Throughout the course, students will learn to use more complex grammatical structures to express present, past and future actions; to articulate and defend an opinion on various issues; to offer advice; to propose and suggest; to express wishes; to express agreement or disagreement; to express cause and consequence: etc. Through the use of more complex authentic texts and audio-visual materials, students' knowledge of the cultures of the Spanish-speaking world will also be enhanced and expanded."
+  },
+  {
+    "code": "LS5005",
+    "title": "SPANISH LANGUAGE LEVEL 5",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LS9004 OR",
+      "LS5004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This blended learning course, based on the flipped classroom model, introduces higher-level verb tenses (simple future, conditional and pluperfect) along with a wider range of vocabulary and grammatical structures. All these, together with a wide variety of idiomatic expressions, provide the foundation for an intermediate level in the Spanish language. In this course, you will practice the four skills of the language in an integrated manner through an action-oriented approach with the aim to develop your pragmatic, linguistic and sociocultural competencies at the B1 level according to the Common European Framework of Reference for Languages (CEFR). You will further explore Hispanic cultures and societies through a wider range of personal and social situations and contexts. You will also be encouraged to become a more self-directed learner and to be creative and critical. After completing this course, you will be ready to sit for the external official examination DELE B1 (Diploma de Espa?ol como Lengua Extranjera)."
+  },
+  {
+    "code": "LT5001",
+    "title": "THAI LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed for beginners with no previous knowledge of Thai. It will introduce students to the Thai alphabet, vowels and tones as well as help them to construct simple sentences using basic vocabulary and expressions related to everyday communicative situations. Through theme-based classroom activities, students will develop the four skills of listening, speaking, reading and writing. By the end of the course, students will be able to read, write and talk in Thai about simple topics related to their daily lives."
+  },
+  {
+    "code": "LT5002",
+    "title": "THAI LANGUAGE LEVEL 2",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LT9001 OR",
+      "LT5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The various topics of daily communication introduced in Thai Level 1 will be expanded to include time, season, months of the year, travel, food, hospital visits etc. Building on the foundation of Thai Level 1, the instruction of Thai Level 2 will use theme-based classroom activities to allow, students of Thai Level 2 to further develop the four language skills of speaking, listening, writing and reading. In Thai Level 2, students will be given maximum opportunities to speak Thai in class using different methods for example; role-playing in different scenarios, doing a presentation about Thailand in a chosen topic of interest, to encourage active learning of the language."
+  },
+  {
+    "code": "LT5003",
+    "title": "THAI LANGUAGE LEVEL 3",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LT9002 OR",
+      "LT5002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Thai Language Level 3 (LT9003) is designed to advance the students' proficiency of the Thai Language. It is theme-based and includes communicative activities which help the students develop their skills in speaking, listening, writing and reading. The focus is on supporting students with their functional needs such as making or changing appointments, booking a reservation, communication with a doctor, etc. More advance sentence structures, grammatical rules, and usage of complicated words will be introduced. Thai culture will also be enriched through the context of langauge teaching."
+  },
+  {
+    "code": "LT5004",
+    "title": "THAI LANGUAGE LEVEL 4",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Placement Test or",
+      "LT9003 OR",
+      "LT5003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a continuation of Thai Language Level 3 (LT9003). It aims to improve and enhance your communicative competence using theme-based and communicative activities. You will be able to strengthen your knowledge of Thai language and culture, as well as language learning strategies in order to be effective language learners and apply the newfound skills in real-life situations through a variety of selected topics in relevant contexts and authentic communicative tasks. You are expected to write and read Thai texts using the Thai script with minimal guidance from phonetic symbols during the course. LT9004 will teach you the Thai language to the level of A2.2 to B1.1 (CEFR)."
+  },
+  {
+    "code": "LV5001",
+    "title": "VIETNAMESE LANGUAGE LEVEL 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "No prior knowledge of the language. Declaration is required."
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed for beginners with no previous knowledge of Vietnamese. It will develop the four skills of speaking, listening, writing and reading in Vietnamese in an integrated manner. Students will be introduced to the Vietnamese writing system as well as the pronunciation of alphabets and tones. Each lesson will cover pronunciation drills, conversational dialogues, and practice in vocabulary and grammar. Through a range of communicative activities, students will learn to carry out simple conversations on common topics related to their daily life. By the end of the course, they will develop some general understanding of the culture, customs and history of Vietnam."
+  },
+  {
+    "code": "MA1701",
+    "title": "INTRODUCTION TO AEROSPACE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide you with a historical perspective of aerospace engineering, and fundamental knowledge in core competencies in aerospace engineering in the subjects of aerodynamics, propulsion, flight mechanics, structures and materials, as well as aircraft support systems. You will also be exposed to flight engineering and integrated system platforms and gain an overview of local strengths in aerospace engineering."
+  },
+  {
+    "code": "MA2003",
+    "title": "INTRODUCTION TO THERMO-FLUIDS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Properties of pure substances. Work and heat. Energy and the first law. Energy balance for closed systems and steady state control volumes. Submerged surfaces and bodies. Elementary fluid dynamics."
+  },
+  {
+    "code": "MA2004",
+    "title": "MANUFACTURING PROCESSES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MA2024"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide you with a basic understanding of the manufacturing processes used in industry. These include their fundamental principles, theory, quality issues and applications. Dimension and surface measurement is also included."
+  },
+  {
+    "code": "MA2024",
+    "title": "ENGINEERING MATERIALS & MANUFACTURING PROCESSES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MA2004"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)-Non Direct Entry",
+      "(Admyr 2011-2021)",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This core Engineering course will introduce the fundamental knowledges of engineering materials - with emphasis on metals and alloys - and their manufacturing processes. The first half of the course will lay the foundations for the understanding of the relationships between structure at the atomic level to the properties of materials, the role of defects in determining properties, and the basics as to how alloys are designed. The second part of the course provides the student with a basic understanding of the manufacturing processes used in industry. These include their fundamental principles, theory, quality issues and applications. This course provides mechanical engineering students the foundations for designing and selecting materials for virtually any engineering application, as well as understanding the common manufacturing processes used in industry."
+  },
+  {
+    "code": "MH1810",
+    "title": "MATHEMATICS 1",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1011",
+      "CZ1011",
+      "MH1100",
+      "MH1101",
+      "MH1800",
+      "MH1801",
+      "MH2813"
+    ],
+    "not_available_to_programme": [
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In this course, the basic concepts of limits, differentiation and integration are introduced. Applications of differential and integral calculus are included. In addition, the course also covers topics on complex numbers, vectors and matrices. It aims to prepare the first year engineering students for further courses in engineering disciplines and more advanced mathematics in year 2. This course aims to equip you with 1. mathematical knowledge and analytical skills so that you are able to apply techniques of advanced calculus (along with their existing mathematical skills) to solve engineering or scientific problems whenever applicable; 2. mathematical reading skills so that you can read and understand related mathematical content in the basic and popular scientific and engineering literature; and 3. mathematical communication skills so that you can effectively and rigorously present your mathematical ideas to mathematicians, scientists and engineers."
+  },
+  {
+    "code": "MH1812",
+    "title": "DISCRETE MATHEMATICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1001",
+      "CZ1001",
+      "MH1301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course serves as an introduction to various topics in discrete mathematics. Familiarity with formal analysis through simple problems in some basic discrete structures is a key objective rather than knowing these structures in depth. Specifically, the main aim is to learn topics from the following broad areas of discrete mathematics: number theory, logic, combinatorics, and graph theory. This course aims to provide students with a solid mathematical foundation and is intended for first year computer science and computer engineering students."
+  },
+  {
+    "code": "ML0002",
+    "title": "CAREER POWER UP!",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [
+      "ML0001"
+    ],
+    "mutually_exclusive": [
+      "AB1001"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG",
+      "DSAI"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2018-onwards)-Non Direct Entry",
+      "(Admyr 2019-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In today's competitive world, it is essential that students learn the crucial career skills early to ensure they have a competitive edge sharpened with a heightened sense of workplace values and ethics. This course imparts to students practical skills needed to survive and succeed in the modern workplace while emphasizing on professional ethics. All students will be exposed to effective business communication and workplace skills ranging from building relationship with different personalities, understanding of cross-cultural diversity, inter-cultural communication, conflict management, problem solving and decision making, time management, planning and organization, team work, and more. Following which they will learn how to network and dine with proper etiquette in professional settings. Lastly, to aid them in their transition to the working life, the course will impart the skills behind coping and succeeding in a new workplace, while upholding high standard of work ethics."
+  },
+  {
+    "code": "ML0003",
+    "title": "KICKSTART YOUR CAREER SUCCESS",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a foundation module on essential career preparation skills. This course equips you with practical skills needed in your personal development and job search to help you succeed in a new disruptive workplace. This course is open to all Year 2 students. In today's competitive world, it is crucial that career preparation skills are learnt early to ensure that competitive edge is sharpened with a heightened sense of workplace values and ethics."
+  },
+  {
+    "code": "ML0004",
+    "title": "CAREER & INNOVATIVE ENTERPRISE FOR THE FUTURE WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ACDA",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BSPY",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CVEC",
+      "ECDS",
+      "EEE",
+      "EEEC",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "IEEC",
+      "IEM",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHMS",
+      "PHY",
+      "SCED"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)-Non Direct Entry",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In today's competitive and rapidly evolving world, students must equip themselves with critical career skills and a deep sense of workplace values and ethics and possess an innovative and enterprising ethos whether they are joining an established enterprise or starting a new enterprise. This course is a compulsory foundation module for all NTU students on essential career preparation and innovative enterprising skills and it should be completed by students before they start their internship. This course equips students with practical skills needed in their career preparation and development (including for internship and graduation job search) to help students succeed in a new disruptive workplace. Students will learn the fundamental techniques and concepts of Business Model Innovation, and apply them in teams to find innovative and viable solutions to real-life problems posed by partnering enterprises. In the process of working in teams, students will further hone their teamwork skills."
+  },
+  {
+    "code": "MS1012",
+    "title": "MATERIALS PHYSICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MS1002"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Electric fields. Gauss' law. Electric potential and electric potential energy. Capacitance and dielectrics. Ohm's law. Direct current circuits. Magnetic fields. Sources of magnetic fields. Ampere's law. Gauss' law in magnetism. Ampere-Maxwell law. Faraday's law. Inductance. Electromagnetic waves and spectrum. Relativity. Blackbody radiation and Planck's hypothesis. Photoelectric effect. Compton effect. Atomic spectra. Bohr model of the atom. Quantum numbers. Pauli exclusion principle and Hund's rule. Electronic configurations. Wave particle duality. Heisenberg uncertainty principle. Molecular Orbitals. Ionic bonding. Madelung Constant."
+  },
+  {
+    "code": "MS1014",
+    "title": "MATERIALS CHEMISTRY II",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MS2003"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to provide you with fundamental understanding of basic organic chemistry, including polymer chemistry, surfactant chemistry and inorganic chemistry, including reactivity of metals and non-metals and their compounds including metal coordination complexes."
+  },
+  {
+    "code": "SC1003",
+    "title": "INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2211",
+      "BS1009",
+      "CE1003",
+      "CE1103",
+      "CH2107",
+      "CV1014",
+      "CZ1003",
+      "CZ1103"
+    ],
+    "not_available_to_programme": [
+      "BEEC",
+      "BIE",
+      "CBE",
+      "CBEC",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ENE",
+      "ENEC",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ESPP",
+      "IEEC",
+      "IEM",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME",
+      "ME(DES)",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHY",
+      "REP"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computational thinking (CT) is the process of analysing a problem then designing and expressing its solution in such a way that a computer can effectively carry it out. It includes a number of characteristics, such as breaking a problem into small and repetitive ordered steps, logically ordering and analyzing data and creating solutions that can be effectively implemented as programs running on computer. The aim of this course is hence to take students with no prior experience of thinking in a computational manner to a point where you can derive simple algorithms and code the programs to solve some basic problems in your domain of studies. Student will also learn about basic program construct and simple data structures. In addition, the course will include topics to appreciate the internal operations of a processor."
+  },
+  {
+    "code": "SC1004",
+    "title": "LINEAR ALGEBRA FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810 & SC1003(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE1004",
+      "CE1012",
+      "CE1104",
+      "CZ1012",
+      "CZ1104"
+    ],
+    "not_available_to_programme": [
+      "DSAI",
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEM",
+      "MACS",
+      "MAEO",
+      "MATH",
+      "PHY"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you to learn mathematical concepts related to linear algebra. You will develop set of mathematical skills for applications in computer science and engineering, e.g., machine learning, computer graphics, data science etc."
+  },
+  {
+    "code": "SC1005",
+    "title": "DIGITAL LOGIC",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1005",
+      "CE1105",
+      "CZ1005",
+      "CZ1105",
+      "EE2004",
+      "EE2104",
+      "IE2104",
+      "IM1004"
+    ],
+    "not_available_to_programme": [
+      "BUS(BA)",
+      "EEE",
+      "EEEC",
+      "ENE(Direct Entry)",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your ability to analyse and design digital circuits. The design and behaviour of modern digital equipment (e.g. mobile phones and personal computers) are based on functions of binary variables. This course provides you the knowledge to analyse the theoretical characteristics and the skills required for practical technology driven implementations of digital circuits. This course provides an introductory perspective of digital circuits design. It is relevant for anyone pursuing a career in the ICT industry - including those in digital systems, computer architecture and microprocessor based systems design."
+  },
+  {
+    "code": "SC1006",
+    "title": "COMPUTER ORGANISATION & ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1005(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE1006",
+      "CE1106",
+      "CZ1006",
+      "CZ1106"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer Hardware Decomposition; Solid-state memory subsystems; Magnetic memory; Input/Output techniques; The central processor unit; How high level code is `executed?; Quantifying and comparing performance; Computer arithmetic; Towards higher speed."
+  },
+  {
+    "code": "SC1007",
+    "title": "DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CE1007",
+      "CE1107",
+      "CZ1007",
+      "CZ1107"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to (i) teach the concepts, implementations and applications of data structures such as arrays, linked lists, stacks, queues and trees that are important for building efficient algorithms; (ii) provide an introduction to algorithm analysis and design. These are essential for future computer science and computer engineering courses."
+  },
+  {
+    "code": "SC1015",
+    "title": "INTRODUCTION TO DATA SCIENCE & ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CB0494",
+      "CE1015",
+      "CE1115",
+      "CE4073",
+      "CH0494",
+      "CV0003",
+      "CZ1015",
+      "CZ1016",
+      "CZ1115",
+      "CZ4073",
+      "EE0005",
+      "IE0005",
+      "MA0218",
+      "MS0003",
+      "PS0002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course will start with the core principles of Data Science, and will equip you with the basic tool and techniques of data handling, exploratory data analysis, data visualization, data-based inference, and data-focussed communication. The course will also introduce you to the fundamentals of Artificial Intelligence - state space representation, uninformed search, and reinforcement learning. The course will motivate you to work closely with data and make data-driven decisions in your field of study. The course will also touch upon ethical issues in Data Science and Artificial Intelligence, and motivate you to explore the cutting-edge applications related to Big Data, Neural Networks and Deep Learning. Python will be the language of choice to introduce hands-on computational techniques."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SP0061",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Only for Premier Scholars Programme students."
+    ],
+    "mutually_exclusive": [
+      "CC0007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  }
+]

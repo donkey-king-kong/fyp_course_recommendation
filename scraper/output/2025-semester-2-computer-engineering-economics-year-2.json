@@ -1,0 +1,642 @@
+[
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world. By the end of the course, you would have developed an awareness for, and a system thinking approach to, sustainability, which you can continue to develop no matter which discipline or career path you choose to embark on."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "HE2002",
+    "title": "MACROECONOMICS II",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1002 OR",
+      "AB0901 OR",
+      "HE9091 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Macroeconomics is the study of the economy as a system. While microeconomics is focused on the choices of an individual household or firm and interactions in a particular market, macroeconomics examines the whole economy and is therefore concerned with aggregates. The demands of all the individual consumers and the supply provided by all individual firms are aggregated together into a whole. The role of the government and the financial markets in the economy also become much clearer, as do the effects of international trade and financial transactions. Macroeconomics makes it possible to examine certain questions which relate to the whole economy, and which are difficult to answer if we just focus on any individual market. Issues such as unemployment, inflation and the business cycle can be studied much more effectively using the tools of macroeconomic analysis and these and other issues will be covered in the subject."
+  },
+  {
+    "code": "HE3003",
+    "title": "ECONOMETRICS II",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2003"
+    ],
+    "mutually_exclusive": [
+      "HE3603"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ECMA",
+      "ECPP",
+      "ECPS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Topics covered include misspecification analysis, maximum likelihood and instrumental variable estimation, univariate time series analysis and autoregressive distributed lag models."
+  },
+  {
+    "code": "HE3010",
+    "title": "MONEY & BANKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE2007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers a systematic analysis of monetary theories and the financial system. Apart from exposing you to different approaches in monetary analysis, the course places a special emphasis on the up-to-date analysis of how costs affect financial structure and monetary policy. The course will cover the structure and importance of the financial system, the functions of money, behavior of interest rates, financial structure and asymmetric information, bank management and regulation, debates on macroeconomic and monetary policies, the targets and instruments of monetary policies, the transmission mechanism of monetary policy and its effectiveness, money and inflation, rational expectations and its applications."
+  },
+  {
+    "code": "HE3012",
+    "title": "FINANCIAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202 & HE5091 OR",
+      "AB1202 & HE1001 OR",
+      "HE1001 & MH1820 OR",
+      "HE1001 & MH1820 OR",
+      "AB1202 & HE9091 OR",
+      "HE1004 & HE9091 OR",
+      "HE1005 & HE9091 OR",
+      "AB0901 & AB1202 OR",
+      "AB1202 & HE9092 OR",
+      "HE1001 & MH2500 & MH3500 OR",
+      "AB1202 & HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE3007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers two big questions: first, what determines economic agents? investment decisions, and second, how are financial assets priced. Major topics include: (1) mean-variance analysis; (2) capital asset pricing model; (3) valuation of bonds, stocks and derivatives; and (4) life cycle portfolio choice. We also cover basic concepts in corporate finance."
+  },
+  {
+    "code": "HE3013",
+    "title": "ECONOMICS OF CORPORATE FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002 & HE2003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "If you are curious on why companies and the financial markets behave the way they do from the orientation of economics, this course is for you to learn and to thrive. It aims to provide you a solid economic foundation to the theory and practice of corporate finance in a modern world. You will enjoy an intellectual stimulation and enhance your cognitive ability by commanding the core theory of corporate finance at a rigorous level. You may apply what you have learned to various interesting corporate world problems and develop potential research topics for your FYP and for further study. You could become more prepared for the competitive job market with the financial knowledge and background offered in this course. You could also generate insights on the basic trade-offs between today and tomorrow and between risk and return and apply them to your I personal investment and life-time decisions."
+  },
+  {
+    "code": "HE3020",
+    "title": "INTERNATIONAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE9092 OR",
+      "HE2002 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE4003"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to develop a coherent modern analytical framework for thinking about all of the fundamental problem in international Economics. The course deals with many questions that are central to today's policy world such as current accounts, government budget deficits, speculative attacks and the implications of the expanding global markets for foreign assets."
+  },
+  {
+    "code": "HE3021",
+    "title": "DEVELOPMENT ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE1002 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE3621"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course will focus on microeconomic analysis of issues in developing countries. The main question will be: what can be done to help the world's poor to improve their wellbeing? Through this course, you will gain a basic understanding of development economics in topics such as poverty, health, education, and governance. You will also have the opportunity to connect these theoretical ideas to real world issues."
+  },
+  {
+    "code": "HE3023",
+    "title": "LABOUR ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE4103"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course examines how labor markets function and how organizations allocate, motivate, and manage human resources. The first half focuses on classical labor economics - analyzing labor supply and demand, human capital investment, wage determination, and inequality. The second half introduces the economics of organizations, exploring how incentives, contracts, and organizational structures shape productivity and employment relationships. The course blends theory with empirical evidence and applies concepts to real-world labor and firm-level issues."
+  },
+  {
+    "code": "HE3025",
+    "title": "HEALTH ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HU9001 OR",
+      "HE5091 OR",
+      "HJ5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to study the basic principles of economics of health and healthcare. We will cover topics such as production of health, market for insurance and its issues such as adverse selection and moral hazard, and supply of physician and organization of hospitals and payments systems. Lastly we will cover recent issues in health economics such as role of health in economic development, persistent issues of high medical inflation, and behavioral aspects of health and sin-taxes. The course prepares you for a career in government (e.g. Ministry of Health, Ministry of Finance), private sector (policy think tanks and consultancies addressing and advising on organization of healthcare), and academia."
+  },
+  {
+    "code": "HE3135",
+    "title": "INTRODUCTION TO DIGITAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3001 & HE3002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The digital revolution has profoundly transformed the global economy. Digital technologies are reshaping business models, creating new varieties of goods and services, and emphasizing the importance of intangible assets. Understanding today's world requires a deep engagement with the changes brought about by the digital economy. This course aims to provide an in-depth exploration of the critical topics and emerging phenomena in the digital economy. Students will gain insights into both the macroeconomic and microeconomic implications of digital technologies, blending theoretical economic principles with real-world case studies. The course addresses key issues such as fintech, big data, privacy, and artificial intelligence, preparing students to navigate and contribute to the evolving digital landscape."
+  },
+  {
+    "code": "HE3621",
+    "title": "INTERMEDIATE ECONOMETRICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2005 OR",
+      "HE2004 (Min Grade :A)"
+    ],
+    "mutually_exclusive": [
+      "HE3021"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE4041",
+    "title": "COST-BENEFIT ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3001 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "MH1820",
+    "title": "INTRODUCTION TO PROBABILITY & STATISTICAL METHODS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1004 (Applicable to ECPP ,ECON ,ECMA ,ECPS)"
+    ],
+    "mutually_exclusive": [
+      "AB1202",
+      "MH1800",
+      "MH2500",
+      "MH2814",
+      "MT2001"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "AISC",
+      "ARED",
+      "BACF",
+      "BASA",
+      "BCE",
+      "BCG",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CE",
+      "CEE",
+      "CHEM",
+      "CMED",
+      "COMP",
+      "CS",
+      "CSC",
+      "DSAI",
+      "EEE",
+      "EESS",
+      "ENE",
+      "ENG",
+      "ESPP",
+      "IEM",
+      "MACS",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "PESC",
+      "PHMS",
+      "PHY",
+      "REP",
+      "ROBO",
+      "SCED",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2017)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ASEC",
+      "BEEC",
+      "CBEC",
+      "CEEC",
+      "CSEC",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEEC",
+      "ENEC",
+      "IEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MTEC"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides a good foundation in probability and statistical inference. Basic ideas and methodologies in probability and statistics which are useful for economics students are introduced. It also aims to prepare students for higher level applied and theoretical econo-metric courses."
+  },
+  {
+    "code": "ML0003",
+    "title": "KICKSTART YOUR CAREER SUCCESS",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a foundation module on essential career preparation skills. This course equips you with practical skills needed in your personal development and job search to help you succeed in a new disruptive workplace. This course is open to all Year 2 students. In today's competitive world, it is crucial that career preparation skills are learnt early to ensure that competitive edge is sharpened with a heightened sense of workplace values and ethics."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100",
+      "MH2500"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007 OR",
+      "SC1007 & SC1124"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101",
+      "SC2301"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) solve problems using a number of approaches like Divide-and-conquer, Greedy and Dynamic programming. Algorithms for sorting, graphs, the longest common subsequence, Knapsack, coin change and string matching are studied as examples. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003 OR",
+      "SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CT2003",
+      "CZ2002",
+      "SC2302"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation, the use of inheritance and polymorphism. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "CZ2005"
+    ],
+    "not_available_to_programme": [
+      "CEE 1",
+      "EEE 1",
+      "ENE 1",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ME 1",
+      "ME(DES) 1",
+      "ME(IMS) 1",
+      "ME(RMS) 1"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your understanding of fundamental concepts and principles of modern operating systems, and to build your knowledge on the design and implementation of main operating system components."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  },
+  {
+    "code": "SC2103",
+    "title": "DIGITAL SYSTEMS DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1005"
+    ],
+    "mutually_exclusive": [
+      "CE2003",
+      "CE2103"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ME",
+      "ME 1",
+      "ME(DES)",
+      "ME(DES) 1",
+      "ME(IMS)",
+      "ME(IMS) 1",
+      "ME(RMS)",
+      "ME(RMS) 1",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(RMS)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop skills in digital hardware design to meet basic industry expectations. Here, the principles established in CE1005/CZ1005/SC1005-Digital Logic will be extended to encompass circuits of greater complexity. These circuits are no longer implemented using multiple discrete logic elements, as presented in CE1005/CZ1005/SC1005, but rather use Application Specific Gate Array (ASIC) or Field Programmable Gate Array (FPGA) technologies. Both of these technologies can accommodate circuits of complexity equivalent to many millions of gates. This course will focus on FPGA technology as it is gaining commercial popularity (due to the cost of ASIC Implementations). The necessary logic and connectivity for both technologies is synthesised by software tools from code written in a Hardware Description Language. As such, this course presents you with circuit design techniques for more advanced systems in a methodical manner based on modern design techniques."
+  },
+  {
+    "code": "SC2104",
+    "title": "SENSORS, INTERFACING & DIGITAL CONTROL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE3002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The course aims to teach the students the operation principles of some common digital sensors used in today's control systems design and implementation. Students will also learn the interfacing techniques used to transfer data between the sensors and controller, and how the data can be processed by using appropriate digital signal processing algorithms. Student will then learn the basic operation principles of control systems, and how digital sensors are used in such systems to implement feedback control based on digital controller."
+  },
+  {
+    "code": "SC2107",
+    "title": "MICROPROCESSOR SYSTEM DESIGN & DEVELOPMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE2007",
+      "CE2107"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This core engineering course aims to develop your understanding of the architecture of a microprocessor system and the software development process of a microprocessor based embedded system. The course will expose you to various design and application considerations involved in developing the software and hardware. This includes power management, signal chain handling, memory interfacing and finite state machine design. All of which will be applied in the laboratory sessions using a microprocessor based robotic hardware as the platform."
+  }
+]

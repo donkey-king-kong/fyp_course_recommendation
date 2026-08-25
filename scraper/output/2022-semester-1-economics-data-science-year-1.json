@@ -1,0 +1,396 @@
+[
+  {
+    "code": "CC0001",
+    "title": "INQUIRY & COMMUNICATION IN AN INTERDISCIPLINARY WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0601",
+      "HW0105",
+      "HW0106",
+      "HW0111",
+      "HW0128",
+      "HW0188",
+      "HW0209"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Researchers agree that writing is a tool for thinking (Menary, 2007; Klein & Boscolo, 2016; Miller and Jurecic, 2016; Reis, n.d.). As Reis explains, 'The bodily act of writing externalizes our thoughts, and the imposed structure (the written word) provides a vehicle by which those thoughts may be reorganized into new thinking, a new way of seeing the thoughts or a new way of organizing thoughts.' Miller and Jurecic similarly argue that 'writers discover what they think not before they write but in the act of writing' (2016, p. 60). One of the main aims of this course is to allow you to experience writing as a tool for thinking and to practice expressing ideas in formal writing and oral communication. While you will have the opportunity to understand and practice the genre conventions that are specific to your discipline later in your studies, this first common communication course is designed to help you form habits of mind that will serve you across the university and even in the world outside of the university. Taken by all first-year undergraduates, this foundational course will develop your written and oral communication skills, as well as your ability to read and analyze texts. It will help you to understand revision as integral to the process of composition, to convey your interpretations and ideas with confidence and clarity, and to consider audience and purpose when you communicate."
+  },
+  {
+    "code": "CC0002",
+    "title": "NAVIGATING THE DIGITAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1401"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "With digitalization now becoming the new normal in our daily life, this course seeks to equip students from different disciplines with problem-solving techniques with the aid of computers and to enable them to acquire some common but essential digital skills that are crucial in today's workforce. In this course, students will learn how to apply the concept of computational thinking and quantitative reasoning to solve problem and analyse data. They will also learn how to identify online threats and understand the principles of ethics and intellectual property rights in the digital world. They will also be exposed to current issues in the digital world, which they can better understand through the logics of computational thinking and quantitative reasoning, such as cybersecurity and the rise of fake news. In addition, students will also learn how to use some of the latest online tools for effective presentation, communication, and collaborative skills in teams while learning the course."
+  },
+  {
+    "code": "CC0003",
+    "title": "ETHICS & CIVICS IN A MULTICULTURAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip students with the philosophical foundations necessary to understand theories of ethics and subsequently apply those theories to real-life scenarios and issues. It also aims to enable students to critically assess the civic institutions that structure their local and global communities. To these ends, the course will examine the nature of ethics, its understanding across different cultures, and how it is manifested in concepts, social structures, and governance institutions. Topics to be explored include human rights, democracy, freedom of speech, inequality, and sexuality. The rights and duties of citizenship shall be a unifying theme. Students will think through assumptions they hold on all of these matters. They will be provided with the tools to understand various and even contradictory perspectives on these important issues."
+  },
+  {
+    "code": "CC0005",
+    "title": "HEALTHY LIVING & WELLBEING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is part of the NTU 2025 Education - Common Foundational & Interdisciplinary Collaborative Curriculum (ICC). It aims to provide multi-disciplinary competence in a cross-disciplinary, collaborative learning environment, with student interaction and collaboration across schools as a key learning foundation. As the title connotes, the main objective of this undergraduate course is to examine what constitutes living a good, healthy and flourishing life. According to research, individuals around the world pursue this 'flourishing life' in different ways, be it through improving one's physical fitness, seeking authentic relationships with others, or making a positive change in the environment. Thus, knowing and understanding how the different components of a 'good life' contribute to one's overall functioning is critical to one's healthy wellbeing. The latter, in turn, affords many benefits such as better health (physical, mental and emotional health) and stronger relationships. By the end of this course, you would have developed an awareness of what constitutes living a healthy and flourishing life, both of which indirectly contribute to a successful undergraduate education."
+  },
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "HE1001",
+    "title": "MICROECONOMICS I",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0901",
+      "HE5091",
+      "HE9091"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The Singaporean Government is increasingly engaging the public, and as economists we are responsible for contributing towards better public decisions. This is especially important as good public policy processes place value on social impact, seeks to understand the behavior of Singapore's diverse society, and makes sense and use of increasingly abundant behavioral data. As the Singaporean economy gets more advanced and complex, and citizens get better educated and informed, we rely on decisions strengthened by sound economic thinking. The economist must move towards more rigorous reasoning across the levels of household, corporate, and public choice. In this course we apply fundamental microeconomic principles complemented by behavioral economics to various current everyday concerns in Singapore. The course aims to deliver a progressive and rigorous introduction to basic concepts and models of microeconomics, applied to current trends local and global. Microeconomics is one of the three core pillars of an Economics major. This is an important module that will serve as a prerequisite for almost all major PE modules. The first part of the course covers the theory of individual decision-making in consumption, risk and labor. The second part of the course covers the theory of firms making production decisions when operating under various market structures, in particular price discrimination with market power and strategic interactions between firms. This course will also expose students to new developments in the field of microeconomics which have now come to assume a central role, in particular behavioral economics. Students will learn basic theories that can be abstract and simple but yet so relevant and powerful in explaining decision problems in our everyday lives. On the one hand, it will give students with either no previous economics training a chance to close the gap with those with a stronger background. On the other hand, it will give everyone a chance to appreciate microeconomics in action right from the start of their education at NTU - a feature that is surprisingly amiss in many Economics undergraduate programs worldwide."
+  },
+  {
+    "code": "HE1002",
+    "title": "MACROECONOMICS I",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0901",
+      "HE5091",
+      "HE9091"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The course aims to provide first-year college students with a sound understanding on the structure and functioning of the economy as a whole. As you are taking an introductory course, you are not expected to have any prior knowledge in economics. Instead, the principles you learn from this course will provide a solid foundation and develop a strong interest for your further study of intermediate and advanced macroeconomics."
+  },
+  {
+    "code": "HE3010",
+    "title": "MONEY & BANKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE2007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers a systematic analysis of monetary theories and the financial system. Apart from exposing you to different approaches in monetary analysis, the course places a special emphasis on the up-to-date analysis of how costs affect financial structure and monetary policy. The course will cover the structure and importance of the financial system, the functions of money, behavior of interest rates, financial structure and asymmetric information, bank management and regulation, debates on macroeconomic and monetary policies, the targets and instruments of monetary policies, the transmission mechanism of monetary policy and its effectiveness, money and inflation, rational expectations and its applications."
+  },
+  {
+    "code": "HE3022",
+    "title": "PUBLIC ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to study the role of government in addressing market failures, within social domains such as education, healthcare, and retirement financing, through policies like taxation and subsidies. The course is for students interested in topics such as taxation, education, healthcare financing, government budgets, economic efficiency, and equity. The course prepares you for a career in government (e.g. Ministry of Finance, Central Provident Fund), private sector (policy think tanks and consultancies addressing and advising on market failures), and academia."
+  },
+  {
+    "code": "HW0228",
+    "title": "SCIENTIFIC COMMUNICATION",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HW0128 OR",
+      "HW0111 OR",
+      "CC0001"
+    ],
+    "mutually_exclusive": [
+      "HW0202"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of this course is to introduce you to the conventions of scientific texts using a project-based approach. It focuses on the linguistic features, rhetoric and structure of scientific texts such as critiques, proposals and academic reports. In addition, you have an opportunity to share your research ideas with your peers through class presentations on your research proposals and projects. The course also includes conferencing sessions with tutors for discussion of your project work."
+  },
+  {
+    "code": "MH1805",
+    "title": "CALCULUS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CY1601",
+      "MH1100",
+      "MH1101",
+      "MH1802"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2018)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with the subject knowledge, logical reasoning and analytical skills so that you are able to apply the concepts and techniques of calculus of one variable to solve problems encountered in science."
+  },
+  {
+    "code": "MH1812",
+    "title": "DISCRETE MATHEMATICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1001",
+      "CZ1001",
+      "MH1301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course serves as an introduction to various topics in discrete mathematics. Familiarity with formal analysis through simple problems in some basic discrete structures is a key objective rather than knowing these structures in depth. Specifically, the main aim is to learn topics from the following broad areas of discrete mathematics: number theory, logic, combinatorics, and graph theory. This course aims to provide students with a solid mathematical foundation and is intended for first year computer science and computer engineering students."
+  },
+  {
+    "code": "MH2802",
+    "title": "LINEAR ALGEBRA FOR SCIENTISTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "H2 Maths or equivalent"
+    ],
+    "mutually_exclusive": [
+      "CY1602",
+      "MH1200",
+      "MH1201",
+      "MH2800",
+      "RE1021"
+    ],
+    "not_available_to_programme": [
+      "PHY(2004-2016)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you to: 1. Acquire a wider range of mathematical concepts related to vector spaces and linear algebra. 2. Develop a strong set of mathematical skills for upper level Physical and Computing Science courses. 3. Develop thinking, reasoning, communication and modelling skills through a mathematical approach to problem-solving 4. Connect ideas within mathematics and apply mathematics in the contexts of Physical and Computing Science courses. 5. Experience and appreciate the rigour and abstraction in the discipline."
+  },
+  {
+    "code": "ML0004",
+    "title": "CAREER & INNOVATIVE ENTERPRISE FOR THE FUTURE WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ACDA",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BSPY",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CVEC",
+      "ECDS",
+      "EEE",
+      "EEEC",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "IEEC",
+      "IEM",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHMS",
+      "PHY",
+      "SCED"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)-Non Direct Entry",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In today's competitive and rapidly evolving world, students must equip themselves with critical career skills and a deep sense of workplace values and ethics and possess an innovative and enterprising ethos whether they are joining an established enterprise or starting a new enterprise. This course is a compulsory foundation module for all NTU students on essential career preparation and innovative enterprising skills and it should be completed by students before they start their internship. This course equips students with practical skills needed in their career preparation and development (including for internship and graduation job search) to help students succeed in a new disruptive workplace. Students will learn the fundamental techniques and concepts of Business Model Innovation, and apply them in teams to find innovative and viable solutions to real-life problems posed by partnering enterprises. In the process of working in teams, students will further hone their teamwork skills."
+  },
+  {
+    "code": "SC1003",
+    "title": "INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2211",
+      "BS1009",
+      "CE1003",
+      "CE1103",
+      "CH2107",
+      "CV1014",
+      "CZ1003",
+      "CZ1103"
+    ],
+    "not_available_to_programme": [
+      "BEEC",
+      "BIE",
+      "CBE",
+      "CBEC",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ENE",
+      "ENEC",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ESPP",
+      "IEEC",
+      "IEM",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME",
+      "ME(DES)",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHY",
+      "REP"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computational thinking (CT) is the process of analysing a problem then designing and expressing its solution in such a way that a computer can effectively carry it out. It includes a number of characteristics, such as breaking a problem into small and repetitive ordered steps, logically ordering and analyzing data and creating solutions that can be effectively implemented as programs running on computer. The aim of this course is hence to take students with no prior experience of thinking in a computational manner to a point where you can derive simple algorithms and code the programs to solve some basic problems in your domain of studies. Student will also learn about basic program construct and simple data structures. In addition, the course will include topics to appreciate the internal operations of a processor."
+  },
+  {
+    "code": "SC1007",
+    "title": "DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CE1007",
+      "CE1107",
+      "CZ1007",
+      "CZ1107"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to (i) teach the concepts, implementations and applications of data structures such as arrays, linked lists, stacks, queues and trees that are important for building efficient algorithms; (ii) provide an introduction to algorithm analysis and design. These are essential for future computer science and computer engineering courses."
+  }
+]

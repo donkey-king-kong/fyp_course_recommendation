@@ -1,0 +1,958 @@
+[
+  {
+    "code": "HC3001",
+    "title": "MODERN CHINESE LITERATURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "B4 & above in 0 level Chinese or equivalent"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides a survey of modern Chinese literature from around the May Fourth Movement (early 20th century) to the present. Through critical reading of literary texts, students will have an in-depth understanding of the literary and aesthetical trend in writing, social and intellectual concerns of the writers, cultural and political contexts of the writers and their works, etc."
+  },
+  {
+    "code": "HC3003",
+    "title": "SOUTHEAST ASIAN CHINESE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "B4 & above in O level Chinese or equivalent"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course traces the migration of Chinese to Southeast Asia in the 19th century and examines their relationships and contributions to the hostland and homeland in the 20th century. It seeks to understand how Chinese migrant experiences across Southeast Asia have evolved, and how overseas Chinese identity changed in response to changing socio-economic and political conditions in Southeast Asia and China. Discussion includes such important issues as local anti-Chinese movements, development of Chinese education, changing consciousness and identities, and the relations between Southeast Asian Chinese and China. This course serves as the foundation for future courses on the overseas Chinese."
+  },
+  {
+    "code": "HE3003",
+    "title": "ECONOMETRICS II",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2003"
+    ],
+    "mutually_exclusive": [
+      "HE3603"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ECMA",
+      "ECPP",
+      "ECPS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Topics covered include misspecification analysis, maximum likelihood and instrumental variable estimation, univariate time series analysis and autoregressive distributed lag models."
+  },
+  {
+    "code": "HE3010",
+    "title": "MONEY & BANKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE2007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers a systematic analysis of monetary theories and the financial system. Apart from exposing you to different approaches in monetary analysis, the course places a special emphasis on the up-to-date analysis of how costs affect financial structure and monetary policy. The course will cover the structure and importance of the financial system, the functions of money, behavior of interest rates, financial structure and asymmetric information, bank management and regulation, debates on macroeconomic and monetary policies, the targets and instruments of monetary policies, the transmission mechanism of monetary policy and its effectiveness, money and inflation, rational expectations and its applications."
+  },
+  {
+    "code": "HE3012",
+    "title": "FINANCIAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202 & HE5091 OR",
+      "AB1202 & HE1001 OR",
+      "HE1001 & MH1820 OR",
+      "HE1001 & MH1820 OR",
+      "AB1202 & HE9091 OR",
+      "HE1004 & HE9091 OR",
+      "HE1005 & HE9091 OR",
+      "AB0901 & AB1202 OR",
+      "AB1202 & HE9092 OR",
+      "HE1001 & MH2500 & MH3500 OR",
+      "AB1202 & HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE3007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers two big questions: first, what determines economic agents? investment decisions, and second, how are financial assets priced. Major topics include: (1) mean-variance analysis; (2) capital asset pricing model; (3) valuation of bonds, stocks and derivatives; and (4) life cycle portfolio choice. We also cover basic concepts in corporate finance."
+  },
+  {
+    "code": "HE3013",
+    "title": "ECONOMICS OF CORPORATE FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002 & HE2003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "If you are curious on why companies and the financial markets behave the way they do from the orientation of economics, this course is for you to learn and to thrive. It aims to provide you a solid economic foundation to the theory and practice of corporate finance in a modern world. You will enjoy an intellectual stimulation and enhance your cognitive ability by commanding the core theory of corporate finance at a rigorous level. You may apply what you have learned to various interesting corporate world problems and develop potential research topics for your FYP and for further study. You could become more prepared for the competitive job market with the financial knowledge and background offered in this course. You could also generate insights on the basic trade-offs between today and tomorrow and between risk and return and apply them to your I personal investment and life-time decisions."
+  },
+  {
+    "code": "HE3020",
+    "title": "INTERNATIONAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE9092 OR",
+      "HE2002 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE4003"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to develop a coherent modern analytical framework for thinking about all of the fundamental problem in international Economics. The course deals with many questions that are central to today's policy world such as current accounts, government budget deficits, speculative attacks and the implications of the expanding global markets for foreign assets."
+  },
+  {
+    "code": "HE3021",
+    "title": "DEVELOPMENT ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE1002 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE3621"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course will focus on microeconomic analysis of issues in developing countries. The main question will be: what can be done to help the world's poor to improve their wellbeing? Through this course, you will gain a basic understanding of development economics in topics such as poverty, health, education, and governance. You will also have the opportunity to connect these theoretical ideas to real world issues."
+  },
+  {
+    "code": "HE3023",
+    "title": "LABOUR ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE4103"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course examines how labor markets function and how organizations allocate, motivate, and manage human resources. The first half focuses on classical labor economics - analyzing labor supply and demand, human capital investment, wage determination, and inequality. The second half introduces the economics of organizations, exploring how incentives, contracts, and organizational structures shape productivity and employment relationships. The course blends theory with empirical evidence and applies concepts to real-world labor and firm-level issues."
+  },
+  {
+    "code": "HE3025",
+    "title": "HEALTH ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HU9001 OR",
+      "HE5091 OR",
+      "HJ5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to study the basic principles of economics of health and healthcare. We will cover topics such as production of health, market for insurance and its issues such as adverse selection and moral hazard, and supply of physician and organization of hospitals and payments systems. Lastly we will cover recent issues in health economics such as role of health in economic development, persistent issues of high medical inflation, and behavioral aspects of health and sin-taxes. The course prepares you for a career in government (e.g. Ministry of Health, Ministry of Finance), private sector (policy think tanks and consultancies addressing and advising on organization of healthcare), and academia."
+  },
+  {
+    "code": "HE3035",
+    "title": "ECONOMICS OF DIGITAL PLATFORMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 (Min Grade :B+) OR",
+      "HE5091 (Min Grade :B+) OR",
+      "AB0901 (Min Grade :B+)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Multi-sided platform businesses like those run by Alibaba, Amazon, Apple, Facebook, Google and Tencent dominate the current economy. These businesses raise many new economic and strategic questions that policymakers and market participants are grappling with. Yet, students studying economics currently do not learn about the unique economic features and issues pertaining to these multi-sided businesses. This module will provide such an analysis, making use of the tools of basic game theory and industrial organization to do so. Topics include (i) the economic features of multi-sided platforms (e.g.., definitions of platforms, network externalities, pricing and competition between platforms); (ii) strategic issues faced by platforms (e.g., launching, platform design, leakage, revenue model); (iii) emerging policy issues (e.g., platform mergers, self-preferencing, abuse of dominance)."
+  },
+  {
+    "code": "HE3102",
+    "title": "INTRODUCTION TO INTERNATIONAL MACROECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the core concepts and fundamental theories of international macroeconomics, with a focus on the balance of payments, capital flows, and economic crises. By the end of the course, you will gain a solid understanding of economic interactions across countries and will be able to apply theoretical frameworks to analyze contemporary economic events. Key topics include global imbalances, the persistence of current account surpluses and deficits, and the dynamics of economic crises. You are expected to have prior knowledge of basic macroeconomics and optimization techniques."
+  },
+  {
+    "code": "HE3135",
+    "title": "INTRODUCTION TO DIGITAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3001 & HE3002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The digital revolution has profoundly transformed the global economy. Digital technologies are reshaping business models, creating new varieties of goods and services, and emphasizing the importance of intangible assets. Understanding today's world requires a deep engagement with the changes brought about by the digital economy. This course aims to provide an in-depth exploration of the critical topics and emerging phenomena in the digital economy. Students will gain insights into both the macroeconomic and microeconomic implications of digital technologies, blending theoretical economic principles with real-world case studies. The course addresses key issues such as fintech, big data, privacy, and artificial intelligence, preparing students to navigate and contribute to the evolving digital landscape."
+  },
+  {
+    "code": "HE4040",
+    "title": "BEHAVIORAL ECONOMICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 OR",
+      "HE2002 OR",
+      "HE9092 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE4004"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The above figure depicts the Moller Franz illusion. The lengths of the three lateral lines above appear to be different, although they are of the same length. The cognitive function of our brain tricks us into thinking that they are different. Behavioral Economics studies how psychological limitations influence economic decision makings. In particular, it focuses on how adding important and more realistic human psychological attributes, which include: 1. Bounded rationality; Why people sometimes make seemingly irrational decisions such as taking more risks when they experience losses and being more risk-averse when they experience gains? 2. Bounded willpower; Why people often have difficulties in carrying out activities and actions that they had already earlier planned? For example, often, people desire to save more for retirement but unable to commit to doing so because they face the temptation to spend their money now. 3. Bounded self-interest; Why are people not entirely selfish as assumed in the standard economics analysis? They often are willing to sacrifice their monetary payoffs to uphold fairness and (or) to help unfortunate others. Thus, economics agents are not solely motivated by individual utility maximization. All these attributes can have profound impacts on the predictions of the standard economic models and the way we craft economic and social policies."
+  },
+  {
+    "code": "HE4041",
+    "title": "COST-BENEFIT ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3001 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE4042",
+    "title": "SINGAPORE ECONOMY IN A GLOBALIZED WORLD",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The topics include economic development, monetary and fiscal policies, exchange rate, market liberalization, manpower and labor market, social security, international trade and regional co-operation. The objective is to provide final year economics undergraduates with greater insights into the policies that have shaped Singapore?s economic growth and to engage students in an evaluation of these policies and development experiences. It will be unique in drawing upon the expertise of adjunct staff members who have been involved in policy-making, staff members who have worked extensively in the area, and senior government policy- and decision-makers. The module will be conducted seminar-style. Class room participation will constitute 50 percent and written examination 50 percent."
+  },
+  {
+    "code": "HE4043",
+    "title": "FINANCE & DEVELOPMENT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002 & HE2003 OR",
+      "HE2001 & HE2002 & HE2004 OR",
+      "HE2001 & HE2002 & HE2005"
+    ],
+    "mutually_exclusive": [
+      "HE4018"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of this course is to develop a critical understanding of the recent debate on the role of financial intermediation in the process of economic development. It will discuss the desirability of having a deeper and more efficient financial system and explore the origins of financial development. The main topics covered are: finance for development, financial innovation, financial liberalization, financial inclusiveness, financial globalization and financial crisis."
+  },
+  {
+    "code": "HE4046",
+    "title": "BIG DATA: APPLICATIONS IN ECONOMIC & FINANCIAL ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500"
+    ],
+    "mutually_exclusive": [
+      "HE5001",
+      "MH4519"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides an introduction to the econometric methods used for analysing large and complex (i.e. `big') data. The main emphasis will be on time series, a type of dependent data we most frequently observe in economics and finance. Having taken basic probability and statistics courses in your earlier years, you will learn some modern techniques for modelling time series of large scale in this course."
+  },
+  {
+    "code": "HE4140",
+    "title": "EXPERIMENTAL ECONOMICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001"
+    ],
+    "mutually_exclusive": [
+      "HE4013"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the methodology of experimental economics and its application to specific topics. The main themes are: 1. Designing economic experiments 2. Conducting economic experiments 3. Analysing experimental data 4. Applications to time preferences, risk preferences, and social preferences"
+  },
+  {
+    "code": "HE4143",
+    "title": "HOUSEHOLD FINANCE",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course seeks to provide you with the knowledge and analytical skills that are required in the study of household finance. You would be able to appreciate how households make financial choices in different domains and identify common pitfalls. Consequently, you will be able make better financial decisions and come up with ways to enhance the financial health of others."
+  },
+  {
+    "code": "HE4203",
+    "title": "MICROECONOMETRICS & PANEL DATA",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2004 OR",
+      "HE2005 OR",
+      "HE2003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course helps students to form a foundation in econometric analysis especially those related to modern economic research. Modern econometric skills will be introduced to students through lectures and computer based class projects. The course emphasizes applications of econometric techniques rather than econometric theories. Statistical package will be used to illustrate analysis of real-world data."
+  },
+  {
+    "code": "HE4903",
+    "title": "ADVANCED ECONOMETRICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3021 OR",
+      "HE3621 OR",
+      "HE3003"
+    ],
+    "mutually_exclusive": [
+      "HE4021"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Based on HE3021 Intermediate Econometrics, this course provides you with a theoretical foundation on econometric methods widely used in empirical studies and their applications. The approa ches and models introd uced to you will have both theoretical rigor and empirical relevance. Topics covered include asymptotic theory, large sample properties of OLS, IV, GM M, heteroskedasticity, limited dependent variable models and panel data models."
+  },
+  {
+    "code": "HL1005",
+    "title": "INTRODUCTION TO SINGAPORE LITERATURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HL1001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces you to canonical texts in Singapore literature from the twentieth and twenty- first centuries. You will develop knowledge and understanding of a variety of forms including poems, novels, memoirs, films, and plays. Themes include: the formation of Singapore as a nation- state and the development of national identity; tensions in the usage of \"standard\" and colloquial English; multiculturalism and the negotiation of social constraints within different communities."
+  },
+  {
+    "code": "HP1000",
+    "title": "INTRODUCTION TO PSYCHOLOGY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an introductory overview of fundamental areas in the contemporary study of psychology. Topics include the biological bases of behaviour, sensation and perception, memory, thought and language, social behaviour, intelligence, motivation, learning, personality and development."
+  },
+  {
+    "code": "HP1100",
+    "title": "FUNDAMENTALS OF SOCIAL SCIENCE RESEARCH",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is an introductory course to the research methods and basic statistical techniques commonly used in psychology research. Students will be introduced to the process of scientific inquiry in psychology, both in terms of empirical research methodology and statistical analysis. The course is divided into lectures and tutorials. The lectures will focus on conceptual issues and cover the content materials that students need to understand to actually design any psychological study and work with any data. The tutorials will be dedicated to more in-depth discussions of some of the topics covered in the lectures, and practical experience with data analysis using SPSS"
+  },
+  {
+    "code": "HR1001",
+    "title": "WAYS OF SEEING: EXPLORING VISUAL CULTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed for students interested in studying the interrelated realms of art history and visual culture. Maintaining focus on ways of seeing and the visual, we will study key works of art in a global field across periods spanning ca. 2500 BCE to the contemporary. Each week's learning activities will centre around specific case studies as a starting point for exploration. We will analyse art objects by situating them within debates and discourses specific to their production and reception. We will learn to use different methodological approaches and major theoretical frameworks (for instance postcolonialism, feminism, post-digital inquiry, surveillance theories, and ecocriticism) and core concepts (for instance representation, mimesis, modernism, race, spectacle, surveillance, resistance, post-truth) and develop foundational skills pertaining to analytical writing (such as framing an argument, compiling a bibliography and so on)."
+  },
+  {
+    "code": "HR4002",
+    "title": "BRITISH ART: 1815 -1929",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The intermediate level course charts the evolution of British painting, sculpture, architecture and music from Wellington's victory at Waterloo in 1815 to the Wall Street Crash in 1929. Within this pivotal, long century, Britain experienced high social disruption. British art responded in kind: from the conservative canvases of Victorians at the Royal Academy to the Modernist abstractions of the Rebel Art Centre; and from the painters of the Great War caught within a doomed generation to the dance halls of The Roaring Twenties in the West End of London - we have been bequeathed priceless artefacts from this century of change. This course observes, analyses and assesses the role of art and artists within this rapidly evolving society and is of value for students engaged in the study of art history and the British world in the 19th and early 20th century."
+  },
+  {
+    "code": "HS2028",
+    "title": "GRAYING SOCIETY: ISSUES & CHALLENGES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HS1001 OR",
+      "HJ5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course examines the social contexts of age and aging. The primary focus of the course is on aging process and the elderly. Our approach emphasizes the complexity of aging, recognizing it as a multidimensional process. Students will examine the situations, contributions, and concerns of the elderly. Consideration will be given to ethical issues and dilemmas and to social and professional responses. The social and economic challenges posed by an aging population will also be considered."
+  },
+  {
+    "code": "HY3001",
+    "title": "EXISTENTIALISM",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course proceeds historically, and will consider various philosophical proposals and approaches to understanding human subjectivity, experience, and meaning. It begins with 19th century proposals, of a theistic and non-theistic nature, and then considers 20th century approaches, focused on phenomenological versions of existentialism. Through close readings of influential existentialist texts, we will evaluate their persuasiveness and implications for our lives. The following questions, among others, will be of particular interest: Does experience have any (determinate) meaning? What is the nature of value? What can I hope for? Should I fear death? Am I free? What obligations do I have to myself and to others?"
+  },
+  {
+    "code": "MH1820",
+    "title": "INTRODUCTION TO PROBABILITY & STATISTICAL METHODS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1004 (Applicable to ECPP ,ECON ,ECMA ,ECPS)"
+    ],
+    "mutually_exclusive": [
+      "AB1202",
+      "MH1800",
+      "MH2500",
+      "MH2814",
+      "MT2001"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "AISC",
+      "ARED",
+      "BACF",
+      "BASA",
+      "BCE",
+      "BCG",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CE",
+      "CEE",
+      "CHEM",
+      "CMED",
+      "COMP",
+      "CS",
+      "CSC",
+      "DSAI",
+      "EEE",
+      "EESS",
+      "ENE",
+      "ENG",
+      "ESPP",
+      "IEM",
+      "MACS",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "PESC",
+      "PHMS",
+      "PHY",
+      "REP",
+      "ROBO",
+      "SCED",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2017)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ASEC",
+      "BEEC",
+      "CBEC",
+      "CEEC",
+      "CSEC",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEEC",
+      "ENEC",
+      "IEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MTEC"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides a good foundation in probability and statistical inference. Basic ideas and methodologies in probability and statistics which are useful for economics students are introduced. It also aims to prepare students for higher level applied and theoretical econo-metric courses."
+  },
+  {
+    "code": "MH2510",
+    "title": "STATISTICS I",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ACDA(2011-2024)",
+      "DSAI(2011-2024)",
+      "MAEO(2011-2023)",
+      "MATH(2011-2023)"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "You will be introduced to practically relevant statistical methods for students of all branches of science. The focus of the course explicitly is practical data analysis skills and not the theory of statistical inference."
+  },
+  {
+    "code": "MH3500",
+    "title": "STATISTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your understanding of the statistical concepts of parameter estimation and hypothesis testing that are fundamental for real life applications of statistics as well as for numerous further courses in the curriculum of the statistics track."
+  },
+  {
+    "code": "MH3511",
+    "title": "DATA ANALYSIS WITH COMPUTER",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 OR",
+      "BS1008"
+    ],
+    "mutually_exclusive": [
+      "ES2305"
+    ],
+    "not_available_to_programme": [
+      "EESS(2025-onwards)",
+      "ESPP(2025-onwards)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In today's business, data analysis plays an important role in making decisions more scientific and helping the business achieve effective operation. By closely examining data we can find patterns to perceive information, and the information can be used to enhance knowledge. This course provides basic concepts for data analysis with the usage of the R programming language. You will learn the skills of plotting, summarising, making inferences, and presenting various types of data."
+  },
+  {
+    "code": "MH3700",
+    "title": "NUMERICAL ANALYSIS I",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1200 & MH1201 OR",
+      "MH1800 & MH2800 OR",
+      "CY1602 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces you to the basis of numerical methods and their analysis for solving algebraic equations, for approximating functions and their derivatives and integrals. The course also provides you the experience in implementing the numerical methods using computer programming languages. It serves as a foundation for further studying on mathematical computation which plays essential keys in many areas of applied mathematics, mathematical modelling, engineering and computational finance."
+  },
+  {
+    "code": "MH3701",
+    "title": "BASIC OPTIMIZATION",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1201 OR",
+      "MH2800 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a first course in mathematical optimization. It builds the basic knowledge and skills in the theory and techniques of analysing and solving simple optimization models. With these foundations, you will be able to deepen your understanding of more complex optimization models, and their applications to various disciplines in subsequent mathematical optimization and operations research courses."
+  },
+  {
+    "code": "MH4500",
+    "title": "TIME SERIES ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 & MH3510"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides an introduction to various time series models. It aims to develop your understanding of fundamental models in time series analysis and enable you to build time series models for read data."
+  },
+  {
+    "code": "MH4517",
+    "title": "DATA APPLICATIONS IN NATURAL SCIENCES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1402 OR",
+      "MH1403 OR",
+      "CZ2001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "MAEO(2011-2020)",
+      "MATH(2011-2020)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide the recent progress on geometric data analysis, topological data analysis, the combination with machine learning models, and their applications in nature data analysis. In this course you will develop skills in geometric and topological modeling, and the analysis of complicated physical/chemical/biological data."
+  },
+  {
+    "code": "MH4518",
+    "title": "SIMULATION TECHNIQUES IN FINANCE",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3511"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with standard and advanced simulation techniques and cover their applications in finance, including derivatives pricing and risk management. In this course, you will develop skills in modelling and simulating time series data, and based on which you will be able to devise solutions to quantitative finance problems."
+  },
+  {
+    "code": "SC3020",
+    "title": "DATABASE SYSTEM PRINCIPLES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2207"
+    ],
+    "mutually_exclusive": [
+      "CE4031",
+      "CZ4031"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Database management systems (DBMS) are designed to manage large and complex data sets. The fundamentals of the implementation of database management systems must be understood by all Computer Science students. This will help students to develop and design software systems utilizing databases, and equip students with the knowledge of managing data of large scale. Moreover, this should be understood by current and future business leaders so that they can offer strategic guidance based on an informed understanding of database business capabilities. This course provides the basis for achieving this goal."
+  },
+  {
+    "code": "SC4000",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1004 & SC1007 & SC2000 OR",
+      "MH2500 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE4041",
+      "CZ4041",
+      "MH4510",
+      "SC5002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS",
+      "MAEO(BA)",
+      "MATH(BA)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces basic concepts and methodologies for machine learning as well as their applications. Clustering. Dimension Reduction. Classification. Decision Theory. Density Estimation. Classifier Evaluation."
+  },
+  {
+    "code": "SC4021",
+    "title": "INFORMATION RETRIEVAL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001 OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CE4034",
+      "CZ4034"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to involve students in a technical way to understand and build information retrieval systems. They were expected to master the basic concepts and building blocks for information retrieval systems. In addition, applications in artificial intelligence were also introduced to get students acquainted with state of the arts."
+  },
+  {
+    "code": "SC4023",
+    "title": "BIG DATA MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 Standing",
+      "SC2207 OR",
+      "BC2402"
+    ],
+    "mutually_exclusive": [
+      "CE4123",
+      "CZ4123"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BACF",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PESC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "ROBO",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ACDA",
+      "ECDS",
+      "MACS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "We are in the 'Big Data' era - an extremely large amount of data is created every day. The world of data management has dramatically changed in the 'Big Data' era. This is primarily driven by multiple factors including cheaper storage costs, increasing availability of sensors, smart devices, social software, and availability of cloud computing infrastructure, and cheaper processing cost of large volumes of data due to dramatic advances in modern hardware (e.g., solid state disk, multicore CPUs, large memory). This seismic impact of big data has led to increasing demand in building scalable data infrastructures toward supporting real-world applications. This course aims to provide a broad understanding of big data and current technologies in managing and processing them. Key topics covered in this course include big data 5V's, memory hierarchy and its relation to big data systems, distributed storage and computation of big data, as well as NoSQL key-value stores. Upon completion of this course, you will learn to evaluate issues associated with big data management, learn how the data is stored in a distributed system and how queries and analytics run in parallel, and understand the design philosophy of real-world key-value stores."
+  }
+]

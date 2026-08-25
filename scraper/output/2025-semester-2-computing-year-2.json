@@ -1,0 +1,148 @@
+[
+  {
+    "code": "CT3101",
+    "title": "UX/UI DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2001 & CT2003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the UX/UI Design course is to provide students with a comprehensive understanding of user experience (UX) and user interface (UI) design principles, methodologies, and tools. It equips students with the knowledge and skills to create user-centered designs through effective research, design, and evaluation techniques, bridging theory and practice to enable the development of intuitive and engaging digital experiences that enhance usability and satisfaction. Students will learn to conduct user research, develop and refine personas, create information architectures, wire-frames, and prototypes, and apply visual design principles such as color theory, typography, and layout systems. The course also emphasizes usability testing to evaluate and improve design quality through iterative user feedback. Furthermore, students will gain insights into responsive design and cross-platform consistency, ensuring adaptability and cohesion across various devices. By the end of the course, students will be able to design functional, aesthetically appealing, and user-centered interfaces that effectively meet user needs and expectations."
+  },
+  {
+    "code": "CT3202",
+    "title": "MACHINE LEARNING FUNDAMENTALS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides an introductory but broad perspective of fundamental algorithms in machine learning, and is relevant for anyone pursuing a career in AI or Data Science. It aims to provide students with the essential concepts and principles of algorithms in machine learning so that they can use various machine learning techniques to solve real-world application problems."
+  },
+  {
+    "code": "CT3301",
+    "title": "SOFTWARE SECURITY PRINCIPLES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2003 & CT2006"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop skills in software security. It focuses on security attacks launched by supplying specially crafted inputs to software components that modify the intended behaviours of those components, and the secure coding techniques (defences). The modified behaviours of the software components become security critical in a connected world where application systems are constructed from a collection of software components. Software developers who are not familiar with software security are likely to omit suitable defences out of ignorance. As such, this course will equip you with the deep knowledge about software security attack and defence techniques, a skill necessary to become IT security experts or professional \"security-minded\" software developers."
+  },
+  {
+    "code": "CT3302",
+    "title": "APPLICATION SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2079"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip part-time learners with the knowledge, skills, and applied competencies needed to secure modern applications against evolving cyber threats. By adopting a flipped classroom model, the course ensures that: 1. Learners gain flexibility to study theoretical concepts (e.g., CIA triad, OWASP Top 10, secure SDLC) at their own pace through online lectures and curated readings. 2.In-person sessions are dedicated to active learning, including hands-on labs, real-world case discussions, and project coaching. 3.The Course Project simulates a consultancy-style penetration testing engagement, allowing learners to apply vulnerability analysis and propose mitigation strategies in a team-based environment. 4.The course builds both technical and professional skills: penetration testing, secure coding, critical analysis, teamwork, and communication."
+  },
+  {
+    "code": "CT3303",
+    "title": "SECURITY MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Completion of at least 15AUs of Foundation Courses and",
+      "CT2004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course equips students with the ability to identify and critically analyse problems in cybersecurity management, using real-world case studies and narratives to bridge theory with practice. Students will learn to design solutions that address not only technical and governance issues, but also the human, organisational, and regulatory dimensions of security. In addition, the course explicitly addresses contingency planning and crisis management, as well as the economics and performance measurement of security, ensuring students develop a holistic understanding of how to manage and evaluate security in practice."
+  },
+  {
+    "code": "CT3307",
+    "title": "NETWORK SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces students to the principles and practices of network security, with an emphasis on how security is designed, implemented, and sustained across modern digital infrastructures. Students will develop the ability to understand, evaluate, and apply security mechanisms to network implementations, identifying vulnerabilities and designing practical solutions. By the end of the course, students will gain an applied understanding of how network security is integrated into both application and network architecture."
+  },
+  {
+    "code": "CT3401",
+    "title": "BIG DATA MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2007"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "We are in the 'Big Data' era. This trend is primarily driven by multiple factors including cheaper storage costs, increasing availability of large clusters of machines, smart devices, social software, widely adoption of cloud computing infrastructure, and cheaper processing cost of large volumes of data due to dramatic advances in modern hardware (e.g., solid state disk, multicore CPUs, large memory). This seismic impact of big data has led to increasing demand in building scalable data infrastructures toward supporting real-world applications. This course aims to provide a broad understanding of big data and current technologies in managing and processing them. Key topics covered in this course include big data 5V's, memory hierarchy and its relation to big data systems, distributed storage and computation of big data, as well as NoSQL key-value stores. Upon completion of this course, you will learn to evaluate issues associated with big data management, learn how the data is stored in a distributed system and how queries and analytics can be efficiently done in industrial column stores, and understand the design philosophy of real-world key-value stores."
+  },
+  {
+    "code": "CT3402",
+    "title": "DATA VISUALISATION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CZ4124",
+      "SC4024"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Provide students with the essential knowledge and practical skills to design and create impactful data visualisations. Students will learn how to analyse data attributes, select appropriate visualisation tools, and apply best practices in visual encoding, visual perception,and design. Through hands-on experience with various types of data visualisations, including basic plots, geospatial data, and interactive visualisations, students will be equipped to communicate complex data insights clearly and persuasively using effective visualisation techniques."
+  },
+  {
+    "code": "CT3403",
+    "title": "CLOUD COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2005"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Cloud computing has revolutionized how modern organizations design, deploy, and deliver computing services. It enables on-demand access to a shared pool of configurable resources such as servers, storage, applications, and services that can be rapidly provisioned and released with minimal management effort. This course provides a comprehensive introduction to the principles, technologies, and practices that underpin cloud computing systems and their applications in today's digital ecosystem. Students will explore the foundational concepts of cloud computing, including service models (Infrastructure as a Service, Platform as a Service, and Software as a Service), deployment models (public, private, hybrid, and community clouds), and the enabling technologies such as virtualization, distributed storage, and containerization. The course also examines cloud architecture, scalability, elasticity, and fault tolerance, along with key topics in security, compliance, and cost optimization. Through a series of lectures, tutorials, and guided lab sessions, students will gain practical experience using leading cloud platforms such as AWS, Microsoft Azure, or Google Cloud Platform (GCP). They will learn to deploy and manage cloud-based applications, confi gure networking and storage solutions, and implement basic DevOps practices such as continuous integration and deployment (CI/CD). Emphasis is placed on hands-on exploration, where students will design and implement small-scale cloud solutions that refl ect real-world industry needs."
+  }
+]

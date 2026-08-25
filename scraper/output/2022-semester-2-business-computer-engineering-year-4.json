@@ -1,0 +1,1284 @@
+[
+  {
+    "code": "AB3601",
+    "title": "STRATEGIC MANAGEMENT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1501 & AB1601"
+    ],
+    "mutually_exclusive": [
+      "AB3602"
+    ],
+    "not_available_to_programme": [
+      "ACBS 2",
+      "ACC 1",
+      "ACC 2",
+      "BUS 1",
+      "BUS 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The purpose of the Strategic Management Course is to develop your knowledge and skills to identify and evaluate the sources of superior firm performance through using conceptual frameworks. You will learn to analyze the external and internal environments of the firm, formulate and execute different types of strategies with the consideration of good corporate governance. This course is appropriate for final-year accounting and business students who have already taken entry-level courses in accounting ratio analyses, organizational behaviour and marketing. Upon completion of the course, you will be able to critically analyze business issues from a strategic perspective such as why and how firms can achieve sustainable competitive advantage in a highly volatile and competitive global environment."
+  },
+  {
+    "code": "AB3602",
+    "title": "STRATEGIC MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "AB1501 & AB1601"
+    ],
+    "mutually_exclusive": [
+      "AB3601"
+    ],
+    "not_available_to_programme": [
+      "ACBS(2011-2020)",
+      "ACC(2011-2020)",
+      "ACDA(2011-2019)",
+      "BCE(2011-2020)",
+      "BCG(2011-2020)",
+      "BUS(2011-2020)"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The purpose of the Strategic Management Course is to develop students' knowledge and skills to identify and evaluate the sources of superior firm performance through applying selected conceptual frameworks. Students will learn to analyse the external and internal environments of the firm, and formulate strategies with the consideration of good corporate governance. This course is appropriate for accounting and business students who have already taken entry-level courses in accounting ratio analyses, organizational behaviour, and marketing. Upon completion of the course, students will be able to critically analyse business issues from a strategic perspective such as why and how firms can achieve sustainable competitive advantages in a highly volatile and competitive global business environment."
+  },
+  {
+    "code": "BC2408",
+    "title": "SUPPLY CHAIN ANALYTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BE1401 OR",
+      "BE1402"
+    ],
+    "mutually_exclusive": [
+      "BC2409"
+    ],
+    "not_available_to_programme": [
+      "BCE 2",
+      "BCG 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC2409",
+    "title": "SUPPLY CHAIN ANALYTICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BE1401 OR",
+      "BE1402"
+    ],
+    "mutually_exclusive": [
+      "BC2408"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Supply chain analytics is a set of approaches utilized to efficiently integrate suppliers, manufacturers, warehouses and stores and to efficiently manage material, information and financial flows so that merchandise is produced and distributed at the right quantities, to the right locations, and at the right time, in order to maximize systemwide surplus or value. It plays an important role in today's global economy, because efficient supply chains not only make companies more profitable but also allow customers to receive better products at lower prices. For business and technology management students, it becomes critical to have a good understanding of supply chains and its vital role as a source of both performance improvement and business innovation. The goals of the course are i) to provide an understanding and appreciation of key challenges in supply chain analytics and key drivers of supply chain performance, and ii) to expose students to techniques and strategies used to optimize supply chain decisions and to anticipate or explain supply chain phenomena. The teaching method used is seminar style with a mix of lectures, case discussions, problem-solving exercises, spreadsheet-modeling demonstrations and class discussions. Students will be graded on class participation, individual assignments, quizzes, and a final group project. The course is suitable for students of business analytics or technology management, as well as aspiring consultants or entrepreneurs."
+  },
+  {
+    "code": "BC2410",
+    "title": "PRESCRIPTIVE ANALYTICS: FROM DATA TO DECISION",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002 OR",
+      "BC0401 OR",
+      "AB0403 OR",
+      "MH1201 OR",
+      "MH1403 OR",
+      "CE1103 OR",
+      "SC1003 OR",
+      "CZ1103 OR",
+      "CE2002 OR",
+      "CZ2002"
+    ],
+    "mutually_exclusive": [
+      "BC2411"
+    ],
+    "not_available_to_programme": [
+      "BCE 2",
+      "BCG 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC2411",
+    "title": "PRESCRIPTIVE ANALYTICS: FROM DATA TO DECISION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002 OR",
+      "BC0401 OR",
+      "AB0403 OR",
+      "MH1201 OR",
+      "MH1403 OR",
+      "CE1103 OR",
+      "SC1003 OR",
+      "CZ1103 OR",
+      "CE2002 OR",
+      "CZ2002"
+    ],
+    "mutually_exclusive": [
+      "BC2410"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "In this era of big data, many companies and public organizations invest heavily in various flavors of analytics: descriptive, predictive, and prescriptive. Among them, prescriptive analytics goes beyond what happened (descriptive analytics), what will happen (predictive analytics), and provides insights into what to do to help companies and public organizations make better decisions. This course aims to introduce students to the theory and applications of prescriptive analytics: how to go from data to optimal decision-making. It contains two principal components (1) Data-driven optimization theories and techniques and (2) Important business applications in finance, investment, and operations management. Optimization theories such as linear optimization, discrete optimization, network optimization, quadratic optimization, stochastic optimization, and robust optimization will be covered in this course, with applications in portfolio selection, asset allocation, risk management, revenue management, pricing and hedging of options, asset/liability management, appointment scheduling, retail operations, inventory management, and assets repositioning in a sharing economy. We will also place a specific focus on analyzing real data and solving optimization models using Python with commercial solver Gurobi*. * Academic version is free."
+  },
+  {
+    "code": "BC3402",
+    "title": "FINANCIAL SERVICE PROCESSES & ANALYTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1201 OR",
+      "CZ1002 OR",
+      "CE1002"
+    ],
+    "mutually_exclusive": [
+      "BC3410"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3406",
+    "title": "BUSINESS ANALYTICS CONSULTING",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202 & AB3601(Corequisite) & BC2402 & BC2406 & BC2407(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "BC3412"
+    ],
+    "not_available_to_programme": [
+      "BCE 2",
+      "BCG 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3408",
+    "title": "DECISION MODELLING & ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ACBS-2ndMaj/Spec(BA) 2",
+      "BCE 2",
+      "BCG 2"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3409",
+    "title": "AI IN ACCOUNTING & FINANCE",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BC2406"
+    ],
+    "mutually_exclusive": [
+      "BC3415",
+      "BF3222",
+      "BF3223"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "BC3412",
+    "title": "BUSINESS ANALYTICS CONSULTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "AB1202 & AB3602(Corequisite) & BC2402 & BC2406 & BC2407(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "BC3406"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2013-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course develops competencies for a career in business analytics consulting. It is a career option that provides incumbents an opportunity for challenging work, continued self-development, and access to important professional networks. Career opportunities are available in global consulting organizations practicing in a variety of business settings and business disciplines, and in small consulting firms offering niche/boutique services. In addition, many businesses have developed internal consulting departments to provide advisory services within the organization and often in conjunction with consulting services offered by third party firms."
+  },
+  {
+    "code": "BC3415",
+    "title": "AI IN ACCOUNTING & FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "BC2406"
+    ],
+    "mutually_exclusive": [
+      "BC3409",
+      "BF3223"
+    ],
+    "not_available_to_programme": [
+      "BCE 2",
+      "BCE 3",
+      "BCG 2",
+      "BCG 3"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This is an introductory course designed for business or accountancy or Finance undergraduate students who are interested to learn how to manage data, conduct business analytics programmatically, create AI model to automate business processes and create predictive model to increase profitability or return. It is oriented to enhance their technical skillset. The aim of this course is to provide a broad understanding on how to manage data, the process of preparing data for analysis, basics of analytics, using AI to automate financial analysis process and generate accounting reports. This course will equip you with the ability to write customized solutions to make informed business decisions, integrate statistical libraries for data analysis, create AI models to automate accounting and financial process. This module will provide you with individual hands-on practices to hone your coding skills and opportunities to develop coding solutions in a team. We utilize R and Python language as the medium of learning because it is one of the most in-demand coding language and its user-friendly syntax is well suited for the beginner level. You will utilise modern development tools to turn information into insights including Keras' Deep Learning model, Google Brain TensorFlow, Hadoop, Spark and Cloud."
+  },
+  {
+    "code": "CE2100",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CZ2100",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "CE4001",
+    "title": "VIRTUAL & AUGMENTED REALITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CZ4001",
+      "SC4060"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4013",
+    "title": "DISTRIBUTED SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE2005 & CE3005"
+    ],
+    "mutually_exclusive": [
+      "CZ4013",
+      "SC4051"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4015",
+    "title": "SIMULATION & MODELLING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "IM1001 & IM2006 OR",
+      "CE1007 & CE1011 OR",
+      "CE1107 & CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ4015",
+      "SC4054"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4034",
+    "title": "INFORMATION RETRIEVAL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 OR",
+      "CE2001 OR",
+      "CZ2101 OR",
+      "CE2101"
+    ],
+    "mutually_exclusive": [
+      "CZ4034",
+      "SC4021"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4041",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE1007 & CE1011 OR",
+      "CE1107 & CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ4041",
+      "SC4000"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4046",
+    "title": "INTELLIGENT AGENTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE1007 & CE1011 OR",
+      "CE1107 & CE2100 OR",
+      "CE1007 & CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ4046",
+      "SC4003"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4052",
+    "title": "CLOUD COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE1104 OR",
+      "CE1012 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [
+      "CZ4052"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4055",
+    "title": "CYBER PHYSICAL SYSTEM SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1006 OR",
+      "CE1106"
+    ],
+    "mutually_exclusive": [
+      "CZ4055",
+      "SC4015"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Cyber physical systems are typically designed as a network of interacting elements with physical input and output, and are characterized by the interaction between the physical world (sensors, user inputs, actuators) and the cyber world (processing, decision making). Cyber physical systems are the driving force behind modern civilization, being integral part of technologies, such as additive manufacturing, smartcard-based payment, power delivery systems, drone-based operations, and smart home automation. Cyber physical systems are characterized by stringent performance requirements, such as, extremely low energy budget, small area footprint and often hard real-time constraints. Due to the pervasive nature of the cyber physical systems in our everyday lives, it also runs the risk of huge security hazards. In this course, we will learn about the basics of cyber physical systems, including the design principles and methodologies. Further, there will be a detailed treatment of the security challenges for cyber physical systems, which vary in practice due to the diverse nature of the application environment of cyber physical systems. These different forms of security breaches, observed across diverse cyber physical systems, will be put in a well-characterized taxonomy, to be systematically identified as attack surfaces. The techniques to handle these attacks will be described in a generic manner, including key management and wireless/RFID communication. The attack surfaces and protection/mitigation principles will then be elaborated with practical case studies, from the representative cyber physical systems such as automotive, smart card systems and smart grid."
+  },
+  {
+    "code": "CE4062",
+    "title": "COMPUTER SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE2005"
+    ],
+    "mutually_exclusive": [
+      "CZ4062",
+      "SC3010"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCG",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4067",
+    "title": "SOFTWARE SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE2002 & CE2005"
+    ],
+    "mutually_exclusive": [
+      "CZ4067",
+      "SC4012"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop skills in software security. It focuses on security attacks launched by supplying specially crafted inputs to software components that modify the intended behaviours of those components, and the secure coding techniques (defences). The modified behaviours of the software components become security critical in a connected world where application systems are constructed from a collection of software components. Software developers who are not familiar with software security are likely to omit suitable defences out of ignorance. As such, this course will equip you with the deep knowledge about software security attack and defence techniques, a skill necessary to become IT security experts or professional software developers."
+  },
+  {
+    "code": "CE4123",
+    "title": "BIG DATA MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Study Year 3 Standing",
+      "CZ2007"
+    ],
+    "mutually_exclusive": [
+      "SC4023"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "We are in the 'Big Data' era - an extremely large amount of data is created every day. The world of data management has dramatically changed in the 'Big Data' era. This is primarily driven by multiple factors including cheaper storage costs, increasing availability of sensors, smart devices, social software, and availability of cloud computing infrastructure, and cheaper processing cost of large volumes of data due to dramatic advances in modern hardware (e.g., solid state disk, multicore CPUs, large memory). This seismic impact of big data has led to increasing demand in building scalable data infrastructures toward supporting real-world applications. This course aims to provide a broad understanding of big data and current technologies in managing and processing them. Key topics covered in this course include big data 5V's, memory hierarchy and its relation to big data systems, distributed storage and computation of big data, as well as NoSQL key-value stores. Upon completion of this course, you will learn to evaluate issues associated with big data management, learn how the data is stored in a distributed system and how queries and analytics run in parallel, and understand the design philosophy of real-world key-value stores."
+  },
+  {
+    "code": "CE4171",
+    "title": "INTERNET OF THINGS: COMMUNICATIONS & NETWORKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE3005 OR",
+      "CZ3006 OR",
+      "CE2108 OR",
+      "CZ2108"
+    ],
+    "mutually_exclusive": [
+      "CZ4171",
+      "SC4031"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCG",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4172",
+    "title": "INTERNET OF THINGS: TINY MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE2107 OR",
+      "CE2007"
+    ],
+    "mutually_exclusive": [
+      "SC4172"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE5091",
+    "title": "PRINCIPLES OF ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0901",
+      "HE1001",
+      "HE1002"
+    ],
+    "not_available_to_programme": [
+      "ACBS(GA) 1(2021-onwards)",
+      "ACC(2021-onwards)",
+      "BCE 1(2021-onwards)",
+      "BCE 2(2021-onwards)",
+      "BCE 3(2021-onwards)",
+      "BCG 1(2021-onwards)",
+      "BCG 2(2021-onwards)",
+      "BCG 3(2021-onwards)",
+      "BUS(GA) 1(2021-onwards)",
+      "MS-2ndMaj/Spec(MSB) 1"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "ECON",
+      "MAEC"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Introduction. Demand and supply. Marginal reasoning and profit maximuzation. Market structure. Externality. Introduction to Macroeconomics. Keynesian Cross Model. Money, banking and financial Institutions. Aggregate demand and aggregate supply. Open economy. International trade."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC3010",
+    "title": "COMPUTER SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2005"
+    ],
+    "mutually_exclusive": [
+      "CE4062",
+      "CZ4062"
+    ],
+    "not_available_to_programme": [
+      "BSB"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to equip you with foundational knowledge on many important security issues and techniques required for cyber security. You will have the knowledge of different security policies and security models, and have the ability to recognise security features and discover pitfalls in computing systems, including the operating system and software."
+  },
+  {
+    "code": "SC4000",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1004 & SC1007 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CE4041",
+      "CZ4041",
+      "MH4510"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS",
+      "MAEO(BA)",
+      "MATH(BA)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces basic concepts and methodologies for machine learning as well as their applications. Clustering. Dimension Reduction. Classification. Decision Theory. Density Estimation. Classifier Evaluation."
+  },
+  {
+    "code": "SC4003",
+    "title": "INTELLIGENT AGENTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1007 & SC2000 OR",
+      "MH2500 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE4046",
+      "CZ4046"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Intelligent Agents; Deductive Reasoning Agents; Practical Reasoning Agents; Reactive and Hybrid Architectures; Introduction to Multi-Agent Systems and Applications; Working Together; Multi-Agent Interaction; Allocating Scarce Resources ? Auctions; Making Group Decisions; Forming Coalitions."
+  },
+  {
+    "code": "SC4012",
+    "title": "SOFTWARE SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002 & SC2005"
+    ],
+    "mutually_exclusive": [
+      "CE4067",
+      "CZ4067"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop skills in software security. It focuses on security attacks launched by supplying specially crafted inputs to software components that modify the intended behaviours of those components, and the secure coding techniques (defences). The modified behaviours of the software components become security critical in a connected world where application systems are constructed from a collection of software components. Software developers who are not familiar with software security are likely to omit suitable defences out of ignorance. As such, this course will equip you with the deep knowledge about software security attack and defence techniques, a skill necessary to become IT security experts or professional software developers."
+  },
+  {
+    "code": "SC4015",
+    "title": "CYBER PHYSICAL SYSTEM SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE4055",
+      "CZ4055"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Cyber physical systems are typically designed as a network of interacting elements with physical input and output, and are characterized by the interaction between the physical world (sensors, user inputs, actuators) and the cyber world (processing, decision making). Cyber physical systems are the driving force behind modern civilization, being integral part of technologies, such as additive manufacturing, smartcard-based payment, power delivery systems, drone-based operations, and smart home automation. Cyber physical systems are characterized by stringent performance requirements, such as, extremely low energy budget, small area footprint and often hard real-time constraints. Due to the pervasive nature of the cyber physical systems in our everyday lives, it also runs the risk of huge security hazards. In this course, we will learn about the basics of cyber physical systems, including the design principles and methodologies. Further, there will be a detailed treatment of the security challenges for cyber physical systems, which vary in practice due to the diverse nature of the application environment of cyber physical systems. These different forms of security breaches, observed across diverse cyber physical systems, will be put in a well-characterized taxonomy, to be systematically identified as attack surfaces. The techniques to handle these attacks will be described in a generic manner, including key management and wireless/RFID communication. The attack surfaces and protection/mitigation principles will then be elaborated with practical case studies, from the representative cyber physical systems such as automotive, smart card systems and smart grid."
+  },
+  {
+    "code": "SC4021",
+    "title": "INFORMATION RETRIEVAL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001 OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CE4034",
+      "CZ4034"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to involve students in a technical way to understand and build information retrieval systems. They were expected to master the basic concepts and building blocks for information retrieval systems. In addition, applications in artificial intelligence were also introduced to get students acquainted with state of the arts."
+  },
+  {
+    "code": "SC4023",
+    "title": "BIG DATA MANAGEMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 Standing",
+      "SC2207"
+    ],
+    "mutually_exclusive": [
+      "CE4123",
+      "CZ4123"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ACDA",
+      "BCE",
+      "BCG",
+      "CE",
+      "CEEC",
+      "CSC",
+      "CSEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "We are in the 'Big Data' era - an extremely large amount of data is created every day. The world of data management has dramatically changed in the 'Big Data' era. This is primarily driven by multiple factors including cheaper storage costs, increasing availability of sensors, smart devices, social software, and availability of cloud computing infrastructure, and cheaper processing cost of large volumes of data due to dramatic advances in modern hardware (e.g., solid state disk, multicore CPUs, large memory). This seismic impact of big data has led to increasing demand in building scalable data infrastructures toward supporting real-world applications. This course aims to provide a broad understanding of big data and current technologies in managing and processing them. Key topics covered in this course include big data 5V's, memory hierarchy and its relation to big data systems, distributed storage and computation of big data, as well as NoSQL key-value stores. Upon completion of this course, you will learn to evaluate issues associated with big data management, learn how the data is stored in a distributed system and how queries and analytics run in parallel, and understand the design philosophy of real-world key-value stores."
+  },
+  {
+    "code": "SC4031",
+    "title": "INTERNET OF THINGS: COMMUNICATIONS & NETWORKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2008"
+    ],
+    "mutually_exclusive": [
+      "CE4171",
+      "CZ4171"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCE",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The objective of this course is to introduce Internet of Things (IoT) technologies with the focus on data communications and networking. The course consists of two complementary components, i.e., wireless communications and wireless networking to support IoT applications and systems. The wireless communications part includes the basics and concepts of wireless transmission technologies such as frequency, power consumption, wireless performance, mobility, wireless standards, medium access control protocols including fixed assignment and random access techniques. The wireless networking part includes the introduction and basics of wireless ad hoc routing, and cellular networks such as cellular system architecture, frequency reuse concept, hexagon geometry, co-channel interference, capacity expansion techniques. In addition to these two major components, the course will also discuss the IoT network architecture, IoT devices and IoT application use cases to provide comprehensive understandings of the entire IoT ecosystem. After attending this course, the students will be able to address the various technical challenges associated with wireless communications and networking to support IoT applications by solving such challenges using the principles learned. In addition, the students will be able to design and evaluate wireless communications and networking systems to support specific IoT applications. The concepts covered in this course are particularly important for those working in fields such as IoT network development, wireless IoT apps implementations, and mobile IoT services."
+  },
+  {
+    "code": "SC4051",
+    "title": "DISTRIBUTED SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2005 & SC2008"
+    ],
+    "mutually_exclusive": [
+      "CE4013",
+      "CZ4013"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces the concepts and design of distributed systems. 1. Foundations: characteristics of distributed systems, architectural models, fundamental models, interprocess communication. 2. Middleware: remote method invocation, remote procedure call, name services, CORBA. 3. System Infrastructure: distributed file systems, peer-to-peer systems. 4. Distributed Algorithms: clock synchronization, logical and vector clocks, distributed mutual exclusion, election algorithms, consensus algorithms, replication and fault tolerance."
+  },
+  {
+    "code": "SC4054",
+    "title": "SIMULATION & MODELLING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1007 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CE4015",
+      "CZ4015"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Basic concepts: system, model, simulation. Different types of simulation: Monte Carlo simulation, continuous system simulation, discrete event simulation. Simulation software: modelling and simulation using Arena. Generating random numbers and random variables for simulation study: LCG, inverse transform, convolution. Analysis of input and output data: MLE, Goodness-of-fit test, confidence interval. Verification and validation: concepts and techniques. Queuing models: properties, performance measures and basic formulas. Comparison of alternative designs: paired-t approach, multiple comparison problem. Variance reduction: CRN, AV."
+  },
+  {
+    "code": "SC4060",
+    "title": "VIRTUAL & AUGMENTED REALITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE4001",
+      "CZ4001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Definition of augmented and virtual reality; Human factors and sensory conflict; A generic VR system; 3D real-time computer graphics for VR systems; Physically-based simulation; Virtual reality hardware; Virtual reality software; Virtual reality applications; VRML and X3D; Shared virtual spaces. Each lecture module will be accompanied by typical examination problems and their model solutions which will be studied as hands-on experiences."
+  }
+]

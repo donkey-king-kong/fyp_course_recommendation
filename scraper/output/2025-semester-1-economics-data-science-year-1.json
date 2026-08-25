@@ -1,0 +1,554 @@
+[
+  {
+    "code": "CC0001",
+    "title": "INQUIRY & COMMUNICATION IN AN INTERDISCIPLINARY WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0601",
+      "HW0105",
+      "HW0106",
+      "HW0111",
+      "HW0128",
+      "HW0188",
+      "HW0209"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Researchers agree that writing is a tool for thinking (Menary, 2007; Klein & Boscolo, 2016; Miller and Jurecic, 2016; Reis, n.d.). As Reis explains, 'The bodily act of writing externalizes our thoughts, and the imposed structure (the written word) provides a vehicle by which those thoughts may be reorganized into new thinking, a new way of seeing the thoughts or a new way of organizing thoughts.' Miller and Jurecic similarly argue that 'writers discover what they think not before they write but in the act of writing' (2016, p. 60). One of the main aims of this course is to allow you to experience writing as a tool for thinking and to practice expressing ideas in formal writing and oral communication. While you will have the opportunity to understand and practice the genre conventions that are specific to your discipline later in your studies, this first common communication course is designed to help you form habits of mind that will serve you across the university and even in the world outside of the university. Taken by all first-year undergraduates, this foundational course will develop your written and oral communication skills, as well as your ability to read and analyze texts. It will help you to understand revision as integral to the process of composition, to convey your interpretations and ideas with confidence and clarity, and to consider audience and purpose when you communicate."
+  },
+  {
+    "code": "CC0002",
+    "title": "NAVIGATING THE DIGITAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1401"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "With digitalization now becoming the new normal in our daily life, this course seeks to equip students from different disciplines with problem-solving techniques with the aid of digital technology and to enable students to acquire some essential digital skills that are crucial in today's workforce. In this course, students will learn how to apply the concept of computational thinking and quantitative reasoning to solve problems and analyse data. Students will also learn how to identify online threats and understand the principles of ethics and intellectual property rights in the digital world. Students will be exposed to current issues in the digital world, which they can better understand through the logic of computational thinking and quantitative reasoning, such as cybersecurity and the rise of fake news. In addition, students will learn how to use some of the latest online tools for effective presentation, communication, and collaboration in teams during the course."
+  },
+  {
+    "code": "CC0003",
+    "title": "ETHICS & CIVICS IN A MULTICULTURAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with the necessary philosophical foundations to understand theories of ethics and subsequently apply those theories to real-life scenarios and issues. It also aims to enable you to understand and critically assess the civic institutions that structure their local and global communities. To these ends, the course will examine the nature of ethics, its understanding across different cultures, and how it is manifested in concepts, social structures, and governance institutions. Topics to be explored include human rights, democracy, freedom of speech and inequality. The rights and duties of citizenship shall be a unifying theme. You will think through assumptions they hold on all of these matters. They will be provided with the tools to understand various and even contradictory perspectives on these important issues. There will be a substantial amount of time devoted toward understanding Singapore's own institutions and ideologies, which are of course products specific to the country's own unique historical and geo-political circumstances. We expect that you will have better appreciation of the country's institutions after reading the module."
+  },
+  {
+    "code": "CC0005",
+    "title": "HEALTHY LIVING & WELLBEING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2025-onwards)-Non Direct Entry",
+      "(Admyr 2026-onwards)",
+      "(Admyr 2026-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is one of the NTU 2025 Education - Interdisciplinary Collaborative Core (ICC) courses. It aims to provide multi-disciplinary competence in a cross-disciplinary, collaborative learning environment, with student interaction and collaboration across schools as a key learning foundation. As the title connotes, the main objective of this compulsory undergraduate course is to examine what constitutes living a good, healthy, and flourishing life. According to research, individuals around the world pursue this 'flourishing life' in different ways, be it through improving one's physical fitness, seeking authentic relationships with others, or making a positive change in the environment. Thus, knowing and understanding how the different components of a 'good life' contribute to one's overall functioning is critical to one's healthy wellbeing. The latter, in turn, affords many benefits such as better health (physical, mental, and emotional health) and stronger relationships. By the end of this course, students would have developed an awareness of what constitutes living a healthy and flourishing life, both of which indirectly contribute to a successful undergraduate education."
+  },
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world. By the end of the course, you would have developed an awareness for, and a system thinking approach to, sustainability, which you can continue to develop no matter which discipline or career path you choose to embark on."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CC0015",
+    "title": "HEALTH & WELLBEING",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2024)-Non Direct Entry",
+      "(Admyr 2011-2025)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is one of the NTU 2025 Education - Interdisciplinary Collaborative Core (ICC) courses. It aims to provide multi-disciplinary competence in a cross-disciplinary, collaborative learning environment, with student interaction and collaboration across schools as a key learning foundation. As the title connotes, the main objective of this compulsory undergraduate course is to examine what constitutes living a good, healthy, and flourishing life. According to research, individuals around the world pursue this 'flourishing life' in different ways, be it through improving one's physical fitness, seeking authentic relationships with others, or making a positive change in the environment. Thus, knowing and understanding how the different components of a 'good life' contribute to one's overall functioning is critical to one's healthy wellbeing. The latter, in turn, affords many benefits such as better health (physical, mental, and emotional health) and stronger relationships. By the end of this course, students would have developed an awareness of what constitutes living a healthy and flourishing life, both of which indirectly contribute to a successful undergraduate education."
+  },
+  {
+    "code": "HC3003",
+    "title": "SOUTHEAST ASIAN CHINESE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "B4 & above in O level Chinese or equivalent"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course traces the migration of Chinese to Southeast Asia in the 19th century and examines their relationships and contributions to the hostland and homeland in the 20th century. It seeks to understand how Chinese migrant experiences across Southeast Asia have evolved, and how overseas Chinese identity changed in response to changing socio-economic and political conditions in Southeast Asia and China. Discussion includes such important issues as local anti-Chinese movements, development of Chinese education, changing consciousness and identities, and the relations between Southeast Asian Chinese and China. This course serves as the foundation for future courses on the overseas Chinese."
+  },
+  {
+    "code": "HE1001",
+    "title": "MICROECONOMICS I",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0901",
+      "HE5091",
+      "HE9091"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The Singaporean Government is increasingly engaging the public, and as economists we are responsible for contributing towards better public decisions. This is especially important as good public policy processes place value on social impact, seeks to understand the behavior of Singapore's diverse society, and makes sense and use of increasingly abundant behavioral data. As the Singaporean economy gets more advanced and complex, and citizens get better educated and informed, we rely on decisions strengthened by sound economic thinking. The economist must move towards more rigorous reasoning across the levels of household, corporate, and public choice. In this course we apply fundamental microeconomic principles complemented by behavioral economics to various current everyday concerns in Singapore. The course aims to deliver a progressive and rigorous introduction to basic concepts and models of microeconomics, applied to current trends local and global. Microeconomics is one of the three core pillars of an Economics major. This is an important module that will serve as a prerequisite for almost all major PE modules. The first part of the course covers the theory of individual decision-making in consumption, risk and labor. The second part of the course covers the theory of firms making production decisions when operating under various market structures, in particular price discrimination with market power and strategic interactions between firms. This course will also expose students to new developments in the field of microeconomics which have now come to assume a central role, in particular behavioral economics. Students will learn basic theories that can be abstract and simple but yet so relevant and powerful in explaining decision problems in our everyday lives. On the one hand, it will give students with either no previous economics training a chance to close the gap with those with a stronger background. On the other hand, it will give everyone a chance to appreciate microeconomics in action right from the start of their education at NTU - a feature that is surprisingly amiss in many Economics undergraduate programs worldwide."
+  },
+  {
+    "code": "HE1002",
+    "title": "MACROECONOMICS I",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0901",
+      "HE5091",
+      "HE9091"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The course aims to provide first-year college students with a sound understanding on the structure and functioning of the economy as a whole. As you are taking an introductory course, you are not expected to have any prior knowledge in economics. Instead, the principles you learn from this course will provide a solid foundation and develop a strong interest for your further study of intermediate and advanced macroeconomics."
+  },
+  {
+    "code": "HE3010",
+    "title": "MONEY & BANKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE2007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers a systematic analysis of monetary theories and the financial system. Apart from exposing you to different approaches in monetary analysis, the course places a special emphasis on the up-to-date analysis of how costs affect financial structure and monetary policy. The course will cover the structure and importance of the financial system, the functions of money, behavior of interest rates, financial structure and asymmetric information, bank management and regulation, debates on macroeconomic and monetary policies, the targets and instruments of monetary policies, the transmission mechanism of monetary policy and its effectiveness, money and inflation, rational expectations and its applications."
+  },
+  {
+    "code": "HE3022",
+    "title": "PUBLIC ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to study the role of government in addressing market failures, within social domains such as education, healthcare, and retirement financing, through policies like taxation and subsidies. The course is for students interested in topics such as taxation, education, healthcare financing, government budgets, economic efficiency, and equity. The course prepares you for a career in government (e.g. Ministry of Finance, Central Provident Fund), private sector (policy think tanks and consultancies addressing and advising on market failures), and academia."
+  },
+  {
+    "code": "HG1001",
+    "title": "MIND & MEANING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "HG5001",
+      "HG8001",
+      "HG8010"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In this course, you will be introduced to the uniqueness of human language as a communication system. You will examine how language is learnt and the way our mind stores meaning and organizes information. The topics you will cover include animal communication, biological foundation of human language, language acquisition, sign language and deaf studies, language impairment, word formation and the study of meaning. Your understanding of these concepts will be reinforced with examples taken from a wide range of languages and both cross linguistic and interdisciplinary perspectives from psychology, sociology, computer science and communication studies."
+  },
+  {
+    "code": "HG2020",
+    "title": "LANGUAGE IN SOCIETY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an introduction to sociolinguistics - the study of language in its social context. We will discuss how language practices may differ across various communities. We will examine the multifaceted relationship between language use and various social categories such as class and socioeconomic status, age, gender and sexuality, race and ethnicity, education etc. Throughout the course, we will apply the new concepts when reflecting on the multiethnic, multilingual and multicultural sociolinguistic context of Singapore. If you are interested in the social life of language, or have wondered why we speak and write differently in different situations, how we use language to express social meanings and various aspects of our identity, and how we can understand social relationships in a community by examining language attitudes and ideologies, then this is the right course for you. What you will learn will be valuable in any future career that involves communication, particularly in multicultural and multilingual settings."
+  },
+  {
+    "code": "HL1001",
+    "title": "INTRODUCTION TO THE STUDY OF LITERATURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an introduction to the study of literature at tertiary level that develops your critical reading and writing skills. You will learn to pay careful attention to questions of form, style and context while being introduced to a wide range of genres and traditions. You will be introduced to the subject-specific conventions of academic writing and learn how to develop compelling arguments supported by textual evidence."
+  },
+  {
+    "code": "HP1000",
+    "title": "INTRODUCTION TO PSYCHOLOGY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an introductory overview of fundamental areas in the contemporary study of psychology. Topics include the biological bases of behaviour, sensation and perception, memory, thought and language, social behaviour, intelligence, motivation, learning, personality and development."
+  },
+  {
+    "code": "HP1100",
+    "title": "FUNDAMENTALS OF SOCIAL SCIENCE RESEARCH",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is an introductory course to the research methods and basic statistical techniques commonly used in psychology research. Students will be introduced to the process of scientific inquiry in psychology, both in terms of empirical research methodology and statistical analysis. The course is divided into lectures and tutorials. The lectures will focus on conceptual issues and cover the content materials that students need to understand to actually design any psychological study and work with any data. The tutorials will be dedicated to more in-depth discussions of some of the topics covered in the lectures, and practical experience with data analysis using SPSS"
+  },
+  {
+    "code": "HR1001",
+    "title": "WAYS OF SEEING: EXPLORING VISUAL CULTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed for students interested in studying the interrelated realms of art history and visual culture. Maintaining focus on ways of seeing and the visual, we will study key works of art in a global field across periods spanning ca. 2500 BCE to the contemporary. Each week's learning activities will centre around specific case studies as a starting point for exploration. We will analyse art objects by situating them within debates and discourses specific to their production and reception. We will learn to use different methodological approaches and major theoretical frameworks (for instance postcolonialism, feminism, post-digital inquiry, surveillance theories, and ecocriticism) and core concepts (for instance representation, mimesis, modernism, race, spectacle, surveillance, resistance, post-truth) and develop foundational skills pertaining to analytical writing (such as framing an argument, compiling a bibliography and so on)."
+  },
+  {
+    "code": "HR3005",
+    "title": "THE FANTASTIC IN WESTERN VISUAL ARTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers an introduction to an often over-looked, or under-considered, aspect of the art world - the fantastic. As such, students engage with a wide range of art historical methodologies and art practices to examine an imagined or hoped for world. They will conduct two in-depth analyses of `fantastic' works of art of their own choosing and present the findings in a peer reviewed exercise and an academic essay. By doing this students will hone their ability to communicate art historical discussions in both oral and written formats. They will also develop the intangible notions beyond the visual that drive creativity."
+  },
+  {
+    "code": "HY1001",
+    "title": "INTRODUCTION TO PHILOSOPHY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "HY9001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is an introduction to philosophy through the examination of fundamental pilosophical issues. No prior experience with philosophy is assumed. The course is designed to provide you with a foundation for further philosophical inquiry."
+  },
+  {
+    "code": "MH1805",
+    "title": "CALCULUS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CY1601",
+      "MH1100",
+      "MH1802"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2018)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with the subject knowledge, logical reasoning and analytical skills so that you are able to apply the concepts and techniques of calculus of one variable to solve problems encountered in science."
+  },
+  {
+    "code": "MH1812",
+    "title": "DISCRETE MATHEMATICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1001",
+      "CZ1001",
+      "MH1301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course serves as an introduction to various topics in discrete mathematics. Familiarity with formal analysis through simple problems in some basic discrete structures is a key objective rather than knowing these structures in depth. Specifically, the main aim is to learn topics from the following broad areas of discrete mathematics: number theory, logic, combinatorics, and graph theory. This course aims to provide students with a solid mathematical foundation and is intended for first year computer science and computer engineering students."
+  },
+  {
+    "code": "MH2802",
+    "title": "LINEAR ALGEBRA FOR SCIENTISTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "H2 Maths or equivalent"
+    ],
+    "mutually_exclusive": [
+      "CE1104",
+      "CY1602",
+      "CZ1104",
+      "MH1200",
+      "MH1201",
+      "RE1021",
+      "SC1004",
+      "SC1305"
+    ],
+    "not_available_to_programme": [
+      "PHY(2004-2016)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_available_as_core_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you in acquiring a wider range of mathematical concepts related to vector spaces and linear algebra, while also developing a strong set of mathematical skills for upper-level Physical and Computing Science courses. Through a mathematical approach to problem-solving, you will have the opportunity to develop thinking, reasoning, communication, and modelling skills. Additionally, the course aims to help you connect ideas within mathematics and apply mathematical principles in the context of Physical and Computing Science courses. Ultimately, this course seeks to provide an experience that fosters an appreciation for the rigour and abstraction in the discipline."
+  },
+  {
+    "code": "ML0004",
+    "title": "CAREER DESIGN & WORKPLACE READINESS IN THE V.U.C.A WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ARED",
+      "SCED"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)-Non Direct Entry",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course empowers students to build successful careers through a combination of self-discovery and the development and application of essential workplace skills. Students will enhance their self-awareness through comprehensive self-assessment, mastering techniques for effective resume and cover letter writing, networking, and interviewing. They will then apply these skills through practical exercises, including mock interviews and resume critiques, receiving valuable feedback to refine their approach. The culmination of this process is the creation of a well-defined and actionable career plan, setting them on a path toward achieving their professional goals."
+  },
+  {
+    "code": "SC1003",
+    "title": "INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2211",
+      "BS1009",
+      "CE1003",
+      "CE1103",
+      "CH2107",
+      "CV1014",
+      "CZ1003",
+      "CZ1103",
+      "EE1005",
+      "IE1005",
+      "MA1008",
+      "MS1008",
+      "PS0001",
+      "RE1016",
+      "SC1303",
+      "SC5001"
+    ],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "CBE",
+      "CBEC",
+      "CHEM",
+      "CMED",
+      "COMP",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ENE",
+      "ENEC",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ESPP",
+      "IEEC",
+      "IEM",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(RMS)",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PESC",
+      "PHMS",
+      "PHY",
+      "REP",
+      "ROBO",
+      "SPPE"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computational thinking (CT) is the process of analysing a problem then designing and expressing its solution in such a way that a computer can effectively carry it out. It includes a number of characteristics, such as breaking a problem into small and repetitive ordered steps, logically ordering and analyzing data and creating solutions that can be effectively implemented as programs running on computer. The aim of this course is hence to take students with no prior experience of thinking in a computational manner to a point where you can derive simple algorithms and code the programs to solve some basic problems in your domain of studies. Student will also learn about basic program construct and simple data structures. In addition, the course will include topics to appreciate the internal operations of a processor."
+  },
+  {
+    "code": "SC1007",
+    "title": "DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CE1007",
+      "CE1107",
+      "CT2001",
+      "CZ1007",
+      "CZ1107",
+      "SC1303"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to (i) teach the concepts, implementations and applications of data structures such as arrays, linked lists, stacks, queues and trees that are important for building efficient algorithms; (ii) provide an introduction to algorithm analysis and design. These are essential for future computer science and computer engineering courses."
+  },
+  {
+    "code": "SP0061",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Only for Premier Scholars Programme students."
+    ],
+    "mutually_exclusive": [
+      "CC0007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  }
+]

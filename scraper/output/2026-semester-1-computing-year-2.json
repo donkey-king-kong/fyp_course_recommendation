@@ -1,0 +1,67 @@
+[
+  {
+    "code": "CT2009",
+    "title": "DESIGN THINKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to cultivate a human-centered mindset and practical problem-solving skills through the iterative process of design thinking. Students will learn to empathize with users, define meaningful problems, ideate creative solutions, prototype effectively, and test iteratively. By integrating insights from real-world contexts and interdisciplinary perspectives, students will gain the ability to design innovative, desirable, and feasible solutions for complex challenges. This course prepares students to apply design thinking across domains such as technology, product development, service design, and social innovation, with a strong emphasis on usability, empathy, and impact."
+  },
+  {
+    "code": "CT2010",
+    "title": "PROJECT MANAGEMENT (BUSINESS NEEDS ANALYSIS & RISK ANALYSIS)",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to introduce basic concepts in project management with coverage of evolving trends and application such as sustainability, artificial intelligence. The learning helps to apply the concepts while executing Computing Learning as well as product development projects. This equips the participants to enhance their skill set, improve employability, and career growth. Key concepts such as project integration, needs analysis, scope management, project planning, project budget & cost management, project risks management, communication and conflict management shall be covered."
+  },
+  {
+    "code": "CT2011",
+    "title": "DATA ANALYSIS & MARKET SENSING (BUSINESS INTELLIGENCE)",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2007"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to cultivate a human-centered mindset and practical problem-solving skills through the iterative process of design thinking. Students will learn to empathize with users, define meaningful problems, ideate creative solutions, prototype effectively, and test iteratively. By integrating insights from real-world contexts and interdisciplinary perspectives, students will gain the ability to design innovative, desirable, and feasible solutions for complex challenges. This course prepares students to apply design thinking across domains such as technology, product development, service design, and social innovation, with a strong emphasis on usability, empathy, and impact."
+  },
+  {
+    "code": "CT2079",
+    "title": "MINI CAPSTONE (FULL STACK) PROJECT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Completion of at least 15AUs of Foundation Courses",
+      "CT2004"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide students with practical experience in full-stack software development by applying the concepts and skills learned across the core computing modules. Students will work on a real-world project that spans front-end and back-end development, incorporating design thinking for user-centric problem identifi cation and systems thinking to structure scalable, modular, and interoperable solutions. Project management techniques will guide the execution process. The course covers system design, database integration, secure coding practices, software testing, and deployment using industry-standard tools and frameworks. Through this hands-on project, students will gain a comprehensive understanding of how to deliver end-to-end software solutions in a professional and system-oriented context."
+  }
+]

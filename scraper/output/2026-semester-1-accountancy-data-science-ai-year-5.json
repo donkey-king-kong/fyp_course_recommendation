@@ -1,0 +1,188 @@
+[
+  {
+    "code": "AB1088",
+    "title": "CAREER LAUNCHPAD",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [
+      "NGL students are taking AL1001, cannot read AB1088"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2025)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to equip you with the foundational knowledge and practical skills to navigate the evolving professional and industry landscape. Aligning with SkillsFuture's emphasis on lifelong learning and adaptive skills, you will develop an understanding of key industry trends, emerging sectors, and the expectations of employers in today's job market. Through exposure to skills frameworks, you will learn to identify and build transferable competencies valued across industries. You will also acquire practical job search and career development techniques, including resume writing, interview preparation, and AI-driven strategies for career exploration, professional etiquette and personal branding. In addition, the course helps you strengthen your networking, skills to engage employers with confidence and professionalism. Upon completion, you should possess the knowledge, the confidence that will set you apart and help you to clinch and excel in your professional attachment (PA)."
+  },
+  {
+    "code": "AB2008",
+    "title": "CAREERS FUTURE FORWARD",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course will help you in your career development journey and prepares you for your future career. You will understand yourself better, realise your strengths and plan and map your career aspirations. Through this course, you will also have a broader understanding of the diverse industries, market requirements and current and future job trends. You will also learn how to stand out on LinkedIn, build your brand and be equipped with networking skills to engage employers and the business community for internships and job opportunities."
+  },
+  {
+    "code": "AC3103",
+    "title": "ACCOUNTING ANALYSIS & VALUATION",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AC2101"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "There are two parts to this course. Part 1 examines the role of financial reporting in the functioning of capital markets and focuses on identifying, assessing and applying information for the purposes of analyzing and valuing business activities and entities. Part 2 focuses on the valuation issues following mergers and acquisitions, namely valuation of intangibles and impairment testing of goodwill."
+  },
+  {
+    "code": "AC3104",
+    "title": "ENTERPRISE RISK MANAGEMENT & SUSTAINABILITY",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AC1103(Corequisite) OR",
+      "AD1102(Corequisite) OR",
+      "BU5101(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "AC2103"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "To sustain value, key executives and managers in corporations today recognize the need for active engagement in setting objectives and overseeing programs associated with Enterprise Risk Management (ERM). The course starts with an overview of risks that can threaten the attainment of organizational objectives, and the ERM concepts, frameworks and techniques for identifying, assessing and managing risks. Both the internal and external auditors increasingly need to understand ERM to properly appreciate key risks, controls and governance issues of the companies they audit. The later part of the course extends the knowledge and techniques covered ERM by examining the longer-term risks, opportunities and enterprise value creation through Enterprise Sustainability. Enterprise sustainability creates long-term value beyond financial success by making a positive impact socially as well as environmentally. As climate change and global warming pose an existential threat to humanity and affect all industry sectors, there is an urgent need for businesses to monitor and seek innovative green solutions to reduce their carbon footprints and to deliver on their targeted net-zero goals. Students will learn key concepts and apply widely-adopted methodologies of carbon management, sustainability reporting and assurance. Students will also be exposed to hands-on data analytics and data-mining application in the areas of business and fraud risk assessments and audit analytics"
+  },
+  {
+    "code": "MH3510",
+    "title": "REGRESSION ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 OR",
+      "MH2500 & MH2510"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your understanding/grasping of the regression models of summarizing the relationship among variables. Linear regression models are widely used today in business, administration, economics, engineering, and the social, health and biological sciences. You should learn the rigorous way to approach regression models and be able to build regression models for real data."
+  },
+  {
+    "code": "MH4511",
+    "title": "SAMPLING & SURVEY",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 OR",
+      "MH2500 & MH2510"
+    ],
+    "mutually_exclusive": [
+      "HE2020"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Surveys and samples is part of our daily life. By understanding the basic characteristics of various sampling designs, you will be able to appreciate information reported in the medias. This course gives an introduction to the statistical aspects of taking and analysing a sample. You will learn to determine the appropriate design in various situations, use the correct method for analysis and interpret the results. This course is essential for working Statisticians."
+  },
+  {
+    "code": "MH4513",
+    "title": "SURVIVAL ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 & MH3510"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course will introduce statistical methods used to analysis time-to-event data. Time-to-event or failure time data, and associated covariate data can be collected under a variety of sampling schemes and very commonly involves right censoring. The distribution of a time-to-event variable is often characterized in terms of its survival or hazard function. The course will cover fundamentals in survival analysis, with emphasis on statistical principal, methods and real life applications. The course will also motivate students to work closely with data and make inference nonparametrically and/or parametrically in the fields of study."
+  },
+  {
+    "code": "SC3020",
+    "title": "DATABASE SYSTEM PRINCIPLES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2207 OR",
+      "BC2402"
+    ],
+    "mutually_exclusive": [
+      "CE4031",
+      "CZ4031"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Database management systems (DBMS) are designed to manage large and complex data sets. The fundamentals of the implementation of database management systems must be understood by all Computer Science students. This will help students to develop and design software systems utilizing databases, and equip students with the knowledge of managing data of large scale. Moreover, this should be understood by current and future business leaders so that they can offer strategic guidance based on an informed understanding of database business capabilities. This course provides the basis for achieving this goal."
+  },
+  {
+    "code": "SC4061",
+    "title": "COMPUTER VISION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE4003",
+      "CZ4003"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to introduce basic concepts and technologies of computer vision, and develop skills to implement widely used algorithms to process real vision tasks. This course presents you with digital image acquisition, representation, processing, recognition, and 3D reconstruction, to gain understanding of algorithm and system design, analytical tools, as well as practical implementations of various computer vision applications. In addition, it will also cover the recent computer vision development with deep learning technology. You will be equipped with fundamental knowledge, practical skills, and the insights for future development in this area."
+  },
+  {
+    "code": "SC4090",
+    "title": "APPLICATIONS OF DATA SCIENCE & AI IN ACCOUNTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1007 & SC2000 OR",
+      "MH2500 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "BC3409",
+      "BC3415"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to give students an overview of the current applications of data science and artifi cial intelligence in accounting and fi nance sector. In addition, the course provides contemporary case studies of such applications and gives students exposures to work on a specifi c project in one of these areas."
+  }
+]

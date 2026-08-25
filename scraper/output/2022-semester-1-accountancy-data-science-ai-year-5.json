@@ -1,0 +1,86 @@
+[
+  {
+    "code": "AC3103",
+    "title": "ACCOUNTING ANALYSIS & VALUATION",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AC2101"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "There are two parts to this course. Part 1 examines the role of financial reporting in the functioning of capital markets and focuses on identifying, assessing and applying information for the purposes of analyzing and valuing business activities and entities. Part 2 focuses on the valuation issues following mergers and acquisitions, namely valuation of intangibles and impairment testing of goodwill."
+  },
+  {
+    "code": "AC3104",
+    "title": "RISK MANAGEMENT & ADVANCED AUDITING",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AC2101(Corequisite) & AC2104 & AC2401(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "AC2103"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "To sustain value, corporations today recognize the need for active engagement in setting objectives and overseeing programs associated with Enterprise Risk Management (ERM). The first segment of the course provides an overview of risks that can threaten the attainment of organizational objectives, and the ERM concepts, frameworks and techniques for identifying, assessing and managing risks. The second segment of the course extends foundational auditing knowledge and techniques covered in AC2104 Assurance and Auditing by examining advanced auditing concepts and complex issues faced by auditors and assurance providers in current practice. Topics include the auditing of complex issues related to revenue recognition, significant accounting estimates and group financial statements. You will also be exposed to hands-on data analytics and data-mining application in the areas of business risks, fraud risks and audit analytics."
+  },
+  {
+    "code": "MH3510",
+    "title": "REGRESSION ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your understanding/grasping of the regression models of summarizing the relationship among variables. Linear regression models are widely used today in business, administration, economics, engineering, and the social, health and biological sciences. You should learn the rigorous way to approach regression models and be able to build regression models for real data."
+  },
+  {
+    "code": "MH4511",
+    "title": "SAMPLING & SURVEY",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500"
+    ],
+    "mutually_exclusive": [
+      "HE2020"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "1. Probability Sampling a Types of Probability Samples b Simple Random Sampling c Estimation of Population Mean, Proportion and Total d Sample Size Estimation e Systematic Sampling 2. Stratified Sampling a Theory of Stratified Sampling b Sampling Weights c Estimation of Population Mean, Proportion and Total d Allocating Observations to Strata e Sample Size Estimation f Defining Strata g Post-stratification 3. Ratio and Regression Estimations a Ratio Estimation b Regression Estimation c Selecting the Sample Size d Relative Efficiency of Estimators 4. Cluster Sampling a One-Stage and Two-Stage Cluster Samplings b Estimation of Population Mean, Proportion and Total c Selecting the Sample Size d Cluster Sampling with Probability Proportional to Size 5. Sampling with Unequal Probabilities a One-Stage Sampling with Replacement b Two-Stage Sampling with Replacement c Unequal-Probability Sampling without Replacement 6. Nonresponse a Effects of Ignoring Nonresponse b Call backs and Two-Phase Sampling c Weighting Methods for Nonresponse d Imputation"
+  },
+  {
+    "code": "MH4513",
+    "title": "SURVIVAL ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 & MH3500 & MH3510"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course will introduce statistical methods used to analysis time-to-event data. Time-to-event or failure time data, and associated covariate data can be collected under a variety of sampling schemes and very commonly involves right censoring. The distribution of a time-to-event variable is often characterized in terms of its survival or hazard function. The course will cover fundamentals in survival analysis, with emphasis on statistical principal, methods and real life applications. The course will also motivate students to work closely with data and make inference nonparametrically and/or parametrically in the fields of study."
+  }
+]
