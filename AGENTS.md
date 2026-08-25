@@ -209,13 +209,21 @@ Completed foundations:
 - Backend `GET /roadmap` endpoint.
 - Minimal Vite React TypeScript frontend.
 - Frontend API call to `GET /roadmap`.
-- Plain frontend roadmap summary and course list.
+- Semester roadmap UI with course cards, prerequisite arrows, search, and completed-course state.
+- Browser-side student login/profile state using Zustand and `localStorage`.
+- Transcript upload endpoint and frontend upload UI for marking completed roadmap courses.
+- PostgreSQL module catalog data seeded from static module JSON files.
+- Backend module catalog API with `GET /modules`, `GET /modules/filters`, and `GET /modules/{code}`.
+- Module descriptions seeded from `data/course_catalog.json` where available.
+- Faculty activation controls through a `faculties` table and `/faculties` API endpoints.
+- Frontend NTU Modules page with search, filters, pagination, module detail overlay, and persisted tab/filter state.
 
 Current next step:
 
 - Continue from `Progress.md`.
-- The next recommended work is improving the roadmap course list or planning the first roadmap visualization step.
-- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, transcript upload, or recommendation logic yet.
+- The current branch PR is for the PostgreSQL-backed module catalog page and related backend controls.
+- Keep reviewing and polishing the module catalog PR before starting unrelated milestones.
+- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or recommendation logic yet.
 
 ## Expected Working Directory
 
