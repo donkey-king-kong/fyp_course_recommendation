@@ -3,12 +3,13 @@ import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
 import LoginPage from './components/LoginPage'
+import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
 import { useProfileStore } from './store/useProfileStore'
 import type { RoadmapResponse } from './types/roadmap'
 
-type ViewState = 'roadmap' | 'profile'
+type ViewState = 'roadmap' | 'modules' | 'profile'
 
 // Main page component
 function App() {
@@ -74,6 +75,12 @@ function App() {
               Roadmap
             </button>
             <button
+              className={`nav-button ${currentView === 'modules' ? 'active' : ''}`}
+              onClick={() => setCurrentView('modules')}
+            >
+              Modules
+            </button>
+            <button
               className={`nav-button ${currentView === 'profile' ? 'active' : ''}`}
               onClick={() => setCurrentView('profile')}
             >
@@ -105,11 +112,11 @@ function App() {
         </div>
       </header>
 
-      {/* Show this while the request is still pending. */}
-      {!roadmap && !error && <p>Loading roadmap...</p>}
+      {/* Show this while the roadmap request is still pending. */}
+      {currentView === 'roadmap' && !roadmap && !error && <p>Loading roadmap...</p>}
 
       {/* Show this if the request fails. */}
-      {error && <p>{error}</p>}
+      {currentView === 'roadmap' && error && <p>{error}</p>}
 
       {/* Show roadmap content only after data has loaded successfully. */}
       {roadmap && currentView === 'roadmap' && (
@@ -132,6 +139,8 @@ function App() {
           <CourseList courses={filteredCourses} />
         </>
       )}
+
+      {currentView === 'modules' && <ModulesPage />}
 
       {/* Show profile page when selected */}
       {currentView === 'profile' && <ProfilePage />}
