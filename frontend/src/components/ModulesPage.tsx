@@ -38,6 +38,7 @@ function ModulesPage() {
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [isDetailLoading, setIsDetailLoading] = useState(false)
+  const [isDetailOpen, setIsDetailOpen] = useState(false)
   const [error, setError] = useState('')
 
   const currentPage = Math.floor(offset / MODULE_PAGE_SIZE) + 1
@@ -88,6 +89,20 @@ function ModulesPage() {
     void loadModules()
   }, [currentOnly, offset, searchTerm, selectedCategory, selectedFaculty, selectedLevel])
 
+  useEffect(() => {
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        closeModuleDetail()
+      }
+    }
+
+    if (isDetailOpen) {
+      window.addEventListener('keydown', closeOnEscape)
+    }
+
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [isDetailOpen])
+
   function resetFilters() {
     setSearchTerm('')
     setSelectedFaculty('')
@@ -99,6 +114,8 @@ function ModulesPage() {
 
   async function openModuleDetail(code: string) {
     try {
+      setSelectedModule(null)
+      setIsDetailOpen(true)
       setIsDetailLoading(true)
       const module = await fetchModuleByCode(code)
       setSelectedModule(module)
@@ -107,6 +124,11 @@ function ModulesPage() {
     } finally {
       setIsDetailLoading(false)
     }
+  }
+
+  function closeModuleDetail() {
+    setIsDetailOpen(false)
+    setSelectedModule(null)
   }
 
   function handleFilterChange(updateFilter: () => void) {
@@ -192,36 +214,38 @@ function ModulesPage() {
         </div>
       )}
 
-      {(isDetailLoading || selectedModule) && (
-        <aside className="module-detail-panel">
-          {isDetailLoading && <p>Loading selected module...</p>}
-          {!isDetailLoading && selectedModule && (
-            <>
-              <div className="module-detail-header">
-                <span>{selectedModule.code}</span>
-                <button type="button" onClick={() => setSelectedModule(null)}>
-                  Close
-                </button>
-              </div>
-              <h3>{selectedModule.title}</h3>
-              <p>{selectedModule.description ?? 'No description available yet.'}</p>
-              <dl>
-                <div>
-                  <dt>Prerequisites</dt>
-                  <dd>{selectedModule.prerequisites.length > 0 ? selectedModule.prerequisites.join(', ') : 'None listed'}</dd>
+      {isDetailOpen && (
+        <div className="module-detail-overlay" onMouseDown={(event) => event.currentTarget === event.target && closeModuleDetail()}>
+          <aside className="module-detail-panel" role="dialog" aria-modal="true" aria-label="Module details">
+            {isDetailLoading && <p>Loading selected module...</p>}
+            {!isDetailLoading && selectedModule && (
+              <>
+                <div className="module-detail-header">
+                  <span>{selectedModule.code}</span>
+                  <button type="button" onClick={closeModuleDetail}>
+                    Close
+                  </button>
                 </div>
-                <div>
-                  <dt>Unlocks</dt>
-                  <dd>{selectedModule.unlocks.length > 0 ? selectedModule.unlocks.join(', ') : 'None listed'}</dd>
-                </div>
-                <div>
-                  <dt>Restrictions</dt>
-                  <dd>{selectedModule.not_available_to_programme ?? 'None listed'}</dd>
-                </div>
-              </dl>
-            </>
-          )}
-        </aside>
+                <h3>{selectedModule.title}</h3>
+                <p>{selectedModule.description ?? 'No description available yet.'}</p>
+                <dl>
+                  <div>
+                    <dt>Prerequisites</dt>
+                    <dd>{selectedModule.prerequisites.length > 0 ? selectedModule.prerequisites.join(', ') : 'None listed'}</dd>
+                  </div>
+                  <div>
+                    <dt>Unlocks</dt>
+                    <dd>{selectedModule.unlocks.length > 0 ? selectedModule.unlocks.join(', ') : 'None listed'}</dd>
+                  </div>
+                  <div>
+                    <dt>Restrictions</dt>
+                    <dd>{selectedModule.not_available_to_programme ?? 'None listed'}</dd>
+                  </div>
+                </dl>
+              </>
+            )}
+          </aside>
+        </div>
       )}
 
       <div className="modules-board">
