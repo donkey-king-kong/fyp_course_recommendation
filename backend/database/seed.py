@@ -5,12 +5,13 @@ from pathlib import Path
 from typing import Any
 
 from backend.database.connection import SessionLocal, engine
-from backend.models import Base, ModuleModel, ModulePrerequisiteModel
+from backend.models import Base, FacultyModel, ModuleModel, ModulePrerequisiteModel
 
 # Source dataset downloaded from NTUMods and committed under the repo data folder.
 MODULES_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "modules.json"
 PREREQUISITE_GRAPH_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "ntu_prerequisite_unlock_graph.json"
 COURSE_CATALOG_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "course_catalog.json"
+DEFAULT_ACTIVE_FACULTIES = {"CSC", "CE"}
 
 def seed_database() -> None:
     # Create missing tables before inserting data so local setup stays simple.
@@ -23,12 +24,14 @@ def seed_database() -> None:
 
     try:
         inserted_count, updated_count = seed_modules(db, modules, description_by_code)
+        faculty_count = seed_faculties(db, modules)
         prerequisite_count = seed_prerequisite_relationships(db, prerequisite_graph)
         db.commit()
 
         print(f"Found {len(description_by_code)} catalog descriptions.")
         print(f"Inserted {inserted_count} modules.")
         print(f"Updated {updated_count} modules.")
+        print(f"Seeded {faculty_count} faculties.")
         print(f"Seeded {prerequisite_count} prerequisite relationships.")
         print("Successfully seeded module data into PostgreSQL.")
     finally:
@@ -60,6 +63,19 @@ def seed_modules(db: Any, modules: list[dict[str, Any]], description_by_code: di
         inserted_count += 1
 
     return inserted_count, updated_count
+
+def seed_faculties(db: Any, modules: list[dict[str, Any]]) -> int:
+    faculty_names = sorted({module["faculty"] for module in modules if module.get("faculty")})
+
+    for faculty_name in faculty_names:
+        existing = db.query(FacultyModel).filter_by(name=faculty_name).first()
+
+        if existing:
+            continue
+
+        db.add(FacultyModel(name=faculty_name, is_active=faculty_name in DEFAULT_ACTIVE_FACULTIES))
+
+    return len(faculty_names)
 
 def seed_prerequisite_relationships(db: Any, prerequisite_graph: dict[str, dict[str, list[str]]]) -> int:
     relationships = build_prerequisite_relationships(prerequisite_graph)
