@@ -1,0 +1,574 @@
+[
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Sustainability stresses the importance of future development to meet the needs of the present without compromising the ability of future generations to meet their needs. This concept is a culmination of economic, environmental, and social discourse throughout the last few decades. The United Nations (UN) declared a Decade of Education for Sustainable Development (DESD) with the aim to promote ?a more sustainable world through different forms of education, training and public awareness activities?. This provides an opportunity to reconsider approaches undertaken to address global challenges. It is imperative that pedagogical directions for higher education institutions address the foundations of sustainable development across different disciplines due to its complex and multi-faceted nature that encompasses a full spectrum of socio-economic-environmental issues. As such, this course aims to stimulate critical thinking, curiosity, and the ability to structure and synthesise knowledge through the lens of sustainability. Learning will be reinforced by concrete case studies with a focus on topics such as resource management, pollution, responsible consumption, and climate change. The course will require systematic analyses of major current sustainability challenges from the perspectives of society, economy, and the environment, and look at how we can promote a more sustainable world through choices and actions, as individuals, societies, nations, and as a global community. Through this learning process, students will acquire a systems thinking approach to sustainability that enhances knowledge and skills sets relevant to various disciplines and career paths. This course hopes to inspire and equip students to be agents of change toward a more sustainable world."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CE2003",
+    "title": "DIGITAL SYSTEMS DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1005 OR",
+      "CZ1005 OR",
+      "CE1105 OR",
+      "CZ1105"
+    ],
+    "mutually_exclusive": [
+      "SC2103"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEEC",
+      "ENG",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 OR",
+      "CE1007 OR",
+      "CE1103 OR",
+      "CZ1103 OR",
+      "CZ1107"
+    ],
+    "mutually_exclusive": [
+      "SC2002"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1006 & CZ1007 OR",
+      "CE1006 & CE1007 OR",
+      "CE1106 & CE1107 OR",
+      "CZ1106 & CZ1107"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "SC2005"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2002(Corequisite) OR",
+      "CE2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "SC2006"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2007",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 & CZ2001(Corequisite) OR",
+      "CE1007 & CE2001(Corequisite) OR",
+      "CE1007 & CZ2001(Corequisite) OR",
+      "CE2001(Corequisite) & CZ1007 OR",
+      "CE2101(Corequisite) OR",
+      "CZ2101(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "EE4791",
+      "IE4791",
+      "IM4791",
+      "SC2207"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2100",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "CZ2101",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1107 & MH1812"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "SC2001"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG(2011-2019)",
+      "CE",
+      "CEEC",
+      "CSC(2011-2019)",
+      "CSEC(2011-2019)",
+      "DSAI(2011-2019)",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "MACS(2011-2019)",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HW0288",
+    "title": "ENGINEERING COMMUNICATION",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "HW0188 (Not Applicable to IEM) OR",
+      "HW0111 (Not Applicable to IEM) OR",
+      "CC0001 (Not Applicable to IEM)"
+    ],
+    "mutually_exclusive": [
+      "HW0210"
+    ],
+    "not_available_to_programme": [
+      "AERO 1",
+      "AERO 2",
+      "ASEC 1",
+      "ASEC 2",
+      "BEEC 1",
+      "BEEC 2",
+      "BIE 1",
+      "BIE 2",
+      "CBE 1",
+      "CBE 2",
+      "CBEC 1",
+      "CBEC 2",
+      "CE 1",
+      "CE 2",
+      "CEE 1",
+      "CEE 2",
+      "CEEC 1",
+      "CEEC 2",
+      "CSC 1",
+      "CSC 2",
+      "CSEC 1",
+      "CSEC 2",
+      "CVEC 1",
+      "CVEC 2",
+      "EEE 2",
+      "ENE 1",
+      "ENE 2",
+      "ENEC 1",
+      "ENEC 2",
+      "IEM 2",
+      "MAT 1",
+      "MAT 2",
+      "ME(DES) 2",
+      "ME(IMS) 2",
+      "ME(NULL) 2",
+      "ME(RMS) 2",
+      "MEEC(DES) 2",
+      "MEEC(IMS) 2",
+      "MEEC(NULL) 2",
+      "MEEC(RMS) 2",
+      "MS 3",
+      "MS 4",
+      "MS(2019-onwards)",
+      "MTEC 1",
+      "MTEC 2"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HW0288 is an advanced course which aims to enhance the spoken and written abilities of engineering students when communicating in both academic and professional settings. In this course, the emphasis is on advanced skills in academic and professional communication. In the academic literacy and information literacy components of the course, you learn advanced skills for searching academic databases, evaluating sources and incorporating and citing them appropriately in your writing. In the professional communication component of the course, you learn written and oral workplace communication skills such as writing emails, participating at meetings, interacting with clients and projecting a professional image of yourself."
+  },
+  {
+    "code": "ML0003",
+    "title": "KICKSTART YOUR CAREER SUCCESS",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a foundation module on essential career preparation skills. This course equips you with practical skills needed in your personal development and job search to help you succeed in a new disruptive workplace. This course is open to all Year 2 students. In today's competitive world, it is crucial that career preparation skills are learnt early to ensure that competitive edge is sharpened with a heightened sense of workplace values and ethics."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) apply, design and analyse algorithms using a number of approaches to solve various problems like sorting, shortest-path, minimum spanning tree, optimal sequencing for matrix multiplication, the longest common subsequence, string matching. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003 OR",
+      "SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CZ2002"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation, the use of inheritance and polymorphism. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "CZ2005"
+    ],
+    "not_available_to_programme": [
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your understanding of fundamental concepts and principles of modern operating systems, and to build your knowledge on the design and implementation of main operating system components."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  },
+  {
+    "code": "SC2207",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001(Corequisite) OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CZ2007",
+      "EE4791",
+      "IE4791",
+      "IM4791"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Overview of Database Management Systems (DBMS); Entity-Relationship Data Model; Relational Data Model; Functional Dependencies (FD) and Normalization; Relational Algebra; Structured Query Language (SQL); Storage of Relational Data; Indexing Techniques; Query Processing and Optimization; Transaction Management and Concurrency Control"
+  },
+  {
+    "code": "SC3000",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1007 & SC1015 & SC2000 OR",
+      "MH2500 & SC1007 & SC1015"
+    ],
+    "mutually_exclusive": [
+      "CZ3005"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer / software engineers are involved in effective and efficient building of knowledge agent systems that satisfy the requirements of users; possibly software for intelligent embedded and intelligent information systems. General awareness of theory, knowledge, and practice in all phases of the knowledge based systems and representation techniques for problem solving are necessary for those of you who wants to get into the field artificial intelligence. These are advanced intelligent systems that are finding widespread applications in finance, banking, manufacturing industries."
+  },
+  {
+    "code": "SC3010",
+    "title": "COMPUTER SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2005"
+    ],
+    "mutually_exclusive": [
+      "CE4062",
+      "CZ4062"
+    ],
+    "not_available_to_programme": [
+      "BSB"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to equip you with foundational knowledge on many important security issues and techniques required for cyber security. You will have the knowledge of different security policies and security models, and have the ability to recognise security features and discover pitfalls in computing systems, including the operating system and software."
+  }
+]

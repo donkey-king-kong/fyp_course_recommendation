@@ -1,0 +1,1159 @@
+[
+  {
+    "code": "CB1131",
+    "title": "INTRODUCTION TO BIOMOLECULAR ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG1131",
+      "BG1141",
+      "CH1131"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is designed for students with an engineering background to learn the fundamentals of molecular and cell biology, biochemistry and biotechnology. The objective of the course is to provide you with a comprehensive and concise overview of biological science with emphases on its relationship with biomedical engineering. Topics to be covered include the relationship between molecular structure & function, dynamic character of cellular organelles, cellular interactions with microenvironment, mechanisms that regulate cellular activities, practical applications of cell & molecular biology."
+  },
+  {
+    "code": "CC0001",
+    "title": "INQUIRY & COMMUNICATION IN AN INTERDISCIPLINARY WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0601",
+      "HW0105",
+      "HW0106",
+      "HW0111",
+      "HW0128",
+      "HW0188",
+      "HW0209"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Researchers agree that writing is a tool for thinking (Menary, 2007; Klein & Boscolo, 2016; Miller and Jurecic, 2016; Reis, n.d.). As Reis explains, 'The bodily act of writing externalizes our thoughts, and the imposed structure (the written word) provides a vehicle by which those thoughts may be reorganized into new thinking, a new way of seeing the thoughts or a new way of organizing thoughts.' Miller and Jurecic similarly argue that 'writers discover what they think not before they write but in the act of writing' (2016, p. 60). One of the main aims of this course is to allow you to experience writing as a tool for thinking and to practice expressing ideas in formal writing and oral communication. While you will have the opportunity to understand and practice the genre conventions that are specific to your discipline later in your studies, this first common communication course is designed to help you form habits of mind that will serve you across the university and even in the world outside of the university. Taken by all first-year undergraduates, this foundational course will develop your written and oral communication skills, as well as your ability to read and analyze texts. It will help you to understand revision as integral to the process of composition, to convey your interpretations and ideas with confidence and clarity, and to consider audience and purpose when you communicate."
+  },
+  {
+    "code": "CC0002",
+    "title": "NAVIGATING THE DIGITAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1401"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "With digitalization now becoming the new normal in our daily life, this course seeks to equip students from different disciplines with problem?solving techniques with the aid of computers and to enable them to acquire some common but essential digital skills that are crucial in today's workforce. In this course, students will learn how to apply the concept of computational thinking and quantitative reasoning to solve problems and analyze data. They will also learn how to identify online threats and understand the principles of ethics and intellectual property rights in the digital world. They will also be exposed to current issues in the digital world, which they can better understand through the logic of computational thinking and quantitative reasoning, such as cybersecurity and the rise of fake news. In addition, students will also learn how to use some of the latest online tools for effective presentation, communication, and collaborative skills in teams during the course."
+  },
+  {
+    "code": "CC0003",
+    "title": "ETHICS & CIVICS IN A MULTICULTURAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with the necessary philosophical foundations to understand theories of ethics and subsequently apply those theories to real-life scenarios and issues. It also aims to enable you to understand and critically assess the civic institutions that structure their local and global communities. To these ends, the course will examine the nature of ethics, its understanding across different cultures, and how it is manifested in concepts, social structures, and governance institutions. Topics to be explored include human rights, democracy, freedom of speech and inequality. The rights and duties of citizenship shall be a unifying theme. You will think through assumptions they hold on all of these matters. They will be provided with the tools to understand various and even contradictory perspectives on these important issues. There will be a substantial amount of time devoted toward understanding Singapore's own institutions and ideologies, which are of course products specific to the country's own unique historical and geo-political circumstances. We expect that you will have better appreciation of the country's institutions after reading the module."
+  },
+  {
+    "code": "CC0005",
+    "title": "HEALTHY LIVING & WELLBEING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is one of the NTU 2025 Education - Interdisciplinary Collaborative Core (ICC) courses. It aims to provide multi-disciplinary competence in a cross-disciplinary, collaborative learning environment, with student interaction and collaboration across schools as a key learning foundation. As the title connotes, the main objective of this compulsory undergraduate course is to examine what constitutes living a good, healthy, and flourishing life. According to research, individuals around the world pursue this 'flourishing life' in different ways, be it through improving one's physical fitness, seeking authentic relationships with others, or making a positive change in the environment. Thus, knowing and understanding how the different components of a 'good life' contribute to one's overall functioning is critical to one's healthy wellbeing. The latter, in turn, affords many benefits such as better health (physical, mental, and emotional health) and stronger relationships. By the end of this course, students would have developed an awareness of what constitutes living a healthy and flourishing life, both of which indirectly contribute to a successful undergraduate education."
+  },
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world. By the end of the course, you would have developed an awareness for, and a system thinking approach to, sustainability, which you can continue to develop no matter which discipline or career path you choose to embark on."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CE1104",
+    "title": "LINEAR ALGEBRA FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1103(Corequisite) & MH1810 OR",
+      "CE1003(Corequisite) & MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE1004",
+      "CE1012",
+      "CZ1004",
+      "CZ1012",
+      "CZ1104",
+      "MH1200",
+      "MH2802",
+      "SC1004",
+      "SC1104"
+    ],
+    "not_available_to_programme": [
+      "ACDA",
+      "BCG",
+      "CSC",
+      "CSEC",
+      "DSAI",
+      "ECDS",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "IEM",
+      "MACS",
+      "MATH",
+      "PHY"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you to learn mathematical concepts related to linear algebra. You will develop set of mathematical skills for applications in computer science and engineering, e.g., machine learning, computer graphics, data science etc."
+  },
+  {
+    "code": "CE1105",
+    "title": "DIGITAL LOGIC",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1005",
+      "CZ1005",
+      "CZ1105",
+      "EE2004",
+      "EE2104",
+      "IE2104",
+      "IM1004",
+      "SC1005"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "BUS(IT)",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENE(Direct Entry)",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE1106",
+    "title": "COMPUTER ORGANISATION & ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1005(Corequisite) OR",
+      "CZ1005(Corequisite) OR",
+      "CE1105(Corequisite) OR",
+      "CZ1105(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE1006",
+      "CZ1006",
+      "CZ1106",
+      "SC1006"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CV1011",
+    "title": "MECHANICS OF MATERIALS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2141",
+      "BG2209",
+      "CV2101",
+      "MA2001"
+    ],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ME",
+      "ME 1",
+      "ME(DES)",
+      "ME(DES) 1",
+      "ME(IMS)",
+      "ME(IMS) 1",
+      "ME(RMS)",
+      "ME(RMS) 1",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(RMS)",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CSC)",
+      "REP(EEE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers the basic topics of mechanics of materials. The principal topics are force vectors, equilibrium of rigid body, stress and strain, mechanical properties of materials, analysis and design of structural members subjected to tension, compression, torsion, bending and shear, the transformation of stress (strain) components, and the stability of columns."
+  },
+  {
+    "code": "CV1012",
+    "title": "FLUID MECHANICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2112",
+      "CH2103",
+      "CV2601"
+    ],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "CBE",
+      "CBEC",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ME 1",
+      "ME(DES)",
+      "ME(DES) 1",
+      "ME(IMS)",
+      "ME(IMS) 1",
+      "ME(NULL)",
+      "ME(RMS)",
+      "ME(RMS) 1",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Fluid statics. Elementary fluid dynamics. Momentum equation and its application. Dimensional analysis and similitude. Internal flows, piping and pump systems."
+  },
+  {
+    "code": "EE1102",
+    "title": "PHYSICS FOUNDATION FOR ELECTRICAL & ELECTRONIC ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "PH1011 OR",
+      "PH1012 OR",
+      "CE1013 OR",
+      "CZ1013 OR",
+      "CE1113 OR",
+      "CZ1113 OR",
+      "SC1013"
+    ],
+    "mutually_exclusive": [
+      "EE1002"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to build a strong foundation in the relevant physics principles used in the design of common electrical and electronic devices. The course builds on the concepts learned in the common engineering curriculum's first semester physics course. This course focuses on fundamental concepts that are key to EEE students in preparation for subsequent studies, and are utilized daily by electrical and electronics engineering professionals. Students will learn the relationship between physics concepts and their applications in EEE. Contents: Introduction of electromagnetic fields and applications Electromagnetic in electronics, circuits and communications Introduction to light and principles of geometric optics Principles of wave optics Introduction to quantum physics and applications Applications of quantum physics in electronics and lasers"
+  },
+  {
+    "code": "EG1001",
+    "title": "ENGINEERS IN SOCIETY",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to provide a general understanding of the society we live in and the engineers' roles and responsibilities towards society's well-being. The course is part of broadening education objective in the engineering curriculum. The course covers a wide range of topics including the history of engineering, engineering ethics and practices, sustainability, and contributions by engineers towards society in the future. The students will have a holistic understanding of the role played by engineers and on their impact in society."
+  },
+  {
+    "code": "ET0001",
+    "title": "ENTERPRISE & INNOVATION",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CSC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "EEE(2019-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "ME(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This online course aims to provide you with a basic appreciation of the key concepts of enterprise and innovation. The course will focus on empowering you to gain practical insights on the relevance of enterprise and innovation in your lives by introducing you to the enterprise and innovation ecosystem of the University, the Singapore society, and beyond."
+  },
+  {
+    "code": "GC0001",
+    "title": "SUSTAINABILITY: SEEING THROUGH THE HAZE",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CEE(2019-onwards)",
+      "CEE(2019-onwards)(Direct Entry)",
+      "CEE(2019-onwards)(Non Direct Entry)",
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CVEC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "ENE(2019-onwards)",
+      "ENE(2019-onwards)(Direct Entry)",
+      "ENE(2019-onwards)(Non Direct Entry)",
+      "ENEC(2019-onwards)",
+      "ENG(CEE)(2019-onwards)",
+      "ENG(ENE)(2019-onwards)",
+      "ENG(NULL)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "MS(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course wi ll discuss sustainability from perspectives of various disciplines, including humanities, business, policy, economics, and science. Students will learn about sustainability through a case study of oil palm plantation. The course will be composed of the following 6 modules. The course is supplemented by Module SI , which helps broadening students' perspectives on sustainability. Module I : General Introduction Module 2: The Global Seeding of Oil Palm Module 3: Recent Expansion of Oil Palm in South East Asia: How and Why did this happen? Module 4: How is Oil Palm Production Affecting Environment, Climate and Human Society? Module 5: Making Oil Palm More Sustainable Module 6: General Conclusions Module SI: National Geographic (Nat. Geo) talk"
+  },
+  {
+    "code": "HE1001",
+    "title": "MICROECONOMICS I",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0901",
+      "HE5091",
+      "HE9091"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The Singaporean Government is increasingly engaging the public, and as economists we are responsible for contributing towards better public decisions. This is especially important as good public policy processes place value on social impact, seeks to understand the behavior of Singapore's diverse society, and makes sense and use of increasingly abundant behavioral data. As the Singaporean economy gets more advanced and complex, and citizens get better educated and informed, we rely on decisions strengthened by sound economic thinking. The economist must move towards more rigorous reasoning across the levels of household, corporate, and public choice. In this course we apply fundamental microeconomic principles complemented by behavioral economics to various current everyday concerns in Singapore. The course aims to deliver a progressive and rigorous introduction to basic concepts and models of microeconomics, applied to current trends local and global. Microeconomics is one of the three core pillars of an Economics major. This is an important module that will serve as a prerequisite for almost all major PE modules. The first part of the course covers the theory of individual decision-making in consumption, risk and labor. The second part of the course covers the theory of firms making production decisions when operating under various market structures, in particular price discrimination with market power and strategic interactions between firms. This course will also expose students to new developments in the field of microeconomics which have now come to assume a central role, in particular behavioral economics. Students will learn basic theories that can be abstract and simple but yet so relevant and powerful in explaining decision problems in our everyday lives. On the one hand, it will give students with either no previous economics training a chance to close the gap with those with a stronger background. On the other hand, it will give everyone a chance to appreciate microeconomics in action right from the start of their education at NTU - a feature that is surprisingly amiss in many Economics undergraduate programs worldwide."
+  },
+  {
+    "code": "HE1002",
+    "title": "MACROECONOMICS I",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0901",
+      "HE5091",
+      "HE9091"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The course aims to provide first-year college students with a sound understanding on the structure and functioning of the economy as a whole. As you are taking an introductory course, you are not expected to have any prior knowledge in economics. Instead, the principles you learn from this course will provide a solid foundation and develop a strong interest for your further study of intermediate and advanced macroeconomics."
+  },
+  {
+    "code": "HE2021",
+    "title": "PUBLIC ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091 OR",
+      "HJ5001"
+    ],
+    "mutually_exclusive": [
+      "HE2008"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE2022",
+    "title": "INDUSTRIAL ORGANIZATION & BUSINESS STRATEGIES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "AB0901 OR",
+      "HE9091"
+    ],
+    "mutually_exclusive": [
+      "HE2009",
+      "HE3031"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In this course, you will learn how to describe and analyze how the structure of markets, determine market outcomes through the conduct of firms and strategic interactions between businesses. Our analysis is conducted, primarily but not exclusively, from the perspectives of microeconomic principles and game theory. Theory is in turn complemented by case-based, empirical, or experimental evidence. The course applies economic reasoning to the analysis of topics such as market clearing, price discrimination, oligopolistic competition, collusion, competitive strategies, and product differentiation. It is designed for students with a background in microeconomic principles and a passion for applying fundamental knowledge to real business problems in rigorous and relevant ways. It is suitable for students who wish to pursue further studies in economics or a career in business, consulting, investment banking, or government."
+  },
+  {
+    "code": "HE3010",
+    "title": "MONEY & BANKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE2007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers a systematic analysis of monetary theories and the financial system. Apart from exposing you to different approaches in monetary analysis, the course places a special emphasis on the up-to-date analysis of how costs affect financial structure and monetary policy. The course will cover the structure and importance of the financial system, the functions of money, behavior of interest rates, financial structure and asymmetric information, bank management and regulation, debates on macroeconomic and monetary policies, the targets and instruments of monetary policies, the transmission mechanism of monetary policy and its effectiveness, money and inflation, rational expectations and its applications."
+  },
+  {
+    "code": "HE3022",
+    "title": "PUBLIC ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to study the role of government in addressing market failures, within social domains such as education, healthcare, and retirement financing, through policies like taxation and subsidies. The course is for students interested in topics such as taxation, education, healthcare financing, government budgets, economic efficiency, and equity. The course prepares you for a career in government (e.g. Ministry of Finance, Central Provident Fund), private sector (policy think tanks and consultancies addressing and advising on market failures), and academia."
+  },
+  {
+    "code": "HE3023",
+    "title": "LABOUR ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE4103"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "It covers the determination of labor market demand and supply, wage determination, wage differentials, human capital investment, migration and discrimination, as well as unemployment and labor policies."
+  },
+  {
+    "code": "HE3027",
+    "title": "HOUSING ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "AB0901 OR",
+      "HE9091 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE2023"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This module introduces how housing markets function. It provides both theoretical foundations and empirical analyses on important issues in housing and urban economics. Candidates will learn about the existing issues in housing markets and will be able to evaluate how various interventions are employed by government to mitigate these issues at the end of the course. Students who wants an introduction to housing and real estate economics should take this course."
+  },
+  {
+    "code": "HE3031",
+    "title": "INDUSTRIAL ORGANIZATION & BUSINESS STRATEGIES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "AB0901 OR",
+      "HE9091 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE2022"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In this course, you will learn how to describe and analyze how the structure of markets, determine market outcomes through the conduct of firms and strategic interactions between businesses. Our analysis is conducted, primarily but not exclusively, from the perspectives of microeconomic principles and game theory. Theory is in turn complemented by case-based, empirical, or experimental evidence. The course applies economic reasoning to the analysis of topics such as market clearing, price discrimination, oligopolistic competition, collusion, competitive strategies, and product differentiation. It is designed for students with a background in microeconomic principles and a passion for applying fundamental knowledge to real business problems in rigorous and relevant ways. It is suitable for students who wish to pursue further studies in economics or a career in business, consulting, investment banking, or government."
+  },
+  {
+    "code": "HW0001",
+    "title": "INTRODUCTION TO ACADEMIC COMMUNICATION",
+    "no_of_credits": "0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [
+      "for students who fail QET"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to support you in your academic writing and reading skills across a wide range of disciplines. This course will provide opportunities for you to read current event articles widely and critically. As a result, you will learn to evaluate opinions and formulate well-substantiated arguments."
+  },
+  {
+    "code": "HY0001",
+    "title": "ETHICS & MORAL REASONING",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HY0001 will introduce students to three major ethical theories' utilitarianism, Kant's deontology, and virtue ethics. Then, four weeks will be devoted to teaching the ethical principles underlying academic integrity, research ethics, and intellectual property. Finally, students will discuss issues related to the ethics of environmental sustainability and conservation. All the while, students will be challenged apply the ethical theories learned to concrete moral problems, including world poverty, corporate accountability and whistleblowing, and workplace discrimination."
+  },
+  {
+    "code": "MA2003",
+    "title": "INTRODUCTION TO THERMO-FLUIDS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Properties of pure substances. Work and heat. Energy and the first law. Energy balance for closed systems and steady state control volumes. Submerged surfaces and bodies. Elementary fluid dynamics."
+  },
+  {
+    "code": "MA2024",
+    "title": "ENGINEERING MATERIALS & MANUFACTURING PROCESSES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MA2004"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)-Non Direct Entry",
+      "(Admyr 2011-2021)",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This core Engineering course will introduce the fundamental knowledges of engineering materials - with emphasis on metals and alloys - and their manufacturing processes. The first half of the course will lay the foundations for the understanding of the relationships between structure at the atomic level to the properties of materials, the role of defects in determining properties, and the basics as to how alloys are designed. The second part of the course provides the student with a basic understanding of the manufacturing processes used in industry. These include their fundamental principles, theory, quality issues and applications. This course provides mechanical engineering students the foundations for designing and selecting materials for virtually any engineering application, as well as understanding the common manufacturing processes used in industry."
+  },
+  {
+    "code": "MH1812",
+    "title": "DISCRETE MATHEMATICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1001",
+      "CZ1001",
+      "MH1301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course serves as an introduction to various topics in discrete mathematics. Familiarity with formal analysis through simple problems in some basic discrete structures is a key objective rather than knowing these structures in depth. Specifically, the main aim is to learn topics from the following broad areas of discrete mathematics: number theory, logic, combinatorics, and graph theory. This course aims to provide students with a solid mathematical foundation and is intended for first year computer science and computer engineering students."
+  },
+  {
+    "code": "MH2802",
+    "title": "LINEAR ALGEBRA FOR SCIENTISTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "H2 Maths or equivalent"
+    ],
+    "mutually_exclusive": [
+      "CE1104",
+      "CY1602",
+      "CZ1104",
+      "MH1200",
+      "MH1201",
+      "RE1021",
+      "SC1004"
+    ],
+    "not_available_to_programme": [
+      "PHY(2004-2016)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_available_as_core_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you in acquiring a wider range of mathematical concepts related to vector spaces and linear algebra, while also developing a strong set of mathematical skills for upper-level Physical and Computing Science courses. Through a mathematical approach to problem-solving, you will have the opportunity to develop thinking, reasoning, communication, and modelling skills. Additionally, the course aims to help you connect ideas within mathematics and apply mathematical principles in the context of Physical and Computing Science courses. Ultimately, this course seeks to provide an experience that fosters an appreciation for the rigour and abstraction in the discipline."
+  },
+  {
+    "code": "ML0004",
+    "title": "CAREER & INNOVATIVE ENTERPRISE FOR THE FUTURE WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ARED",
+      "ENG(2023)",
+      "SCED"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)-Non Direct Entry",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip students with essential professional skills for the dynamic VUCA world. 1. Career Insights and Competencies: The course aims to provide students with a deep understanding of essential skills and competencies necessary for success in their careers. Students will gain insights into industry-specific requirements, professional behaviour, and effective communication. 2. Self-Assessment and Design Personal and Professional Lives: Students will evaluate their values, interests, personality traits, and skills through self-assessment tools and activities. The aim is to empower them to design their personal and professional lives intentionally, aligning their aspirations with their abilities. 3. Job Search and Career Development Skills: The course aims to equip students with practical skills related to job searching, networking, resume writing, interview preparation, and career planning. Students will learn how to navigate the job market effectively. 4. Conflict Resolution and Ethical Decision-Making: Students will develop the ability to identify, manage, and resolve workplace-related conflicts. Additionally, they will explore ethical issues commonly encountered in professional settings and learn how to make principled decisions."
+  },
+  {
+    "code": "MS1012",
+    "title": "MATERIALS PHYSICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "MS1002"
+    ],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Electric fields. Gauss' law. Electric potential and electric potential energy. Capacitance and dielectrics. Ohm's law. Direct current circuits. Magnetic fields. Sources of magnetic fields. Ampere's law. Gauss' law in magnetism. Ampere-Maxwell law. Faraday's law. Inductance. Electromagnetic waves and spectrum. Relativity. Blackbody radiation and Planck's hypothesis. Photoelectric effect. Compton effect. Atomic spectra. Bohr model of the atom. Quantum numbers. Pauli exclusion principle and Hund's rule. Electronic configurations. Wave particle duality. Heisenberg uncertainty principle. Molecular Orbitals. Ionic bonding. Madelung Constant."
+  },
+  {
+    "code": "MS1013",
+    "title": "MATERIALS CHEMISTRY I",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ENE(Direct Entry)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of this course is to provide you with fundamental understanding of basic chemistry which includes inorganic chemistry, physical chemistry, and analytical chemistry."
+  },
+  {
+    "code": "SC1003",
+    "title": "INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2211",
+      "BS1009",
+      "CE1003",
+      "CE1103",
+      "CH2107",
+      "CV1014",
+      "CZ1003",
+      "CZ1103",
+      "EE1005",
+      "IE1005",
+      "MA1008",
+      "MS1008",
+      "PS0001",
+      "RE1016",
+      "SC1303",
+      "SC5001"
+    ],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "CBE",
+      "CBEC",
+      "CEE 1",
+      "CHEM",
+      "CMED",
+      "COMP",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "EESS",
+      "ENE",
+      "ENE 1",
+      "ENEC",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ESPP",
+      "IEEC",
+      "IEM",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME",
+      "ME 1",
+      "ME(DES)",
+      "ME(DES) 1",
+      "ME(IMS)",
+      "ME(IMS) 1",
+      "ME(RMS)",
+      "ME(RMS) 1",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHMS",
+      "PHY",
+      "REP",
+      "SPPE"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computational thinking (CT) is the process of analysing a problem then designing and expressing its solution in such a way that a computer can effectively carry it out. It includes a number of characteristics, such as breaking a problem into small and repetitive ordered steps, logically ordering and analyzing data and creating solutions that can be effectively implemented as programs running on computer. The aim of this course is hence to take students with no prior experience of thinking in a computational manner to a point where you can derive simple algorithms and code the programs to solve some basic problems in your domain of studies. Student will also learn about basic program construct and simple data structures. In addition, the course will include topics to appreciate the internal operations of a processor."
+  },
+  {
+    "code": "SC1004",
+    "title": "LINEAR ALGEBRA FOR COMPUTING",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE1004",
+      "CE1012",
+      "CE1104",
+      "CZ1012",
+      "CZ1104",
+      "MH1200",
+      "MH2802",
+      "SC1104"
+    ],
+    "not_available_to_programme": [
+      "ACDA",
+      "DSAI",
+      "ECDS",
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEM",
+      "MACS",
+      "MAEO",
+      "MATH",
+      "PHY"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2023)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you to learn mathematical concepts related to linear algebra and complex numbers. You will develop set of mathematical skills for applications in computer science and engineering, e.g., machine learning, computer graphics, data science etc."
+  },
+  {
+    "code": "SC1005",
+    "title": "DIGITAL LOGIC",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1005",
+      "CE1105",
+      "CZ1005",
+      "CZ1105",
+      "EE2004",
+      "EE2104",
+      "IE2104",
+      "IM1004"
+    ],
+    "not_available_to_programme": [
+      "BUS(BA)",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENE(Direct Entry)",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your ability to analyse and design digital circuits. The design and behaviour of modern digital equipment (e.g. mobile phones and personal computers) are based on functions of binary variables. This course provides you the knowledge to analyse the theoretical characteristics and the skills required for practical technology driven implementations of digital circuits. This course provides an introductory perspective of digital circuits design. It is relevant for anyone pursuing a career in the ICT industry - including those in digital systems, computer architecture and microprocessor based systems design."
+  },
+  {
+    "code": "SC1006",
+    "title": "COMPUTER ORGANISATION & ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1005(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE1006",
+      "CE1106",
+      "CZ1006",
+      "CZ1106"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer Hardware Decomposition; Solid-state memory subsystems; Magnetic memory; Input/Output techniques; The central processor unit; How high level code is `executed?; Quantifying and comparing performance; Computer arithmetic; Towards higher speed."
+  },
+  {
+    "code": "SC1007",
+    "title": "DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CE1007",
+      "CE1107",
+      "CT2001",
+      "CZ1007",
+      "CZ1107",
+      "SC1303"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to (i) teach the concepts, implementations and applications of data structures such as arrays, linked lists, stacks, queues and trees that are important for building efficient algorithms; (ii) provide an introduction to algorithm analysis and design. These are essential for future computer science and computer engineering courses."
+  },
+  {
+    "code": "SC1013",
+    "title": "PHYSICS FOR COMPUTING",
+    "no_of_credits": "2.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1013",
+      "CE1113",
+      "CZ1013",
+      "CZ1113"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Course Content Optics, Electrics, Electronics, and Magnetism. Learning Outcome Upon completion of the course, students should be able to: a. Explain basic knowledge of all the selected topics b. Identify the contribution of physics in some computing systems c. Realize and appreciate the interdisciplinary nature of many innovative systems d. Self-reflect whether you are more aware of the importance of Physics and more sensitive to the progress of physics, and consider to propose novel physics-computing systems"
+  },
+  {
+    "code": "SC1015",
+    "title": "INTRODUCTION TO DATA SCIENCE & ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CB0494",
+      "CE1015",
+      "CE1115",
+      "CE4073",
+      "CH0494",
+      "CV0003",
+      "CZ1015",
+      "CZ1016",
+      "CZ1115",
+      "CZ4073",
+      "EE0005",
+      "IE0005",
+      "MA0218",
+      "MS0003",
+      "PS0002",
+      "SC3021"
+    ],
+    "not_available_to_programme": [
+      "ACDA(2024-onwards)",
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)",
+      "DSAI(2024-onwards)",
+      "ECDS(2025-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course will start with the core principles of Data Science, and will equip you with the basic tool and techniques of data handling, exploratory data analysis, data visualization, data-based inference, and data-focussed communication. The course will also introduce you to the fundamentals of Artificial Intelligence - state space representation, uninformed search, and reinforcement learning. The course will motivate you to work closely with data and make data-driven decisions in your field of study. The course will also touch upon ethical issues in Data Science and Artificial Intelligence, and motivate you to explore the cutting-edge applications related to Big Data, Neural Networks and Deep Learning. Python will be the language of choice to introduce hands-on computational techniques."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SP0061",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Only for Premier Scholars Programme students."
+    ],
+    "mutually_exclusive": [
+      "CC0007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  }
+]

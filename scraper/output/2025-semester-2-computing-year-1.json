@@ -1,0 +1,68 @@
+[
+  {
+    "code": "CT2005",
+    "title": "PRINCIPLES OF OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2001 & CT2002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your understanding of fundamental concepts and principles of modern operating systems, and to build your knowledge on the design and implementation of main operating system components."
+  },
+  {
+    "code": "CT2006",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2001"
+    ],
+    "mutually_exclusive": [
+      "SC2301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to teach you how to conduct complexity analysis of simple algorithms. It will further develop your knowledge and skills about algorithm design. You will learn to design algorithms using approaches like greedy and dynamic programming to solve various problems. For examples, shortest-path, minimum spanning tree, the longest common subsequence, 0/1 Knapsack problem. You will understand the concept and implementation of finite state machines and use regular expressions to specify sets of strings. You will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "CT2007",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2006(Corequisite)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Database management systems (DBMS) are software systems that control the creation, maintenance, and use of databases, i.e., organized collections of data. You will learn the design and implementation of relational databases and the use of Relational DBMS (RDBMS) for applications. You will learn the creation and maintenance of databases and querying databases. You will also understand what an object-oriented database is."
+  },
+  {
+    "code": "CT2008",
+    "title": "INTRODUCTION TO COMPUTER SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CT2005(Corequisite)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with foundational knowledge on many important security issues and techniques required for cyber security. You will have the knowledge of different security policies and security models, and have the ability to recognise security features and discover pitfalls in computing systems, including the operating system and software."
+  }
+]

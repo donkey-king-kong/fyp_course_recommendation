@@ -1,0 +1,486 @@
+[
+  {
+    "code": "BU5502",
+    "title": "MARKETING COMMUNICATIONS: AN INTEGRATED APPROACH",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BM2504",
+      "BM2512",
+      "CS2058",
+      "CS4035"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "BCE",
+      "BCG",
+      "BUS",
+      "CS",
+      "MS-2ndMaj/Spec(MSB)"
+    ],
+    "not_available_to_all_programme_with": [
+      "2nd Maj/Spec(ACC)",
+      "2nd Maj/Spec(BAF)",
+      "2nd Maj/Spec(BAT)",
+      "2nd Maj/Spec(BUS)",
+      "2nd Maj/Spec(ITG)",
+      "2nd Maj/Spec(MKG)",
+      "2nd Maj/Spec(OM)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Communication with the market is an important activity for many businesses and organizations. It is also relevant to us as consumers because we are exposed to hundreds of messages from marketers every day. The course is aimed at enabling students to learn in depth the development, implementation and evaluation of marketing communication (marcom) activities. The course provides students with relevant knowledge about how businesses interact or communicate with the market. In particular, because planning and executing marketing communication programs are typically the responsibilities of marketing executives, the course can help students to prepare for a job position that involves marketing communications. It can help them deepen their understanding of marketing - in particular, what marketing communications involve and how marketing communications enable an organisation to achieve its objectives. The course is designed to foster your logical thinking and creativity regarding marketing communications. Although this course is oriented towards practice, we still cover theories and concepts essential to your understanding of marketing communication (marcom) practices (e.g., how they work and their applicability). Learning these theories and concepts is also important because they facilitate you to choose and justify your choice and design of marcom activities. Instead of treating marcom as a set of stand-alone tools or activities, the course regards it as a blended mix of coordinated activities. The course put roughly equal emphasis on both traditional marcom tools (e.g., advertising and sales promotion) and non-traditional tools (e.g., search engine marketing and social media marketing). The course compares the similarities and differences of these tools, and discusses how they can be integrated for achieving the marketer's objectives. While non-traditional marcom tools catch marketers' attention nowadays, traditional marcom tools are indispensable for particular purposes and under certain circumstances."
+  },
+  {
+    "code": "CS5060",
+    "title": "INTRODUCTION TO ADVERTISING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CS"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a general education elective course that will introduce you to the principles and practices of advertising including marketing communication and public relations. You will learn about the sources of change and trends in the industry; the business of advertising management; the application of media strategy and the nature of consumer behaviour; socio-economic implications as well as media ethics. Local examples shall be used to illustrate the development in this evolving business practice. This course covers the principles and practices of advertising. It also covers related aspects of marketing communications and public relations. Students will learn about the sources of change and trends in the industry, the business of advertising management, the application of media strategy and the nature of consumer behavior, socio-economic implications as well as media ethics."
+  },
+  {
+    "code": "CV3016",
+    "title": "CONSTRUCTION TECHNOLOGY & PROCESSES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CV4251"
+    ],
+    "not_available_to_programme": [
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CSC)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is open to Year 4 students. By the end of the course, you shall be equipped with basic understanding of construction technology principles in the various construction methodologies, machineries and technologies for the implementation of construction project."
+  },
+  {
+    "code": "CZ3001",
+    "title": "ADVANCED COMPUTER ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1006 OR",
+      "CE1006 OR",
+      "CE1106 OR",
+      "CZ1106"
+    ],
+    "mutually_exclusive": [
+      "CE3001",
+      "SC3050"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3002",
+    "title": "ADVANCED SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2006 OR",
+      "CE2006"
+    ],
+    "mutually_exclusive": [
+      "SC3040"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3003",
+    "title": "SOFTWARE SYSTEMS ANALYSIS & DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2006(Corequisite) OR",
+      "CE2006(Corequisite)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG(2020-onwards)",
+      "CE",
+      "CEEC",
+      "CSC(2020-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3004",
+    "title": "MULTIDISCIPLINARY DESIGN PROJECT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE3004",
+      "SC2079"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG 1",
+      "BCG 2",
+      "CE",
+      "CEEC",
+      "CSC 1"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Seminars and Workshops - Throughout the MDP, students will be required to attend relevant seminars and workshops that would help them understand the process and tools for designing, developing and marketing of real-world multidisciplinary products. These include both general and technical seminars. General seminars may cover topics such as guided innovation, multidisciplinary problem solving, working effectively in engineering teams, understanding effective marketing strategies, project management, professional, ethical and moral responsibilities etc. Technical seminars and workshops will be related to specific engineering methodology and tools that can help students implement their respective ideas. These may include systems engineering and design, large-scale web systems, embedded systems development tools, etc. In their implementation, students will have to factor in appropriate considerations for public health and safety, cultural, societal factors, environmental and other constraints as well as the needs for sustainable development. Laboratories - Laboratory during MDP will be a mixed of guided and open accessed sessions. Teams - Students will be grouped into teams of about 6-7 member. The composition of these team members will consist of a multidisciplinary mix of CS, CE and BCG students. Supervision - Each team will be assigned a faculty mentor during the MDP."
+  },
+  {
+    "code": "CZ3005",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1003 & CZ2001 OR",
+      "CE1003 & CE2001 OR",
+      "CE1003 & CZ2001 OR",
+      "CZ1107 & CZ1115 OR",
+      "CE1107 & CE1115 OR",
+      "CZ1103 & CZ2101"
+    ],
+    "mutually_exclusive": [
+      "SC3000"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3006",
+    "title": "COMPUTER NETWORK",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1011 & CZ1012 OR",
+      "CZ1104 & CZ2100"
+    ],
+    "mutually_exclusive": [
+      "CE3005",
+      "SC2008"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3007",
+    "title": "COMPILER TECHNIQUES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 & CZ2006 OR",
+      "CE2001 & CE2006 OR",
+      "CE2006 & CE2101 OR",
+      "CZ2006 & CZ2101"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "EN3003",
+    "title": "ENVIRONMENTAL TRANSPORT PROCESSES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Processes affecting mass transfer and transformation in natural and engineered environmental systems. Process modelling using reactor models. Mass transfer kinetics and equilibrium. Mass and energy balances."
+  },
+  {
+    "code": "MA4843",
+    "title": "MANAGEMENT OF PRODUCT DEVELOPMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "ARED",
+      "BCE",
+      "BCG",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CE",
+      "CEE",
+      "CEEC",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(RMS)",
+      "MEEC(RMS)",
+      "MS(ITG)",
+      "MS(NULL)",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Product development is an integrated process of marketing, engineering and production and effective management of the product development ensures that quality products are launched on time. It focuses on planning processes, identifying customer needs, defining the product specifications, generating concepts, concept selection and testing and organizational support. This course provides CoE undergraduates with a deep understanding of product development concepts and equips them with skills to manage the various stages of product development. This course connects new product development to management issues on concept generation, selection, development and evaluation. This course also includes innovative management, product/brand strategy so the student can acquire knowledge about new product development needed when they start work."
+  },
+  {
+    "code": "SC2079",
+    "title": "MULTIDISCIPLINARY DESIGN PROJECT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE3004",
+      "CZ3004"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Seminars and Workshops - Throughout the MDP, students will be required to attend relevant seminars and workshops that would help them understand the process and tools for designing, developing and marketing of real-world multidisciplinary products. These include both general and technical seminars. General seminars may cover topics such as guided innovation, multidisciplinary problem solving, working effectively in engineering teams, understanding effective marketing strategies, project management, professional, ethical and moral responsibilities etc. Technical seminars and workshops will be related to specific engineering methodology and tools that can help students implement their respective ideas. These may include systems engineering and design, large-scale web systems, embedded systems development tools, etc. In their implementation, students will have to factor in appropriate considerations for public health and safety, cultural, societal factors, environmental and other constraints as well as the needs for sustainable development. Laboratories - Laboratory during MDP will be a mixed of guided and open accessed sessions. Teams - Students will be grouped into teams of about 6-7 member. The composition of these team members will consist of a multidisciplinary mix of CS, CE and BCG students. Supervision - Each team will be assigned a faculty mentor during the MDP."
+  },
+  {
+    "code": "SC3000",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1007 & SC1015 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CZ3005"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer / software engineers are involved in effective and efficient building of knowledge agent systems that satisfy the requirements of users; possibly software for intelligent embedded and intelligent information systems. General awareness of theory, knowledge, and practice in all phases of the knowledge based systems and representation techniques for problem solving are necessary for those of you who wants to get into the field artificial intelligence. These are advanced intelligent systems that are finding widespread applications in finance, banking, manufacturing industries."
+  },
+  {
+    "code": "SC3040",
+    "title": "ADVANCED SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2006"
+    ],
+    "mutually_exclusive": [
+      "CZ3002"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Building upon software engineering and design concepts covered in Software Engineering (SC2006), this course aims to introduce advanced software engineering management topics to you including Quality Management, Project Management, Configuration Management, and Maintenance, according to the Software Engineering Body of Knowledge."
+  },
+  {
+    "code": "SC3050",
+    "title": "ADVANCED COMPUTER ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE3001",
+      "CZ3001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Processor System Design: CPU interfaces, clock, control, data & address bus; System firmware. The CPU Architecture: including ISA, compiler relationship, control, pipelining, hazards, CISC/RISC/VLIW and issues of ILP. Memory Systems: cache, virtual memory systems and the MMU, access methods, reliability, error detection/correction. Performance Enhancements: superscalar; branching issues, multithreading, scalability, co-processors and enhancement units. Interfacing and Communications: I/O fundamentals, interrupts and interfacing, buses, protocols and arbitration. Computer Arithmetic: range, precision, real numbers, floating point and conversion, multi-precision arithmetic Multiprocessing: multiprocessing architectures and interconnections, shared memory and coherence, memory solutions Future directions: low power computing; testing, JTAG, system-on-chip and multi-core implementations, embedded systems issues, comparison of computational on CPU, DSP, FPGA and GPU."
+  }
+]

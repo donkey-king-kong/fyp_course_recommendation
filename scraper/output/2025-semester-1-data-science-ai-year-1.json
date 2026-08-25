@@ -1,0 +1,547 @@
+[
+  {
+    "code": "CC0001",
+    "title": "INQUIRY & COMMUNICATION IN AN INTERDISCIPLINARY WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB0601",
+      "HW0105",
+      "HW0106",
+      "HW0111",
+      "HW0128",
+      "HW0188",
+      "HW0209"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Researchers agree that writing is a tool for thinking (Menary, 2007; Klein & Boscolo, 2016; Miller and Jurecic, 2016; Reis, n.d.). As Reis explains, 'The bodily act of writing externalizes our thoughts, and the imposed structure (the written word) provides a vehicle by which those thoughts may be reorganized into new thinking, a new way of seeing the thoughts or a new way of organizing thoughts.' Miller and Jurecic similarly argue that 'writers discover what they think not before they write but in the act of writing' (2016, p. 60). One of the main aims of this course is to allow you to experience writing as a tool for thinking and to practice expressing ideas in formal writing and oral communication. While you will have the opportunity to understand and practice the genre conventions that are specific to your discipline later in your studies, this first common communication course is designed to help you form habits of mind that will serve you across the university and even in the world outside of the university. Taken by all first-year undergraduates, this foundational course will develop your written and oral communication skills, as well as your ability to read and analyze texts. It will help you to understand revision as integral to the process of composition, to convey your interpretations and ideas with confidence and clarity, and to consider audience and purpose when you communicate."
+  },
+  {
+    "code": "CC0002",
+    "title": "NAVIGATING THE DIGITAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1401"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "With digitalization now becoming the new normal in our daily life, this course seeks to equip students from different disciplines with problem-solving techniques with the aid of digital technology and to enable students to acquire some essential digital skills that are crucial in today's workforce. In this course, students will learn how to apply the concept of computational thinking and quantitative reasoning to solve problems and analyse data. Students will also learn how to identify online threats and understand the principles of ethics and intellectual property rights in the digital world. Students will be exposed to current issues in the digital world, which they can better understand through the logic of computational thinking and quantitative reasoning, such as cybersecurity and the rise of fake news. In addition, students will learn how to use some of the latest online tools for effective presentation, communication, and collaboration in teams during the course."
+  },
+  {
+    "code": "CC0003",
+    "title": "ETHICS & CIVICS IN A MULTICULTURAL WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with the necessary philosophical foundations to understand theories of ethics and subsequently apply those theories to real-life scenarios and issues. It also aims to enable you to understand and critically assess the civic institutions that structure their local and global communities. To these ends, the course will examine the nature of ethics, its understanding across different cultures, and how it is manifested in concepts, social structures, and governance institutions. Topics to be explored include human rights, democracy, freedom of speech and inequality. The rights and duties of citizenship shall be a unifying theme. You will think through assumptions they hold on all of these matters. They will be provided with the tools to understand various and even contradictory perspectives on these important issues. There will be a substantial amount of time devoted toward understanding Singapore's own institutions and ideologies, which are of course products specific to the country's own unique historical and geo-political circumstances. We expect that you will have better appreciation of the country's institutions after reading the module."
+  },
+  {
+    "code": "CC0005",
+    "title": "HEALTHY LIVING & WELLBEING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2025-onwards)-Non Direct Entry",
+      "(Admyr 2026-onwards)",
+      "(Admyr 2026-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is one of the NTU 2025 Education - Interdisciplinary Collaborative Core (ICC) courses. It aims to provide multi-disciplinary competence in a cross-disciplinary, collaborative learning environment, with student interaction and collaboration across schools as a key learning foundation. As the title connotes, the main objective of this compulsory undergraduate course is to examine what constitutes living a good, healthy, and flourishing life. According to research, individuals around the world pursue this 'flourishing life' in different ways, be it through improving one's physical fitness, seeking authentic relationships with others, or making a positive change in the environment. Thus, knowing and understanding how the different components of a 'good life' contribute to one's overall functioning is critical to one's healthy wellbeing. The latter, in turn, affords many benefits such as better health (physical, mental, and emotional health) and stronger relationships. By the end of this course, students would have developed an awareness of what constitutes living a healthy and flourishing life, both of which indirectly contribute to a successful undergraduate education."
+  },
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world. By the end of the course, you would have developed an awareness for, and a system thinking approach to, sustainability, which you can continue to develop no matter which discipline or career path you choose to embark on."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CC0015",
+    "title": "HEALTH & WELLBEING",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2024)-Non Direct Entry",
+      "(Admyr 2011-2025)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is one of the NTU 2025 Education - Interdisciplinary Collaborative Core (ICC) courses. It aims to provide multi-disciplinary competence in a cross-disciplinary, collaborative learning environment, with student interaction and collaboration across schools as a key learning foundation. As the title connotes, the main objective of this compulsory undergraduate course is to examine what constitutes living a good, healthy, and flourishing life. According to research, individuals around the world pursue this 'flourishing life' in different ways, be it through improving one's physical fitness, seeking authentic relationships with others, or making a positive change in the environment. Thus, knowing and understanding how the different components of a 'good life' contribute to one's overall functioning is critical to one's healthy wellbeing. The latter, in turn, affords many benefits such as better health (physical, mental, and emotional health) and stronger relationships. By the end of this course, students would have developed an awareness of what constitutes living a healthy and flourishing life, both of which indirectly contribute to a successful undergraduate education."
+  },
+  {
+    "code": "CZ1107",
+    "title": "DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1103 OR",
+      "CZ1103 OR",
+      "CE1003 OR",
+      "CZ1003"
+    ],
+    "mutually_exclusive": [
+      "CE1007",
+      "CE1107",
+      "CZ1007",
+      "SC1007"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG(2011-2019)",
+      "CE",
+      "CEEC",
+      "CSC(2011-2019)",
+      "CSEC(2011-2019)",
+      "DSAI(2019)",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "MACS(2019)",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CSC)(2011-2018)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "GC0001",
+    "title": "SUSTAINABILITY: SEEING THROUGH THE HAZE",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CEE(2019-onwards)",
+      "CEE(2019-onwards)(Direct Entry)",
+      "CEE(2019-onwards)(Non Direct Entry)",
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CVEC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "ENE(2019-onwards)",
+      "ENE(2019-onwards)(Direct Entry)",
+      "ENE(2019-onwards)(Non Direct Entry)",
+      "ENEC(2019-onwards)",
+      "ENG(CEE)(2019-onwards)",
+      "ENG(ENE)(2019-onwards)",
+      "ENG(NULL)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "MS(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course wi ll discuss sustainability from perspectives of various disciplines, including humanities, business, policy, economics, and science. Students will learn about sustainability through a case study of oil palm plantation. The course will be composed of the following 6 modules. The course is supplemented by Module SI , which helps broadening students' perspectives on sustainability. Module I : General Introduction Module 2: The Global Seeding of Oil Palm Module 3: Recent Expansion of Oil Palm in South East Asia: How and Why did this happen? Module 4: How is Oil Palm Production Affecting Environment, Climate and Human Society? Module 5: Making Oil Palm More Sustainable Module 6: General Conclusions Module SI: National Geographic (Nat. Geo) talk"
+  },
+  {
+    "code": "HW0001",
+    "title": "INTRODUCTION TO ACADEMIC COMMUNICATION",
+    "no_of_credits": "0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [
+      "for students who fail QET"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to support you in your academic writing and reading skills across a wide range of disciplines. This course will provide opportunities for you to read current event articles widely and critically. As a result, you will learn to evaluate opinions and formulate well-substantiated arguments."
+  },
+  {
+    "code": "HW0218",
+    "title": "COMMUNICATION ACROSS THE SCIENCES",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CC0001 OR",
+      "HW0128 OR",
+      "HW0111"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to enhance the abilities of science students to recognize and employ effective skills and strategies for written and oral communication in both academic and public settings. On the one hand, the emphasis of this course is on basic micro skills in scientific communication such as searching academic databases, critically reading scientific texts, citing from sources, composing scientific arguments, and making effective presentations. On the other hand, it introduces you to the conventions of scientific texts such as annotated bibliographies and proposals that require a combination of informative, evaluative, and persuasive writing skills. In addition, you will have an opportunity to share your ideas with your peers through group discussions, in-class presentations on current scientific topics and poster presentations of your proposals. Using a pre-determined set of evaluation criteria, you will give feedback to your peers on the course assignments, under the supervision of your tutors. The course will culminate with a poster presentation session where you will present your proposals to the wider scientific community in your schools for an authentic communication experience. Through this course, it is hoped that you will become better communicators when conveying your scientific ideas in writing and speech to your peers and an educated audience."
+  },
+  {
+    "code": "MH1805",
+    "title": "CALCULUS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CY1601",
+      "MH1100",
+      "MH1802"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2018)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip you with the subject knowledge, logical reasoning and analytical skills so that you are able to apply the concepts and techniques of calculus of one variable to solve problems encountered in science."
+  },
+  {
+    "code": "MH1812",
+    "title": "DISCRETE MATHEMATICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE1001",
+      "CZ1001",
+      "MH1301"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course serves as an introduction to various topics in discrete mathematics. Familiarity with formal analysis through simple problems in some basic discrete structures is a key objective rather than knowing these structures in depth. Specifically, the main aim is to learn topics from the following broad areas of discrete mathematics: number theory, logic, combinatorics, and graph theory. This course aims to provide students with a solid mathematical foundation and is intended for first year computer science and computer engineering students."
+  },
+  {
+    "code": "MH2500",
+    "title": "PROBABILITY",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1100 & MH1101 OR",
+      "MH1800 & MH1801 OR",
+      "MH1101 & MH110S OR",
+      "MH1100 & MH111S OR",
+      "MH1802 OR",
+      "CY1601 OR",
+      "MH1805"
+    ],
+    "mutually_exclusive": [
+      "MH1820",
+      "MH2814",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "CEE",
+      "CVEC",
+      "ENE",
+      "ENEC",
+      "MS"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a core mathematical course, aiming to develop your understanding of fundamental concepts in probability such as random variables, independence, basic probability distributions, and conditional expectations and conditional variances, the law of large numbers and the central limit theorem with applications. The course also prepares you for further courses in probability and statistics, such as MH2510, MH3500 and MH3512."
+  },
+  {
+    "code": "MH2802",
+    "title": "LINEAR ALGEBRA FOR SCIENTISTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "H2 Maths or equivalent"
+    ],
+    "mutually_exclusive": [
+      "CE1104",
+      "CY1602",
+      "CZ1104",
+      "MH1200",
+      "MH1201",
+      "RE1021",
+      "SC1004",
+      "SC1305"
+    ],
+    "not_available_to_programme": [
+      "PHY(2004-2016)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_available_as_core_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you in acquiring a wider range of mathematical concepts related to vector spaces and linear algebra, while also developing a strong set of mathematical skills for upper-level Physical and Computing Science courses. Through a mathematical approach to problem-solving, you will have the opportunity to develop thinking, reasoning, communication, and modelling skills. Additionally, the course aims to help you connect ideas within mathematics and apply mathematical principles in the context of Physical and Computing Science courses. Ultimately, this course seeks to provide an experience that fosters an appreciation for the rigour and abstraction in the discipline."
+  },
+  {
+    "code": "ML0004",
+    "title": "CAREER DESIGN & WORKPLACE READINESS IN THE V.U.C.A WORLD",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ARED",
+      "SCED"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)-Non Direct Entry",
+      "(Admyr 2011-2021)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course empowers students to build successful careers through a combination of self-discovery and the development and application of essential workplace skills. Students will enhance their self-awareness through comprehensive self-assessment, mastering techniques for effective resume and cover letter writing, networking, and interviewing. They will then apply these skills through practical exercises, including mock interviews and resume critiques, receiving valuable feedback to refine their approach. The culmination of this process is the creation of a well-defined and actionable career plan, setting them on a path toward achieving their professional goals."
+  },
+  {
+    "code": "SC1003",
+    "title": "INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2211",
+      "BS1009",
+      "CE1003",
+      "CE1103",
+      "CH2107",
+      "CV1014",
+      "CZ1003",
+      "CZ1103",
+      "EE1005",
+      "IE1005",
+      "MA1008",
+      "MS1008",
+      "PS0001",
+      "RE1016",
+      "SC1303",
+      "SC5001"
+    ],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "CBE",
+      "CBEC",
+      "CHEM",
+      "CMED",
+      "COMP",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ENE",
+      "ENEC",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ESPP",
+      "IEEC",
+      "IEM",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(RMS)",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PESC",
+      "PHMS",
+      "PHY",
+      "REP",
+      "ROBO",
+      "SPPE"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computational thinking (CT) is the process of analysing a problem then designing and expressing its solution in such a way that a computer can effectively carry it out. It includes a number of characteristics, such as breaking a problem into small and repetitive ordered steps, logically ordering and analyzing data and creating solutions that can be effectively implemented as programs running on computer. The aim of this course is hence to take students with no prior experience of thinking in a computational manner to a point where you can derive simple algorithms and code the programs to solve some basic problems in your domain of studies. Student will also learn about basic program construct and simple data structures. In addition, the course will include topics to appreciate the internal operations of a processor."
+  },
+  {
+    "code": "SC1007",
+    "title": "DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003"
+    ],
+    "mutually_exclusive": [
+      "CE1007",
+      "CE1107",
+      "CT2001",
+      "CZ1007",
+      "CZ1107",
+      "SC1303"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to (i) teach the concepts, implementations and applications of data structures such as arrays, linked lists, stacks, queues and trees that are important for building efficient algorithms; (ii) provide an introduction to algorithm analysis and design. These are essential for future computer science and computer engineering courses."
+  },
+  {
+    "code": "SC1301",
+    "title": "WRITING ACROSS THE DISCIPLINES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Must be a Turing AI Scholar"
+    ],
+    "mutually_exclusive": [
+      "CY0001",
+      "RE0011",
+      "SP0001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course has two aims. The first supports you in thinking, reading and writing critically about concepts found in the various disciplines of the humanities. Writings in the humanities contain abstract concepts that often turn into scientifi c and technological reality. It is important for you as a scholar to learn how concepts in STEM disciplines have roots that go back to the humanities. It is also relevant for you to understand how scientifi c and engineering innovations have objectives that promote the quality of life for all members of our human race. You will learn to identify different methodologies and approaches to texts and discuss the rhetoric and reasoning employed in these texts. You will then apply these approaches to the real world of scientific and engineering technologies and events. The second aim is to support your communication and presentation of scientific and technical concepts to the lay public. You will learn to explain technical terms in STEM fields in language that the non-scientific public can understand. You will learn to write and present persuasively, so that the lay public will be convinced of the scientific findings and results. This is important for you as a STEM scholar, as you will be facing policy makers and politicians in your career, and you should acquire the skills and techniques of persuasion and rhetoric."
+  },
+  {
+    "code": "SC1303",
+    "title": "PROGRAMMING WITH DATA STRUCTURES & ALGORITHMS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Must be a Turing AI Scholar"
+    ],
+    "mutually_exclusive": [
+      "SC1003",
+      "SC1007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course teaches the concepts of computational thinking and how it is applied in programming, then build up key knowledge in the selections and implementations of appropriate data structures and algorithms for efficient and effective software developments and implementations. It also introduces the students to the IP right and license issues for digital content creation and dissemination."
+  },
+  {
+    "code": "SP0061",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Only for Premier Scholars Programme students."
+    ],
+    "mutually_exclusive": [
+      "CC0007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  }
+]

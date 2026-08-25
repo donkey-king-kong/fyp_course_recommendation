@@ -1,0 +1,889 @@
+[
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Sustainability stresses the importance of future development to meet the needs of the present without compromising the ability of future generations to meet their needs. This concept is a culmination of economic, environmental, and social discourse throughout the last few decades. The United Nations (UN) declared a Decade of Education for Sustainable Development (DESD) with the aim to promote ?a more sustainable world through different forms of education, training and public awareness activities?. This provides an opportunity to reconsider approaches undertaken to address global challenges. It is imperative that pedagogical directions for higher education institutions address the foundations of sustainable development across different disciplines due to its complex and multi-faceted nature that encompasses a full spectrum of socio-economic-environmental issues. As such, this course aims to stimulate critical thinking, curiosity, and the ability to structure and synthesise knowledge through the lens of sustainability. Learning will be reinforced by concrete case studies with a focus on topics such as resource management, pollution, responsible consumption, and climate change. The course will require systematic analyses of major current sustainability challenges from the perspectives of society, economy, and the environment, and look at how we can promote a more sustainable world through choices and actions, as individuals, societies, nations, and as a global community. Through this learning process, students will acquire a systems thinking approach to sustainability that enhances knowledge and skills sets relevant to various disciplines and career paths. This course hopes to inspire and equip students to be agents of change toward a more sustainable world."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CE2003",
+    "title": "DIGITAL SYSTEMS DESIGN",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1005 OR",
+      "CZ1005 OR",
+      "CE1105 OR",
+      "CZ1105"
+    ],
+    "mutually_exclusive": [
+      "SC2103"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEEC",
+      "ENG",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 OR",
+      "CE1007 OR",
+      "CE1103 OR",
+      "CZ1103 OR",
+      "CZ1107"
+    ],
+    "mutually_exclusive": [
+      "SC2002"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "REP(CE)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1006 & CZ1007 OR",
+      "CE1006 & CE1007 OR",
+      "CE1106 & CE1107 OR",
+      "CZ1106 & CZ1107"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "SC2005"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2002(Corequisite) OR",
+      "CE2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "SC2006"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2007",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 & CZ2001(Corequisite) OR",
+      "CE1007 & CE2001(Corequisite) OR",
+      "CE1007 & CZ2001(Corequisite) OR",
+      "CE2001(Corequisite) & CZ1007 OR",
+      "CE2101(Corequisite) OR",
+      "CZ2101(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "EE4791",
+      "IE4791",
+      "IM4791",
+      "SC2207"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2100",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2019)",
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "CZ2101",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1107 & MH1812"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "SC2001"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG(2011-2019)",
+      "CE",
+      "CEEC",
+      "CSC(2011-2019)",
+      "CSEC(2011-2019)",
+      "DSAI(2011-2019)",
+      "EEE",
+      "EEEC",
+      "IEEC",
+      "IEM",
+      "MACS(2011-2019)",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE2002",
+    "title": "MACROECONOMICS II",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1002 OR",
+      "AB0901 OR",
+      "HE9091 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to enhance your understanding of modern developments in macroeconomic theory and offer fresh perspectives on the macroeconomic challenges of today."
+  },
+  {
+    "code": "HE2011",
+    "title": "LABOUR ECONOMICS & LABOUR RELATIONS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE3003",
+    "title": "ECONOMETRICS II",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2003"
+    ],
+    "mutually_exclusive": [
+      "HE3603"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Topics covered include misspecification analysis, maximum likelihood and instrumental variable estimation, univariate time series analysis and autoregressive distributed lag models."
+  },
+  {
+    "code": "HE3010",
+    "title": "MONEY & BANKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE2007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers a systematic analysis of monetary theories and the financial system. Apart from exposing you to different approaches in monetary analysis, the course places a special emphasis on the up-to-date analysis of how costs affect financial structure and monetary policy. The course will cover the structure and importance of the financial system, the functions of money, behavior of interest rates, financial structure and asymmetric information, bank management and regulation, debates on macroeconomic and monetary policies, the targets and instruments of monetary policies, the transmission mechanism of monetary policy and its effectiveness, money and inflation, rational expectations and its applications."
+  },
+  {
+    "code": "HE3011",
+    "title": "COST-BENEFIT ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 OR",
+      "HE9092 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE3012",
+    "title": "FINANCIAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202 & HE5091 OR",
+      "AB1202 & HE1001 OR",
+      "HE1001 & MH1820 OR",
+      "HE1001 & MH1820 OR",
+      "AB1202 & HE9091 OR",
+      "HE1004 & HE9091 OR",
+      "HE1005 & HE9091 OR",
+      "AB0901 & AB1202 OR",
+      "AB1202 & HE9092 OR",
+      "HE1001 & MH2500 & MH3500 OR",
+      "AB1202 & HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE3007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers two big questions: first, what determines economic agents? investment decisions, and second, how are financial assets priced. Major topics include: (1) mean-variance analysis; (2) capital asset pricing model; (3) valuation of bonds, stocks and derivatives; and (4) life cycle portfolio choice. We also cover basic concepts in corporate finance."
+  },
+  {
+    "code": "HE3013",
+    "title": "ECONOMICS OF CORPORATE FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002 & HE2003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "If you are curious on why companies and the financial markets behave the way they do from the orientation of economics, this course is for you to learn and to thrive. It aims to provide you a solid economic foundation to the theory and practice of corporate finance in a modern world. You will enjoy an intellectual stimulation and enhance your cognitive ability by commanding the core theory of corporate finance at a rigorous level. You may apply what you have learned to various interesting corporate world problems and develop potential research topics for your FYP and for further study. You could become more prepared for the competitive job market with the financial knowledge and background offered in this course. You could also generate insights on the basic trade-offs between today and tomorrow and between risk and return and apply them to your I personal investment and life-time decisions."
+  },
+  {
+    "code": "HE3023",
+    "title": "LABOUR ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE4103"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "It covers the determination of labor market demand and supply, wage determination, wage differentials, human capital investment, migration and discrimination, as well as unemployment and labor policies."
+  },
+  {
+    "code": "HE3025",
+    "title": "HEALTH ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HU9001 OR",
+      "HE5091 OR",
+      "HJ5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to study the basic principles of economics of health and healthcare. We will cover topics such as production of health, market for insurance and its issues such as adverse selection and moral hazard, and supply of physician and organization of hospitals and payments systems. Lastly we will cover recent issues in health economics such as role of health in economic development, persistent issues of high medical inflation, and behavioral aspects of health and sin-taxes. The course prepares you for a career in government (e.g. Ministry of Health, Ministry of Finance), private sector (policy think tanks and consultancies addressing and advising on organization of healthcare), and academia."
+  },
+  {
+    "code": "HE3026",
+    "title": "URBAN ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2003 OR",
+      "HE2003 & HE5092"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course studies urban spaces from an economist's perspective. Why do cities exist, and what are the benefits - and costs - of organizing economic and social activity in close proximity? Students taking this course will apply intermediate microeconomic theory and micro-econometrics to the analysis of cities and urban problems. Students will also be expected to understand and interpret contemporary empirical economic research into urban problems. Fundamental contributions from other social sciences and disciplines to the study of urban economic activity will also be discussed. In line with the course's objectives, students will be assessed based on a group project based on the interpretation of existing contemporary research; an individual research paper; and a final examination testing knowledge and application of theory and concepts"
+  },
+  {
+    "code": "HE3034",
+    "title": "ECONOMICS OF EDUCATION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE2003 OR",
+      "HE2005 OR",
+      "HE2004 (Min Grade :B+)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course combines economic theory and empirical findings to examine different aspects of the economics of education. Topics include (but not limited to): The basic theory of investment and signalling in education; the empirical problem of disentangling the private return to education from the return to innate ability; evidence on the non-pecuniary return to education; externalities; the role of early childhood education; the problems associated with giving incentives to teachers and students to boost performance; the role of income and inequality of access to education; the roles of school inputs such as class size and peers on educational attainment; the effects of teachers; the role of non-economic factors in education such as grit and aspirations. Through this course, students will gain a basic understanding of different issues in the economics of education literature and how to analyse educational policy outcomes, which will be relevant for policy making in the real world."
+  },
+  {
+    "code": "HE3604",
+    "title": "HEALTH ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HU9001 OR",
+      "HE5091 OR",
+      "HJ5001"
+    ],
+    "mutually_exclusive": [
+      "HE3004"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE3613",
+    "title": "URBAN ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2004 OR",
+      "HE2001 & HE2005 OR",
+      "HE2004 & HE9092 OR",
+      "HE2005 & HE9092 OR",
+      "HE2005 & HE5092 OR",
+      "HE2004 & HE5092"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE3614",
+    "title": "ECONOMICS OF CORPORATE FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002 & HE2004 OR",
+      "HE2001 & HE2002 & HE2005 OR",
+      "HE2001 & HE2002 & HE2003"
+    ],
+    "mutually_exclusive": [
+      "HE3014"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE3621",
+    "title": "INTERMEDIATE ECONOMETRICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2005 OR",
+      "HE2004 (Min Grade :A)"
+    ],
+    "mutually_exclusive": [
+      "HE3021"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "MH1820",
+    "title": "INTRODUCTION TO PROBABILITY & STATISTICAL METHODS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1004 (Applicable to ECPP ,ECON ,ECMA ,ECPS)"
+    ],
+    "mutually_exclusive": [
+      "AB1202",
+      "MH1800",
+      "MH2500",
+      "MH2814",
+      "MT2001"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "ARED",
+      "BCE",
+      "BCG",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CE",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CNEL",
+      "CNLM",
+      "CS",
+      "CSC",
+      "DSAI",
+      "ECDS",
+      "EEE",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "ASEC",
+      "BEEC",
+      "CBEC",
+      "CEEC",
+      "CSEC",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEEC",
+      "ENEC",
+      "IEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MTEC"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides a good foundation in probability and statistical inference. Basic ideas and methodologies in probability and statistics which are useful for economics students are introduced. It also aims to prepare students for higher level applied and theoretical econo-metric courses."
+  },
+  {
+    "code": "ML0003",
+    "title": "KICKSTART YOUR CAREER SUCCESS",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a foundation module on essential career preparation skills. This course equips you with practical skills needed in your personal development and job search to help you succeed in a new disruptive workplace. This course is open to all Year 2 students. In today's competitive world, it is crucial that career preparation skills are learnt early to ensure that competitive edge is sharpened with a heightened sense of workplace values and ethics."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1810"
+    ],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) apply, design and analyse algorithms using a number of approaches to solve various problems like sorting, shortest-path, minimum spanning tree, optimal sequencing for matrix multiplication, the longest common subsequence, string matching. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003 OR",
+      "SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CZ2002"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation, the use of inheritance and polymorphism. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2005",
+    "title": "OPERATING SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2005",
+      "CZ2005"
+    ],
+    "not_available_to_programme": [
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your understanding of fundamental concepts and principles of modern operating systems, and to build your knowledge on the design and implementation of main operating system components."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  },
+  {
+    "code": "SC2207",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001(Corequisite) OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CZ2007",
+      "EE4791",
+      "IE4791",
+      "IM4791"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Overview of Database Management Systems (DBMS); Entity-Relationship Data Model; Relational Data Model; Functional Dependencies (FD) and Normalization; Relational Algebra; Structured Query Language (SQL); Storage of Relational Data; Indexing Techniques; Query Processing and Optimization; Transaction Management and Concurrency Control"
+  }
+]

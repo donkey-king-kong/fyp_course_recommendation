@@ -1,0 +1,99 @@
+[
+  {
+    "code": "CE3102",
+    "title": "SIGNALS, SYSTEMS & TRANSFORMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1104"
+    ],
+    "mutually_exclusive": [
+      "SC3102"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEEC",
+      "ENG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the students to the basic concepts and theory behind techniques and algorithms used in signal processing systems, a topic that forms an integral part of engineering systems in many diverse areas. Emphasis is on different types of signals and systems, and their interrelation and representation using different orthogonal components. Upon completion, the student should be able to understand the fundaments of signals and linear time invariant (LTI) systems, understand and apply Fourier transforms, Laplace transforms, and Z-transform to the analysis and description of signals and LTI systems, and take advanced level courses on the systems area."
+  },
+  {
+    "code": "CS5060",
+    "title": "INTRODUCTION TO ADVERTISING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CS"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a general education elective course that will introduce you to the principles and practices of advertising including marketing communication and public relations. You will learn about the sources of change and trends in the industry; the business of advertising management; the application of media strategy and the nature of consumer behaviour; socio-economic implications as well as media ethics. Local examples shall be used to illustrate the development in this evolving business practice. This course covers the principles and practices of advertising. It also covers related aspects of marketing communications and public relations. Students will learn about the sources of change and trends in the industry, the business of advertising management, the application of media strategy and the nature of consumer behavior, socio-economic implications as well as media ethics."
+  },
+  {
+    "code": "CZ2007",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 & CZ2001(Corequisite) OR",
+      "CE1007 & CE2001(Corequisite) OR",
+      "CE1007 & CZ2001(Corequisite) OR",
+      "CE2001(Corequisite) & CZ1007 OR",
+      "CE2101(Corequisite) OR",
+      "CZ2101(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "EE4791",
+      "IE4791",
+      "IM4791",
+      "SC2207"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "SC2079",
+    "title": "MULTIDISCIPLINARY DESIGN PROJECT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE3004",
+      "CZ3004"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Seminars and Workshops - Throughout the MDP, students will be required to attend relevant seminars and workshops that would help them understand the process and tools for designing, developing and marketing of real-world multidisciplinary products. These include both general and technical seminars. General seminars may cover topics such as guided innovation, multidisciplinary problem solving, working effectively in engineering teams, understanding effective marketing strategies, project management, professional, ethical and moral responsibilities etc. Technical seminars and workshops will be related to specific engineering methodology and tools that can help students implement their respective ideas. These may include systems engineering and design, large-scale web systems, embedded systems development tools, etc. In their implementation, students will have to factor in appropriate considerations for public health and safety, cultural, societal factors, environmental and other constraints as well as the needs for sustainable development. Laboratories - Laboratory during MDP will be a mixed of guided and open accessed sessions. Teams - Students will be grouped into teams of about 6-7 member. The composition of these team members will consist of a multidisciplinary mix of CS, CE and BCG students. Supervision - Each team will be assigned a faculty mentor during the MDP."
+  }
+]

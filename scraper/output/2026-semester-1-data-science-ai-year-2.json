@@ -1,0 +1,663 @@
+[
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AL2001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world. By the end of the course, you would have developed an awareness for, and a system thinking approach to, sustainability, which you can continue to develop no matter which discipline or career path you choose to embark on."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "NH0007",
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "CC0007: Science and Technology for Humanity invites students to navigate the two global challenges of our time - Ageing Societies and Artificial Intelligence - by bridging the gap between scientific innovation and human-centric application. Rather than training students to be a computer scientist or a gerontologist specifically, this course empowers students to become an informed citizen and ethical innovator capable of addressing complex global challenges through various disciplinary lenses. Students will learn about a process of agentic inquiry where students leverage advanced AI tools as thinking partners to synthesize research, resolve contradictions, and prototype solutions for real-world stakeholders. Ultimately, this course is designed to foster the critical thinking and moral discernment necessary to ensure that technological progress remains firmly anchored in human values."
+  },
+  {
+    "code": "CL0103",
+    "title": "LEARNING WITH CHILDREN THROUGH SERVICE-LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This year-long course integrates academic study with sustained community engagement in diverse community settings. Students apply interdisciplinary knowledge in authentic contexts, translating classroom learning into purposeful action. Each student completes a minimum of 40 hours of structured service in partnership with community organisations. Working in interdisciplinary teams, students identify community needs, design and implement a Service-Learning project, and contribute meaningfully through appropriate community-based activities. Through guided reflection and collaborative practice, students strengthen NTU graduate attributes such as building inclusivity, demonstrating care for society, collaborating effectively across disciplines, and developing a strong people orientation."
+  },
+  {
+    "code": "CL0104",
+    "title": "ENGAGING WITH YOUTHS THROUGH SERVICE-LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This year-long course integrates academic study with sustained community engagement in diverse community settings. Students apply interdisciplinary knowledge in authentic contexts, translating classroom learning into purposeful action. Each student completes a minimum of 40 hours of structured service in partnership with community organisations. Working in interdisciplinary teams, students identify community needs, design and implement a Service-Learning project, and contribute meaningfully through appropriate community-based activities. Through guided reflection and collaborative practice, students strengthen NTU graduate attributes such as building inclusivity, demonstrating care for society, collaborating effectively across disciplines, and developing a strong people orientation."
+  },
+  {
+    "code": "CL0105",
+    "title": "CONNECTING WITH SENIORS THROUGH SERVICE-LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This year-long course integrates academic study with sustained community engagement in diverse community settings. Students apply interdisciplinary knowledge in authentic contexts, translating classroom learning into purposeful action. Each student completes a minimum of 40 hours of structured service in partnership with community organisations. Working in interdisciplinary teams, students identify community needs, design and implement a Service-Learning project, and contribute meaningfully through appropriate community-based activities. Through guided reflection and collaborative practice, students strengthen NTU graduate attributes such as building inclusivity, demonstrating care for society and collaborating effectively across disciplines."
+  },
+  {
+    "code": "CL0106",
+    "title": "LEARNING IN INCLUSIVE COMMUNITIES THROUGH SERVICE-LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This year-long course integrates academic study with sustained community engagement in diverse community settings. Students apply interdisciplinary knowledge in authentic contexts, translating classroom learning into purposeful action. Each student completes a minimum of 40 hours of structured service in partnership with community organisations. Working in interdisciplinary teams, students identify community needs, design and implement a Service-Learning project, and contribute meaningfully through appropriate community-based activities. Through guided reflection and collaborative practice, students strengthen NTU graduate attributes such as building inclusivity, demonstrating care for society, collaborating effectively across disciplines, and developing a strong people orientation."
+  },
+  {
+    "code": "CS4031",
+    "title": "MEDIA PLANNING & STRATEGIES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CS2008"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip prospective advertising professionals with the analytical skills to develop a media plan and optimize campaign strategies. It will enable you to provide data-driven insights on how to deliver a brand's message to the right audience while staying within budget and fulfilling campaign objectives. Upon completing this course, you will be able to (i) assess the target audience's media preferences, (ii) set campaign objectives, KPIs, and allocate budgets, (iii) select an appropriate mix of media channels, and (iv) adjust advertising tactics based on the target audience's feedback to optimize campaign performance. It is designed for communication or marketing undergraduates who are preparing for entry-level roles in market research, media planning and buying."
+  },
+  {
+    "code": "ET0001",
+    "title": "ENTERPRISE & INNOVATION",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CSC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "EEE(2019-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "ME(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This online course aims to provide you with a basic appreciation of the key concepts of enterprise and innovation. The course will focus on empowering you to gain practical insights on the relevance of enterprise and innovation in your lives by introducing you to the enterprise and innovation ecosystem of the University, the Singapore society, and beyond."
+  },
+  {
+    "code": "HW0218",
+    "title": "COMMUNICATION ACROSS THE SCIENCES",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CC0001 OR",
+      "HW0128 OR",
+      "HW0111"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to enhance the abilities of science students to recognize and employ effective skills and strategies for written and oral communication in both academic and public settings. On the one hand, the emphasis of this course is on basic micro skills in scientific communication such as searching academic databases, critically reading scientific texts, citing from sources, composing scientific arguments, and making effective presentations. On the other hand, it introduces you to the conventions of scientific texts such as annotated bibliographies and proposals that require a combination of informative, evaluative, and persuasive writing skills. In addition, you will have an opportunity to share your ideas with your peers through group discussions, in-class presentations on current scientific topics and poster presentations of your proposals. Using a pre-determined set of evaluation criteria, you will give feedback to your peers on the course assignments, under the supervision of your tutors. The course will culminate with a poster presentation session where you will present your proposals to the wider scientific community in your schools for an authentic communication experience. Through this course, it is hoped that you will become better communicators when conveying your scientific ideas in writing and speech to your peers and an educated audience."
+  },
+  {
+    "code": "HY0001",
+    "title": "ETHICS & MORAL REASONING",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HY0001 will introduce students to three major ethical theories' utilitarianism, Kant's deontology, and virtue ethics. Then, four weeks will be devoted to teaching the ethical principles underlying academic integrity, research ethics, and intellectual property. Finally, students will discuss issues related to the ethics of environmental sustainability and conservation. All the while, students will be challenged apply the ethical theories learned to concrete moral problems, including world poverty, corporate accountability and whistleblowing, and workplace discrimination."
+  },
+  {
+    "code": "MH2100",
+    "title": "CALCULUS III",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1101 OR",
+      "MH1802 (Applicable to DSAI) OR",
+      "MH1805 (Applicable to ECDS ,DSAI ,ACDA)"
+    ],
+    "mutually_exclusive": [
+      "CY1602",
+      "MH1803",
+      "MH210S",
+      "MH2800"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "PHY(2011-onwards)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Calculus III is a core Mathematics course that extends concepts and techniques developed in Calculus I and Calculus II to the case of functions of several real variables. In other words, we try to do the same things as in Calculus I and II, but in higher dimensions. In this course, we shall discuss the notions of limits, continuity, derivatives and integrals of real-valued and vector-valued functions of many variables. Most of the time, extending these familiar notions from one to several variables requires some degree of ingenuity, and we are going to have to spice up the material from Calculus I and II with a little bit of geometry and linear algebra. Techniques learned in Calculus III are essential for financial analysts, engineers, and for further study in mathematics."
+  },
+  {
+    "code": "MH2500",
+    "title": "PROBABILITY",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1100 & MH1101 OR",
+      "MH1800 & MH1801 OR",
+      "MH1101 & MH110S OR",
+      "MH1100 & MH111S OR",
+      "MH1802 OR",
+      "CY1601 OR",
+      "MH1805"
+    ],
+    "mutually_exclusive": [
+      "MH1820",
+      "MH2814",
+      "SC2000"
+    ],
+    "not_available_to_programme": [
+      "CEE",
+      "CVEC",
+      "ENE",
+      "ENEC",
+      "MS"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a core mathematical course, aiming to develop your understanding of fundamental concepts in probability such as random variables, independence, basic probability distributions, and conditional expectations and conditional variances, the law of large numbers and the central limit theorem with applications. The course also prepares you for further courses in probability and statistics, such as MH2510, MH3500 and MH3512."
+  },
+  {
+    "code": "MH2802",
+    "title": "LINEAR ALGEBRA FOR SCIENTISTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "H2 Maths or equivalent"
+    ],
+    "mutually_exclusive": [
+      "CE1104",
+      "CY1602",
+      "CZ1104",
+      "MH1200",
+      "MH1201",
+      "RE1021",
+      "SC1004",
+      "SC1305"
+    ],
+    "not_available_to_programme": [
+      "PHY(2004-2016)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_available_as_core_to_programme": [
+      "BCE(2024-onwards)",
+      "BCG(2024-onwards)",
+      "CE(2024-onwards)",
+      "CEEC(2024-onwards)",
+      "CSC(2024-onwards)",
+      "CSEC(2024-onwards)"
+    ],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to support you in acquiring a wider range of mathematical concepts related to vector spaces and linear algebra, while also developing a strong set of mathematical skills for upper-level Physical and Computing Science courses. Through a mathematical approach to problem-solving, you will have the opportunity to develop thinking, reasoning, communication, and modelling skills. Additionally, the course aims to help you connect ideas within mathematics and apply mathematical principles in the context of Physical and Computing Science courses. Ultimately, this course seeks to provide an experience that fosters an appreciation for the rigour and abstraction in the discipline."
+  },
+  {
+    "code": "ML0003",
+    "title": "KICKSTART YOUR CAREER SUCCESS",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a foundation module on essential career preparation skills. This course equips you with practical skills needed in your personal development and job search to help you succeed in a new disruptive workplace. This course is open to all Year 2 students. In today's competitive world, it is crucial that career preparation skills are learnt early to ensure that competitive edge is sharpened with a heightened sense of workplace values and ethics."
+  },
+  {
+    "code": "NH0001",
+    "title": "TECH-FOR-GOOD SERVICE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [
+      "Only open to Honours College Students"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a compulsory course for all NTU Honours College students. This course introduces students to Service-Learning, design thinking and project management frameworks. Service Learning is a form of experiential education in which students engage in activities that address societal and community needs as part of structured opportunities intentionally designed to promote student learning and development (Flecky, 2011). Students are introduced to human-centred design thinking and project management frameworks as structured approaches to addressing real-world issues. Through direct partnership with social service agencies - either through curated problem statements or self-initiated collaborations - students investigate authentic community needs, engage benefi ciaries, and critically reflect on social contexts. Drawing on design thinking principles, students develop and prototype technology-enabled or innovative solutions, iteratively testing and refining their ideas in response to stakeholder feedback. Throughout the process, they apply project and stakeholder management competencies to ensure responsible planning, collaboration, and execution. By the end of the course, students will not only have contributed tangible value to community partners, but also developed the capacity to think systemically, act ethically, and lead purposefully in addressing societal challenges."
+  },
+  {
+    "code": "SC1001",
+    "title": "INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2211",
+      "BS1009",
+      "CE1003",
+      "CE1103",
+      "CH2107",
+      "CV1014",
+      "CZ1003",
+      "CZ1103",
+      "EE1005",
+      "IE1005",
+      "MA1008",
+      "MS1008",
+      "PS0001",
+      "RE1016",
+      "SC1003",
+      "SC1303",
+      "SC5001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2025)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Computational thinking (CT) is the set of skills and practices for solving problems in a systematic way. Computations are complex series of calculations and symbolic manipulations which a computer follows to do jobs for us. The aim of this course is to have students master the the principles of computational thinking , which involves analysing a given problem, and then designing and expressing its solution in such a way that a computer can effectively carry it out. It includes a number of characteristics, such as breaking a complex problem into a number of smaller/simpler subproblems, as well as logically ordering calculations and symbolic manipulations to create solutions that can be effectively implemented as programs running on a computer. Student will also learn a programming language."
+  },
+  {
+    "code": "SC1003",
+    "title": "INTRODUCTION TO COMPUTATIONAL THINKING & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "BG2211",
+      "BS1009",
+      "CE1003",
+      "CE1103",
+      "CH2107",
+      "CV1014",
+      "CZ1003",
+      "CZ1103",
+      "EE1005",
+      "IE1005",
+      "MA1008",
+      "MS1008",
+      "PS0001",
+      "RE1016",
+      "SC1001",
+      "SC1303",
+      "SC5001"
+    ],
+    "not_available_to_programme": [
+      "AERO",
+      "ASEC",
+      "BABA",
+      "BASA",
+      "BBAN",
+      "BEEC",
+      "BFBA",
+      "BHBA",
+      "BIE",
+      "BMBA",
+      "BUSD",
+      "BUSS",
+      "CBE",
+      "CBEC",
+      "CHEM",
+      "CMED",
+      "COMP",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ENE",
+      "ENEC",
+      "ENG(CEE)",
+      "ENG(EEE)",
+      "ENG(ENE)",
+      "ENG(ME)",
+      "ENG(NULL)",
+      "ESPP",
+      "IEEC",
+      "IEM",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME",
+      "ME(DES)",
+      "ME(IDMS)",
+      "ME(IMS)",
+      "ME(RMS)",
+      "MEEC",
+      "MEEC(DES)",
+      "MEEC(IDMS)",
+      "MEEC(IMS)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PESC",
+      "PHMS",
+      "PHY",
+      "REP",
+      "ROBO",
+      "SPPE"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2026-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computational thinking (CT) is the process of analysing a problem then designing and expressing its solution in such a way that a computer can effectively carry it out. It includes a number of characteristics, such as breaking a problem into small and repetitive ordered steps, logically ordering and analyzing data and creating solutions that can be effectively implemented as programs running on computer. The aim of this course is hence to take students with no prior experience of thinking in a computational manner to a point where you can derive simple algorithms and code the programs to solve some basic problems in your domain of studies. Student will also learn about basic program construct and simple data structures. In addition, the course will include topics to appreciate the internal operations of a processor."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007 OR",
+      "SC1007 & SC1124"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101",
+      "SC2301"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) solve problems using a number of approaches like Divide-and-conquer, Greedy and Dynamic programming. Algorithms for sorting, graphs, the longest common subsequence, Knapsack, coin change and string matching are studied as examples. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003 OR",
+      "SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CT2003",
+      "CZ2002",
+      "SC2302"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation, the use of inheritance and polymorphism. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  },
+  {
+    "code": "SC2207",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001(Corequisite) OR",
+      "MH1403 OR",
+      "IE2108"
+    ],
+    "mutually_exclusive": [
+      "BC2402",
+      "BC2412",
+      "CZ2007",
+      "EE4791",
+      "IE4791",
+      "IM4791"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Database management systems (DBMS) are software systems that control the creation, maintenance, and use of databases, i.e., organized collections of data. Relational DBMS (RDBMS) are incredibly ubiquitous today -- they underlie technology used by most people every day if not every hour. RDBMS reside behind a huge fraction of websites; they are a crucial component of telecommunications systems, banking systems, video games, and just about any other software system or electronic device that maintains some amount of persistent information. As a consequence, it is important that we equip you with knowledge of design of relational databases and the use of RDBMS for applications. This introductory course serves the purpose."
+  },
+  {
+    "code": "SC3000",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1007 & SC2000 OR",
+      "MH2500 & SC1007 OR",
+      "AB1202 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CZ3005",
+      "SC1315",
+      "SC5002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer / software engineers are involved in effective and efficient building of knowledge agent systems that satisfy the requirements of users; possibly software for intelligent embedded and intelligent information systems. General awareness of theory, knowledge, and practice in all phases of the knowledge based systems and representation techniques for problem solving are necessary for those of you who wants to get into the field artificial intelligence. These are advanced intelligent systems that are finding widespread applications in finance, banking, manufacturing industries."
+  },
+  {
+    "code": "SC3020",
+    "title": "DATABASE SYSTEM PRINCIPLES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2207 OR",
+      "BC2402"
+    ],
+    "mutually_exclusive": [
+      "CE4031",
+      "CZ4031"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Database management systems (DBMS) are designed to manage large and complex data sets. The fundamentals of the implementation of database management systems must be understood by all Computer Science students. This will help students to develop and design software systems utilizing databases, and equip students with the knowledge of managing data of large scale. Moreover, this should be understood by current and future business leaders so that they can offer strategic guidance based on an informed understanding of database business capabilities. This course provides the basis for achieving this goal."
+  },
+  {
+    "code": "SC3060",
+    "title": "COMPUTER GRAPHICS & VISUALISATION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 2 standing"
+    ],
+    "mutually_exclusive": [
+      "CZ2003"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Foundation mathematics for computer graphics; Visual rendering pipeline; Virtual reality Modelling Language (VRML) and Extensible 3D (X3D); Geometric shapes; Transformations and motions; Visual Appearance; Rendering"
+  },
+  {
+    "code": "SC3061",
+    "title": "HUMAN COMPUTER INTERACTION",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CZ2004"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to provide an introduction to human-computer interaction, with an overarching goal of inculcating into you the habit of adopting a user-centric perspective on usability when designing, evaluating and innovating new user interfaces. More specifically, the objectives are to get you to: (a) appreciate and understand the significance of considering usability issues in interface development, including user requirements, measurements and various usability tests; (b) acquire vocabulary to frame and articulate HCI issues and considerations for different computing applications; (c) learn first principles in user interface design and develop basic ability to apply design considerations to both current and future interface modalities; (d) obtain a perspective of how HCI needs to be aligned with human thought processes and physical abilities, and (e) be aware of the large range of user interfaces in society today, and appreciate how HCI design is applied in various sectors of the computing industry."
+  },
+  {
+    "code": "SC4040",
+    "title": "ADVANCED TOPICS IN ALGORITHMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001"
+    ],
+    "mutually_exclusive": [
+      "CE4016",
+      "CZ4016"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your ability to identify key structural components in algorithms, problems and domains alike, and to exploit them to create provably computationally efficient solutions. This course builds on basic skills obtained in the pre-requisite 'Algorithm Design and Analysis' course to provide you with intricate, elegant and actionable algorithmic design patterns; and develop your skill in exploiting salient problem features to facilitate computation. Algorithms and designs presented in this course were at the beginning of multiple disciplines that now dominate the IT industry, and serve as a stepping stone for your further development for such roles as an algorithms engineer/developer or an applied researcher in computer technologies."
+  }
+]

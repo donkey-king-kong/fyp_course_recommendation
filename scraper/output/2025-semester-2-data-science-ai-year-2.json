@@ -1,0 +1,492 @@
+[
+  {
+    "code": "CC0006",
+    "title": "SUSTAINABILITY: SOCIETY, ECONOMY & ENVIRONMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of current sustainability challenges. You will learn to analyze sustainability issues from different perspectives (social, economic, and environmental) and on different scales (individual, organizational, Singaporean, and global). You will then use these skills to discuss and propose solutions for sustainability challenges facing Singapore and the world. By the end of the course, you would have developed an awareness for, and a system thinking approach to, sustainability, which you can continue to develop no matter which discipline or career path you choose to embark on."
+  },
+  {
+    "code": "CC0007",
+    "title": "SCIENCE & TECHNOLOGY FOR HUMANITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "SP0061"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The course aims to inspire a long-lasting mindset of awareness, critical thinking, curiosity, and collaboration across disciplines through the lens of contemporary and near-future challenges for human communities in relation to scientific and technological innovations. Students will learn to perceive and analyze the potential benefits and costs of scientific/technological innovations and applications from different perspectives and on different scales. Students will then use these skills to identify real-life challenges and to propose solutions."
+  },
+  {
+    "code": "CS4031",
+    "title": "MEDIA PLANNING & STRATEGIES",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CS2008"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to equip prospective advertising professionals with the analytical skills to develop a media plan and optimize campaign strategies. It will enable you to provide data-driven insights on how to deliver a brand's message to the right audience while staying within budget and fulfilling campaign objectives. Upon completing this course, you will be able to (i) assess the target audience's media preferences, (ii) set campaign objectives, KPIs, and allocate budgets, (iii) select an appropriate mix of media channels, and (iv) adjust advertising tactics based on the target audience's feedback to optimize campaign performance. It is designed for communication or marketing undergraduates who are preparing for entry-level roles in market research, media planning and buying."
+  },
+  {
+    "code": "CZ3005",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1003 & CZ2001 OR",
+      "CE1003 & CE2001 OR",
+      "CE1003 & CZ2001 OR",
+      "CZ1107 & CZ1115 OR",
+      "CE1107 & CE1115 OR",
+      "CZ1103 & CZ2101"
+    ],
+    "mutually_exclusive": [
+      "SC3000"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "ET0001",
+    "title": "ENTERPRISE & INNOVATION",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "CSC(2019-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "EEE(2019-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "ME(2019-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2004-2013)-Non Direct Entry",
+      "(Admyr 2004-2014)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This online course aims to provide you with a basic appreciation of the key concepts of enterprise and innovation. The course will focus on empowering you to gain practical insights on the relevance of enterprise and innovation in your lives by introducing you to the enterprise and innovation ecosystem of the University, the Singapore society, and beyond."
+  },
+  {
+    "code": "HW0218",
+    "title": "COMMUNICATION ACROSS THE SCIENCES",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CC0001 OR",
+      "HW0128 OR",
+      "HW0111"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to enhance the abilities of science students to recognize and employ effective skills and strategies for written and oral communication in both academic and public settings. On the one hand, the emphasis of this course is on basic micro skills in scientific communication such as searching academic databases, critically reading scientific texts, citing from sources, composing scientific arguments, and making effective presentations. On the other hand, it introduces you to the conventions of scientific texts such as annotated bibliographies and proposals that require a combination of informative, evaluative, and persuasive writing skills. In addition, you will have an opportunity to share your ideas with your peers through group discussions, in-class presentations on current scientific topics and poster presentations of your proposals. Using a pre-determined set of evaluation criteria, you will give feedback to your peers on the course assignments, under the supervision of your tutors. The course will culminate with a poster presentation session where you will present your proposals to the wider scientific community in your schools for an authentic communication experience. Through this course, it is hoped that you will become better communicators when conveying your scientific ideas in writing and speech to your peers and an educated audience."
+  },
+  {
+    "code": "HY0001",
+    "title": "ETHICS & MORAL REASONING",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "CNEL(2021-onwards)",
+      "CNLM(2021-onwards)",
+      "ECMA(2021-onwards)",
+      "ECPP(2021-onwards)",
+      "ECPS(2021-onwards)",
+      "ELAH(2021-onwards)",
+      "ELHS(2021-onwards)",
+      "ELPL(2021-onwards)",
+      "HSCN(2021-onwards)",
+      "HSLM(2021-onwards)",
+      "LMEL(2021-onwards)",
+      "LMPL(2021-onwards)",
+      "PLCN(2021-onwards)",
+      "PLHS(2021-onwards)",
+      "PSLM(2021-onwards)",
+      "PSMA(2021-onwards)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HY0001 will introduce students to three major ethical theories' utilitarianism, Kant's deontology, and virtue ethics. Then, four weeks will be devoted to teaching the ethical principles underlying academic integrity, research ethics, and intellectual property. Finally, students will discuss issues related to the ethics of environmental sustainability and conservation. All the while, students will be challenged apply the ethical theories learned to concrete moral problems, including world poverty, corporate accountability and whistleblowing, and workplace discrimination."
+  },
+  {
+    "code": "MH2510",
+    "title": "STATISTICS I",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [
+      "ACDA(2011-2024)",
+      "DSAI(2011-2024)",
+      "MAEO(2011-2023)",
+      "MATH(2011-2023)"
+    ],
+    "not_available_to_all_programme_with": [
+      "Yr1"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "You will be introduced to practically relevant statistical methods for students of all branches of science. The focus of the course explicitly is practical data analysis skills and not the theory of statistical inference."
+  },
+  {
+    "code": "MH3500",
+    "title": "STATISTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your understanding of the statistical concepts of parameter estimation and hypothesis testing that are fundamental for real life applications of statistics as well as for numerous further courses in the curriculum of the statistics track."
+  },
+  {
+    "code": "MH3511",
+    "title": "DATA ANALYSIS WITH COMPUTER",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH2500 OR",
+      "BS1008"
+    ],
+    "mutually_exclusive": [
+      "ES2305"
+    ],
+    "not_available_to_programme": [
+      "EESS(2025-onwards)",
+      "ESPP(2025-onwards)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In today's business, data analysis plays an important role in making decisions more scientific and helping the business achieve effective operation. By closely examining data we can find patterns to perceive information, and the information can be used to enhance knowledge. This course provides basic concepts for data analysis with the usage of the R programming language. You will learn the skills of plotting, summarising, making inferences, and presenting various types of data."
+  },
+  {
+    "code": "MH3701",
+    "title": "BASIC OPTIMIZATION",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1201 OR",
+      "MH2800 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a first course in mathematical optimization. It builds the basic knowledge and skills in the theory and techniques of analysing and solving simple optimization models. With these foundations, you will be able to deepen your understanding of more complex optimization models, and their applications to various disciplines in subsequent mathematical optimization and operations research courses."
+  },
+  {
+    "code": "ML0003",
+    "title": "KICKSTART YOUR CAREER SUCCESS",
+    "no_of_credits": "1.0 AU",
+    "grading_type": "Pass/Fail",
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "AB1002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "(Admyr 2011-2017)-Non Direct Entry",
+      "(Admyr 2011-2018)-Direct Entry",
+      "(Admyr 2021-onwards)-Non Direct Entry",
+      "(Admyr 2022-onwards)-Direct Entry"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course is a foundation module on essential career preparation skills. This course equips you with practical skills needed in your personal development and job search to help you succeed in a new disruptive workplace. This course is open to all Year 2 students. In today's competitive world, it is crucial that career preparation skills are learnt early to ensure that competitive edge is sharpened with a heightened sense of workplace values and ethics."
+  },
+  {
+    "code": "SC2001",
+    "title": "ALGORITHM DESIGN & ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "MH1812 & SC1007 OR",
+      "SC1007 & SC1124"
+    ],
+    "mutually_exclusive": [
+      "CE2001",
+      "CE2101",
+      "CZ2001",
+      "CZ2101",
+      "SC2301"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop your knowledge, understanding and skills about algorithm design and analysis. Upon the successful completion of this course, students shall be able to (i) apply additional analysis techniques in complexity analysis of recursive algorithms; (ii) solve problems using a number of approaches like Divide-and-conquer, Greedy and Dynamic programming. Algorithms for sorting, graphs, the longest common subsequence, Knapsack, coin change and string matching are studied as examples. Students will also learn the concepts of complexity classes P & NP and apply greedy heuristic approach to solve NP-complete problems."
+  },
+  {
+    "code": "SC2002",
+    "title": "OBJECT ORIENTED DESIGN & PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1003 OR",
+      "SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE2002",
+      "CT2003",
+      "CZ2002",
+      "SC2302"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The object-oriented paradigm to the design of software is one major successful approach to address complexity and maintainability issues in software systems. We want students to establish an object-oriented mindset and to gain valuable insights into how software can be developed using the object-oriented approach. This course should not be interpreted to be a pure programming language course. Rather, the programming language serves to illustrate, via practical examples, the concepts learnt in the course. As a student of this course, you will learn essential object-oriented concepts such as encapsulation, the separation of design from implementation, the use of inheritance and polymorphism. Finally, you will also learn good design principles for reuse, and to realise these principles using object-oriented programming languages such as Java and/or C++."
+  },
+  {
+    "code": "SC2006",
+    "title": "SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "CE2006",
+      "CZ2006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Software Engineering; Software Engineering Process; Introduction to Requirements; Introduction to Software Specifications; Software Design and Construction; Testing and Integration; Software Maintenance; Software Project Management; Software Quality; Dependability and Security"
+  },
+  {
+    "code": "SC2207",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001(Corequisite) OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "BC2402",
+      "CZ2007",
+      "EE4791",
+      "IE4791",
+      "IM4791"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Overview of Database Management Systems (DBMS); Entity-Relationship Data Model; Relational Data Model; Functional Dependencies (FD) and Normalization; Relational Algebra; Structured Query Language (SQL); Storage of Relational Data; Indexing Techniques; Query Processing and Optimization; Transaction Management and Concurrency Control"
+  },
+  {
+    "code": "SC2300",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Must be a Turing AI Scholar",
+      "MH1805 & SC2301"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This is a comprehensive course that aims to build a solid foundation in machine learning for TAISP students. It emphasizes strong mathematical rigor in both the theory and applications of machine learning. Students will have the opportunity to study all the fundamental topics, as well as selected advanced areas. Importantly, the course places significant focus on developing essential knowledge, the underlying principles of machine learning, and the ways of thinking required in the fi eld, rather than concentrating solely on modern deep learning applications."
+  },
+  {
+    "code": "SC2320",
+    "title": "DATA ANALYTICS & MINING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Must be a Turing AI Scholar",
+      "SC2301"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "In the era of big data, organizations collect massive, rapidly growing datasets comprising text, images, graphs, and vectors. Turning stored data into reliable, actionable knowledge does not happen automatically; it needs principled methods that go beyond basic querying. This course addresses that gap by teaching algorithms and systems that convert raw data into insight at scale. Manual analysis does not scale and often misses structure in large, complex datasets. Modern data analytics combines statistics, machine learning, and database systems to automate this process. We will study methods that work effectively on large datasets, including scalable clustering, classification, frequent pattern mining, graph analytics, and nearest-neighbor search, along with practical tools such as Apache Spark and MapReduce. This elite course offering is up-to-date and research-aware. Students will examine recent award-level papers, analyze real research scenarios, and practice end-to-end workflows from data cleaning to evaluation. The aim is to equip you to reason about methods, build scalable pipelines, and communicate findings with rigor."
+  },
+  {
+    "code": "SC2500",
+    "title": "PROBABILITY & STATISTICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Must be a Turing AI Scholar",
+      "MH1805"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the fundamental concepts of probability and statistics that underpin modern data science and machine learning. Students will learn both the foundations, such as probability theory, random variables, and statistical inference, and practical applications, including estimation, regression/classification models, Bayesian methods, and modern sampling techniques. By integrating probability and statistics with computational methods, the course aims to develop both rigorous understanding and practical problem-solving skills."
+  },
+  {
+    "code": "SC3000",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1007 & SC2000 OR",
+      "MH2500 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CZ3005",
+      "SC1315",
+      "SC5002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer / software engineers are involved in effective and efficient building of knowledge agent systems that satisfy the requirements of users; possibly software for intelligent embedded and intelligent information systems. General awareness of theory, knowledge, and practice in all phases of the knowledge based systems and representation techniques for problem solving are necessary for those of you who wants to get into the field artificial intelligence. These are advanced intelligent systems that are finding widespread applications in finance, banking, manufacturing industries."
+  },
+  {
+    "code": "SC3021",
+    "title": "DATA SCIENCE FUNDAMENTALS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CS4313 OR",
+      "SC5001 OR",
+      "SC1003 OR",
+      "CV1014 OR",
+      "BS1009 OR",
+      "MS1008 OR",
+      "MA1008 OR",
+      "PS0001 OR",
+      "IE2108 OR",
+      "RE1016"
+    ],
+    "mutually_exclusive": [
+      "SC1015"
+    ],
+    "not_available_to_programme": [
+      "ACDA(2011-2023)",
+      "BCE(2011-2023)",
+      "BCG(2011-2023)",
+      "CE(2011-2023)",
+      "CEEC(2011-2023)",
+      "CSC(2011-2023)",
+      "CSEC(2011-2023)",
+      "DSAI(2011-2023)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Data is radically transforming businesses, sciences, as well as everyday life. Constructing large and complex data science pipelines to address needs in a wide variety of domains is a critical challenge in today's world. This course aims to provide an overview of data science and thinking that go behind the design of solutions to data science problems. Python will be the language of choice to introduce hands-on data science pipelines."
+  }
+]

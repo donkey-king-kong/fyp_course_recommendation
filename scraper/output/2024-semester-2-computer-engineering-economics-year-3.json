@@ -1,0 +1,2358 @@
+[
+  {
+    "code": "CE3001",
+    "title": "ADVANCED COMPUTER ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1006 OR",
+      "CZ1006 OR",
+      "CE1106 OR",
+      "CZ1106"
+    ],
+    "mutually_exclusive": [
+      "CZ3001",
+      "SC3050"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE3002",
+    "title": "SENSORS, INTERFACING & DIGITAL CONTROL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1006 OR",
+      "CE1106"
+    ],
+    "mutually_exclusive": [
+      "SC2104"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CEE 1",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENE 1",
+      "ENG",
+      "ME 1",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE3004",
+    "title": "MULTIDISCIPLINARY DESIGN PROJECT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CZ3004",
+      "SC2079"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Seminars and Workshops ? Throughout the MDP, students will be required to attend relevant seminars and workshops that would help them understand the process and tools for designing, developing and marketing of real-world multidisciplinary products. These include both general and technical seminars. General seminars may cover topics such as guided innovation, multidisciplinary problem solving, working effectively in engineering teams, understanding effective marketing strategies, project management, professional, ethical and moral responsibilities etc. Technical seminars and workshops will be related to specific engineering methodology and tools that can help students implement their respective ideas. These may include systems engineering and design, large-scale web systems, embedded systems development tools, etc. In their implementation, students will have to factor in appropriate considerations for public health and safety, cultural, societal factors, environmental and other constraints as well as the needs for sustainable development."
+  },
+  {
+    "code": "CE3005",
+    "title": "COMPUTER NETWORK",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1011 & CE1012 OR",
+      "CE1104 & CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ3006",
+      "SC2008"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "BCE",
+      "EEE",
+      "EEEC"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE3102",
+    "title": "SIGNALS, SYSTEMS & TRANSFORMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1104"
+    ],
+    "mutually_exclusive": [
+      "SC3102"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CEE 1",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENE 1",
+      "ENG",
+      "ME 1"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the students to the basic concepts and theory behind techniques and algorithms used in signal processing systems, a topic that forms an integral part of engineering systems in many diverse areas. Emphasis is on different types of signals and systems, and their interrelation and representation using different orthogonal components. Upon completion, the student should be able to understand the fundaments of signals and linear time invariant (LTI) systems, understand and apply Fourier transforms, Laplace transforms, and Z-transform to the analysis and description of signals and LTI systems, and take advanced level courses on the systems area."
+  },
+  {
+    "code": "CE3103",
+    "title": "EMBEDDED PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE2107 OR",
+      "CE2007"
+    ],
+    "mutually_exclusive": [
+      "CE3003",
+      "SC3103"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "DSAI",
+      "MACS",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4001",
+    "title": "VIRTUAL & AUGMENTED REALITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CZ4001",
+      "SC4060"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4013",
+    "title": "DISTRIBUTED SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE2005 & CE3005"
+    ],
+    "mutually_exclusive": [
+      "CZ4013",
+      "SC4051"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4015",
+    "title": "SIMULATION & MODELLING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "IM1001 & IM2006 OR",
+      "CE1007 & CE1011 OR",
+      "CE1107 & CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ4015",
+      "SC4054"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4034",
+    "title": "INFORMATION RETRIEVAL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 OR",
+      "CE2001 OR",
+      "CZ2101 OR",
+      "CE2101"
+    ],
+    "mutually_exclusive": [
+      "CZ4034",
+      "SC4021"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4041",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE1007 & CE1011 OR",
+      "CE1107 & CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ4041",
+      "SC4000"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4046",
+    "title": "INTELLIGENT AGENTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE1007 & CE1011 OR",
+      "CE1107 & CE2100 OR",
+      "CE1007 & CE2100"
+    ],
+    "mutually_exclusive": [
+      "CZ4046",
+      "SC4003"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4052",
+    "title": "CLOUD COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "CE1104 OR",
+      "CE1012 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [
+      "CZ4052"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4055",
+    "title": "CYBER PHYSICAL SYSTEM SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1006 OR",
+      "CE1106"
+    ],
+    "mutually_exclusive": [
+      "CZ4055",
+      "SC4015"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Cyber physical systems are typically designed as a network of interacting elements with physical input and output, and are characterized by the interaction between the physical world (sensors, user inputs, actuators) and the cyber world (processing, decision making). Cyber physical systems are the driving force behind modern civilization, being integral part of technologies, such as additive manufacturing, smartcard-based payment, power delivery systems, drone-based operations, and smart home automation. Cyber physical systems are characterized by stringent performance requirements, such as, extremely low energy budget, small area footprint and often hard real-time constraints. Due to the pervasive nature of the cyber physical systems in our everyday lives, it also runs the risk of huge security hazards. In this course, we will learn about the basics of cyber physical systems, including the design principles and methodologies. Further, there will be a detailed treatment of the security challenges for cyber physical systems, which vary in practice due to the diverse nature of the application environment of cyber physical systems. These different forms of security breaches, observed across diverse cyber physical systems, will be put in a well-characterized taxonomy, to be systematically identified as attack surfaces. The techniques to handle these attacks will be described in a generic manner, including key management and wireless/RFID communication. The attack surfaces and protection/mitigation principles will then be elaborated with practical case studies, from the representative cyber physical systems such as automotive, smart card systems and smart grid."
+  },
+  {
+    "code": "CE4067",
+    "title": "SOFTWARE SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE2002 & CE2005"
+    ],
+    "mutually_exclusive": [
+      "CZ4067",
+      "SC4012"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop skills in software security. It focuses on security attacks launched by supplying specially crafted inputs to software components that modify the intended behaviours of those components, and the secure coding techniques (defences). The modified behaviours of the software components become security critical in a connected world where application systems are constructed from a collection of software components. Software developers who are not familiar with software security are likely to omit suitable defences out of ignorance. As such, this course will equip you with the deep knowledge about software security attack and defence techniques, a skill necessary to become IT security experts or professional software developers."
+  },
+  {
+    "code": "CE4069",
+    "title": "CONCEPTS & TECHNIQUES FOR MALWARE ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE1006 & CE2005 OR",
+      "CE1106 & CE2005"
+    ],
+    "mutually_exclusive": [
+      "CZ4069",
+      "SC4014"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEE 1",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENE 1",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME 1",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4071",
+    "title": "NETWORK SCIENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2001 OR",
+      "CE2001 OR",
+      "CE2101"
+    ],
+    "mutually_exclusive": [
+      "CZ4071",
+      "SC4022"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CE4171",
+    "title": "INTERNET OF THINGS: COMMUNICATIONS & NETWORKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CE3005 OR",
+      "CZ3006 OR",
+      "CE2108 OR",
+      "CZ2108"
+    ],
+    "mutually_exclusive": [
+      "CZ4171",
+      "SC4031"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BCG",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CEE 1",
+      "CHEM",
+      "CHIN",
+      "CS",
+      "CSC",
+      "CSEC",
+      "CVEC",
+      "DSAI",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ENE",
+      "ENE 1",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "IEEC",
+      "IEM",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME 1",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHY",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CSC)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ2007",
+    "title": "INTRODUCTION TO DATABASES",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ1007 & CZ2001(Corequisite) OR",
+      "CE1007 & CE2001(Corequisite) OR",
+      "CE1007 & CZ2001(Corequisite) OR",
+      "CE2001(Corequisite) & CZ1007 OR",
+      "CE2101(Corequisite) OR",
+      "CZ2101(Corequisite)"
+    ],
+    "mutually_exclusive": [
+      "EE4791",
+      "IE4791",
+      "IM4791",
+      "SC2207"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "BCG"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "CZ3002",
+    "title": "ADVANCED SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CZ2006 OR",
+      "CE2006"
+    ],
+    "mutually_exclusive": [
+      "SC3040"
+    ],
+    "not_available_to_programme": [
+      "BCE",
+      "CE",
+      "CEEC",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE3003",
+    "title": "ECONOMETRICS II",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2003"
+    ],
+    "mutually_exclusive": [
+      "HE3603"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ECMA",
+      "ECPP",
+      "ECPS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Topics covered include misspecification analysis, maximum likelihood and instrumental variable estimation, univariate time series analysis and autoregressive distributed lag models."
+  },
+  {
+    "code": "HE3010",
+    "title": "MONEY & BANKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE2007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course offers a systematic analysis of monetary theories and the financial system. Apart from exposing you to different approaches in monetary analysis, the course places a special emphasis on the up-to-date analysis of how costs affect financial structure and monetary policy. The course will cover the structure and importance of the financial system, the functions of money, behavior of interest rates, financial structure and asymmetric information, bank management and regulation, debates on macroeconomic and monetary policies, the targets and instruments of monetary policies, the transmission mechanism of monetary policy and its effectiveness, money and inflation, rational expectations and its applications."
+  },
+  {
+    "code": "HE3012",
+    "title": "FINANCIAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "AB1202 & HE5091 OR",
+      "AB1202 & HE1001 OR",
+      "HE1001 & MH1820 OR",
+      "HE1001 & MH1820 OR",
+      "AB1202 & HE9091 OR",
+      "HE1004 & HE9091 OR",
+      "HE1005 & HE9091 OR",
+      "AB0901 & AB1202 OR",
+      "AB1202 & HE9092 OR",
+      "HE1001 & MH2500 & MH3500 OR",
+      "AB1202 & HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE3007"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course covers two big questions: first, what determines economic agents? investment decisions, and second, how are financial assets priced. Major topics include: (1) mean-variance analysis; (2) capital asset pricing model; (3) valuation of bonds, stocks and derivatives; and (4) life cycle portfolio choice. We also cover basic concepts in corporate finance."
+  },
+  {
+    "code": "HE3013",
+    "title": "ECONOMICS OF CORPORATE FINANCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002 & HE2003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "If you are curious on why companies and the financial markets behave the way they do from the orientation of economics, this course is for you to learn and to thrive. It aims to provide you a solid economic foundation to the theory and practice of corporate finance in a modern world. You will enjoy an intellectual stimulation and enhance your cognitive ability by commanding the core theory of corporate finance at a rigorous level. You may apply what you have learned to various interesting corporate world problems and develop potential research topics for your FYP and for further study. You could become more prepared for the competitive job market with the financial knowledge and background offered in this course. You could also generate insights on the basic trade-offs between today and tomorrow and between risk and return and apply them to your I personal investment and life-time decisions."
+  },
+  {
+    "code": "HE3020",
+    "title": "INTERNATIONAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE9092 OR",
+      "HE2002 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE4003"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of the course is to develop a coherent modern analytical framework for thinking about all of the fundamental problem in international Economics. The course deals with many questions that are central to today's policy world such as current accounts, government budget deficits, speculative attacks and the implications of the expanding global markets for foreign assets."
+  },
+  {
+    "code": "HE3021",
+    "title": "DEVELOPMENT ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE1002 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HE5091"
+    ],
+    "mutually_exclusive": [
+      "HE3621"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course will focus on microeconomic analysis of issues in developing countries. The main question will be: what can be done to help the world's poor to improve their wellbeing? Through this course, you will gain a basic understanding of development economics in topics such as poverty, health, education, and governance. You will also have the opportunity to connect these theoretical ideas to real world issues."
+  },
+  {
+    "code": "HE3025",
+    "title": "HEALTH ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 OR",
+      "HE9091 OR",
+      "AB0901 OR",
+      "HU9001 OR",
+      "HE5091 OR",
+      "HJ5001"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to study the basic principles of economics of health and healthcare. We will cover topics such as production of health, market for insurance and its issues such as adverse selection and moral hazard, and supply of physician and organization of hospitals and payments systems. Lastly we will cover recent issues in health economics such as role of health in economic development, persistent issues of high medical inflation, and behavioral aspects of health and sin-taxes. The course prepares you for a career in government (e.g. Ministry of Health, Ministry of Finance), private sector (policy think tanks and consultancies addressing and advising on organization of healthcare), and academia."
+  },
+  {
+    "code": "HE3026",
+    "title": "URBAN ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2003 OR",
+      "HE2003 & HE5092"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course studies urban spaces from an economist's perspective. Why do cities exist, and what are the benefits - and costs - of organizing economic and social activity in close proximity? Students taking this course will apply intermediate microeconomic theory and micro-econometrics to the analysis of cities and urban problems. Students will also be expected to understand and interpret contemporary empirical economic research into urban problems. Fundamental contributions from other social sciences and disciplines to the study of urban economic activity will also be discussed. In line with the course's objectives, students will be assessed based on a group project based on the interpretation of existing contemporary research; an individual research paper; and a final examination testing knowledge and application of theory and concepts"
+  },
+  {
+    "code": "HE3035",
+    "title": "ECONOMICS OF DIGITAL PLATFORMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1001 (Min Grade :B+) OR",
+      "HE5091 (Min Grade :B+) OR",
+      "AB0901 (Min Grade :B+)"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Multi-sided platform businesses like those run by Alibaba, Amazon, Apple, Facebook, Google and Tencent dominate the current economy. These businesses raise many new economic and strategic questions that policymakers and market participants are grappling with. Yet, students studying economics currently do not learn about the unique economic features and issues pertaining to these multi-sided businesses. This module will provide such an analysis, making use of the tools of basic game theory and industrial organization to do so. Topics include (i) the economic features of multi-sided platforms (e.g.., definitions of platforms, network externalities, pricing and competition between platforms); (ii) strategic issues faced by platforms (e.g., launching, platform design, leakage, revenue model); (iii) emerging policy issues (e.g., platform mergers, self-preferencing, abuse of dominance)."
+  },
+  {
+    "code": "HE3135",
+    "title": "INTRODUCTION TO DIGITAL ECONOMICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3001 & HE3002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The digital revolution has profoundly transformed the global economy. Digital technologies are reshaping business models, creating new varieties of goods and services, and emphasizing the importance of intangible assets. Understanding today's world requires a deep engagement with the changes brought about by the digital economy. This course aims to provide an in-depth exploration of the critical topics and emerging phenomena in the digital economy. Students will gain insights into both the macroeconomic and microeconomic implications of digital technologies, blending theoretical economic principles with real-world case studies. The course addresses key issues such as fintech, big data, privacy, and artificial intelligence, preparing students to navigate and contribute to the evolving digital landscape."
+  },
+  {
+    "code": "HE3621",
+    "title": "INTERMEDIATE ECONOMETRICS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2005 OR",
+      "HE2004 (Min Grade :A)"
+    ],
+    "mutually_exclusive": [
+      "HE3021"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE4010",
+    "title": "SINGAPORE ECONOMY IN A GLOBALIZED WORLD",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2021-onwards)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE4040",
+    "title": "BEHAVIORAL ECONOMICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 OR",
+      "HE2002 OR",
+      "HE9092 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [
+      "HE4004"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The above figure depicts the Moller Franz illusion. The lengths of the three lateral lines above appear to be different, although they are of the same length. The cognitive function of our brain tricks us into thinking that they are different. Behavioral Economics studies how psychological limitations influence economic decision makings. In particular, it focuses on how adding important and more realistic human psychological attributes, which include: 1. Bounded rationality; Why people sometimes make seemingly irrational decisions such as taking more risks when they experience losses and being more risk-averse when they experience gains? 2. Bounded willpower; Why people often have difficulties in carrying out activities and actions that they had already earlier planned? For example, often, people desire to save more for retirement but unable to commit to doing so because they face the temptation to spend their money now. 3. Bounded self-interest; Why are people not entirely selfish as assumed in the standard economics analysis? They often are willing to sacrifice their monetary payoffs to uphold fairness and (or) to help unfortunate others. Thus, economics agents are not solely motivated by individual utility maximization. All these attributes can have profound impacts on the predictions of the standard economic models and the way we craft economic and social policies."
+  },
+  {
+    "code": "HE4041",
+    "title": "COST-BENEFIT ANALYSIS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3001 OR",
+      "HE5092"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Not offered as Broadening and Deepening Elective"
+  },
+  {
+    "code": "HE4042",
+    "title": "SINGAPORE ECONOMY IN A GLOBALIZED WORLD",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The topics include economic development, monetary and fiscal policies, exchange rate, market liberalization, manpower and labor market, social security, international trade and regional co-operation. The objective is to provide final year economics undergraduates with greater insights into the policies that have shaped Singapore?s economic growth and to engage students in an evaluation of these policies and development experiences. It will be unique in drawing upon the expertise of adjunct staff members who have been involved in policy-making, staff members who have worked extensively in the area, and senior government policy- and decision-makers. The module will be conducted seminar-style. Class room participation will constitute 50 percent and written examination 50 percent."
+  },
+  {
+    "code": "HE4043",
+    "title": "FINANCE & DEVELOPMENT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002 & HE2003 OR",
+      "HE2001 & HE2002 & HE2004 OR",
+      "HE2001 & HE2002 & HE2005"
+    ],
+    "mutually_exclusive": [
+      "HE4018"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The aim of this course is to develop a critical understanding of the recent debate on the role of financial intermediation in the process of economic development. It will discuss the desirability of having a deeper and more efficient financial system and explore the origins of financial development. The main topics covered are: finance for development, financial innovation, financial liberalization, financial inclusiveness, financial globalization and financial crisis."
+  },
+  {
+    "code": "HE4044",
+    "title": "GROWTH THEORY & EMPIRICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2001 & HE2002"
+    ],
+    "mutually_exclusive": [
+      "HE4005"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "The Solow Growth Model and the Ramsey Growth Model will be presented, followed by variations and extensions with product variety, product quality, technology diffusion, and human capital. Selected topics on income inequality, social mobility, institution, natural resources, unemployment, migration, finance, and others in relation to growth theory will be examined. Recent empirical studies on economic growth will be discussed and assessed."
+  },
+  {
+    "code": "HE4143",
+    "title": "HOUSEHOLD FINANCE",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course seeks to provide you with the knowledge and analytical skills that are required in the study of household finance. You would be able to appreciate how households make financial choices in different domains and identify common pitfalls. Consequently, you will be able make better financial decisions and come up with ways to enhance the financial health of others."
+  },
+  {
+    "code": "HE4203",
+    "title": "MICROECONOMETRICS & PANEL DATA",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE2004 OR",
+      "HE2005 OR",
+      "HE2003"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course helps students to form a foundation in econometric analysis especially those related to modern economic research. Modern econometric skills will be introduced to students through lectures and computer based class projects. The course emphasizes applications of econometric techniques rather than econometric theories. Statistical package will be used to illustrate analysis of real-world data."
+  },
+  {
+    "code": "HE4503",
+    "title": "POLICY ANALYSIS USING STATA",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3003"
+    ],
+    "mutually_exclusive": [
+      "HE4022"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [
+      "ASEC",
+      "BEEC",
+      "CBEC",
+      "CEEC",
+      "CSEC",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEEC",
+      "ENEC",
+      "IEEC",
+      "MAEO",
+      "MEEC",
+      "MTEC",
+      "SPPE"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces the popular statistical software Stata which is widely used by academics, business, and government agencies. The course is a Four-hour seminar course and usually consists of a two-hour introduction of the statistical procedures followed by a two-hour tutorial session (hands-on session)."
+  },
+  {
+    "code": "HE4903",
+    "title": "ADVANCED ECONOMETRICS",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE3021 OR",
+      "HE3621 OR",
+      "HE3003"
+    ],
+    "mutually_exclusive": [
+      "HE4021"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Based on HE3021 Intermediate Econometrics, this course provides you with a theoretical foundation on econometric methods widely used in empirical studies and their applications. The approa ches and models introd uced to you will have both theoretical rigor and empirical relevance. Topics covered include asymptotic theory, large sample properties of OLS, IV, GM M, heteroskedasticity, limited dependent variable models and panel data models."
+  },
+  {
+    "code": "HW0288",
+    "title": "ENGINEERING COMMUNICATION",
+    "no_of_credits": "2.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "HW0188 (Not Applicable to IEM) OR",
+      "HW0111 (Not Applicable to IEM) OR",
+      "CC0001 (Not Applicable to IEM)"
+    ],
+    "mutually_exclusive": [
+      "HW0210"
+    ],
+    "not_available_to_programme": [
+      "AERO 1",
+      "AERO 2",
+      "ASEC 1",
+      "ASEC 2",
+      "BEEC 1",
+      "BEEC 2",
+      "BIE 1",
+      "BIE 2",
+      "CBE 1",
+      "CBE 2",
+      "CBEC 1",
+      "CBEC 2",
+      "CE 1",
+      "CE 2",
+      "CEE 1",
+      "CEE 2",
+      "CEEC 1",
+      "CEEC 2",
+      "CSC 1",
+      "CSC 2",
+      "CSEC 1",
+      "CSEC 2",
+      "CVEC 1",
+      "CVEC 2",
+      "EEE 2",
+      "ENE 1",
+      "ENE 2",
+      "ENEC 1",
+      "ENEC 2",
+      "IEM 2",
+      "MAT 1",
+      "MAT 2",
+      "ME(DES) 2",
+      "ME(IMS) 2",
+      "ME(NULL) 2",
+      "ME(RMS) 2",
+      "MEEC(DES) 2",
+      "MEEC(IMS) 2",
+      "MEEC(NULL) 2",
+      "MEEC(RMS) 2",
+      "MS 3",
+      "MS 4",
+      "MS(2019-onwards)",
+      "MTEC 1",
+      "MTEC 2"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "HW0288 is an advanced course which aims to enhance the spoken and written abilities of engineering students when communicating in both academic and professional settings. In this course, the emphasis is on advanced skills in academic and professional communication. In the academic literacy and information literacy components of the course, you learn advanced skills for searching academic databases, evaluating sources and incorporating and citing them appropriately in your writing. In the professional communication component of the course, you learn written and oral workplace communication skills such as writing emails, participating at meetings, interacting with clients and projecting a professional image of yourself."
+  },
+  {
+    "code": "MH1820",
+    "title": "INTRODUCTION TO PROBABILITY & STATISTICAL METHODS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "HE1004 (Applicable to ECPP ,ECON ,ECMA ,ECPS)"
+    ],
+    "mutually_exclusive": [
+      "AB1202",
+      "MH1800",
+      "MH2500",
+      "MH2814",
+      "MT2001"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "AISC",
+      "ARED",
+      "BACF",
+      "BASA",
+      "BCE",
+      "BCG",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CE",
+      "CEE",
+      "CEE 1",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CSC",
+      "DSAI",
+      "ECDS",
+      "EEE",
+      "EEE 1",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENE 1",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MACS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME 1",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2017)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ASEC",
+      "BEEC",
+      "CBEC",
+      "CEEC",
+      "CSEC",
+      "CVEC",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEEC",
+      "ENEC",
+      "IEEC",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MTEC"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course provides a good foundation in probability and statistical inference. Basic ideas and methodologies in probability and statistics which are useful for economics students are introduced. It also aims to prepare students for higher level applied and theoretical econo-metric courses."
+  },
+  {
+    "code": "SC2000",
+    "title": "PROBABILITY & STATISTICS FOR COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [],
+    "mutually_exclusive": [
+      "CE2100",
+      "CZ2100"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)",
+      "IEEC",
+      "IEM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course aims to develop your foundation in engineering mathematics, particularly in probability and statistics. This course provides the basic engineering mathematics foundation that is necessary for anyone pursuing a computer science and engineering degree course."
+  },
+  {
+    "code": "SC2008",
+    "title": "COMPUTER NETWORK",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1004 & SC2000 OR",
+      "MH2802 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CE3005",
+      "CZ3006"
+    ],
+    "not_available_to_programme": [
+      "EEE",
+      "EEE 1",
+      "ENG(EEE)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "BCE"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course serves as a foundation for computer and communication networks. Emphasis is placed on concepts, protocols and technologies, which formulate various Local Area Networks (LANs), Wide area Networks (WANs), and their interconnections. Emphasis is also placed on the fundamentals of the Internet, and includes laboratory sessions on socket programming. Advanced materials, such as, cloud computing, will also be covered to prepare you well for your future career."
+  },
+  {
+    "code": "SC2079",
+    "title": "MULTIDISCIPLINARY DESIGN PROJECT",
+    "no_of_credits": "4.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing; Year 2 standing (Part time)"
+    ],
+    "mutually_exclusive": [
+      "CE3004",
+      "CZ3004"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "Seminars and Workshops - Throughout the MDP, students will be required to attend relevant seminars and workshops that would help them understand the process and tools for designing, developing and marketing of real-world multidisciplinary products. These include both general and technical seminars. General seminars may cover topics such as guided innovation, multidisciplinary problem solving, working effectively in engineering teams, understanding effective marketing strategies, project management, professional, ethical and moral responsibilities etc. Technical seminars and workshops will be related to specific engineering methodology and tools that can help students implement their respective ideas. These may include systems engineering and design, large-scale web systems, embedded systems development tools, etc. In their implementation, students will have to factor in appropriate considerations for public health and safety, cultural, societal factors, environmental and other constraints as well as the needs for sustainable development. Laboratories - Laboratory during MDP will be a mixed of guided and open accessed sessions. Teams - Students will be grouped into teams of about 6-7 member. The composition of these team members will consist of a multidisciplinary mix of CS, CE and BCG students. Supervision - Each team will be assigned a faculty mentor during the MDP."
+  },
+  {
+    "code": "SC2107",
+    "title": "MICROPROCESSOR SYSTEM DESIGN & DEVELOPMENT",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE2007",
+      "CE2107"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENG(EEE)",
+      "ENG(NULL)"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This core engineering course aims to develop your understanding of the architecture of a microprocessor system and the software development process of a microprocessor based embedded system. The course will expose you to various design and application considerations involved in developing the software and hardware. This includes power management, signal chain handling, memory interfacing and finite state machine design. All of which will be applied in the laboratory sessions using a microprocessor based robotic hardware as the platform."
+  },
+  {
+    "code": "SC3000",
+    "title": "ARTIFICIAL INTELLIGENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1007 & SC1015 & SC2000 OR",
+      "MH2500 & SC1007 & SC1015"
+    ],
+    "mutually_exclusive": [
+      "CZ3005",
+      "SC1315",
+      "SC5002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Computer / software engineers are involved in effective and efficient building of knowledge agent systems that satisfy the requirements of users; possibly software for intelligent embedded and intelligent information systems. General awareness of theory, knowledge, and practice in all phases of the knowledge based systems and representation techniques for problem solving are necessary for those of you who wants to get into the field artificial intelligence. These are advanced intelligent systems that are finding widespread applications in finance, banking, manufacturing industries."
+  },
+  {
+    "code": "SC3021",
+    "title": "DATA SCIENCE FUNDAMENTALS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "CS4313 OR",
+      "SC5001 OR",
+      "SC1003 OR",
+      "CV1014 OR",
+      "BS1009 OR",
+      "MS1008 OR",
+      "MA1008 OR",
+      "PS0001 OR",
+      "IE2108 OR",
+      "RE1016"
+    ],
+    "mutually_exclusive": [
+      "SC1015"
+    ],
+    "not_available_to_programme": [
+      "ACDA(2011-2023)",
+      "BCE(2011-2023)",
+      "BCG(2011-2023)",
+      "CE(2011-2023)",
+      "CEEC(2011-2023)",
+      "CSC(2011-2023)",
+      "CSEC(2011-2023)",
+      "DSAI(2011-2023)",
+      "ECDS(2011-2024)"
+    ],
+    "not_available_to_all_programme_with": [],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Data is radically transforming businesses, sciences, as well as everyday life. Constructing large and complex data science pipelines to address needs in a wide variety of domains is a critical challenge in today's world. This course aims to provide an overview of data science and thinking that go behind the design of solutions to data science problems. Python will be the language of choice to introduce hands-on data science pipelines."
+  },
+  {
+    "code": "SC3040",
+    "title": "ADVANCED SOFTWARE ENGINEERING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2006"
+    ],
+    "mutually_exclusive": [
+      "CZ3002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Building upon software engineering and design concepts covered in Software Engineering (SC2006), this course aims to introduce advanced software engineering management topics to you including Quality Management, Project Management, Configuration Management, and Maintenance, according to the Software Engineering Body of Knowledge."
+  },
+  {
+    "code": "SC3050",
+    "title": "ADVANCED COMPUTER ARCHITECTURE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE3001",
+      "CZ3001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Processor System Design: CPU interfaces, clock, control, data & address bus; System firmware. The CPU Architecture: including ISA, compiler relationship, control, pipelining, hazards, CISC/RISC/VLIW and issues of ILP. Memory Systems: cache, virtual memory systems and the MMU, access methods, reliability, error detection/correction. Performance Enhancements: superscalar; branching issues, multithreading, scalability, co-processors and enhancement units. Interfacing and Communications: I/O fundamentals, interrupts and interfacing, buses, protocols and arbitration. Computer Arithmetic: range, precision, real numbers, floating point and conversion, multi-precision arithmetic Multiprocessing: multiprocessing architectures and interconnections, shared memory and coherence, memory solutions Future directions: low power computing; testing, JTAG, system-on-chip and multi-core implementations, embedded systems issues, comparison of computational on CPU, DSP, FPGA and GPU."
+  },
+  {
+    "code": "SC3102",
+    "title": "SIGNALS, SYSTEMS & TRANSFORMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1004 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [
+      "CE3102"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "CEE 1",
+      "CSC",
+      "CSEC",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "ENE 1",
+      "ENG",
+      "ME 1"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": false,
+    "description": "This course introduces the students to the basic concepts and theory behind techniques and algorithms used in signal processing systems, a topic that forms an integral part of engineering systems in many diverse areas. Emphasis is on different types of signals and systems, and their interrelation and representation using different orthogonal components. Upon completion, the student should be able to understand the fundaments of signals and linear time invariant (LTI) systems, understand and apply Fourier transforms, Laplace transforms, and Z-transform to the analysis and description of signals and LTI systems, and take advanced level courses on the systems area."
+  },
+  {
+    "code": "SC3103",
+    "title": "EMBEDDED PROGRAMMING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2107"
+    ],
+    "mutually_exclusive": [
+      "CE3003",
+      "CE3103"
+    ],
+    "not_available_to_programme": [
+      "BCG",
+      "DSAI",
+      "MACS"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to teach you how to develop programs for OS based embedded systems that are increasingly been used in many modern embedded systems, ranging from handphones to automotive applications. In this course, you will first learn about the process of developing multitasking programs for embedded systems based on RTOS, its features and its performance metric. You will then learn the programming techniques used in Linux based systems, ranging from the use of toolchain (GCC, Makefile and Linker Script), concurrent programming techniques (IPC, multitasking and multithreading), kernel modules development and its booting process."
+  },
+  {
+    "code": "SC4000",
+    "title": "MACHINE LEARNING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1004 & SC1007 & SC2000 OR",
+      "MH2500 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE4041",
+      "CZ4041",
+      "MH4510",
+      "SC5002"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS",
+      "MAEO(BA)",
+      "MATH(BA)"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces basic concepts and methodologies for machine learning as well as their applications. Clustering. Dimension Reduction. Classification. Decision Theory. Density Estimation. Classifier Evaluation."
+  },
+  {
+    "code": "SC4003",
+    "title": "INTELLIGENT AGENTS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1007 & SC2000 OR",
+      "MH2500 & SC1007"
+    ],
+    "mutually_exclusive": [
+      "CE4046",
+      "CZ4046"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BACF",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENE 1",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME 1",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Introduction to Intelligent Agents; Deductive Reasoning Agents; Practical Reasoning Agents; Reactive and Hybrid Architectures; Introduction to Multi-Agent Systems and Applications; Working Together; Multi-Agent Interaction; Allocating Scarce Resources ? Auctions; Making Group Decisions; Forming Coalitions."
+  },
+  {
+    "code": "SC4012",
+    "title": "SOFTWARE SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2002 & SC2005"
+    ],
+    "mutually_exclusive": [
+      "CE4067",
+      "CZ4067"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BACF",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "MACS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to develop skills in software security. It focuses on security attacks launched by supplying specially crafted inputs to software components that modify the intended behaviours of those components, and the secure coding techniques (defences). The modified behaviours of the software components become security critical in a connected world where application systems are constructed from a collection of software components. Software developers who are not familiar with software security are likely to omit suitable defences out of ignorance. As such, this course will equip you with the deep knowledge about software security attack and defence techniques, a skill necessary to become IT security experts or professional software developers."
+  },
+  {
+    "code": "SC4014",
+    "title": "CONCEPTS & TECHNIQUES FOR MALWARE ANALYSIS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006 & SC2005"
+    ],
+    "mutually_exclusive": [
+      "CE4069",
+      "CZ4069"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BACF",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CVEC",
+      "DSAI",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ACDA",
+      "MACS"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Malware analysis is a specialization within cyber security. Malware attacks are often detrimental to companies or organizations. When malware breaches an organization's defences, the security team needs to act quickly to cure current infections and prevent it from re-occurring. Understanding the capabilities of the malware is critical to an organization's ability to quickly create a signature to prevent the widespread of the malware across the network, to block further communications from the attacker. This understanding could also be translated to valuable knowledge in identifying existing security gaps within an organization's system and fortify defences. This course aims to build a strong foundation to perform triage on malicious software using a variety of system and network monitoring utilities, a disassembler, a debugger and many other freely available tools."
+  },
+  {
+    "code": "SC4015",
+    "title": "CYBER PHYSICAL SYSTEM SECURITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC1006"
+    ],
+    "mutually_exclusive": [
+      "CE4055",
+      "CZ4055"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ACDA",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BACF",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Cyber physical systems are typically designed as a network of interacting elements with physical input and output, and are characterized by the interaction between the physical world (sensors, user inputs, actuators) and the cyber world (processing, decision making). Cyber physical systems are the driving force behind modern civilization, being integral part of technologies, such as additive manufacturing, smartcard-based payment, power delivery systems, drone-based operations, and smart home automation. Cyber physical systems are characterized by stringent performance requirements, such as, extremely low energy budget, small area footprint and often hard real-time constraints. Due to the pervasive nature of the cyber physical systems in our everyday lives, it also runs the risk of huge security hazards. In this course, we will learn about the basics of cyber physical systems, including the design principles and methodologies. Further, there will be a detailed treatment of the security challenges for cyber physical systems, which vary in practice due to the diverse nature of the application environment of cyber physical systems. These different forms of security breaches, observed across diverse cyber physical systems, will be put in a well-characterized taxonomy, to be systematically identified as attack surfaces. The techniques to handle these attacks will be described in a generic manner, including key management and wireless/RFID communication. The attack surfaces and protection/mitigation principles will then be elaborated with practical case studies, from the representative cyber physical systems such as automotive, smart card systems and smart grid."
+  },
+  {
+    "code": "SC4021",
+    "title": "INFORMATION RETRIEVAL",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001 OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CE4034",
+      "CZ4034"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course aims to involve students in a technical way to understand and build information retrieval systems. They were expected to master the basic concepts and building blocks for information retrieval systems. In addition, applications in artificial intelligence were also introduced to get students acquainted with state of the arts."
+  },
+  {
+    "code": "SC4022",
+    "title": "NETWORK SCIENCE",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2001 OR",
+      "MH1403"
+    ],
+    "mutually_exclusive": [
+      "CE4071",
+      "CZ4071"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BACF",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CVEC",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP 1",
+      "REP 2",
+      "REP 3",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "We live in a world where we are surrounded by systems that are incredibly complex, from the society, a collection of billions individuals, to communications systems, integrating billions of devices, from computers to cell phones. In fact, the existence of living beings in this planet depends on the ability of thousands of proteins to work together in a seamless fashion. Furthermore, our ability to comprehend our surroundings is heavily influenced by the activity of billions of neurons in our brain. Such complex systems can be represented as static or dynamic networks of many interacting components. These components are typically much simpler in terms of behavior or function than the overall system, implying that the additional complexity of the latter is an emergent network property. Network science is a new discipline that investigates the topology and dynamics of such complex networks, aiming to better understand the behavior, function and properties of the underlying systems. In this course, we will study algorithmic, computational, and statistical methods of network science, as well as its applications in solving real-world problems in communications, biology, sociology, and cyber security. The specific topics include network metrics, properties, and models, network querying and analytics, network dynamics, and distributed graph engines. Another pervasive goal of this course is to guide students into the future by presenting research that reveals the ?next big thing? in network science."
+  },
+  {
+    "code": "SC4031",
+    "title": "INTERNET OF THINGS: COMMUNICATIONS & NETWORKING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2008"
+    ],
+    "mutually_exclusive": [
+      "CE4171",
+      "CZ4171"
+    ],
+    "not_available_to_programme": [
+      "ACBS",
+      "ACC",
+      "ADM",
+      "AERO",
+      "ARED",
+      "ASEC",
+      "BACF",
+      "BASA",
+      "BEEC",
+      "BIE",
+      "BMS",
+      "BS",
+      "BSB",
+      "BSPY",
+      "BUS",
+      "CBE",
+      "CBEC",
+      "CEE",
+      "CHEM",
+      "CHIN",
+      "CMED",
+      "CNEL",
+      "CNLM",
+      "COMP",
+      "CS",
+      "CVEC",
+      "DSAI",
+      "ECDS",
+      "ECMA",
+      "ECON",
+      "ECPP",
+      "ECPS",
+      "EEE",
+      "EEE 1",
+      "EEEC",
+      "EESS",
+      "ELAH",
+      "ELH",
+      "ELHS",
+      "ELPL",
+      "ENE",
+      "ENE 1",
+      "ENEC",
+      "ENG",
+      "ESPP",
+      "HIST",
+      "HSCN",
+      "HSLM",
+      "IEEC",
+      "IEM",
+      "LMEL",
+      "LMPL",
+      "LMS",
+      "MAEC",
+      "MAEO",
+      "MAT",
+      "MATH",
+      "ME(DES)",
+      "ME(IMS)",
+      "ME(NULL)",
+      "ME(RMS)",
+      "MEEC(DES)",
+      "MEEC(IMS)",
+      "MEEC(NULL)",
+      "MEEC(RMS)",
+      "MS",
+      "MS-2ndMaj/Spec(MSB)",
+      "MTEC",
+      "PHIL",
+      "PHMS",
+      "PHY",
+      "PLCN",
+      "PLHS",
+      "PPGA",
+      "PSLM",
+      "PSMA",
+      "PSY",
+      "REP(ASEN)",
+      "REP(BIE)",
+      "REP(CBE)",
+      "REP(CVEN)",
+      "REP(EEE)",
+      "REP(ENE)",
+      "REP(MAT)",
+      "REP(ME)",
+      "SCED",
+      "SOC",
+      "SPPE",
+      "SSM"
+    ],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [
+      "ACDA"
+    ],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "The objective of this course is to introduce Internet of Things (IoT) technologies with the focus on data communications and networking. The course consists of two complementary components, i.e., wireless communications and wireless networking to support IoT applications and systems. The wireless communications part includes the basics and concepts of wireless transmission technologies such as frequency, power consumption, wireless performance, mobility, wireless standards, medium access control protocols including fixed assignment and random access techniques. The wireless networking part includes the introduction and basics of wireless ad hoc routing, and cellular networks such as cellular system architecture, frequency reuse concept, hexagon geometry, co-channel interference, capacity expansion techniques. In addition to these two major components, the course will also discuss the IoT network architecture, IoT devices and IoT application use cases to provide comprehensive understandings of the entire IoT ecosystem. After attending this course, the students will be able to address the various technical challenges associated with wireless communications and networking to support IoT applications by solving such challenges using the principles learned. In addition, the students will be able to design and evaluate wireless communications and networking systems to support specific IoT applications. The concepts covered in this course are particularly important for those working in fields such as IoT network development, wireless IoT apps implementations, and mobile IoT services."
+  },
+  {
+    "code": "SC4051",
+    "title": "DISTRIBUTED SYSTEMS",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "SC2005 & SC2008"
+    ],
+    "mutually_exclusive": [
+      "CE4013",
+      "CZ4013"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "This course introduces the concepts and design of distributed systems. 1. Foundations: characteristics of distributed systems, architectural models, fundamental models, interprocess communication. 2. Middleware: remote method invocation, remote procedure call, name services, CORBA. 3. System Infrastructure: distributed file systems, peer-to-peer systems. 4. Distributed Algorithms: clock synchronization, logical and vector clocks, distributed mutual exclusion, election algorithms, consensus algorithms, replication and fault tolerance."
+  },
+  {
+    "code": "SC4052",
+    "title": "CLOUD COMPUTING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1004 OR",
+      "MH2802"
+    ],
+    "mutually_exclusive": [],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "Yr1",
+      "Yr2",
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Cloud computing refers to both the applications delivered as services over the Internet and the modern applications powered by these services, collectively known as Software as a Service (SaaS), IaaS (Infrastructure as a Service) and PaaS (Platform as a Service). This course introduces the students to the basic concepts and theory behind cloud computing. Techniques and algorithms in distributed computing that leverages artificial intelligence, machine learning and blockchains, topics that forms an integral part of modern cloud computing and edge/fog computing, will also be covered, along with industrial perspectives. Upon completion, students will be able to understand cloud computing applications that use software frameworks, e.g., MapReduce/Spark, distributed computing services-including database, networking, software, analytics, and intelligence over the Internet to offer faster innovation, flexible resources, and economies of scale."
+  },
+  {
+    "code": "SC4054",
+    "title": "SIMULATION & MODELLING",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing",
+      "SC1007 & SC2000"
+    ],
+    "mutually_exclusive": [
+      "CE4015",
+      "CZ4015"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Basic concepts: system, model, simulation. Different types of simulation: Monte Carlo simulation, continuous system simulation, discrete event simulation. Simulation software: modelling and simulation using Arena. Generating random numbers and random variables for simulation study: LCG, inverse transform, convolution. Analysis of input and output data: MLE, Goodness-of-fit test, confidence interval. Verification and validation: concepts and techniques. Queuing models: properties, performance measures and basic formulas. Comparison of alternative designs: paired-t approach, multiple comparison problem. Variance reduction: CRN, AV."
+  },
+  {
+    "code": "SC4060",
+    "title": "VIRTUAL & AUGMENTED REALITY",
+    "no_of_credits": "3.0 AU",
+    "grading_type": null,
+    "prerequisites": [
+      "Year 3 standing"
+    ],
+    "mutually_exclusive": [
+      "CE4001",
+      "CZ4001"
+    ],
+    "not_available_to_programme": [],
+    "not_available_to_all_programme_with": [
+      "(Admyr 2011-2020)"
+    ],
+    "not_available_as_bde_ue_to_programme": [],
+    "not_available_as_core_to_programme": [],
+    "not_offered_as_unrestricted_elective": true,
+    "description": "Virtual and augmented reality is becoming a powerful technology for engineers to design and implement applications ranging from manufacturing and medical to media and entertainment. Virtual reality refers to techniques that build imaginary worlds in computers. Augmented reality adds cues by overlaying computer-generated images onto the real world. An understanding of the hardware, software and algorithms for virtual and augmented reality allows scientists and engineers like you to push the limits of the science and technology and develop useful applications. This course requires familiarity with linear algebra, calculus, programming, 3D computer graphics, and computer vision."
+  }
+]
