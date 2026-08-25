@@ -10,6 +10,7 @@ from backend.models import Base, ModuleModel, ModulePrerequisiteModel
 # Source dataset downloaded from NTUMods and committed under the repo data folder.
 MODULES_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "modules.json"
 PREREQUISITE_GRAPH_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "ntu_prerequisite_unlock_graph.json"
+COURSE_CATALOG_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "course_catalog.json"
 
 def seed_database() -> None:
     # Create missing tables before inserting data so local setup stays simple.
@@ -17,13 +18,15 @@ def seed_database() -> None:
 
     modules = load_modules(MODULES_JSON_PATH)
     prerequisite_graph = load_prerequisite_graph(PREREQUISITE_GRAPH_JSON_PATH)
+    description_by_code = load_course_catalog_descriptions(COURSE_CATALOG_JSON_PATH)
     db = SessionLocal()
 
     try:
-        inserted_count, updated_count = seed_modules(db, modules)
+        inserted_count, updated_count = seed_modules(db, modules, description_by_code)
         prerequisite_count = seed_prerequisite_relationships(db, prerequisite_graph)
         db.commit()
 
+        print(f"Found {len(description_by_code)} catalog descriptions.")
         print(f"Inserted {inserted_count} modules.")
         print(f"Updated {updated_count} modules.")
         print(f"Seeded {prerequisite_count} prerequisite relationships.")
@@ -31,7 +34,7 @@ def seed_database() -> None:
     finally:
         db.close()
 
-def seed_modules(db: Any, modules: list[dict[str, Any]]) -> tuple[int, int]:
+def seed_modules(db: Any, modules: list[dict[str, Any]], description_by_code: dict[str, str]) -> tuple[int, int]:
     inserted_count = 0
     updated_count = 0
 
@@ -44,7 +47,7 @@ def seed_modules(db: Any, modules: list[dict[str, Any]]) -> tuple[int, int]:
             continue
 
         existing = db.query(ModuleModel).filter_by(code=code).first()
-        module_data = build_module_data(module)
+        module_data = build_module_data(module, description_by_code)
 
         if existing:
             # Update existing rows so the seed script can be rerun safely.
@@ -85,15 +88,28 @@ def load_prerequisite_graph(input_path: Path) -> dict[str, dict[str, list[str]]]
     except FileNotFoundError as error:
         raise FileNotFoundError(f"Could not find {input_path}. Run this script from the project repo.") from error
 
-def build_module_data(module: dict[str, Any]) -> dict[str, Any]:
+def load_course_catalog_descriptions(input_path: Path) -> dict[str, str]:
+    try:
+        courses = json.loads(input_path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+
+    return {
+        course["code"]: course["description"].strip()
+        for course in courses
+        if course.get("code") and isinstance(course.get("description"), str) and course["description"].strip()
+    }
+
+def build_module_data(module: dict[str, Any], description_by_code: dict[str, str] | None = None) -> dict[str, Any]:
     code = module["code"]
+    description = (description_by_code or {}).get(code) or module.get("description")
 
     return {
         "code": code,
         "title": module.get("title", ""),
         "au": parse_au(module.get("au")),
         "faculty": module.get("faculty"),
-        "description": module.get("description"),
+        "description": description,
         "level": infer_level(code),
         "categories": module.get("categories", []),
         "latest_year": module.get("latestYear"),
