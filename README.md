@@ -145,3 +145,20 @@ Current scraper scope:
 - Extracts course code, title, description, number of credits, grading type, prerequisites, mutually exclusive courses, and programme availability restrictions.
 - Keeps generated output in `scraper/output/` so the scraped JSON files can be committed.
 - Does not add a backend endpoint, database storage, scheduled scraping, or recommendation logic yet.
+
+## Normalize Scraped Course Data
+
+After scraping, build normalized app-ready data:
+
+```bash
+python scraper/build_course_data.py
+```
+
+This creates:
+
+- `data/course_catalog.json`: one unique record per course code.
+- `data/course_offerings.json`: one record per academic year, semester, programme, study year, and course code.
+
+The catalog answers what each course is.
+
+The offerings file answers where and when each course appears.
