@@ -15,7 +15,14 @@ class ScrapedCourse:
     code: str
     title: str | None
     no_of_credits: str | None
+    grading_type: str | None
+    prerequisites: list[str]
     mutually_exclusive: list[str]
+    not_available_to_programme: list[str]
+    not_available_to_all_programme_with: list[str]
+    not_available_as_bde_ue_to_programme: list[str]
+    not_available_as_core_to_programme: list[str]
+    not_offered_as_unrestricted_elective: bool
     description: str | None
 
     def to_dict(self) -> dict[str, Any]:
@@ -77,7 +84,26 @@ def parse_courses(html: str) -> list[ScrapedCourse]:
                 title=_extract_title(course_code, course_table),
                 description=_extract_description(course_table),
                 no_of_credits=_extract_no_of_credits(course_table),
-                mutually_exclusive=_extract_mutually_exclusive(course_table),
+                grading_type=_extract_single_metadata_value(course_table, "Grade Type:"),
+                prerequisites=_extract_prerequisites(course_table),
+                mutually_exclusive=_split_comma_values(
+                    _extract_metadata_values(course_table, "Mutually exclusive with:")
+                ),
+                not_available_to_programme=_split_comma_values(
+                    _extract_metadata_values(course_table, "Not available to Programme:")
+                ),
+                not_available_to_all_programme_with=_split_comma_values(
+                    _extract_metadata_values(course_table, "Not available to all Programme with:")
+                ),
+                not_available_as_bde_ue_to_programme=_split_comma_values(
+                    _extract_metadata_values(course_table, "Not available as BDE/UE to Programme:")
+                ),
+                not_available_as_core_to_programme=_split_comma_values(
+                    _extract_metadata_values(course_table, "Not available as Core to Programme:")
+                ),
+                not_offered_as_unrestricted_elective=_has_metadata_label(
+                    course_table, "Not offered as Unrestricted Elective"
+                ),
             )
         )
 
@@ -116,7 +142,6 @@ def _extract_description(course_table: Tag | None) -> str | None:
 
     return None
 
-
 def _extract_no_of_credits(course_table: Tag | None) -> str | None:
     if course_table is None:
         return None
@@ -133,44 +158,98 @@ def _extract_no_of_credits(course_table: Tag | None) -> str | None:
 
     return None
 
+def _extract_single_metadata_value(course_table: Tag | None, label_text: str) -> str | None:
+    values = _extract_metadata_values(course_table, label_text)
+    if not values:
+        return None
 
-def _extract_mutually_exclusive(course_table: Tag | None) -> list[str]:
+    return values[0]
+
+def _extract_prerequisites(course_table: Tag | None) -> list[str]:
     if course_table is None:
         return []
 
-    label = course_table.find(
-        "font",
-        string=lambda value: value is not None and "Mutually exclusive with" in value,
-    )
-    if label is None:
+    prerequisites: list[str] = []
+    collecting_prerequisites = False
+
+    for row in course_table.find_all("tr"):
+        cells = row.find_all("td")
+        if len(cells) < 2:
+            collecting_prerequisites = False
+            continue
+
+        label = _clean_text(cells[0].get_text(" "))
+        value = _clean_text(cells[1].get_text(" "))
+
+        if label == "Prerequisite:":
+            collecting_prerequisites = True
+            if value:
+                prerequisites.append(value)
+            continue
+
+        if collecting_prerequisites and not label and value:
+            prerequisites.append(value)
+            continue
+
+        if label:
+            collecting_prerequisites = False
+
+    return prerequisites
+
+def _extract_metadata_values(course_table: Tag | None, label_text: str) -> list[str]:
+    if course_table is None:
         return []
 
-    label_cell = label.find_parent("td")
-    if label_cell is None:
-        return []
+    values: list[str] = []
 
-    value_cell = label_cell.find_next_sibling("td")
-    if value_cell is None:
-        return []
+    for label in course_table.find_all("font"):
+        if _clean_text(label.get_text()) != label_text:
+            continue
 
-    value_text = _clean_text(value_cell.get_text(" "))
-    if not value_text:
-        return []
+        label_cell = label.find_parent("td")
+        if label_cell is None:
+            continue
 
-    return [code.strip() for code in value_text.split(",") if code.strip()]
+        value_cell = label_cell.find_next_sibling("td")
+        if value_cell is None:
+            continue
 
+        value_text = _clean_text(value_cell.get_text(" "))
+        if value_text:
+            values.append(value_text)
+
+    return values
+
+def _has_metadata_label(course_table: Tag | None, label_text: str) -> bool:
+    if course_table is None:
+        return False
+
+    for label in course_table.find_all("font"):
+        if _clean_text(label.get_text()) == label_text:
+            return True
+
+    return False
+
+def _split_comma_values(values: list[str]) -> list[str]:
+    split_values: list[str] = []
+
+    for value in values:
+        split_values.extend(item.strip() for item in value.split(",") if item.strip())
+
+    return split_values
 
 def _is_metadata_label(text: str) -> bool:
     metadata_labels = (
+        "Grade Type:",
+        "Prerequisite:",
         "Mutually exclusive with:",
+        "Not available to Programme:",
         "Not available to all Programme with:",
+        "Not available as BDE/UE to Programme:",
+        "Not available as Core to Programme:",
+        "Not offered as Unrestricted Elective",
     )
     return text in metadata_labels
-
-
-def _clean_text(value: str) -> str:
-    return " ".join(value.split())
-
 
 def _clean_text(value: str) -> str:
     return " ".join(value.split())
