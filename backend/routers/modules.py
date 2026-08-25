@@ -41,8 +41,8 @@ def raise_module_database_error() -> None:
     summary="Get module filter options",
     description=(
         "No request body required. Returns valid faculty, level, and category values "
-        "from PostgreSQL for frontend filter dropdowns. For now, the catalogue is "
-        "restricted to CSC and CE modules."
+        "from PostgreSQL for frontend filter dropdowns. Faculty options are limited "
+        "to faculties currently marked active."
     ),
     response_description="Available module filter options.",
     responses={503: MODULE_DATABASE_ERROR_RESPONSE},
@@ -61,8 +61,8 @@ def read_module_filters(db: Session = Depends(get_db)) -> ModuleFilterOptionsRes
     description=(
         "No request body required. Returns one paginated page of modules. Use query "
         "parameters to search by code/title and filter by faculty, level, category, "
-        "or current-semester status. For now, results are always restricted to CSC "
-        "and CE modules."
+        "or current-semester status. Results are always limited to faculties currently "
+        "marked active."
     ),
     response_description="Paginated module results with prerequisite and unlock data.",
     responses={503: MODULE_DATABASE_ERROR_RESPONSE},
@@ -98,8 +98,8 @@ def read_modules(
     summary="Get one module by code",
     description=(
         "No request body required. Returns the exact module matching the path code, "
-        "including direct prerequisites and modules unlocked by this module. For now, "
-        "only CSC and CE modules are available through this endpoint."
+        "including direct prerequisites and modules unlocked by this module. Modules "
+        "from inactive faculties are not returned."
     ),
     response_description="One exact module with prerequisite and unlock data.",
     responses={404: MODULE_NOT_FOUND_RESPONSE, 503: MODULE_DATABASE_ERROR_RESPONSE},

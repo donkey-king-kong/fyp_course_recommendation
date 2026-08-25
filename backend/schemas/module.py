@@ -24,20 +24,20 @@ class ModuleSummary(BaseModel):
         "json_schema_extra": {
             "examples": [
                 {
-                    "code": "BE2601",
-                    "title": "Management Principles, Skills & Competencies",
-                    "au": 4.0,
-                    "faculty": "BUS",
+                    "code": "CC0002",
+                    "title": "Navigating The Digital World",
+                    "au": 2.0,
+                    "faculty": "CSC",
                     "description": None,
-                    "level": 2,
-                    "categories": ["CORE", "GLOAD"],
+                    "level": 0,
+                    "categories": ["CORE"],
                     "latest_year": "2026",
                     "latest_semester": "1",
                     "is_current_semester": True,
-                    "not_available_to_programme": "BCE, BCG",
-                    "prerequisites": ["AB1601"],
+                    "not_available_to_programme": None,
+                    "prerequisites": [],
                     "unlocks": [],
-                    "prerequisite_count": 1,
+                    "prerequisite_count": 0,
                     "unlock_count": 0,
                 }
             ]
@@ -57,20 +57,20 @@ class ModuleListResponse(BaseModel):
                 {
                     "items": [
                         {
-                            "code": "BE2601",
-                            "title": "Management Principles, Skills & Competencies",
-                            "au": 4.0,
-                            "faculty": "BUS",
+                            "code": "CC0002",
+                            "title": "Navigating The Digital World",
+                            "au": 2.0,
+                            "faculty": "CSC",
                             "description": None,
-                            "level": 2,
-                            "categories": ["CORE", "GLOAD"],
+                            "level": 0,
+                            "categories": ["CORE"],
                             "latest_year": "2026",
                             "latest_semester": "1",
                             "is_current_semester": True,
-                            "not_available_to_programme": "BCE, BCG",
-                            "prerequisites": ["AB1601"],
+                            "not_available_to_programme": None,
+                            "prerequisites": [],
                             "unlocks": [],
-                            "prerequisite_count": 1,
+                            "prerequisite_count": 0,
                             "unlock_count": 0,
                         }
                     ],
@@ -92,7 +92,7 @@ class ModuleFilterOptionsResponse(BaseModel):
         "json_schema_extra": {
             "examples": [
                 {
-                    "faculties": ["ACC", "ADM", "BUS", "CSC"],
+                    "faculties": ["CE", "CSC"],
                     "levels": [0, 1, 2, 3, 4],
                     "categories": ["CORE", "GERP", "GLOAD", "MLOAD"],
                 }
