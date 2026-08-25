@@ -384,10 +384,14 @@ Status: Implemented locally
 - Added `GET /modules/{code}` for exact module detail lookup with prerequisites and unlocks.
 - Added database error handling so module endpoints return `503` when PostgreSQL cannot serve module data.
 - Added comments above functions in the new module API files to explain their purpose.
+- Added detailed Swagger/OpenAPI metadata for the module endpoints, including summaries, parameter descriptions, response descriptions, example response payloads, and expected error codes.
+- Updated the FastAPI app title, description, and version so `/docs` is clearer for backend API review.
+- Added Pydantic `model_config` examples to module response schemas so Swagger shows realistic expected outputs.
 
 ### Verified
 
 - Backend compile check passes.
+- FastAPI OpenAPI schema generation passes.
 - Service-level checks can fetch `BE2601`, list filtered modules, and load filter options.
 - HTTP checks pass for `GET /modules`, `GET /modules/filters`, and `GET /modules/BE2601`.
 

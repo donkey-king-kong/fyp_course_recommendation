@@ -131,6 +131,7 @@ Page -> Hook/Store -> API Client -> Backend -> Component UI
 - Use OOP selectively for stateful clients, external integrations, and cohesive services.
 - Do not force classes for simple pure functions.
 - Use Pydantic models for backend request and response schemas.
+- When adding backend endpoints, include useful FastAPI/OpenAPI metadata such as summaries, parameter descriptions, response descriptions, examples, and expected error codes.
 - Use TypeScript types or interfaces for frontend API data.
 - Keep functions small and focused.
 - Keep data flow explicit and easy to trace.
