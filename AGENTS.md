@@ -136,6 +136,8 @@ Page -> Hook/Store -> API Client -> Backend -> Component UI
 - Keep data flow explicit and easy to trace.
 - Avoid hidden magic and unnecessary abstractions.
 - Add comments only to explain non-obvious decisions.
+- Prefer explanatory comments above a function instead of inside the function body, unless the comment explains a specific non-obvious line.
+- Use one blank line between top-level function/comment blocks in project files; avoid adding two empty lines between every function.
 - Build one feature at a time and avoid mixing multiple major concepts in one milestone.
 
 ## Git Workflow

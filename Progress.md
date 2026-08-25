@@ -369,3 +369,31 @@ Status: Ready for next work
 - Run `git status --short --branch`.
 - Propose a branch name and plan before editing files.
 - Avoid adding Neo4j, ChromaDB, LangGraph, OpenAI, transcript upload, or recommendation logic until the simpler frontend roadmap flow is understood.
+
+## PostgreSQL Module Catalog API
+
+Status: Implemented locally
+
+### Completed
+
+- Created the `modules-catalog-page` branch for module catalog backend and frontend work.
+- Added backend module response schemas for module summaries, paginated module lists, and filter option lists.
+- Added a module catalog service that reads from PostgreSQL instead of exposing the full JSON dataset to the browser.
+- Added `GET /modules` for paginated module listing with optional `search`, `faculty`, `level`, `category`, `current_only`, `limit`, and `offset` query parameters.
+- Added `GET /modules/filters` so the frontend can populate filter dropdowns from real database values.
+- Added `GET /modules/{code}` for exact module detail lookup with prerequisites and unlocks.
+- Added database error handling so module endpoints return `503` when PostgreSQL cannot serve module data.
+- Added comments above functions in the new module API files to explain their purpose.
+
+### Verified
+
+- Backend compile check passes.
+- Service-level checks can fetch `BE2601`, list filtered modules, and load filter options.
+- HTTP checks pass for `GET /modules`, `GET /modules/filters`, and `GET /modules/BE2601`.
+
+### Not Included
+
+- No frontend modules page yet.
+- No frontend filter UI yet.
+- No timetable day/time filters because timetable data is not stored yet.
+- No recommendation logic, Neo4j, ChromaDB, LangGraph, or OpenAI integration.
