@@ -11,6 +11,21 @@ import type { RoadmapResponse } from './types/roadmap'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
 
+const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
+const DEFAULT_VIEW: ViewState = 'roadmap'
+const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
+
+// Reads the last selected tab from localStorage so reloads stay on the same page.
+function getInitialView(): ViewState {
+  const storedView = window.localStorage.getItem(VIEW_STORAGE_KEY)
+
+  if (VALID_VIEWS.includes(storedView as ViewState)) {
+    return storedView as ViewState
+  }
+
+  return DEFAULT_VIEW
+}
+
 // Main page component
 function App() {
   // Values the page can update later; when updated, React refreshes the screen.
@@ -19,7 +34,7 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
-  const [currentView, setCurrentView] = useState<ViewState>('roadmap')
+  const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const logout = useProfileStore((state) => state.logout)
 
@@ -36,6 +51,10 @@ function App() {
 
     void loadRoadmap()
   }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
+  }, [currentView])
 
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
@@ -59,7 +78,7 @@ function App() {
   }
 
   function handleLogout() {
-    setCurrentView('roadmap')
+    setCurrentView(DEFAULT_VIEW)
     logout()
   }
 

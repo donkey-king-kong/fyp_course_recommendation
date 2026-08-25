@@ -4,6 +4,50 @@ import type { ModuleFilterOptions, ModuleSummary } from '../types/module'
 import './ModulesPage.css'
 
 const MODULE_PAGE_SIZE = 24
+const MODULE_FILTER_STORAGE_KEY = 'ntu-course-recommender-module-filters'
+
+type SavedModuleFilters = {
+  searchTerm: string
+  selectedFaculty: string
+  selectedLevel: string
+  selectedCategory: string
+  currentOnly: boolean
+  offset: number
+}
+
+const DEFAULT_MODULE_FILTERS: SavedModuleFilters = {
+  searchTerm: '',
+  selectedFaculty: '',
+  selectedLevel: '',
+  selectedCategory: '',
+  currentOnly: true,
+  offset: 0,
+}
+
+// Reads saved module filters so refreshes keep the current catalogue view.
+function getSavedModuleFilters(): SavedModuleFilters {
+  const storedFilters = window.localStorage.getItem(MODULE_FILTER_STORAGE_KEY)
+
+  if (!storedFilters) {
+    return DEFAULT_MODULE_FILTERS
+  }
+
+  try {
+    const parsedFilters = JSON.parse(storedFilters) as Partial<SavedModuleFilters>
+    const savedOffset = parsedFilters.offset
+
+    return {
+      searchTerm: typeof parsedFilters.searchTerm === 'string' ? parsedFilters.searchTerm : DEFAULT_MODULE_FILTERS.searchTerm,
+      selectedFaculty: typeof parsedFilters.selectedFaculty === 'string' ? parsedFilters.selectedFaculty : DEFAULT_MODULE_FILTERS.selectedFaculty,
+      selectedLevel: typeof parsedFilters.selectedLevel === 'string' ? parsedFilters.selectedLevel : DEFAULT_MODULE_FILTERS.selectedLevel,
+      selectedCategory: typeof parsedFilters.selectedCategory === 'string' ? parsedFilters.selectedCategory : DEFAULT_MODULE_FILTERS.selectedCategory,
+      currentOnly: typeof parsedFilters.currentOnly === 'boolean' ? parsedFilters.currentOnly : DEFAULT_MODULE_FILTERS.currentOnly,
+      offset: typeof savedOffset === 'number' && Number.isInteger(savedOffset) && savedOffset >= 0 ? savedOffset : DEFAULT_MODULE_FILTERS.offset,
+    }
+  } catch {
+    return DEFAULT_MODULE_FILTERS
+  }
+}
 
 function formatSemester(module: ModuleSummary) {
   if (!module.latest_year || !module.latest_semester) {
@@ -22,6 +66,7 @@ function formatAu(au: number | null) {
 }
 
 function ModulesPage() {
+  const savedFilters = useMemo(getSavedModuleFilters, [])
   const [modules, setModules] = useState<ModuleSummary[]>([])
   const [filterOptions, setFilterOptions] = useState<ModuleFilterOptions>({
     faculties: [],
@@ -29,12 +74,12 @@ function ModulesPage() {
     categories: [],
   })
   const [selectedModule, setSelectedModule] = useState<ModuleSummary | null>(null)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [selectedFaculty, setSelectedFaculty] = useState('')
-  const [selectedLevel, setSelectedLevel] = useState('')
-  const [selectedCategory, setSelectedCategory] = useState('')
-  const [currentOnly, setCurrentOnly] = useState(true)
-  const [offset, setOffset] = useState(0)
+  const [searchTerm, setSearchTerm] = useState(savedFilters.searchTerm)
+  const [selectedFaculty, setSelectedFaculty] = useState(savedFilters.selectedFaculty)
+  const [selectedLevel, setSelectedLevel] = useState(savedFilters.selectedLevel)
+  const [selectedCategory, setSelectedCategory] = useState(savedFilters.selectedCategory)
+  const [currentOnly, setCurrentOnly] = useState(savedFilters.currentOnly)
+  const [offset, setOffset] = useState(savedFilters.offset)
   const [total, setTotal] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [isDetailLoading, setIsDetailLoading] = useState(false)
@@ -90,6 +135,20 @@ function ModulesPage() {
   }, [currentOnly, offset, searchTerm, selectedCategory, selectedFaculty, selectedLevel])
 
   useEffect(() => {
+    window.localStorage.setItem(
+      MODULE_FILTER_STORAGE_KEY,
+      JSON.stringify({
+        searchTerm,
+        selectedFaculty,
+        selectedLevel,
+        selectedCategory,
+        currentOnly,
+        offset,
+      }),
+    )
+  }, [currentOnly, offset, searchTerm, selectedCategory, selectedFaculty, selectedLevel])
+
+  useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === 'Escape') {
         closeModuleDetail()
@@ -104,12 +163,12 @@ function ModulesPage() {
   }, [isDetailOpen])
 
   function resetFilters() {
-    setSearchTerm('')
-    setSelectedFaculty('')
-    setSelectedLevel('')
-    setSelectedCategory('')
-    setCurrentOnly(true)
-    setOffset(0)
+    setSearchTerm(DEFAULT_MODULE_FILTERS.searchTerm)
+    setSelectedFaculty(DEFAULT_MODULE_FILTERS.selectedFaculty)
+    setSelectedLevel(DEFAULT_MODULE_FILTERS.selectedLevel)
+    setSelectedCategory(DEFAULT_MODULE_FILTERS.selectedCategory)
+    setCurrentOnly(DEFAULT_MODULE_FILTERS.currentOnly)
+    setOffset(DEFAULT_MODULE_FILTERS.offset)
   }
 
   async function openModuleDetail(code: string) {
