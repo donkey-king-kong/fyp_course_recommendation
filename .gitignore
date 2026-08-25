@@ -9,3 +9,4 @@ frontend/.vite/
 frontend/logs/
 frontend/*.local
 frontend/*.log
+.DS_Store
