@@ -9,4 +9,5 @@ frontend/.vite/
 frontend/logs/
 frontend/*.local
 frontend/*.log
+scraper/output/
 .DS_Store
