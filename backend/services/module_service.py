@@ -6,6 +6,9 @@ from sqlalchemy.orm import Session
 from backend.models import ModuleModel, ModulePrerequisiteModel
 from backend.schemas.module import ModuleFilterOptionsResponse, ModuleListResponse, ModuleSummary
 
+# Temporary catalogue scope while the MVP focuses on computing-related modules.
+ALLOWED_MODULE_FACULTIES = ("CSC", "CE")
+
 # Fetches one page of modules from PostgreSQL using optional search and filters.
 def list_modules(
     db: Session,
@@ -17,7 +20,7 @@ def list_modules(
     limit: int = 30,
     offset: int = 0,
 ) -> ModuleListResponse:
-    query = db.query(ModuleModel)
+    query = db.query(ModuleModel).filter(ModuleModel.faculty.in_(ALLOWED_MODULE_FACULTIES))
 
     if search:
         search_pattern = f"%{search.strip()}%"
@@ -58,7 +61,11 @@ def list_modules(
 
 # Fetches one exact module by code, including its prerequisites and unlocks.
 def get_module_by_code(db: Session, code: str) -> ModuleSummary | None:
-    module = db.query(ModuleModel).filter(ModuleModel.code == code.upper()).first()
+    module = (
+        db.query(ModuleModel)
+        .filter(ModuleModel.code == code.upper(), ModuleModel.faculty.in_(ALLOWED_MODULE_FACULTIES))
+        .first()
+    )
 
     if module is None:
         return None
@@ -128,18 +135,22 @@ def build_module_summary(module: ModuleModel, prerequisites: list[str], unlocks:
 
 # Builds dropdown options from stored module data instead of frontend guesses.
 def get_module_filter_options(db: Session) -> ModuleFilterOptionsResponse:
-    faculties = [
+    existing_faculties = {
         faculty
         for (faculty,) in db.query(ModuleModel.faculty)
-        .filter(ModuleModel.faculty.isnot(None), ModuleModel.faculty != "")
+        .filter(ModuleModel.faculty.in_(ALLOWED_MODULE_FACULTIES))
         .distinct()
-        .order_by(ModuleModel.faculty)
         .all()
+    }
+    faculties = [
+        faculty
+        for faculty in ALLOWED_MODULE_FACULTIES
+        if faculty in existing_faculties
     ]
     levels = [
         level
         for (level,) in db.query(ModuleModel.level)
-        .filter(ModuleModel.level.isnot(None))
+        .filter(ModuleModel.faculty.in_(ALLOWED_MODULE_FACULTIES), ModuleModel.level.isnot(None))
         .distinct()
         .order_by(ModuleModel.level)
         .all()
@@ -147,7 +158,9 @@ def get_module_filter_options(db: Session) -> ModuleFilterOptionsResponse:
     categories = sorted(
         {
             category
-            for (module_categories,) in db.query(ModuleModel.categories).all()
+            for (module_categories,) in db.query(ModuleModel.categories)
+            .filter(ModuleModel.faculty.in_(ALLOWED_MODULE_FACULTIES))
+            .all()
             for category in (module_categories or [])
             if category
         }

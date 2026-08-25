@@ -41,7 +41,8 @@ def raise_module_database_error() -> None:
     summary="Get module filter options",
     description=(
         "No request body required. Returns valid faculty, level, and category values "
-        "from PostgreSQL for frontend filter dropdowns."
+        "from PostgreSQL for frontend filter dropdowns. For now, the catalogue is "
+        "restricted to CSC and CE modules."
     ),
     response_description="Available module filter options.",
     responses={503: MODULE_DATABASE_ERROR_RESPONSE},
@@ -60,14 +61,15 @@ def read_module_filters(db: Session = Depends(get_db)) -> ModuleFilterOptionsRes
     description=(
         "No request body required. Returns one paginated page of modules. Use query "
         "parameters to search by code/title and filter by faculty, level, category, "
-        "or current-semester status."
+        "or current-semester status. For now, results are always restricted to CSC "
+        "and CE modules."
     ),
     response_description="Paginated module results with prerequisite and unlock data.",
     responses={503: MODULE_DATABASE_ERROR_RESPONSE},
 )
 def read_modules(
     search: Optional[str] = Query(default=None, description="Search by module code or title.", examples=["BE2601"]),
-    faculty: Optional[str] = Query(default=None, description="Filter by exact faculty value.", examples=["BUS"]),
+    faculty: Optional[str] = Query(default=None, description="Filter by exact faculty value.", examples=["CSC"]),
     level: Optional[int] = Query(default=None, ge=0, le=9, description="Filter by inferred module level.", examples=[2]),
     category: Optional[str] = Query(default=None, description="Filter by category, such as CORE or GLOAD.", examples=["CORE"]),
     current_only: bool = Query(default=False, description="Only show modules marked as current semester."),
@@ -96,7 +98,8 @@ def read_modules(
     summary="Get one module by code",
     description=(
         "No request body required. Returns the exact module matching the path code, "
-        "including direct prerequisites and modules unlocked by this module."
+        "including direct prerequisites and modules unlocked by this module. For now, "
+        "only CSC and CE modules are available through this endpoint."
     ),
     response_description="One exact module with prerequisite and unlock data.",
     responses={404: MODULE_NOT_FOUND_RESPONSE, 503: MODULE_DATABASE_ERROR_RESPONSE},
