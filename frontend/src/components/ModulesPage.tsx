@@ -116,14 +116,9 @@ function ModulesPage() {
 
   return (
     <section className="modules-page">
-      <div className="modules-hero">
-        <div>
-          <p className="modules-eyebrow"></p>
-          <h2>NTU Modules</h2>
-          <p>
-            Browse NTU modules. Each card shows the module, its pre-requisites and what modules can be taken next.
-          </p>
-        </div>
+      <div className="modules-heading">
+        <h2>NTU Modules</h2>
+        <p>Search course details, pre-requisites, and modules can be taken next.</p>
       </div>
 
       <form className="modules-toolbar" onSubmit={(event) => event.preventDefault()}>
@@ -198,6 +193,38 @@ function ModulesPage() {
         </div>
       )}
 
+      {(isDetailLoading || selectedModule) && (
+        <aside className="module-detail-panel">
+          {isDetailLoading && <p>Loading selected module...</p>}
+          {!isDetailLoading && selectedModule && (
+            <>
+              <div className="module-detail-header">
+                <span>{selectedModule.code}</span>
+                <button type="button" onClick={() => setSelectedModule(null)}>
+                  Close
+                </button>
+              </div>
+              <h3>{selectedModule.title}</h3>
+              <p>{selectedModule.description ?? 'No description available yet.'}</p>
+              <dl>
+                <div>
+                  <dt>Prerequisites</dt>
+                  <dd>{selectedModule.prerequisites.length > 0 ? selectedModule.prerequisites.join(', ') : 'None listed'}</dd>
+                </div>
+                <div>
+                  <dt>Unlocks</dt>
+                  <dd>{selectedModule.unlocks.length > 0 ? selectedModule.unlocks.join(', ') : 'None listed'}</dd>
+                </div>
+                <div>
+                  <dt>Restrictions</dt>
+                  <dd>{selectedModule.not_available_to_programme ?? 'None listed'}</dd>
+                </div>
+              </dl>
+            </>
+          )}
+        </aside>
+      )}
+
       <div className="modules-board">
         {modules.map((module) => (
           <button key={module.code} className="module-card" type="button" onClick={() => void openModuleDetail(module.code)}>
@@ -227,42 +254,6 @@ function ModulesPage() {
           Next
         </button>
       </div>
-
-      <aside className="module-detail-panel">
-        {isDetailLoading && <p>Loading selected module...</p>}
-        {!isDetailLoading && selectedModule && (
-          <>
-            <div className="module-detail-header">
-              <span>{selectedModule.code}</span>
-              <button type="button" onClick={() => setSelectedModule(null)}>
-                Close
-              </button>
-            </div>
-            <h3>{selectedModule.title}</h3>
-            <p>{selectedModule.description ?? 'No description available yet.'}</p>
-            <dl>
-              <div>
-                <dt>Prerequisites</dt>
-                <dd>{selectedModule.prerequisites.length > 0 ? selectedModule.prerequisites.join(', ') : 'None listed'}</dd>
-              </div>
-              <div>
-                <dt>Unlocks</dt>
-                <dd>{selectedModule.unlocks.length > 0 ? selectedModule.unlocks.join(', ') : 'None listed'}</dd>
-              </div>
-              <div>
-                <dt>Restrictions</dt>
-                <dd>{selectedModule.not_available_to_programme ?? 'None listed'}</dd>
-              </div>
-            </dl>
-          </>
-        )}
-        {!isDetailLoading && !selectedModule && (
-          <div className="module-detail-empty">
-            <span>Signal detail</span>
-            <p>Select a module card to inspect prerequisites, unlocks, and restrictions.</p>
-          </div>
-        )}
-      </aside>
     </section>
   )
 }

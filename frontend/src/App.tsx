@@ -107,7 +107,7 @@ function App() {
         <div className="app-header-copy">
           <h1>NTU Course Recommender</h1>
           <p className="app-subtitle">
-            Explore course progression, prerequisites, and semester placement.
+            Get your course roadmap to plan your NTU journey.
           </p>
         </div>
       </header>
