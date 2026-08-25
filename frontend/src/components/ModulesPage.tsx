@@ -164,13 +164,12 @@ function ModulesPage() {
             ))}
           </select>
         </label>
-        <label className="modules-current-toggle">
-          <input
-            type="checkbox"
-            checked={currentOnly}
-            onChange={(event) => handleFilterChange(() => setCurrentOnly(event.target.checked))}
-          />
-          <span>Current semester only</span>
+        <label>
+          <span>Availability</span>
+          <select value={currentOnly ? 'current' : ''} onChange={(event) => handleFilterChange(() => setCurrentOnly(event.target.value === 'current'))}>
+            <option value="">All semesters</option>
+            <option value="current">Current semester only</option>
+          </select>
         </label>
         <button type="button" className="modules-reset-button" onClick={resetFilters}>
           Reset filters

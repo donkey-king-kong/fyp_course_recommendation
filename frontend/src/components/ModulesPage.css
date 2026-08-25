@@ -79,19 +79,6 @@
   border-color: var(--accent-text);
 }
 
-.modules-current-toggle {
-  min-height: 2.65rem;
-  justify-content: center;
-}
-
-.modules-current-toggle input {
-  min-height: auto;
-}
-
-.modules-current-toggle span {
-  text-transform: none;
-}
-
 .modules-reset-button,
 .modules-pagination button,
 .module-detail-header button {
