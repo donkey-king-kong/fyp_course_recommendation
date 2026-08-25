@@ -48,34 +48,6 @@
   color: var(--muted-text);
 }
 
-.modules-hero-meter {
-  display: grid;
-  min-width: 11rem;
-  align-content: center;
-  justify-items: end;
-  padding: 1rem;
-  border: 1px solid color-mix(in srgb, var(--accent-text) 35%, transparent);
-  border-radius: 1rem;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--accent-text) 16%, transparent), transparent),
-    rgba(15, 23, 42, 0.2);
-}
-
-.modules-hero-meter span {
-  color: var(--heading-text);
-  font-size: 2.3rem;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.modules-hero-meter small {
-  color: var(--muted-text);
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .modules-toolbar {
   grid-column: 1 / -1;
   display: grid;
@@ -164,6 +136,12 @@
   color: var(--muted-text);
   font-size: 0.82rem;
   font-weight: 800;
+}
+
+.modules-count-note {
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .modules-loading,

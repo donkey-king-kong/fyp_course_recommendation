@@ -118,16 +118,11 @@ function ModulesPage() {
     <section className="modules-page">
       <div className="modules-hero">
         <div>
-          <p className="modules-eyebrow">PostgreSQL catalog</p>
-          <h2>Module Signal Board</h2>
+          <p className="modules-eyebrow"></p>
+          <h2>NTU Modules</h2>
           <p>
-            Browse NTU modules without loading the full dataset into the browser.
-            Each card shows what feeds into a module and what it unlocks next.
+            Browse NTU modules. Each card shows the module, its pre-requisites and what modules can be taken next.
           </p>
-        </div>
-        <div className="modules-hero-meter" aria-label={`${total} modules match the current filters`}>
-          <span>{total}</span>
-          <small>matching modules</small>
         </div>
       </div>
 
@@ -138,7 +133,7 @@ function ModulesPage() {
             type="search"
             value={searchTerm}
             onChange={(event) => handleFilterChange(() => setSearchTerm(event.target.value))}
-            placeholder="Try BE2601 or finance"
+            placeholder="Type a course code or description"
           />
         </label>
         <label>
@@ -189,6 +184,7 @@ function ModulesPage() {
 
       <div className="modules-status-row">
         <span>{activeFilterCount} active filter{activeFilterCount === 1 ? '' : 's'}</span>
+        <span className="modules-count-note">{total} matching modules</span>
         <span>Page {currentPage} of {totalPages}</span>
       </div>
 
