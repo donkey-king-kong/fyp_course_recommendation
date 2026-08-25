@@ -6,7 +6,15 @@ from backend.routers.modules import router as modules_router
 from backend.routers.roadmap import router as roadmap_router
 from backend.routers.transcript import router as transcript_router
 
-app = FastAPI(title="course_recommendation_api")
+app = FastAPI(
+    title="NTU Course Recommendation API",
+    description=(
+        "Backend API for the NTU course recommendation rebuild. Use `/modules` "
+        "to browse seeded module data from PostgreSQL without loading the full "
+        "dataset into the frontend."
+    ),
+    version="0.1.0",
+)
 
 app.add_middleware(
     CORSMiddleware,
