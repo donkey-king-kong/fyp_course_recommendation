@@ -2,7 +2,6 @@ from __future__ import annotations
 from typing import Optional
 from pydantic import BaseModel
 
-
 class ModuleSummary(BaseModel):
     code: str
     title: str
@@ -20,12 +19,14 @@ class ModuleSummary(BaseModel):
     prerequisite_count: int
     unlock_count: int
 
+# Paginated list response so the frontend does not fetch all modules at once.
 class ModuleListResponse(BaseModel):
     items: list[ModuleSummary]
     total: int
     limit: int
     offset: int
 
+# Valid database-backed filter values for frontend dropdowns.
 class ModuleFilterOptionsResponse(BaseModel):
     faculties: list[str]
     levels: list[int]

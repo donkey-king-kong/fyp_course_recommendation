@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 from backend.models import ModuleModel, ModulePrerequisiteModel
 from backend.schemas.module import ModuleFilterOptionsResponse, ModuleListResponse, ModuleSummary
 
-
+# Fetches one page of modules from PostgreSQL using optional search and filters.
 def list_modules(
     db: Session,
     search: str | None = None,
@@ -56,7 +56,7 @@ def list_modules(
         offset=offset,
     )
 
-
+# Fetches one exact module by code, including its prerequisites and unlocks.
 def get_module_by_code(db: Session, code: str) -> ModuleSummary | None:
     module = db.query(ModuleModel).filter(ModuleModel.code == code.upper()).first()
 
@@ -68,7 +68,7 @@ def get_module_by_code(db: Session, code: str) -> ModuleSummary | None:
 
     return build_module_summary(module=module, prerequisites=prerequisites, unlocks=unlocks)
 
-
+# Returns direct prerequisite codes for each requested module code.
 def get_prerequisites_by_module(db: Session, module_codes: list[str]) -> dict[str, list[str]]:
     prerequisites_by_module = {module_code: [] for module_code in module_codes}
 
@@ -87,6 +87,7 @@ def get_prerequisites_by_module(db: Session, module_codes: list[str]) -> dict[st
 
     return prerequisites_by_module
 
+# Returns modules unlocked by each requested module code.
 def get_unlocks_by_module(db: Session, module_codes: list[str]) -> dict[str, list[str]]:
     unlocks_by_module = {module_code: [] for module_code in module_codes}
 
@@ -105,6 +106,7 @@ def get_unlocks_by_module(db: Session, module_codes: list[str]) -> dict[str, lis
 
     return unlocks_by_module
 
+# Converts one SQLAlchemy module row plus relationship lists into an API response.
 def build_module_summary(module: ModuleModel, prerequisites: list[str], unlocks: list[str]) -> ModuleSummary:
     return ModuleSummary(
         code=module.code,
@@ -124,7 +126,7 @@ def build_module_summary(module: ModuleModel, prerequisites: list[str], unlocks:
         unlock_count=len(unlocks),
     )
 
-
+# Builds dropdown options from stored module data instead of frontend guesses.
 def get_module_filter_options(db: Session) -> ModuleFilterOptionsResponse:
     faculties = [
         faculty
