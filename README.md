@@ -142,6 +142,6 @@ The batch scraper currently includes:
 Current scraper scope:
 
 - Fetches the NTU course page using a form POST.
-- Extracts course code, title, description, number of credits, and mutually exclusive courses.
-- Keeps generated output in `scraper/output/`, which is ignored by Git.
+- Extracts course code, title, description, number of credits, grading type, prerequisites, mutually exclusive courses, and programme availability restrictions.
+- Keeps generated output in `scraper/output/` so the scraped JSON files can be committed.
 - Does not add a backend endpoint, database storage, scheduled scraping, or recommendation logic yet.
