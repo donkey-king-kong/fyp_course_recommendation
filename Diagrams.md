@@ -1,8 +1,6 @@
-# Rebuild Overview
+# Overview
 
-This document is the short mental model for rebuilding the course recommendation system.
-
-The goal is clarity first. Do not build every component at once.
+This document is the short mental model for building the course recommendation system.
 
 ## What We Are Building
 
