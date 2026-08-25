@@ -116,6 +116,29 @@ python scraper/scrape_ntu_courses.py \
   --raw-html-output scraper/output/csc-year-1.html
 ```
 
+Scrape all configured academic semester and course-year combinations:
+
+```bash
+python scraper/scrape_ntu_courses.py --all
+```
+
+The batch scraper currently includes:
+
+- Academic semesters from `2022_1` to `2026_1`, excluding special terms.
+- Computer Science Year 1 to Year 4.
+- Computing Year 1 to Year 3.
+- Data Science & Artificial Intelligence Year 1 to Year 4.
+- Economics & Data Science Year 1 to Year 4.
+- Computer Engineering Year 1 to Year 4.
+- Renaissance Engineering (CE) Year 2 to Year 4.
+- Renaissance Engineering (CSC) Year 2 to Year 4.
+- Accountancy and Data Science & Artificial Intelligence Year 1 to Year 5.
+- Business and Computer Engineering Year 1 and Year 4.
+- Business and Computing Year 1 to Year 4.
+- Computer Engineering and Economics Year 1 to Year 5.
+- Computer Science and Economics Year 1 to Year 5.
+- One JSON output file per academic semester and course-year combination in `scraper/output/`.
+
 Current scraper scope:
 
 - Fetches the NTU course page using a form POST.
