@@ -6,6 +6,7 @@ Clean rebuild of a course recommendation system for NTU students.
 
 - [Backend Setup](#setup)
 - [Frontend Setup](#setup-frontend)
+- [NTU Course Scraper](#ntu-course-scraper)
 
 ## Current State
 
@@ -86,3 +87,38 @@ http://127.0.0.1:5173
 ```
 
 To load roadmap data in the frontend, run the backend and frontend at the same time.
+
+## NTU Course Scraper
+
+The `scraper/` folder is a standalone prototype for scraping NTU course/module information.
+
+It is intentionally separate from `backend/` and `frontend/` while the NTU page structure is still being explored.
+
+Install scraper dependencies from the project root:
+
+```bash
+pip install -r scraper/requirements.txt
+```
+
+Run the scraper for Computer Science Year 1 in academic semester `2026_1`:
+
+```bash
+python scraper/scrape_ntu_courses.py --acadsem 2026_1 --course-yr "CSC;;1;F"
+```
+
+Save parsed JSON and raw HTML output for debugging:
+
+```bash
+python scraper/scrape_ntu_courses.py \
+  --acadsem 2026_1 \
+  --course-yr "CSC;;1;F" \
+  --output scraper/output/csc-year-1.json \
+  --raw-html-output scraper/output/csc-year-1.html
+```
+
+Current scraper scope:
+
+- Fetches the NTU course page using a form POST.
+- Extracts course code, title, description, number of credits, and mutually exclusive courses.
+- Keeps generated output in `scraper/output/`, which is ignored by Git.
+- Does not add a backend endpoint, database storage, scheduled scraping, or recommendation logic yet.
