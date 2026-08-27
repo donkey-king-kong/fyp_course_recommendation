@@ -10,6 +10,11 @@ export interface StudentProfile {
   currentSemester: number
 }
 
+export interface TranscriptMatchedCourse {
+  courseCode: string
+  title: string
+}
+
 interface SavedStudentProfile {
   profile: StudentProfile
   // Roadmap course IDs that should appear checked in the roadmap UI.
@@ -18,6 +23,10 @@ interface SavedStudentProfile {
   transcriptCompletedCourseCount: number
   // Last uploaded transcript's completed module count that did not match the roadmap.
   transcriptUnmatchedCourseCount: number
+  // Last uploaded transcript's completed courses that matched the roadmap.
+  transcriptMatchedCourses: TranscriptMatchedCourse[]
+  // Last uploaded transcript's completed course codes that did not match the roadmap.
+  transcriptUnmatchedCourseCodes: string[]
 }
 
 // Reuse these defaults before anyone logs in and after logout
@@ -38,6 +47,10 @@ interface ProfileState {
   transcriptCompletedCourseCount: number
   // Completed transcript rows that were parsed but not found in the current roadmap.
   transcriptUnmatchedCourseCount: number
+  // Matched course details from the latest uploaded transcript.
+  transcriptMatchedCourses: TranscriptMatchedCourse[]
+  // Unmatched course codes from the latest uploaded transcript.
+  transcriptUnmatchedCourseCodes: string[]
   // Activate an existing browser-saved profile, or create one for a new Student ID
   loginWithStudentId: (studentId: string) => void
   // Merge one or more profile fields into the existing profile
@@ -51,6 +64,8 @@ interface ProfileState {
     courseIds: string[],
     transcriptCompletedCourseCount: number,
     transcriptUnmatchedCourseCount: number,
+    transcriptMatchedCourses: TranscriptMatchedCourse[],
+    transcriptUnmatchedCourseCodes: string[],
   ) => void
   // Used by logout to leave the active session while keeping saved browser profiles.
   logout: () => void
@@ -78,6 +93,8 @@ function createSavedStudentProfile(studentId: string): SavedStudentProfile {
     completedCourseIds: [],
     transcriptCompletedCourseCount: 0,
     transcriptUnmatchedCourseCount: 0,
+    transcriptMatchedCourses: [],
+    transcriptUnmatchedCourseCodes: [],
   }
 }
 
@@ -91,6 +108,8 @@ export const useProfileStore = create<ProfileState>()(
       completedCourseIds: [],
       transcriptCompletedCourseCount: 0,
       transcriptUnmatchedCourseCount: 0,
+      transcriptMatchedCourses: [],
+      transcriptUnmatchedCourseCodes: [],
 
       loginWithStudentId: (studentId) =>
         set((state) => {
@@ -110,6 +129,8 @@ export const useProfileStore = create<ProfileState>()(
             completedCourseIds: activeProfile.completedCourseIds,
             transcriptCompletedCourseCount: activeProfile.transcriptCompletedCourseCount ?? 0,
             transcriptUnmatchedCourseCount: activeProfile.transcriptUnmatchedCourseCount ?? 0,
+            transcriptMatchedCourses: activeProfile.transcriptMatchedCourses ?? [],
+            transcriptUnmatchedCourseCodes: activeProfile.transcriptUnmatchedCourseCodes ?? [],
             // Store the active profile back into the map so it persists under this Student ID
             profilesByStudentId: {
               ...state.profilesByStudentId,
@@ -141,6 +162,8 @@ export const useProfileStore = create<ProfileState>()(
               completedCourseIds: state.completedCourseIds,
               transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
               transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
+              transcriptMatchedCourses: state.transcriptMatchedCourses,
+              transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
             }
           }
 
@@ -168,6 +191,8 @@ export const useProfileStore = create<ProfileState>()(
                     completedCourseIds: nextCompletedCourseIds,
                     transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
                     transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
+                    transcriptMatchedCourses: state.transcriptMatchedCourses,
+                    transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
                   },
                 }
               : state.profilesByStudentId,
@@ -185,16 +210,26 @@ export const useProfileStore = create<ProfileState>()(
                   completedCourseIds: courseIds,
                   transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
                   transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
+                  transcriptMatchedCourses: state.transcriptMatchedCourses,
+                  transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
                 },
               }
             : state.profilesByStudentId,
         })),
         
-      setTranscriptResults: (courseIds, transcriptCompletedCourseCount, transcriptUnmatchedCourseCount) =>
+      setTranscriptResults: (
+        courseIds,
+        transcriptCompletedCourseCount,
+        transcriptUnmatchedCourseCount,
+        transcriptMatchedCourses,
+        transcriptUnmatchedCourseCodes,
+      ) =>
         set((state) => ({
           completedCourseIds: courseIds,
           transcriptCompletedCourseCount,
           transcriptUnmatchedCourseCount,
+          transcriptMatchedCourses,
+          transcriptUnmatchedCourseCodes,
           profilesByStudentId: state.activeStudentId
             ? {
                 ...state.profilesByStudentId,
@@ -203,6 +238,8 @@ export const useProfileStore = create<ProfileState>()(
                   completedCourseIds: courseIds,
                   transcriptCompletedCourseCount,
                   transcriptUnmatchedCourseCount,
+                  transcriptMatchedCourses,
+                  transcriptUnmatchedCourseCodes,
                 },
               }
             : state.profilesByStudentId,
