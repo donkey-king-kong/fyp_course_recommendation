@@ -44,7 +44,7 @@ Correction:
 Moved function explanations above the functions, removed the malformed comment text, restored the exact module lookup function, and normalized spacing to one blank line between top-level comment/function blocks.
 
 Lesson:
-For this project, keep explanatory comments above functions rather than inside them unless the comment explains a specific non-obvious line. Use one blank line between top-level function/comment blocks in project files.
+For this project, keep explanatory comments above functions rather than inside them unless the comment explains a specific non-obvious line. Use exactly one empty line between top-level function/comment blocks in project files. Do not leave two consecutive empty lines between imports, constants, comments, functions, or classes.
 
 ## Entry Format
 
