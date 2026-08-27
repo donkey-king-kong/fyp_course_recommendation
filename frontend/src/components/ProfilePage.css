@@ -179,6 +179,19 @@
   letter-spacing: 0.05em;
 }
 
+.transcript-stat-card {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: rgba(56, 189, 248, 0.32);
+}
+
+.transcript-stat-card strong {
+  color: #38bdf8;
+}
+
+.transcript-stat-card span {
+  color: #bae6fd;
+}
+
 .stat-hint {
   color: #94a3b8;
   font-size: 0.85rem;
@@ -266,6 +279,19 @@
 
 .app-shell[data-theme='light'] .stat-card span {
   color: #047857;
+}
+
+.app-shell[data-theme='light'] .transcript-stat-card {
+  background: rgba(14, 165, 233, 0.08);
+  border-color: rgba(14, 165, 233, 0.36);
+}
+
+.app-shell[data-theme='light'] .transcript-stat-card strong {
+  color: #0284c7;
+}
+
+.app-shell[data-theme='light'] .transcript-stat-card span {
+  color: #0369a1;
 }
 
 @media (max-width: 640px) {
