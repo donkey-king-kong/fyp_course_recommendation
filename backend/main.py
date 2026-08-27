@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from backend.routers.curriculum import router as curriculum_router
 from backend.routers.faculties import router as faculties_router
 from backend.routers.health import router as health_router
 from backend.routers.modules import router as modules_router
@@ -28,5 +29,6 @@ app.add_middleware(
 app.include_router(health_router)
 app.include_router(roadmap_router)
 app.include_router(transcript_router)
+app.include_router(curriculum_router)
 app.include_router(faculties_router)
 app.include_router(modules_router)
