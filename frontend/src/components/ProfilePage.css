@@ -56,7 +56,8 @@
 }
 
 .profile-field input,
-.profile-field select {
+.profile-field select,
+.profile-field textarea {
   padding: 0.75rem 1rem;
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 0.5rem;
@@ -68,10 +69,16 @@
 }
 
 .profile-field input:focus,
-.profile-field select:focus {
+.profile-field select:focus,
+.profile-field textarea:focus {
   outline: none;
   border-color: rgba(34, 211, 238, 0.95);
   box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+}
+
+.profile-field textarea {
+  min-height: 5rem;
+  resize: vertical;
 }
 
 .transcript-upload-card {
@@ -182,6 +189,19 @@
 .transcript-stat-card {
   background: rgba(56, 189, 248, 0.14);
   border-color: rgba(56, 189, 248, 0.32);
+}
+
+.curriculum-stat-card {
+  background: rgba(168, 85, 247, 0.14);
+  border-color: rgba(168, 85, 247, 0.34);
+}
+
+.curriculum-stat-card strong {
+  color: #c084fc;
+}
+
+.curriculum-stat-card span {
+  color: #ddd6fe;
 }
 
 .transcript-stat-card strong {
@@ -334,14 +354,16 @@
 }
 
 .app-shell[data-theme='light'] .profile-field input,
-.app-shell[data-theme='light'] .profile-field select {
+.app-shell[data-theme='light'] .profile-field select,
+.app-shell[data-theme='light'] .profile-field textarea {
   border-color: rgba(15, 124, 138, 0.3);
   background: #ffffff;
   color: #263238;
 }
 
 .app-shell[data-theme='light'] .profile-field input:focus,
-.app-shell[data-theme='light'] .profile-field select:focus {
+.app-shell[data-theme='light'] .profile-field select:focus,
+.app-shell[data-theme='light'] .profile-field textarea:focus {
   border-color: rgba(15, 124, 138, 0.8);
   box-shadow: 0 0 0 2px rgba(15, 124, 138, 0.15);
 }
@@ -407,6 +429,19 @@
   color: #0369a1;
 }
 
+.app-shell[data-theme='light'] .curriculum-stat-card {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.32);
+}
+
+.app-shell[data-theme='light'] .curriculum-stat-card strong {
+  color: #7c3aed;
+}
+
+.app-shell[data-theme='light'] .curriculum-stat-card span {
+  color: #5b21b6;
+}
+
 .app-shell[data-theme='light'] .unmatched-stat-card {
   background: rgba(217, 119, 6, 0.08);
   border-color: rgba(217, 119, 6, 0.36);
@@ -458,7 +493,7 @@
   .profile-row {
     grid-template-columns: 1fr;
   }
-  
+
   .profile-stats {
     flex-direction: column;
     align-items: flex-start;

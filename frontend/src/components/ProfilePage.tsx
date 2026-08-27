@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { uploadCurriculumGuide } from '../api/curriculumApi'
 import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
 import './ProfilePage.css'
@@ -16,15 +17,50 @@ function ProfilePage() {
   const transcriptUnmatchedCourseCount = useProfileStore((state) => state.transcriptUnmatchedCourseCount)
   const transcriptMatchedCourses = useProfileStore((state) => state.transcriptMatchedCourses)
   const transcriptUnmatchedCourseCodes = useProfileStore((state) => state.transcriptUnmatchedCourseCodes)
+  const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
+  const curriculumGuideFileName = useProfileStore((state) => state.curriculumGuideFileName)
+  const transcriptCompletedCourseCodes = useProfileStore(
+    (state) => state.transcriptCompletedCourseCodes,
+  )
+  const setCurriculumGuide = useProfileStore((state) => state.setCurriculumGuide)
   const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
+  const [selectedCurriculumGuide, setSelectedCurriculumGuide] = useState<File | null>(null)
   const [selectedTranscript, setSelectedTranscript] = useState<File | null>(null)
+  const [isUploadingCurriculumGuide, setIsUploadingCurriculumGuide] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
+  const [curriculumUploadMessage, setCurriculumUploadMessage] = useState('')
+  const [curriculumUploadError, setCurriculumUploadError] = useState('')
   const [uploadMessage, setUploadMessage] = useState('')
   const [uploadError, setUploadError] = useState('')
+  const hasCurriculumGuide = Boolean(curriculumGuide)
   const hasTranscriptResults =
     transcriptMatchedCourses.length > 0 ||
     transcriptUnmatchedCourseCodes.length > 0 ||
     transcriptCompletedCourseCount > 0
+
+  async function handleCurriculumGuideUpload() {
+    if (!selectedCurriculumGuide) {
+      setCurriculumUploadError('Upload a PDF curriculum guide before uploading.')
+      return
+    }
+
+    try {
+      setIsUploadingCurriculumGuide(true)
+      setCurriculumUploadError('')
+      setCurriculumUploadMessage('')
+
+      const result = await uploadCurriculumGuide(selectedCurriculumGuide)
+
+      setCurriculumGuide(result, selectedCurriculumGuide.name)
+      setCurriculumUploadMessage(
+        `Parsed ${result.nodes.length} curriculum row(s) across ${result.semesters.length} semester(s).`,
+      )
+    } catch {
+      setCurriculumUploadError('Could not process curriculum guide. Make sure the backend is running.')
+    } finally {
+      setIsUploadingCurriculumGuide(false)
+    }
+  }
 
   async function handleTranscriptUpload() {
     // Error message when upload button clicked without uploading anything
@@ -42,26 +78,28 @@ function ProfilePage() {
       // Send the selected PDF to the backend transcript parser
       const result = await uploadTranscript(selectedTranscript)
 
-      // For extracted courses, use courseID only to check boxes
-      const completedCourseIdsFromTranscript = result.completed_courses.map(
-        (course) => course.course_id,
-      )
-      const matchedCoursesFromTranscript = result.completed_courses.map((course) => ({
-        courseCode: course.course_code,
-        title: course.title,
-      }))
+      const completedCourseCodesFromTranscript = [
+        ...new Set([
+          ...result.completed_courses.map((course) => course.course_code),
+          ...result.unmatched_course_codes,
+        ]),
+      ]
 
-      // Save both roadmap matches and the wider transcript count for the active Student ID.
+      // Store transcript codes first; roadmap matching happens only when a curriculum guide exists.
       setTranscriptResults(
-        completedCourseIdsFromTranscript,
+        completedCourseCodesFromTranscript,
         result.completed_transcript_course_count,
-        result.unmatched_course_codes.length,
-        matchedCoursesFromTranscript,
-        result.unmatched_course_codes,
       )
-      setUploadMessage(
-        `Parsed ${result.completed_transcript_course_count} completed module(s). ${completedCourseIdsFromTranscript.length} matched the roadmap. ${result.unmatched_course_codes.length} unmatched.`,
-      )
+
+      if (curriculumGuide) {
+        setUploadMessage(
+          `Parsed ${result.completed_transcript_course_count} completed module(s). Matching is updated against your uploaded curriculum guide.`,
+        )
+      } else {
+        setUploadMessage(
+          `Parsed ${result.completed_transcript_course_count} completed module(s). Upload your curriculum guide to match them to your roadmap.`,
+        )
+      }
     } catch {
       // Keeping error message simple because failures can come from network or parsing
       setUploadError('Could not process transcript. Make sure the backend is running.')
@@ -133,7 +171,56 @@ function ProfilePage() {
             </select>
           </label>
         </div>
+
+        <label className="profile-field">
+          <span>Career Goal</span>
+          <textarea
+            value={profile.careerGoal}
+            onChange={(e) => updateProfile({ careerGoal: e.target.value })}
+            placeholder="Example: AI engineer, cybersecurity analyst, backend developer"
+            rows={3}
+          />
+        </label>
       </form>
+
+      <section className="transcript-upload-card">
+        <div>
+          <h3>Curriculum Guide Upload</h3>
+          <p>
+            Upload your curriculum guide PDF first so the roadmap can be generated for your profile.
+          </p>
+        </div>
+
+        <label className="transcript-file-field">
+          <span>PDF Curriculum Guide</span>
+          <input
+            type="file"
+            accept="application/pdf"
+            onChange={(event) => {
+              setSelectedCurriculumGuide(event.target.files?.[0] ?? null)
+              setCurriculumUploadError('')
+              setCurriculumUploadMessage('')
+            }}
+          />
+        </label>
+
+        <button
+          className="transcript-upload-button"
+          type="button"
+          onClick={handleCurriculumGuideUpload}
+          disabled={isUploadingCurriculumGuide}
+        >
+          {isUploadingCurriculumGuide ? 'Uploading...' : 'Upload Curriculum Guide'}
+        </button>
+
+        {curriculumUploadMessage && <p className="upload-success">{curriculumUploadMessage}</p>}
+        {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
+        {hasCurriculumGuide && (
+          <p>
+            Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
+          </p>
+        )}
+      </section>
 
       <section className="transcript-upload-card">
         <div>
@@ -176,6 +263,10 @@ function ProfilePage() {
           <strong>{completedCourseIds.length}</strong>
           <span>Completed Roadmap Courses</span>
         </div>
+        <div className="stat-card curriculum-stat-card">
+          <strong>{curriculumGuide?.nodes.length ?? 0}</strong>
+          <span>Curriculum Rows</span>
+        </div>
         <div className="stat-card transcript-stat-card">
           <strong>{transcriptCompletedCourseCount}</strong>
           <span>Completed Transcript Modules</span>
@@ -196,7 +287,9 @@ function ProfilePage() {
           <div className="transcript-results-grid">
             <div className="transcript-result-list">
               <h4>Matched Roadmap Courses</h4>
-              {transcriptMatchedCourses.length > 0 ? (
+              {!hasCurriculumGuide ? (
+                <p>Upload a curriculum guide to match transcript modules to your roadmap.</p>
+              ) : transcriptMatchedCourses.length > 0 ? (
                 <ul>
                   {transcriptMatchedCourses.map((course) => (
                     <li key={course.courseCode}>
@@ -212,7 +305,13 @@ function ProfilePage() {
 
             <div className="transcript-result-list">
               <h4>Unmatched Transcript Modules</h4>
-              {transcriptUnmatchedCourseCodes.length > 0 ? (
+              {!hasCurriculumGuide ? (
+                <div className="unmatched-code-list">
+                  {transcriptCompletedCourseCodes.map((courseCode) => (
+                    <span key={courseCode}>{courseCode}</span>
+                  ))}
+                </div>
+              ) : transcriptUnmatchedCourseCodes.length > 0 ? (
                 <div className="unmatched-code-list">
                   {transcriptUnmatchedCourseCodes.map((courseCode) => (
                     <span key={courseCode}>{courseCode}</span>
