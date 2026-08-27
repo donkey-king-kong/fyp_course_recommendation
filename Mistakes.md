@@ -60,6 +60,20 @@ Update the PR title to `feat: add curriculum guide upload flow` and record this 
 Lesson:
 Before creating or updating any PR, verify the PR title follows the same Conventional Commit-style format as commits: `<type>: <short lowercase summary>`. Examples: `feat: add curriculum guide upload flow`, `fix: handle empty transcript uploads`, `docs: update architecture notes`. Do not use untitled sentence case such as `Add curriculum guide upload flow`.
 
+### 2026-08-27
+
+Mistake:
+Created a PR without assigning it to the repository owner/user.
+
+What happened:
+PR #20 was created but the assignee field was left empty, showing `No one`. This means the PR was not clearly owned for review and follow-up.
+
+Correction:
+Assign PR #20 to the current GitHub user. For future PRs, always assign the PR to the user immediately after creating it.
+
+Lesson:
+Whenever creating a PR with `gh pr create`, also assign it to the user. Use `gh pr edit <number> --add-assignee @me` after PR creation unless the user explicitly asks for a different assignee.
+
 ## Entry Format
 
 ```text
