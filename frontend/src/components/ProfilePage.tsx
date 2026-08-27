@@ -13,6 +13,7 @@ function ProfilePage() {
   // Read completed courses so the profile page can show a simple progress summary
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const transcriptCompletedCourseCount = useProfileStore((state) => state.transcriptCompletedCourseCount)
+  const transcriptUnmatchedCourseCount = useProfileStore((state) => state.transcriptUnmatchedCourseCount)
   const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
   const [selectedTranscript, setSelectedTranscript] = useState<File | null>(null)
   const [isUploading, setIsUploading] = useState(false)
@@ -47,9 +48,13 @@ function ProfilePage() {
       }
 
       // Save both roadmap matches and the wider transcript count for the active Student ID.
-      setTranscriptResults(completedCourseIdsFromTranscript, result.completed_transcript_course_count)
+      setTranscriptResults(
+        completedCourseIdsFromTranscript,
+        result.completed_transcript_course_count,
+        result.unmatched_course_codes.length,
+      )
       setUploadMessage(
-        `Found ${result.completed_transcript_course_count} completed transcript module(s), with ${completedCourseIdsFromTranscript.length} matched to the roadmap.`,
+        `Parsed ${result.completed_transcript_course_count} completed module(s). ${completedCourseIdsFromTranscript.length} matched the roadmap. ${result.unmatched_course_codes.length} unmatched.`,
       )
     } catch {
       // Keeping error message simple because failures can come from network or parsing
@@ -169,9 +174,10 @@ function ProfilePage() {
           <strong>{transcriptCompletedCourseCount}</strong>
           <span>Completed Transcript Modules</span>
         </div>
-        <p className="stat-hint">
-          Roadmap courses are matched against the current roadmap. Transcript modules include all completed rows parsed from the uploaded PDF.
-        </p>
+        <div className="stat-card unmatched-stat-card">
+          <strong>{transcriptUnmatchedCourseCount}</strong>
+          <span>Unmatched Transcript Modules</span>
+        </div>
       </div>
     </section>
   )
