@@ -10,3 +10,4 @@ frontend/logs/
 frontend/*.local
 frontend/*.log
 .DS_Store
+sample_transcript.pdf

@@ -518,3 +518,123 @@ Status: Implemented locally
 - No frontend admin UI for changing faculty active status yet.
 - No authentication or authorization around the faculty management endpoints yet.
 - No database migration tool yet; local table creation still uses `Base.metadata.create_all`.
+
+## Curriculum Guide Upload Backend
+
+Status: Implemented locally
+
+### Completed
+
+- Renamed the current branch to `curriculum-guide-upload` because the work now includes implementation, not only documentation.
+- Updated `AGENTS.md` so future work treats uploaded curriculum guides as the source of truth for personalised roadmap display.
+- Added the sample CSC AY2023-24 curriculum guide PDF at `data/ccds_ay23-24_csc.pdf`.
+- Added backend curriculum guide response schemas for parsed courses, semesters, prerequisite edges, and the full parsed guide response.
+- Added a backend curriculum parser service that extracts positioned PDF words with PyMuPDF.
+- Added first-pass parsing for the current CSC curriculum guide format by detecting semester headers, course rows, course titles, academic units, prerequisites, and choice slots.
+- Marks `SC3xxx`, `SC4xxx`, `BDE`, and rows with choice wording as choice slots for future MPE/elective recommendation work.
+- Added `POST /curriculum-guide` to accept a curriculum guide PDF and return roadmap-shaped data.
+- Registered the curriculum guide router in the FastAPI app.
+
+### Verified
+
+- Backend compile check passes.
+- Direct parser check returns `Computer Science`, `AY2023-24`, `135` total AU, 8 semesters, 44 roadmap rows, and 19 prerequisite edges from `data/ccds_ay23-24_csc.pdf`.
+- HTTP check for `POST /curriculum-guide` returns `200 OK` with parsed curriculum JSON.
+- Frontend and backend diagnostics return no issues.
+
+### Not Included
+
+- No frontend curriculum guide upload UI yet.
+- No Roadmap page changes yet.
+- No browser profile persistence for parsed curriculum guides yet.
+- No transcript-to-uploaded-curriculum rematching yet.
+- No MPE/choice-slot recommendation scoring yet.
+- No universal parser for every NTU curriculum guide layout.
+- No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
+
+## Curriculum Guide Frontend Flow
+
+Status: Implemented locally
+
+### Completed
+
+- Added frontend curriculum guide types matching the backend `POST /curriculum-guide` response.
+- Added a frontend API client for uploading curriculum guide PDFs.
+- Extended the browser profile store to persist career goal, uploaded curriculum guide data, uploaded curriculum filename, and raw completed transcript course codes per active Student ID.
+- Updated transcript storage so transcript-only uploads are saved without requiring a curriculum guide.
+- Added local matching that maps completed transcript course codes to uploaded curriculum guide rows when a curriculum guide exists.
+- Added curriculum guide upload controls to the Profile page.
+- Added a career goal field to the Profile page for future MPE/choice-slot recommendations.
+- Updated the Roadmap page so it no longer loads or displays the static roadmap by default.
+- Added a Roadmap empty state that asks the student to upload a curriculum guide before showing roadmap content.
+- Mapped uploaded curriculum guide nodes and edges into the existing semester roadmap UI.
+
+### Verified
+
+- Frontend lint passes.
+- Frontend production build passes.
+- Diagnostics return no issues.
+- Spacing check found no triple-newline gaps in edited frontend files.
+
+### Not Included
+
+- No recommendation scoring yet.
+- No backend persistence for uploaded curriculum guides or transcripts.
+- No automatic frontend end-to-end browser test yet.
+- No universal curriculum guide parser beyond the current backend support for the CSC AY2023-24 guide format.
+- No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
+
+## Uploaded Roadmap Controls
+
+Status: Implemented locally
+
+### Completed
+
+- Added a `Clear roadmap` action to the roadmap page.
+- Clearing the roadmap removes the uploaded curriculum guide from the active browser profile.
+- Transcript results are kept when clearing the roadmap so they can be rematched after another curriculum guide upload.
+- Improved the `Clear roadmap` button contrast in light mode while preserving the dark-mode styling.
+- Passed uploaded curriculum guide `prerequisiteText` and `isChoiceSlot` values into the roadmap UI.
+- Updated roadmap eligibility so text-only prerequisite requirements are shown as locked when they cannot be automatically verified.
+- Cleaned `useProfileStore.ts` interface comments so the state fields are easier to scan.
+
+### Verified
+
+- Frontend lint passes.
+- Frontend production build passes.
+- Diagnostics return no issues.
+
+### Not Included
+
+- `Year 4 standing` and similar academic-standing requirements are still not automatically unlocked from profile year yet.
+- Locked checkboxes are still manually checkable for exemptions, transfer credits, exchange modules, and special approvals.
+- No recommendation scoring yet.
+- No backend persistence for uploaded curriculum guides or transcripts.
+- No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
+
+## Latest Handoff
+
+Status: Ready for next work
+
+### Current App State
+
+- Backend has `GET /health`, `GET /roadmap`, `POST /transcript`, module catalogue endpoints, faculty endpoints, and `POST /curriculum-guide`.
+- Uploaded curriculum guides are now the source of truth for the active student's roadmap display.
+- The Roadmap page shows an empty state when no curriculum guide is uploaded.
+- The Roadmap page can clear the uploaded curriculum guide without deleting saved transcript results.
+- Transcript uploads are stored separately and rematched against the uploaded curriculum guide when both exist.
+- Profile page supports curriculum guide upload, transcript upload, and career goal selection.
+- Roadmap cards can show completed, available, and locked states based on completed roadmap courses and parsed prerequisite information.
+
+### Next Recommended Work
+
+- Improve academic-standing eligibility so `Year 4 standing` unlocks when `profile.yearOfStudy >= 4`.
+- Consider deriving academic standing from completed AU later, after the simpler profile-year rule is understood.
+- Keep polishing the roadmap/profile flow before starting MPE/choice-slot recommendation logic.
+
+### Onboarding For Next Session
+
+- Read `AGENTS.md`, `Diagrams.md`, `Mistakes.md`, `Progress.md`, and `README.md`.
+- Run `git status --short --branch`.
+- Continue on a focused branch and avoid unrelated AI/data integrations.
+- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.

@@ -61,7 +61,20 @@ function groupCoursesBySemester(courses: CourseNode[]) {
   }, [])
 }
 
+function shouldIgnorePrerequisiteText(course: CourseNode) {
+  const prerequisiteText = course.prerequisiteText?.trim().toLowerCase() ?? ''
+
+  return (
+    !prerequisiteText ||
+    prerequisiteText === 'nil' ||
+    course.courseCode === 'BDE' ||
+    course.type === 'BDE' ||
+    prerequisiteText.includes('refer to class schedule')
+  )
+}
+
 // A course is available when every listed prerequisite is already completed.
+// Text-only requirements such as year standing are kept locked because they cannot be auto-verified yet.
 function getCourseEligibility(course: CourseNode, completedCourseIds: string[]): CourseEligibility {
   if (completedCourseIds.includes(course.id)) {
     return {
@@ -73,8 +86,10 @@ function getCourseEligibility(course: CourseNode, completedCourseIds: string[]):
   const missingPrerequisites = course.prerequisites.filter(
     (prerequisiteId) => !completedCourseIds.includes(prerequisiteId),
   )
+  const hasTextOnlyPrerequisite =
+    course.prerequisites.length === 0 && !shouldIgnorePrerequisiteText(course)
 
-  if (missingPrerequisites.length === 0) {
+  if (missingPrerequisites.length === 0 && !hasTextOnlyPrerequisite) {
     return {
       status: 'available',
       missingPrerequisites: [],
@@ -83,7 +98,9 @@ function getCourseEligibility(course: CourseNode, completedCourseIds: string[]):
 
   return {
     status: 'locked',
-    missingPrerequisites,
+    missingPrerequisites: hasTextOnlyPrerequisite
+      ? [course.prerequisiteText ?? 'Prerequisite required']
+      : missingPrerequisites,
   }
 }
 
@@ -97,6 +114,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
+  const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   
   // Hydrate completed courses from roadmap if not already in store
   useEffect(() => {
@@ -118,6 +136,17 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
   )
 
   const connectedCourseIds = new Set<string>()
+  const courseCodeById = new Map(courses.map((course) => [course.id, course.courseCode]))
+
+  function handleClearRoadmap() {
+    const shouldClear = window.confirm(
+      'Clear the uploaded curriculum guide from this profile? Your uploaded transcript will stay saved.',
+    )
+
+    if (shouldClear) {
+      clearCurriculumGuide()
+    }
+  }
 
   // When hovering a course, keep that course and its direct prerequisite links visually active
   if (hoveredCourseId) {
@@ -199,6 +228,11 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
         <h2>Roadmap</h2>
 
         <div className="roadmap-actions">
+          {/* Remove the uploaded curriculum guide while keeping transcript data saved for rematching. */}
+          <button type="button" className="clear-roadmap-button" onClick={handleClearRoadmap}>
+            Clear roadmap
+          </button>
+
           {/* Clear the completed-course list so every roadmap checkbox becomes unchecked */}
           <button
             type="button"
@@ -324,7 +358,10 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                       <p>{course.title}</p>
                       {eligibility.status === 'locked' && (
                         <p className="missing-prerequisites">
-                          Missing: {eligibility.missingPrerequisites.join(', ')}
+                          Missing:{' '}
+                          {eligibility.missingPrerequisites
+                            .map((courseId) => courseCodeById.get(courseId) ?? courseId)
+                            .join(', ')}
                         </p>
                       )}
                       <div className="semester-course-card-bottom">

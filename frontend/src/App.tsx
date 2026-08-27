@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
-import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
 import LoginPage from './components/LoginPage'
 import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
 import { useProfileStore } from './store/useProfileStore'
+import type { CurriculumGuideResponse } from './types/curriculum'
 import type { RoadmapResponse } from './types/roadmap'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
@@ -26,40 +26,51 @@ function getInitialView(): ViewState {
   return DEFAULT_VIEW
 }
 
+// Convert the uploaded curriculum guide shape into the existing roadmap component shape.
+function mapCurriculumGuideToRoadmap(curriculumGuide: CurriculumGuideResponse): RoadmapResponse {
+  return {
+    nodes: curriculumGuide.nodes.map((course) => ({
+      id: course.id,
+      courseCode: course.courseCode,
+      title: course.title,
+      type: course.type,
+      year: course.year,
+      semester: course.semester,
+      academicUnits: course.academicUnits,
+      prerequisites: curriculumGuide.edges
+        .filter((edge) => edge.target === course.id)
+        .map((edge) => edge.source),
+      prerequisiteText: course.prerequisiteText,
+      isCompleted: false,
+      isChoiceSlot: course.isChoiceSlot,
+      jobSkills: [],
+    })),
+    edges: curriculumGuide.edges,
+  }
+}
+
 // Main page component
 function App() {
-  // Values the page can update later; when updated, React refreshes the screen.
-  // const [valueToRead, functionToUpdateValue] = useState(startingValue)
-  const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
-  const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
+  const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const logout = useProfileStore((state) => state.logout)
-
-  useEffect(() => {
-    // Load roadmap data once when the app first renders.
-    async function loadRoadmap() {
-      try {
-        const roadmapData = await fetchRoadmap()
-        setRoadmap(roadmapData)
-      } catch {
-        setError('Could not load roadmap. Make sure the backend is running.')
-      }
-    }
-
-    void loadRoadmap()
-  }, [])
 
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
   }, [currentView])
 
+  const roadmap = useMemo(
+    () => (curriculumGuide ? mapCurriculumGuideToRoadmap(curriculumGuide) : null),
+    [curriculumGuide],
+  )
+
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
 
-  // Display courses matching the search term.
+  // Display uploaded curriculum courses matching the search term.
   const filteredCourses =
     roadmap?.nodes.filter((course) => {
       const courseCode = course.courseCode.toLowerCase()
@@ -131,13 +142,20 @@ function App() {
         </div>
       </header>
 
-      {/* Show this while the roadmap request is still pending. */}
-      {currentView === 'roadmap' && !roadmap && !error && <p>Loading roadmap...</p>}
+      {currentView === 'roadmap' && !roadmap && (
+        <section className="roadmap-empty-state">
+          <h2>Upload Your Curriculum Guide</h2>
+          <p>
+            Your roadmap will be generated from your uploaded curriculum guide. Go to Profile and
+            upload the PDF before planning courses.
+          </p>
+          <button type="button" onClick={() => setCurrentView('profile')}>
+            Go to Profile
+          </button>
+        </section>
+      )}
 
-      {/* Show this if the request fails. */}
-      {currentView === 'roadmap' && error && <p>{error}</p>}
-
-      {/* Show roadmap content only after data has loaded successfully. */}
+      {/* Show roadmap content only after a curriculum guide exists for this profile. */}
       {roadmap && currentView === 'roadmap' && (
         <>
           {/* Shows the curriculum-style roadmap with semester bands and prerequisite arrows. */}
