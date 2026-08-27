@@ -331,6 +331,7 @@ Status: Implemented locally
 - Added frontend transcript upload UI on the Profile page.
 - Updates completed roadmap courses in the active browser profile after upload.
 - Shows separate Profile stats for completed roadmap courses, completed transcript modules, and unmatched transcript modules.
+- Shows the latest transcript upload details, including matched roadmap courses and unmatched transcript module codes.
 
 ### Verified
 
@@ -342,6 +343,7 @@ Status: Implemented locally
 - Wrapped rows such as `SC1015` in a two-column transcript are parsed correctly.
 - Frontend lint passes.
 - Frontend build passes.
+- Profile page shows the latest matched and unmatched transcript upload details after refresh.
 
 ### Not Included
 
@@ -383,11 +385,13 @@ Status: Ready for next work
 - Roadmap courses can be toggled as completed, syncing with the global profile store.
 - Roadmap includes a "Clear completed" action to uncheck all completed courses for the active profile.
 - Profile page can upload an official PDF transcript and auto-mark completed roadmap courses.
+- Profile page shows separate counts for matched roadmap courses, completed transcript modules, and unmatched transcript modules.
+- Profile page lists the latest matched roadmap courses and unmatched transcript module codes from transcript upload.
 
 ### Next Recommended Work
 
-- Review and merge transcript upload, or
-- Begin working on the Chat stub (Milestone 8).
+- Review and merge the transcript result details branch, or
+- Continue polishing the roadmap/profile flow before starting chat or recommendation work.
 
 ### Onboarding For Next Session
 

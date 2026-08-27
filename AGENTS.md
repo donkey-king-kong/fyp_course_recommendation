@@ -214,6 +214,7 @@ Completed foundations:
 - Transcript upload endpoint and frontend upload UI for marking completed roadmap courses.
 - Transcript parser handles two-column transcript layouts and treats `EX` and `TC` as completed.
 - Profile page shows separate counts for completed roadmap courses, completed transcript modules, and unmatched transcript modules.
+- Profile page shows latest transcript upload details for matched roadmap courses and unmatched transcript module codes.
 - PostgreSQL module catalog data seeded from static module JSON files.
 - Backend module catalog API with `GET /modules`, `GET /modules/filters`, and `GET /modules/{code}`.
 - Module descriptions seeded from `data/course_catalog.json` where available.
@@ -223,8 +224,8 @@ Completed foundations:
 Current next step:
 
 - Continue from `Progress.md`.
-- The current branch PR is for the PostgreSQL-backed module catalog page and related backend controls.
-- Keep reviewing and polishing the module catalog PR before starting unrelated milestones.
+- The current branch work is for transcript upload result details on the Profile page.
+- Keep polishing the roadmap/profile flow before starting unrelated milestones.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or recommendation logic yet.
 
 ## Expected Working Directory

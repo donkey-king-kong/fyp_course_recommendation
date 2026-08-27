@@ -14,11 +14,17 @@ function ProfilePage() {
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const transcriptCompletedCourseCount = useProfileStore((state) => state.transcriptCompletedCourseCount)
   const transcriptUnmatchedCourseCount = useProfileStore((state) => state.transcriptUnmatchedCourseCount)
+  const transcriptMatchedCourses = useProfileStore((state) => state.transcriptMatchedCourses)
+  const transcriptUnmatchedCourseCodes = useProfileStore((state) => state.transcriptUnmatchedCourseCodes)
   const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
   const [selectedTranscript, setSelectedTranscript] = useState<File | null>(null)
   const [isUploading, setIsUploading] = useState(false)
   const [uploadMessage, setUploadMessage] = useState('')
   const [uploadError, setUploadError] = useState('')
+  const hasTranscriptResults =
+    transcriptMatchedCourses.length > 0 ||
+    transcriptUnmatchedCourseCodes.length > 0 ||
+    transcriptCompletedCourseCount > 0
 
   async function handleTranscriptUpload() {
     // Error message when upload button clicked without uploading anything
@@ -40,18 +46,18 @@ function ProfilePage() {
       const completedCourseIdsFromTranscript = result.completed_courses.map(
         (course) => course.course_id,
       )
-
-      // Roadmap data is not wiped if extracted info is nothing useful
-      if (completedCourseIdsFromTranscript.length === 0) {
-        setUploadMessage('No completed roadmap courses were found in this transcript yet.')
-        return
-      }
+      const matchedCoursesFromTranscript = result.completed_courses.map((course) => ({
+        courseCode: course.course_code,
+        title: course.title,
+      }))
 
       // Save both roadmap matches and the wider transcript count for the active Student ID.
       setTranscriptResults(
         completedCourseIdsFromTranscript,
         result.completed_transcript_course_count,
         result.unmatched_course_codes.length,
+        matchedCoursesFromTranscript,
+        result.unmatched_course_codes,
       )
       setUploadMessage(
         `Parsed ${result.completed_transcript_course_count} completed module(s). ${completedCourseIdsFromTranscript.length} matched the roadmap. ${result.unmatched_course_codes.length} unmatched.`,
@@ -179,6 +185,46 @@ function ProfilePage() {
           <span>Unmatched Transcript Modules</span>
         </div>
       </div>
+
+      {hasTranscriptResults && (
+        <section className="transcript-results-card">
+          <div className="transcript-results-header">
+            <h3>Transcript Results</h3>
+            <span>Latest upload</span>
+          </div>
+
+          <div className="transcript-results-grid">
+            <div className="transcript-result-list">
+              <h4>Matched Roadmap Courses</h4>
+              {transcriptMatchedCourses.length > 0 ? (
+                <ul>
+                  {transcriptMatchedCourses.map((course) => (
+                    <li key={course.courseCode}>
+                      <strong>{course.courseCode}</strong>
+                      <span>{course.title}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p>No completed transcript modules matched the current roadmap.</p>
+              )}
+            </div>
+
+            <div className="transcript-result-list">
+              <h4>Unmatched Transcript Modules</h4>
+              {transcriptUnmatchedCourseCodes.length > 0 ? (
+                <div className="unmatched-code-list">
+                  {transcriptUnmatchedCourseCodes.map((courseCode) => (
+                    <span key={courseCode}>{courseCode}</span>
+                  ))}
+                </div>
+              ) : (
+                <p>All completed transcript modules matched the current roadmap.</p>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
     </section>
   )
 }
