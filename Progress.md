@@ -551,3 +551,35 @@ Status: Implemented locally
 - No MPE/choice-slot recommendation scoring yet.
 - No universal parser for every NTU curriculum guide layout.
 - No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
+
+## Curriculum Guide Frontend Flow
+
+Status: Implemented locally
+
+### Completed
+
+- Added frontend curriculum guide types matching the backend `POST /curriculum-guide` response.
+- Added a frontend API client for uploading curriculum guide PDFs.
+- Extended the browser profile store to persist career goal, uploaded curriculum guide data, uploaded curriculum filename, and raw completed transcript course codes per active Student ID.
+- Updated transcript storage so transcript-only uploads are saved without requiring a curriculum guide.
+- Added local matching that maps completed transcript course codes to uploaded curriculum guide rows when a curriculum guide exists.
+- Added curriculum guide upload controls to the Profile page.
+- Added a career goal field to the Profile page for future MPE/choice-slot recommendations.
+- Updated the Roadmap page so it no longer loads or displays the static roadmap by default.
+- Added a Roadmap empty state that asks the student to upload a curriculum guide before showing roadmap content.
+- Mapped uploaded curriculum guide nodes and edges into the existing semester roadmap UI.
+
+### Verified
+
+- Frontend lint passes.
+- Frontend production build passes.
+- Diagnostics return no issues.
+- Spacing check found no triple-newline gaps in edited frontend files.
+
+### Not Included
+
+- No recommendation scoring yet.
+- No backend persistence for uploaded curriculum guides or transcripts.
+- No automatic frontend end-to-end browser test yet.
+- No universal curriculum guide parser beyond the current backend support for the CSC AY2023-24 guide format.
+- No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
