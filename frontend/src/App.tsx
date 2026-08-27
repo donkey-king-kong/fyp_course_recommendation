@@ -3,12 +3,28 @@ import './App.css'
 import { fetchRoadmap } from './api/roadmapApi'
 import CourseList from './components/CourseList'
 import LoginPage from './components/LoginPage'
+import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
 import { useProfileStore } from './store/useProfileStore'
 import type { RoadmapResponse } from './types/roadmap'
 
-type ViewState = 'roadmap' | 'profile'
+type ViewState = 'roadmap' | 'modules' | 'profile'
+
+const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
+const DEFAULT_VIEW: ViewState = 'roadmap'
+const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
+
+// Reads the last selected tab from localStorage so reloads stay on the same page.
+function getInitialView(): ViewState {
+  const storedView = window.localStorage.getItem(VIEW_STORAGE_KEY)
+
+  if (VALID_VIEWS.includes(storedView as ViewState)) {
+    return storedView as ViewState
+  }
+
+  return DEFAULT_VIEW
+}
 
 // Main page component
 function App() {
@@ -18,7 +34,7 @@ function App() {
   const [error, setError] = useState<string | null>(null)
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
-  const [currentView, setCurrentView] = useState<ViewState>('roadmap')
+  const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const logout = useProfileStore((state) => state.logout)
 
@@ -35,6 +51,10 @@ function App() {
 
     void loadRoadmap()
   }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
+  }, [currentView])
 
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
@@ -58,7 +78,7 @@ function App() {
   }
 
   function handleLogout() {
-    setCurrentView('roadmap')
+    setCurrentView(DEFAULT_VIEW)
     logout()
   }
 
@@ -72,6 +92,12 @@ function App() {
               onClick={() => setCurrentView('roadmap')}
             >
               Roadmap
+            </button>
+            <button
+              className={`nav-button ${currentView === 'modules' ? 'active' : ''}`}
+              onClick={() => setCurrentView('modules')}
+            >
+              Modules
             </button>
             <button
               className={`nav-button ${currentView === 'profile' ? 'active' : ''}`}
@@ -100,16 +126,16 @@ function App() {
         <div className="app-header-copy">
           <h1>NTU Course Recommender</h1>
           <p className="app-subtitle">
-            Explore course progression, prerequisites, and semester placement.
+            Get your course roadmap to plan your NTU journey.
           </p>
         </div>
       </header>
 
-      {/* Show this while the request is still pending. */}
-      {!roadmap && !error && <p>Loading roadmap...</p>}
+      {/* Show this while the roadmap request is still pending. */}
+      {currentView === 'roadmap' && !roadmap && !error && <p>Loading roadmap...</p>}
 
       {/* Show this if the request fails. */}
-      {error && <p>{error}</p>}
+      {currentView === 'roadmap' && error && <p>{error}</p>}
 
       {/* Show roadmap content only after data has loaded successfully. */}
       {roadmap && currentView === 'roadmap' && (
@@ -132,6 +158,8 @@ function App() {
           <CourseList courses={filteredCourses} />
         </>
       )}
+
+      {currentView === 'modules' && <ModulesPage />}
 
       {/* Show profile page when selected */}
       {currentView === 'profile' && <ProfilePage />}

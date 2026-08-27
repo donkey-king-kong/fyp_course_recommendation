@@ -369,3 +369,97 @@ Status: Ready for next work
 - Run `git status --short --branch`.
 - Propose a branch name and plan before editing files.
 - Avoid adding Neo4j, ChromaDB, LangGraph, OpenAI, transcript upload, or recommendation logic until the simpler frontend roadmap flow is understood.
+
+## PostgreSQL Module Catalog API
+
+Status: Implemented locally
+
+### Completed
+
+- Created the `modules-catalog-page` branch for module catalog backend and frontend work.
+- Added backend module response schemas for module summaries, paginated module lists, and filter option lists.
+- Added a module catalog service that reads from PostgreSQL instead of exposing the full JSON dataset to the browser.
+- Added `GET /modules` for paginated module listing with optional `search`, `faculty`, `level`, `category`, `current_only`, `limit`, and `offset` query parameters.
+- Added `GET /modules/filters` so the frontend can populate filter dropdowns from real database values.
+- Added `GET /modules/{code}` for exact module detail lookup with prerequisites and unlocks.
+- Added database error handling so module endpoints return `503` when PostgreSQL cannot serve module data.
+- Added comments above functions in the new module API files to explain their purpose.
+- Added detailed Swagger/OpenAPI metadata for the module endpoints, including summaries, parameter descriptions, response descriptions, example response payloads, and expected error codes.
+- Updated the FastAPI app title, description, and version so `/docs` is clearer for backend API review.
+- Added Pydantic `model_config` examples to module response schemas so Swagger shows realistic expected outputs.
+- Added module description enrichment to the seed script using `data/course_catalog.json` where descriptions are available.
+- Added a `module_prerequisites` table to store prerequisite relationships while deriving unlocks through reverse lookup.
+
+### Verified
+
+- Backend compile check passes.
+- FastAPI OpenAPI schema generation passes.
+- Service-level checks can list modules, fetch exact module details, and load filter options.
+- Seed script populates 4317 modules, 4178 prerequisite relationships, and available course descriptions.
+- HTTP checks pass for `GET /modules`, `GET /modules/filters`, and exact module lookup.
+
+### Not Included
+
+- No timetable day/time filters because timetable data is not stored yet.
+- No recommendation logic, Neo4j, ChromaDB, LangGraph, or OpenAI integration.
+
+## Frontend Module Catalog Page
+
+Status: Implemented locally
+
+### Completed
+
+- Added frontend TypeScript types for module summaries, paginated module lists, filter options, and query parameters.
+- Added a frontend modules API client that calls the backend instead of loading static JSON directly in the browser.
+- Added an `NTU Modules` page with search, faculty filter, level filter, category filter, availability filter, and pagination.
+- Added module cards that show code, title, AU, faculty, latest semester, categories, prerequisite count, and unlock count.
+- Added a module detail overlay that opens from a module card and closes through the close button, Escape key, or outside click.
+- Refined the modules layout based on `Frontend_design.md` and removed the oversized count card.
+- Improved readability for `requires` and `unlocks` chips in light and dark themes.
+- Added navigation to switch between Roadmap, Modules, and Profile.
+- Persisted the selected app tab in `localStorage` so refresh keeps the current tab.
+- Persisted module search/filter/page state in `localStorage` so refresh keeps the current catalogue view.
+
+### Verified
+
+- Frontend build passes with `npm run build`.
+- Browser loads module data through backend API calls.
+- Module detail opens as a popup overlay instead of an inline panel.
+- Refresh keeps the selected tab and active module filters.
+
+### Not Included
+
+- No Material-UI migration yet.
+- No timetable filtering yet.
+- No recommendation/chat logic on the module cards yet.
+
+## Faculty Activation Controls
+
+Status: Implemented locally
+
+### Completed
+
+- Added a `faculties` table with `name` and `is_active` columns.
+- Seeded the `faculties` table from distinct module faculty values.
+- Defaulted `CSC` and `CE` to active for the current MVP scope while preserving existing faculty status values on reruns.
+- Added backend schemas, service logic, and routes for faculty activation management.
+- Added `GET /faculties`, `GET /faculties/active`, and `GET /faculties/inactive`.
+- Added `PATCH /faculties/status` to set all faculties active or inactive.
+- Added `PATCH /faculties/{name}/activate` and `PATCH /faculties/{name}/deactivate`.
+- Added `409 Conflict` handling when activating an already active faculty or deactivating an already inactive faculty.
+- Updated the module catalogue service to filter modules by active faculties from PostgreSQL instead of a hardcoded list.
+- Updated Swagger/OpenAPI documentation for the new faculty endpoints and active-faculty module filtering.
+
+### Verified
+
+- Backend compile check passes.
+- Seed script creates 34 faculty rows.
+- Active faculties default to `CE` and `CSC`.
+- `/modules` and `/modules/filters` only use active faculties.
+- Duplicate activate/deactivate service calls raise the expected conflict errors.
+
+### Not Included
+
+- No frontend admin UI for changing faculty active status yet.
+- No authentication or authorization around the faculty management endpoints yet.
+- No database migration tool yet; local table creation still uses `Base.metadata.create_all`.

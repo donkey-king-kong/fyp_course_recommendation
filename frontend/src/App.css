@@ -42,7 +42,7 @@
 }
 
 .app-header {
-  width: min(100%, 64rem);
+  width: min(100%, 78rem);
   padding: 2rem;
   border: 1px solid var(--panel-border);
   border-radius: 1.25rem;
@@ -135,8 +135,6 @@
 .app-header-copy {
   text-align: center;
 }
-
-
 
 .theme-switch {
   display: inline-flex;
