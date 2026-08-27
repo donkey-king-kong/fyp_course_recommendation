@@ -26,6 +26,7 @@ The system should eventually support:
 
 - Student profile setup
 - Course roadmap visualization
+- Curriculum guide upload and roadmap extraction
 - Transcript upload and completed course extraction
 - Chat-based course recommendations
 - Job-market-aware recommendations using MyCareersFuture data
@@ -42,6 +43,7 @@ Backend:
 - Neo4j
 - ChromaDB
 - MyCareersFuture scraper
+- PDF curriculum guide parser
 - PDF transcript parser
 
 Frontend:
@@ -88,6 +90,17 @@ After each milestone, explain:
 - Explain why each file exists.
 - Work inside the new repo unless explicitly told otherwise.
 - Treat the old repo as read-only reference material.
+- For the personalised roadmap flow, do not show the static roadmap as the default student roadmap once curriculum guide upload is being implemented.
+- Treat `data/test_csc_roadmap.json` as sample/test data, not as the final source of truth for a student's roadmap.
+- A student's uploaded curriculum guide should define the roadmap structure for that browser profile.
+- A student's uploaded transcript should define completed modules separately from the curriculum guide.
+- If only a transcript has been uploaded, store the transcript result but do not display a roadmap until a curriculum guide is uploaded.
+- If only a curriculum guide has been uploaded, display the parsed curriculum guide in the current roadmap style without transcript-based completions.
+- If both curriculum guide and transcript are uploaded, match completed transcript modules against the parsed curriculum roadmap.
+- If neither curriculum guide nor transcript is uploaded, the roadmap page should show an empty-state message asking the student to upload a curriculum guide.
+- New transcript uploads should override the previous transcript result for the active browser profile and rematch against the current curriculum guide if one exists.
+- New curriculum guide uploads should override the previous curriculum result for the active browser profile and rematch against the current transcript if one exists.
+- The Profile page should store the student's career goal so later MPE/choice-slot recommendations can use it.
 
 ## Architecture Style
 
@@ -186,18 +199,20 @@ For the high-level architecture and request flow, refer to `Diagrams.md`.
 5. Connect frontend to roadmap API
 6. Profile page and state
 7. Transcript upload
-8. Chat stub
+8. Curriculum guide upload and parsed roadmap display
+9. Chat stub
 
 ### Phase 3: AI and Data Integrations
 
-9. MyCareersFuture scraper
-10. Skill extractor
-11. Neo4j client
-12. Graph loader
-13. ChromaDB client
-14. LangGraph state, workflow, and nodes
-15. Replace chat stub with LangGraph
-16. OpenAI integration
+10. Basic MPE/choice-slot recommendation flow
+11. MyCareersFuture scraper
+12. Skill extractor
+13. Neo4j client
+14. Graph loader
+15. ChromaDB client
+16. LangGraph state, workflow, and nodes
+17. Replace chat stub with LangGraph
+18. OpenAI integration
 
 ## Current State
 
@@ -225,9 +240,12 @@ Completed foundations:
 Current next step:
 
 - Continue from `Progress.md`.
-- The current branch work is for roadmap locked-prerequisite indicators.
+- Update the roadmap/profile flow so uploaded curriculum guides become the source of truth for student roadmap display.
+- Add curriculum guide upload and parsing before building recommendation logic.
+- Stop showing the static roadmap when the active profile has no uploaded curriculum guide.
+- Add career goal input to the Profile page so the future MPE/choice-slot recommender has a student goal to use.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
-- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or recommendation logic yet.
+- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 
 ## Expected Working Directory
 
