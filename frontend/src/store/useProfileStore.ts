@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import type { CurriculumGuideResponse } from '../types/curriculum'
 
 export interface StudentProfile {
   studentId: string
@@ -8,6 +9,7 @@ export interface StudentProfile {
   major: 'CSC'
   yearOfStudy: number
   currentSemester: number
+  careerGoal: string
 }
 
 export interface TranscriptMatchedCourse {
@@ -19,6 +21,12 @@ interface SavedStudentProfile {
   profile: StudentProfile
   // Roadmap course IDs that should appear checked in the roadmap UI.
   completedCourseIds: string[]
+  // Latest uploaded curriculum guide parsed into roadmap-shaped data.
+  curriculumGuide: CurriculumGuideResponse | null
+  // Original filename of the latest uploaded curriculum guide.
+  curriculumGuideFileName: string
+  // Completed module codes parsed from the latest uploaded transcript.
+  transcriptCompletedCourseCodes: string[]
   // Last uploaded transcript's completed module count, including non-roadmap modules.
   transcriptCompletedCourseCount: number
   // Last uploaded transcript's completed module count that did not match the roadmap.
@@ -35,6 +43,7 @@ const DEFAULT_PROFILE: StudentProfile = {
   major: 'CSC',
   yearOfStudy: 1,
   currentSemester: 1,
+  careerGoal: '',
 }
 
 interface ProfileState {
@@ -43,6 +52,12 @@ interface ProfileState {
   profile: StudentProfile
   // Matched roadmap course IDs only; this drives roadmap checkboxes.
   completedCourseIds: string[]
+  // Latest uploaded curriculum guide for the active profile.
+  curriculumGuide: CurriculumGuideResponse | null
+  // Original filename of the latest uploaded curriculum guide.
+  curriculumGuideFileName: string
+  // Completed module codes parsed from the latest uploaded transcript.
+  transcriptCompletedCourseCodes: string[]
   // Parsed completed transcript rows, including rows that do not exist in the roadmap.
   transcriptCompletedCourseCount: number
   // Completed transcript rows that were parsed but not found in the current roadmap.
@@ -59,13 +74,12 @@ interface ProfileState {
   toggleCourseCompletion: (courseId: string) => void
   // Used by roadmap actions to replace completed courses without changing transcript stats
   setCompletedCourses: (courseIds: string[]) => void
+  // Used by curriculum guide upload to replace the active profile's parsed roadmap.
+  setCurriculumGuide: (curriculumGuide: CurriculumGuideResponse, fileName: string) => void
   // Used by transcript upload to replace completed courses and save transcript stats
   setTranscriptResults: (
-    courseIds: string[],
+    completedCourseCodes: string[],
     transcriptCompletedCourseCount: number,
-    transcriptUnmatchedCourseCount: number,
-    transcriptMatchedCourses: TranscriptMatchedCourse[],
-    transcriptUnmatchedCourseCodes: string[],
   ) => void
   // Used by logout to leave the active session while keeping saved browser profiles.
   logout: () => void
@@ -91,10 +105,47 @@ function createSavedStudentProfile(studentId: string): SavedStudentProfile {
   return {
     profile: createStudentProfile(studentId),
     completedCourseIds: [],
+    curriculumGuide: null,
+    curriculumGuideFileName: '',
+    transcriptCompletedCourseCodes: [],
     transcriptCompletedCourseCount: 0,
     transcriptUnmatchedCourseCount: 0,
     transcriptMatchedCourses: [],
     transcriptUnmatchedCourseCodes: [],
+  }
+}
+
+// Match raw transcript codes to the currently uploaded curriculum guide.
+function matchTranscriptToCurriculum(
+  completedCourseCodes: string[],
+  curriculumGuide: CurriculumGuideResponse | null,
+) {
+  if (!curriculumGuide) {
+    return {
+      completedCourseIds: [],
+      transcriptMatchedCourses: [],
+      transcriptUnmatchedCourseCodes: [],
+    }
+  }
+
+  const completedCodeSet = new Set(completedCourseCodes)
+  const matchedCourses = curriculumGuide.nodes
+    .filter((course) => completedCodeSet.has(course.courseCode))
+    .map((course) => ({
+      courseCode: course.courseCode,
+      title: course.title,
+    }))
+  const matchedCodeSet = new Set(matchedCourses.map((course) => course.courseCode))
+  const unmatchedCourseCodes = completedCourseCodes.filter(
+    (courseCode) => !matchedCodeSet.has(courseCode),
+  )
+
+  return {
+    completedCourseIds: curriculumGuide.nodes
+      .filter((course) => completedCodeSet.has(course.courseCode))
+      .map((course) => course.id),
+    transcriptMatchedCourses: matchedCourses,
+    transcriptUnmatchedCourseCodes: unmatchedCourseCodes,
   }
 }
 
@@ -106,6 +157,9 @@ export const useProfileStore = create<ProfileState>()(
       profilesByStudentId: {},
       profile: DEFAULT_PROFILE,
       completedCourseIds: [],
+      curriculumGuide: null,
+      curriculumGuideFileName: '',
+      transcriptCompletedCourseCodes: [],
       transcriptCompletedCourseCount: 0,
       transcriptUnmatchedCourseCount: 0,
       transcriptMatchedCourses: [],
@@ -121,24 +175,48 @@ export const useProfileStore = create<ProfileState>()(
 
           // Use the saved profile if it exists; otherwise start a new profile for this ID
           const activeProfile = savedProfile ?? createSavedStudentProfile(normalizedStudentId)
-
-          return {
-            // Controls whether the app shows login page or roadmap
-            activeStudentId: normalizedStudentId,
-            profile: activeProfile.profile,
-            completedCourseIds: activeProfile.completedCourseIds,
+          const activeStudentProfile = {
+            ...DEFAULT_PROFILE,
+            ...activeProfile.profile,
+            studentId: normalizedStudentId,
+          }
+          const hydratedProfile = {
+            profile: activeStudentProfile,
+            curriculumGuide: activeProfile.curriculumGuide ?? null,
+            curriculumGuideFileName: activeProfile.curriculumGuideFileName ?? '',
+            transcriptCompletedCourseCodes: activeProfile.transcriptCompletedCourseCodes ?? [],
             transcriptCompletedCourseCount: activeProfile.transcriptCompletedCourseCount ?? 0,
             transcriptUnmatchedCourseCount: activeProfile.transcriptUnmatchedCourseCount ?? 0,
             transcriptMatchedCourses: activeProfile.transcriptMatchedCourses ?? [],
             transcriptUnmatchedCourseCodes: activeProfile.transcriptUnmatchedCourseCodes ?? [],
+          }
+          const completedCourseIds = hydratedProfile.curriculumGuide
+            ? activeProfile.completedCourseIds ?? []
+            : []
+
+          return {
+            // Controls whether the app shows login page or roadmap
+            activeStudentId: normalizedStudentId,
+            profile: hydratedProfile.profile,
+            completedCourseIds,
+            curriculumGuide: hydratedProfile.curriculumGuide,
+            curriculumGuideFileName: hydratedProfile.curriculumGuideFileName,
+            transcriptCompletedCourseCodes: hydratedProfile.transcriptCompletedCourseCodes,
+            transcriptCompletedCourseCount: hydratedProfile.transcriptCompletedCourseCount,
+            transcriptUnmatchedCourseCount: hydratedProfile.transcriptUnmatchedCourseCount,
+            transcriptMatchedCourses: hydratedProfile.transcriptMatchedCourses,
+            transcriptUnmatchedCourseCodes: hydratedProfile.transcriptUnmatchedCourseCodes,
             // Store the active profile back into the map so it persists under this Student ID
             profilesByStudentId: {
               ...state.profilesByStudentId,
-              [normalizedStudentId]: activeProfile,
+              [normalizedStudentId]: {
+                ...hydratedProfile,
+                completedCourseIds,
+              },
             },
           }
         }),
-      
+
       updateProfile: (updates) =>
         set((state) => {
           const nextProfile = {
@@ -160,6 +238,9 @@ export const useProfileStore = create<ProfileState>()(
             nextProfilesByStudentId[nextProfile.studentId] = {
               profile: nextProfile,
               completedCourseIds: state.completedCourseIds,
+              curriculumGuide: state.curriculumGuide,
+              curriculumGuideFileName: state.curriculumGuideFileName,
+              transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
               transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
               transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
               transcriptMatchedCourses: state.transcriptMatchedCourses,
@@ -173,7 +254,7 @@ export const useProfileStore = create<ProfileState>()(
             profilesByStudentId: nextProfilesByStudentId,
           }
         }),
-        
+
       toggleCourseCompletion: (courseId) =>
         set((state) => {
           const isCompleted = state.completedCourseIds.includes(courseId)
@@ -189,6 +270,9 @@ export const useProfileStore = create<ProfileState>()(
                   [state.activeStudentId]: {
                     profile: state.profile,
                     completedCourseIds: nextCompletedCourseIds,
+                    curriculumGuide: state.curriculumGuide,
+                    curriculumGuideFileName: state.curriculumGuideFileName,
+                    transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                     transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
                     transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                     transcriptMatchedCourses: state.transcriptMatchedCourses,
@@ -208,6 +292,9 @@ export const useProfileStore = create<ProfileState>()(
                 [state.activeStudentId]: {
                   profile: state.profile,
                   completedCourseIds: courseIds,
+                  curriculumGuide: state.curriculumGuide,
+                  curriculumGuideFileName: state.curriculumGuideFileName,
+                  transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                   transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
                   transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                   transcriptMatchedCourses: state.transcriptMatchedCourses,
@@ -216,42 +303,87 @@ export const useProfileStore = create<ProfileState>()(
               }
             : state.profilesByStudentId,
         })),
-        
-      setTranscriptResults: (
-        courseIds,
-        transcriptCompletedCourseCount,
-        transcriptUnmatchedCourseCount,
-        transcriptMatchedCourses,
-        transcriptUnmatchedCourseCodes,
-      ) =>
-        set((state) => ({
-          completedCourseIds: courseIds,
-          transcriptCompletedCourseCount,
-          transcriptUnmatchedCourseCount,
-          transcriptMatchedCourses,
-          transcriptUnmatchedCourseCodes,
-          profilesByStudentId: state.activeStudentId
-            ? {
-                ...state.profilesByStudentId,
-                [state.activeStudentId]: {
-                  profile: state.profile,
-                  completedCourseIds: courseIds,
-                  transcriptCompletedCourseCount,
-                  transcriptUnmatchedCourseCount,
-                  transcriptMatchedCourses,
-                  transcriptUnmatchedCourseCodes,
-                },
-              }
-            : state.profilesByStudentId,
-        })),
+
+      setCurriculumGuide: (curriculumGuide, fileName) =>
+        set((state) => {
+          const matchedResults = matchTranscriptToCurriculum(
+            state.transcriptCompletedCourseCodes,
+            curriculumGuide,
+          )
+
+          return {
+            curriculumGuide,
+            curriculumGuideFileName: fileName,
+            completedCourseIds: matchedResults.completedCourseIds,
+            transcriptUnmatchedCourseCount: matchedResults.transcriptUnmatchedCourseCodes.length,
+            transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
+            transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+            profilesByStudentId: state.activeStudentId
+              ? {
+                  ...state.profilesByStudentId,
+                  [state.activeStudentId]: {
+                    profile: state.profile,
+                    completedCourseIds: matchedResults.completedCourseIds,
+                    curriculumGuide,
+                    curriculumGuideFileName: fileName,
+                    transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
+                    transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                    transcriptUnmatchedCourseCount:
+                      matchedResults.transcriptUnmatchedCourseCodes.length,
+                    transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
+                    transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+                  },
+                }
+              : state.profilesByStudentId,
+          }
+        }),
+
+      setTranscriptResults: (completedCourseCodes, transcriptCompletedCourseCount) =>
+        set((state) => {
+          const matchedResults = matchTranscriptToCurriculum(
+            completedCourseCodes,
+            state.curriculumGuide,
+          )
+
+          return {
+            completedCourseIds: matchedResults.completedCourseIds,
+            transcriptCompletedCourseCodes: completedCourseCodes,
+            transcriptCompletedCourseCount,
+            transcriptUnmatchedCourseCount: matchedResults.transcriptUnmatchedCourseCodes.length,
+            transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
+            transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+            profilesByStudentId: state.activeStudentId
+              ? {
+                  ...state.profilesByStudentId,
+                  [state.activeStudentId]: {
+                    profile: state.profile,
+                    completedCourseIds: matchedResults.completedCourseIds,
+                    curriculumGuide: state.curriculumGuide,
+                    curriculumGuideFileName: state.curriculumGuideFileName,
+                    transcriptCompletedCourseCodes: completedCourseCodes,
+                    transcriptCompletedCourseCount,
+                    transcriptUnmatchedCourseCount:
+                      matchedResults.transcriptUnmatchedCourseCodes.length,
+                    transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
+                    transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+                  },
+                }
+              : state.profilesByStudentId,
+          }
+        }),
 
       logout: () =>
         set(() => ({
           activeStudentId: '',
           profile: DEFAULT_PROFILE,
           completedCourseIds: [],
+          curriculumGuide: null,
+          curriculumGuideFileName: '',
+          transcriptCompletedCourseCodes: [],
           transcriptCompletedCourseCount: 0,
           transcriptUnmatchedCourseCount: 0,
+          transcriptMatchedCourses: [],
+          transcriptUnmatchedCourseCodes: [],
         })),
     }),
     {
