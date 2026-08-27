@@ -236,14 +236,19 @@ Completed foundations:
 - Module descriptions seeded from `data/course_catalog.json` where available.
 - Faculty activation controls through a `faculties` table and `/faculties` API endpoints.
 - Frontend NTU Modules page with search, filters, pagination, module detail overlay, and persisted tab/filter state.
+- Backend `POST /curriculum-guide` endpoint parses the CSC AY2023-24 curriculum guide PDF into roadmap-shaped data.
+- Frontend Profile page can upload a curriculum guide PDF and stores the parsed guide in browser state per active Student ID.
+- Frontend Roadmap page now uses the uploaded curriculum guide as the student roadmap source of truth.
+- Roadmap page shows an empty state instead of the static roadmap when the active profile has no uploaded curriculum guide.
+- Roadmap page includes a `Clear roadmap` action that removes the uploaded curriculum guide while keeping transcript results saved.
+- Profile page stores career goal through a dropdown for future MPE/choice-slot recommendation work.
+- Roadmap lock indicators now handle uploaded curriculum prerequisite text, including text-only requirements such as `Year 4 standing`.
 
 Current next step:
 
 - Continue from `Progress.md`.
-- Update the roadmap/profile flow so uploaded curriculum guides become the source of truth for student roadmap display.
-- Add curriculum guide upload and parsing before building recommendation logic.
-- Stop showing the static roadmap when the active profile has no uploaded curriculum guide.
-- Add career goal input to the Profile page so the future MPE/choice-slot recommender has a student goal to use.
+- Improve roadmap eligibility for text-only academic-standing requirements.
+- Use `profile.yearOfStudy` to unlock requirements like `Year 4 standing` when the active profile is in Year 4 or above.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 
