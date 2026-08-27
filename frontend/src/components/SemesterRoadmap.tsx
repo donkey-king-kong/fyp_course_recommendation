@@ -118,6 +118,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
   )
 
   const connectedCourseIds = new Set<string>()
+  const courseCodeById = new Map(courses.map((course) => [course.id, course.courseCode]))
 
   // When hovering a course, keep that course and its direct prerequisite links visually active
   if (hoveredCourseId) {
@@ -324,7 +325,10 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                       <p>{course.title}</p>
                       {eligibility.status === 'locked' && (
                         <p className="missing-prerequisites">
-                          Missing: {eligibility.missingPrerequisites.join(', ')}
+                          Missing:{' '}
+                          {eligibility.missingPrerequisites
+                            .map((courseId) => courseCodeById.get(courseId) ?? courseId)
+                            .join(', ')}
                         </p>
                       )}
                       <div className="semester-course-card-bottom">
