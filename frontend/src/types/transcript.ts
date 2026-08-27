@@ -8,6 +8,9 @@ export interface TranscriptCourse {
 }
 
 export interface TranscriptUploadResponse {
+  // Roadmap-matched completed courses used to tick checkboxes.
   completed_courses: TranscriptCourse[]
+  // All completed transcript rows, including modules that are not in the roadmap.
+  completed_transcript_course_count: number
   unmatched_course_codes: string[]
 }

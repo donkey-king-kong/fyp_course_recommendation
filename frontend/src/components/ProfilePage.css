@@ -179,12 +179,30 @@
   letter-spacing: 0.05em;
 }
 
-.stat-hint {
-  color: #94a3b8;
-  font-size: 0.85rem;
-  margin: 0;
-  max-width: 20rem;
-  line-height: 1.5;
+.transcript-stat-card {
+  background: rgba(56, 189, 248, 0.14);
+  border-color: rgba(56, 189, 248, 0.32);
+}
+
+.transcript-stat-card strong {
+  color: #38bdf8;
+}
+
+.transcript-stat-card span {
+  color: #bae6fd;
+}
+
+.unmatched-stat-card {
+  background: rgba(251, 191, 36, 0.14);
+  border-color: rgba(251, 191, 36, 0.34);
+}
+
+.unmatched-stat-card strong {
+  color: #fbbf24;
+}
+
+.unmatched-stat-card span {
+  color: #fde68a;
 }
 
 /* Light Theme overrides */
@@ -198,8 +216,7 @@
   color: #263238;
 }
 
-.app-shell[data-theme='light'] .profile-header p,
-.app-shell[data-theme='light'] .stat-hint {
+.app-shell[data-theme='light'] .profile-header p {
   color: #6b5f54;
 }
 
@@ -266,6 +283,32 @@
 
 .app-shell[data-theme='light'] .stat-card span {
   color: #047857;
+}
+
+.app-shell[data-theme='light'] .transcript-stat-card {
+  background: rgba(14, 165, 233, 0.08);
+  border-color: rgba(14, 165, 233, 0.36);
+}
+
+.app-shell[data-theme='light'] .transcript-stat-card strong {
+  color: #0284c7;
+}
+
+.app-shell[data-theme='light'] .transcript-stat-card span {
+  color: #0369a1;
+}
+
+.app-shell[data-theme='light'] .unmatched-stat-card {
+  background: rgba(217, 119, 6, 0.08);
+  border-color: rgba(217, 119, 6, 0.36);
+}
+
+.app-shell[data-theme='light'] .unmatched-stat-card strong {
+  color: #b45309;
+}
+
+.app-shell[data-theme='light'] .unmatched-stat-card span {
+  color: #92400e;
 }
 
 @media (max-width: 640px) {

@@ -205,13 +205,15 @@ Completed foundations:
 
 - FastAPI backend with `GET /health`.
 - Backend router, schema, and service structure.
-- Static CSC roadmap data in `data/csc_roadmap.json`.
+- Static CSC roadmap data in `data/test_csc_roadmap.json`.
 - Backend `GET /roadmap` endpoint.
 - Minimal Vite React TypeScript frontend.
 - Frontend API call to `GET /roadmap`.
 - Semester roadmap UI with course cards, prerequisite arrows, search, and completed-course state.
 - Browser-side student login/profile state using Zustand and `localStorage`.
 - Transcript upload endpoint and frontend upload UI for marking completed roadmap courses.
+- Transcript parser handles two-column transcript layouts and treats `EX` and `TC` as completed.
+- Profile page shows separate counts for completed roadmap courses, completed transcript modules, and unmatched transcript modules.
 - PostgreSQL module catalog data seeded from static module JSON files.
 - Backend module catalog API with `GET /modules`, `GET /modules/filters`, and `GET /modules/{code}`.
 - Module descriptions seeded from `data/course_catalog.json` where available.

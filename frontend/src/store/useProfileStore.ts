@@ -12,7 +12,12 @@ export interface StudentProfile {
 
 interface SavedStudentProfile {
   profile: StudentProfile
+  // Roadmap course IDs that should appear checked in the roadmap UI.
   completedCourseIds: string[]
+  // Last uploaded transcript's completed module count, including non-roadmap modules.
+  transcriptCompletedCourseCount: number
+  // Last uploaded transcript's completed module count that did not match the roadmap.
+  transcriptUnmatchedCourseCount: number
 }
 
 // Reuse these defaults before anyone logs in and after logout
@@ -27,15 +32,26 @@ interface ProfileState {
   activeStudentId: string
   profilesByStudentId: Record<string, SavedStudentProfile>
   profile: StudentProfile
+  // Matched roadmap course IDs only; this drives roadmap checkboxes.
   completedCourseIds: string[]
+  // Parsed completed transcript rows, including rows that do not exist in the roadmap.
+  transcriptCompletedCourseCount: number
+  // Completed transcript rows that were parsed but not found in the current roadmap.
+  transcriptUnmatchedCourseCount: number
   // Activate an existing browser-saved profile, or create one for a new Student ID
   loginWithStudentId: (studentId: string) => void
   // Merge one or more profile fields into the existing profile
   updateProfile: (updates: Partial<StudentProfile>) => void
   // Used by roadmap checkboxes to add/remove one completed course
   toggleCourseCompletion: (courseId: string) => void
-  // Used later by transcript upload to replace completed courses in bulk
+  // Used by roadmap actions to replace completed courses without changing transcript stats
   setCompletedCourses: (courseIds: string[]) => void
+  // Used by transcript upload to replace completed courses and save transcript stats
+  setTranscriptResults: (
+    courseIds: string[],
+    transcriptCompletedCourseCount: number,
+    transcriptUnmatchedCourseCount: number,
+  ) => void
   // Used by logout to leave the active session while keeping saved browser profiles.
   logout: () => void
 }
@@ -55,11 +71,13 @@ function createStudentProfile(studentId: string): StudentProfile {
 }
 
 // Create the full browser-saved record for one Student ID
-// It includes both profile details and roadmap completion state
+// It includes profile details, roadmap completion state, and transcript upload stats.
 function createSavedStudentProfile(studentId: string): SavedStudentProfile {
   return {
     profile: createStudentProfile(studentId),
     completedCourseIds: [],
+    transcriptCompletedCourseCount: 0,
+    transcriptUnmatchedCourseCount: 0,
   }
 }
 
@@ -71,6 +89,8 @@ export const useProfileStore = create<ProfileState>()(
       profilesByStudentId: {},
       profile: DEFAULT_PROFILE,
       completedCourseIds: [],
+      transcriptCompletedCourseCount: 0,
+      transcriptUnmatchedCourseCount: 0,
 
       loginWithStudentId: (studentId) =>
         set((state) => {
@@ -88,6 +108,8 @@ export const useProfileStore = create<ProfileState>()(
             activeStudentId: normalizedStudentId,
             profile: activeProfile.profile,
             completedCourseIds: activeProfile.completedCourseIds,
+            transcriptCompletedCourseCount: activeProfile.transcriptCompletedCourseCount ?? 0,
+            transcriptUnmatchedCourseCount: activeProfile.transcriptUnmatchedCourseCount ?? 0,
             // Store the active profile back into the map so it persists under this Student ID
             profilesByStudentId: {
               ...state.profilesByStudentId,
@@ -117,6 +139,8 @@ export const useProfileStore = create<ProfileState>()(
             nextProfilesByStudentId[nextProfile.studentId] = {
               profile: nextProfile,
               completedCourseIds: state.completedCourseIds,
+              transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+              transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
             }
           }
 
@@ -142,12 +166,14 @@ export const useProfileStore = create<ProfileState>()(
                   [state.activeStudentId]: {
                     profile: state.profile,
                     completedCourseIds: nextCompletedCourseIds,
+                    transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                    transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                   },
                 }
               : state.profilesByStudentId,
           }
         }),
-        
+
       setCompletedCourses: (courseIds) =>
         set((state) => ({
           completedCourseIds: courseIds,
@@ -157,6 +183,26 @@ export const useProfileStore = create<ProfileState>()(
                 [state.activeStudentId]: {
                   profile: state.profile,
                   completedCourseIds: courseIds,
+                  transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                  transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
+                },
+              }
+            : state.profilesByStudentId,
+        })),
+        
+      setTranscriptResults: (courseIds, transcriptCompletedCourseCount, transcriptUnmatchedCourseCount) =>
+        set((state) => ({
+          completedCourseIds: courseIds,
+          transcriptCompletedCourseCount,
+          transcriptUnmatchedCourseCount,
+          profilesByStudentId: state.activeStudentId
+            ? {
+                ...state.profilesByStudentId,
+                [state.activeStudentId]: {
+                  profile: state.profile,
+                  completedCourseIds: courseIds,
+                  transcriptCompletedCourseCount,
+                  transcriptUnmatchedCourseCount,
                 },
               }
             : state.profilesByStudentId,
@@ -167,6 +213,8 @@ export const useProfileStore = create<ProfileState>()(
           activeStudentId: '',
           profile: DEFAULT_PROFILE,
           completedCourseIds: [],
+          transcriptCompletedCourseCount: 0,
+          transcriptUnmatchedCourseCount: 0,
         })),
     }),
     {

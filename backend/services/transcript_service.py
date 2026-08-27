@@ -1,6 +1,6 @@
 import logging
 import re
-from typing import Any
+from typing import Any, Optional
 
 import fitz
 
@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 COURSE_CODE_PATTERN = re.compile(r"\b[A-Z]{2,4}\d{4}\b")
 
 # Grades in this set should be treated as completed modules
-# EX = exempted but counts as completed
+# EX = exempted and TC = transfer credit; both count as completed
 COMPLETED_GRADES = {
     "A+",
     "A",
@@ -27,6 +27,7 @@ COMPLETED_GRADES = {
     "D+",
     "D",
     "EX",
+    "TC",
 }
 
 # Fallback pattern for cases where PDF text extraction keeps one whole course row together
@@ -34,7 +35,7 @@ TRANSCRIPT_ROW_PATTERN = re.compile(
     r"^(?P<code>[A-Z]{2,4}\d{4})\s+"
     r"(?P<title>.+?)\s+"
     r"(?P<academic_units>\d+\.\d)\s+"
-    r"(?P<grade>A\+|A-|A|B\+|B-|B|C\+|C-|C|D\+|D|EX)"
+    r"(?P<grade>A\+|A-|A|B\+|B-|B|C\+|C-|C|D\+|D|EX|TC)"
     r"(?:\s+(?P<grade_point>\d+\.\d{2}))?$"
 )
 
@@ -114,8 +115,8 @@ def parse_transcript_rows_from_words(words: list[dict[str, Any]]) -> list[dict[s
         if COURSE_CODE_PATTERN.fullmatch(str(word["text"]).upper())
     ]
 
-    for index, code_word in enumerate(code_words):
-        next_code_word = code_words[index + 1] if index + 1 < len(code_words) else None
+    for code_word in code_words:
+        next_code_word = find_next_code_in_same_column(code_word, code_words)
         page = code_word["page"]
         # Use the current course code and the next course code to estimate row boundaries
         row_y_start = code_word["y0"] - 2
@@ -124,10 +125,13 @@ def parse_transcript_rows_from_words(words: list[dict[str, Any]]) -> list[dict[s
             if next_code_word and next_code_word["page"] == page
             else code_word["y0"] + 24
         )
+        column_x_start, column_x_end = get_course_column_bounds(code_word, code_words)
         row_words = [
             word
             for word in sorted_words
-            if word["page"] == page and row_y_start <= word["y0"] < row_y_end
+            if word["page"] == page
+            and row_y_start <= word["y0"] < row_y_end
+            and column_x_start <= word["x0"] < column_x_end
         ]
 
         # Parse the words within this row into code/title/AU/grade/grade point
@@ -145,6 +149,38 @@ def parse_transcript_rows_from_words(words: list[dict[str, Any]]) -> list[dict[s
         )
 
     return rows
+
+# Finds the next course code below the current code in the same transcript column.
+def find_next_code_in_same_column(
+    code_word: dict[str, Any], code_words: list[dict[str, Any]]
+) -> Optional[dict[str, Any]]:
+    same_column_codes = [
+        word
+        for word in code_words
+        if word["page"] == code_word["page"]
+        and word["y0"] > code_word["y0"]
+        and abs(word["x0"] - code_word["x0"]) < 120
+    ]
+
+    return min(same_column_codes, key=lambda word: word["y0"], default=None)
+
+# Keeps row parsing inside the current left or right transcript table.
+def get_course_column_bounds(
+    code_word: dict[str, Any], code_words: list[dict[str, Any]]
+) -> tuple[float, float]:
+    column_x_start = code_word["x0"] - 10
+    next_column_code = min(
+        (
+            word
+            for word in code_words
+            if word["page"] == code_word["page"] and word["x0"] > code_word["x0"] + 120
+        ),
+        key=lambda word: word["x0"],
+        default=None,
+    )
+    column_x_end = next_column_code["x0"] - 10 if next_column_code else float("inf")
+
+    return column_x_start, column_x_end
 
 def parse_course_row_from_words(
     code_word: dict[str, Any], row_words: list[dict[str, Any]]
@@ -222,6 +258,8 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
 
     completed_courses: list[TranscriptCourse] = []
     unmatched_course_codes: list[str] = []
+    # Counts completed transcript rows before roadmap matching, so the UI can show both numbers.
+    completed_transcript_course_count = 0
 
     for transcript_row in transcript_rows:
         course_code = transcript_row["code"]
@@ -232,6 +270,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
             logger.info("Skipping %s because grade %s is not marked completed.", course_code, grade)
             continue
 
+        completed_transcript_course_count += 1
         roadmap_course = roadmap_courses_by_code.get(course_code)
 
         if roadmap_course is None:
@@ -264,5 +303,6 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
 
     return TranscriptUploadResponse(
         completed_courses=completed_courses,
+        completed_transcript_course_count=completed_transcript_course_count,
         unmatched_course_codes=unmatched_course_codes,
     )

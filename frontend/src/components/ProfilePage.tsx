@@ -12,7 +12,9 @@ function ProfilePage() {
 
   // Read completed courses so the profile page can show a simple progress summary
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
-  const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
+  const transcriptCompletedCourseCount = useProfileStore((state) => state.transcriptCompletedCourseCount)
+  const transcriptUnmatchedCourseCount = useProfileStore((state) => state.transcriptUnmatchedCourseCount)
+  const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
   const [selectedTranscript, setSelectedTranscript] = useState<File | null>(null)
   const [isUploading, setIsUploading] = useState(false)
   const [uploadMessage, setUploadMessage] = useState('')
@@ -45,10 +47,14 @@ function ProfilePage() {
         return
       }
 
-      // Save these IDs so the roadmap checkboxes become checked for the particular Student ID
-      setCompletedCourses(completedCourseIdsFromTranscript)
+      // Save both roadmap matches and the wider transcript count for the active Student ID.
+      setTranscriptResults(
+        completedCourseIdsFromTranscript,
+        result.completed_transcript_course_count,
+        result.unmatched_course_codes.length,
+      )
       setUploadMessage(
-        `Found ${completedCourseIdsFromTranscript.length} completed roadmap course(s).`,
+        `Parsed ${result.completed_transcript_course_count} completed module(s). ${completedCourseIdsFromTranscript.length} matched the roadmap. ${result.unmatched_course_codes.length} unmatched.`,
       )
     } catch {
       // Keeping error message simple because failures can come from network or parsing
@@ -159,13 +165,19 @@ function ProfilePage() {
 
       {/* Count is shared with the Roadmap checkboxes through the same global store */}
       <div className="profile-stats">
+        {/* Roadmap count and transcript count are separate because not every cleared module is in the roadmap. */}
         <div className="stat-card">
           <strong>{completedCourseIds.length}</strong>
-          <span>Completed Courses</span>
+          <span>Completed Roadmap Courses</span>
         </div>
-        <p className="stat-hint">
-          Check off courses in the Roadmap to mark them as completed.
-        </p>
+        <div className="stat-card transcript-stat-card">
+          <strong>{transcriptCompletedCourseCount}</strong>
+          <span>Completed Transcript Modules</span>
+        </div>
+        <div className="stat-card unmatched-stat-card">
+          <strong>{transcriptUnmatchedCourseCount}</strong>
+          <span>Unmatched Transcript Modules</span>
+        </div>
       </div>
     </section>
   )
