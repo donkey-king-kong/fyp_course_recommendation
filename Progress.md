@@ -518,3 +518,36 @@ Status: Implemented locally
 - No frontend admin UI for changing faculty active status yet.
 - No authentication or authorization around the faculty management endpoints yet.
 - No database migration tool yet; local table creation still uses `Base.metadata.create_all`.
+
+## Curriculum Guide Upload Backend
+
+Status: Implemented locally
+
+### Completed
+
+- Renamed the current branch to `curriculum-guide-upload` because the work now includes implementation, not only documentation.
+- Updated `AGENTS.md` so future work treats uploaded curriculum guides as the source of truth for personalised roadmap display.
+- Added the sample CSC AY2023-24 curriculum guide PDF at `data/ccds_ay23-24_csc.pdf`.
+- Added backend curriculum guide response schemas for parsed courses, semesters, prerequisite edges, and the full parsed guide response.
+- Added a backend curriculum parser service that extracts positioned PDF words with PyMuPDF.
+- Added first-pass parsing for the current CSC curriculum guide format by detecting semester headers, course rows, course titles, academic units, prerequisites, and choice slots.
+- Marks `SC3xxx`, `SC4xxx`, `BDE`, and rows with choice wording as choice slots for future MPE/elective recommendation work.
+- Added `POST /curriculum-guide` to accept a curriculum guide PDF and return roadmap-shaped data.
+- Registered the curriculum guide router in the FastAPI app.
+
+### Verified
+
+- Backend compile check passes.
+- Direct parser check returns `Computer Science`, `AY2023-24`, `135` total AU, 8 semesters, 44 roadmap rows, and 19 prerequisite edges from `data/ccds_ay23-24_csc.pdf`.
+- HTTP check for `POST /curriculum-guide` returns `200 OK` with parsed curriculum JSON.
+- Frontend and backend diagnostics return no issues.
+
+### Not Included
+
+- No frontend curriculum guide upload UI yet.
+- No Roadmap page changes yet.
+- No browser profile persistence for parsed curriculum guides yet.
+- No transcript-to-uploaded-curriculum rematching yet.
+- No MPE/choice-slot recommendation scoring yet.
+- No universal parser for every NTU curriculum guide layout.
+- No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
