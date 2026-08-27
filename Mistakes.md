@@ -46,6 +46,20 @@ Moved function explanations above the functions, removed the malformed comment t
 Lesson:
 For this project, keep explanatory comments above functions rather than inside them unless the comment explains a specific non-obvious line. Use exactly one empty line between top-level function/comment blocks in project files. Do not leave two consecutive empty lines between imports, constants, comments, functions, or classes.
 
+### 2026-08-27
+
+Mistake:
+Repeatedly created PR titles that did not follow the required Conventional Commit-style format.
+
+What happened:
+The PR title was created as `Add curriculum guide upload flow` instead of using the expected typed format such as `feat: add curriculum guide upload flow`. This repeated the earlier PR-formatting issue where submitted PR text did not match the project's preferred Git/PR conventions.
+
+Correction:
+Update the PR title to `feat: add curriculum guide upload flow` and record this rule explicitly so future PR titles are checked before submission.
+
+Lesson:
+Before creating or updating any PR, verify the PR title follows the same Conventional Commit-style format as commits: `<type>: <short lowercase summary>`. Examples: `feat: add curriculum guide upload flow`, `fix: handle empty transcript uploads`, `docs: update architecture notes`. Do not use untitled sentence case such as `Add curriculum guide upload flow`.
+
 ## Entry Format
 
 ```text
