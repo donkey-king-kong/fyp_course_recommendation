@@ -74,6 +74,20 @@ Assign PR #20 to the current GitHub user. For future PRs, always assign the PR t
 Lesson:
 Whenever creating a PR with `gh pr create`, also assign it to the user. Use `gh pr edit <number> --add-assignee @me` after PR creation unless the user explicitly asks for a different assignee.
 
+### 2026-08-27
+
+Mistake:
+Created a PR description that did not follow `PR_template.md`.
+
+What happened:
+PR #20 was created with custom sections named `Summary`, `Verification`, and `Not included`. The repository template requires the sections `Description`, `Why This Change Is Needed`, `How To Test`, `Expected Result`, and `Checklist`.
+
+Correction:
+Update PR #20 so its description follows `PR_template.md` exactly, including the required checklist items.
+
+Lesson:
+Before creating or updating a PR description, read `PR_template.md` and use its exact section headings. Do not invent alternate headings, even if the content is similar. Use the template format first, then fill in project-specific details.
+
 ## Entry Format
 
 ```text
