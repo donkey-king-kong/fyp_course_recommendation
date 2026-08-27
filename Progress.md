@@ -324,10 +324,13 @@ Status: Implemented locally
 - Added a backend `POST /transcript` endpoint that accepts official PDF transcripts.
 - Added PyMuPDF for PDF text extraction.
 - Added transcript row parsing based on `Code`, `Course`, `AU`, `Grade`, and `Grade Point`.
-- Treats `EX` as completed, like letter-graded passed modules.
+- Treats `EX` and `TC` as completed, like letter-graded passed modules.
+- Improved transcript parsing for two-column transcript layouts where course titles can wrap across lines.
 - Filters parsed transcript courses against the static CSC roadmap.
+- Returns both roadmap-matched completed courses and the total number of completed modules parsed from the transcript.
 - Added frontend transcript upload UI on the Profile page.
 - Updates completed roadmap courses in the active browser profile after upload.
+- Shows separate Profile stats for completed roadmap courses, completed transcript modules, and unmatched transcript modules.
 
 ### Verified
 
@@ -335,6 +338,8 @@ Status: Implemented locally
 - Transcript extraction service parses generated PDF text rows.
 - `POST /transcript` returns completed roadmap courses from a sample PDF.
 - `EX` grades are returned as completed courses with no grade point.
+- `TC` grades are returned as completed transcript modules.
+- Wrapped rows such as `SC1015` in a two-column transcript are parsed correctly.
 - Frontend lint passes.
 - Frontend build passes.
 
@@ -343,6 +348,27 @@ Status: Implemented locally
 - No OCR for scanned/image-only PDFs yet.
 - No backend database persistence yet.
 - No recommendation logic yet.
+
+## Roadmap Data Path Update
+
+Status: Implemented locally
+
+### Completed
+
+- Updated the static roadmap service to read `data/test_csc_roadmap.json`.
+- Kept the existing `GET /roadmap` endpoint contract unchanged.
+- Preserved the current static-roadmap approach while recommendation logic is not implemented yet.
+
+### Verified
+
+- Backend compile check passes.
+- Roadmap service loads 29 nodes and 22 edges from `data/test_csc_roadmap.json`.
+
+### Not Included
+
+- No personalized roadmap generation yet.
+- No recommendation logic yet.
+- No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
 
 ## Current Handoff
 
