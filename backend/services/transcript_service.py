@@ -258,6 +258,8 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
 
     completed_courses: list[TranscriptCourse] = []
     unmatched_course_codes: list[str] = []
+    # Counts completed transcript rows before roadmap matching, so the UI can show both numbers.
+    completed_transcript_course_count = 0
 
     for transcript_row in transcript_rows:
         course_code = transcript_row["code"]
@@ -268,6 +270,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
             logger.info("Skipping %s because grade %s is not marked completed.", course_code, grade)
             continue
 
+        completed_transcript_course_count += 1
         roadmap_course = roadmap_courses_by_code.get(course_code)
 
         if roadmap_course is None:
@@ -300,5 +303,6 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
 
     return TranscriptUploadResponse(
         completed_courses=completed_courses,
+        completed_transcript_course_count=completed_transcript_course_count,
         unmatched_course_codes=unmatched_course_codes,
     )
