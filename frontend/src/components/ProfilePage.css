@@ -184,19 +184,6 @@
   border-color: rgba(56, 189, 248, 0.32);
 }
 
-.curriculum-stat-card {
-  background: rgba(168, 85, 247, 0.14);
-  border-color: rgba(168, 85, 247, 0.34);
-}
-
-.curriculum-stat-card strong {
-  color: #c084fc;
-}
-
-.curriculum-stat-card span {
-  color: #ddd6fe;
-}
-
 .transcript-stat-card strong {
   color: #38bdf8;
 }
@@ -418,19 +405,6 @@
 
 .app-shell[data-theme='light'] .transcript-stat-card span {
   color: #0369a1;
-}
-
-.app-shell[data-theme='light'] .curriculum-stat-card {
-  background: rgba(124, 58, 237, 0.08);
-  border-color: rgba(124, 58, 237, 0.32);
-}
-
-.app-shell[data-theme='light'] .curriculum-stat-card strong {
-  color: #7c3aed;
-}
-
-.app-shell[data-theme='light'] .curriculum-stat-card span {
-  color: #5b21b6;
 }
 
 .app-shell[data-theme='light'] .unmatched-stat-card {

@@ -269,17 +269,13 @@ function ProfilePage() {
           <strong>{completedCourseIds.length}</strong>
           <span>Completed Roadmap Courses</span>
         </div>
-        <div className="stat-card curriculum-stat-card">
-          <strong>{curriculumGuide?.nodes.length ?? 0}</strong>
-          <span>Curriculum Rows</span>
-        </div>
         <div className="stat-card transcript-stat-card">
           <strong>{transcriptCompletedCourseCount}</strong>
           <span>Completed Transcript Modules</span>
         </div>
         <div className="stat-card unmatched-stat-card">
           <strong>{transcriptUnmatchedCourseCount}</strong>
-          <span>Unmatched Transcript Modules</span>
+          <span>Transcript Modules Outside Roadmap</span>
         </div>
       </div>
 
@@ -292,7 +288,7 @@ function ProfilePage() {
 
           <div className="transcript-results-grid">
             <div className="transcript-result-list">
-              <h4>Matched Roadmap Courses</h4>
+              <h4>Transcript Modules Found In Roadmap</h4>
               {!hasCurriculumGuide ? (
                 <p>Upload a curriculum guide to match transcript modules to your roadmap.</p>
               ) : transcriptMatchedCourses.length > 0 ? (
@@ -305,26 +301,36 @@ function ProfilePage() {
                   ))}
                 </ul>
               ) : (
-                <p>No completed transcript modules matched the current roadmap.</p>
+                <p>No completed transcript modules were found in the uploaded curriculum guide.</p>
               )}
             </div>
 
             <div className="transcript-result-list">
-              <h4>Unmatched Transcript Modules</h4>
+              <h4>Transcript Modules Outside Roadmap</h4>
               {!hasCurriculumGuide ? (
+                <>
+                  <p>
+                    These are completed transcript modules waiting for a curriculum guide match.
+                  </p>
                 <div className="unmatched-code-list">
                   {transcriptCompletedCourseCodes.map((courseCode) => (
                     <span key={courseCode}>{courseCode}</span>
                   ))}
                 </div>
+                </>
               ) : transcriptUnmatchedCourseCodes.length > 0 ? (
+                <>
+                  <p>
+                    These completed modules were not found in the uploaded curriculum guide.
+                  </p>
                 <div className="unmatched-code-list">
                   {transcriptUnmatchedCourseCodes.map((courseCode) => (
                     <span key={courseCode}>{courseCode}</span>
                   ))}
                 </div>
+                </>
               ) : (
-                <p>All completed transcript modules matched the current roadmap.</p>
+                <p>All completed transcript modules were found in the uploaded curriculum guide.</p>
               )}
             </div>
           </div>
