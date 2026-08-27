@@ -372,6 +372,30 @@ Status: Implemented locally
 - No recommendation logic yet.
 - No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
 
+## Roadmap Locked Prerequisite Indicators
+
+Status: Implemented locally
+
+### Completed
+
+- Added frontend-only roadmap eligibility logic using completed roadmap course IDs and each course's prerequisite list.
+- Visually marks only prerequisite-blocked roadmap courses instead of adding extra labels to completed or available courses.
+- Shows a `Locked` chip and a `Missing: ...` line for courses with incomplete prerequisites.
+- Uses a muted grey locked-course style in light mode and a clearer muted red locked-course style in dark mode.
+- Keeps locked courses manually checkable for now so transfer credits, exemptions, exchange modules, and special approvals are still possible.
+
+### Verified
+
+- Frontend diagnostics return no issues.
+- Frontend build passes.
+
+### Not Included
+
+- No backend changes.
+- No recommendation logic.
+- No hard blocking of locked course checkboxes.
+- No Neo4j, ChromaDB, LangGraph, or OpenAI integration.
+
 ## Current Handoff
 
 Status: Ready for next work
@@ -384,13 +408,14 @@ Status: Ready for next work
 - Frontend includes navigation tabs for Roadmap and Profile pages.
 - Roadmap courses can be toggled as completed, syncing with the global profile store.
 - Roadmap includes a "Clear completed" action to uncheck all completed courses for the active profile.
+- Roadmap visually marks prerequisite-blocked courses with locked styling and missing prerequisite codes.
 - Profile page can upload an official PDF transcript and auto-mark completed roadmap courses.
 - Profile page shows separate counts for matched roadmap courses, completed transcript modules, and unmatched transcript modules.
 - Profile page lists the latest matched roadmap courses and unmatched transcript module codes from transcript upload.
 
 ### Next Recommended Work
 
-- Review and merge the transcript result details branch, or
+- Review and merge the roadmap locked-prerequisite indicator branch, or
 - Continue polishing the roadmap/profile flow before starting chat or recommendation work.
 
 ### Onboarding For Next Session

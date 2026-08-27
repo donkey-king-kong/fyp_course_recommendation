@@ -210,6 +210,7 @@ Completed foundations:
 - Minimal Vite React TypeScript frontend.
 - Frontend API call to `GET /roadmap`.
 - Semester roadmap UI with course cards, prerequisite arrows, search, and completed-course state.
+- Roadmap visually marks prerequisite-blocked courses with locked styling and missing prerequisite codes.
 - Browser-side student login/profile state using Zustand and `localStorage`.
 - Transcript upload endpoint and frontend upload UI for marking completed roadmap courses.
 - Transcript parser handles two-column transcript layouts and treats `EX` and `TC` as completed.
@@ -224,7 +225,7 @@ Completed foundations:
 Current next step:
 
 - Continue from `Progress.md`.
-- The current branch work is for transcript upload result details on the Profile page.
+- The current branch work is for roadmap locked-prerequisite indicators.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or recommendation logic yet.
 
