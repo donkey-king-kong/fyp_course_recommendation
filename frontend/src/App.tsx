@@ -40,7 +40,9 @@ function mapCurriculumGuideToRoadmap(curriculumGuide: CurriculumGuideResponse): 
       prerequisites: curriculumGuide.edges
         .filter((edge) => edge.target === course.id)
         .map((edge) => edge.source),
+      prerequisiteText: course.prerequisiteText,
       isCompleted: false,
+      isChoiceSlot: course.isChoiceSlot,
       jobSkills: [],
     })),
     edges: curriculumGuide.edges,

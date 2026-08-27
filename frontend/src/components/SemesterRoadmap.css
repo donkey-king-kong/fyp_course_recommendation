@@ -30,18 +30,33 @@
   gap: 0.9rem;
 }
 
+.clear-roadmap-button,
 .clear-completed-button {
   padding: 0.45rem 0.75rem;
-  border: 1px solid rgba(251, 113, 133, 0.35);
   border-radius: 999px;
-  color: #fda4af;
   font: inherit;
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.clear-roadmap-button {
+  border: 1px solid rgba(15, 124, 138, 0.38);
+  color: #0f7c8a;
+  background: rgba(15, 124, 138, 0.08);
+}
+
+.clear-completed-button {
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  color: #fda4af;
   background: rgba(244, 63, 94, 0.1);
+}
+
+.clear-roadmap-button:hover {
+  border-color: rgba(15, 124, 138, 0.58);
+  background: rgba(15, 124, 138, 0.14);
 }
 
 .clear-completed-button:hover:not(:disabled) {
@@ -433,9 +448,20 @@
   background: rgba(244, 63, 94, 0.1);
 }
 
+.app-shell[data-theme='dark'] .clear-roadmap-button {
+  border-color: rgba(45, 212, 191, 0.42);
+  color: #67e8f9;
+  background: rgba(14, 116, 144, 0.16);
+}
+
 .app-shell[data-theme='dark'] .clear-completed-button:hover:not(:disabled) {
   border-color: rgba(251, 113, 133, 0.65);
   background: rgba(244, 63, 94, 0.18);
+}
+
+.app-shell[data-theme='dark'] .clear-roadmap-button:hover {
+  border-color: rgba(45, 212, 191, 0.7);
+  background: rgba(14, 116, 144, 0.26);
 }
 
 .app-shell[data-theme='dark'] .semester-roadmap {

@@ -7,7 +7,9 @@ export interface CourseNode {
   semester: number
   academicUnits: number
   prerequisites: string[]
+  prerequisiteText?: string
   isCompleted: boolean
+  isChoiceSlot?: boolean
   jobSkills: string[]
 }
 

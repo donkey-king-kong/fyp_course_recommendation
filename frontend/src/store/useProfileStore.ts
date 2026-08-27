@@ -19,22 +19,14 @@ export interface TranscriptMatchedCourse {
 
 interface SavedStudentProfile {
   profile: StudentProfile
-  // Roadmap course IDs that should appear checked in the roadmap UI.
-  completedCourseIds: string[]
-  // Latest uploaded curriculum guide parsed into roadmap-shaped data.
-  curriculumGuide: CurriculumGuideResponse | null
-  // Original filename of the latest uploaded curriculum guide.
-  curriculumGuideFileName: string
-  // Completed module codes parsed from the latest uploaded transcript.
-  transcriptCompletedCourseCodes: string[]
-  // Last uploaded transcript's completed module count, including non-roadmap modules.
-  transcriptCompletedCourseCount: number
-  // Last uploaded transcript's completed module count that did not match the roadmap.
-  transcriptUnmatchedCourseCount: number
-  // Last uploaded transcript's completed courses that matched the roadmap.
-  transcriptMatchedCourses: TranscriptMatchedCourse[]
-  // Last uploaded transcript's completed course codes that did not match the roadmap.
-  transcriptUnmatchedCourseCodes: string[]
+  completedCourseIds: string[] // Checked roadmap course IDs.
+  curriculumGuide: CurriculumGuideResponse | null // Uploaded roadmap data.
+  curriculumGuideFileName: string // Uploaded guide filename.
+  transcriptCompletedCourseCodes: string[] // All completed transcript codes.
+  transcriptCompletedCourseCount: number // Total completed transcript modules.
+  transcriptUnmatchedCourseCount: number // Transcript modules outside roadmap.
+  transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
+  transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
 }
 
 // Reuse these defaults before anyone logs in and after logout
@@ -50,39 +42,25 @@ interface ProfileState {
   activeStudentId: string
   profilesByStudentId: Record<string, SavedStudentProfile>
   profile: StudentProfile
-  // Matched roadmap course IDs only; this drives roadmap checkboxes.
-  completedCourseIds: string[]
-  // Latest uploaded curriculum guide for the active profile.
-  curriculumGuide: CurriculumGuideResponse | null
-  // Original filename of the latest uploaded curriculum guide.
-  curriculumGuideFileName: string
-  // Completed module codes parsed from the latest uploaded transcript.
-  transcriptCompletedCourseCodes: string[]
-  // Parsed completed transcript rows, including rows that do not exist in the roadmap.
-  transcriptCompletedCourseCount: number
-  // Completed transcript rows that were parsed but not found in the current roadmap.
-  transcriptUnmatchedCourseCount: number
-  // Matched course details from the latest uploaded transcript.
-  transcriptMatchedCourses: TranscriptMatchedCourse[]
-  // Unmatched course codes from the latest uploaded transcript.
-  transcriptUnmatchedCourseCodes: string[]
-  // Activate an existing browser-saved profile, or create one for a new Student ID
-  loginWithStudentId: (studentId: string) => void
-  // Merge one or more profile fields into the existing profile
-  updateProfile: (updates: Partial<StudentProfile>) => void
-  // Used by roadmap checkboxes to add/remove one completed course
-  toggleCourseCompletion: (courseId: string) => void
-  // Used by roadmap actions to replace completed courses without changing transcript stats
-  setCompletedCourses: (courseIds: string[]) => void
-  // Used by curriculum guide upload to replace the active profile's parsed roadmap.
-  setCurriculumGuide: (curriculumGuide: CurriculumGuideResponse, fileName: string) => void
-  // Used by transcript upload to replace completed courses and save transcript stats
+  completedCourseIds: string[] // Checked roadmap course IDs.
+  curriculumGuide: CurriculumGuideResponse | null // Active uploaded roadmap.
+  curriculumGuideFileName: string // Active guide filename.
+  transcriptCompletedCourseCodes: string[] // All completed transcript codes.
+  transcriptCompletedCourseCount: number // Total completed transcript modules.
+  transcriptUnmatchedCourseCount: number // Transcript modules outside roadmap.
+  transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
+  transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
+  loginWithStudentId: (studentId: string) => void // Load or create profile.
+  updateProfile: (updates: Partial<StudentProfile>) => void // Save profile fields.
+  toggleCourseCompletion: (courseId: string) => void // Toggle one roadmap checkbox.
+  setCompletedCourses: (courseIds: string[]) => void // Replace checked roadmap IDs.
+  setCurriculumGuide: (curriculumGuide: CurriculumGuideResponse, fileName: string) => void // Save guide.
+  clearCurriculumGuide: () => void // Remove uploaded guide only.
   setTranscriptResults: (
     completedCourseCodes: string[],
     transcriptCompletedCourseCount: number,
-  ) => void
-  // Used by logout to leave the active session while keeping saved browser profiles.
-  logout: () => void
+  ) => void // Save transcript results.
+  logout: () => void // End active browser session.
 }
 
 function normalizeStudentId(studentId: string) {
@@ -337,6 +315,32 @@ export const useProfileStore = create<ProfileState>()(
               : state.profilesByStudentId,
           }
         }),
+
+      clearCurriculumGuide: () =>
+        set((state) => ({
+          curriculumGuide: null,
+          curriculumGuideFileName: '',
+          completedCourseIds: [],
+          transcriptMatchedCourses: [],
+          transcriptUnmatchedCourseCodes: state.transcriptCompletedCourseCodes,
+          transcriptUnmatchedCourseCount: state.transcriptCompletedCourseCodes.length,
+          profilesByStudentId: state.activeStudentId
+            ? {
+                ...state.profilesByStudentId,
+                [state.activeStudentId]: {
+                  profile: state.profile,
+                  completedCourseIds: [],
+                  curriculumGuide: null,
+                  curriculumGuideFileName: '',
+                  transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
+                  transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                  transcriptUnmatchedCourseCount: state.transcriptCompletedCourseCodes.length,
+                  transcriptMatchedCourses: [],
+                  transcriptUnmatchedCourseCodes: state.transcriptCompletedCourseCodes,
+                },
+              }
+            : state.profilesByStudentId,
+        })),
 
       setTranscriptResults: (completedCourseCodes, transcriptCompletedCourseCount) =>
         set((state) => {
