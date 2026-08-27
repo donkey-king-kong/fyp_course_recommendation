@@ -24,6 +24,13 @@ interface ArrowPath {
   isDimmed: boolean
 }
 
+type CourseEligibilityStatus = 'completed' | 'available' | 'locked'
+
+interface CourseEligibility {
+  status: CourseEligibilityStatus
+  missingPrerequisites: string[]
+}
+
 const YEAR_ACCENTS = ['#f59e0b', '#ec4899', '#8b5cf6', '#22d3ee']
 
 // Turn course type text into a CSS class name like "Common-Core" to "common-core"
@@ -52,6 +59,32 @@ function groupCoursesBySemester(courses: CourseNode[]) {
       },
     ]
   }, [])
+}
+
+// A course is available when every listed prerequisite is already completed.
+function getCourseEligibility(course: CourseNode, completedCourseIds: string[]): CourseEligibility {
+  if (completedCourseIds.includes(course.id)) {
+    return {
+      status: 'completed',
+      missingPrerequisites: [],
+    }
+  }
+
+  const missingPrerequisites = course.prerequisites.filter(
+    (prerequisiteId) => !completedCourseIds.includes(prerequisiteId),
+  )
+
+  if (missingPrerequisites.length === 0) {
+    return {
+      status: 'available',
+      missingPrerequisites: [],
+    }
+  }
+
+  return {
+    status: 'locked',
+    missingPrerequisites,
+  }
 }
 
 // Show curriculum rows, course cards, prerequisite arrows, and hover emphasis
@@ -258,6 +291,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                   const isConnected = connectedCourseIds.has(course.id)
                   const isDimmed = Boolean(hoveredCourseId) && !isConnected
                   const isCompleted = completedCourseIds.includes(course.id)
+                  const eligibility = getCourseEligibility(course, completedCourseIds)
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -271,6 +305,7 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                         isConnected ? 'semester-course-card-connected' : '',
                         isDimmed ? 'semester-course-card-dimmed' : '',
                         isCompleted ? 'semester-course-card-completed' : '',
+                        eligibility.status === 'locked' ? 'semester-course-card-locked' : '',
                       ]
                         .filter(Boolean)
                         .join(' ')}
@@ -279,9 +314,19 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                     >
                       <div className="semester-course-card-top">
                         <strong>{course.courseCode}</strong>
-                        <span>{course.academicUnits}AU</span>
+                        <div className="semester-course-card-meta">
+                          {eligibility.status === 'locked' && (
+                            <span className="course-lock-badge">Locked</span>
+                          )}
+                          <span className="course-au">{course.academicUnits}AU</span>
+                        </div>
                       </div>
                       <p>{course.title}</p>
+                      {eligibility.status === 'locked' && (
+                        <p className="missing-prerequisites">
+                          Missing: {eligibility.missingPrerequisites.join(', ')}
+                        </p>
+                      )}
                       <div className="semester-course-card-bottom">
                         <span
                           className={`semester-course-type ${getCourseTypeClass(

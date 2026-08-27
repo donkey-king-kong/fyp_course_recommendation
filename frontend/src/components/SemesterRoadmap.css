@@ -214,6 +214,16 @@
   background: rgba(20, 83, 45, 0.36);
 }
 
+.semester-course-card-locked {
+  border-color: rgba(148, 163, 184, 0.34);
+  background:
+    linear-gradient(135deg, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.16)),
+    rgba(15, 23, 42, 0.68);
+  box-shadow:
+    inset 0 0 0 999px rgba(15, 23, 42, 0.16),
+    0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
 .semester-course-card-top {
   display: flex;
   justify-content: space-between;
@@ -225,10 +235,30 @@
   font-size: 0.82rem;
 }
 
-.semester-course-card-top span {
+.semester-course-card-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.course-au {
   color: var(--year-accent);
   font-size: 0.72rem;
   font-weight: 800;
+}
+
+.course-lock-badge {
+  padding: 0.2rem 0.44rem;
+  border: 1px solid rgba(148, 163, 184, 0.34);
+  border-radius: 999px;
+  color: #e2e8f0;
+  font-size: 0.52rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  background: rgba(15, 23, 42, 0.5);
+  text-transform: uppercase;
 }
 
 .semester-course-card p {
@@ -236,6 +266,13 @@
   color: #94a3b8;
   font-size: 0.72rem;
   line-height: 1.35;
+}
+
+.semester-course-card .missing-prerequisites {
+  margin-top: -0.35rem;
+  color: #d97706;
+  font-size: 0.66rem;
+  font-weight: 700;
 }
 
 .semester-course-card-bottom {
@@ -347,8 +384,28 @@
   background: rgba(216, 243, 240, 0.88);
 }
 
+.semester-course-card-locked {
+  border-color: rgba(107, 114, 128, 0.3);
+  background:
+    linear-gradient(135deg, rgba(107, 114, 128, 0.11), rgba(255, 248, 237, 0.18)),
+    rgba(255, 248, 237, 0.68);
+  box-shadow:
+    inset 0 0 0 999px rgba(107, 95, 84, 0.08),
+    0 10px 24px rgba(107, 95, 84, 0.1);
+}
+
 .semester-course-card-top strong {
   color: #263238;
+}
+
+.course-lock-badge {
+  border-color: rgba(107, 114, 128, 0.34);
+  color: #475569;
+  background: rgba(255, 255, 255, 0.64);
+}
+
+.semester-course-card .missing-prerequisites {
+  color: #92400e;
 }
 
 .app-shell[data-theme='dark'] .semester-roadmap-section {
@@ -433,6 +490,26 @@
 .app-shell[data-theme='dark'] .semester-course-card-completed {
   border-color: rgba(34, 197, 94, 0.55);
   background: rgba(20, 83, 45, 0.36);
+}
+
+.app-shell[data-theme='dark'] .semester-course-card-locked {
+  border-color: rgba(248, 113, 113, 0.42);
+  background:
+    linear-gradient(135deg, rgba(248, 113, 113, 0.18), rgba(15, 23, 42, 0.2)),
+    rgba(31, 14, 18, 0.8);
+  box-shadow:
+    inset 0 0 0 999px rgba(127, 29, 29, 0.12),
+    0 12px 28px rgba(127, 29, 29, 0.16);
+}
+
+.app-shell[data-theme='dark'] .course-lock-badge {
+  border-color: rgba(252, 165, 165, 0.34);
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.28);
+}
+
+.app-shell[data-theme='dark'] .semester-course-card .missing-prerequisites {
+  color: #fca5a5;
 }
 
 .app-shell[data-theme='dark'] .semester-course-card-top strong {
