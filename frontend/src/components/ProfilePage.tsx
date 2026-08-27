@@ -174,12 +174,18 @@ function ProfilePage() {
 
         <label className="profile-field">
           <span>Career Goal</span>
-          <textarea
+          <select
             value={profile.careerGoal}
             onChange={(e) => updateProfile({ careerGoal: e.target.value })}
-            placeholder="Example: AI engineer, cybersecurity analyst, backend developer"
-            rows={3}
-          />
+          >
+            <option value="">Select a career goal</option>
+            <option value="software-engineer">Software Engineer</option>
+            <option value="ai-ml-engineer">AI / Machine Learning Engineer</option>
+            <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
+            <option value="data-analyst">Data Analyst</option>
+            <option value="backend-engineer">Backend Engineer</option>
+            <option value="cloud-devops-engineer">Cloud / DevOps Engineer</option>
+          </select>
         </label>
       </form>
 

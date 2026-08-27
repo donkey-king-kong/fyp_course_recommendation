@@ -56,8 +56,7 @@
 }
 
 .profile-field input,
-.profile-field select,
-.profile-field textarea {
+.profile-field select {
   padding: 0.75rem 1rem;
   border: 1px solid rgba(56, 189, 248, 0.25);
   border-radius: 0.5rem;
@@ -69,16 +68,10 @@
 }
 
 .profile-field input:focus,
-.profile-field select:focus,
-.profile-field textarea:focus {
+.profile-field select:focus {
   outline: none;
   border-color: rgba(34, 211, 238, 0.95);
   box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
-}
-
-.profile-field textarea {
-  min-height: 5rem;
-  resize: vertical;
 }
 
 .transcript-upload-card {
@@ -354,16 +347,14 @@
 }
 
 .app-shell[data-theme='light'] .profile-field input,
-.app-shell[data-theme='light'] .profile-field select,
-.app-shell[data-theme='light'] .profile-field textarea {
+.app-shell[data-theme='light'] .profile-field select {
   border-color: rgba(15, 124, 138, 0.3);
   background: #ffffff;
   color: #263238;
 }
 
 .app-shell[data-theme='light'] .profile-field input:focus,
-.app-shell[data-theme='light'] .profile-field select:focus,
-.app-shell[data-theme='light'] .profile-field textarea:focus {
+.app-shell[data-theme='light'] .profile-field select:focus {
   border-color: rgba(15, 124, 138, 0.8);
   box-shadow: 0 0 0 2px rgba(15, 124, 138, 0.15);
 }
