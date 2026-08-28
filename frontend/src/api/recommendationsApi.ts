@@ -10,6 +10,7 @@ export async function fetchRecommendations(
   request: RecommendationRequest,
 ): Promise<RecommendationResponse> {
   const controller = new AbortController()
+  // Prevents the Profile page from staying in Loading state if the backend reloads or stalls.
   const timeoutId = window.setTimeout(() => controller.abort(), RECOMMENDATIONS_TIMEOUT_MS)
 
   try {

@@ -88,6 +88,20 @@ Update PR #20 so its description follows `PR_template.md` exactly, including the
 Lesson:
 Before creating or updating a PR description, read `PR_template.md` and use its exact section headings. Do not invent alternate headings, even if the content is similar. Use the template format first, then fill in project-specific details.
 
+### 2026-08-28
+
+Mistake:
+Repeated offence: added two blank lines between imports/classes/functions again in newly created recommendation files.
+
+What happened:
+`backend/schemas/recommendation.py`, `backend/services/recommendation_service.py`, and `backend/routers/recommendations.py` were created with repeated double blank lines between top-level blocks, despite this exact style mistake already being recorded on 2026-08-25.
+
+Correction:
+Removed the extra blank lines and checked the newly changed recommendation files for the same spacing issue.
+
+Lesson:
+Do not make this mistake again. For this project, use one blank line between top-level comment/function/class blocks, not two. Before committing any newly created or edited Python file, explicitly scan imports, constants, classes, functions, and router decorators for accidental double blank lines.
+
 ## Entry Format
 
 ```text

@@ -2,7 +2,6 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
-
 class RecommendationRequest(BaseModel):
     careerGoal: str = Field(
         description="Career goal selected by the student.",
@@ -25,7 +24,6 @@ class RecommendationRequest(BaseModel):
         description="Maximum number of recommendations to return.",
     )
 
-
 class CourseRecommendation(BaseModel):
     courseCode: str
     title: str
@@ -37,7 +35,6 @@ class CourseRecommendation(BaseModel):
     missingPrerequisites: list[str]
     score: int
     reason: str
-
 
 class RecommendationResponse(BaseModel):
     careerGoal: str

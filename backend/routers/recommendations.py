@@ -17,14 +17,12 @@ RECOMMENDATION_DATABASE_ERROR_RESPONSE = {
     },
 }
 
-
 def get_db() -> Session:
     db = SessionLocal()
     try:
         yield db
     finally:
         db.close()
-
 
 @router.post(
     "/recommendations",

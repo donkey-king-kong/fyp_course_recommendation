@@ -29,7 +29,6 @@ SOFTWARE_ENGINEER_KEYWORDS = {
 
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$")
 
-
 # Builds rule-based recommendations from module catalog data and the student's current profile state.
 def recommend_courses(
     db: Session,
@@ -110,7 +109,6 @@ def recommend_courses(
         recommendations=sorted_recommendations[:limit],
     )
 
-
 def build_slot_filters(mpe_levels: list[int], has_bde_slot: bool) -> list:
     filters = []
 
@@ -122,7 +120,6 @@ def build_slot_filters(mpe_levels: list[int], has_bde_slot: bool) -> list:
 
     return filters
 
-
 def build_keyword_filters() -> list:
     filters = []
 
@@ -133,7 +130,6 @@ def build_keyword_filters() -> list:
 
     return filters
 
-
 def get_mpe_candidate_levels(choice_slot_codes: list[str]) -> list[int]:
     # SC3xxx means recommend 3000-level modules; SC4xxx means recommend 4000-level modules.
     levels = {
@@ -143,7 +139,6 @@ def get_mpe_candidate_levels(choice_slot_codes: list[str]) -> list[int]:
     }
 
     return sorted(levels)
-
 
 def get_matching_choice_slot(
     module: ModuleModel,
@@ -160,7 +155,6 @@ def get_matching_choice_slot(
 
     return None
 
-
 def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
     searchable_text = f"{module.title} {module.description or ''}".lower()
     matched_keywords = [
@@ -173,7 +167,6 @@ def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
         score += 1
 
     return matched_keywords, score
-
 
 def build_recommendation_reason(matched_keywords: list[str]) -> str:
     return (
