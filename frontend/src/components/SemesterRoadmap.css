@@ -231,6 +231,10 @@
     transform 160ms ease;
 }
 
+.semester-course-card-clickable {
+  cursor: pointer;
+}
+
 .semester-course-card:hover,
 .semester-course-card-connected {
   z-index: 6;

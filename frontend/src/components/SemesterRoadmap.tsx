@@ -466,6 +466,29 @@ function SemesterRoadmap({
     setDetailError('')
   }
 
+  function getModuleCodeForDetail(course: CourseNode, slotRecommendation?: AssignedRecommendation) {
+    return slotRecommendation?.courseCode ?? (course.isChoiceSlot ? null : course.courseCode)
+  }
+
+  function openCourseCardDetail(course: CourseNode, slotRecommendation?: AssignedRecommendation) {
+    const moduleCode = getModuleCodeForDetail(course, slotRecommendation)
+
+    if (moduleCode) {
+      void openRecommendedModuleDetail(moduleCode)
+    }
+  }
+
+  function handleCourseCardKeyDown(
+    event: React.KeyboardEvent<HTMLElement>,
+    course: CourseNode,
+    slotRecommendation?: AssignedRecommendation,
+  ) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      openCourseCardDetail(course, slotRecommendation)
+    }
+  }
+
   // When hovering a course, keep that course and its direct prerequisite links visually active
   if (hoveredCourseId) {
     connectedCourseIds.add(hoveredCourseId)
@@ -717,6 +740,7 @@ function SemesterRoadmap({
                     standingRequirements,
                   )
                   const slotRecommendation = recommendationByChoiceSlotId[course.id]
+                  const detailModuleCode = getModuleCodeForDetail(course, slotRecommendation)
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -732,9 +756,14 @@ function SemesterRoadmap({
                         isCompleted ? 'semester-course-card-completed' : '',
                         course.isTranscriptOnly ? 'semester-course-card-transcript-only' : '',
                         eligibility.status === 'locked' ? 'semester-course-card-locked' : '',
+                        detailModuleCode ? 'semester-course-card-clickable' : '',
                       ]
                         .filter(Boolean)
                         .join(' ')}
+                      role={detailModuleCode ? 'button' : undefined}
+                      tabIndex={detailModuleCode ? 0 : undefined}
+                      onClick={() => openCourseCardDetail(course, slotRecommendation)}
+                      onKeyDown={(event) => handleCourseCardKeyDown(event, course, slotRecommendation)}
                       onMouseEnter={() => setHoveredCourseId(course.id)}
                       onMouseLeave={() => setHoveredCourseId(null)}
                     >
@@ -760,7 +789,10 @@ function SemesterRoadmap({
                         <button
                           type="button"
                           className="choice-slot-recommendations"
-                          onClick={() => void openRecommendedModuleDetail(slotRecommendation.courseCode)}
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            void openRecommendedModuleDetail(slotRecommendation.courseCode)
+                          }}
                         >
                           <span>{slotRecommendation.label}</span>
                           <strong>{slotRecommendation.courseCode}</strong>
@@ -794,6 +826,7 @@ function SemesterRoadmap({
                               toggleCourseCompletion(course.id)
                             }
                           }}
+                          onClick={(event) => event.stopPropagation()}
                           aria-label={
                             course.isTranscriptOnly
                               ? 'Completed from uploaded transcript'
