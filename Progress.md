@@ -786,9 +786,12 @@ Status: Implemented locally
 - Enriched unmatched transcript module codes with the existing module detail API so the roadmap can show titles, AU values, prerequisites, and unlocks where available.
 - Added fallback completed transcript cards for unmatched transcript codes that cannot be found in the module catalogue.
 - Placed transcript-only completed modules into their parsed Year/Sem row when transcript term metadata is available.
+- Uses the curriculum guide as the base roadmap, then lets transcript Year/Sem metadata override the display position when a completed transcript course code matches a curriculum guide course.
+- Corrected transcript term matching so left-column modules map to left-column semester headers even when the header starts left of the course table.
 - Kept a `Completed Outside Curriculum` fallback band only for transcript modules that do not have usable term metadata.
 - Added relationship arrows from known prerequisite nodes into transcript-only modules and from transcript-only modules into known unlocked roadmap nodes.
 - Treated transcript-only modules as completed when checking roadmap prerequisites, while keeping their checkboxes read-only.
+- Removed special transcript-only card coloring so transcript-completed modules use the normal completed-course color state.
 - Kept the lower `Curriculum Guide Courses` list limited to official curriculum guide rows.
 
 ### Verified
