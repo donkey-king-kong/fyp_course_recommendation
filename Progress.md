@@ -862,6 +862,7 @@ Status: Implemented locally
 - Added duplicate-title protection so different course codes with the same normalized title are not recommended together.
 - Added frontend planning nodes for fallback recommendations with missing prerequisites, using a `Recommended Pre-Requisite` tag so students can see why an extra node appears.
 - Added a one-remaining-semester guard in frontend placement: if no earlier remaining semester exists, recommendations with missing prerequisites are skipped in favor of ready modules.
+- Added existing-curriculum prerequisite handling so a recommendation like `SC4055` can use an earlier roadmap module such as `SC2006` as the visible prerequisite path instead of creating extra alternative prerequisite nodes.
 
 ### Rationale Notes
 
@@ -872,6 +873,8 @@ Status: Implemented locally
 - A BDE slot could appear empty even when the backend returned candidates because the frontend previously skipped target recommendations if their missing prerequisite could not be placed in the immediately previous semester.
 - The current fallback keeps the target recommendation visible when prerequisite placement fails, while leaving the slot locked or showing missing requirements.
 - If a target recommendation has missing prerequisites and there is an earlier remaining semester, the roadmap can show the target recommendation and add separate `Recommended Pre-Requisite` planning nodes in the latest earlier remaining semester.
+- The prerequisite graph currently stores prerequisites as a flat code list, so it cannot perfectly distinguish AND requirements from OR alternatives.
+- Because of that data limitation, if any missing prerequisite code already exists earlier in the student's uploaded curriculum guide, the frontend treats that existing module as the planned prerequisite path and draws an arrow from it to the recommended slot.
 - If no earlier remaining semester exists, the roadmap should avoid showing recommendations with missing prerequisites because there is no remaining semester to plan those prerequisites first.
 
 ### Verified
@@ -891,3 +894,4 @@ Status: Implemented locally
 - No manual browser verification has been recorded yet for the exact-slot recommendation behavior.
 - Recommendation coverage still depends on enough eligible unique module candidates existing for each slot.
 - The one-remaining-semester guard currently lives in the frontend placement layer; a later backend refinement can make the API avoid returning those candidates earlier.
+- True AND/OR prerequisite grouping is not implemented yet because the stored prerequisite graph does not preserve grouping semantics.

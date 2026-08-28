@@ -267,9 +267,40 @@ function buildRecommendedPrerequisiteNodes(
   })
 }
 
+function groupCoursesByCode(courses: CourseNode[]) {
+  return courses.reduce<Map<string, CourseNode[]>>((coursesByCode, course) => {
+    const courseCode = course.courseCode.toUpperCase()
+    const existingCourses = coursesByCode.get(courseCode) ?? []
+
+    coursesByCode.set(courseCode, [...existingCourses, course])
+    return coursesByCode
+  }, new Map())
+}
+
+// The current prerequisite graph is flat, so multi-code prerequisites may represent OR alternatives.
+// If one alternative already appears earlier in the student's roadmap, use that existing path instead
+// of creating extra planning nodes for every other alternative.
+function getExistingPrerequisiteNodes(
+  choiceSlot: ChoiceSlotCandidate,
+  recommendation: CourseRecommendation,
+  coursesByCode: Map<string, CourseNode[]>,
+) {
+  const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
+
+  return recommendation.missingPrerequisites.flatMap((prerequisiteCode) =>
+    (coursesByCode.get(prerequisiteCode.toUpperCase()) ?? []).filter(
+      (course) =>
+        !course.isChoiceSlot &&
+        !course.isRecommendedPrerequisite &&
+        getSemesterOrder(course) < targetSemesterOrder,
+    ),
+  )
+}
+
 function assignRecommendationsToChoiceSlots(
   choiceSlots: ChoiceSlotCandidate[],
   recommendations: CourseRecommendation[],
+  coursesByCode: Map<string, CourseNode[]>,
 ): RecommendationAssignmentResult {
   const usedCourseCodes = new Set<string>()
   const sortedChoiceSlots = [...choiceSlots].sort(
@@ -306,8 +337,33 @@ function assignRecommendationsToChoiceSlots(
     let fallbackRecommendation: CourseRecommendation | null = null
 
     for (const recommendation of sortRecommendationsForSlot(choiceSlot, matchingRecommendations)) {
+      const existingPrerequisiteNodes = getExistingPrerequisiteNodes(
+        choiceSlot,
+        recommendation,
+        coursesByCode,
+      )
+
       if (recommendation.missingPrerequisites.length === 0) {
         usedCourseCodes.add(recommendation.courseCode)
+
+        return {
+          ...currentAssignments,
+          [choiceSlot.course.id]: {
+            courseCode: recommendation.courseCode,
+            title: recommendation.title,
+            label: 'Recommended option',
+          },
+        }
+      }
+
+      if (existingPrerequisiteNodes.length > 0) {
+        usedCourseCodes.add(recommendation.courseCode)
+        prerequisiteLinks.push(
+          ...existingPrerequisiteNodes.map((prerequisiteNode) => ({
+            source: prerequisiteNode.id,
+            target: choiceSlot.course.id,
+          })),
+        )
 
         return {
           ...currentAssignments,
@@ -522,6 +578,7 @@ function SemesterRoadmap({
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
+  const originalCoursesByCode = useMemo(() => groupCoursesByCode(courses), [courses])
   const recommendationChoiceSlots = useMemo(
     () =>
       courses
@@ -537,8 +594,12 @@ function SemesterRoadmap({
     [courses, effectiveCompletedCourseIds],
   )
   const recommendationAssignmentResult = useMemo(
-    () => assignRecommendationsToChoiceSlots(recommendationChoiceSlots, recommendations),
-    [recommendationChoiceSlots, recommendations],
+    () => assignRecommendationsToChoiceSlots(
+      recommendationChoiceSlots,
+      recommendations,
+      originalCoursesByCode,
+    ),
+    [originalCoursesByCode, recommendationChoiceSlots, recommendations],
   )
   const recommendationByChoiceSlotId = recommendationAssignmentResult.assignments
   const displayCourses = useMemo(
