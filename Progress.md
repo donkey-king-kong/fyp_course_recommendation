@@ -638,3 +638,63 @@ Status: Ready for next work
 - Run `git status --short --branch`.
 - Continue on a focused branch and avoid unrelated AI/data integrations.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
+
+## Basic Recommendation Flow
+
+Status: Implemented locally
+
+### Completed
+
+- Created the `basic-recommendation-flow` branch for the first recommendation-system work.
+- Limited the Profile career goal dropdown to `Software Engineer` for the first supported recommendation path.
+- Added backend recommendation schemas for request data, recommended courses, prerequisite recommendations, and response data.
+- Added `POST /recommendations` as the first backend recommendation endpoint.
+- Added a simple recommendation service for the current MVP.
+- Added frontend recommendation API types and a `fetchRecommendations` API client.
+- Added a reusable `ClassicLoader` spinner component for recommendation-loading states.
+- Moved recommendation loading to the Profile page under Career Goal with a `Load Roadmap` button.
+- Added a small `Go to roadmap...` link below the Profile roadmap-loading action.
+- Lifted recommendation state into `App.tsx` so the Profile page can trigger loading and the Roadmap page can render the results.
+- Displayed recommendations directly inside suitable roadmap choice-slot cards instead of showing them as a Profile result list.
+- Added loading feedback on the Roadmap page while recommendations are being fetched.
+- Assigned one recommendation per available choice slot so repeated BDE recommendations do not appear across every BDE card.
+- Added basic BDE year-level preference so lower-level BDE modules are preferred earlier and higher-level modules are preferred around Year 3 or Year 4.
+- Added curriculum exclusion fields so fixed curriculum modules are not recommended again by matching either course code or normalized course title.
+- Added prerequisite-aware recommendation output so a recommended course can include missing prerequisite details.
+- Added frontend assignment logic that can place a missing prerequisite recommendation one semester before the recommended target course when a suitable earlier choice slot exists.
+
+### Current Recommendation Logic
+
+- Level 1 recommendation logic is weighted keyword matching plus rule-based filtering.
+- It is not AI-based ranking, collaborative filtering, graph search, ChromaDB retrieval, LangGraph reasoning, or OpenAI generation.
+- For `Software Engineer`, the backend uses explicit weighted keywords such as `software`, `engineering`, `programming`, `development`, `database`, `web`, `cloud`, `distributed`, `systems`, `algorithm`, `architecture`, `testing`, and `security`.
+- Candidate modules score higher when their code, title, description, or category text contains higher-weight career keywords.
+- `SC3xxx` and `SC4xxx` choice slots only consider CSC modules at the matching module level.
+- `BDE` choice slots can consider modules from the wider active module catalogue, subject to active faculty settings.
+- Completed modules are excluded from recommendations.
+- Fixed modules already present in the uploaded curriculum roadmap are excluded by course code and by normalized title.
+- Missing prerequisites are currently surfaced as rule-based constraints after scoring; if the top suitable recommendation needs one missing prerequisite, the frontend tries to place that prerequisite one semester earlier.
+- If a prerequisite cannot fit into an earlier suitable slot, that target recommendation is skipped for that slot for now.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Blank-line scan passed for the edited recommendation files after the repeated style issue was fixed.
+
+### Not Included
+
+- No Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation engine yet.
+- No machine-learning model, ALS scoring, or semantic embedding search yet.
+- No multi-career recommendation support beyond `Software Engineer`.
+- No timetable, exam clash, workload, vacancy, or student preference optimization yet.
+- No backend persistence for generated recommendations yet; recommendation state is frontend runtime state.
+- No manual browser verification has been recorded yet for the latest prerequisite-placement behavior.
+
+### Next Recommended Work
+
+- Manually test `Load Roadmap` with an uploaded curriculum guide and transcript.
+- Confirm existing fixed curriculum modules no longer appear as recommended choices by code or by title.
+- Confirm prerequisite recommendations appear one semester earlier when a suitable earlier choice slot exists.
+- Fix any remaining display issues, such as duplicated prerequisite text or curriculum guide typos, before adding more recommendation intelligence.
