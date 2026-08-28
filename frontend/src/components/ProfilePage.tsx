@@ -41,6 +41,7 @@ function ProfilePage() {
     transcriptMatchedCourses.length > 0 ||
     transcriptUnmatchedCourseCodes.length > 0 ||
     transcriptCompletedCourseCount > 0
+  const standingRequirements = curriculumGuide?.standingRequirements ?? []
 
   async function handleCurriculumGuideUpload() {
     if (!selectedCurriculumGuide) {
@@ -236,7 +237,7 @@ function ProfilePage() {
         <label className="transcript-file-field">
           <span>PDF Curriculum Guide</span>
           <input
-            key={transcriptInputKey}
+            key={curriculumGuideInputKey}
             type="file"
             accept="application/pdf"
             onChange={(event) => {
@@ -270,9 +271,28 @@ function ProfilePage() {
         {curriculumUploadMessage && <p className="upload-success">{curriculumUploadMessage}</p>}
         {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
         {hasCurriculumGuide && (
-          <p>
-            Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
-          </p>
+          <>
+            <p>
+              Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
+            </p>
+
+            {standingRequirements.length > 0 && (
+              <div className="standing-requirements-card">
+                <h4>Minimum AU For Year Standing</h4>
+                <ul>
+                  {standingRequirements.map((requirement) => (
+                    <li key={requirement.standingYear}>
+                      <span>Year {requirement.standingYear} standing</span>
+                      <strong>{requirement.minimumAcademicUnits} AU</strong>
+                      <small>
+                        From Year {requirement.includedYears.join(' + Year ')} Total AU
+                      </small>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </>
         )}
       </section>
 
@@ -287,7 +307,7 @@ function ProfilePage() {
         <label className="transcript-file-field">
           <span>PDF Transcript</span>
           <input
-            key={curriculumGuideInputKey}
+            key={transcriptInputKey}
             type="file"
             accept="application/pdf"
             onChange={(event) => {

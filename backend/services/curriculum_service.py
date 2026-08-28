@@ -10,6 +10,7 @@ from backend.schemas.curriculum import (
     CurriculumEdge,
     CurriculumGuideResponse,
     CurriculumSemester,
+    StandingRequirement,
 )
 
 logger = logging.getLogger(__name__)
@@ -38,6 +39,7 @@ def extract_curriculum_guide(file_content: bytes) -> CurriculumGuideResponse:
         cohort=extract_cohort(text),
         totalAcademicUnits=extract_total_academic_units(text, nodes),
         semesters=semesters,
+        standingRequirements=build_standing_requirements(semesters),
         nodes=nodes,
         edges=edges,
     )
@@ -334,6 +336,32 @@ def build_semesters(nodes: list[CurriculumCourse]) -> list[CurriculumSemester]:
     ]
 
 # Creates prerequisite arrows only when a prerequisite exists in the parsed curriculum.
+def build_standing_requirements(semesters: list[CurriculumSemester]) -> list[StandingRequirement]:
+    academic_units_by_year: dict[int, int] = defaultdict(int)
+
+    for semester in semesters:
+        academic_units_by_year[semester.year] += semester.totalAcademicUnits
+
+    requirements: list[StandingRequirement] = []
+
+    for standing_year in [2, 3, 4]:
+        included_years = list(range(1, standing_year))
+        minimum_academic_units = sum(academic_units_by_year[year] for year in included_years)
+
+        if minimum_academic_units == 0:
+            continue
+
+        requirements.append(
+            StandingRequirement(
+                standingYear=standing_year,
+                minimumAcademicUnits=minimum_academic_units,
+                includedYears=included_years,
+            )
+        )
+
+    return requirements
+
+
 def build_prerequisite_edges(nodes: list[CurriculumCourse]) -> list[CurriculumEdge]:
     course_ids_by_code = {node.courseCode: node.id for node in nodes if "xxx" not in node.courseCode}
     edges: list[CurriculumEdge] = []
