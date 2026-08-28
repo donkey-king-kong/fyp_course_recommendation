@@ -748,3 +748,28 @@ Status: Implemented locally
 
 - No new ranking model, AI logic, graph search, vector search, or backend persistence.
 - No backend-side per-slot assignment yet; the roadmap still performs the final slot placement in the frontend.
+
+## Recommendation Debug Logging
+
+Status: Implemented locally
+
+### Completed
+
+- Added backend recommendation logs for the initial SQL candidate list before Python-side filtering and scoring.
+- Added backend recommendation logs for the ranked recommendation list before the request `limit` is applied.
+- Added backend recommendation logs for the final returned recommendation cut after applying `limit`.
+- Kept logs compact by showing counts and course-code summaries with slot, level, score, and missing prerequisite count.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No frontend debug panel yet.
+- No persistent logging table or analytics storage.
+- No backend-side explanation for frontend slot-placement skips yet.
