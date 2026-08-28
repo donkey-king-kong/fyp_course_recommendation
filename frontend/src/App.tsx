@@ -300,13 +300,12 @@ function App() {
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
 
-  // Display uploaded curriculum courses matching the search term.
+  // Display only the uploaded curriculum guide courses, without transcript placement overrides.
   const filteredCourses =
-    roadmap?.nodes.filter((course) => {
-      if (course.isTranscriptOnly) {
-        return false
-      }
-
+    curriculumGuide?.nodes.map((course) => ({
+      ...course,
+      title: getCurriculumCourseTitle(course),
+    })).filter((course) => {
       const courseCode = course.courseCode.toLowerCase()
       const title = course.title.toLowerCase()
 

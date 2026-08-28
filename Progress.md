@@ -793,6 +793,8 @@ Status: Implemented locally
 - Treated transcript-only modules as completed when checking roadmap prerequisites, while keeping their checkboxes read-only.
 - Removed special transcript-only card coloring so transcript-completed modules use the normal completed-course color state.
 - Kept the lower `Curriculum Guide Courses` list limited to official curriculum guide rows.
+- Changed the lower `Curriculum Guide Courses` display from a narrow vertical list into a wider responsive card grid.
+- Made the lower `Curriculum Guide Courses` list read directly from the uploaded curriculum guide so transcript placement does not change this section's Year/Sem grouping.
 
 ### Verified
 
