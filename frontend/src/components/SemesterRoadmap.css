@@ -266,6 +266,13 @@
     0 10px 24px rgba(0, 0, 0, 0.2);
 }
 
+.semester-course-card-recommended-prerequisite {
+  border-color: rgba(245, 158, 11, 0.62);
+  background:
+    linear-gradient(135deg, rgba(245, 158, 11, 0.14), rgba(15, 23, 42, 0.12)),
+    rgba(15, 23, 42, 0.82);
+}
+
 .semester-course-card-top {
   display: flex;
   justify-content: space-between;

@@ -11,6 +11,8 @@ export interface CourseNode {
   isCompleted: boolean
   isChoiceSlot?: boolean
   isTranscriptOnly?: boolean
+  isRecommendedPrerequisite?: boolean
+  recommendedForCourseCode?: string
   jobSkills: string[]
 }
 

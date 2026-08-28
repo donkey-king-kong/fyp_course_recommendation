@@ -860,6 +860,19 @@ Status: Implemented locally
 - Updated the roadmap so locked choice slots can still show loaded recommendations while keeping their locked styling and missing-requirement message.
 - Updated backend recommendation ordering to round-robin across slots and skip duplicate course codes so later BDE slots are less likely to be starved by earlier slots.
 - Added duplicate-title protection so different course codes with the same normalized title are not recommended together.
+- Added frontend planning nodes for fallback recommendations with missing prerequisites, using a `Recommended Pre-Requisite` tag so students can see why an extra node appears.
+- Added a one-remaining-semester guard in frontend placement: if no earlier remaining semester exists, recommendations with missing prerequisites are skipped in favor of ready modules.
+
+### Rationale Notes
+
+- Recommendation and eligibility are separate concepts: a module can be a good recommendation for a slot even if the student is not currently ready to take it.
+- `Recommended` means the module fits the student's career goal and the slot type or level.
+- `Locked` means the student has not satisfied a requirement yet, such as `Year 3 Standing` or a module prerequisite.
+- Without transcript AU, MPE slots with `Year 3 Standing` can remain locked, but loaded recommendations should still be visible so students can plan ahead.
+- A BDE slot could appear empty even when the backend returned candidates because the frontend previously skipped target recommendations if their missing prerequisite could not be placed in the immediately previous semester.
+- The current fallback keeps the target recommendation visible when prerequisite placement fails, while leaving the slot locked or showing missing requirements.
+- If a target recommendation has missing prerequisites and there is an earlier remaining semester, the roadmap can show the target recommendation and add separate `Recommended Pre-Requisite` planning nodes in the latest earlier remaining semester.
+- If no earlier remaining semester exists, the roadmap should avoid showing recommendations with missing prerequisites because there is no remaining semester to plan those prerequisites first.
 
 ### Verified
 
@@ -877,3 +890,4 @@ Status: Implemented locally
 - No backend persistence for generated recommendations.
 - No manual browser verification has been recorded yet for the exact-slot recommendation behavior.
 - Recommendation coverage still depends on enough eligible unique module candidates existing for each slot.
+- The one-remaining-semester guard currently lives in the frontend placement layer; a later backend refinement can make the API avoid returning those candidates earlier.
