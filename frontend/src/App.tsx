@@ -354,6 +354,22 @@ function App() {
           .filter((courseCode): courseCode is string => Boolean(courseCode)),
       ),
     ]
+    const choiceSlots = openChoiceSlots.flatMap((course) => {
+      const courseCode = getChoiceSlotCode(course)
+
+      if (!courseCode) {
+        return []
+      }
+
+      return [
+        {
+          slotId: course.id,
+          courseCode,
+          year: course.year,
+          semester: course.semester,
+        },
+      ]
+    })
     const fixedCurriculumCourses = curriculumGuide.nodes.filter((course) => !course.isChoiceSlot)
     const excludedCourseCodes = fixedCurriculumCourses.map((course) => course.courseCode)
     const excludedCourseTitles = fixedCurriculumCourses.map((course) => course.title)
@@ -372,6 +388,7 @@ function App() {
         careerGoal: profile.careerGoal,
         completedCourseCodes,
         choiceSlotCodes,
+        choiceSlots,
         excludedCourseCodes,
         excludedCourseTitles,
         limit: getRecommendationLimit(openChoiceSlots),

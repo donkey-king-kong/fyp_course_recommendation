@@ -1,7 +1,15 @@
+export interface RecommendationChoiceSlot {
+  slotId: string
+  courseCode: string
+  year: number
+  semester: number
+}
+
 export interface RecommendationRequest {
   careerGoal: string
   completedCourseCodes: string[]
   choiceSlotCodes: string[]
+  choiceSlots: RecommendationChoiceSlot[]
   excludedCourseCodes: string[]
   excludedCourseTitles: string[]
   limit: number
@@ -14,6 +22,9 @@ export interface CourseRecommendation {
   faculty: string | null
   level: number | null
   matchedChoiceSlot: string
+  matchedChoiceSlotId: string | null
+  matchedChoiceSlotYear: number | null
+  matchedChoiceSlotSemester: number | null
   matchedKeywords: string[]
   missingPrerequisites: string[]
   prerequisiteRecommendations: RecommendationPrerequisite[]

@@ -175,6 +175,16 @@ function sortRecommendationsForSlot(
   choiceSlot: ChoiceSlotCandidate,
   recommendations: CourseRecommendation[],
 ) {
+  const exactSlotRecommendations = recommendations.filter(
+    (recommendation) => recommendation.matchedChoiceSlotId === choiceSlot.course.id,
+  )
+
+  if (exactSlotRecommendations.length > 0) {
+    return [...exactSlotRecommendations].sort(
+      (first, second) => second.score - first.score || first.courseCode.localeCompare(second.courseCode),
+    )
+  }
+
   if (choiceSlot.slotKey.toUpperCase() !== 'BDE') {
     return [...recommendations].sort(
       (first, second) => second.score - first.score || first.courseCode.localeCompare(second.courseCode),
@@ -215,7 +225,13 @@ function assignRecommendationsToChoiceSlots(
 
     const matchingRecommendations = recommendations.filter(
       (recommendation) =>
-        recommendation.matchedChoiceSlot.toUpperCase() === choiceSlot.slotKey.toUpperCase() &&
+        (
+          recommendation.matchedChoiceSlotId === choiceSlot.course.id ||
+          (
+            !recommendation.matchedChoiceSlotId &&
+            recommendation.matchedChoiceSlot.toUpperCase() === choiceSlot.slotKey.toUpperCase()
+          )
+        ) &&
         !usedCourseCodes.has(recommendation.courseCode),
     )
 
