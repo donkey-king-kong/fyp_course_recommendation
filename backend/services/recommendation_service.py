@@ -103,7 +103,7 @@ def recommend_courses(
         if score == 0:
             continue
 
-        # Keep missing prerequisites so the UI can place them into an earlier slot.
+        # Send all prerequisites for arrows, and missing ones for extra planning nodes.
         prerequisites = prerequisites_by_module.get(module.code, [])
         missing_prerequisites = [
             prerequisite for prerequisite in prerequisites if prerequisite not in completed_codes
@@ -129,6 +129,7 @@ def recommend_courses(
                     matchedChoiceSlotYear=slot.year,
                     matchedChoiceSlotSemester=slot.semester,
                     matchedKeywords=matched_keywords,
+                    prerequisites=prerequisites,
                     missingPrerequisites=missing_prerequisites,
                     prerequisiteRecommendations=prerequisite_recommendations,
                     score=score,

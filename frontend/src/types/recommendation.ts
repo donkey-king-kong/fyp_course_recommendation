@@ -26,6 +26,7 @@ export interface CourseRecommendation {
   matchedChoiceSlotYear: number | null
   matchedChoiceSlotSemester: number | null
   matchedKeywords: string[]
+  prerequisites: string[]
   missingPrerequisites: string[]
   prerequisiteRecommendations: RecommendationPrerequisite[]
   score: number

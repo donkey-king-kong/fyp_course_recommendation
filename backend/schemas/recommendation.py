@@ -78,6 +78,7 @@ class CourseRecommendation(BaseModel):
     matchedChoiceSlotYear: Optional[int] = None
     matchedChoiceSlotSemester: Optional[int] = None
     matchedKeywords: list[str]
+    prerequisites: list[str]
     missingPrerequisites: list[str]
     prerequisiteRecommendations: list[RecommendationPrerequisite]
     score: int
@@ -103,6 +104,7 @@ class RecommendationResponse(BaseModel):
                         "matchedChoiceSlotYear": 3,
                         "matchedChoiceSlotSemester": 1,
                         "matchedKeywords": ["software", "engineering"],
+                        "prerequisites": ["SC2006"],
                         "missingPrerequisites": [],
                         "prerequisiteRecommendations": [],
                         "score": 9,

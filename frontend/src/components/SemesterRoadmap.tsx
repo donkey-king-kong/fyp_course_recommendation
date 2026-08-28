@@ -287,7 +287,7 @@ function getExistingPrerequisiteNodes(
 ) {
   const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
 
-  return recommendation.missingPrerequisites.flatMap((prerequisiteCode) =>
+  return recommendation.prerequisites.flatMap((prerequisiteCode) =>
     (coursesByCode.get(prerequisiteCode.toUpperCase()) ?? []).filter(
       (course) =>
         !course.isChoiceSlot &&
@@ -295,6 +295,28 @@ function getExistingPrerequisiteNodes(
         getSemesterOrder(course) < targetSemesterOrder,
     ),
   )
+}
+
+function addPrerequisiteLinks(
+  prerequisiteLinks: RoadmapEdge[],
+  prerequisiteNodes: CourseNode[],
+  targetCourseId: string,
+) {
+  const existingLinkKeys = new Set(
+    prerequisiteLinks.map((link) => `${link.source}->${link.target}`),
+  )
+
+  prerequisiteNodes.forEach((prerequisiteNode) => {
+    const linkKey = `${prerequisiteNode.id}->${targetCourseId}`
+
+    if (!existingLinkKeys.has(linkKey)) {
+      prerequisiteLinks.push({
+        source: prerequisiteNode.id,
+        target: targetCourseId,
+      })
+      existingLinkKeys.add(linkKey)
+    }
+  })
 }
 
 function assignRecommendationsToChoiceSlots(
@@ -345,6 +367,11 @@ function assignRecommendationsToChoiceSlots(
 
       if (recommendation.missingPrerequisites.length === 0) {
         usedCourseCodes.add(recommendation.courseCode)
+        addPrerequisiteLinks(
+          prerequisiteLinks,
+          existingPrerequisiteNodes,
+          choiceSlot.course.id,
+        )
 
         return {
           ...currentAssignments,
@@ -358,11 +385,10 @@ function assignRecommendationsToChoiceSlots(
 
       if (existingPrerequisiteNodes.length > 0) {
         usedCourseCodes.add(recommendation.courseCode)
-        prerequisiteLinks.push(
-          ...existingPrerequisiteNodes.map((prerequisiteNode) => ({
-            source: prerequisiteNode.id,
-            target: choiceSlot.course.id,
-          })),
+        addPrerequisiteLinks(
+          prerequisiteLinks,
+          existingPrerequisiteNodes,
+          choiceSlot.course.id,
         )
 
         return {

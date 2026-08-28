@@ -863,6 +863,7 @@ Status: Implemented locally
 - Added frontend planning nodes for fallback recommendations with missing prerequisites, using a `Recommended Pre-Requisite` tag so students can see why an extra node appears.
 - Added a one-remaining-semester guard in frontend placement: if no earlier remaining semester exists, recommendations with missing prerequisites are skipped in favor of ready modules.
 - Added existing-curriculum prerequisite handling so a recommendation like `SC4055` can use an earlier roadmap module such as `SC2006` as the visible prerequisite path instead of creating extra alternative prerequisite nodes.
+- Added all direct prerequisite codes to recommendation responses so the frontend can draw prerequisite arrows even when a transcript has already marked those prerequisites as completed.
 
 ### Rationale Notes
 
@@ -875,6 +876,7 @@ Status: Implemented locally
 - If a target recommendation has missing prerequisites and there is an earlier remaining semester, the roadmap can show the target recommendation and add separate `Recommended Pre-Requisite` planning nodes in the latest earlier remaining semester.
 - The prerequisite graph currently stores prerequisites as a flat code list, so it cannot perfectly distinguish AND requirements from OR alternatives.
 - Because of that data limitation, if any missing prerequisite code already exists earlier in the student's uploaded curriculum guide, the frontend treats that existing module as the planned prerequisite path and draws an arrow from it to the recommended slot.
+- Completed prerequisites are no longer counted as missing, so the backend now returns both `prerequisites` and `missingPrerequisites`; the former supports arrows and the latter supports planning-node decisions.
 - If no earlier remaining semester exists, the roadmap should avoid showing recommendations with missing prerequisites because there is no remaining semester to plan those prerequisites first.
 
 ### Verified
