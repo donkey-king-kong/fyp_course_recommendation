@@ -214,6 +214,25 @@ For the high-level architecture and request flow, refer to `Diagrams.md`.
 17. Replace chat stub with LangGraph
 18. OpenAI integration
 
+## Recommendation Improvement Priority
+
+After the basic recommendation flow is working, improve recommendations in this order.
+The first four improvements are practical and sufficient for a strong undergraduate FYP system.
+
+| Priority | Improvement | Why it matters | Complexity | Recommended timing |
+| --- | --- | --- | --- | --- |
+| 1 | Backend-side eligibility and per-slot ranking | Prevents invalid or weak matches before frontend placement | Low-medium | Next |
+| 2 | Structured scoring features and score breakdown | Improves relevance while remaining explainable | Low | Next |
+| 3 | Prerequisite readiness and unlock-value logic | Makes recommendations pathway-aware rather than keyword-only | Medium | Next |
+| 4 | Curated course taxonomy and student preference profile | Reduces brittle keyword matching and enables genuine personalisation | Medium | After priorities 1-3 |
+| 5 | Diversity-aware assignment across slots | Stops repeated or overly similar BDE/MPE suggestions | Medium | After priorities 1-4 |
+| 6 | Career-to-skill mapping and job-market signals | Gives career relevance an evidence layer | Medium | Later |
+| 7 | Neo4j or graph traversal | Useful once prerequisite and skill relationships become difficult to query and explain in SQL | Medium-high | Later |
+| 8 | Embeddings or vector search | Useful for semantic matching of messy free text | Medium-high | Later |
+| 9 | LLM or LangGraph | Useful for input normalisation and explanation generation, not core ranking | High | Last |
+
+Do not jump to Neo4j, embeddings, LangGraph, OpenAI, or job-market integrations before the simpler eligibility, scoring, prerequisite-readiness, and taxonomy improvements are understood.
+
 ## Current State
 
 Completed foundations:
@@ -248,8 +267,8 @@ Completed foundations:
 Current next step:
 
 - Continue from `Progress.md`.
-- Improve roadmap eligibility for text-only academic-standing requirements.
-- Use `profile.yearOfStudy` to unlock requirements like `Year 4 standing` when the active profile is in Year 4 or above.
+- Keep academic-standing requirements based on completed AU, not self-declared profile year.
+- Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 

@@ -606,7 +606,7 @@ Status: Implemented locally
 
 ### Not Included
 
-- `Year 4 standing` and similar academic-standing requirements are still not automatically unlocked from profile year yet.
+- `Year 4 standing` and similar academic-standing requirements are based on completed AU, not profile year.
 - Locked checkboxes are still manually checkable for exemptions, transfer credits, exchange modules, and special approvals.
 - No recommendation scoring yet.
 - No backend persistence for uploaded curriculum guides or transcripts.
@@ -628,8 +628,8 @@ Status: Ready for next work
 
 ### Next Recommended Work
 
-- Improve academic-standing eligibility so `Year 4 standing` unlocks when `profile.yearOfStudy >= 4`.
-- Consider deriving academic standing from completed AU later, after the simpler profile-year rule is understood.
+- Keep academic-standing eligibility based on completed AU from transcript results and parsed curriculum guide standing rules.
+- Continue improving how completed AU is explained to students in the roadmap/profile flow.
 - Keep polishing the roadmap/profile flow before starting MPE/choice-slot recommendation logic.
 
 ### Onboarding For Next Session
@@ -809,3 +809,32 @@ Status: Implemented locally
 - Transcript-only modules still do not automatically fill BDE or MPE slots.
 - No bulk module lookup endpoint yet; the frontend currently uses the existing per-module lookup.
 - No manual browser verification has been recorded yet for semester-placed transcript-only roadmap cards and arrows.
+
+## Profile Career Goal Cleanup And AU Standing
+
+Status: Implemented locally
+
+### Completed
+
+- Kept roadmap academic-standing eligibility based on completed AU instead of the profile's self-declared year or semester.
+- Removed Year of Study and Current Semester from the saved profile model because they can be misleading for standing rules.
+- Moved Career Goal into the main profile row so the profile form focuses on recommendation inputs.
+- Placed Curriculum Guide Upload and Transcript Upload cards side by side on wider screens while keeping them stacked on small screens.
+- Moved transcript completion and AU totals into the Transcript Upload card and removed the separate outside roadmap statistic strip.
+- Added profile hydration cleanup so old browser-saved Year of Study and Current Semester values are not saved back into active profile records.
+- Kept module-code prerequisite checks, transcript-completed modules, and recommendation placement logic unchanged.
+
+### Verified
+
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No backend recommendation changes.
+- No transcript parser changes.
+- No database schema changes.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, or advanced recommendation logic.
+- No manual browser verification has been recorded yet for the simplified wider Profile layout.
