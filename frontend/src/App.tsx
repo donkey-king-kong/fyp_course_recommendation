@@ -267,12 +267,12 @@ function App() {
 
           {/* Search input updates searchTerm */}
           <label className="course-search">
-            Search courses
+            Search curriculum guide
             <input
               type="search"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
-              placeholder="Search by code or title"
+              placeholder="Search curriculum courses by code or title"
             />
           </label>
 
