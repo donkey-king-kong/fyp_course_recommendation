@@ -773,3 +773,31 @@ Status: Implemented locally
 - No frontend debug panel yet.
 - No persistent logging table or analytics storage.
 - No backend-side explanation for frontend slot-placement skips yet.
+
+## Transcript-Only Roadmap Display
+
+Status: Implemented locally
+
+### Completed
+
+- Added an optional roadmap node flag for completed modules that came from the transcript but were not fixed rows in the uploaded curriculum guide.
+- Enriched unmatched transcript module codes with the existing module detail API so the roadmap can show titles, AU values, prerequisites, and unlocks where available.
+- Added fallback completed transcript cards for unmatched transcript codes that cannot be found in the module catalogue.
+- Displayed transcript-only completed modules in a separate `Completed Outside Curriculum` band above the official curriculum rows.
+- Added relationship arrows from known prerequisite nodes into transcript-only modules and from transcript-only modules into known unlocked roadmap nodes.
+- Treated transcript-only modules as completed when checking roadmap prerequisites, while keeping their checkboxes read-only.
+- Kept the lower `Curriculum Guide Courses` list limited to official curriculum guide rows.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- Transcript-only modules still do not automatically fill BDE or MPE slots.
+- No bulk module lookup endpoint yet; the frontend currently uses the existing per-module lookup.
+- No manual browser verification has been recorded yet for transcript-only roadmap cards and arrows.
