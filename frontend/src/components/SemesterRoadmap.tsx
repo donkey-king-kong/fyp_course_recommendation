@@ -1,5 +1,7 @@
 import { useLayoutEffect, useRef, useState, useEffect, type CSSProperties } from 'react'
 import './SemesterRoadmap.css'
+import { fetchModuleByCode } from '../api/modulesApi'
+import type { ModuleSummary } from '../types/module'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
@@ -122,10 +124,14 @@ function getSemesterOrder(course: CourseNode) {
 
 function canFitRecommendationInSlot(
   choiceSlot: ChoiceSlotCandidate,
-  recommendation: CourseRecommendation | RecommendationPrerequisite,
+  recommendation: CourseRecommendation | RecommendationPrerequisite | undefined,
 ) {
+  if (!recommendation) {
+    return false
+  }
+
   if (choiceSlot.slotKey.toUpperCase() === 'BDE') {
-    return true
+    return recommendation.level === getPreferredBdeLevel(choiceSlot.course.year)
   }
 
   return recommendation.faculty === 'CSC' && choiceSlot.slotKey === `SC${recommendation.level}xxx`
@@ -143,16 +149,18 @@ function sortRecommendationsForSlot(
 
   const preferredLevel = getPreferredBdeLevel(choiceSlot.course.year)
 
-  return [...recommendations].sort((first, second) => {
-    const firstLevelGap = Math.abs((first.level ?? preferredLevel) - preferredLevel)
-    const secondLevelGap = Math.abs((second.level ?? preferredLevel) - preferredLevel)
+  return recommendations
+    .filter((recommendation) => recommendation.level === preferredLevel)
+    .sort((first, second) => {
+      const firstLevelGap = Math.abs((first.level ?? preferredLevel) - preferredLevel)
+      const secondLevelGap = Math.abs((second.level ?? preferredLevel) - preferredLevel)
 
-    return (
-      firstLevelGap - secondLevelGap ||
-      second.score - first.score ||
-      first.courseCode.localeCompare(second.courseCode)
-    )
-  })
+      return (
+        firstLevelGap - secondLevelGap ||
+        second.score - first.score ||
+        first.courseCode.localeCompare(second.courseCode)
+      )
+    })
 }
 
 function assignRecommendationsToChoiceSlots(
@@ -192,6 +200,11 @@ function assignRecommendationsToChoiceSlots(
       }
 
       const prerequisite = recommendation.prerequisiteRecommendations[0]
+
+      if (recommendation.missingPrerequisites.length !== 1 || !prerequisite) {
+        continue
+      }
+
       const previousSlot = sortedChoiceSlots.find(
         (slot) =>
           getSemesterOrder(slot.course) === getSemesterOrder(choiceSlot.course) - 1 &&
@@ -199,7 +212,7 @@ function assignRecommendationsToChoiceSlots(
           canFitRecommendationInSlot(slot, prerequisite),
       )
 
-      if (recommendation.missingPrerequisites.length !== 1 || !prerequisite || !previousSlot) {
+      if (!previousSlot) {
         continue
       }
 
@@ -288,7 +301,7 @@ function getCourseEligibility(
   return {
     status: 'locked',
     missingPrerequisites: [
-      ...missingPrerequisites,
+      ...new Set(missingPrerequisites),
       ...(missingStandingRequirement ? [missingStandingRequirement] : []),
     ],
   }
@@ -306,6 +319,10 @@ function SemesterRoadmap({
   const [hoveredCourseId, setHoveredCourseId] = useState<string | null>(null)
   const [showAllArrows, setShowAllArrows] = useState(true)
   const [arrowPaths, setArrowPaths] = useState<ArrowPath[]>([])
+  const [selectedModule, setSelectedModule] = useState<ModuleSummary | null>(null)
+  const [isDetailOpen, setIsDetailOpen] = useState(false)
+  const [isDetailLoading, setIsDetailLoading] = useState(false)
+  const [detailError, setDetailError] = useState('')
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
@@ -373,6 +390,27 @@ function SemesterRoadmap({
     if (shouldClear) {
       clearCurriculumGuide()
     }
+  }
+
+  async function openRecommendedModuleDetail(courseCode: string) {
+    try {
+      setSelectedModule(null)
+      setDetailError('')
+      setIsDetailOpen(true)
+      setIsDetailLoading(true)
+      const module = await fetchModuleByCode(courseCode)
+      setSelectedModule(module)
+    } catch {
+      setDetailError(`Could not load details for ${courseCode}.`)
+    } finally {
+      setIsDetailLoading(false)
+    }
+  }
+
+  function closeRecommendedModuleDetail() {
+    setIsDetailOpen(false)
+    setSelectedModule(null)
+    setDetailError('')
   }
 
   // When hovering a course, keep that course and its direct prerequisite links visually active
@@ -449,6 +487,20 @@ function SemesterRoadmap({
     }
   }, [hoveredCourseId, prerequisiteLinks, showAllArrows])
 
+  useEffect(() => {
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        closeRecommendedModuleDetail()
+      }
+    }
+
+    if (isDetailOpen) {
+      window.addEventListener('keydown', closeOnEscape)
+    }
+
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [isDetailOpen])
+
   return (
     <section className="semester-roadmap-section">
       <div className="semester-roadmap-header">
@@ -491,6 +543,48 @@ function SemesterRoadmap({
           <ClassicLoader className="roadmap-recommendation-loader" />
           Loading recommendations...
         </p>
+      )}
+      {isDetailOpen && (
+        <div
+          className="roadmap-module-detail-overlay"
+          onMouseDown={(event) => event.currentTarget === event.target && closeRecommendedModuleDetail()}
+        >
+          <aside
+            className="roadmap-module-detail-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Recommended module details"
+          >
+            {isDetailLoading && <p>Loading selected module...</p>}
+            {!isDetailLoading && detailError && <p className="roadmap-recommendation-error">{detailError}</p>}
+            {!isDetailLoading && selectedModule && (
+              <>
+                <div className="roadmap-module-detail-header">
+                  <span>{selectedModule.code}</span>
+                  <button type="button" onClick={closeRecommendedModuleDetail}>
+                    Close
+                  </button>
+                </div>
+                <h3>{selectedModule.title}</h3>
+                <p>{selectedModule.description ?? 'No description available yet.'}</p>
+                <dl>
+                  <div>
+                    <dt>Prerequisites</dt>
+                    <dd>{selectedModule.prerequisites.length > 0 ? selectedModule.prerequisites.join(', ') : 'None listed'}</dd>
+                  </div>
+                  <div>
+                    <dt>Unlocks</dt>
+                    <dd>{selectedModule.unlocks.length > 0 ? selectedModule.unlocks.join(', ') : 'None listed'}</dd>
+                  </div>
+                  <div>
+                    <dt>Restrictions</dt>
+                    <dd>{selectedModule.not_available_to_programme ?? 'None listed'}</dd>
+                  </div>
+                </dl>
+              </>
+            )}
+          </aside>
+        </div>
       )}
 
       <div
@@ -610,11 +704,15 @@ function SemesterRoadmap({
                       {course.isChoiceSlot &&
                         eligibility.status === 'available' &&
                         slotRecommendation && (
-                          <div className="choice-slot-recommendations">
+                          <button
+                            type="button"
+                            className="choice-slot-recommendations"
+                            onClick={() => void openRecommendedModuleDetail(slotRecommendation.courseCode)}
+                          >
                             <span>{slotRecommendation.label}</span>
                             <strong>{slotRecommendation.courseCode}</strong>
                             <small>{slotRecommendation.title}</small>
-                          </div>
+                          </button>
                         )}
                       {course.isChoiceSlot &&
                         eligibility.status === 'available' &&

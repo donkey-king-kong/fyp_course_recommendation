@@ -316,11 +316,22 @@
 .choice-slot-recommendations {
   display: grid;
   gap: 0.45rem;
+  width: 100%;
   margin: 0.65rem 0 0.75rem;
   padding: 0.55rem;
   border: 1px solid rgba(124, 58, 237, 0.24);
   border-radius: 0.5rem;
+  color: inherit;
+  font: inherit;
+  text-align: center;
   background: rgba(124, 58, 237, 0.08);
+  cursor: pointer;
+}
+
+.choice-slot-recommendations:hover,
+.choice-slot-recommendations:focus-visible {
+  border-color: rgba(126, 34, 206, 0.5);
+  background: rgba(126, 34, 206, 0.12);
 }
 
 .choice-slot-recommendations > span {
@@ -359,6 +370,92 @@
 .roadmap-recommendation-loader,
 .choice-slot-loader {
   flex: 0 0 auto;
+}
+
+.roadmap-module-detail-overlay {
+  position: fixed;
+  z-index: 50;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.58);
+  backdrop-filter: blur(4px);
+}
+
+.roadmap-module-detail-panel {
+  display: grid;
+  gap: 0.75rem;
+  width: min(42rem, calc(100vw - 2rem));
+  max-height: calc(100vh - 4rem);
+  padding: 1.35rem;
+  overflow: auto;
+  border: 1px solid var(--panel-border);
+  border-radius: 1.25rem;
+  background: var(--header-bg);
+  box-shadow: var(--header-shadow);
+}
+
+.roadmap-module-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.roadmap-module-detail-header span {
+  color: var(--accent-text);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.roadmap-module-detail-header button {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.75rem;
+  color: var(--page-text);
+  font: inherit;
+  font-weight: 800;
+  background: color-mix(in srgb, var(--accent-text) 12%, transparent);
+  cursor: pointer;
+}
+
+.roadmap-module-detail-header button:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent-text) 24%, transparent);
+  border-color: var(--accent-text);
+}
+
+.roadmap-module-detail-panel h3 {
+  margin: 0.9rem 0 0.7rem;
+  color: var(--heading-text);
+  font-size: 1.35rem;
+  line-height: 1.1;
+}
+
+.roadmap-module-detail-panel p {
+  color: var(--muted-text);
+  line-height: 1.6;
+}
+
+.roadmap-module-detail-panel dl {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1rem 0 0;
+}
+
+.roadmap-module-detail-panel dt {
+  color: var(--heading-text);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.roadmap-module-detail-panel dd {
+  margin: 0.25rem 0 0;
+  color: var(--muted-text);
 }
 
 .semester-course-card-bottom {

@@ -18,6 +18,10 @@ const DEFAULT_VIEW: ViewState = 'roadmap'
 const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
 
 function getCurriculumCourseTitle(course: CurriculumGuideResponse['nodes'][number]) {
+  if (course.courseCode === 'BDE' || course.type === 'BDE') {
+    return 'Broadening and Deepening Electives'
+  }
+
   if (course.isChoiceSlot && course.courseCode.includes('xxx') && course.type.includes('MPE')) {
     return 'Major Prescribed Elective'
   }
@@ -133,10 +137,12 @@ function App() {
       ...new Set([...transcriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
     ]
     // Send only uncompleted choice slots; the roadmap decides which slots can display results.
+    const openChoiceSlots = curriculumGuide.nodes.filter(
+      (course) => course.isChoiceSlot && !completedCourseIds.includes(course.id),
+    )
     const choiceSlotCodes = [
       ...new Set(
-        curriculumGuide.nodes
-          .filter((course) => course.isChoiceSlot && !completedCourseIds.includes(course.id))
+        openChoiceSlots
           .map((course) => getChoiceSlotCode(course))
           .filter((courseCode): courseCode is string => Boolean(courseCode)),
       ),
@@ -161,7 +167,7 @@ function App() {
         choiceSlotCodes,
         excludedCourseCodes,
         excludedCourseTitles,
-        limit: 12,
+        limit: Math.min(50, Math.max(24, openChoiceSlots.length * 8)),
       })
 
       setRecommendations(result.recommendations)
