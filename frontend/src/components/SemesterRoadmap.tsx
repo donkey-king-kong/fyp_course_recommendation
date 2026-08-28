@@ -51,6 +51,7 @@ interface AssignedRecommendation {
 }
 
 const YEAR_ACCENTS = ['#f59e0b', '#ec4899', '#8b5cf6', '#22d3ee']
+const TRANSCRIPT_ONLY_ACCENT = '#22c55e'
 const COURSE_CODE_PATTERN = /[A-Z]{2,4}\d{4}[A-Z]?/gi
 
 // Turn course type text into a CSS class name like "Common-Core" to "common-core"
@@ -126,7 +127,33 @@ function getPreferredBdeLevel(year: number) {
 }
 
 function getSemesterOrder(course: CourseNode) {
+  if (course.isTranscriptOnly) {
+    return -1
+  }
+
   return (course.year - 1) * 2 + course.semester
+}
+
+function getSemesterGroupKey(group: SemesterGroup) {
+  return `${group.year}-${group.semester}`
+}
+
+function getSemesterGroupAccent(group: SemesterGroup) {
+  return group.year === 0 ? TRANSCRIPT_ONLY_ACCENT : YEAR_ACCENTS[(group.year - 1) % YEAR_ACCENTS.length]
+}
+
+function getSemesterGroupLabel(group: SemesterGroup) {
+  if (group.year === 0) {
+    return {
+      title: 'Completed',
+      subtitle: 'Outside Curriculum',
+    }
+  }
+
+  return {
+    title: `Year ${group.year}`,
+    subtitle: `Sem ${group.semester}`,
+  }
 }
 
 function canFitRecommendationInSlot(
@@ -363,8 +390,14 @@ function SemesterRoadmap({
 
   const connectedCourseIds = new Set<string>()
   const courseCodeById = new Map(courses.map((course) => [course.id, course.courseCode]))
+  const transcriptOnlyCourseIds = courses
+    .filter((course) => course.isTranscriptOnly)
+    .map((course) => course.id)
+  const effectiveCompletedCourseIds = [
+    ...new Set([...completedCourseIds, ...transcriptOnlyCourseIds]),
+  ]
   const completedRoadmapAcademicUnits = courses
-    .filter((course) => completedCourseIds.includes(course.id))
+    .filter((course) => effectiveCompletedCourseIds.includes(course.id))
     .reduce((total, course) => total + course.academicUnits, 0)
   const completedAcademicUnits =
     transcriptTotalAcademicUnitsEarned > 0
@@ -375,7 +408,7 @@ function SemesterRoadmap({
     .filter((course) => {
       const eligibility = getCourseEligibility(
         course,
-        completedCourseIds,
+        effectiveCompletedCourseIds,
         completedAcademicUnits,
         standingRequirements,
       )
@@ -649,27 +682,28 @@ function SemesterRoadmap({
 
         {/* Render each curriculum row: one year/semester label and its course cards. */}
         {semesterGroups.map((group) => {
-          const yearAccent = YEAR_ACCENTS[(group.year - 1) % YEAR_ACCENTS.length]
+          const yearAccent = getSemesterGroupAccent(group)
+          const semesterLabel = getSemesterGroupLabel(group)
 
           return (
             <section
-              key={`${group.year}-${group.semester}`}
+              key={getSemesterGroupKey(group)}
               className="semester-band"
               style={{ '--year-accent': yearAccent } as CSSProperties}
             >
               <div className="semester-label">
-                <strong>Year {group.year}</strong>
-                <span>Sem {group.semester}</span>
+                <strong>{semesterLabel.title}</strong>
+                <span>{semesterLabel.subtitle}</span>
               </div>
 
               <div className="semester-courses">
                 {group.courses.map((course) => {
                   const isConnected = connectedCourseIds.has(course.id)
                   const isDimmed = Boolean(hoveredCourseId) && !isConnected
-                  const isCompleted = completedCourseIds.includes(course.id)
+                  const isCompleted = effectiveCompletedCourseIds.includes(course.id)
                   const eligibility = getCourseEligibility(
                     course,
-                    completedCourseIds,
+                    effectiveCompletedCourseIds,
                     completedAcademicUnits,
                     standingRequirements,
                   )
@@ -687,6 +721,7 @@ function SemesterRoadmap({
                         isConnected ? 'semester-course-card-connected' : '',
                         isDimmed ? 'semester-course-card-dimmed' : '',
                         isCompleted ? 'semester-course-card-completed' : '',
+                        course.isTranscriptOnly ? 'semester-course-card-transcript-only' : '',
                         eligibility.status === 'locked' ? 'semester-course-card-locked' : '',
                       ]
                         .filter(Boolean)
@@ -746,9 +781,18 @@ function SemesterRoadmap({
                           type="checkbox"
                           className="completion-indicator"
                           checked={isCompleted}
-                          onChange={() => toggleCourseCompletion(course.id)}
+                          disabled={course.isTranscriptOnly}
+                          onChange={() => {
+                            if (!course.isTranscriptOnly) {
+                              toggleCourseCompletion(course.id)
+                            }
+                          }}
                           aria-label={
-                            isCompleted ? 'Mark course as incomplete' : 'Mark course as complete'
+                            course.isTranscriptOnly
+                              ? 'Completed from uploaded transcript'
+                              : isCompleted
+                                ? 'Mark course as incomplete'
+                                : 'Mark course as complete'
                           }
                         />
                       </div>

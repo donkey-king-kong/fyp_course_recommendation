@@ -5,11 +5,13 @@ import LoginPage from './components/LoginPage'
 import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
+import { fetchModuleByCode } from './api/modulesApi'
 import { fetchRecommendations } from './api/recommendationsApi'
 import { useProfileStore } from './store/useProfileStore'
 import type { CurriculumGuideResponse } from './types/curriculum'
+import type { ModuleSummary } from './types/module'
 import type { CourseRecommendation } from './types/recommendation'
-import type { RoadmapResponse } from './types/roadmap'
+import type { CourseNode, RoadmapEdge, RoadmapResponse } from './types/roadmap'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
 
@@ -40,27 +42,118 @@ function getInitialView(): ViewState {
   return DEFAULT_VIEW
 }
 
-// Convert the uploaded curriculum guide shape into the existing roadmap component shape.
-function mapCurriculumGuideToRoadmap(curriculumGuide: CurriculumGuideResponse): RoadmapResponse {
+function createEdgeKey(edge: RoadmapEdge) {
+  return `${edge.source}->${edge.target}`
+}
+
+function getNodeIdsByCourseCode(nodes: CourseNode[]) {
+  return nodes.reduce<Record<string, string[]>>((map, node) => {
+    const courseCode = node.courseCode.toUpperCase()
+
+    return {
+      ...map,
+      [courseCode]: [...(map[courseCode] ?? []), node.id],
+    }
+  }, {})
+}
+
+function createFallbackTranscriptModule(courseCode: string): ModuleSummary {
   return {
-    nodes: curriculumGuide.nodes.map((course) => ({
-      id: course.id,
-      courseCode: course.courseCode,
-      title: getCurriculumCourseTitle(course),
-      type: course.type,
-      year: course.year,
-      semester: course.semester,
-      academicUnits: course.academicUnits,
-      prerequisites: curriculumGuide.edges
-        .filter((edge) => edge.target === course.id)
-        .map((edge) => edge.source),
-      prerequisiteText: course.prerequisiteText,
-      isCompleted: false,
-      isChoiceSlot: course.isChoiceSlot,
-      jobSkills: [],
-    })),
-    edges: curriculumGuide.edges,
+    code: courseCode,
+    title: 'Completed transcript module',
+    au: null,
+    faculty: null,
+    description: null,
+    level: null,
+    categories: [],
+    latest_year: null,
+    latest_semester: null,
+    is_current_semester: false,
+    not_available_to_programme: null,
+    prerequisites: [],
+    unlocks: [],
+    prerequisite_count: 0,
+    unlock_count: 0,
   }
+}
+
+function getPrerequisitesByTarget(edges: RoadmapEdge[]) {
+  return edges.reduce<Record<string, string[]>>((map, edge) => {
+    return {
+      ...map,
+      [edge.target]: [...(map[edge.target] ?? []), edge.source],
+    }
+  }, {})
+}
+
+// Convert the uploaded curriculum guide shape into the existing roadmap component shape.
+function mapCurriculumGuideToRoadmap(
+  curriculumGuide: CurriculumGuideResponse,
+  transcriptOnlyModules: ModuleSummary[],
+): RoadmapResponse {
+  const curriculumNodes: CourseNode[] = curriculumGuide.nodes.map((course) => ({
+    id: course.id,
+    courseCode: course.courseCode,
+    title: getCurriculumCourseTitle(course),
+    type: course.type,
+    year: course.year,
+    semester: course.semester,
+    academicUnits: course.academicUnits,
+    prerequisites: curriculumGuide.edges
+      .filter((edge) => edge.target === course.id)
+      .map((edge) => edge.source),
+    prerequisiteText: course.prerequisiteText,
+    isCompleted: false,
+    isChoiceSlot: course.isChoiceSlot,
+    isTranscriptOnly: false,
+    jobSkills: [],
+  }))
+  // Transcript-only modules are shown separately so they do not replace official curriculum slots.
+  const transcriptNodes: CourseNode[] = transcriptOnlyModules.map((module) => ({
+    id: `transcript-${module.code.toLowerCase()}`,
+    courseCode: module.code,
+    title: module.title,
+    type: 'Transcript',
+    year: 0,
+    semester: 0,
+    academicUnits: module.au ?? 0,
+    prerequisites: [],
+    prerequisiteText: module.prerequisites.join(', '),
+    isCompleted: true,
+    isChoiceSlot: false,
+    isTranscriptOnly: true,
+    jobSkills: [],
+  }))
+  const nodes = [...transcriptNodes, ...curriculumNodes]
+  const nodeIdsByCourseCode = getNodeIdsByCourseCode(nodes)
+  const transcriptEdges = transcriptOnlyModules.flatMap((module) => {
+    const transcriptNodeId = `transcript-${module.code.toLowerCase()}`
+    const prerequisiteEdges = module.prerequisites.flatMap((prerequisiteCode) =>
+      (nodeIdsByCourseCode[prerequisiteCode.toUpperCase()] ?? []).map((prerequisiteNodeId) => ({
+        source: prerequisiteNodeId,
+        target: transcriptNodeId,
+      })),
+    )
+    const unlockEdges = module.unlocks.flatMap((unlockCode) =>
+      (nodeIdsByCourseCode[unlockCode.toUpperCase()] ?? []).map((unlockNodeId) => ({
+        source: transcriptNodeId,
+        target: unlockNodeId,
+      })),
+    )
+
+    return [...prerequisiteEdges, ...unlockEdges]
+  })
+  const edges = [...curriculumGuide.edges, ...transcriptEdges].filter(
+    (edge, index, allEdges) =>
+      allEdges.findIndex((candidate) => createEdgeKey(candidate) === createEdgeKey(edge)) === index,
+  )
+  const prerequisitesByTarget = getPrerequisitesByTarget(edges)
+  const nodesWithUpdatedPrerequisites = nodes.map((node) => ({
+    ...node,
+    prerequisites: prerequisitesByTarget[node.id] ?? [],
+  }))
+
+  return { nodes: nodesWithUpdatedPrerequisites, edges }
 }
 
 function getChoiceSlotCode(course: CurriculumGuideResponse['nodes'][number]) {
@@ -88,12 +181,16 @@ function App() {
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
   const [recommendationError, setRecommendationError] = useState('')
   const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
+  const [transcriptOnlyModules, setTranscriptOnlyModules] = useState<ModuleSummary[]>([])
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const profile = useProfileStore((state) => state.profile)
   const transcriptCompletedCourseCodes = useProfileStore(
     (state) => state.transcriptCompletedCourseCodes,
+  )
+  const transcriptUnmatchedCourseCodes = useProfileStore(
+    (state) => state.transcriptUnmatchedCourseCodes,
   )
   const logout = useProfileStore((state) => state.logout)
 
@@ -102,9 +199,42 @@ function App() {
   }, [currentView])
 
   const roadmap = useMemo(
-    () => (curriculumGuide ? mapCurriculumGuideToRoadmap(curriculumGuide) : null),
-    [curriculumGuide],
+    () => (
+      curriculumGuide ? mapCurriculumGuideToRoadmap(curriculumGuide, transcriptOnlyModules) : null
+    ),
+    [curriculumGuide, transcriptOnlyModules],
   )
+
+  useEffect(() => {
+    let shouldIgnoreResult = false
+
+    async function loadTranscriptOnlyModules() {
+      if (!curriculumGuide || transcriptUnmatchedCourseCodes.length === 0) {
+        setTranscriptOnlyModules([])
+        return
+      }
+
+      const loadedModules = await Promise.all(
+        transcriptUnmatchedCourseCodes.map(async (courseCode) => {
+          try {
+            return await fetchModuleByCode(courseCode)
+          } catch {
+            return createFallbackTranscriptModule(courseCode)
+          }
+        }),
+      )
+
+      if (!shouldIgnoreResult) {
+        setTranscriptOnlyModules(loadedModules)
+      }
+    }
+
+    void loadTranscriptOnlyModules()
+
+    return () => {
+      shouldIgnoreResult = true
+    }
+  }, [curriculumGuide, transcriptUnmatchedCourseCodes])
 
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
@@ -112,6 +242,10 @@ function App() {
   // Display uploaded curriculum courses matching the search term.
   const filteredCourses =
     roadmap?.nodes.filter((course) => {
+      if (course.isTranscriptOnly) {
+        return false
+      }
+
       const courseCode = course.courseCode.toLowerCase()
       const title = course.title.toLowerCase()
 
