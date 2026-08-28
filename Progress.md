@@ -725,3 +725,26 @@ Status: Implemented locally
 - No Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation engine.
 - No backend persistence for generated recommendations.
 - No manual browser verification has been recorded yet after these polish changes.
+
+## Recommendation Slot Demand Sizing
+
+Status: Implemented locally
+
+### Completed
+
+- Added frontend recommendation-limit sizing based on the actual number of open BDE and MPE slots after curriculum guide upload.
+- Gave BDE slots a larger candidate multiplier because BDE assignment can skip candidates due to duplicate recommendations, year-level matching, or prerequisite-placement rules.
+- Increased the backend recommendation request limit validation from `50` to `120` so the frontend can request enough candidates for multiple open choice slots.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No new ranking model, AI logic, graph search, vector search, or backend persistence.
+- No backend-side per-slot assignment yet; the roadmap still performs the final slot placement in the frontend.
