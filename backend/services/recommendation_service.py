@@ -136,13 +136,12 @@ def recommend_courses(
                 )
             )
 
-    per_slot_limit = max(1, (limit + len(candidate_slots) - 1) // len(candidate_slots))
     sorted_recommendations = flatten_ranked_slot_recommendations(
         candidate_slots,
         recommendations_by_slot,
-        per_slot_limit,
+        limit,
     )
-    final_recommendations = sorted_recommendations[:limit]
+    final_recommendations = sorted_recommendations
     logger.info(
         "Recommendation ranked before cut: count=%s, items=%s",
         len(sorted_recommendations),
@@ -314,23 +313,60 @@ def normalize_choice_slot_code(choice_slot_code: str) -> str:
 def flatten_ranked_slot_recommendations(
     choice_slots: list[RecommendationChoiceSlot],
     recommendations_by_slot: dict[str, list[CourseRecommendation]],
-    per_slot_limit: int,
+    limit: int,
 ) -> list[CourseRecommendation]:
-    ranked_recommendations: list[CourseRecommendation] = []
-
-    for slot in choice_slots:
-        slot_recommendations = recommendations_by_slot.get(get_choice_slot_identity(slot), [])
-        ranked_recommendations.extend(
-            sorted(
-                slot_recommendations,
-                key=lambda recommendation: (
-                    -recommendation.score,
-                    recommendation.courseCode,
-                ),
-            )[:per_slot_limit]
+    sorted_recommendations_by_slot = {
+        get_choice_slot_identity(slot): sorted(
+            recommendations_by_slot.get(get_choice_slot_identity(slot), []),
+            key=lambda recommendation: (
+                -recommendation.score,
+                recommendation.courseCode,
+            ),
         )
+        for slot in choice_slots
+    }
+    ranked_recommendations: list[CourseRecommendation] = []
+    used_course_codes: set[str] = set()
+    candidate_index = 0
+
+    while len(ranked_recommendations) < limit:
+        added_this_round = False
+
+        for slot in choice_slots:
+            slot_recommendations = sorted_recommendations_by_slot[get_choice_slot_identity(slot)]
+            unique_recommendation = get_unique_recommendation_at_or_after_index(
+                slot_recommendations,
+                candidate_index,
+                used_course_codes,
+            )
+
+            if not unique_recommendation:
+                continue
+
+            ranked_recommendations.append(unique_recommendation)
+            used_course_codes.add(unique_recommendation.courseCode)
+            added_this_round = True
+
+            if len(ranked_recommendations) >= limit:
+                break
+
+        if not added_this_round:
+            break
+
+        candidate_index += 1
 
     return ranked_recommendations
+
+def get_unique_recommendation_at_or_after_index(
+    recommendations: list[CourseRecommendation],
+    start_index: int,
+    used_course_codes: set[str],
+) -> Optional[CourseRecommendation]:
+    for recommendation in recommendations[start_index:]:
+        if recommendation.courseCode not in used_course_codes:
+            return recommendation
+
+    return None
 
 def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
     searchable_text = f"{module.title} {module.description or ''}".lower()

@@ -858,6 +858,7 @@ Status: Implemented locally
 - Added slot metadata to each recommendation response so the frontend can place direct recommendations by exact roadmap slot ID.
 - Updated the frontend recommendation request builder and roadmap assignment logic to use backend slot IDs when available.
 - Updated the roadmap so locked choice slots can still show loaded recommendations while keeping their locked styling and missing-requirement message.
+- Updated backend recommendation ordering to round-robin across slots and skip duplicate course codes so later BDE slots are less likely to be starved by earlier slots.
 
 ### Verified
 
@@ -874,3 +875,4 @@ Status: Implemented locally
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
 - No backend persistence for generated recommendations.
 - No manual browser verification has been recorded yet for the exact-slot recommendation behavior.
+- Recommendation coverage still depends on enough eligible unique module candidates existing for each slot.
