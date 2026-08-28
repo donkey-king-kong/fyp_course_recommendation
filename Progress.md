@@ -859,6 +859,7 @@ Status: Implemented locally
 - Updated the frontend recommendation request builder and roadmap assignment logic to use backend slot IDs when available.
 - Updated the roadmap so locked choice slots can still show loaded recommendations while keeping their locked styling and missing-requirement message.
 - Updated backend recommendation ordering to round-robin across slots and skip duplicate course codes so later BDE slots are less likely to be starved by earlier slots.
+- Added duplicate-title protection so different course codes with the same normalized title are not recommended together.
 
 ### Verified
 

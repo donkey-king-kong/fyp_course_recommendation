@@ -327,6 +327,7 @@ def flatten_ranked_slot_recommendations(
     }
     ranked_recommendations: list[CourseRecommendation] = []
     used_course_codes: set[str] = set()
+    used_course_titles: set[str] = set()
     candidate_index = 0
 
     while len(ranked_recommendations) < limit:
@@ -338,6 +339,7 @@ def flatten_ranked_slot_recommendations(
                 slot_recommendations,
                 candidate_index,
                 used_course_codes,
+                used_course_titles,
             )
 
             if not unique_recommendation:
@@ -345,6 +347,7 @@ def flatten_ranked_slot_recommendations(
 
             ranked_recommendations.append(unique_recommendation)
             used_course_codes.add(unique_recommendation.courseCode)
+            used_course_titles.add(normalize_title(unique_recommendation.title))
             added_this_round = True
 
             if len(ranked_recommendations) >= limit:
@@ -361,9 +364,15 @@ def get_unique_recommendation_at_or_after_index(
     recommendations: list[CourseRecommendation],
     start_index: int,
     used_course_codes: set[str],
+    used_course_titles: set[str],
 ) -> Optional[CourseRecommendation]:
     for recommendation in recommendations[start_index:]:
-        if recommendation.courseCode not in used_course_codes:
+        recommendation_title = normalize_title(recommendation.title)
+
+        if (
+            recommendation.courseCode not in used_course_codes and
+            recommendation_title not in used_course_titles
+        ):
             return recommendation
 
     return None
