@@ -292,6 +292,72 @@
   color: #fde68a;
 }
 
+.recommendations-card {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.42);
+  text-align: left;
+}
+
+.recommendations-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.recommendations-header h3 {
+  margin: 0 0 0.35rem;
+  color: #f8fafc;
+  font-size: 1rem;
+}
+
+.recommendations-card p,
+.recommendation-list small {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.recommendation-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.recommendation-list li {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 0.7rem;
+  background: rgba(2, 6, 23, 0.18);
+}
+
+.recommendation-list strong {
+  color: #67e8f9;
+  font-size: 0.9rem;
+}
+
+.recommendation-list span {
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.recommendation-list em {
+  color: #c4b5fd;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 700;
+}
+
 .transcript-results-card {
   display: grid;
   gap: 1rem;
@@ -550,6 +616,37 @@
 
 .app-shell[data-theme='light'] .unmatched-stat-card span {
   color: #92400e;
+}
+
+.app-shell[data-theme='light'] .recommendations-card {
+  border-color: rgba(15, 124, 138, 0.2);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.app-shell[data-theme='light'] .recommendations-header h3 {
+  color: #263238;
+}
+
+.app-shell[data-theme='light'] .recommendations-card p,
+.app-shell[data-theme='light'] .recommendation-list small {
+  color: #6b5f54;
+}
+
+.app-shell[data-theme='light'] .recommendation-list li {
+  border-color: rgba(15, 124, 138, 0.16);
+  background: rgba(255, 248, 237, 0.6);
+}
+
+.app-shell[data-theme='light'] .recommendation-list strong {
+  color: #0f7c8a;
+}
+
+.app-shell[data-theme='light'] .recommendation-list span {
+  color: #263238;
+}
+
+.app-shell[data-theme='light'] .recommendation-list em {
+  color: #7e22ce;
 }
 
 .app-shell[data-theme='light'] .transcript-results-card {

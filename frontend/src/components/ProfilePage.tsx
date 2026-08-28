@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
+import { fetchRecommendations } from '../api/recommendationsApi'
 import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
+import type { CourseRecommendation } from '../types/recommendation'
 import './ProfilePage.css'
 
 function formatAcademicUnits(academicUnits: number) {
@@ -39,10 +41,13 @@ function ProfilePage() {
   const [transcriptInputKey, setTranscriptInputKey] = useState(0)
   const [isUploadingCurriculumGuide, setIsUploadingCurriculumGuide] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
+  const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
   const [curriculumUploadMessage, setCurriculumUploadMessage] = useState('')
   const [curriculumUploadError, setCurriculumUploadError] = useState('')
   const [uploadMessage, setUploadMessage] = useState('')
   const [uploadError, setUploadError] = useState('')
+  const [recommendationError, setRecommendationError] = useState('')
+  const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
   const hasCurriculumGuide = Boolean(curriculumGuide)
   const hasTranscriptResults =
     transcriptMatchedCourses.length > 0 ||
@@ -155,6 +160,57 @@ function ProfilePage() {
     setUploadMessage('Cleared stored transcript results for this profile.')
   }
 
+  async function handleLoadRecommendations() {
+    if (!curriculumGuide) {
+      setRecommendationError('Upload a curriculum guide before loading recommendations.')
+      return
+    }
+
+    if (profile.careerGoal !== 'software-engineer') {
+      setRecommendationError('Select Software Engineer as the career goal first.')
+      return
+    }
+
+    // Combine transcript matches and manual roadmap ticks so recommendations exclude completed modules.
+    const completedRoadmapCourseCodes = curriculumGuide.nodes
+      .filter((course) => completedCourseIds.includes(course.id))
+      .map((course) => course.courseCode)
+    const completedCourseCodes = [
+      ...new Set([...transcriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
+    ]
+    // Only open choice slots are sent because compulsory modules are already fixed by the roadmap.
+    const choiceSlotCodes = [
+      ...new Set(
+        curriculumGuide.nodes
+          .filter((course) => course.isChoiceSlot && !completedCourseIds.includes(course.id))
+          .map((course) => course.courseCode),
+      ),
+    ]
+
+    if (choiceSlotCodes.length === 0) {
+      setRecommendationError('No open choice slots were found in the uploaded curriculum guide.')
+      return
+    }
+
+    try {
+      setIsLoadingRecommendations(true)
+      setRecommendationError('')
+
+      const result = await fetchRecommendations({
+        careerGoal: profile.careerGoal,
+        completedCourseCodes,
+        choiceSlotCodes,
+        limit: 8,
+      })
+
+      setRecommendations(result.recommendations)
+    } catch {
+      setRecommendationError('Could not load recommendations. Make sure the backend is running.')
+    } finally {
+      setIsLoadingRecommendations(false)
+    }
+  }
+
   return (
     <section className="profile-section">
       <div className="profile-header">
@@ -226,11 +282,6 @@ function ProfilePage() {
           >
             <option value="">Select a career goal</option>
             <option value="software-engineer">Software Engineer</option>
-            <option value="ai-ml-engineer">AI / Machine Learning Engineer</option>
-            <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
-            <option value="data-analyst">Data Analyst</option>
-            <option value="backend-engineer">Backend Engineer</option>
-            <option value="cloud-devops-engineer">Cloud / DevOps Engineer</option>
           </select>
         </label>
       </form>
@@ -374,6 +425,55 @@ function ProfilePage() {
           <span>Transcript Modules Outside Roadmap</span>
         </div>
       </div>
+
+      <section className="recommendations-card">
+        <div className="recommendations-header">
+          <div>
+            <h3>Course Recommendations</h3>
+            <p>
+              First-pass recommendations for Software Engineer using open MPE and BDE slots.
+            </p>
+          </div>
+
+          <button
+            className="transcript-upload-button"
+            type="button"
+            onClick={handleLoadRecommendations}
+            disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRecommendations}
+          >
+            {isLoadingRecommendations ? 'Loading...' : 'Load Recommendations'}
+          </button>
+        </div>
+
+        {!hasCurriculumGuide && (
+          <p>Upload a curriculum guide first so the system can find open choice slots.</p>
+        )}
+        {hasCurriculumGuide && profile.careerGoal !== 'software-engineer' && (
+          <p>Select Software Engineer as your career goal to load recommendations.</p>
+        )}
+        {recommendationError && <p className="upload-error">{recommendationError}</p>}
+        {recommendations.length > 0 && (
+          <ul className="recommendation-list">
+            {recommendations.map((recommendation) => (
+              <li key={recommendation.courseCode}>
+                <strong>{recommendation.courseCode}</strong>
+                <span>{recommendation.title}</span>
+                <em>
+                  Fits {recommendation.matchedChoiceSlot}
+                  {recommendation.faculty ? ` from ${recommendation.faculty}` : ''}
+                </em>
+                <small>{recommendation.reason}</small>
+              </li>
+            ))}
+          </ul>
+        )}
+        {hasCurriculumGuide &&
+          profile.careerGoal === 'software-engineer' &&
+          recommendations.length === 0 &&
+          !recommendationError && (
+            <p>Click Load Recommendations to generate a first-pass module list.</p>
+          )}
+      </section>
 
       {hasTranscriptResults && (
         <section className="transcript-results-card">
