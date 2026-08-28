@@ -11,6 +11,10 @@ logger = logging.getLogger(__name__)
 
 # Matches NTU-style module codes such as SC1003, MH1810, CC0001, etc
 COURSE_CODE_PATTERN = re.compile(r"\b[A-Z]{2,4}\d{4}\b")
+TERM_HEADER_PATTERN = re.compile(
+    r"(?P<academic_year>\d{4}\s*-\s*\d{4})\s+SEMESTER\s+(?P<semester>\d+)",
+    re.IGNORECASE,
+)
 
 # Grades in this set should be treated as completed modules
 # EX = exempted and TC = transfer credit; both count as completed
@@ -79,7 +83,6 @@ def normalize_line(line: str) -> str:
     # Make extracted text easier to compare by removing extra spaces and casing differences
     return " ".join(line.strip().upper().split())
 
-
 def extract_total_academic_units_earned(transcript_text: str) -> Optional[float]:
     normalized_text = normalize_line(transcript_text)
     total_match = TOTAL_AU_EARNED_PATTERN.search(normalized_text)
@@ -89,14 +92,32 @@ def extract_total_academic_units_earned(transcript_text: str) -> Optional[float]
 
     return None
 
-def parse_transcript_rows(transcript_text: str) -> list[dict[str, str]]:
+def parse_transcript_rows(transcript_text: str) -> list[dict[str, Any]]:
     # Fallback parser for PDFs where each course row is extracted as readable text
     lines = [normalize_line(line) for line in transcript_text.splitlines()]
-    rows: list[dict[str, str]] = []
+    rows: list[dict[str, Any]] = []
     current_row = ""
+    current_term: dict[str, Any] = {}
+    study_year_by_academic_year: dict[str, int] = {}
 
     for line in lines:
         if not line:
+            continue
+
+        term_match = TERM_HEADER_PATTERN.search(line)
+
+        if term_match:
+            academic_year = normalize_academic_year(term_match.group("academic_year"))
+            study_year_by_academic_year.setdefault(
+                academic_year,
+                len(study_year_by_academic_year) + 1,
+            )
+            current_term = {
+                "academic_year": academic_year,
+                "transcript_semester": int(term_match.group("semester")),
+                "study_year": study_year_by_academic_year[academic_year],
+            }
+            current_row = ""
             continue
 
         # New course code = new row
@@ -111,17 +132,19 @@ def parse_transcript_rows(transcript_text: str) -> list[dict[str, str]]:
         row_match = TRANSCRIPT_ROW_PATTERN.match(current_row)
 
         if row_match:
-            rows.append(row_match.groupdict())
+            rows.append({**row_match.groupdict(), **current_term})
             current_row = ""
 
     return rows
 
 # Take positioned words extracted from PDF and group into course rows
 # Rebuild table rows
-def parse_transcript_rows_from_words(words: list[dict[str, Any]]) -> list[dict[str, str]]:
-    rows: list[dict[str, str]] = []
+def parse_transcript_rows_from_words(words: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
     # Process words in visual reading order: page, top-to-bottom, then left-to-right
     sorted_words = sorted(words, key=lambda word: (word["page"], word["y0"], word["x0"]))
+    term_headers = extract_term_headers_from_words(sorted_words)
+    study_year_by_academic_year = build_study_year_map(term_headers)
     # Every course row starts with a module code in the first column
     code_words = [
         word
@@ -149,20 +172,112 @@ def parse_transcript_rows_from_words(words: list[dict[str, Any]]) -> list[dict[s
         ]
 
         # Parse the words within this row into code/title/AU/grade/grade point
-        rows.append(parse_course_row_from_words(code_word, row_words))
+        row = parse_course_row_from_words(code_word, row_words)
+        term_header = find_term_header_for_course(
+            code_word,
+            term_headers,
+        )
+
+        if term_header:
+            row["academic_year"] = term_header["academic_year"]
+            row["transcript_semester"] = term_header["transcript_semester"]
+            row["study_year"] = study_year_by_academic_year[term_header["academic_year"]]
+
+        rows.append(row)
 
     logger.info("Parsed %s possible transcript course row(s).", len(rows))
     for row in rows:
         logger.info(
-            "Parsed row: code=%s, title=%s, au=%s, grade=%s, grade_point=%s",
+            "Parsed row: code=%s, term=%s S%s, study_year=%s, au=%s, grade=%s, grade_point=%s",
             row["code"],
-            row["title"],
+            row["academic_year"],
+            row["transcript_semester"],
+            row["study_year"],
             row["academic_units"],
             row["grade"],
             row["grade_point"],
         )
 
     return rows
+
+def normalize_academic_year(academic_year: str) -> str:
+    return academic_year.replace(" ", "")
+
+# Find transcript term headings such as "2024-2025 SEMESTER 2" in either one or two columns.
+def extract_term_headers_from_words(words: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    lines_by_key: dict[tuple[int, int, int], list[dict[str, Any]]] = {}
+
+    for word in words:
+        key = (word["page"], word["block_no"], word["line_no"])
+        lines_by_key.setdefault(key, []).append(word)
+
+    term_headers: list[dict[str, Any]] = []
+
+    for line_words in lines_by_key.values():
+        ordered_line_words = sorted(line_words, key=lambda word: word["x0"])
+        line_text = normalize_line(" ".join(str(word["text"]) for word in ordered_line_words))
+        term_match = TERM_HEADER_PATTERN.search(line_text)
+
+        if not term_match:
+            continue
+
+        term_headers.append(
+            {
+                "page": ordered_line_words[0]["page"],
+                "x0": min(word["x0"] for word in ordered_line_words),
+                "x1": max(word["x1"] for word in ordered_line_words),
+                "y0": min(word["y0"] for word in ordered_line_words),
+                "academic_year": normalize_academic_year(term_match.group("academic_year")),
+                "transcript_semester": int(term_match.group("semester")),
+            }
+        )
+
+    return sorted(term_headers, key=get_transcript_visual_order_key)
+
+def get_transcript_visual_order_key(term_header: dict[str, Any]) -> tuple[int, int, float]:
+    # Transcript tables read down the left column first, then down the right column.
+    column_index = get_transcript_column_index(term_header["x0"])
+
+    return (term_header["page"], column_index, term_header["y0"])
+
+def get_transcript_column_index(x_position: float) -> int:
+    return 0 if x_position < 300 else 1
+
+def build_study_year_map(term_headers: list[dict[str, Any]]) -> dict[str, int]:
+    study_year_by_academic_year: dict[str, int] = {}
+
+    for term_header in term_headers:
+        academic_year = term_header["academic_year"]
+        study_year_by_academic_year.setdefault(
+            academic_year,
+            len(study_year_by_academic_year) + 1,
+        )
+
+    return study_year_by_academic_year
+
+def find_term_header_for_course(
+    code_word: dict[str, Any],
+    term_headers: list[dict[str, Any]],
+) -> Optional[dict[str, Any]]:
+    code_column_index = get_transcript_column_index(code_word["x0"])
+    same_column_headers = [
+        term_header
+        for term_header in term_headers
+        if term_header["page"] == code_word["page"]
+        and term_header["y0"] <= code_word["y0"]
+        and get_transcript_column_index(term_header["x0"]) == code_column_index
+    ]
+
+    if same_column_headers:
+        return max(same_column_headers, key=lambda term_header: term_header["y0"])
+
+    same_page_headers = [
+        term_header
+        for term_header in term_headers
+        if term_header["page"] == code_word["page"] and term_header["y0"] <= code_word["y0"]
+    ]
+
+    return max(same_page_headers, key=lambda term_header: term_header["y0"], default=None)
 
 # Finds the next course code below the current code in the same transcript column.
 def find_next_code_in_same_column(
@@ -198,7 +313,7 @@ def get_course_column_bounds(
 
 def parse_course_row_from_words(
     code_word: dict[str, Any], row_words: list[dict[str, Any]]
-) -> dict[str, str]:
+) -> dict[str, Any]:
     code = str(code_word["text"]).upper()
     # Ignore anything to the left of the module code
     # Course details are on the right
@@ -256,6 +371,9 @@ def parse_course_row_from_words(
         "academic_units": str(academic_unit_word["text"]) if academic_unit_word else "0.0",
         "grade": str(grade_word["text"]).upper() if grade_word else "",
         "grade_point": str(grade_point_word["text"]) if grade_point_word else None,
+        "academic_year": None,
+        "transcript_semester": None,
+        "study_year": None,
     }
 
 def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
@@ -271,6 +389,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
     roadmap_courses_by_code = {course.courseCode: course for course in roadmap.nodes}
 
     completed_courses: list[TranscriptCourse] = []
+    completed_transcript_courses: list[TranscriptCourse] = []
     unmatched_course_codes: list[str] = []
     # Counts completed transcript rows before roadmap matching, so the UI can show both numbers.
     completed_transcript_course_count = 0
@@ -289,6 +408,22 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
         completed_transcript_course_count += 1
         completed_transcript_academic_units += academic_units
         roadmap_course = roadmap_courses_by_code.get(course_code)
+        transcript_course = TranscriptCourse(
+            course_code=course_code,
+            course_id=roadmap_course.id if roadmap_course else f"transcript-{course_code.lower()}",
+            title=roadmap_course.title if roadmap_course else transcript_row["title"],
+            academic_units=academic_units,
+            grade=grade,
+            grade_point=(
+                float(transcript_row["grade_point"])
+                if transcript_row["grade_point"]
+                else None
+            ),
+            academic_year=transcript_row.get("academic_year"),
+            transcript_semester=transcript_row.get("transcript_semester"),
+            study_year=transcript_row.get("study_year"),
+        )
+        completed_transcript_courses.append(transcript_course)
 
         if roadmap_course is None:
             # The transcript can contain non-roadmap modules such as business/common-core courses.
@@ -297,20 +432,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
             continue
 
         logger.info("Matched completed roadmap course: %s (%s).", course_code, grade)
-        completed_courses.append(
-            TranscriptCourse(
-                course_code=roadmap_course.courseCode,
-                course_id=roadmap_course.id,
-                title=roadmap_course.title,
-                academic_units=academic_units,
-                grade=grade,
-                grade_point=(
-                    float(transcript_row["grade_point"])
-                    if transcript_row["grade_point"]
-                    else None
-                ),
-            )
-        )
+        completed_courses.append(transcript_course)
 
     logger.info(
         "Transcript parsing complete: %s completed roadmap course(s), %s unmatched course code(s).",
@@ -325,6 +447,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
 
     return TranscriptUploadResponse(
         completed_courses=completed_courses,
+        completed_transcript_courses=completed_transcript_courses,
         completed_transcript_course_count=completed_transcript_course_count,
         total_academic_units_earned=total_academic_units_earned,
         unmatched_course_codes=unmatched_course_codes,

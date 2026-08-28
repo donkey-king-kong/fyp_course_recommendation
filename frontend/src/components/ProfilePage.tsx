@@ -2,13 +2,26 @@ import { useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
 import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
+import ClassicLoader from './ClassicLoader'
 import './ProfilePage.css'
 
 function formatAcademicUnits(academicUnits: number) {
   return Number.isInteger(academicUnits) ? academicUnits.toString() : academicUnits.toFixed(1)
 }
 
-function ProfilePage() {
+interface ProfilePageProps {
+  isLoadingRoadmap: boolean
+  recommendationError: string
+  onGoToRoadmap: () => void
+  onLoadRoadmap: () => void
+}
+
+function ProfilePage({
+  isLoadingRoadmap,
+  recommendationError,
+  onGoToRoadmap,
+  onLoadRoadmap,
+}: ProfilePageProps) {
   // Read the saved student profile from the shared Zustand store
   const profile = useProfileStore((state) => state.profile)
 
@@ -109,14 +122,14 @@ function ProfilePage() {
 
       const completedCourseCodesFromTranscript = [
         ...new Set([
-          ...result.completed_courses.map((course) => course.course_code),
-          ...result.unmatched_course_codes,
+          ...result.completed_transcript_courses.map((course) => course.course_code),
         ]),
       ]
 
       // Store transcript codes first; roadmap matching happens only when a curriculum guide exists.
       setTranscriptResults(
         completedCourseCodesFromTranscript,
+        result.completed_transcript_courses,
         result.completed_transcript_course_count,
         result.total_academic_units_earned,
       )
@@ -226,13 +239,27 @@ function ProfilePage() {
           >
             <option value="">Select a career goal</option>
             <option value="software-engineer">Software Engineer</option>
-            <option value="ai-ml-engineer">AI / Machine Learning Engineer</option>
-            <option value="cybersecurity-analyst">Cybersecurity Analyst</option>
-            <option value="data-analyst">Data Analyst</option>
-            <option value="backend-engineer">Backend Engineer</option>
-            <option value="cloud-devops-engineer">Cloud / DevOps Engineer</option>
           </select>
         </label>
+
+        <div className="profile-roadmap-actions">
+          <div className="profile-roadmap-load-row">
+            <button
+              type="button"
+              onClick={onLoadRoadmap}
+              disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
+            >
+              Load Roadmap
+            </button>
+
+            {isLoadingRoadmap && <ClassicLoader className="profile-roadmap-loader" />}
+          </div>
+
+          <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>
+            Go to roadmap...
+          </button>
+          {recommendationError && <p className="upload-error">{recommendationError}</p>}
+        </div>
       </form>
 
       <section className="transcript-upload-card">

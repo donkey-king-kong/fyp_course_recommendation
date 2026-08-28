@@ -1,6 +1,6 @@
 .course-list {
-  width: min(100%, 48rem);
-  padding: 1.25rem;
+  width: min(100%, 76rem);
+  padding: 1.5rem;
   border: 1px solid rgba(148, 163, 184, 0.24);
   border-radius: 1rem;
   background: rgba(15, 23, 42, 0.78);
@@ -16,7 +16,7 @@
 .course-groups {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.75rem;
 }
 
 .course-group h3 {
@@ -29,10 +29,11 @@
   background: rgba(56, 189, 248, 0.12);
 }
 
-.course-group ul {
-  display: flex;
-  flex-direction: column;
+.course-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
   gap: 0.75rem;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -40,7 +41,9 @@
 .course-list-item {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 0.25rem;
+  min-height: 6.25rem;
   padding: 0.875rem;
   border: 1px solid rgba(148, 163, 184, 0.2);
   border-radius: 0.75rem;

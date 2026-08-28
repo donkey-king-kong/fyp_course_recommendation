@@ -241,6 +241,7 @@ Completed foundations:
 - Frontend Roadmap page now uses the uploaded curriculum guide as the student roadmap source of truth.
 - Roadmap page shows an empty state instead of the static roadmap when the active profile has no uploaded curriculum guide.
 - Roadmap page includes a `Clear roadmap` action that removes the uploaded curriculum guide while keeping transcript results saved.
+- Lower `Curriculum Guide Courses` section reads directly from the uploaded curriculum guide and is not affected by transcript semester overrides.
 - Profile page stores career goal through a dropdown for future MPE/choice-slot recommendation work.
 - Roadmap lock indicators now handle uploaded curriculum prerequisite text, including text-only requirements such as `Year 4 standing`.
 

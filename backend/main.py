@@ -5,6 +5,7 @@ from backend.routers.curriculum import router as curriculum_router
 from backend.routers.faculties import router as faculties_router
 from backend.routers.health import router as health_router
 from backend.routers.modules import router as modules_router
+from backend.routers.recommendations import router as recommendations_router
 from backend.routers.roadmap import router as roadmap_router
 from backend.routers.transcript import router as transcript_router
 
@@ -32,3 +33,4 @@ app.include_router(transcript_router)
 app.include_router(curriculum_router)
 app.include_router(faculties_router)
 app.include_router(modules_router)
+app.include_router(recommendations_router)

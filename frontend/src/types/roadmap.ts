@@ -10,6 +10,7 @@ export interface CourseNode {
   prerequisiteText?: string
   isCompleted: boolean
   isChoiceSlot?: boolean
+  isTranscriptOnly?: boolean
   jobSkills: string[]
 }
 

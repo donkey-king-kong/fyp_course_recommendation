@@ -1,46 +1,50 @@
 import './CourseList.css'
-import type { CourseNode } from '../types/roadmap'
+import type { CurriculumCourse } from '../types/curriculum'
 
 // Describe the data this component receives from App.tsx
 interface CourseListProps {
-  courses: CourseNode[]
+  courses: CurriculumCourse[]
 }
 
 // One group represents all courses in the same year and semester
 interface CourseGroup {
   year: number
   semester: number
-  courses: CourseNode[]
+  courses: CurriculumCourse[]
 }
 
-// Displays roadmap courses as semester groups
+// Displays uploaded curriculum guide courses as semester groups.
 function CourseList({ courses }: CourseListProps) {
   // Convert the flat course array into grouped sections such as Year 1, Semester 1.
-  const courseGroups = courses.reduce<CourseGroup[]>((groups, course) => {
-    const existingGroup = groups.find(
-      (group) => group.year === course.year && group.semester === course.semester,
-    )
+  const courseGroups = courses
+    .reduce<CourseGroup[]>((groups, course) => {
+      const existingGroup = groups.find(
+        (group) => group.year === course.year && group.semester === course.semester,
+      )
 
-    // If this semester group already exists, add the course into it
-    if (existingGroup) {
-      existingGroup.courses.push(course)
-      return groups
-    }
+      // If this semester group already exists, add the course into it
+      if (existingGroup) {
+        existingGroup.courses.push(course)
+        return groups
+      }
 
-    // Else, create a new semester group and add this course
-    return [
-      ...groups,
-      {
-        year: course.year,
-        semester: course.semester,
-        courses: [course],
-      },
-    ]
-  }, [])
+      // Else, create a new semester group and add this course
+      return [
+        ...groups,
+        {
+          year: course.year,
+          semester: course.semester,
+          courses: [course],
+        },
+      ]
+    }, [])
+    .sort((firstGroup, secondGroup) => (
+      firstGroup.year - secondGroup.year || firstGroup.semester - secondGroup.semester
+    ))
 
   return (
     <section className="course-list">
-      <h2>Course List</h2>
+      <h2>Curriculum Guide Courses</h2>
 
       {/* Show this message when there are no courses to display */}
       {courses.length === 0 && <p className="course-list-empty">No courses found.</p>}
@@ -56,7 +60,7 @@ function CourseList({ courses }: CourseListProps) {
               Year {group.year}, Semester {group.semester}
             </h3>
 
-            <ul>
+            <ul className="course-card-grid">
               {/* Render every course inside the current semester group */}
               {group.courses.map((course) => (
                 <li key={course.id} className="course-list-item">

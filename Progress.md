@@ -638,3 +638,174 @@ Status: Ready for next work
 - Run `git status --short --branch`.
 - Continue on a focused branch and avoid unrelated AI/data integrations.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
+
+## Basic Recommendation Flow
+
+Status: Implemented locally
+
+### Completed
+
+- Created the `basic-recommendation-flow` branch for the first recommendation-system work.
+- Limited the Profile career goal dropdown to `Software Engineer` for the first supported recommendation path.
+- Added backend recommendation schemas for request data, recommended courses, prerequisite recommendations, and response data.
+- Added `POST /recommendations` as the first backend recommendation endpoint.
+- Added a simple recommendation service for the current MVP.
+- Added frontend recommendation API types and a `fetchRecommendations` API client.
+- Added a reusable `ClassicLoader` spinner component for recommendation-loading states.
+- Moved recommendation loading to the Profile page under Career Goal with a `Load Roadmap` button.
+- Added a small `Go to roadmap...` link below the Profile roadmap-loading action.
+- Lifted recommendation state into `App.tsx` so the Profile page can trigger loading and the Roadmap page can render the results.
+- Displayed recommendations directly inside suitable roadmap choice-slot cards instead of showing them as a Profile result list.
+- Added loading feedback on the Roadmap page while recommendations are being fetched.
+- Assigned one recommendation per available choice slot so repeated BDE recommendations do not appear across every BDE card.
+- Added basic BDE year-level preference so lower-level BDE modules are preferred earlier and higher-level modules are preferred around Year 3 or Year 4.
+- Added curriculum exclusion fields so fixed curriculum modules are not recommended again by matching either course code or normalized course title.
+- Added prerequisite-aware recommendation output so a recommended course can include missing prerequisite details.
+- Added frontend assignment logic that can place a missing prerequisite recommendation one semester before the recommended target course when a suitable earlier choice slot exists.
+
+### Current Recommendation Logic
+
+- Level 1 recommendation logic is weighted keyword matching plus rule-based filtering.
+- It is not AI-based ranking, collaborative filtering, graph search, ChromaDB retrieval, LangGraph reasoning, or OpenAI generation.
+- For `Software Engineer`, the backend uses explicit weighted keywords such as `software`, `engineering`, `programming`, `development`, `database`, `web`, `cloud`, `distributed`, `systems`, `algorithm`, `architecture`, `testing`, and `security`.
+- Candidate modules score higher when their code, title, description, or category text contains higher-weight career keywords.
+- `SC3xxx` and `SC4xxx` choice slots only consider CSC modules at the matching module level.
+- `BDE` choice slots can consider modules from the wider active module catalogue, subject to active faculty settings.
+- Completed modules are excluded from recommendations.
+- Fixed modules already present in the uploaded curriculum roadmap are excluded by course code and by normalized title.
+- Missing prerequisites are currently surfaced as rule-based constraints after scoring; if the top suitable recommendation needs one missing prerequisite, the frontend tries to place that prerequisite one semester earlier.
+- If a prerequisite cannot fit into an earlier suitable slot, that target recommendation is skipped for that slot for now.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Blank-line scan passed for the edited recommendation files after the repeated style issue was fixed.
+
+### Not Included
+
+- No Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation engine yet.
+- No machine-learning model, ALS scoring, or semantic embedding search yet.
+- No multi-career recommendation support beyond `Software Engineer`.
+- No timetable, exam clash, workload, vacancy, or student preference optimization yet.
+- No backend persistence for generated recommendations yet; recommendation state is frontend runtime state.
+- No manual browser verification has been recorded yet for the latest prerequisite-placement behavior.
+
+### Next Recommended Work
+
+- Manually test `Load Roadmap` with an uploaded curriculum guide and transcript.
+- Confirm existing fixed curriculum modules no longer appear as recommended choices by code or by title.
+- Confirm prerequisite recommendations appear one semester earlier when a suitable earlier choice slot exists.
+- Fix any remaining display issues, such as duplicated prerequisite text or curriculum guide typos, before adding more recommendation intelligence.
+
+## Recommendation Roadmap Polish
+
+Status: Implemented locally
+
+### Completed
+
+- Made roadmap recommendation cards clickable so a selected recommended module can open the same kind of module-detail popup used by the NTU Modules page.
+- Updated BDE assignment so the BDE slot year must match the recommended module level for now, such as Year 2 BDE to level 2 modules and Year 4 BDE to level 4 modules.
+- Increased the number of requested recommendation candidates based on open choice slots so later Year 3 and Year 4 BDE slots are less likely to be left empty by the previous small global limit.
+- Normalized BDE display text to `Broadening and Deepening Electives` so the parsed curriculum typo does not appear in the roadmap.
+- Deduplicated repeated missing prerequisite labels in the roadmap locked-state display.
+- Hardened prerequisite placement so a missing prerequisite is checked before being passed into slot-fit logic.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation engine.
+- No backend persistence for generated recommendations.
+- No manual browser verification has been recorded yet after these polish changes.
+
+## Recommendation Slot Demand Sizing
+
+Status: Implemented locally
+
+### Completed
+
+- Added frontend recommendation-limit sizing based on the actual number of open BDE and MPE slots after curriculum guide upload.
+- Gave BDE slots a larger candidate multiplier because BDE assignment can skip candidates due to duplicate recommendations, year-level matching, or prerequisite-placement rules.
+- Increased the backend recommendation request limit validation from `50` to `120` so the frontend can request enough candidates for multiple open choice slots.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No new ranking model, AI logic, graph search, vector search, or backend persistence.
+- No backend-side per-slot assignment yet; the roadmap still performs the final slot placement in the frontend.
+
+## Recommendation Debug Logging
+
+Status: Implemented locally
+
+### Completed
+
+- Added backend recommendation logs for the initial SQL candidate list before Python-side filtering and scoring.
+- Added backend recommendation logs for the ranked recommendation list before the request `limit` is applied.
+- Added backend recommendation logs for the final returned recommendation cut after applying `limit`.
+- Kept logs compact by showing counts and course-code summaries with slot, level, score, and missing prerequisite count.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No frontend debug panel yet.
+- No persistent logging table or analytics storage.
+- No backend-side explanation for frontend slot-placement skips yet.
+
+## Transcript-Only Roadmap Display
+
+Status: Implemented locally
+
+### Completed
+
+- Added an optional roadmap node flag for completed modules that came from the transcript but were not fixed rows in the uploaded curriculum guide.
+- Extended transcript parsing to attach academic year, transcript semester, and mapped study year to completed transcript modules.
+- Handled both one-column and two-column transcript layouts when matching module rows to semester headers.
+- Enriched unmatched transcript module codes with the existing module detail API so the roadmap can show titles, AU values, prerequisites, and unlocks where available.
+- Added fallback completed transcript cards for unmatched transcript codes that cannot be found in the module catalogue.
+- Placed transcript-only completed modules into their parsed Year/Sem row when transcript term metadata is available.
+- Uses the curriculum guide as the base roadmap, then lets transcript Year/Sem metadata override the display position when a completed transcript course code matches a curriculum guide course.
+- Corrected transcript term matching so left-column modules map to left-column semester headers even when the header starts left of the course table.
+- Kept a `Completed Outside Curriculum` fallback band only for transcript modules that do not have usable term metadata.
+- Added relationship arrows from known prerequisite nodes into transcript-only modules and from transcript-only modules into known unlocked roadmap nodes.
+- Treated transcript-only modules as completed when checking roadmap prerequisites, while keeping their checkboxes read-only.
+- Removed special transcript-only card coloring so transcript-completed modules use the normal completed-course color state.
+- Kept the lower `Curriculum Guide Courses` list limited to official curriculum guide rows.
+- Changed the lower `Curriculum Guide Courses` display from a narrow vertical list into a wider responsive card grid.
+- Made the lower `Curriculum Guide Courses` list read directly from the uploaded curriculum guide so transcript placement does not change this section's Year/Sem grouping.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- Transcript-only modules still do not automatically fill BDE or MPE slots.
+- No bulk module lookup endpoint yet; the frontend currently uses the existing per-module lookup.
+- No manual browser verification has been recorded yet for semester-placed transcript-only roadmap cards and arrows.
