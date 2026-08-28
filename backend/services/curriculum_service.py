@@ -199,7 +199,7 @@ def parse_curriculum_row(
 
     return {
         "code": code,
-        "title": title or default_title_for_slot(code, course_type),
+        "title": normalize_course_title(code, course_type, title),
         "type": course_type,
         "year": semester_header["year"],
         "semester": semester_header["semester"],
@@ -245,6 +245,13 @@ def find_course_title(words: list[dict[str, Any]]) -> str:
 
     return " ".join(title_words)
 
+def normalize_course_title(code: str, course_type: str, title: str) -> str:
+    if "xxx" in code and "MPE" in course_type:
+        return "Major Prescribed Elective"
+
+    return title or default_title_for_slot(code, course_type)
+
+
 # Prerequisite text is preserved as raw text and separately simplified into course-code tokens.
 def find_prerequisite_text(words: list[dict[str, Any]]) -> str:
     prerequisite_words = [
@@ -261,7 +268,7 @@ def default_title_for_slot(code: str, course_type: str) -> str:
         return "Broadening and Deepening Electives"
 
     if "MPE" in course_type:
-        return f"Major Prescribed Elective ({code})"
+        return "Major Prescribed Elective"
 
     return ""
 
