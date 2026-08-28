@@ -106,6 +106,9 @@
 }
 
 .roadmap-recommendation-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
   margin: 0;
   padding: 0.7rem 1.25rem;
   border-bottom: 1px solid rgba(15, 124, 138, 0.18);
@@ -113,11 +116,6 @@
   font-size: 0.78rem;
   font-weight: 800;
   background: rgba(15, 124, 138, 0.08);
-}
-
-.roadmap-recommendation-loading span,
-.choice-slot-loading span {
-  animation: loading-pulse 1s ease-in-out infinite;
 }
 
 .roadmap-arrows {
@@ -358,6 +356,9 @@
 }
 
 .choice-slot-loading {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
   margin: 0.65rem 0 0.75rem;
   padding: 0.55rem;
   border: 1px dashed rgba(15, 124, 138, 0.3);
@@ -366,6 +367,11 @@
   font-size: 0.66rem;
   font-weight: 800;
   background: rgba(15, 124, 138, 0.08);
+}
+
+.roadmap-recommendation-loader,
+.choice-slot-loader {
+  flex: 0 0 auto;
 }
 
 .semester-course-card-bottom {
@@ -664,20 +670,6 @@
 
 .app-shell[data-theme='dark'] .semester-course-card-top strong {
   color: #f8fafc;
-}
-
-@keyframes loading-pulse {
-  0% {
-    opacity: 0.35;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0.35;
-  }
 }
 
 @media (max-width: 900px) {

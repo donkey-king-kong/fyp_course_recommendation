@@ -4,6 +4,7 @@ import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
 import type { CourseRecommendation } from '../types/recommendation'
+import ClassicLoader from './ClassicLoader'
 
 // Pass courses and prerequisite links into this component
 interface SemesterRoadmapProps {
@@ -353,7 +354,8 @@ function SemesterRoadmap({
       )}
       {isLoadingRecommendations && (
         <p className="roadmap-recommendation-loading">
-          Loading recommendations<span aria-hidden="true">...</span>
+          <ClassicLoader className="roadmap-recommendation-loader" />
+          Loading recommendations...
         </p>
       )}
 
@@ -494,7 +496,8 @@ function SemesterRoadmap({
                         isLoadingRecommendations &&
                         slotRecommendations.length === 0 && (
                           <div className="choice-slot-loading">
-                            Loading recommendations<span aria-hidden="true">...</span>
+                            <ClassicLoader className="choice-slot-loader" />
+                            Loading recommendations...
                           </div>
                         )}
                       <div className="semester-course-card-bottom">

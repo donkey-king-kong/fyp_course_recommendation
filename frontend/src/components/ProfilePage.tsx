@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
 import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
+import ClassicLoader from './ClassicLoader'
 import './ProfilePage.css'
 
 function formatAcademicUnits(academicUnits: number) {
@@ -242,13 +243,17 @@ function ProfilePage({
         </label>
 
         <div className="profile-roadmap-actions">
-          <button
-            type="button"
-            onClick={onLoadRoadmap}
-            disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
-          >
-            {isLoadingRoadmap ? 'Loading Roadmap...' : 'Load Roadmap'}
-          </button>
+          <div className="profile-roadmap-load-row">
+            <button
+              type="button"
+              onClick={onLoadRoadmap}
+              disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
+            >
+              Load Roadmap
+            </button>
+
+            {isLoadingRoadmap && <ClassicLoader className="profile-roadmap-loader" />}
+          </div>
 
           <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>
             Go to roadmap...
