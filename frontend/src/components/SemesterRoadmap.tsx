@@ -235,6 +235,8 @@ function assignRecommendationsToChoiceSlots(
         !usedCourseCodes.has(recommendation.courseCode),
     )
 
+    let fallbackRecommendation: CourseRecommendation | null = null
+
     for (const recommendation of sortRecommendationsForSlot(choiceSlot, matchingRecommendations)) {
       if (recommendation.missingPrerequisites.length === 0) {
         usedCourseCodes.add(recommendation.courseCode)
@@ -249,6 +251,7 @@ function assignRecommendationsToChoiceSlots(
         }
       }
 
+      fallbackRecommendation = fallbackRecommendation ?? recommendation
       const prerequisite = recommendation.prerequisiteRecommendations[0]
 
       if (recommendation.missingPrerequisites.length !== 1 || !prerequisite) {
@@ -279,6 +282,19 @@ function assignRecommendationsToChoiceSlots(
         [choiceSlot.course.id]: {
           courseCode: recommendation.courseCode,
           title: recommendation.title,
+          label: 'Recommended option',
+        },
+      }
+    }
+
+    if (fallbackRecommendation) {
+      usedCourseCodes.add(fallbackRecommendation.courseCode)
+
+      return {
+        ...assignments,
+        [choiceSlot.course.id]: {
+          courseCode: fallbackRecommendation.courseCode,
+          title: fallbackRecommendation.title,
           label: 'Recommended option',
         },
       }
