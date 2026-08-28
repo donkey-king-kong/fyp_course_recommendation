@@ -19,5 +19,7 @@ class TranscriptUploadResponse(BaseModel):
     completed_courses: list[TranscriptCourse]
     # All completed transcript rows, including rows that are not in the current roadmap.
     completed_transcript_course_count: int
+    # Total AU earned from completed transcript rows.
+    total_academic_units_earned: float
     # Parsed transcript course codes that are not in the current CSC roadmap
     unmatched_course_codes: list[str]

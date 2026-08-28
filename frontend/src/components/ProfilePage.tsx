@@ -4,6 +4,10 @@ import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
 import './ProfilePage.css'
 
+function formatAcademicUnits(academicUnits: number) {
+  return Number.isInteger(academicUnits) ? academicUnits.toString() : academicUnits.toFixed(1)
+}
+
 function ProfilePage() {
   // Read the saved student profile from the shared Zustand store
   const profile = useProfileStore((state) => state.profile)
@@ -17,6 +21,9 @@ function ProfilePage() {
   const transcriptUnmatchedCourseCount = useProfileStore((state) => state.transcriptUnmatchedCourseCount)
   const transcriptMatchedCourses = useProfileStore((state) => state.transcriptMatchedCourses)
   const transcriptUnmatchedCourseCodes = useProfileStore((state) => state.transcriptUnmatchedCourseCodes)
+  const transcriptTotalAcademicUnitsEarned = useProfileStore(
+    (state) => state.transcriptTotalAcademicUnitsEarned,
+  )
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const curriculumGuideFileName = useProfileStore((state) => state.curriculumGuideFileName)
   const transcriptCompletedCourseCodes = useProfileStore(
@@ -110,15 +117,16 @@ function ProfilePage() {
       setTranscriptResults(
         completedCourseCodesFromTranscript,
         result.completed_transcript_course_count,
+        result.total_academic_units_earned,
       )
 
       if (curriculumGuide) {
         setUploadMessage(
-          `Parsed ${result.completed_transcript_course_count} completed module(s). Matching is updated against your uploaded curriculum guide.`,
+          `Parsed ${result.completed_transcript_course_count} completed module(s) and ${formatAcademicUnits(result.total_academic_units_earned)} AU. Matching is updated against your uploaded curriculum guide.`,
         )
       } else {
         setUploadMessage(
-          `Parsed ${result.completed_transcript_course_count} completed module(s). Upload your curriculum guide to match them to your roadmap.`,
+          `Parsed ${result.completed_transcript_course_count} completed module(s) and ${formatAcademicUnits(result.total_academic_units_earned)} AU. Upload your curriculum guide to match them to your roadmap.`,
         )
       }
     } catch {
@@ -352,6 +360,10 @@ function ProfilePage() {
         <div className="stat-card transcript-stat-card">
           <strong>{transcriptCompletedCourseCount}</strong>
           <span>Completed Transcript Modules</span>
+        </div>
+        <div className="stat-card transcript-au-stat-card">
+          <strong>{formatAcademicUnits(transcriptTotalAcademicUnitsEarned)}</strong>
+          <span>Total AU Earned</span>
         </div>
         <div className="stat-card unmatched-stat-card">
           <strong>{transcriptUnmatchedCourseCount}</strong>

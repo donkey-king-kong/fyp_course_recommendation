@@ -12,5 +12,6 @@ export interface TranscriptUploadResponse {
   completed_courses: TranscriptCourse[]
   // All completed transcript rows, including modules that are not in the roadmap.
   completed_transcript_course_count: number
+  total_academic_units_earned: number
   unmatched_course_codes: string[]
 }
