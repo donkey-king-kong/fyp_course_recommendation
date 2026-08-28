@@ -698,3 +698,30 @@ Status: Implemented locally
 - Confirm existing fixed curriculum modules no longer appear as recommended choices by code or by title.
 - Confirm prerequisite recommendations appear one semester earlier when a suitable earlier choice slot exists.
 - Fix any remaining display issues, such as duplicated prerequisite text or curriculum guide typos, before adding more recommendation intelligence.
+
+## Recommendation Roadmap Polish
+
+Status: Implemented locally
+
+### Completed
+
+- Made roadmap recommendation cards clickable so a selected recommended module can open the same kind of module-detail popup used by the NTU Modules page.
+- Updated BDE assignment so the BDE slot year must match the recommended module level for now, such as Year 2 BDE to level 2 modules and Year 4 BDE to level 4 modules.
+- Increased the number of requested recommendation candidates based on open choice slots so later Year 3 and Year 4 BDE slots are less likely to be left empty by the previous small global limit.
+- Normalized BDE display text to `Broadening and Deepening Electives` so the parsed curriculum typo does not appear in the roadmap.
+- Deduplicated repeated missing prerequisite labels in the roadmap locked-state display.
+- Hardened prerequisite placement so a missing prerequisite is checked before being passed into slot-fit logic.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation engine.
+- No backend persistence for generated recommendations.
+- No manual browser verification has been recorded yet after these polish changes.
