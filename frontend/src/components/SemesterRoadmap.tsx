@@ -51,6 +51,7 @@ interface AssignedRecommendation {
 }
 
 const YEAR_ACCENTS = ['#f59e0b', '#ec4899', '#8b5cf6', '#22d3ee']
+const COURSE_CODE_PATTERN = /[A-Z]{2,4}\d{4}[A-Z]?/gi
 
 // Turn course type text into a CSS class name like "Common-Core" to "common-core"
 function getCourseTypeClass(type: string) {
@@ -96,6 +97,12 @@ function getStandingYear(prerequisiteText?: string) {
   const standingMatch = prerequisiteText?.match(/\byear\s+([2-4])\s+standing\b/i)
 
   return standingMatch ? parseInt(standingMatch[1], 10) : null
+}
+
+// Raw prerequisite text is kept for standing rules, but course-code prerequisites already
+// appear through parsed roadmap edges, so showing the raw text too would duplicate them.
+function hasCourseCodePrerequisite(prerequisiteText?: string) {
+  return Boolean(prerequisiteText?.match(COURSE_CODE_PATTERN))
 }
 
 function getChoiceSlotKey(course: CourseNode) {
@@ -250,6 +257,10 @@ function getMissingStandingRequirement(
   const standingYear = getStandingYear(course.prerequisiteText)
 
   if (!standingYear) {
+    if (hasCourseCodePrerequisite(course.prerequisiteText)) {
+      return null
+    }
+
     return course.prerequisiteText ?? 'Prerequisite required'
   }
 
