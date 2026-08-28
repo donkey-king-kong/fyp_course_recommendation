@@ -27,10 +27,11 @@ class RecommendationRequest(BaseModel):
         description="Module titles already present in the student's curriculum roadmap.",
         examples=[["Software Engineering", "Computer Networks"]],
     )
+    # Keep this high enough for several BDE/MPE slots, but still bounded for a simple MVP API.
     limit: int = Field(
         default=12,
         ge=1,
-        le=50,
+        le=120,
         description="Maximum number of recommendations to return.",
     )
 
