@@ -173,6 +173,38 @@
   text-transform: none;
 }
 
+.screen-reader-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.file-picker-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: center;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.file-picker-button {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  border-radius: 0.25rem;
+  color: #f8fafc;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.file-picker-name {
+  min-width: 0;
+  color: #94a3b8;
+  overflow-wrap: anywhere;
+}
+
 .transcript-action-row {
   display: flex;
   flex-wrap: wrap;
@@ -483,6 +515,15 @@
 }
 
 .app-shell[data-theme='light'] .transcript-file-field {
+  color: #6b5f54;
+}
+
+.app-shell[data-theme='light'] .file-picker-button {
+  color: #263238;
+  background: #ffffff;
+}
+
+.app-shell[data-theme='light'] .file-picker-name {
   color: #6b5f54;
 }
 

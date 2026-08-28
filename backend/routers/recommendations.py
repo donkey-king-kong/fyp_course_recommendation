@@ -47,6 +47,7 @@ def create_recommendations(
             career_goal=request.careerGoal,
             completed_course_codes=request.completedCourseCodes,
             choice_slot_codes=request.choiceSlotCodes,
+            choice_slots=request.choiceSlots,
             excluded_course_codes=request.excludedCourseCodes,
             excluded_course_titles=request.excludedCourseTitles,
             limit=request.limit,

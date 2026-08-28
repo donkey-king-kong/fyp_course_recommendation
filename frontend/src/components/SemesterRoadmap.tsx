@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, useEffect, type CSSProperties } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState, useEffect, type CSSProperties } from 'react'
 import './SemesterRoadmap.css'
 import { fetchModuleByCode } from '../api/modulesApi'
 import type { ModuleSummary } from '../types/module'
@@ -48,6 +48,12 @@ interface AssignedRecommendation {
   courseCode: string
   title: string
   label: string
+}
+
+interface RecommendationAssignmentResult {
+  assignments: Record<string, AssignedRecommendation>
+  recommendedPrerequisiteNodes: CourseNode[]
+  recommendedPrerequisiteLinks: RoadmapEdge[]
 }
 
 const YEAR_ACCENTS = ['#f59e0b', '#ec4899', '#8b5cf6', '#22d3ee']
@@ -175,6 +181,16 @@ function sortRecommendationsForSlot(
   choiceSlot: ChoiceSlotCandidate,
   recommendations: CourseRecommendation[],
 ) {
+  const exactSlotRecommendations = recommendations.filter(
+    (recommendation) => recommendation.matchedChoiceSlotId === choiceSlot.course.id,
+  )
+
+  if (exactSlotRecommendations.length > 0) {
+    return [...exactSlotRecommendations].sort(
+      (first, second) => second.score - first.score || first.courseCode.localeCompare(second.courseCode),
+    )
+  }
+
   if (choiceSlot.slotKey.toUpperCase() !== 'BDE') {
     return [...recommendations].sort(
       (first, second) => second.score - first.score || first.courseCode.localeCompare(second.courseCode),
@@ -197,40 +213,196 @@ function sortRecommendationsForSlot(
     })
 }
 
+function getSemesterFromOrder(semesterOrder: number) {
+  return {
+    year: Math.floor((semesterOrder - 1) / 2) + 1,
+    semester: ((semesterOrder - 1) % 2) + 1,
+  }
+}
+
+function getRecommendedPrerequisiteNodeId(
+  choiceSlot: ChoiceSlotCandidate,
+  prerequisiteCourseCode: string,
+) {
+  return `recommended-prerequisite-${choiceSlot.course.id}-${prerequisiteCourseCode.toLowerCase()}`
+}
+
+function buildRecommendedPrerequisiteNodes(
+  choiceSlot: ChoiceSlotCandidate,
+  recommendation: CourseRecommendation,
+  remainingSemesterOrders: number[],
+): CourseNode[] {
+  const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
+  const prerequisiteSemesterOrder = [...remainingSemesterOrders]
+    .filter((semesterOrder) => semesterOrder < targetSemesterOrder)
+    .at(-1)
+
+  if (!prerequisiteSemesterOrder) {
+    return []
+  }
+
+  const prerequisiteSemester = getSemesterFromOrder(prerequisiteSemesterOrder)
+
+  return recommendation.missingPrerequisites.map((prerequisiteCode) => {
+    const prerequisite = recommendation.prerequisiteRecommendations.find(
+      (candidate) => candidate.courseCode === prerequisiteCode,
+    )
+
+    return {
+      id: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
+      courseCode: prerequisiteCode,
+      title: prerequisite?.title ?? 'Recommended prerequisite',
+      type: 'Recommended Pre-Requisite',
+      year: prerequisiteSemester.year,
+      semester: prerequisiteSemester.semester,
+      academicUnits: prerequisite?.academicUnits ?? 0,
+      prerequisites: [],
+      prerequisiteText: `Recommended prerequisite for ${recommendation.courseCode}`,
+      isCompleted: false,
+      isChoiceSlot: false,
+      isRecommendedPrerequisite: true,
+      recommendedForCourseCode: recommendation.courseCode,
+      jobSkills: [],
+    }
+  })
+}
+
+function groupCoursesByCode(courses: CourseNode[]) {
+  return courses.reduce<Map<string, CourseNode[]>>((coursesByCode, course) => {
+    const courseCode = course.courseCode.toUpperCase()
+    const existingCourses = coursesByCode.get(courseCode) ?? []
+
+    coursesByCode.set(courseCode, [...existingCourses, course])
+    return coursesByCode
+  }, new Map())
+}
+
+// The current prerequisite graph is flat, so multi-code prerequisites may represent OR alternatives.
+// If one alternative already appears earlier in the student's roadmap, use that existing path instead
+// of creating extra planning nodes for every other alternative.
+function getExistingPrerequisiteNodes(
+  choiceSlot: ChoiceSlotCandidate,
+  recommendation: CourseRecommendation,
+  coursesByCode: Map<string, CourseNode[]>,
+) {
+  const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
+
+  return recommendation.prerequisites.flatMap((prerequisiteCode) =>
+    (coursesByCode.get(prerequisiteCode.toUpperCase()) ?? []).filter(
+      (course) =>
+        !course.isChoiceSlot &&
+        !course.isRecommendedPrerequisite &&
+        getSemesterOrder(course) < targetSemesterOrder,
+    ),
+  )
+}
+
+function addPrerequisiteLinks(
+  prerequisiteLinks: RoadmapEdge[],
+  prerequisiteNodes: CourseNode[],
+  targetCourseId: string,
+) {
+  const existingLinkKeys = new Set(
+    prerequisiteLinks.map((link) => `${link.source}->${link.target}`),
+  )
+
+  prerequisiteNodes.forEach((prerequisiteNode) => {
+    const linkKey = `${prerequisiteNode.id}->${targetCourseId}`
+
+    if (!existingLinkKeys.has(linkKey)) {
+      prerequisiteLinks.push({
+        source: prerequisiteNode.id,
+        target: targetCourseId,
+      })
+      existingLinkKeys.add(linkKey)
+    }
+  })
+}
+
 function assignRecommendationsToChoiceSlots(
   choiceSlots: ChoiceSlotCandidate[],
   recommendations: CourseRecommendation[],
-) {
+  coursesByCode: Map<string, CourseNode[]>,
+): RecommendationAssignmentResult {
   const usedCourseCodes = new Set<string>()
   const sortedChoiceSlots = [...choiceSlots].sort(
     (first, second) =>
       getSemesterOrder(first.course) - getSemesterOrder(second.course) ||
       first.course.id.localeCompare(second.course.id),
   )
+  const remainingSemesterOrders = [
+    ...new Set(sortedChoiceSlots.map((slot) => getSemesterOrder(slot.course))),
+  ].sort((first, second) => first - second)
+  const prerequisiteNodes: CourseNode[] = []
+  const prerequisiteLinks: RoadmapEdge[] = []
 
-  return sortedChoiceSlots.reduce<Record<string, AssignedRecommendation>>((assignments, choiceSlot) => {
-    if (assignments[choiceSlot.course.id]) {
-      return assignments
+  const assignments = sortedChoiceSlots.reduce<Record<string, AssignedRecommendation>>((currentAssignments, choiceSlot) => {
+    if (currentAssignments[choiceSlot.course.id]) {
+      return currentAssignments
     }
 
     const matchingRecommendations = recommendations.filter(
       (recommendation) =>
-        recommendation.matchedChoiceSlot.toUpperCase() === choiceSlot.slotKey.toUpperCase() &&
+        (
+          recommendation.matchedChoiceSlotId === choiceSlot.course.id ||
+          (
+            !recommendation.matchedChoiceSlotId &&
+            recommendation.matchedChoiceSlot.toUpperCase() === choiceSlot.slotKey.toUpperCase()
+          )
+        ) &&
         !usedCourseCodes.has(recommendation.courseCode),
     )
+    const hasEarlierRemainingSemester = remainingSemesterOrders.some(
+      (semesterOrder) => semesterOrder < getSemesterOrder(choiceSlot.course),
+    )
+
+    let fallbackRecommendation: CourseRecommendation | null = null
 
     for (const recommendation of sortRecommendationsForSlot(choiceSlot, matchingRecommendations)) {
+      const existingPrerequisiteNodes = getExistingPrerequisiteNodes(
+        choiceSlot,
+        recommendation,
+        coursesByCode,
+      )
+
       if (recommendation.missingPrerequisites.length === 0) {
         usedCourseCodes.add(recommendation.courseCode)
+        addPrerequisiteLinks(
+          prerequisiteLinks,
+          existingPrerequisiteNodes,
+          choiceSlot.course.id,
+        )
 
         return {
-          ...assignments,
+          ...currentAssignments,
           [choiceSlot.course.id]: {
             courseCode: recommendation.courseCode,
             title: recommendation.title,
             label: 'Recommended option',
           },
         }
+      }
+
+      if (existingPrerequisiteNodes.length > 0) {
+        usedCourseCodes.add(recommendation.courseCode)
+        addPrerequisiteLinks(
+          prerequisiteLinks,
+          existingPrerequisiteNodes,
+          choiceSlot.course.id,
+        )
+
+        return {
+          ...currentAssignments,
+          [choiceSlot.course.id]: {
+            courseCode: recommendation.courseCode,
+            title: recommendation.title,
+            label: 'Recommended option',
+          },
+        }
+      }
+
+      if (hasEarlierRemainingSemester) {
+        fallbackRecommendation = fallbackRecommendation ?? recommendation
       }
 
       const prerequisite = recommendation.prerequisiteRecommendations[0]
@@ -242,7 +414,7 @@ function assignRecommendationsToChoiceSlots(
       const previousSlot = sortedChoiceSlots.find(
         (slot) =>
           getSemesterOrder(slot.course) === getSemesterOrder(choiceSlot.course) - 1 &&
-          !assignments[slot.course.id] &&
+          !currentAssignments[slot.course.id] &&
           canFitRecommendationInSlot(slot, prerequisite),
       )
 
@@ -254,7 +426,7 @@ function assignRecommendationsToChoiceSlots(
       usedCourseCodes.add(recommendation.courseCode)
 
       return {
-        ...assignments,
+        ...currentAssignments,
         [previousSlot.course.id]: {
           courseCode: prerequisite.courseCode,
           title: prerequisite.title,
@@ -268,8 +440,40 @@ function assignRecommendationsToChoiceSlots(
       }
     }
 
-    return assignments
+    if (fallbackRecommendation) {
+      usedCourseCodes.add(fallbackRecommendation.courseCode)
+      prerequisiteNodes.push(
+        ...buildRecommendedPrerequisiteNodes(
+          choiceSlot,
+          fallbackRecommendation,
+          remainingSemesterOrders,
+        ),
+      )
+      prerequisiteLinks.push(
+        ...fallbackRecommendation.missingPrerequisites.map((prerequisiteCode) => ({
+          source: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
+          target: choiceSlot.course.id,
+        })),
+      )
+
+      return {
+        ...currentAssignments,
+        [choiceSlot.course.id]: {
+          courseCode: fallbackRecommendation.courseCode,
+          title: fallbackRecommendation.title,
+          label: 'Recommended option',
+        },
+      }
+    }
+
+    return currentAssignments
   }, {})
+
+  return {
+    assignments,
+    recommendedPrerequisiteNodes: prerequisiteNodes,
+    recommendedPrerequisiteLinks: prerequisiteLinks,
+  }
 }
 
 function getMissingStandingRequirement(
@@ -383,19 +587,15 @@ function SemesterRoadmap({
   const roadmapRef = useRef<HTMLDivElement | null>(null)
   const courseRefs = useRef<Record<string, HTMLElement | null>>({})
 
-  // Sort rows so the roadmap follows curriculum order
-  const semesterGroups = groupCoursesBySemester(courses).sort(
-    (a, b) => a.year - b.year || a.semester - b.semester,
-  )
-
   const connectedCourseIds = new Set<string>()
-  const courseCodeById = new Map(courses.map((course) => [course.id, course.courseCode]))
-  const transcriptOnlyCourseIds = courses
-    .filter((course) => course.isTranscriptOnly)
-    .map((course) => course.id)
-  const effectiveCompletedCourseIds = [
-    ...new Set([...completedCourseIds, ...transcriptOnlyCourseIds]),
-  ]
+  const transcriptOnlyCourseIds = useMemo(
+    () => courses.filter((course) => course.isTranscriptOnly).map((course) => course.id),
+    [courses],
+  )
+  const effectiveCompletedCourseIds = useMemo(
+    () => [...new Set([...completedCourseIds, ...transcriptOnlyCourseIds])],
+    [completedCourseIds, transcriptOnlyCourseIds],
+  )
   const completedRoadmapAcademicUnits = courses
     .filter((course) => effectiveCompletedCourseIds.includes(course.id))
     .reduce((total, course) => total + course.academicUnits, 0)
@@ -404,26 +604,48 @@ function SemesterRoadmap({
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
-  const availableChoiceSlots = courses
-    .filter((course) => {
-      const eligibility = getCourseEligibility(
-        course,
-        effectiveCompletedCourseIds,
-        completedAcademicUnits,
-        standingRequirements,
-      )
+  const originalCoursesByCode = useMemo(() => groupCoursesByCode(courses), [courses])
+  const recommendationChoiceSlots = useMemo(
+    () =>
+      courses
+        .filter((course) => {
+          return course.isChoiceSlot && !effectiveCompletedCourseIds.includes(course.id)
+        })
+        .map((course) => {
+          const slotKey = getChoiceSlotKey(course)
 
-      return course.isChoiceSlot && eligibility.status === 'available'
-    })
-    .map((course) => {
-      const slotKey = getChoiceSlotKey(course)
-
-      return slotKey ? { course, slotKey } : null
-    })
-    .filter((choiceSlot): choiceSlot is ChoiceSlotCandidate => Boolean(choiceSlot))
-  const recommendationByChoiceSlotId = assignRecommendationsToChoiceSlots(
-    availableChoiceSlots,
-    recommendations,
+          return slotKey ? { course, slotKey } : null
+        })
+        .filter((choiceSlot): choiceSlot is ChoiceSlotCandidate => Boolean(choiceSlot)),
+    [courses, effectiveCompletedCourseIds],
+  )
+  const recommendationAssignmentResult = useMemo(
+    () => assignRecommendationsToChoiceSlots(
+      recommendationChoiceSlots,
+      recommendations,
+      originalCoursesByCode,
+    ),
+    [originalCoursesByCode, recommendationChoiceSlots, recommendations],
+  )
+  const recommendationByChoiceSlotId = recommendationAssignmentResult.assignments
+  const displayCourses = useMemo(
+    () => [
+      ...courses,
+      ...recommendationAssignmentResult.recommendedPrerequisiteNodes,
+    ],
+    [courses, recommendationAssignmentResult.recommendedPrerequisiteNodes],
+  )
+  const displayPrerequisiteLinks = useMemo(
+    () => [
+      ...prerequisiteLinks,
+      ...recommendationAssignmentResult.recommendedPrerequisiteLinks,
+    ],
+    [prerequisiteLinks, recommendationAssignmentResult.recommendedPrerequisiteLinks],
+  )
+  const courseCodeById = new Map(displayCourses.map((course) => [course.id, course.courseCode]))
+  // Sort rows so the roadmap follows curriculum order, including virtual prerequisite cards.
+  const semesterGroups = groupCoursesBySemester(displayCourses).sort(
+    (a, b) => a.year - b.year || a.semester - b.semester,
   )
 
   function handleClearRoadmap() {
@@ -457,11 +679,34 @@ function SemesterRoadmap({
     setDetailError('')
   }
 
+  function getModuleCodeForDetail(course: CourseNode, slotRecommendation?: AssignedRecommendation) {
+    return slotRecommendation?.courseCode ?? (course.isChoiceSlot ? null : course.courseCode)
+  }
+
+  function openCourseCardDetail(course: CourseNode, slotRecommendation?: AssignedRecommendation) {
+    const moduleCode = getModuleCodeForDetail(course, slotRecommendation)
+
+    if (moduleCode) {
+      void openRecommendedModuleDetail(moduleCode)
+    }
+  }
+
+  function handleCourseCardKeyDown(
+    event: React.KeyboardEvent<HTMLElement>,
+    course: CourseNode,
+    slotRecommendation?: AssignedRecommendation,
+  ) {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault()
+      openCourseCardDetail(course, slotRecommendation)
+    }
+  }
+
   // When hovering a course, keep that course and its direct prerequisite links visually active
   if (hoveredCourseId) {
     connectedCourseIds.add(hoveredCourseId)
 
-    prerequisiteLinks.forEach((link) => {
+    displayPrerequisiteLinks.forEach((link) => {
       if (link.source === hoveredCourseId || link.target === hoveredCourseId) {
         connectedCourseIds.add(link.source)
         connectedCourseIds.add(link.target)
@@ -480,7 +725,7 @@ function SemesterRoadmap({
 
       const roadmapRect = roadmapElement.getBoundingClientRect()
 
-      const nextArrowPaths = prerequisiteLinks.flatMap((link) => {
+      const nextArrowPaths = displayPrerequisiteLinks.flatMap((link) => {
         const sourceElement = courseRefs.current[link.source]
         const targetElement = courseRefs.current[link.target]
 
@@ -529,7 +774,7 @@ function SemesterRoadmap({
       window.cancelAnimationFrame(animationFrameId)
       window.removeEventListener('resize', updateArrowPaths)
     }
-  }, [hoveredCourseId, prerequisiteLinks, showAllArrows])
+  }, [displayPrerequisiteLinks, hoveredCourseId, showAllArrows])
 
   useEffect(() => {
     function closeOnEscape(event: KeyboardEvent) {
@@ -708,6 +953,7 @@ function SemesterRoadmap({
                     standingRequirements,
                   )
                   const slotRecommendation = recommendationByChoiceSlotId[course.id]
+                  const detailModuleCode = getModuleCodeForDetail(course, slotRecommendation)
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -722,10 +968,16 @@ function SemesterRoadmap({
                         isDimmed ? 'semester-course-card-dimmed' : '',
                         isCompleted ? 'semester-course-card-completed' : '',
                         course.isTranscriptOnly ? 'semester-course-card-transcript-only' : '',
+                        course.isRecommendedPrerequisite ? 'semester-course-card-recommended-prerequisite' : '',
                         eligibility.status === 'locked' ? 'semester-course-card-locked' : '',
+                        detailModuleCode ? 'semester-course-card-clickable' : '',
                       ]
                         .filter(Boolean)
                         .join(' ')}
+                      role={detailModuleCode ? 'button' : undefined}
+                      tabIndex={detailModuleCode ? 0 : undefined}
+                      onClick={() => openCourseCardDetail(course, slotRecommendation)}
+                      onKeyDown={(event) => handleCourseCardKeyDown(event, course, slotRecommendation)}
                       onMouseEnter={() => setHoveredCourseId(course.id)}
                       onMouseLeave={() => setHoveredCourseId(null)}
                     >
@@ -747,21 +999,22 @@ function SemesterRoadmap({
                             .join(', ')}
                         </p>
                       )}
+                      {course.isChoiceSlot && slotRecommendation && (
+                        <button
+                          type="button"
+                          className="choice-slot-recommendations"
+                          onClick={(event) => {
+                            event.stopPropagation()
+                            void openRecommendedModuleDetail(slotRecommendation.courseCode)
+                          }}
+                        >
+                          <span>{slotRecommendation.label}</span>
+                          <strong>{slotRecommendation.courseCode}</strong>
+                          <small>{slotRecommendation.title}</small>
+                        </button>
+                      )}
                       {course.isChoiceSlot &&
-                        eligibility.status === 'available' &&
-                        slotRecommendation && (
-                          <button
-                            type="button"
-                            className="choice-slot-recommendations"
-                            onClick={() => void openRecommendedModuleDetail(slotRecommendation.courseCode)}
-                          >
-                            <span>{slotRecommendation.label}</span>
-                            <strong>{slotRecommendation.courseCode}</strong>
-                            <small>{slotRecommendation.title}</small>
-                          </button>
-                        )}
-                      {course.isChoiceSlot &&
-                        eligibility.status === 'available' &&
+                        !isCompleted &&
                         isLoadingRecommendations &&
                         !slotRecommendation && (
                           <div className="choice-slot-loading">
@@ -781,18 +1034,21 @@ function SemesterRoadmap({
                           type="checkbox"
                           className="completion-indicator"
                           checked={isCompleted}
-                          disabled={course.isTranscriptOnly}
+                          disabled={course.isTranscriptOnly || course.isRecommendedPrerequisite}
                           onChange={() => {
-                            if (!course.isTranscriptOnly) {
+                            if (!course.isTranscriptOnly && !course.isRecommendedPrerequisite) {
                               toggleCourseCompletion(course.id)
                             }
                           }}
+                          onClick={(event) => event.stopPropagation()}
                           aria-label={
                             course.isTranscriptOnly
                               ? 'Completed from uploaded transcript'
-                              : isCompleted
-                                ? 'Mark course as incomplete'
-                                : 'Mark course as complete'
+                              : course.isRecommendedPrerequisite
+                                ? 'Recommended prerequisite planning node'
+                                : isCompleted
+                                  ? 'Mark course as incomplete'
+                                  : 'Mark course as complete'
                           }
                         />
                       </div>

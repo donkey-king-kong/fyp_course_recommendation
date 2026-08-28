@@ -668,13 +668,16 @@ Status: Implemented locally
 - Level 1 recommendation logic is weighted keyword matching plus rule-based filtering.
 - It is not AI-based ranking, collaborative filtering, graph search, ChromaDB retrieval, LangGraph reasoning, or OpenAI generation.
 - For `Software Engineer`, the backend uses explicit weighted keywords such as `software`, `engineering`, `programming`, `development`, `database`, `web`, `cloud`, `distributed`, `systems`, `algorithm`, `architecture`, `testing`, and `security`.
-- Candidate modules score higher when their code, title, description, or category text contains higher-weight career keywords.
+- Candidate modules score higher when their title or description contains higher-weight career keywords.
 - `SC3xxx` and `SC4xxx` choice slots only consider CSC modules at the matching module level.
 - `BDE` choice slots can consider modules from the wider active module catalogue, subject to active faculty settings.
 - Completed modules are excluded from recommendations.
 - Fixed modules already present in the uploaded curriculum roadmap are excluded by course code and by normalized title.
 - Missing prerequisites are currently surfaced as rule-based constraints after scoring; if the top suitable recommendation needs one missing prerequisite, the frontend tries to place that prerequisite one semester earlier.
 - If a prerequisite cannot fit into an earlier suitable slot, that target recommendation is skipped for that slot for now.
+- After the backend slot-eligibility update, the frontend sends each open choice slot with its roadmap ID, year, and semester.
+- Backend recommendation logic now filters and ranks candidates per concrete slot before returning recommendations.
+- BDE year-level fit now happens in the backend, while the frontend uses the returned slot ID for exact placement.
 
 ### Verified
 
@@ -838,3 +841,59 @@ Status: Implemented locally
 - No database schema changes.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, or advanced recommendation logic.
 - No manual browser verification has been recorded yet for the simplified wider Profile layout.
+
+## Backend Slot Eligibility
+
+Status: Implemented locally
+
+### Completed
+
+- Created the `backend-slot-eligibility` branch for the first recommendation improvement.
+- Added a `choiceSlots` request field so the frontend can send each open choice slot with its roadmap node ID, year, and semester.
+- Kept the existing `choiceSlotCodes` request field as a simple fallback for older or manual API calls.
+- Updated backend recommendation logic to evaluate candidates against each concrete open slot instead of only unique slot labels.
+- Moved BDE year-level fit into the backend so Year 2 BDE slots receive level 2 candidates and Year 4 BDE slots receive level 4 candidates before frontend placement.
+- Kept MPE slot eligibility backend-side by requiring CSC modules at the matching `SC3xxx` or `SC4xxx` level.
+- Ranked recommendation candidates per slot before returning the flattened recommendation list to the frontend.
+- Added slot metadata to each recommendation response so the frontend can place direct recommendations by exact roadmap slot ID.
+- Updated the frontend recommendation request builder and roadmap assignment logic to use backend slot IDs when available.
+- Updated the roadmap so locked choice slots can still show loaded recommendations while keeping their locked styling and missing-requirement message.
+- Updated backend recommendation ordering to round-robin across slots and skip duplicate course codes so later BDE slots are less likely to be starved by earlier slots.
+- Added duplicate-title protection so different course codes with the same normalized title are not recommended together.
+- Added frontend planning nodes for fallback recommendations with missing prerequisites, using a `Recommended Pre-Requisite` tag so students can see why an extra node appears.
+- Added a one-remaining-semester guard in frontend placement: if no earlier remaining semester exists, recommendations with missing prerequisites are skipped in favor of ready modules.
+- Added existing-curriculum prerequisite handling so a recommendation like `SC4055` can use an earlier roadmap module such as `SC2006` as the visible prerequisite path instead of creating extra alternative prerequisite nodes.
+- Added all direct prerequisite codes to recommendation responses so the frontend can draw prerequisite arrows even when a transcript has already marked those prerequisites as completed.
+
+### Rationale Notes
+
+- Recommendation and eligibility are separate concepts: a module can be a good recommendation for a slot even if the student is not currently ready to take it.
+- `Recommended` means the module fits the student's career goal and the slot type or level.
+- `Locked` means the student has not satisfied a requirement yet, such as `Year 3 Standing` or a module prerequisite.
+- Without transcript AU, MPE slots with `Year 3 Standing` can remain locked, but loaded recommendations should still be visible so students can plan ahead.
+- A BDE slot could appear empty even when the backend returned candidates because the frontend previously skipped target recommendations if their missing prerequisite could not be placed in the immediately previous semester.
+- The current fallback keeps the target recommendation visible when prerequisite placement fails, while leaving the slot locked or showing missing requirements.
+- If a target recommendation has missing prerequisites and there is an earlier remaining semester, the roadmap can show the target recommendation and add separate `Recommended Pre-Requisite` planning nodes in the latest earlier remaining semester.
+- The prerequisite graph currently stores prerequisites as a flat code list, so it cannot perfectly distinguish AND requirements from OR alternatives.
+- Because of that data limitation, if any missing prerequisite code already exists earlier in the student's uploaded curriculum guide, the frontend treats that existing module as the planned prerequisite path and draws an arrow from it to the recommended slot.
+- Completed prerequisites are no longer counted as missing, so the backend now returns both `prerequisites` and `missingPrerequisites`; the former supports arrows and the latter supports planning-node decisions.
+- If no earlier remaining semester exists, the roadmap should avoid showing recommendations with missing prerequisites because there is no remaining semester to plan those prerequisites first.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No structured score breakdown yet; that is the next recommendation improvement.
+- No unlock-value or deeper prerequisite-readiness logic yet.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+- No backend persistence for generated recommendations.
+- No manual browser verification has been recorded yet for the exact-slot recommendation behavior.
+- Recommendation coverage still depends on enough eligible unique module candidates existing for each slot.
+- The one-remaining-semester guard currently lives in the frontend placement layer; a later backend refinement can make the API avoid returning those candidates earlier.
+- True AND/OR prerequisite grouping is not implemented yet because the stored prerequisite graph does not preserve grouping semantics.

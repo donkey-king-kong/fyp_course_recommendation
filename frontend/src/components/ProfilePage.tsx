@@ -36,6 +36,7 @@ function ProfilePage({
   )
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const curriculumGuideFileName = useProfileStore((state) => state.curriculumGuideFileName)
+  const transcriptFileName = useProfileStore((state) => state.transcriptFileName)
   const transcriptCompletedCourseCodes = useProfileStore(
     (state) => state.transcriptCompletedCourseCodes,
   )
@@ -59,6 +60,8 @@ function ProfilePage({
     transcriptUnmatchedCourseCodes.length > 0 ||
     transcriptCompletedCourseCount > 0
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
+  const displayedCurriculumGuideFileName = selectedCurriculumGuide?.name || curriculumGuideFileName
+  const displayedTranscriptFileName = selectedTranscript?.name || transcriptFileName
   const transcriptSummaryMessage = `Current transcript: ${transcriptCompletedCourseCount} completed module(s), ${formatAcademicUnits(transcriptTotalAcademicUnitsEarned)} AU earned.`
 
   async function handleCurriculumGuideUpload() {
@@ -125,6 +128,7 @@ function ProfilePage({
 
       // Store transcript codes first; roadmap matching happens only when a curriculum guide exists.
       setTranscriptResults(
+        selectedTranscript.name,
         completedCourseCodesFromTranscript,
         result.completed_transcript_courses,
         result.completed_transcript_course_count,
@@ -243,6 +247,7 @@ function ProfilePage({
             <input
               key={curriculumGuideInputKey}
               type="file"
+              className="screen-reader-file-input"
               accept="application/pdf"
               onChange={(event) => {
                 setSelectedCurriculumGuide(event.target.files?.[0] ?? null)
@@ -250,6 +255,12 @@ function ProfilePage({
                 setCurriculumUploadMessage('')
               }}
             />
+            <span className="file-picker-row">
+              <span className="file-picker-button">Choose file</span>
+              <span className="file-picker-name">
+                {displayedCurriculumGuideFileName || 'No file chosen'}
+              </span>
+            </span>
           </label>
 
           <div className="transcript-action-row">
@@ -276,10 +287,6 @@ function ProfilePage({
           {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
           {hasCurriculumGuide && (
             <>
-              <p>
-                Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
-              </p>
-
               {standingRequirements.length > 0 && (
                 <div className="standing-requirements-card">
                   <h4>Minimum AU For Year Standing</h4>
@@ -313,6 +320,7 @@ function ProfilePage({
             <input
               key={transcriptInputKey}
               type="file"
+              className="screen-reader-file-input"
               accept="application/pdf"
               onChange={(event) => {
                 setSelectedTranscript(event.target.files?.[0] ?? null)
@@ -320,6 +328,12 @@ function ProfilePage({
                 setUploadMessage('')
               }}
             />
+            <span className="file-picker-row">
+              <span className="file-picker-button">Choose file</span>
+              <span className="file-picker-name">
+                {displayedTranscriptFileName || 'No file chosen'}
+              </span>
+            </span>
           </label>
 
           <div className="transcript-action-row">
