@@ -668,13 +668,16 @@ Status: Implemented locally
 - Level 1 recommendation logic is weighted keyword matching plus rule-based filtering.
 - It is not AI-based ranking, collaborative filtering, graph search, ChromaDB retrieval, LangGraph reasoning, or OpenAI generation.
 - For `Software Engineer`, the backend uses explicit weighted keywords such as `software`, `engineering`, `programming`, `development`, `database`, `web`, `cloud`, `distributed`, `systems`, `algorithm`, `architecture`, `testing`, and `security`.
-- Candidate modules score higher when their code, title, description, or category text contains higher-weight career keywords.
+- Candidate modules score higher when their title or description contains higher-weight career keywords.
 - `SC3xxx` and `SC4xxx` choice slots only consider CSC modules at the matching module level.
 - `BDE` choice slots can consider modules from the wider active module catalogue, subject to active faculty settings.
 - Completed modules are excluded from recommendations.
 - Fixed modules already present in the uploaded curriculum roadmap are excluded by course code and by normalized title.
 - Missing prerequisites are currently surfaced as rule-based constraints after scoring; if the top suitable recommendation needs one missing prerequisite, the frontend tries to place that prerequisite one semester earlier.
 - If a prerequisite cannot fit into an earlier suitable slot, that target recommendation is skipped for that slot for now.
+- After the backend slot-eligibility update, the frontend sends each open choice slot with its roadmap ID, year, and semester.
+- Backend recommendation logic now filters and ranks candidates per concrete slot before returning recommendations.
+- BDE year-level fit now happens in the backend, while the frontend uses the returned slot ID for exact placement.
 
 ### Verified
 
@@ -838,3 +841,35 @@ Status: Implemented locally
 - No database schema changes.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, or advanced recommendation logic.
 - No manual browser verification has been recorded yet for the simplified wider Profile layout.
+
+## Backend Slot Eligibility
+
+Status: Implemented locally
+
+### Completed
+
+- Created the `backend-slot-eligibility` branch for the first recommendation improvement.
+- Added a `choiceSlots` request field so the frontend can send each open choice slot with its roadmap node ID, year, and semester.
+- Kept the existing `choiceSlotCodes` request field as a simple fallback for older or manual API calls.
+- Updated backend recommendation logic to evaluate candidates against each concrete open slot instead of only unique slot labels.
+- Moved BDE year-level fit into the backend so Year 2 BDE slots receive level 2 candidates and Year 4 BDE slots receive level 4 candidates before frontend placement.
+- Kept MPE slot eligibility backend-side by requiring CSC modules at the matching `SC3xxx` or `SC4xxx` level.
+- Ranked recommendation candidates per slot before returning the flattened recommendation list to the frontend.
+- Added slot metadata to each recommendation response so the frontend can place direct recommendations by exact roadmap slot ID.
+- Updated the frontend recommendation request builder and roadmap assignment logic to use backend slot IDs when available.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No structured score breakdown yet; that is the next recommendation improvement.
+- No unlock-value or deeper prerequisite-readiness logic yet.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+- No backend persistence for generated recommendations.
+- No manual browser verification has been recorded yet for the exact-slot recommendation behavior.
