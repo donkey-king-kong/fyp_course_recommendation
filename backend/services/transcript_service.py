@@ -176,8 +176,6 @@ def parse_transcript_rows_from_words(words: list[dict[str, Any]]) -> list[dict[s
         term_header = find_term_header_for_course(
             code_word,
             term_headers,
-            column_x_start,
-            column_x_end,
         )
 
         if term_header:
@@ -238,9 +236,12 @@ def extract_term_headers_from_words(words: list[dict[str, Any]]) -> list[dict[st
 
 def get_transcript_visual_order_key(term_header: dict[str, Any]) -> tuple[int, int, float]:
     # Transcript tables read down the left column first, then down the right column.
-    column_index = 0 if term_header["x0"] < 300 else 1
+    column_index = get_transcript_column_index(term_header["x0"])
 
     return (term_header["page"], column_index, term_header["y0"])
+
+def get_transcript_column_index(x_position: float) -> int:
+    return 0 if x_position < 300 else 1
 
 def build_study_year_map(term_headers: list[dict[str, Any]]) -> dict[str, int]:
     study_year_by_academic_year: dict[str, int] = {}
@@ -257,15 +258,14 @@ def build_study_year_map(term_headers: list[dict[str, Any]]) -> dict[str, int]:
 def find_term_header_for_course(
     code_word: dict[str, Any],
     term_headers: list[dict[str, Any]],
-    column_x_start: float,
-    column_x_end: float,
 ) -> Optional[dict[str, Any]]:
+    code_column_index = get_transcript_column_index(code_word["x0"])
     same_column_headers = [
         term_header
         for term_header in term_headers
         if term_header["page"] == code_word["page"]
         and term_header["y0"] <= code_word["y0"]
-        and column_x_start <= term_header["x0"] < column_x_end
+        and get_transcript_column_index(term_header["x0"]) == code_column_index
     ]
 
     if same_column_headers:

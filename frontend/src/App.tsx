@@ -92,28 +92,56 @@ function getPrerequisitesByTarget(edges: RoadmapEdge[]) {
   }, {})
 }
 
+function getTranscriptPlacementByCourseCode(transcriptCourses: TranscriptCourse[]) {
+  return transcriptCourses.reduce<Record<string, Pick<TranscriptCourse, 'study_year' | 'transcript_semester'>>>(
+    (placements, course) => {
+      if (!course.study_year || !course.transcript_semester) {
+        return placements
+      }
+
+      return {
+        ...placements,
+        [course.course_code.toUpperCase()]: {
+          study_year: course.study_year,
+          transcript_semester: course.transcript_semester,
+        },
+      }
+    },
+    {},
+  )
+}
+
 // Convert the uploaded curriculum guide shape into the existing roadmap component shape.
 function mapCurriculumGuideToRoadmap(
   curriculumGuide: CurriculumGuideResponse,
   transcriptOnlyModules: TranscriptOnlyModule[],
+  transcriptCompletedCourses: TranscriptCourse[],
 ): RoadmapResponse {
-  const curriculumNodes: CourseNode[] = curriculumGuide.nodes.map((course) => ({
-    id: course.id,
-    courseCode: course.courseCode,
-    title: getCurriculumCourseTitle(course),
-    type: course.type,
-    year: course.year,
-    semester: course.semester,
-    academicUnits: course.academicUnits,
-    prerequisites: curriculumGuide.edges
-      .filter((edge) => edge.target === course.id)
-      .map((edge) => edge.source),
-    prerequisiteText: course.prerequisiteText,
-    isCompleted: false,
-    isChoiceSlot: course.isChoiceSlot,
-    isTranscriptOnly: false,
-    jobSkills: [],
-  }))
+  const transcriptPlacementByCourseCode = getTranscriptPlacementByCourseCode(
+    transcriptCompletedCourses,
+  )
+  const curriculumNodes: CourseNode[] = curriculumGuide.nodes.map((course) => {
+    const transcriptPlacement = transcriptPlacementByCourseCode[course.courseCode.toUpperCase()]
+
+    return {
+      id: course.id,
+      courseCode: course.courseCode,
+      title: getCurriculumCourseTitle(course),
+      type: course.type,
+      // The curriculum guide provides the base node; transcript term data overrides where it appears.
+      year: transcriptPlacement?.study_year ?? course.year,
+      semester: transcriptPlacement?.transcript_semester ?? course.semester,
+      academicUnits: course.academicUnits,
+      prerequisites: curriculumGuide.edges
+        .filter((edge) => edge.target === course.id)
+        .map((edge) => edge.source),
+      prerequisiteText: course.prerequisiteText,
+      isCompleted: false,
+      isChoiceSlot: course.isChoiceSlot,
+      isTranscriptOnly: false,
+      jobSkills: [],
+    }
+  })
   // Transcript-only modules are added without replacing official curriculum slots.
   const transcriptNodes: CourseNode[] = transcriptOnlyModules.map(({ module, transcriptCourse }) => ({
     id: `transcript-${module.code.toLowerCase()}`,
@@ -207,9 +235,15 @@ function App() {
 
   const roadmap = useMemo(
     () => (
-      curriculumGuide ? mapCurriculumGuideToRoadmap(curriculumGuide, transcriptOnlyModules) : null
+      curriculumGuide
+        ? mapCurriculumGuideToRoadmap(
+            curriculumGuide,
+            transcriptOnlyModules,
+            transcriptCompletedCourses,
+          )
+        : null
     ),
-    [curriculumGuide, transcriptOnlyModules],
+    [curriculumGuide, transcriptCompletedCourses, transcriptOnlyModules],
   )
 
   useEffect(() => {
