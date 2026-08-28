@@ -1,8 +1,10 @@
 import { useLayoutEffect, useRef, useState, useEffect, type CSSProperties } from 'react'
 import './SemesterRoadmap.css'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
+import { fetchRecommendations } from '../api/recommendationsApi'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
+import type { CourseRecommendation } from '../types/recommendation'
 
 // Pass courses and prerequisite links into this component
 interface SemesterRoadmapProps {
@@ -80,6 +82,22 @@ function getStandingYear(prerequisiteText?: string) {
   return standingMatch ? parseInt(standingMatch[1], 10) : null
 }
 
+function getChoiceSlotKey(course: CourseNode) {
+  const courseCode = course.courseCode.toUpperCase()
+
+  if (!course.isChoiceSlot) {
+    return null
+  }
+
+  if (courseCode === 'BDE') {
+    return 'BDE'
+  }
+
+  const mpeMatch = courseCode.match(/^SC([3-4])XXX$/)
+
+  return mpeMatch ? `SC${mpeMatch[1]}xxx` : course.courseCode
+}
+
 function getMissingStandingRequirement(
   course: CourseNode,
   completedAcademicUnits: number,
@@ -155,16 +173,21 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
   const [hoveredCourseId, setHoveredCourseId] = useState<string | null>(null)
   const [showAllArrows, setShowAllArrows] = useState(true)
   const [arrowPaths, setArrowPaths] = useState<ArrowPath[]>([])
-  
+  const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
+  const [recommendationError, setRecommendationError] = useState('')
+  const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
+  const profile = useProfileStore((state) => state.profile)
+  const transcriptCompletedCourseCodes = useProfileStore(
+    (state) => state.transcriptCompletedCourseCodes,
+  )
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
     (state) => state.transcriptTotalAcademicUnitsEarned,
   )
-  
   // Hydrate completed courses from roadmap if not already in store
   useEffect(() => {
     if (completedCourseIds.length === 0) {
@@ -194,6 +217,71 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
+  const choiceSlotCodes = [
+    ...new Set(
+      courses
+        .filter((course) => {
+          const eligibility = getCourseEligibility(
+            course,
+            completedCourseIds,
+            completedAcademicUnits,
+            standingRequirements,
+          )
+
+          return course.isChoiceSlot && eligibility.status === 'available'
+        })
+        .map((course) => getChoiceSlotKey(course))
+        .filter((slotKey): slotKey is string => Boolean(slotKey)),
+    ),
+  ]
+  const recommendationsByChoiceSlot = recommendations.reduce<Record<string, CourseRecommendation[]>>(
+    (groups, recommendation) => {
+      const slotKey = recommendation.matchedChoiceSlot.toUpperCase()
+
+      return {
+        ...groups,
+        [slotKey]: [...(groups[slotKey] ?? []), recommendation],
+      }
+    },
+    {},
+  )
+
+  async function handleLoadRecommendations() {
+    if (profile.careerGoal !== 'software-engineer') {
+      setRecommendationError('Select Software Engineer in Profile before loading recommendations.')
+      return
+    }
+
+    if (choiceSlotCodes.length === 0) {
+      setRecommendationError('No unlocked choice slots are available for recommendations yet.')
+      return
+    }
+
+    const completedRoadmapCourseCodes = courses
+      .filter((course) => completedCourseIds.includes(course.id))
+      .map((course) => course.courseCode)
+    const completedCourseCodes = [
+      ...new Set([...transcriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
+    ]
+
+    try {
+      setIsLoadingRecommendations(true)
+      setRecommendationError('')
+
+      const result = await fetchRecommendations({
+        careerGoal: profile.careerGoal,
+        completedCourseCodes,
+        choiceSlotCodes,
+        limit: 12,
+      })
+
+      setRecommendations(result.recommendations)
+    } catch {
+      setRecommendationError('Could not load recommendations. Make sure the backend is running.')
+    } finally {
+      setIsLoadingRecommendations(false)
+    }
+  }
 
   function handleClearRoadmap() {
     const shouldClear = window.confirm(
@@ -286,6 +374,15 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
 
         <div className="roadmap-actions">
           {/* Remove the uploaded curriculum guide while keeping transcript data saved for rematching. */}
+          <button
+            type="button"
+            className="load-recommendations-button"
+            onClick={handleLoadRecommendations}
+            disabled={profile.careerGoal !== 'software-engineer' || isLoadingRecommendations}
+          >
+            {isLoadingRecommendations ? 'Loading...' : 'Load recommendations'}
+          </button>
+
           <button type="button" className="clear-roadmap-button" onClick={handleClearRoadmap}>
             Clear roadmap
           </button>
@@ -312,6 +409,10 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
           </label>
         </div>
       </div>
+
+      {recommendationError && (
+        <p className="roadmap-recommendation-error">{recommendationError}</p>
+      )}
 
       <div
         className={[
@@ -388,6 +489,10 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                     completedAcademicUnits,
                     standingRequirements,
                   )
+                  const choiceSlotKey = getChoiceSlotKey(course)
+                  const slotRecommendations = choiceSlotKey
+                    ? recommendationsByChoiceSlot[choiceSlotKey.toUpperCase()] ?? []
+                    : []
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -426,6 +531,21 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                             .join(', ')}
                         </p>
                       )}
+                      {course.isChoiceSlot &&
+                        eligibility.status === 'available' &&
+                        slotRecommendations.length > 0 && (
+                          <div className="choice-slot-recommendations">
+                            <span>Recommended options</span>
+                            <ul>
+                              {slotRecommendations.slice(0, 3).map((recommendation) => (
+                                <li key={recommendation.courseCode}>
+                                  <strong>{recommendation.courseCode}</strong>
+                                  <small>{recommendation.title}</small>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
                       <div className="semester-course-card-bottom">
                         <span
                           className={`semester-course-type ${getCourseTypeClass(
