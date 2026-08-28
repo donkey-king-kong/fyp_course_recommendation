@@ -4,6 +4,10 @@ import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
 import './ProfilePage.css'
 
+function formatAcademicUnits(academicUnits: number) {
+  return Number.isInteger(academicUnits) ? academicUnits.toString() : academicUnits.toFixed(1)
+}
+
 function ProfilePage() {
   // Read the saved student profile from the shared Zustand store
   const profile = useProfileStore((state) => state.profile)
@@ -17,6 +21,9 @@ function ProfilePage() {
   const transcriptUnmatchedCourseCount = useProfileStore((state) => state.transcriptUnmatchedCourseCount)
   const transcriptMatchedCourses = useProfileStore((state) => state.transcriptMatchedCourses)
   const transcriptUnmatchedCourseCodes = useProfileStore((state) => state.transcriptUnmatchedCourseCodes)
+  const transcriptTotalAcademicUnitsEarned = useProfileStore(
+    (state) => state.transcriptTotalAcademicUnitsEarned,
+  )
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const curriculumGuideFileName = useProfileStore((state) => state.curriculumGuideFileName)
   const transcriptCompletedCourseCodes = useProfileStore(
@@ -41,6 +48,8 @@ function ProfilePage() {
     transcriptMatchedCourses.length > 0 ||
     transcriptUnmatchedCourseCodes.length > 0 ||
     transcriptCompletedCourseCount > 0
+  const standingRequirements = curriculumGuide?.standingRequirements ?? []
+  const transcriptSummaryMessage = `Current transcript: ${transcriptCompletedCourseCount} completed module(s), ${formatAcademicUnits(transcriptTotalAcademicUnitsEarned)} AU earned.`
 
   async function handleCurriculumGuideUpload() {
     if (!selectedCurriculumGuide) {
@@ -109,15 +118,16 @@ function ProfilePage() {
       setTranscriptResults(
         completedCourseCodesFromTranscript,
         result.completed_transcript_course_count,
+        result.total_academic_units_earned,
       )
 
       if (curriculumGuide) {
         setUploadMessage(
-          `Parsed ${result.completed_transcript_course_count} completed module(s). Matching is updated against your uploaded curriculum guide.`,
+          `Parsed ${result.completed_transcript_course_count} completed module(s) and ${formatAcademicUnits(result.total_academic_units_earned)} AU. Matching is updated against your uploaded curriculum guide.`,
         )
       } else {
         setUploadMessage(
-          `Parsed ${result.completed_transcript_course_count} completed module(s). Upload your curriculum guide to match them to your roadmap.`,
+          `Parsed ${result.completed_transcript_course_count} completed module(s) and ${formatAcademicUnits(result.total_academic_units_earned)} AU. Upload your curriculum guide to match them to your roadmap.`,
         )
       }
     } catch {
@@ -236,7 +246,7 @@ function ProfilePage() {
         <label className="transcript-file-field">
           <span>PDF Curriculum Guide</span>
           <input
-            key={transcriptInputKey}
+            key={curriculumGuideInputKey}
             type="file"
             accept="application/pdf"
             onChange={(event) => {
@@ -270,9 +280,28 @@ function ProfilePage() {
         {curriculumUploadMessage && <p className="upload-success">{curriculumUploadMessage}</p>}
         {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
         {hasCurriculumGuide && (
-          <p>
-            Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
-          </p>
+          <>
+            <p>
+              Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
+            </p>
+
+            {standingRequirements.length > 0 && (
+              <div className="standing-requirements-card">
+                <h4>Minimum AU For Year Standing</h4>
+                <ul>
+                  {standingRequirements.map((requirement) => (
+                    <li key={requirement.standingYear}>
+                      <span>Year {requirement.standingYear} standing</span>
+                      <strong>{requirement.minimumAcademicUnits} AU</strong>
+                      <small>
+                        From Year {requirement.includedYears.join(' + Year ')} Total AU
+                      </small>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </>
         )}
       </section>
 
@@ -287,7 +316,7 @@ function ProfilePage() {
         <label className="transcript-file-field">
           <span>PDF Transcript</span>
           <input
-            key={curriculumGuideInputKey}
+            key={transcriptInputKey}
             type="file"
             accept="application/pdf"
             onChange={(event) => {
@@ -319,6 +348,9 @@ function ProfilePage() {
         </div>
 
         {uploadMessage && <p className="upload-success">{uploadMessage}</p>}
+        {!uploadMessage && hasTranscriptResults && (
+          <p className="upload-success">{transcriptSummaryMessage}</p>
+        )}
         {uploadError && <p className="upload-error">{uploadError}</p>}
       </section>
 
@@ -332,6 +364,10 @@ function ProfilePage() {
         <div className="stat-card transcript-stat-card">
           <strong>{transcriptCompletedCourseCount}</strong>
           <span>Completed Transcript Modules</span>
+        </div>
+        <div className="stat-card transcript-au-stat-card">
+          <strong>{formatAcademicUnits(transcriptTotalAcademicUnitsEarned)}</strong>
+          <span>Total AU Earned</span>
         </div>
         <div className="stat-card unmatched-stat-card">
           <strong>{transcriptUnmatchedCourseCount}</strong>

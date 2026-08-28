@@ -10,6 +10,7 @@ from backend.schemas.curriculum import (
     CurriculumEdge,
     CurriculumGuideResponse,
     CurriculumSemester,
+    StandingRequirement,
 )
 
 logger = logging.getLogger(__name__)
@@ -38,6 +39,7 @@ def extract_curriculum_guide(file_content: bytes) -> CurriculumGuideResponse:
         cohort=extract_cohort(text),
         totalAcademicUnits=extract_total_academic_units(text, nodes),
         semesters=semesters,
+        standingRequirements=build_standing_requirements(semesters),
         nodes=nodes,
         edges=edges,
     )
@@ -197,7 +199,7 @@ def parse_curriculum_row(
 
     return {
         "code": code,
-        "title": title or default_title_for_slot(code, course_type),
+        "title": normalize_course_title(code, course_type, title),
         "type": course_type,
         "year": semester_header["year"],
         "semester": semester_header["semester"],
@@ -243,6 +245,13 @@ def find_course_title(words: list[dict[str, Any]]) -> str:
 
     return " ".join(title_words)
 
+def normalize_course_title(code: str, course_type: str, title: str) -> str:
+    if "xxx" in code and "MPE" in course_type:
+        return "Major Prescribed Elective"
+
+    return title or default_title_for_slot(code, course_type)
+
+
 # Prerequisite text is preserved as raw text and separately simplified into course-code tokens.
 def find_prerequisite_text(words: list[dict[str, Any]]) -> str:
     prerequisite_words = [
@@ -259,7 +268,7 @@ def default_title_for_slot(code: str, course_type: str) -> str:
         return "Broadening and Deepening Electives"
 
     if "MPE" in course_type:
-        return f"Major Prescribed Elective ({code})"
+        return "Major Prescribed Elective"
 
     return ""
 
@@ -334,6 +343,32 @@ def build_semesters(nodes: list[CurriculumCourse]) -> list[CurriculumSemester]:
     ]
 
 # Creates prerequisite arrows only when a prerequisite exists in the parsed curriculum.
+def build_standing_requirements(semesters: list[CurriculumSemester]) -> list[StandingRequirement]:
+    academic_units_by_year: dict[int, int] = defaultdict(int)
+
+    for semester in semesters:
+        academic_units_by_year[semester.year] += semester.totalAcademicUnits
+
+    requirements: list[StandingRequirement] = []
+
+    for standing_year in [2, 3, 4]:
+        included_years = list(range(1, standing_year))
+        minimum_academic_units = sum(academic_units_by_year[year] for year in included_years)
+
+        if minimum_academic_units == 0:
+            continue
+
+        requirements.append(
+            StandingRequirement(
+                standingYear=standing_year,
+                minimumAcademicUnits=minimum_academic_units,
+                includedYears=included_years,
+            )
+        )
+
+    return requirements
+
+
 def build_prerequisite_edges(nodes: list[CurriculumCourse]) -> list[CurriculumEdge]:
     course_ids_by_code = {node.courseCode: node.id for node in nodes if "xxx" not in node.courseCode}
     edges: list[CurriculumEdge] = []

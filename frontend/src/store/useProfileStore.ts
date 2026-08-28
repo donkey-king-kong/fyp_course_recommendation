@@ -24,6 +24,7 @@ interface SavedStudentProfile {
   curriculumGuideFileName: string // Uploaded guide filename.
   transcriptCompletedCourseCodes: string[] // All completed transcript codes.
   transcriptCompletedCourseCount: number // Total completed transcript modules.
+  transcriptTotalAcademicUnitsEarned: number // Total AU earned from transcript.
   transcriptUnmatchedCourseCount: number // Transcript modules outside roadmap.
   transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
   transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
@@ -47,6 +48,7 @@ interface ProfileState {
   curriculumGuideFileName: string // Active guide filename.
   transcriptCompletedCourseCodes: string[] // All completed transcript codes.
   transcriptCompletedCourseCount: number // Total completed transcript modules.
+  transcriptTotalAcademicUnitsEarned: number // Total AU earned from transcript.
   transcriptUnmatchedCourseCount: number // Transcript modules outside roadmap.
   transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
   transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
@@ -59,6 +61,7 @@ interface ProfileState {
   setTranscriptResults: (
     completedCourseCodes: string[],
     transcriptCompletedCourseCount: number,
+    transcriptTotalAcademicUnitsEarned: number,
   ) => void // Save transcript results.
   clearTranscriptResults: () => void // Remove uploaded transcript data.
   logout: () => void // End active browser session.
@@ -88,6 +91,7 @@ function createSavedStudentProfile(studentId: string): SavedStudentProfile {
     curriculumGuideFileName: '',
     transcriptCompletedCourseCodes: [],
     transcriptCompletedCourseCount: 0,
+    transcriptTotalAcademicUnitsEarned: 0,
     transcriptUnmatchedCourseCount: 0,
     transcriptMatchedCourses: [],
     transcriptUnmatchedCourseCodes: [],
@@ -140,6 +144,7 @@ export const useProfileStore = create<ProfileState>()(
       curriculumGuideFileName: '',
       transcriptCompletedCourseCodes: [],
       transcriptCompletedCourseCount: 0,
+      transcriptTotalAcademicUnitsEarned: 0,
       transcriptUnmatchedCourseCount: 0,
       transcriptMatchedCourses: [],
       transcriptUnmatchedCourseCodes: [],
@@ -165,6 +170,8 @@ export const useProfileStore = create<ProfileState>()(
             curriculumGuideFileName: activeProfile.curriculumGuideFileName ?? '',
             transcriptCompletedCourseCodes: activeProfile.transcriptCompletedCourseCodes ?? [],
             transcriptCompletedCourseCount: activeProfile.transcriptCompletedCourseCount ?? 0,
+            transcriptTotalAcademicUnitsEarned:
+              activeProfile.transcriptTotalAcademicUnitsEarned ?? 0,
             transcriptUnmatchedCourseCount: activeProfile.transcriptUnmatchedCourseCount ?? 0,
             transcriptMatchedCourses: activeProfile.transcriptMatchedCourses ?? [],
             transcriptUnmatchedCourseCodes: activeProfile.transcriptUnmatchedCourseCodes ?? [],
@@ -182,6 +189,8 @@ export const useProfileStore = create<ProfileState>()(
             curriculumGuideFileName: hydratedProfile.curriculumGuideFileName,
             transcriptCompletedCourseCodes: hydratedProfile.transcriptCompletedCourseCodes,
             transcriptCompletedCourseCount: hydratedProfile.transcriptCompletedCourseCount,
+            transcriptTotalAcademicUnitsEarned:
+              hydratedProfile.transcriptTotalAcademicUnitsEarned,
             transcriptUnmatchedCourseCount: hydratedProfile.transcriptUnmatchedCourseCount,
             transcriptMatchedCourses: hydratedProfile.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: hydratedProfile.transcriptUnmatchedCourseCodes,
@@ -221,6 +230,7 @@ export const useProfileStore = create<ProfileState>()(
               curriculumGuideFileName: state.curriculumGuideFileName,
               transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
               transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+              transcriptTotalAcademicUnitsEarned: state.transcriptTotalAcademicUnitsEarned,
               transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
               transcriptMatchedCourses: state.transcriptMatchedCourses,
               transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
@@ -253,6 +263,7 @@ export const useProfileStore = create<ProfileState>()(
                     curriculumGuideFileName: state.curriculumGuideFileName,
                     transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                     transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                    transcriptTotalAcademicUnitsEarned: state.transcriptTotalAcademicUnitsEarned,
                     transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                     transcriptMatchedCourses: state.transcriptMatchedCourses,
                     transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
@@ -275,6 +286,7 @@ export const useProfileStore = create<ProfileState>()(
                   curriculumGuideFileName: state.curriculumGuideFileName,
                   transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                   transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                  transcriptTotalAcademicUnitsEarned: state.transcriptTotalAcademicUnitsEarned,
                   transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                   transcriptMatchedCourses: state.transcriptMatchedCourses,
                   transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
@@ -307,6 +319,7 @@ export const useProfileStore = create<ProfileState>()(
                     curriculumGuideFileName: fileName,
                     transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                     transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                    transcriptTotalAcademicUnitsEarned: state.transcriptTotalAcademicUnitsEarned,
                     transcriptUnmatchedCourseCount:
                       matchedResults.transcriptUnmatchedCourseCodes.length,
                     transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
@@ -335,6 +348,7 @@ export const useProfileStore = create<ProfileState>()(
                   curriculumGuideFileName: '',
                   transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                   transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                  transcriptTotalAcademicUnitsEarned: state.transcriptTotalAcademicUnitsEarned,
                   transcriptUnmatchedCourseCount: state.transcriptCompletedCourseCodes.length,
                   transcriptMatchedCourses: [],
                   transcriptUnmatchedCourseCodes: state.transcriptCompletedCourseCodes,
@@ -343,7 +357,11 @@ export const useProfileStore = create<ProfileState>()(
             : state.profilesByStudentId,
         })),
 
-      setTranscriptResults: (completedCourseCodes, transcriptCompletedCourseCount) =>
+      setTranscriptResults: (
+        completedCourseCodes,
+        transcriptCompletedCourseCount,
+        transcriptTotalAcademicUnitsEarned,
+      ) =>
         set((state) => {
           const matchedResults = matchTranscriptToCurriculum(
             completedCourseCodes,
@@ -354,6 +372,7 @@ export const useProfileStore = create<ProfileState>()(
             completedCourseIds: matchedResults.completedCourseIds,
             transcriptCompletedCourseCodes: completedCourseCodes,
             transcriptCompletedCourseCount,
+            transcriptTotalAcademicUnitsEarned,
             transcriptUnmatchedCourseCount: matchedResults.transcriptUnmatchedCourseCodes.length,
             transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
@@ -367,6 +386,7 @@ export const useProfileStore = create<ProfileState>()(
                     curriculumGuideFileName: state.curriculumGuideFileName,
                     transcriptCompletedCourseCodes: completedCourseCodes,
                     transcriptCompletedCourseCount,
+                    transcriptTotalAcademicUnitsEarned,
                     transcriptUnmatchedCourseCount:
                       matchedResults.transcriptUnmatchedCourseCodes.length,
                     transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
@@ -382,6 +402,7 @@ export const useProfileStore = create<ProfileState>()(
           completedCourseIds: [],
           transcriptCompletedCourseCodes: [],
           transcriptCompletedCourseCount: 0,
+          transcriptTotalAcademicUnitsEarned: 0,
           transcriptUnmatchedCourseCount: 0,
           transcriptMatchedCourses: [],
           transcriptUnmatchedCourseCodes: [],
@@ -395,6 +416,7 @@ export const useProfileStore = create<ProfileState>()(
                   curriculumGuideFileName: state.curriculumGuideFileName,
                   transcriptCompletedCourseCodes: [],
                   transcriptCompletedCourseCount: 0,
+                  transcriptTotalAcademicUnitsEarned: 0,
                   transcriptUnmatchedCourseCount: 0,
                   transcriptMatchedCourses: [],
                   transcriptUnmatchedCourseCodes: [],
@@ -412,6 +434,7 @@ export const useProfileStore = create<ProfileState>()(
           curriculumGuideFileName: '',
           transcriptCompletedCourseCodes: [],
           transcriptCompletedCourseCount: 0,
+          transcriptTotalAcademicUnitsEarned: 0,
           transcriptUnmatchedCourseCount: 0,
           transcriptMatchedCourses: [],
           transcriptUnmatchedCourseCodes: [],

@@ -35,15 +35,24 @@ class CurriculumSemester(BaseModel):
     totalAcademicUnits: int
     courses: list[CurriculumCourse]
 
+
+class StandingRequirement(BaseModel):
+    standingYear: int
+    minimumAcademicUnits: int
+    includedYears: list[int]
+
+
 class CurriculumEdge(BaseModel):
     source: str
     target: str
+
 
 class CurriculumGuideResponse(BaseModel):
     major: str
     cohort: str
     totalAcademicUnits: int
     semesters: list[CurriculumSemester]
+    standingRequirements: list[StandingRequirement]
     nodes: list[CurriculumCourse]
     edges: list[CurriculumEdge]
 
@@ -59,6 +68,13 @@ class CurriculumGuideResponse(BaseModel):
                         "semester": 1,
                         "totalAcademicUnits": 19,
                         "courses": [],
+                    }
+                ],
+                "standingRequirements": [
+                    {
+                        "standingYear": 3,
+                        "minimumAcademicUnits": 75,
+                        "includedYears": [1, 2],
                     }
                 ],
                 "nodes": [],

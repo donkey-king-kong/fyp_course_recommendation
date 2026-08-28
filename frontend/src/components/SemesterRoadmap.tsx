@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState, useEffect, type CSSProperties } from
 import './SemesterRoadmap.css'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
+import type { StandingRequirement } from '../types/curriculum'
 
 // Pass courses and prerequisite links into this component
 interface SemesterRoadmapProps {
@@ -73,9 +74,49 @@ function shouldIgnorePrerequisiteText(course: CourseNode) {
   )
 }
 
+function getStandingYear(prerequisiteText?: string) {
+  const standingMatch = prerequisiteText?.match(/\byear\s+([2-4])\s+standing\b/i)
+
+  return standingMatch ? parseInt(standingMatch[1], 10) : null
+}
+
+function getMissingStandingRequirement(
+  course: CourseNode,
+  completedAcademicUnits: number,
+  standingRequirements: StandingRequirement[],
+) {
+  if (shouldIgnorePrerequisiteText(course)) {
+    return null
+  }
+
+  const standingYear = getStandingYear(course.prerequisiteText)
+
+  if (!standingYear) {
+    return course.prerequisiteText ?? 'Prerequisite required'
+  }
+
+  const standingRequirement = standingRequirements.find(
+    (requirement) => requirement.standingYear === standingYear,
+  )
+
+  if (!standingRequirement) {
+    return course.prerequisiteText ?? `Year ${standingYear} standing`
+  }
+
+  if (completedAcademicUnits >= standingRequirement.minimumAcademicUnits) {
+    return null
+  }
+
+  return `Year ${standingYear} standing requires ${standingRequirement.minimumAcademicUnits} AU; you have ${completedAcademicUnits} AU`
+}
+
 // A course is available when every listed prerequisite is already completed.
-// Text-only requirements such as year standing are kept locked because they cannot be auto-verified yet.
-function getCourseEligibility(course: CourseNode, completedCourseIds: string[]): CourseEligibility {
+function getCourseEligibility(
+  course: CourseNode,
+  completedCourseIds: string[],
+  completedAcademicUnits: number,
+  standingRequirements: StandingRequirement[],
+): CourseEligibility {
   if (completedCourseIds.includes(course.id)) {
     return {
       status: 'completed',
@@ -86,10 +127,13 @@ function getCourseEligibility(course: CourseNode, completedCourseIds: string[]):
   const missingPrerequisites = course.prerequisites.filter(
     (prerequisiteId) => !completedCourseIds.includes(prerequisiteId),
   )
-  const hasTextOnlyPrerequisite =
-    course.prerequisites.length === 0 && !shouldIgnorePrerequisiteText(course)
+  const missingStandingRequirement = getMissingStandingRequirement(
+    course,
+    completedAcademicUnits,
+    standingRequirements,
+  )
 
-  if (missingPrerequisites.length === 0 && !hasTextOnlyPrerequisite) {
+  if (missingPrerequisites.length === 0 && !missingStandingRequirement) {
     return {
       status: 'available',
       missingPrerequisites: [],
@@ -98,9 +142,10 @@ function getCourseEligibility(course: CourseNode, completedCourseIds: string[]):
 
   return {
     status: 'locked',
-    missingPrerequisites: hasTextOnlyPrerequisite
-      ? [course.prerequisiteText ?? 'Prerequisite required']
-      : missingPrerequisites,
+    missingPrerequisites: [
+      ...missingPrerequisites,
+      ...(missingStandingRequirement ? [missingStandingRequirement] : []),
+    ],
   }
 }
 
@@ -115,6 +160,10 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
+  const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
+  const transcriptTotalAcademicUnitsEarned = useProfileStore(
+    (state) => state.transcriptTotalAcademicUnitsEarned,
+  )
   
   // Hydrate completed courses from roadmap if not already in store
   useEffect(() => {
@@ -137,6 +186,14 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
 
   const connectedCourseIds = new Set<string>()
   const courseCodeById = new Map(courses.map((course) => [course.id, course.courseCode]))
+  const completedRoadmapAcademicUnits = courses
+    .filter((course) => completedCourseIds.includes(course.id))
+    .reduce((total, course) => total + course.academicUnits, 0)
+  const completedAcademicUnits =
+    transcriptTotalAcademicUnitsEarned > 0
+      ? transcriptTotalAcademicUnitsEarned
+      : completedRoadmapAcademicUnits
+  const standingRequirements = curriculumGuide?.standingRequirements ?? []
 
   function handleClearRoadmap() {
     const shouldClear = window.confirm(
@@ -325,7 +382,12 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                   const isConnected = connectedCourseIds.has(course.id)
                   const isDimmed = Boolean(hoveredCourseId) && !isConnected
                   const isCompleted = completedCourseIds.includes(course.id)
-                  const eligibility = getCourseEligibility(course, completedCourseIds)
+                  const eligibility = getCourseEligibility(
+                    course,
+                    completedCourseIds,
+                    completedAcademicUnits,
+                    standingRequirements,
+                  )
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.

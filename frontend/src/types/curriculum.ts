@@ -18,6 +18,12 @@ export interface CurriculumSemester {
   courses: CurriculumCourse[]
 }
 
+export interface StandingRequirement {
+  standingYear: number
+  minimumAcademicUnits: number
+  includedYears: number[]
+}
+
 export interface CurriculumEdge {
   source: string
   target: string
@@ -28,6 +34,7 @@ export interface CurriculumGuideResponse {
   cohort: string
   totalAcademicUnits: number
   semesters: CurriculumSemester[]
+  standingRequirements: StandingRequirement[]
   nodes: CurriculumCourse[]
   edges: CurriculumEdge[]
 }

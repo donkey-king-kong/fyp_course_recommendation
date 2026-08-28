@@ -38,6 +38,10 @@ TRANSCRIPT_ROW_PATTERN = re.compile(
     r"(?P<grade>A\+|A-|A|B\+|B-|B|C\+|C-|C|D\+|D|EX|TC)"
     r"(?:\s+(?P<grade_point>\d+\.\d{2}))?$"
 )
+TOTAL_AU_EARNED_PATTERN = re.compile(
+    r"TOTAL\s+ACADEMIC\s+UNITS\s+EARNED\s*:?\s*(?P<total>\d+(?:\.\d+)?)",
+    re.IGNORECASE,
+)
 
 def extract_text_from_pdf(file_content: bytes) -> str:
     # Plain text extraction is used as a fallback if word-position parsing finds no rows
@@ -74,6 +78,16 @@ def extract_words_from_pdf(file_content: bytes) -> list[dict[str, Any]]:
 def normalize_line(line: str) -> str:
     # Make extracted text easier to compare by removing extra spaces and casing differences
     return " ".join(line.strip().upper().split())
+
+
+def extract_total_academic_units_earned(transcript_text: str) -> Optional[float]:
+    normalized_text = normalize_line(transcript_text)
+    total_match = TOTAL_AU_EARNED_PATTERN.search(normalized_text)
+
+    if total_match:
+        return float(total_match.group("total"))
+
+    return None
 
 def parse_transcript_rows(transcript_text: str) -> list[dict[str, str]]:
     # Fallback parser for PDFs where each course row is extracted as readable text
@@ -260,10 +274,12 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
     unmatched_course_codes: list[str] = []
     # Counts completed transcript rows before roadmap matching, so the UI can show both numbers.
     completed_transcript_course_count = 0
+    completed_transcript_academic_units = 0.0
 
     for transcript_row in transcript_rows:
         course_code = transcript_row["code"]
         grade = transcript_row["grade"]
+        academic_units = float(transcript_row["academic_units"])
 
         # Only completed/exempted modules should affect roadmap progress.
         if grade not in COMPLETED_GRADES:
@@ -271,6 +287,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
             continue
 
         completed_transcript_course_count += 1
+        completed_transcript_academic_units += academic_units
         roadmap_course = roadmap_courses_by_code.get(course_code)
 
         if roadmap_course is None:
@@ -285,7 +302,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
                 course_code=roadmap_course.courseCode,
                 course_id=roadmap_course.id,
                 title=roadmap_course.title,
-                academic_units=float(transcript_row["academic_units"]),
+                academic_units=academic_units,
                 grade=grade,
                 grade_point=(
                     float(transcript_row["grade_point"])
@@ -301,8 +318,14 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
         len(unmatched_course_codes),
     )
 
+    total_academic_units_earned = (
+        extract_total_academic_units_earned(transcript_text)
+        or completed_transcript_academic_units
+    )
+
     return TranscriptUploadResponse(
         completed_courses=completed_courses,
         completed_transcript_course_count=completed_transcript_course_count,
+        total_academic_units_earned=total_academic_units_earned,
         unmatched_course_codes=unmatched_course_codes,
     )

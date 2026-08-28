@@ -15,6 +15,14 @@ const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
 const DEFAULT_VIEW: ViewState = 'roadmap'
 const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
 
+function getCurriculumCourseTitle(course: CurriculumGuideResponse['nodes'][number]) {
+  if (course.isChoiceSlot && course.courseCode.includes('xxx') && course.type.includes('MPE')) {
+    return 'Major Prescribed Elective'
+  }
+
+  return course.title
+}
+
 // Reads the last selected tab from localStorage so reloads stay on the same page.
 function getInitialView(): ViewState {
   const storedView = window.localStorage.getItem(VIEW_STORAGE_KEY)
@@ -32,7 +40,7 @@ function mapCurriculumGuideToRoadmap(curriculumGuide: CurriculumGuideResponse): 
     nodes: curriculumGuide.nodes.map((course) => ({
       id: course.id,
       courseCode: course.courseCode,
-      title: course.title,
+      title: getCurriculumCourseTitle(course),
       type: course.type,
       year: course.year,
       semester: course.semester,
