@@ -8,7 +8,19 @@ function formatAcademicUnits(academicUnits: number) {
   return Number.isInteger(academicUnits) ? academicUnits.toString() : academicUnits.toFixed(1)
 }
 
-function ProfilePage() {
+interface ProfilePageProps {
+  isLoadingRoadmap: boolean
+  recommendationError: string
+  onGoToRoadmap: () => void
+  onLoadRoadmap: () => void
+}
+
+function ProfilePage({
+  isLoadingRoadmap,
+  recommendationError,
+  onGoToRoadmap,
+  onLoadRoadmap,
+}: ProfilePageProps) {
   // Read the saved student profile from the shared Zustand store
   const profile = useProfileStore((state) => state.profile)
 
@@ -228,6 +240,21 @@ function ProfilePage() {
             <option value="software-engineer">Software Engineer</option>
           </select>
         </label>
+
+        <div className="profile-roadmap-actions">
+          <button
+            type="button"
+            onClick={onLoadRoadmap}
+            disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
+          >
+            {isLoadingRoadmap ? 'Loading Roadmap...' : 'Load Roadmap'}
+          </button>
+
+          <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>
+            Go to roadmap...
+          </button>
+          {recommendationError && <p className="upload-error">{recommendationError}</p>}
+        </div>
       </form>
 
       <section className="transcript-upload-card">

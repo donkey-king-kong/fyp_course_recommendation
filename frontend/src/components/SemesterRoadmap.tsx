@@ -1,7 +1,6 @@
 import { useLayoutEffect, useRef, useState, useEffect, type CSSProperties } from 'react'
 import './SemesterRoadmap.css'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
-import { fetchRecommendations } from '../api/recommendationsApi'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
 import type { CourseRecommendation } from '../types/recommendation'
@@ -10,6 +9,9 @@ import type { CourseRecommendation } from '../types/recommendation'
 interface SemesterRoadmapProps {
   courses: CourseNode[]
   prerequisiteLinks: RoadmapEdge[]
+  recommendations: CourseRecommendation[]
+  isLoadingRecommendations: boolean
+  recommendationError: string
 }
 
 // Shape used after grouping courses into curriculum rows
@@ -168,23 +170,22 @@ function getCourseEligibility(
 }
 
 // Show curriculum rows, course cards, prerequisite arrows, and hover emphasis
-function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
+function SemesterRoadmap({
+  courses,
+  prerequisiteLinks,
+  recommendations,
+  isLoadingRecommendations,
+  recommendationError,
+}: SemesterRoadmapProps) {
   // Track hover state so connected courses/arrows can be emphasized
   const [hoveredCourseId, setHoveredCourseId] = useState<string | null>(null)
   const [showAllArrows, setShowAllArrows] = useState(true)
   const [arrowPaths, setArrowPaths] = useState<ArrowPath[]>([])
-  const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
-  const [recommendationError, setRecommendationError] = useState('')
-  const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
-  const profile = useProfileStore((state) => state.profile)
-  const transcriptCompletedCourseCodes = useProfileStore(
-    (state) => state.transcriptCompletedCourseCodes,
-  )
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
     (state) => state.transcriptTotalAcademicUnitsEarned,
   )
@@ -217,23 +218,6 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
-  const choiceSlotCodes = [
-    ...new Set(
-      courses
-        .filter((course) => {
-          const eligibility = getCourseEligibility(
-            course,
-            completedCourseIds,
-            completedAcademicUnits,
-            standingRequirements,
-          )
-
-          return course.isChoiceSlot && eligibility.status === 'available'
-        })
-        .map((course) => getChoiceSlotKey(course))
-        .filter((slotKey): slotKey is string => Boolean(slotKey)),
-    ),
-  ]
   const recommendationsByChoiceSlot = recommendations.reduce<Record<string, CourseRecommendation[]>>(
     (groups, recommendation) => {
       const slotKey = recommendation.matchedChoiceSlot.toUpperCase()
@@ -245,43 +229,6 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
     },
     {},
   )
-
-  async function handleLoadRecommendations() {
-    if (profile.careerGoal !== 'software-engineer') {
-      setRecommendationError('Select Software Engineer in Profile before loading recommendations.')
-      return
-    }
-
-    if (choiceSlotCodes.length === 0) {
-      setRecommendationError('No unlocked choice slots are available for recommendations yet.')
-      return
-    }
-
-    const completedRoadmapCourseCodes = courses
-      .filter((course) => completedCourseIds.includes(course.id))
-      .map((course) => course.courseCode)
-    const completedCourseCodes = [
-      ...new Set([...transcriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
-    ]
-
-    try {
-      setIsLoadingRecommendations(true)
-      setRecommendationError('')
-
-      const result = await fetchRecommendations({
-        careerGoal: profile.careerGoal,
-        completedCourseCodes,
-        choiceSlotCodes,
-        limit: 12,
-      })
-
-      setRecommendations(result.recommendations)
-    } catch {
-      setRecommendationError('Could not load recommendations. Make sure the backend is running.')
-    } finally {
-      setIsLoadingRecommendations(false)
-    }
-  }
 
   function handleClearRoadmap() {
     const shouldClear = window.confirm(
@@ -374,15 +321,6 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
 
         <div className="roadmap-actions">
           {/* Remove the uploaded curriculum guide while keeping transcript data saved for rematching. */}
-          <button
-            type="button"
-            className="load-recommendations-button"
-            onClick={handleLoadRecommendations}
-            disabled={profile.careerGoal !== 'software-engineer' || isLoadingRecommendations}
-          >
-            {isLoadingRecommendations ? 'Loading...' : 'Load recommendations'}
-          </button>
-
           <button type="button" className="clear-roadmap-button" onClick={handleClearRoadmap}>
             Clear roadmap
           </button>
@@ -412,6 +350,11 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
 
       {recommendationError && (
         <p className="roadmap-recommendation-error">{recommendationError}</p>
+      )}
+      {isLoadingRecommendations && (
+        <p className="roadmap-recommendation-loading">
+          Loading recommendations<span aria-hidden="true">...</span>
+        </p>
       )}
 
       <div
@@ -544,6 +487,14 @@ function SemesterRoadmap({ courses, prerequisiteLinks }: SemesterRoadmapProps) {
                                 </li>
                               ))}
                             </ul>
+                          </div>
+                        )}
+                      {course.isChoiceSlot &&
+                        eligibility.status === 'available' &&
+                        isLoadingRecommendations &&
+                        slotRecommendations.length === 0 && (
+                          <div className="choice-slot-loading">
+                            Loading recommendations<span aria-hidden="true">...</span>
                           </div>
                         )}
                       <div className="semester-course-card-bottom">

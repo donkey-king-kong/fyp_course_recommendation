@@ -5,8 +5,10 @@ import LoginPage from './components/LoginPage'
 import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
+import { fetchRecommendations } from './api/recommendationsApi'
 import { useProfileStore } from './store/useProfileStore'
 import type { CurriculumGuideResponse } from './types/curriculum'
+import type { CourseRecommendation } from './types/recommendation'
 import type { RoadmapResponse } from './types/roadmap'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
@@ -57,13 +59,25 @@ function mapCurriculumGuideToRoadmap(curriculumGuide: CurriculumGuideResponse): 
   }
 }
 
+function getChoiceSlotCode(course: CurriculumGuideResponse['nodes'][number]) {
+  return course.isChoiceSlot ? course.courseCode : null
+}
+
 // Main page component
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
+  const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
+  const [recommendationError, setRecommendationError] = useState('')
+  const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
+  const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
+  const profile = useProfileStore((state) => state.profile)
+  const transcriptCompletedCourseCodes = useProfileStore(
+    (state) => state.transcriptCompletedCourseCodes,
+  )
   const logout = useProfileStore((state) => state.logout)
 
   useEffect(() => {
@@ -99,6 +113,58 @@ function App() {
   function handleLogout() {
     setCurrentView(DEFAULT_VIEW)
     logout()
+  }
+
+  async function handleLoadRoadmapRecommendations() {
+    if (!curriculumGuide) {
+      setRecommendationError('Upload a curriculum guide before loading the roadmap.')
+      return
+    }
+
+    if (profile.careerGoal !== 'software-engineer') {
+      setRecommendationError('Select Software Engineer before loading the roadmap.')
+      return
+    }
+
+    const completedRoadmapCourseCodes = curriculumGuide.nodes
+      .filter((course) => completedCourseIds.includes(course.id))
+      .map((course) => course.courseCode)
+    const completedCourseCodes = [
+      ...new Set([...transcriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
+    ]
+    // Send only uncompleted choice slots; the roadmap decides which slots can display results.
+    const choiceSlotCodes = [
+      ...new Set(
+        curriculumGuide.nodes
+          .filter((course) => course.isChoiceSlot && !completedCourseIds.includes(course.id))
+          .map((course) => getChoiceSlotCode(course))
+          .filter((courseCode): courseCode is string => Boolean(courseCode)),
+      ),
+    ]
+
+    if (choiceSlotCodes.length === 0) {
+      setRecommendationError('No open choice slots were found in the uploaded curriculum guide.')
+      return
+    }
+
+    try {
+      setIsLoadingRecommendations(true)
+      setRecommendationError('')
+      setRecommendations([])
+
+      const result = await fetchRecommendations({
+        careerGoal: profile.careerGoal,
+        completedCourseCodes,
+        choiceSlotCodes,
+        limit: 12,
+      })
+
+      setRecommendations(result.recommendations)
+    } catch {
+      setRecommendationError('Could not load recommendations. Make sure the backend is running.')
+    } finally {
+      setIsLoadingRecommendations(false)
+    }
   }
 
   return (
@@ -167,7 +233,13 @@ function App() {
       {roadmap && currentView === 'roadmap' && (
         <>
           {/* Shows the curriculum-style roadmap with semester bands and prerequisite arrows. */}
-          <SemesterRoadmap courses={roadmap.nodes} prerequisiteLinks={roadmap.edges} />
+          <SemesterRoadmap
+            courses={roadmap.nodes}
+            prerequisiteLinks={roadmap.edges}
+            recommendations={recommendations}
+            isLoadingRecommendations={isLoadingRecommendations}
+            recommendationError={recommendationError}
+          />
 
           {/* Search input updates searchTerm */}
           <label className="course-search">
@@ -188,7 +260,14 @@ function App() {
       {currentView === 'modules' && <ModulesPage />}
 
       {/* Show profile page when selected */}
-      {currentView === 'profile' && <ProfilePage />}
+      {currentView === 'profile' && (
+        <ProfilePage
+          isLoadingRoadmap={isLoadingRecommendations}
+          recommendationError={recommendationError}
+          onGoToRoadmap={() => setCurrentView('roadmap')}
+          onLoadRoadmap={handleLoadRoadmapRecommendations}
+        />
+      )}
     </main>
   )
 }
