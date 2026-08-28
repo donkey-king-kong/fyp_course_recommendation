@@ -122,14 +122,14 @@ function ProfilePage({
 
       const completedCourseCodesFromTranscript = [
         ...new Set([
-          ...result.completed_courses.map((course) => course.course_code),
-          ...result.unmatched_course_codes,
+          ...result.completed_transcript_courses.map((course) => course.course_code),
         ]),
       ]
 
       // Store transcript codes first; roadmap matching happens only when a curriculum guide exists.
       setTranscriptResults(
         completedCourseCodesFromTranscript,
+        result.completed_transcript_courses,
         result.completed_transcript_course_count,
         result.total_academic_units_earned,
       )

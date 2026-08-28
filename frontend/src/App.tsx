@@ -12,8 +12,14 @@ import type { CurriculumGuideResponse } from './types/curriculum'
 import type { ModuleSummary } from './types/module'
 import type { CourseRecommendation } from './types/recommendation'
 import type { CourseNode, RoadmapEdge, RoadmapResponse } from './types/roadmap'
+import type { TranscriptCourse } from './types/transcript'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
+
+interface TranscriptOnlyModule {
+  transcriptCourse: TranscriptCourse
+  module: ModuleSummary
+}
 
 const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
 const DEFAULT_VIEW: ViewState = 'roadmap'
@@ -57,11 +63,11 @@ function getNodeIdsByCourseCode(nodes: CourseNode[]) {
   }, {})
 }
 
-function createFallbackTranscriptModule(courseCode: string): ModuleSummary {
+function createFallbackTranscriptModule(transcriptCourse: TranscriptCourse): ModuleSummary {
   return {
-    code: courseCode,
-    title: 'Completed transcript module',
-    au: null,
+    code: transcriptCourse.course_code,
+    title: transcriptCourse.title || 'Completed transcript module',
+    au: transcriptCourse.academic_units,
     faculty: null,
     description: null,
     level: null,
@@ -89,7 +95,7 @@ function getPrerequisitesByTarget(edges: RoadmapEdge[]) {
 // Convert the uploaded curriculum guide shape into the existing roadmap component shape.
 function mapCurriculumGuideToRoadmap(
   curriculumGuide: CurriculumGuideResponse,
-  transcriptOnlyModules: ModuleSummary[],
+  transcriptOnlyModules: TranscriptOnlyModule[],
 ): RoadmapResponse {
   const curriculumNodes: CourseNode[] = curriculumGuide.nodes.map((course) => ({
     id: course.id,
@@ -108,15 +114,15 @@ function mapCurriculumGuideToRoadmap(
     isTranscriptOnly: false,
     jobSkills: [],
   }))
-  // Transcript-only modules are shown separately so they do not replace official curriculum slots.
-  const transcriptNodes: CourseNode[] = transcriptOnlyModules.map((module) => ({
+  // Transcript-only modules are added without replacing official curriculum slots.
+  const transcriptNodes: CourseNode[] = transcriptOnlyModules.map(({ module, transcriptCourse }) => ({
     id: `transcript-${module.code.toLowerCase()}`,
     courseCode: module.code,
     title: module.title,
     type: 'Transcript',
-    year: 0,
-    semester: 0,
-    academicUnits: module.au ?? 0,
+    year: transcriptCourse.study_year ?? 0,
+    semester: transcriptCourse.transcript_semester ?? 0,
+    academicUnits: module.au ?? transcriptCourse.academic_units,
     prerequisites: [],
     prerequisiteText: module.prerequisites.join(', '),
     isCompleted: true,
@@ -126,7 +132,7 @@ function mapCurriculumGuideToRoadmap(
   }))
   const nodes = [...transcriptNodes, ...curriculumNodes]
   const nodeIdsByCourseCode = getNodeIdsByCourseCode(nodes)
-  const transcriptEdges = transcriptOnlyModules.flatMap((module) => {
+  const transcriptEdges = transcriptOnlyModules.flatMap(({ module }) => {
     const transcriptNodeId = `transcript-${module.code.toLowerCase()}`
     const prerequisiteEdges = module.prerequisites.flatMap((prerequisiteCode) =>
       (nodeIdsByCourseCode[prerequisiteCode.toUpperCase()] ?? []).map((prerequisiteNodeId) => ({
@@ -181,7 +187,7 @@ function App() {
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
   const [recommendationError, setRecommendationError] = useState('')
   const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
-  const [transcriptOnlyModules, setTranscriptOnlyModules] = useState<ModuleSummary[]>([])
+  const [transcriptOnlyModules, setTranscriptOnlyModules] = useState<TranscriptOnlyModule[]>([])
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
@@ -189,6 +195,7 @@ function App() {
   const transcriptCompletedCourseCodes = useProfileStore(
     (state) => state.transcriptCompletedCourseCodes,
   )
+  const transcriptCompletedCourses = useProfileStore((state) => state.transcriptCompletedCourses)
   const transcriptUnmatchedCourseCodes = useProfileStore(
     (state) => state.transcriptUnmatchedCourseCodes,
   )
@@ -216,10 +223,30 @@ function App() {
 
       const loadedModules = await Promise.all(
         transcriptUnmatchedCourseCodes.map(async (courseCode) => {
+          const transcriptCourse = transcriptCompletedCourses.find(
+            (course) => course.course_code === courseCode,
+          ) ?? {
+            course_code: courseCode,
+            course_id: `transcript-${courseCode.toLowerCase()}`,
+            title: 'Completed transcript module',
+            academic_units: 0,
+            grade: '',
+            grade_point: null,
+            academic_year: null,
+            transcript_semester: null,
+            study_year: null,
+          }
+
           try {
-            return await fetchModuleByCode(courseCode)
+            return {
+              transcriptCourse,
+              module: await fetchModuleByCode(courseCode),
+            }
           } catch {
-            return createFallbackTranscriptModule(courseCode)
+            return {
+              transcriptCourse,
+              module: createFallbackTranscriptModule(transcriptCourse),
+            }
           }
         }),
       )
@@ -234,7 +261,7 @@ function App() {
     return () => {
       shouldIgnoreResult = true
     }
-  }, [curriculumGuide, transcriptUnmatchedCourseCodes])
+  }, [curriculumGuide, transcriptCompletedCourses, transcriptUnmatchedCourseCodes])
 
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
