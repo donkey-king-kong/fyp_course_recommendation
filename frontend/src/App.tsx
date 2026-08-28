@@ -247,6 +247,11 @@ function App() {
   )
 
   useEffect(() => {
+    setRecommendations([])
+    setRecommendationError('')
+  }, [activeStudentId, curriculumGuide, profile.careerGoal, transcriptCompletedCourseCodes])
+
+  useEffect(() => {
     let shouldIgnoreResult = false
 
     async function loadTranscriptOnlyModules() {
