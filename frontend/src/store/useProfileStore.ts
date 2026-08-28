@@ -60,6 +60,7 @@ interface ProfileState {
     completedCourseCodes: string[],
     transcriptCompletedCourseCount: number,
   ) => void // Save transcript results.
+  clearTranscriptResults: () => void // Remove uploaded transcript data.
   logout: () => void // End active browser session.
 }
 
@@ -375,6 +376,32 @@ export const useProfileStore = create<ProfileState>()(
               : state.profilesByStudentId,
           }
         }),
+
+      clearTranscriptResults: () =>
+        set((state) => ({
+          completedCourseIds: [],
+          transcriptCompletedCourseCodes: [],
+          transcriptCompletedCourseCount: 0,
+          transcriptUnmatchedCourseCount: 0,
+          transcriptMatchedCourses: [],
+          transcriptUnmatchedCourseCodes: [],
+          profilesByStudentId: state.activeStudentId
+            ? {
+                ...state.profilesByStudentId,
+                [state.activeStudentId]: {
+                  profile: state.profile,
+                  completedCourseIds: [],
+                  curriculumGuide: state.curriculumGuide,
+                  curriculumGuideFileName: state.curriculumGuideFileName,
+                  transcriptCompletedCourseCodes: [],
+                  transcriptCompletedCourseCount: 0,
+                  transcriptUnmatchedCourseCount: 0,
+                  transcriptMatchedCourses: [],
+                  transcriptUnmatchedCourseCodes: [],
+                },
+              }
+            : state.profilesByStudentId,
+        })),
 
       logout: () =>
         set(() => ({

@@ -23,9 +23,13 @@ function ProfilePage() {
     (state) => state.transcriptCompletedCourseCodes,
   )
   const setCurriculumGuide = useProfileStore((state) => state.setCurriculumGuide)
+  const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
+  const clearTranscriptResults = useProfileStore((state) => state.clearTranscriptResults)
   const [selectedCurriculumGuide, setSelectedCurriculumGuide] = useState<File | null>(null)
   const [selectedTranscript, setSelectedTranscript] = useState<File | null>(null)
+  const [curriculumGuideInputKey, setCurriculumGuideInputKey] = useState(0)
+  const [transcriptInputKey, setTranscriptInputKey] = useState(0)
   const [isUploadingCurriculumGuide, setIsUploadingCurriculumGuide] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
   const [curriculumUploadMessage, setCurriculumUploadMessage] = useState('')
@@ -60,6 +64,22 @@ function ProfilePage() {
     } finally {
       setIsUploadingCurriculumGuide(false)
     }
+  }
+
+  function handleClearCurriculumGuide() {
+    const shouldClear = window.confirm(
+      'Clear the stored curriculum guide for this profile? Your uploaded transcript results will stay saved.',
+    )
+
+    if (!shouldClear) {
+      return
+    }
+
+    clearCurriculumGuide()
+    setSelectedCurriculumGuide(null)
+    setCurriculumGuideInputKey((currentKey) => currentKey + 1)
+    setCurriculumUploadError('')
+    setCurriculumUploadMessage('Cleared stored curriculum guide for this profile.')
   }
 
   async function handleTranscriptUpload() {
@@ -107,6 +127,22 @@ function ProfilePage() {
       // Always stop the loading state after success, validation, or failure
       setIsUploading(false)
     }
+  }
+
+  function handleClearTranscriptResults() {
+    const shouldClear = window.confirm(
+      'Clear the stored transcript results for this profile? Your uploaded curriculum guide will stay saved.',
+    )
+
+    if (!shouldClear) {
+      return
+    }
+
+    clearTranscriptResults()
+    setSelectedTranscript(null)
+    setTranscriptInputKey((currentKey) => currentKey + 1)
+    setUploadError('')
+    setUploadMessage('Cleared stored transcript results for this profile.')
   }
 
   return (
@@ -200,6 +236,7 @@ function ProfilePage() {
         <label className="transcript-file-field">
           <span>PDF Curriculum Guide</span>
           <input
+            key={transcriptInputKey}
             type="file"
             accept="application/pdf"
             onChange={(event) => {
@@ -210,14 +247,25 @@ function ProfilePage() {
           />
         </label>
 
-        <button
-          className="transcript-upload-button"
-          type="button"
-          onClick={handleCurriculumGuideUpload}
-          disabled={isUploadingCurriculumGuide}
-        >
-          {isUploadingCurriculumGuide ? 'Uploading...' : 'Upload Curriculum Guide'}
-        </button>
+        <div className="transcript-action-row">
+          <button
+            className="transcript-upload-button"
+            type="button"
+            onClick={handleCurriculumGuideUpload}
+            disabled={isUploadingCurriculumGuide}
+          >
+            {isUploadingCurriculumGuide ? 'Uploading...' : 'Upload Curriculum Guide'}
+          </button>
+
+          <button
+            className="clear-transcript-button"
+            type="button"
+            onClick={handleClearCurriculumGuide}
+            disabled={!hasCurriculumGuide}
+          >
+            Clear Curriculum Guide
+          </button>
+        </div>
 
         {curriculumUploadMessage && <p className="upload-success">{curriculumUploadMessage}</p>}
         {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
@@ -239,6 +287,7 @@ function ProfilePage() {
         <label className="transcript-file-field">
           <span>PDF Transcript</span>
           <input
+            key={curriculumGuideInputKey}
             type="file"
             accept="application/pdf"
             onChange={(event) => {
@@ -249,14 +298,25 @@ function ProfilePage() {
           />
         </label>
 
-        <button
-          className="transcript-upload-button"
-          type="button"
-          onClick={handleTranscriptUpload}
-          disabled={isUploading}
-        >
-          {isUploading ? 'Uploading...' : 'Upload Transcript'}
-        </button>
+        <div className="transcript-action-row">
+          <button
+            className="transcript-upload-button"
+            type="button"
+            onClick={handleTranscriptUpload}
+            disabled={isUploading}
+          >
+            {isUploading ? 'Uploading...' : 'Upload Transcript'}
+          </button>
+
+          <button
+            className="clear-transcript-button"
+            type="button"
+            onClick={handleClearTranscriptResults}
+            disabled={!hasTranscriptResults}
+          >
+            Clear Transcript
+          </button>
+        </div>
 
         {uploadMessage && <p className="upload-success">{uploadMessage}</p>}
         {uploadError && <p className="upload-error">{uploadError}</p>}

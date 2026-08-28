@@ -119,6 +119,13 @@
   text-transform: none;
 }
 
+.transcript-action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
 .transcript-upload-button {
   align-self: flex-start;
   padding: 0.7rem 1rem;
@@ -131,9 +138,27 @@
   background: #38bdf8;
 }
 
-.transcript-upload-button:disabled {
+.clear-transcript-button {
+  align-self: flex-start;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(251, 113, 133, 0.35);
+  border-radius: 0.5rem;
+  color: #fda4af;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.transcript-upload-button:disabled,
+.clear-transcript-button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
+}
+
+.clear-transcript-button:hover:not(:disabled) {
+  border-color: rgba(251, 113, 133, 0.65);
+  background: rgba(244, 63, 94, 0.18);
 }
 
 .upload-success {
@@ -367,6 +392,17 @@
 .app-shell[data-theme='light'] .transcript-upload-button {
   color: #ffffff;
   background: #0f7c8a;
+}
+
+.app-shell[data-theme='light'] .clear-transcript-button {
+  border-color: rgba(190, 18, 60, 0.28);
+  color: #be123c;
+  background: rgba(225, 29, 72, 0.07);
+}
+
+.app-shell[data-theme='light'] .clear-transcript-button:hover:not(:disabled) {
+  border-color: rgba(190, 18, 60, 0.45);
+  background: rgba(225, 29, 72, 0.12);
 }
 
 .app-shell[data-theme='light'] .upload-success {
