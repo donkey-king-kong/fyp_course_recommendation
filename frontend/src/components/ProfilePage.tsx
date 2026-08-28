@@ -49,6 +49,7 @@ function ProfilePage() {
     transcriptUnmatchedCourseCodes.length > 0 ||
     transcriptCompletedCourseCount > 0
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
+  const transcriptSummaryMessage = `Current transcript: ${transcriptCompletedCourseCount} completed module(s), ${formatAcademicUnits(transcriptTotalAcademicUnitsEarned)} AU earned.`
 
   async function handleCurriculumGuideUpload() {
     if (!selectedCurriculumGuide) {
@@ -347,6 +348,9 @@ function ProfilePage() {
         </div>
 
         {uploadMessage && <p className="upload-success">{uploadMessage}</p>}
+        {!uploadMessage && hasTranscriptResults && (
+          <p className="upload-success">{transcriptSummaryMessage}</p>
+        )}
         {uploadError && <p className="upload-error">{uploadError}</p>}
       </section>
 
