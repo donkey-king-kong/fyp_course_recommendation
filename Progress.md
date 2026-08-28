@@ -857,6 +857,7 @@ Status: Implemented locally
 - Ranked recommendation candidates per slot before returning the flattened recommendation list to the frontend.
 - Added slot metadata to each recommendation response so the frontend can place direct recommendations by exact roadmap slot ID.
 - Updated the frontend recommendation request builder and roadmap assignment logic to use backend slot IDs when available.
+- Updated the roadmap so locked choice slots can still show loaded recommendations while keeping their locked styling and missing-requirement message.
 
 ### Verified
 

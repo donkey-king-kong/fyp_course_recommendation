@@ -420,16 +420,9 @@ function SemesterRoadmap({
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
-  const availableChoiceSlots = courses
+  const recommendationChoiceSlots = courses
     .filter((course) => {
-      const eligibility = getCourseEligibility(
-        course,
-        effectiveCompletedCourseIds,
-        completedAcademicUnits,
-        standingRequirements,
-      )
-
-      return course.isChoiceSlot && eligibility.status === 'available'
+      return course.isChoiceSlot && !effectiveCompletedCourseIds.includes(course.id)
     })
     .map((course) => {
       const slotKey = getChoiceSlotKey(course)
@@ -438,7 +431,7 @@ function SemesterRoadmap({
     })
     .filter((choiceSlot): choiceSlot is ChoiceSlotCandidate => Boolean(choiceSlot))
   const recommendationByChoiceSlotId = assignRecommendationsToChoiceSlots(
-    availableChoiceSlots,
+    recommendationChoiceSlots,
     recommendations,
   )
 
@@ -763,21 +756,19 @@ function SemesterRoadmap({
                             .join(', ')}
                         </p>
                       )}
+                      {course.isChoiceSlot && slotRecommendation && (
+                        <button
+                          type="button"
+                          className="choice-slot-recommendations"
+                          onClick={() => void openRecommendedModuleDetail(slotRecommendation.courseCode)}
+                        >
+                          <span>{slotRecommendation.label}</span>
+                          <strong>{slotRecommendation.courseCode}</strong>
+                          <small>{slotRecommendation.title}</small>
+                        </button>
+                      )}
                       {course.isChoiceSlot &&
-                        eligibility.status === 'available' &&
-                        slotRecommendation && (
-                          <button
-                            type="button"
-                            className="choice-slot-recommendations"
-                            onClick={() => void openRecommendedModuleDetail(slotRecommendation.courseCode)}
-                          >
-                            <span>{slotRecommendation.label}</span>
-                            <strong>{slotRecommendation.courseCode}</strong>
-                            <small>{slotRecommendation.title}</small>
-                          </button>
-                        )}
-                      {course.isChoiceSlot &&
-                        eligibility.status === 'available' &&
+                        !isCompleted &&
                         isLoadingRecommendations &&
                         !slotRecommendation && (
                           <div className="choice-slot-loading">

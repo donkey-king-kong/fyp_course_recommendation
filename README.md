@@ -23,6 +23,7 @@ Clean rebuild of a course recommendation system for NTU students.
 - Completed modules and fixed curriculum modules are excluded so they are not recommended again.
 - MPE slots such as `SC3xxx` and `SC4xxx` only accept CSC modules at the matching level.
 - BDE slots can use modules from active faculties, but candidates are filtered by the slot's roadmap year level before frontend placement.
+- Locked choice slots can still show loaded recommendations, while keeping their locked status and missing-requirement message.
 - Missing prerequisites are returned with recommendations so the roadmap can try to place a prerequisite in an earlier suitable choice slot.
 - This is intentionally not AI-based yet: no Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning ranking.
 
