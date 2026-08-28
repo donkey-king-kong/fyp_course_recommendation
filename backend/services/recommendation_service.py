@@ -1,3 +1,4 @@
+import logging
 import re
 from typing import Optional
 
@@ -32,6 +33,14 @@ SOFTWARE_ENGINEER_KEYWORDS = {
 }
 
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$")
+logger = logging.getLogger(__name__)
+
+# Keep debug logs readable while still showing enough candidates to diagnose missed slots.
+def summarize_codes(codes: list[str], max_items: int = 80) -> str:
+    visible_codes = codes[:max_items]
+    suffix = "" if len(codes) <= max_items else f", ... +{len(codes) - max_items} more"
+
+    return ", ".join(visible_codes) + suffix
 
 # Builds rule-based recommendations from module catalog data and the student's current profile state.
 def recommend_courses(
@@ -65,6 +74,13 @@ def recommend_courses(
         or_(*build_keyword_filters()),
     )
     modules = query.order_by(ModuleModel.code).all()
+    logger.info(
+        "Recommendation initial candidates: count=%s, limit=%s, slots=%s, codes=%s",
+        len(modules),
+        limit,
+        choice_slot_codes,
+        summarize_codes([module.code for module in modules]),
+    )
     prerequisites_by_module = get_prerequisites_by_module(db, [module.code for module in modules])
     prerequisite_modules_by_code = get_prerequisite_modules_by_code(db, prerequisites_by_module)
     recommendations: list[CourseRecommendation] = []
@@ -116,10 +132,21 @@ def recommend_courses(
         recommendations,
         key=lambda recommendation: (-recommendation.score, recommendation.courseCode),
     )
+    final_recommendations = sorted_recommendations[:limit]
+    logger.info(
+        "Recommendation ranked before cut: count=%s, items=%s",
+        len(sorted_recommendations),
+        summarize_recommendations(sorted_recommendations),
+    )
+    logger.info(
+        "Recommendation final cut: count=%s, items=%s",
+        len(final_recommendations),
+        summarize_recommendations(final_recommendations),
+    )
 
     return RecommendationResponse(
         careerGoal=career_goal,
-        recommendations=sorted_recommendations[:limit],
+        recommendations=final_recommendations,
     )
 
 def normalize_title(title: str) -> str:
@@ -244,3 +271,26 @@ def build_recommendation_reason(matched_keywords: list[str]) -> str:
         "Matches Software Engineer keywords: "
         f"{', '.join(matched_keywords)}."
     )
+
+def summarize_recommendations(
+    recommendations: list[CourseRecommendation],
+    max_items: int = 80,
+) -> str:
+    visible_recommendations = recommendations[:max_items]
+    summary = [
+        (
+            f"{recommendation.courseCode}"
+            f"(slot={recommendation.matchedChoiceSlot}, "
+            f"level={recommendation.level}, "
+            f"score={recommendation.score}, "
+            f"missing={len(recommendation.missingPrerequisites)})"
+        )
+        for recommendation in visible_recommendations
+    ]
+    suffix = (
+        ""
+        if len(recommendations) <= max_items
+        else f", ... +{len(recommendations) - max_items} more"
+    )
+
+    return ", ".join(summary) + suffix
