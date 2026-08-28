@@ -17,12 +17,29 @@ class RecommendationRequest(BaseModel):
         description="Open curriculum choice slots, such as SC3xxx or SC4xxx.",
         examples=[["SC3xxx", "SC4xxx"]],
     )
+    excludedCourseCodes: list[str] = Field(
+        default_factory=list,
+        description="Module codes already present in the student's curriculum roadmap.",
+        examples=[["SC1003", "SC2006"]],
+    )
+    excludedCourseTitles: list[str] = Field(
+        default_factory=list,
+        description="Module titles already present in the student's curriculum roadmap.",
+        examples=[["Software Engineering", "Computer Networks"]],
+    )
     limit: int = Field(
-        default=8,
+        default=12,
         ge=1,
-        le=20,
+        le=50,
         description="Maximum number of recommendations to return.",
     )
+
+class RecommendationPrerequisite(BaseModel):
+    courseCode: str
+    title: str
+    academicUnits: Optional[float]
+    faculty: Optional[str]
+    level: Optional[int]
 
 class CourseRecommendation(BaseModel):
     courseCode: str
@@ -33,6 +50,7 @@ class CourseRecommendation(BaseModel):
     matchedChoiceSlot: str
     matchedKeywords: list[str]
     missingPrerequisites: list[str]
+    prerequisiteRecommendations: list[RecommendationPrerequisite]
     score: int
     reason: str
 
@@ -54,6 +72,7 @@ class RecommendationResponse(BaseModel):
                         "matchedChoiceSlot": "SC3xxx",
                         "matchedKeywords": ["software", "engineering"],
                         "missingPrerequisites": [],
+                        "prerequisiteRecommendations": [],
                         "score": 9,
                         "reason": "Matches Software Engineer keywords: software, engineering.",
                     }

@@ -331,19 +331,6 @@
   text-transform: uppercase;
 }
 
-.choice-slot-recommendations ul {
-  display: grid;
-  gap: 0.4rem;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.choice-slot-recommendations li {
-  display: grid;
-  gap: 0.12rem;
-}
-
 .choice-slot-recommendations strong {
   color: #67e8f9;
   font-size: 0.68rem;

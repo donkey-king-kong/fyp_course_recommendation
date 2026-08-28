@@ -141,6 +141,9 @@ function App() {
           .filter((courseCode): courseCode is string => Boolean(courseCode)),
       ),
     ]
+    const fixedCurriculumCourses = curriculumGuide.nodes.filter((course) => !course.isChoiceSlot)
+    const excludedCourseCodes = fixedCurriculumCourses.map((course) => course.courseCode)
+    const excludedCourseTitles = fixedCurriculumCourses.map((course) => course.title)
 
     if (choiceSlotCodes.length === 0) {
       setRecommendationError('No open choice slots were found in the uploaded curriculum guide.')
@@ -156,6 +159,8 @@ function App() {
         careerGoal: profile.careerGoal,
         completedCourseCodes,
         choiceSlotCodes,
+        excludedCourseCodes,
+        excludedCourseTitles,
         limit: 12,
       })
 

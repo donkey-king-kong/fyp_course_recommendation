@@ -5,7 +5,11 @@ from sqlalchemy import and_, or_
 from sqlalchemy.orm import Session
 
 from backend.models import ModuleModel
-from backend.schemas.recommendation import CourseRecommendation, RecommendationResponse
+from backend.schemas.recommendation import (
+    CourseRecommendation,
+    RecommendationPrerequisite,
+    RecommendationResponse,
+)
 from backend.services.faculty_service import list_active_faculty_names
 from backend.services.module_service import get_prerequisites_by_module
 
@@ -35,6 +39,8 @@ def recommend_courses(
     career_goal: str,
     completed_course_codes: list[str],
     choice_slot_codes: list[str],
+    excluded_course_codes: list[str],
+    excluded_course_titles: list[str],
     limit: int,
 ) -> RecommendationResponse:
     # Keep unsupported career goals empty instead of pretending we can recommend them.
@@ -42,6 +48,8 @@ def recommend_courses(
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
+    excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
+    excluded_titles = {normalize_title(title) for title in excluded_course_titles}
     mpe_levels = get_mpe_candidate_levels(choice_slot_codes)
     has_bde_slot = any(code.upper() == "BDE" for code in choice_slot_codes)
     active_faculties = list_active_faculty_names(db)
@@ -58,6 +66,7 @@ def recommend_courses(
     )
     modules = query.order_by(ModuleModel.code).all()
     prerequisites_by_module = get_prerequisites_by_module(db, [module.code for module in modules])
+    prerequisite_modules_by_code = get_prerequisite_modules_by_code(db, prerequisites_by_module)
     recommendations: list[CourseRecommendation] = []
 
     for module in modules:
@@ -66,17 +75,20 @@ def recommend_courses(
         if matched_choice_slot is None:
             continue
 
-        if module.code in completed_codes:
+        if is_excluded_module(module, completed_codes | excluded_codes, excluded_titles):
             continue
 
-        # Avoid recommending modules that the student cannot take yet.
+        # Keep missing prerequisites so the UI can place them into an earlier slot.
         prerequisites = prerequisites_by_module.get(module.code, [])
         missing_prerequisites = [
             prerequisite for prerequisite in prerequisites if prerequisite not in completed_codes
         ]
-
-        if missing_prerequisites:
-            continue
+        prerequisite_recommendations = build_prerequisite_recommendations(
+            missing_prerequisites,
+            prerequisite_modules_by_code,
+            completed_codes | excluded_codes,
+            excluded_titles,
+        )
 
         # Rank remaining modules by career keyword matches in title and description.
         matched_keywords, score = score_software_engineer_match(module)
@@ -94,6 +106,7 @@ def recommend_courses(
                 matchedChoiceSlot=matched_choice_slot,
                 matchedKeywords=matched_keywords,
                 missingPrerequisites=missing_prerequisites,
+                prerequisiteRecommendations=prerequisite_recommendations,
                 score=score,
                 reason=build_recommendation_reason(matched_keywords),
             )
@@ -109,6 +122,9 @@ def recommend_courses(
         recommendations=sorted_recommendations[:limit],
     )
 
+def normalize_title(title: str) -> str:
+    return " ".join(title.lower().split())
+
 def build_slot_filters(mpe_levels: list[int], has_bde_slot: bool) -> list:
     filters = []
 
@@ -119,6 +135,61 @@ def build_slot_filters(mpe_levels: list[int], has_bde_slot: bool) -> list:
         filters.append(ModuleModel.code.is_not(None))
 
     return filters
+
+def get_prerequisite_modules_by_code(
+    db: Session,
+    prerequisites_by_module: dict[str, list[str]],
+) -> dict[str, ModuleModel]:
+    prerequisite_codes = {
+        prerequisite
+        for prerequisites in prerequisites_by_module.values()
+        for prerequisite in prerequisites
+    }
+
+    if not prerequisite_codes:
+        return {}
+
+    prerequisite_modules = db.query(ModuleModel).filter(
+        ModuleModel.code.in_(prerequisite_codes)
+    ).all()
+
+    return {module.code: module for module in prerequisite_modules}
+
+def is_excluded_module(
+    module: ModuleModel,
+    excluded_codes: set[str],
+    excluded_titles: set[str],
+) -> bool:
+    return module.code in excluded_codes or normalize_title(module.title) in excluded_titles
+
+def build_prerequisite_recommendations(
+    missing_prerequisites: list[str],
+    prerequisite_modules_by_code: dict[str, ModuleModel],
+    excluded_codes: set[str],
+    excluded_titles: set[str],
+) -> list[RecommendationPrerequisite]:
+    recommendations: list[RecommendationPrerequisite] = []
+
+    for prerequisite in missing_prerequisites:
+        prerequisite_module = prerequisite_modules_by_code.get(prerequisite)
+
+        if not prerequisite_module:
+            continue
+
+        if is_excluded_module(prerequisite_module, excluded_codes, excluded_titles):
+            continue
+
+        recommendations.append(
+            RecommendationPrerequisite(
+                courseCode=prerequisite_module.code,
+                title=prerequisite_module.title,
+                academicUnits=prerequisite_module.au,
+                faculty=prerequisite_module.faculty,
+                level=prerequisite_module.level,
+            )
+        )
+
+    return recommendations
 
 def build_keyword_filters() -> list:
     filters = []

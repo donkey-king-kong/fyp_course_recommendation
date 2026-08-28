@@ -3,7 +3,7 @@ import './SemesterRoadmap.css'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
-import type { CourseRecommendation } from '../types/recommendation'
+import type { CourseRecommendation, RecommendationPrerequisite } from '../types/recommendation'
 import ClassicLoader from './ClassicLoader'
 
 // Pass courses and prerequisite links into this component
@@ -35,6 +35,17 @@ type CourseEligibilityStatus = 'completed' | 'available' | 'locked'
 interface CourseEligibility {
   status: CourseEligibilityStatus
   missingPrerequisites: string[]
+}
+
+interface ChoiceSlotCandidate {
+  course: CourseNode
+  slotKey: string
+}
+
+interface AssignedRecommendation {
+  courseCode: string
+  title: string
+  label: string
 }
 
 const YEAR_ACCENTS = ['#f59e0b', '#ec4899', '#8b5cf6', '#22d3ee']
@@ -99,6 +110,119 @@ function getChoiceSlotKey(course: CourseNode) {
   const mpeMatch = courseCode.match(/^SC([3-4])XXX$/)
 
   return mpeMatch ? `SC${mpeMatch[1]}xxx` : course.courseCode
+}
+
+function getPreferredBdeLevel(year: number) {
+  return Math.min(Math.max(year, 1), 4)
+}
+
+function getSemesterOrder(course: CourseNode) {
+  return (course.year - 1) * 2 + course.semester
+}
+
+function canFitRecommendationInSlot(
+  choiceSlot: ChoiceSlotCandidate,
+  recommendation: CourseRecommendation | RecommendationPrerequisite,
+) {
+  if (choiceSlot.slotKey.toUpperCase() === 'BDE') {
+    return true
+  }
+
+  return recommendation.faculty === 'CSC' && choiceSlot.slotKey === `SC${recommendation.level}xxx`
+}
+
+function sortRecommendationsForSlot(
+  choiceSlot: ChoiceSlotCandidate,
+  recommendations: CourseRecommendation[],
+) {
+  if (choiceSlot.slotKey.toUpperCase() !== 'BDE') {
+    return [...recommendations].sort(
+      (first, second) => second.score - first.score || first.courseCode.localeCompare(second.courseCode),
+    )
+  }
+
+  const preferredLevel = getPreferredBdeLevel(choiceSlot.course.year)
+
+  return [...recommendations].sort((first, second) => {
+    const firstLevelGap = Math.abs((first.level ?? preferredLevel) - preferredLevel)
+    const secondLevelGap = Math.abs((second.level ?? preferredLevel) - preferredLevel)
+
+    return (
+      firstLevelGap - secondLevelGap ||
+      second.score - first.score ||
+      first.courseCode.localeCompare(second.courseCode)
+    )
+  })
+}
+
+function assignRecommendationsToChoiceSlots(
+  choiceSlots: ChoiceSlotCandidate[],
+  recommendations: CourseRecommendation[],
+) {
+  const usedCourseCodes = new Set<string>()
+  const sortedChoiceSlots = [...choiceSlots].sort(
+    (first, second) =>
+      getSemesterOrder(first.course) - getSemesterOrder(second.course) ||
+      first.course.id.localeCompare(second.course.id),
+  )
+
+  return sortedChoiceSlots.reduce<Record<string, AssignedRecommendation>>((assignments, choiceSlot) => {
+    if (assignments[choiceSlot.course.id]) {
+      return assignments
+    }
+
+    const matchingRecommendations = recommendations.filter(
+      (recommendation) =>
+        recommendation.matchedChoiceSlot.toUpperCase() === choiceSlot.slotKey.toUpperCase() &&
+        !usedCourseCodes.has(recommendation.courseCode),
+    )
+
+    for (const recommendation of sortRecommendationsForSlot(choiceSlot, matchingRecommendations)) {
+      if (recommendation.missingPrerequisites.length === 0) {
+        usedCourseCodes.add(recommendation.courseCode)
+
+        return {
+          ...assignments,
+          [choiceSlot.course.id]: {
+            courseCode: recommendation.courseCode,
+            title: recommendation.title,
+            label: 'Recommended option',
+          },
+        }
+      }
+
+      const prerequisite = recommendation.prerequisiteRecommendations[0]
+      const previousSlot = sortedChoiceSlots.find(
+        (slot) =>
+          getSemesterOrder(slot.course) === getSemesterOrder(choiceSlot.course) - 1 &&
+          !assignments[slot.course.id] &&
+          canFitRecommendationInSlot(slot, prerequisite),
+      )
+
+      if (recommendation.missingPrerequisites.length !== 1 || !prerequisite || !previousSlot) {
+        continue
+      }
+
+      usedCourseCodes.add(prerequisite.courseCode)
+      usedCourseCodes.add(recommendation.courseCode)
+
+      return {
+        ...assignments,
+        [previousSlot.course.id]: {
+          courseCode: prerequisite.courseCode,
+          title: prerequisite.title,
+          label: `Prerequisite for ${recommendation.courseCode}`,
+        },
+        [choiceSlot.course.id]: {
+          courseCode: recommendation.courseCode,
+          title: recommendation.title,
+          label: 'Recommended option',
+        },
+      }
+    }
+
+    return assignments
+  }, {})
 }
 
 function getMissingStandingRequirement(
@@ -219,16 +343,26 @@ function SemesterRoadmap({
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
-  const recommendationsByChoiceSlot = recommendations.reduce<Record<string, CourseRecommendation[]>>(
-    (groups, recommendation) => {
-      const slotKey = recommendation.matchedChoiceSlot.toUpperCase()
+  const availableChoiceSlots = courses
+    .filter((course) => {
+      const eligibility = getCourseEligibility(
+        course,
+        completedCourseIds,
+        completedAcademicUnits,
+        standingRequirements,
+      )
 
-      return {
-        ...groups,
-        [slotKey]: [...(groups[slotKey] ?? []), recommendation],
-      }
-    },
-    {},
+      return course.isChoiceSlot && eligibility.status === 'available'
+    })
+    .map((course) => {
+      const slotKey = getChoiceSlotKey(course)
+
+      return slotKey ? { course, slotKey } : null
+    })
+    .filter((choiceSlot): choiceSlot is ChoiceSlotCandidate => Boolean(choiceSlot))
+  const recommendationByChoiceSlotId = assignRecommendationsToChoiceSlots(
+    availableChoiceSlots,
+    recommendations,
   )
 
   function handleClearRoadmap() {
@@ -434,10 +568,7 @@ function SemesterRoadmap({
                     completedAcademicUnits,
                     standingRequirements,
                   )
-                  const choiceSlotKey = getChoiceSlotKey(course)
-                  const slotRecommendations = choiceSlotKey
-                    ? recommendationsByChoiceSlot[choiceSlotKey.toUpperCase()] ?? []
-                    : []
+                  const slotRecommendation = recommendationByChoiceSlotId[course.id]
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -478,23 +609,17 @@ function SemesterRoadmap({
                       )}
                       {course.isChoiceSlot &&
                         eligibility.status === 'available' &&
-                        slotRecommendations.length > 0 && (
+                        slotRecommendation && (
                           <div className="choice-slot-recommendations">
-                            <span>Recommended options</span>
-                            <ul>
-                              {slotRecommendations.slice(0, 3).map((recommendation) => (
-                                <li key={recommendation.courseCode}>
-                                  <strong>{recommendation.courseCode}</strong>
-                                  <small>{recommendation.title}</small>
-                                </li>
-                              ))}
-                            </ul>
+                            <span>{slotRecommendation.label}</span>
+                            <strong>{slotRecommendation.courseCode}</strong>
+                            <small>{slotRecommendation.title}</small>
                           </div>
                         )}
                       {course.isChoiceSlot &&
                         eligibility.status === 'available' &&
                         isLoadingRecommendations &&
-                        slotRecommendations.length === 0 && (
+                        !slotRecommendation && (
                           <div className="choice-slot-loading">
                             <ClassicLoader className="choice-slot-loader" />
                             Loading recommendations...
