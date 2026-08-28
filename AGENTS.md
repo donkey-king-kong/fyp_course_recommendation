@@ -267,8 +267,8 @@ Completed foundations:
 Current next step:
 
 - Continue from `Progress.md`.
-- Improve roadmap eligibility for text-only academic-standing requirements.
-- Use `profile.yearOfStudy` to unlock requirements like `Year 4 standing` when the active profile is in Year 4 or above.
+- Keep academic-standing requirements based on completed AU, not self-declared profile year.
+- Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 

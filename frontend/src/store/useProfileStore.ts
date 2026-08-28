@@ -8,8 +8,6 @@ export interface StudentProfile {
   // CSC is the only supported major currently
   // More majors can be added here once the roadmap data supports them.
   major: 'CSC'
-  yearOfStudy: number
-  currentSemester: number
   careerGoal: string
 }
 
@@ -36,8 +34,6 @@ interface SavedStudentProfile {
 const DEFAULT_PROFILE: StudentProfile = {
   studentId: '',
   major: 'CSC',
-  yearOfStudy: 1,
-  currentSemester: 1,
   careerGoal: '',
 }
 
@@ -82,6 +78,14 @@ function createStudentProfile(studentId: string): StudentProfile {
   return {
     ...DEFAULT_PROFILE,
     studentId,
+  }
+}
+
+function hydrateStudentProfile(profile: Partial<StudentProfile> | undefined, studentId: string): StudentProfile {
+  return {
+    studentId,
+    major: profile?.major ?? DEFAULT_PROFILE.major,
+    careerGoal: profile?.careerGoal ?? DEFAULT_PROFILE.careerGoal,
   }
 }
 
@@ -165,11 +169,7 @@ export const useProfileStore = create<ProfileState>()(
 
           // Use the saved profile if it exists; otherwise start a new profile for this ID
           const activeProfile = savedProfile ?? createSavedStudentProfile(normalizedStudentId)
-          const activeStudentProfile = {
-            ...DEFAULT_PROFILE,
-            ...activeProfile.profile,
-            studentId: normalizedStudentId,
-          }
+          const activeStudentProfile = hydrateStudentProfile(activeProfile.profile, normalizedStudentId)
           const hydratedProfile = {
             profile: activeStudentProfile,
             curriculumGuide: activeProfile.curriculumGuide ?? null,
@@ -215,15 +215,11 @@ export const useProfileStore = create<ProfileState>()(
 
       updateProfile: (updates) =>
         set((state) => {
-          const nextProfile = {
-            ...state.profile,
-            ...updates,
-            // Keep the existing Student ID unless this update specifically changes it
-            studentId:
-              updates.studentId === undefined
-                ? state.profile.studentId
-                : normalizeStudentId(updates.studentId),
-          }
+          const studentId =
+            updates.studentId === undefined
+              ? state.profile.studentId
+              : normalizeStudentId(updates.studentId)
+          const nextProfile = hydrateStudentProfile({ ...state.profile, ...updates }, studentId)
           const nextProfilesByStudentId = { ...state.profilesByStudentId }
 
           if (state.activeStudentId && state.activeStudentId !== nextProfile.studentId) {

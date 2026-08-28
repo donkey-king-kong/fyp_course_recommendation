@@ -28,10 +28,7 @@ function ProfilePage({
   // Update profile fields
   const updateProfile = useProfileStore((state) => state.updateProfile)
 
-  // Read completed courses so the profile page can show a simple progress summary
-  const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const transcriptCompletedCourseCount = useProfileStore((state) => state.transcriptCompletedCourseCount)
-  const transcriptUnmatchedCourseCount = useProfileStore((state) => state.transcriptUnmatchedCourseCount)
   const transcriptMatchedCourses = useProfileStore((state) => state.transcriptMatchedCourses)
   const transcriptUnmatchedCourseCodes = useProfileStore((state) => state.transcriptUnmatchedCourseCodes)
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
@@ -200,47 +197,17 @@ function ProfilePage({
             </select>
           </label>
 
-          {/* Year and semester that student is currently in */}
           <label className="profile-field">
-            <span>Year of Study</span>
+            <span>Career Goal</span>
             <select
-              value={profile.yearOfStudy}
-              onChange={(e) => updateProfile({ yearOfStudy: parseInt(e.target.value, 10) })}
+              value={profile.careerGoal}
+              onChange={(e) => updateProfile({ careerGoal: e.target.value })}
             >
-              {[1, 2, 3, 4].map((year) => (
-                <option key={year} value={year}>
-                  Year {year}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          {/* This value will later help recommendations target the student's next planning */}
-          <label className="profile-field">
-            <span>Current Semester</span>
-            <select
-              value={profile.currentSemester}
-              onChange={(e) => updateProfile({ currentSemester: parseInt(e.target.value, 10) })}
-            >
-              {[1, 2].map((sem) => (
-                <option key={sem} value={sem}>
-                  Semester {sem}
-                </option>
-              ))}
+              <option value="">Select a career goal</option>
+              <option value="software-engineer">Software Engineer</option>
             </select>
           </label>
         </div>
-
-        <label className="profile-field">
-          <span>Career Goal</span>
-          <select
-            value={profile.careerGoal}
-            onChange={(e) => updateProfile({ careerGoal: e.target.value })}
-          >
-            <option value="">Select a career goal</option>
-            <option value="software-engineer">Software Engineer</option>
-          </select>
-        </label>
 
         <div className="profile-roadmap-actions">
           <div className="profile-roadmap-load-row">
@@ -262,144 +229,138 @@ function ProfilePage({
         </div>
       </form>
 
-      <section className="transcript-upload-card">
-        <div>
-          <h3>Curriculum Guide Upload</h3>
-          <p>
-            Upload your curriculum guide PDF first so the roadmap can be generated for your profile.
-          </p>
-        </div>
-
-        <label className="transcript-file-field">
-          <span>PDF Curriculum Guide</span>
-          <input
-            key={curriculumGuideInputKey}
-            type="file"
-            accept="application/pdf"
-            onChange={(event) => {
-              setSelectedCurriculumGuide(event.target.files?.[0] ?? null)
-              setCurriculumUploadError('')
-              setCurriculumUploadMessage('')
-            }}
-          />
-        </label>
-
-        <div className="transcript-action-row">
-          <button
-            className="transcript-upload-button"
-            type="button"
-            onClick={handleCurriculumGuideUpload}
-            disabled={isUploadingCurriculumGuide}
-          >
-            {isUploadingCurriculumGuide ? 'Uploading...' : 'Upload Curriculum Guide'}
-          </button>
-
-          <button
-            className="clear-transcript-button"
-            type="button"
-            onClick={handleClearCurriculumGuide}
-            disabled={!hasCurriculumGuide}
-          >
-            Clear Curriculum Guide
-          </button>
-        </div>
-
-        {curriculumUploadMessage && <p className="upload-success">{curriculumUploadMessage}</p>}
-        {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
-        {hasCurriculumGuide && (
-          <>
+      <div className="profile-upload-grid">
+        <section className="transcript-upload-card">
+          <div>
+            <h3>Curriculum Guide Upload</h3>
             <p>
-              Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
+              Upload your curriculum guide PDF first so the roadmap can be generated for your profile.
             </p>
+          </div>
 
-            {standingRequirements.length > 0 && (
-              <div className="standing-requirements-card">
-                <h4>Minimum AU For Year Standing</h4>
-                <ul>
-                  {standingRequirements.map((requirement) => (
-                    <li key={requirement.standingYear}>
-                      <span>Year {requirement.standingYear} standing</span>
-                      <strong>{requirement.minimumAcademicUnits} AU</strong>
-                      <small>
-                        From Year {requirement.includedYears.join(' + Year ')} Total AU
-                      </small>
-                    </li>
-                  ))}
-                </ul>
+          <label className="transcript-file-field">
+            <span>PDF Curriculum Guide</span>
+            <input
+              key={curriculumGuideInputKey}
+              type="file"
+              accept="application/pdf"
+              onChange={(event) => {
+                setSelectedCurriculumGuide(event.target.files?.[0] ?? null)
+                setCurriculumUploadError('')
+                setCurriculumUploadMessage('')
+              }}
+            />
+          </label>
+
+          <div className="transcript-action-row">
+            <button
+              className="transcript-upload-button"
+              type="button"
+              onClick={handleCurriculumGuideUpload}
+              disabled={isUploadingCurriculumGuide}
+            >
+              {isUploadingCurriculumGuide ? 'Uploading...' : 'Upload Curriculum Guide'}
+            </button>
+
+            <button
+              className="clear-transcript-button"
+              type="button"
+              onClick={handleClearCurriculumGuide}
+              disabled={!hasCurriculumGuide}
+            >
+              Clear Curriculum Guide
+            </button>
+          </div>
+
+          {curriculumUploadMessage && <p className="upload-success">{curriculumUploadMessage}</p>}
+          {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
+          {hasCurriculumGuide && (
+            <>
+              <p>
+                Current guide: {curriculumGuideFileName || `${curriculumGuide?.major} ${curriculumGuide?.cohort}`}
+              </p>
+
+              {standingRequirements.length > 0 && (
+                <div className="standing-requirements-card">
+                  <h4>Minimum AU For Year Standing</h4>
+                  <ul>
+                    {standingRequirements.map((requirement) => (
+                      <li key={requirement.standingYear}>
+                        <span>Year {requirement.standingYear} standing</span>
+                        <strong>{requirement.minimumAcademicUnits} AU</strong>
+                        <small>
+                          From Year {requirement.includedYears.join(' + Year ')} Total AU
+                        </small>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </>
+          )}
+        </section>
+
+        <section className="transcript-upload-card">
+          <div>
+            <h3>Transcript Upload</h3>
+            <p>
+              Upload a PDF transcript to auto-mark completed roadmap courses.
+            </p>
+          </div>
+
+          <label className="transcript-file-field">
+            <span>PDF Transcript</span>
+            <input
+              key={transcriptInputKey}
+              type="file"
+              accept="application/pdf"
+              onChange={(event) => {
+                setSelectedTranscript(event.target.files?.[0] ?? null)
+                setUploadError('')
+                setUploadMessage('')
+              }}
+            />
+          </label>
+
+          <div className="transcript-action-row">
+            <button
+              className="transcript-upload-button"
+              type="button"
+              onClick={handleTranscriptUpload}
+              disabled={isUploading}
+            >
+              {isUploading ? 'Uploading...' : 'Upload Transcript'}
+            </button>
+
+            <button
+              className="clear-transcript-button"
+              type="button"
+              onClick={handleClearTranscriptResults}
+              disabled={!hasTranscriptResults}
+            >
+              Clear Transcript
+            </button>
+          </div>
+
+          {uploadMessage && <p className="upload-success">{uploadMessage}</p>}
+          {!uploadMessage && hasTranscriptResults && (
+            <p className="upload-success">{transcriptSummaryMessage}</p>
+          )}
+          {uploadError && <p className="upload-error">{uploadError}</p>}
+
+          {hasTranscriptResults && (
+            <div className="transcript-summary-grid">
+              <div className="transcript-summary-item">
+                <strong>{transcriptCompletedCourseCount}</strong>
+                <span>Completed Modules</span>
               </div>
-            )}
-          </>
-        )}
-      </section>
-
-      <section className="transcript-upload-card">
-        <div>
-          <h3>Transcript Upload</h3>
-          <p>
-            Upload a PDF transcript to auto-mark completed roadmap courses.
-          </p>
-        </div>
-
-        <label className="transcript-file-field">
-          <span>PDF Transcript</span>
-          <input
-            key={transcriptInputKey}
-            type="file"
-            accept="application/pdf"
-            onChange={(event) => {
-              setSelectedTranscript(event.target.files?.[0] ?? null)
-              setUploadError('')
-              setUploadMessage('')
-            }}
-          />
-        </label>
-
-        <div className="transcript-action-row">
-          <button
-            className="transcript-upload-button"
-            type="button"
-            onClick={handleTranscriptUpload}
-            disabled={isUploading}
-          >
-            {isUploading ? 'Uploading...' : 'Upload Transcript'}
-          </button>
-
-          <button
-            className="clear-transcript-button"
-            type="button"
-            onClick={handleClearTranscriptResults}
-            disabled={!hasTranscriptResults}
-          >
-            Clear Transcript
-          </button>
-        </div>
-
-        {uploadMessage && <p className="upload-success">{uploadMessage}</p>}
-        {!uploadMessage && hasTranscriptResults && (
-          <p className="upload-success">{transcriptSummaryMessage}</p>
-        )}
-        {uploadError && <p className="upload-error">{uploadError}</p>}
-      </section>
-
-      {/* Count is shared with the Roadmap checkboxes through the same global store */}
-      <div className="profile-stats">
-        {/* Roadmap count and transcript count are separate because not every cleared module is in the roadmap. */}
-        <div className="stat-card">
-          <strong>{completedCourseIds.length}</strong>
-          <span>Completed Roadmap Courses</span>
-        </div>
-        <div className="stat-card transcript-stat-card">
-          <strong>{transcriptCompletedCourseCount}</strong>
-          <span>Completed Transcript Modules</span>
-        </div>
-        <div className="stat-card transcript-au-stat-card">
-          <strong>{formatAcademicUnits(transcriptTotalAcademicUnitsEarned)}</strong>
-          <span>Total AU Earned</span>
-        </div>
-        <div className="stat-card unmatched-stat-card">
-          <strong>{transcriptUnmatchedCourseCount}</strong>
-          <span>Transcript Modules Outside Roadmap</span>
-        </div>
+              <div className="transcript-summary-item transcript-au-summary-item">
+                <strong>{formatAcademicUnits(transcriptTotalAcademicUnitsEarned)}</strong>
+                <span>Total AU Earned</span>
+              </div>
+            </div>
+          )}
+        </section>
       </div>
 
       {hasTranscriptResults && (
