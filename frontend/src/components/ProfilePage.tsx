@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
 import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
-import ClassicLoader from './ClassicLoader'
 import './ProfilePage.css'
 
 function formatAcademicUnits(academicUnits: number) {
@@ -375,10 +374,14 @@ function ProfilePage({
               onClick={onLoadRoadmap}
               disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
             >
-              {hasLoadedRoadmap ? '✓ Roadmap Loaded' : 'Load Roadmap'}
+              {isLoadingRoadmap && <span className="load-roadmap-spinner" aria-hidden="true" />}
+              {hasLoadedRoadmap && !isLoadingRoadmap && (
+                <span className="load-roadmap-tick" aria-hidden="true">
+                  ✓
+                </span>
+              )}
+              {hasLoadedRoadmap ? 'Roadmap Loaded' : 'Load Roadmap'}
             </button>
-
-            {isLoadingRoadmap && <ClassicLoader className="profile-roadmap-loader" />}
           </div>
 
           <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>

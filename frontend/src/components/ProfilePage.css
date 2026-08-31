@@ -91,25 +91,65 @@
   gap: 0.75rem;
 }
 
+/* The load button owns its progress/success icon so feedback stays in one visible control. */
 .load-roadmap-button {
-  padding: 0.7rem 1rem;
+  display: inline-flex;
+  min-width: 12.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.75rem;
   border: 0;
-  border-radius: 0.5rem;
-  color: #0f172a;
+  border-radius: 0.75rem;
+  color: #ffffff;
   font: inherit;
+  font-size: 1.06rem;
   font-weight: 800;
   cursor: pointer;
-  background: #38bdf8;
+  background: #2d7d8a;
+  transition: background 150ms ease;
+}
+
+.load-roadmap-button:hover:not(:disabled) {
+  background: #256874;
 }
 
 .load-roadmap-button.loaded {
-  color: #dcfce7;
   background: #16a34a;
 }
 
 .load-roadmap-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.55;
+  cursor: default;
+  opacity: 0.7;
+}
+
+@keyframes load-roadmap-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.load-roadmap-spinner {
+  width: 1.125rem;
+  height: 1.125rem;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: load-roadmap-spin 700ms linear infinite;
+  flex-shrink: 0;
+}
+
+.load-roadmap-tick {
+  display: inline-flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
 }
 
 .profile-preferences-card {
@@ -229,17 +269,14 @@
   font-size: 0.82rem;
 }
 
-.profile-roadmap-loader {
-  color: #38bdf8;
-}
-
 .profile-roadmap-link {
+  margin-top: 0.15rem;
   padding: 0;
   border: 0;
-  color: #7dd3fc;
+  color: #2d7d8a;
   font: inherit;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.94rem;
+  font-weight: 800;
   cursor: pointer;
   background: transparent;
 }
@@ -615,7 +652,11 @@
 
 .app-shell[data-theme='light'] .load-roadmap-button {
   color: #ffffff;
-  background: #0f7c8a;
+  background: #2d7d8a;
+}
+
+.app-shell[data-theme='light'] .load-roadmap-button:hover:not(:disabled) {
+  background: #256874;
 }
 
 .app-shell[data-theme='light'] .load-roadmap-button.loaded {
@@ -675,10 +716,6 @@
 }
 
 .app-shell[data-theme='light'] .profile-roadmap-link {
-  color: #0f7c8a;
-}
-
-.app-shell[data-theme='light'] .profile-roadmap-loader {
   color: #0f7c8a;
 }
 

@@ -263,6 +263,14 @@ Completed foundations:
 - Lower `Curriculum Guide Courses` section reads directly from the uploaded curriculum guide and is not affected by transcript semester overrides.
 - Profile page stores career goal through a dropdown for future MPE/choice-slot recommendation work.
 - Roadmap lock indicators now handle uploaded curriculum prerequisite text, including text-only requirements such as `Year 4 standing`.
+- CE/CSC modules can carry curated `recommendationTags` separate from original NTU `categories`.
+- The modules DB table includes a separate `recommendation_tags` JSON column seeded from `data/modules.json`.
+- Software Engineer recommendations use curated recommendation tags as scoring signals alongside the existing keyword fallback.
+- Profile page stores fixed student topic preferences in `preferredRecommendationTags`; students can type to filter allowed tags, but cannot create custom tags.
+- Student topic preferences are soft ranking boosts, not hard filters.
+- Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
+- Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
+- Profile page shows Student ID, Major, and Career Goal inline on wider screens and shows a spinner/tick inside the Load Roadmap button.
 
 Current next step:
 
@@ -270,6 +278,7 @@ Current next step:
 - Keep academic-standing requirements based on completed AU, not self-declared profile year.
 - Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
+- Next useful recommendation improvement is an explicit score breakdown in the API/UI.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 
 ## Expected Working Directory

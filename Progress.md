@@ -1110,6 +1110,28 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 
+## Load Roadmap Button Feedback Polish
+
+Status: Implemented locally
+
+### Completed
+
+- Moved the loading spinner into the Load Roadmap button instead of showing a separate loader beside it.
+- Styled the Load Roadmap button with a wider rounded teal button, inline spacing, hover state, and centered content.
+- Added an inline tick bubble inside the button after the roadmap recommendations finish loading successfully.
+- Kept the separate `Go to roadmap...` control underneath the main button and styled it like a compact sub action.
+
+### Rationale Notes
+
+- Keeping loading and success feedback inside the button makes the action state easier to see.
+- The tick state confirms a successful load without automatically moving the student away from the Profile page.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally
