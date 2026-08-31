@@ -27,14 +27,15 @@ def get_db() -> Session:
 @router.post(
     "/recommendations",
     response_model=RecommendationResponse,
-    summary="Recommend modules for a career goal",
+    summary="Assign recommended modules to open choice slots",
     description=(
-        "Returns a first-pass rule-based recommendation list. The current MVP "
-        "supports the Software Engineer career goal only, keeps MPE recommendations "
-        "within CSC level requirements, and allows BDE recommendations from the "
-        "wider active module catalog."
+        "Returns backend-ranked and backend-assigned module recommendations for exact "
+        "open BDE/MPE choice slots. Each returned recommendation includes "
+        "`matchedChoiceSlotId`, so the frontend should render it in that slot instead "
+        "of re-ranking or allocating candidates. Diversity is a gentle tiebreaker and "
+        "does not override eligibility, career relevance, or student topic preferences."
     ),
-    response_description="Ranked module recommendations with simple reasons.",
+    response_description="Assigned module recommendations with slot IDs, planning artifacts, and reasons.",
     responses={503: RECOMMENDATION_DATABASE_ERROR_RESPONSE},
 )
 def create_recommendations(

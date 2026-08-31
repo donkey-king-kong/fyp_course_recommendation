@@ -9,6 +9,15 @@ from backend.services.roadmap_service import get_csc_roadmap
 
 router = APIRouter()
 
+ROADMAP_DATABASE_ERROR_RESPONSE = {
+    "description": "PostgreSQL is unavailable or module metadata cannot be queried.",
+    "content": {
+        "application/json": {
+            "example": {"detail": "Roadmap module data is currently unavailable."}
+        }
+    },
+}
+
 def get_db() -> Session:
     db = SessionLocal()
     try:
@@ -27,9 +36,12 @@ def read_roadmap() -> RoadmapResponse:
     description=(
         "Combines an uploaded curriculum guide with parsed transcript modules, "
         "transcript placement overrides, transcript-only modules, and prerequisite "
-        "or unlock arrows into the roadmap shape used by the frontend."
+        "or unlock arrows into the roadmap shape used by the frontend. Curriculum "
+        "guide edges are normalized into `RoadmapEdge` objects before response "
+        "validation so the frontend receives one consistent roadmap edge shape."
     ),
     response_description="Ready-to-render roadmap nodes and prerequisite edges.",
+    responses={503: ROADMAP_DATABASE_ERROR_RESPONSE},
 )
 def create_personalized_roadmap(
     request: PersonalizedRoadmapRequest,
