@@ -1044,3 +1044,22 @@ Status: Implemented locally
 - No score breakdown UI.
 - No tag editor or admin workflow.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning personalization.
+
+## Roadmap Module Detail Lookup
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed exact module detail lookup so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details by course code.
+- Kept active faculty filtering for module list browsing, filters, and recommendation candidate discovery.
+
+### Rationale Notes
+
+- Uploaded curriculum guides can include service modules from faculties that are not enabled for the NTU Modules browsing page.
+- Exact code lookup is used after a module is already visible in the student's roadmap, so it should not reject a real module just because its faculty is inactive for browsing.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Confirmed `get_module_by_code(db, "MH1812")` returns `MH1812 MATH Discrete Mathematics`.

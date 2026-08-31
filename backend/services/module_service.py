@@ -60,12 +60,7 @@ def list_modules(
 
 # Fetches one exact module by code, including its prerequisites and unlocks.
 def get_module_by_code(db: Session, code: str) -> ModuleSummary | None:
-    active_faculties = list_active_faculty_names(db)
-    module = (
-        db.query(ModuleModel)
-        .filter(ModuleModel.code == code.upper(), ModuleModel.faculty.in_(active_faculties))
-        .first()
-    )
+    module = db.query(ModuleModel).filter(ModuleModel.code == code.upper()).first()
 
     if module is None:
         return None
