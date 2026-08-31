@@ -158,132 +158,15 @@ function getSemesterGroupLabel(group: SemesterGroup) {
   }
 }
 
-function getSemesterFromOrder(semesterOrder: number) {
-  return {
-    year: Math.floor((semesterOrder - 1) / 2) + 1,
-    semester: ((semesterOrder - 1) % 2) + 1,
-  }
-}
-
-function getRecommendedPrerequisiteNodeId(
-  choiceSlot: ChoiceSlotCandidate,
-  prerequisiteCourseCode: string,
-) {
-  return `recommended-prerequisite-${choiceSlot.course.id}-${prerequisiteCourseCode.toLowerCase()}`
-}
-
-function buildRecommendedPrerequisiteNodes(
-  choiceSlot: ChoiceSlotCandidate,
-  recommendation: CourseRecommendation,
-  prerequisiteCourseCodes: string[],
-  remainingSemesterOrders: number[],
-): CourseNode[] {
-  const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
-  const prerequisiteSemesterOrder = [...remainingSemesterOrders]
-    .filter((semesterOrder) => semesterOrder < targetSemesterOrder)
-    .at(-1)
-
-  if (!prerequisiteSemesterOrder) {
-    return []
-  }
-
-  const prerequisiteSemester = getSemesterFromOrder(prerequisiteSemesterOrder)
-
-  return prerequisiteCourseCodes.map((prerequisiteCode) => {
-    const prerequisite = recommendation.prerequisiteRecommendations.find(
-      (candidate) => candidate.courseCode === prerequisiteCode,
-    )
-
-    return {
-      id: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
-      courseCode: prerequisiteCode,
-      title: prerequisite?.title ?? 'Recommended prerequisite',
-      type: 'Recommended Pre-Requisite',
-      year: prerequisiteSemester.year,
-      semester: prerequisiteSemester.semester,
-      academicUnits: prerequisite?.academicUnits ?? 0,
-      prerequisites: [],
-      prerequisiteText: `Recommended prerequisite for ${recommendation.courseCode}`,
-      isCompleted: false,
-      isChoiceSlot: false,
-      isRecommendedPrerequisite: true,
-      recommendedForCourseCode: recommendation.courseCode,
-      jobSkills: [],
-    }
-  })
-}
-
-function groupCoursesByCode(courses: CourseNode[]) {
-  return courses.reduce<Map<string, CourseNode[]>>((coursesByCode, course) => {
-    const courseCode = course.courseCode.toUpperCase()
-    const existingCourses = coursesByCode.get(courseCode) ?? []
-
-    coursesByCode.set(courseCode, [...existingCourses, course])
-    return coursesByCode
-  }, new Map())
-}
-
-// Backend decides which prerequisite codes should be reused from the uploaded roadmap.
-function getExistingPrerequisiteNodes(
-  choiceSlot: ChoiceSlotCandidate,
-  recommendation: CourseRecommendation,
-  coursesByCode: Map<string, CourseNode[]>,
-) {
-  const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
-
-  return recommendation.existingPrerequisiteCourseCodes.flatMap((prerequisiteCode) =>
-    (coursesByCode.get(prerequisiteCode.toUpperCase()) ?? []).filter(
-      (course) =>
-        !course.isChoiceSlot &&
-        !course.isRecommendedPrerequisite &&
-        getSemesterOrder(course) < targetSemesterOrder,
-    ),
-  )
-}
-
-function getPlannedPrerequisiteCourseCodes(recommendation: CourseRecommendation) {
-  return recommendation.plannedPrerequisiteCourseCodes.length > 0
-    ? recommendation.plannedPrerequisiteCourseCodes
-    : recommendation.missingPrerequisites
-}
-
-function addPrerequisiteLinks(
-  prerequisiteLinks: RoadmapEdge[],
-  prerequisiteNodes: CourseNode[],
-  targetCourseId: string,
-) {
-  const existingLinkKeys = new Set(
-    prerequisiteLinks.map((link) => `${link.source}->${link.target}`),
-  )
-
-  prerequisiteNodes.forEach((prerequisiteNode) => {
-    const linkKey = `${prerequisiteNode.id}->${targetCourseId}`
-
-    if (!existingLinkKeys.has(linkKey)) {
-      prerequisiteLinks.push({
-        source: prerequisiteNode.id,
-        target: targetCourseId,
-      })
-      existingLinkKeys.add(linkKey)
-    }
-  })
-}
-
 function assignRecommendationsToChoiceSlots(
   choiceSlots: ChoiceSlotCandidate[],
   recommendations: CourseRecommendation[],
-  coursesByCode: Map<string, CourseNode[]>,
 ): RecommendationAssignmentResult {
   const sortedChoiceSlots = [...choiceSlots].sort(
     (first, second) =>
       getSemesterOrder(first.course) - getSemesterOrder(second.course) ||
       first.course.id.localeCompare(second.course.id),
   )
-  const remainingSemesterOrders = [
-    ...new Set(sortedChoiceSlots.map((slot) => getSemesterOrder(slot.course))),
-  ].sort((first, second) => first - second)
-  const prerequisiteNodes: CourseNode[] = []
-  const prerequisiteLinks: RoadmapEdge[] = []
   const recommendationsBySlotId = new Map(
     recommendations
       .filter((recommendation) => recommendation.matchedChoiceSlotId)
@@ -301,36 +184,6 @@ function assignRecommendationsToChoiceSlots(
       return currentAssignments
     }
 
-    const existingPrerequisiteNodes = getExistingPrerequisiteNodes(
-      choiceSlot,
-      recommendation,
-      coursesByCode,
-    )
-    const plannedPrerequisiteCourseCodes = getPlannedPrerequisiteCourseCodes(recommendation)
-
-    addPrerequisiteLinks(
-      prerequisiteLinks,
-      existingPrerequisiteNodes,
-      choiceSlot.course.id,
-    )
-
-    if (plannedPrerequisiteCourseCodes.length > 0) {
-      prerequisiteNodes.push(
-        ...buildRecommendedPrerequisiteNodes(
-          choiceSlot,
-          recommendation,
-          plannedPrerequisiteCourseCodes,
-          remainingSemesterOrders,
-        ),
-      )
-      prerequisiteLinks.push(
-        ...plannedPrerequisiteCourseCodes.map((prerequisiteCode) => ({
-          source: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
-          target: choiceSlot.course.id,
-        })),
-      )
-    }
-
     return {
       ...currentAssignments,
       [choiceSlot.course.id]: {
@@ -343,9 +196,52 @@ function assignRecommendationsToChoiceSlots(
 
   return {
     assignments,
-    recommendedPrerequisiteNodes: prerequisiteNodes,
-    recommendedPrerequisiteLinks: prerequisiteLinks,
+    recommendedPrerequisiteNodes: getBackendPlannedRoadmapNodes(recommendations),
+    recommendedPrerequisiteLinks: getBackendPlannedRoadmapEdges(recommendations),
   }
+}
+
+function getBackendPlannedRoadmapNodes(recommendations: CourseRecommendation[]): CourseNode[] {
+  const nodesById = new Map<string, CourseNode>()
+
+  recommendations.forEach((recommendation) => {
+    const plannedNodes = recommendation.plannedRoadmapNodes ?? []
+
+    plannedNodes.forEach((node) => {
+      nodesById.set(node.id, {
+        id: node.id,
+        courseCode: node.courseCode,
+        title: node.title,
+        type: node.type,
+        year: node.year,
+        semester: node.semester,
+        academicUnits: node.academicUnits,
+        prerequisites: [],
+        prerequisiteText: node.prerequisiteText,
+        isCompleted: false,
+        isChoiceSlot: false,
+        isRecommendedPrerequisite: true,
+        recommendedForCourseCode: node.recommendedForCourseCode,
+        jobSkills: [],
+      })
+    })
+  })
+
+  return [...nodesById.values()]
+}
+
+function getBackendPlannedRoadmapEdges(recommendations: CourseRecommendation[]): RoadmapEdge[] {
+  const edgesByKey = new Map<string, RoadmapEdge>()
+
+  recommendations.forEach((recommendation) => {
+    const plannedEdges = recommendation.plannedRoadmapEdges ?? []
+
+    plannedEdges.forEach((edge) => {
+      edgesByKey.set(`${edge.source}->${edge.target}`, edge)
+    })
+  })
+
+  return [...edgesByKey.values()]
 }
 
 function getMissingStandingRequirement(
@@ -476,7 +372,6 @@ function SemesterRoadmap({
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
-  const originalCoursesByCode = useMemo(() => groupCoursesByCode(courses), [courses])
   const recommendationChoiceSlots = useMemo(
     () =>
       courses
@@ -495,9 +390,8 @@ function SemesterRoadmap({
     () => assignRecommendationsToChoiceSlots(
       recommendationChoiceSlots,
       recommendations,
-      originalCoursesByCode,
     ),
-    [originalCoursesByCode, recommendationChoiceSlots, recommendations],
+    [recommendationChoiceSlots, recommendations],
   )
   const recommendationByChoiceSlotId = recommendationAssignmentResult.assignments
   const displayCourses = useMemo(

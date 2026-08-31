@@ -113,6 +113,21 @@ class RecommendationPrerequisite(BaseModel):
     faculty: Optional[str]
     level: Optional[int]
 
+class RecommendationPlannedRoadmapNode(BaseModel):
+    id: str
+    courseCode: str
+    title: str
+    type: str
+    year: int
+    semester: int
+    academicUnits: float
+    prerequisiteText: str
+    recommendedForCourseCode: str
+
+class RecommendationPlannedRoadmapEdge(BaseModel):
+    source: str
+    target: str
+
 class RecommendationScoreBreakdown(BaseModel):
     careerTagScore: int = Field(
         description="Base relevance score from career keywords and curated recommendation tags.",
@@ -159,6 +174,8 @@ class CourseRecommendation(BaseModel):
     existingPrerequisiteCourseCodes: list[str]
     plannedPrerequisiteCourseCodes: list[str]
     prerequisiteRecommendations: list[RecommendationPrerequisite]
+    plannedRoadmapNodes: list[RecommendationPlannedRoadmapNode] = Field(default_factory=list)
+    plannedRoadmapEdges: list[RecommendationPlannedRoadmapEdge] = Field(default_factory=list)
     readinessStatus: RecommendationReadinessStatus
     unlockValue: int
     score: int
