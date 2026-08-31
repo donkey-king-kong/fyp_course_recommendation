@@ -1260,6 +1260,33 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 
+## Same-Faculty Recommendation Boost
+
+Status: Implemented locally
+
+### Completed
+
+- Added `studentFaculty` to the recommendation request payload.
+- Frontend now sends the active profile major as the student faculty when loading recommendations.
+- Backend recommendation scoring now applies a soft same-faculty boost.
+- For a CSC profile, valid CSC modules rank above comparable CE or other-faculty modules where possible.
+- Same-faculty matching is not a hard filter, so BDE can still recommend broader options if they are the best valid choices.
+- Saved recommendations are cleared when the profile major changes so stale results are not shown.
+
+### Rationale Notes
+
+- The curriculum/profile faculty should influence ranking because students usually expect recommendations to prefer modules from their own programme.
+- This is especially useful for BDE slots, where the candidate pool can include many active faculties.
+- The boost remains soft because BDE is intentionally broad and may still include non-CSC courses later if they are relevant.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- Confirmed `CE4045` receives no CSC same-faculty boost while `SC4002` and `SC4050` receive the boost.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally

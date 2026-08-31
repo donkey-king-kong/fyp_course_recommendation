@@ -65,6 +65,7 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
 }
 # Preferences should visibly influence ordering, but they remain soft boosts after hard checks.
 PREFERENCE_TAG_BOOST = 30
+SAME_FACULTY_BOOST = 8
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -88,6 +89,7 @@ def recommend_courses(
     db: Session,
     career_goal: str,
     preferred_recommendation_tags: list[str],
+    student_faculty: Optional[str],
     completed_course_codes: list[str],
     choice_slot_codes: list[str],
     choice_slots: list[RecommendationChoiceSlot],
@@ -102,6 +104,7 @@ def recommend_courses(
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
     preferred_tags = normalize_recommendation_tags(preferred_recommendation_tags)
+    normalized_student_faculty = normalize_student_faculty(student_faculty)
     excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
     excluded_titles = get_excluded_title_keys(excluded_course_titles)
     candidate_slots = build_recommendation_choice_slots(choice_slot_codes, choice_slots)
@@ -172,7 +175,13 @@ def recommend_courses(
                 excluded_titles,
             )
             preference_boost = get_preference_boost(module, preferred_tags)
-            adjusted_score = score + min(readiness.unlock_value, 3) + preference_boost
+            faculty_boost = get_faculty_boost(module, normalized_student_faculty)
+            adjusted_score = (
+                score +
+                min(readiness.unlock_value, 3) +
+                preference_boost +
+                faculty_boost
+            )
             slot_key = get_choice_slot_identity(slot)
             recommendations_by_slot.setdefault(slot_key, []).append(
                 CourseRecommendation(
@@ -198,6 +207,7 @@ def recommend_courses(
                         matched_keywords,
                         readiness.unlock_value,
                         preference_boost,
+                        faculty_boost,
                     ),
                 )
             )
@@ -696,6 +706,14 @@ def normalize_recommendation_tags(tags: list[str]) -> set[str]:
         if tag.strip()
     }
 
+def normalize_student_faculty(student_faculty: Optional[str]) -> Optional[str]:
+    if not student_faculty:
+        return None
+
+    normalized_faculty = student_faculty.strip().upper()
+
+    return normalized_faculty or None
+
 def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
     if not preferred_tags:
         return 0
@@ -703,29 +721,37 @@ def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
     matching_tags = preferred_tags.intersection(module.recommendation_tags or [])
     return min(len(matching_tags) * PREFERENCE_TAG_BOOST, PREFERENCE_TAG_BOOST * 2)
 
+def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> int:
+    if not student_faculty:
+        return 0
+
+    return SAME_FACULTY_BOOST if module.faculty == student_faculty else 0
+
 def build_recommendation_reason(
     matched_signals: list[str],
     unlock_value: int,
     preference_boost: int,
+    faculty_boost: int,
 ) -> str:
     base_reason = (
         "Matches Software Engineer signals: "
         f"{', '.join(matched_signals)}."
     )
-
-    if unlock_value == 0:
-        if preference_boost > 0:
-            return f"{base_reason} Also matches selected topic preference(s)."
-
-        return base_reason
+    extra_reasons = []
 
     if preference_boost > 0:
-        return (
-            f"{base_reason} Also matches selected topic preference(s) and unlocks "
-            f"{unlock_value} later curriculum module(s)."
-        )
+        extra_reasons.append("matches selected topic preference(s)")
 
-    return f"{base_reason} Unlocks {unlock_value} later curriculum module(s)."
+    if faculty_boost > 0:
+        extra_reasons.append("matches your profile faculty")
+
+    if unlock_value > 0:
+        extra_reasons.append(f"unlocks {unlock_value} later curriculum module(s)")
+
+    if not extra_reasons:
+        return base_reason
+
+    return f"{base_reason} Also {' and '.join(extra_reasons)}."
 
 def summarize_recommendations(
     recommendations: list[CourseRecommendation],

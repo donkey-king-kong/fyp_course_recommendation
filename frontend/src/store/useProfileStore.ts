@@ -311,6 +311,7 @@ export const useProfileStore = create<ProfileState>()(
           const nextProfile = hydrateStudentProfile({ ...state.profile, ...updates }, studentId)
           const nextProfilesByStudentId = { ...state.profilesByStudentId }
           const shouldClearRoadmapRecommendations =
+            updates.major !== undefined ||
             updates.careerGoal !== undefined ||
             updates.preferredRecommendationTags !== undefined
           const nextRoadmapRecommendations = shouldClearRoadmapRecommendations

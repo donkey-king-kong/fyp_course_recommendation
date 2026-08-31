@@ -414,6 +414,7 @@ function App() {
       const result = await fetchRecommendations({
         careerGoal: profile.careerGoal,
         preferredRecommendationTags,
+        studentFaculty: profile.major,
         completedCourseCodes,
         choiceSlotCodes,
         choiceSlots,

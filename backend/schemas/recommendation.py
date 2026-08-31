@@ -65,6 +65,11 @@ class RecommendationRequest(BaseModel):
         description="Optional student topic preferences used as a soft ranking boost.",
         examples=[["backend-engineering", "database"]],
     )
+    studentFaculty: Optional[str] = Field(
+        default=None,
+        description="Student's home faculty/major code used as a soft same-faculty ranking boost.",
+        examples=["CSC"],
+    )
     completedCourseCodes: list[str] = Field(
         default_factory=list,
         description="Completed module codes parsed from the transcript.",
