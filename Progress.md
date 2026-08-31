@@ -1427,6 +1427,22 @@ Status: Implemented locally
 - Leaves the existing recommendation `score` and `scoreBreakdown` as the module quality score instead of rewriting it with the selection-time diversity adjustment.
 - Kept the roadmap UI unchanged.
 
+### How It Works
+
+- The backend applies diversity only during final recommendation selection.
+- The system tracks tags from already-selected recommendations.
+- Later recommendations receive a small penalty when they repeat already-used tags.
+- Repeated tags receive a much smaller penalty when they match the student's selected topic preferences.
+- Existing `score` and `scoreBreakdown` remain unchanged, so they still represent the module's individual recommendation quality.
+
+### Priority Order
+
+- Eligibility still comes first.
+- Career relevance still matters most for ranking.
+- Student preferences remain strong soft boosts.
+- Same-faculty and legacy-code behavior remains unchanged.
+- Diversity only nudges final selection when multiple valid options exist.
+
 ### Rationale Notes
 
 - Diversity should reduce unnecessary repetition, not force variety against the student's interests.
