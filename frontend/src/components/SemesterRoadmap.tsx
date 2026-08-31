@@ -1,6 +1,7 @@
 import { useLayoutEffect, useMemo, useRef, useState, useEffect, type CSSProperties } from 'react'
 import './SemesterRoadmap.css'
 import { fetchModuleByCode } from '../api/modulesApi'
+import { fetchRoadmapReadiness } from '../api/roadmapReadinessApi'
 import type { ModuleSummary } from '../types/module'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
@@ -59,6 +60,7 @@ interface RecommendationAssignmentResult {
 const YEAR_ACCENTS = ['#f59e0b', '#ec4899', '#8b5cf6', '#22d3ee']
 const TRANSCRIPT_ONLY_ACCENT = '#22c55e'
 const COURSE_CODE_PATTERN = /[A-Z]{2,4}\d{4}[A-Z]?/gi
+const EMPTY_STANDING_REQUIREMENTS: StandingRequirement[] = []
 
 // Turn course type text into a CSS class name like "Common-Core" to "common-core"
 function getCourseTypeClass(type: string) {
@@ -333,6 +335,8 @@ function SemesterRoadmap({
   const [isDetailOpen, setIsDetailOpen] = useState(false)
   const [isDetailLoading, setIsDetailLoading] = useState(false)
   const [detailError, setDetailError] = useState('')
+  const [backendReadinessByCourseId, setBackendReadinessByCourseId] =
+    useState<Record<string, CourseEligibility> | null>(null)
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
@@ -371,7 +375,7 @@ function SemesterRoadmap({
     transcriptTotalAcademicUnitsEarned > 0
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
-  const standingRequirements = curriculumGuide?.standingRequirements ?? []
+  const standingRequirements = curriculumGuide?.standingRequirements ?? EMPTY_STANDING_REQUIREMENTS
   const recommendationChoiceSlots = useMemo(
     () =>
       courses
@@ -423,6 +427,51 @@ function SemesterRoadmap({
       clearCurriculumGuide()
     }
   }
+
+  useEffect(() => {
+    let shouldIgnoreResult = false
+
+    async function loadRoadmapReadiness() {
+      try {
+        const result = await fetchRoadmapReadiness({
+          courses: displayCourses.map((course) => ({
+            id: course.id,
+            courseCode: course.courseCode,
+            type: course.type,
+            prerequisites: course.prerequisites,
+            prerequisiteText: course.prerequisiteText,
+          })),
+          completedCourseIds: effectiveCompletedCourseIds,
+          completedAcademicUnits,
+          standingRequirements,
+        })
+
+        if (!shouldIgnoreResult) {
+          setBackendReadinessByCourseId(
+            Object.fromEntries(
+              result.courses.map((course) => [
+                course.courseId,
+                {
+                  status: course.status,
+                  missingPrerequisites: course.missingRequirements,
+                },
+              ]),
+            ),
+          )
+        }
+      } catch {
+        if (!shouldIgnoreResult) {
+          setBackendReadinessByCourseId(null)
+        }
+      }
+    }
+
+    void loadRoadmapReadiness()
+
+    return () => {
+      shouldIgnoreResult = true
+    }
+  }, [completedAcademicUnits, displayCourses, effectiveCompletedCourseIds, standingRequirements])
 
   async function openRecommendedModuleDetail(courseCode: string) {
     try {
@@ -712,12 +761,14 @@ function SemesterRoadmap({
                   const isConnected = connectedCourseIds.has(course.id)
                   const isDimmed = Boolean(hoveredCourseId) && !isConnected
                   const isCompleted = effectiveCompletedCourseIds.includes(course.id)
-                  const eligibility = getCourseEligibility(
-                    course,
-                    effectiveCompletedCourseIds,
-                    completedAcademicUnits,
-                    standingRequirements,
-                  )
+                  const eligibility =
+                    backendReadinessByCourseId?.[course.id] ??
+                    getCourseEligibility(
+                      course,
+                      effectiveCompletedCourseIds,
+                      completedAcademicUnits,
+                      standingRequirements,
+                    )
                   const slotRecommendation = recommendationByChoiceSlotId[course.id]
                   const detailModuleCode = getModuleCodeForDetail(course, slotRecommendation)
 

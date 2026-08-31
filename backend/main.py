@@ -7,6 +7,7 @@ from backend.routers.health import router as health_router
 from backend.routers.modules import router as modules_router
 from backend.routers.recommendations import router as recommendations_router
 from backend.routers.roadmap import router as roadmap_router
+from backend.routers.roadmap_readiness import router as roadmap_readiness_router
 from backend.routers.transcript import router as transcript_router
 
 app = FastAPI(
@@ -29,6 +30,7 @@ app.add_middleware(
 
 app.include_router(health_router)
 app.include_router(roadmap_router)
+app.include_router(roadmap_readiness_router)
 app.include_router(transcript_router)
 app.include_router(curriculum_router)
 app.include_router(faculties_router)
