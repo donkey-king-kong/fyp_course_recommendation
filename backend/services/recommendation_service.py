@@ -11,6 +11,8 @@ from backend.schemas.recommendation import (
     CourseRecommendation,
     RecommendationChoiceSlot,
     RecommendationCurriculumCourse,
+    RecommendationPlannedRoadmapEdge,
+    RecommendationPlannedRoadmapNode,
     RecommendationPrerequisite,
     RecommendationReadinessStatus,
     RecommendationResponse,
@@ -243,7 +245,11 @@ def recommend_courses(
         preferred_tags,
         limit,
     )
-    final_recommendations = sorted_recommendations
+    final_recommendations = add_planned_roadmap_artifacts(
+        sorted_recommendations,
+        candidate_slots,
+        curriculum_courses,
+    )
     logger.info(
         "Recommendation ranked before cut: count=%s, items=%s",
         len(sorted_recommendations),
@@ -322,6 +328,12 @@ def get_semester_order(year: Optional[int], semester: Optional[int]) -> Optional
         return None
 
     return (year - 1) * 2 + semester
+
+def get_semester_from_order(semester_order: int) -> tuple[int, int]:
+    year = ((semester_order - 1) // 2) + 1
+    semester = ((semester_order - 1) % 2) + 1
+
+    return year, semester
 
 def evaluate_recommendation_readiness(
     prerequisites: list[str],
@@ -423,6 +435,153 @@ def get_existing_prerequisite_course_codes(
             existing_codes.append(course_code)
 
     return sorted(set(existing_codes))
+
+def get_existing_prerequisite_node_ids(
+    recommendation: CourseRecommendation,
+    curriculum_courses: list[RecommendationCurriculumCourse],
+) -> list[str]:
+    target_order = get_semester_order(
+        recommendation.matchedChoiceSlotYear,
+        recommendation.matchedChoiceSlotSemester,
+    )
+
+    if target_order is None:
+        return []
+
+    existing_codes = {
+        course_code.upper()
+        for course_code in recommendation.existingPrerequisiteCourseCodes
+    }
+    node_ids = [
+        course.nodeId
+        for course in curriculum_courses
+        if (
+            course.nodeId and
+            not course.isChoiceSlot and
+            course.courseCode.upper() in existing_codes and
+            get_semester_order(course.year, course.semester) is not None and
+            get_semester_order(course.year, course.semester) < target_order
+        )
+    ]
+
+    return sorted(set(node_ids))
+
+def add_planned_roadmap_artifacts(
+    recommendations: list[CourseRecommendation],
+    choice_slots: list[RecommendationChoiceSlot],
+    curriculum_courses: list[RecommendationCurriculumCourse],
+) -> list[CourseRecommendation]:
+    remaining_semester_orders = sorted({
+        semester_order
+        for slot in choice_slots
+        for semester_order in [get_semester_order(slot.year, slot.semester)]
+        if semester_order is not None
+    })
+
+    return [
+        recommendation.model_copy(
+            update={
+                "plannedRoadmapNodes": build_planned_roadmap_nodes(
+                    recommendation,
+                    remaining_semester_orders,
+                ),
+                "plannedRoadmapEdges": build_planned_roadmap_edges(
+                    recommendation,
+                    curriculum_courses,
+                ),
+            }
+        )
+        for recommendation in recommendations
+    ]
+
+def build_planned_roadmap_nodes(
+    recommendation: CourseRecommendation,
+    remaining_semester_orders: list[int],
+) -> list[RecommendationPlannedRoadmapNode]:
+    target_order = get_semester_order(
+        recommendation.matchedChoiceSlotYear,
+        recommendation.matchedChoiceSlotSemester,
+    )
+
+    if target_order is None:
+        return []
+
+    prerequisite_semester_order = next(
+        (
+            semester_order
+            for semester_order in reversed(remaining_semester_orders)
+            if semester_order < target_order
+        ),
+        None,
+    )
+
+    if prerequisite_semester_order is None:
+        return []
+
+    prerequisite_year, prerequisite_semester = get_semester_from_order(
+        prerequisite_semester_order,
+    )
+    prerequisites_by_code = {
+        prerequisite.courseCode: prerequisite
+        for prerequisite in recommendation.prerequisiteRecommendations
+    }
+
+    return [
+        RecommendationPlannedRoadmapNode(
+            id=get_recommended_prerequisite_node_id(recommendation, prerequisite_code),
+            courseCode=prerequisite_code,
+            title=prerequisites_by_code[prerequisite_code].title,
+            type="Recommended Pre-Requisite",
+            year=prerequisite_year,
+            semester=prerequisite_semester,
+            academicUnits=prerequisites_by_code[prerequisite_code].academicUnits or 0,
+            prerequisiteText=f"Recommended prerequisite for {recommendation.courseCode}",
+            recommendedForCourseCode=recommendation.courseCode,
+        )
+        for prerequisite_code in recommendation.plannedPrerequisiteCourseCodes
+        if prerequisite_code in prerequisites_by_code
+    ]
+
+def build_planned_roadmap_edges(
+    recommendation: CourseRecommendation,
+    curriculum_courses: list[RecommendationCurriculumCourse],
+) -> list[RecommendationPlannedRoadmapEdge]:
+    if not recommendation.matchedChoiceSlotId:
+        return []
+
+    edge_keys = set()
+    edges = []
+    prerequisite_node_ids = [
+        *get_existing_prerequisite_node_ids(recommendation, curriculum_courses),
+        *[
+            get_recommended_prerequisite_node_id(recommendation, prerequisite_code)
+            for prerequisite_code in recommendation.plannedPrerequisiteCourseCodes
+        ],
+    ]
+
+    for node_id in prerequisite_node_ids:
+        edge_key = f"{node_id}->{recommendation.matchedChoiceSlotId}"
+
+        if edge_key not in edge_keys:
+            edges.append(
+                RecommendationPlannedRoadmapEdge(
+                    source=node_id,
+                    target=recommendation.matchedChoiceSlotId,
+                )
+            )
+            edge_keys.add(edge_key)
+
+    return edges
+
+def get_recommended_prerequisite_node_id(
+    recommendation: CourseRecommendation,
+    prerequisite_course_code: str,
+) -> str:
+    return (
+        "recommended-prerequisite-"
+        f"{recommendation.matchedChoiceSlotId}-"
+        f"{prerequisite_course_code.lower()}"
+    )
 
 # Older CZ prerequisites can correspond to newer SC curriculum rows with the same title.
 def has_equivalent_prerequisite_title(

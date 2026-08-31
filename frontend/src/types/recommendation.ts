@@ -55,6 +55,8 @@ export interface CourseRecommendation {
   existingPrerequisiteCourseCodes: string[]
   plannedPrerequisiteCourseCodes: string[]
   prerequisiteRecommendations: RecommendationPrerequisite[]
+  plannedRoadmapNodes?: RecommendationPlannedRoadmapNode[]
+  plannedRoadmapEdges?: RecommendationPlannedRoadmapEdge[]
   readinessStatus: RecommendationReadinessStatus
   unlockValue: number
   score: number
@@ -68,6 +70,23 @@ export interface RecommendationPrerequisite {
   academicUnits: number | null
   faculty: string | null
   level: number | null
+}
+
+export interface RecommendationPlannedRoadmapNode {
+  id: string
+  courseCode: string
+  title: string
+  type: string
+  year: number
+  semester: number
+  academicUnits: number
+  prerequisiteText: string
+  recommendedForCourseCode: string
+}
+
+export interface RecommendationPlannedRoadmapEdge {
+  source: string
+  target: string
 }
 
 export interface RecommendationResponse {
