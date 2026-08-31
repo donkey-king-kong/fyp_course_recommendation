@@ -1413,3 +1413,37 @@ Status: Implemented locally
 - No backend user table or server-side student record persistence.
 - No change to browser storage behavior.
 - No change to recommendation API output.
+
+## Preference-Aware Recommendation Diversity
+
+Status: Implemented locally
+
+### Completed
+
+- Added a backend diversity adjustment during final recommendation selection across roadmap slots.
+- Tracks selected recommendation tags so later selected recommendations receive a small penalty when they repeat already-used tags.
+- Applies a much smaller repeat penalty for tags that match the student's selected topic preferences.
+- Keeps hard eligibility, career relevance, prerequisite readiness, preference boosts, same-faculty boosts, and legacy-code penalties before diversity.
+- Leaves the existing recommendation `score` and `scoreBreakdown` as the module quality score instead of rewriting it with the selection-time diversity adjustment.
+- Kept the roadmap UI unchanged.
+
+### Rationale Notes
+
+- Diversity should reduce unnecessary repetition, not force variety against the student's interests.
+- If a student prefers `database`, database-related modules can still rank strongly; diversity only nudges the final selection away from excessive repeated non-preferred tags when good alternatives exist.
+- This keeps the recommender deterministic and explainable without adding AI, graph databases, embeddings, or job-market signals.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No frontend UI changes.
+- No new recommendation settings or preference sliders.
+- No diversity explanation field in the public API response.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
