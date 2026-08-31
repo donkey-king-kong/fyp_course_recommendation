@@ -14,6 +14,7 @@ from backend.schemas.recommendation import (
     RecommendationPrerequisite,
     RecommendationReadinessStatus,
     RecommendationResponse,
+    RecommendationScoreBreakdown,
 )
 from backend.services.faculty_service import list_active_faculty_names
 from backend.services.module_service import get_prerequisites_by_module, get_unlocks_by_module
@@ -149,9 +150,9 @@ def recommend_courses(
             continue
 
         # Rank remaining modules by career keyword matches in title and description.
-        matched_keywords, score = score_software_engineer_match(module)
+        matched_keywords, relevance_score, current_semester_bonus = score_software_engineer_match(module)
 
-        if score == 0:
+        if relevance_score == 0:
             continue
 
         # Send all prerequisites for arrows, and missing ones for extra planning nodes.
@@ -184,13 +185,24 @@ def recommend_courses(
                 module,
                 normalized_student_faculty,
             )
+            unlock_contribution = min(readiness.unlock_value, 3)
             adjusted_score = max(1, (
-                score +
-                min(readiness.unlock_value, 3) +
+                relevance_score +
+                current_semester_bonus +
+                unlock_contribution +
                 preference_boost +
                 faculty_boost +
                 course_code_adjustment
             ))
+            score_breakdown = RecommendationScoreBreakdown(
+                careerTagScore=relevance_score,
+                currentSemesterBonus=current_semester_bonus,
+                preferenceBoost=preference_boost,
+                sameFacultyBoost=faculty_boost,
+                legacyCodePenalty=course_code_adjustment,
+                unlockContribution=unlock_contribution,
+                finalScore=adjusted_score,
+            )
             slot_key = get_choice_slot_identity(slot)
             recommendations_by_slot.setdefault(slot_key, []).append(
                 CourseRecommendation(
@@ -212,6 +224,7 @@ def recommend_courses(
                     readinessStatus=readiness.status,
                     unlockValue=readiness.unlock_value,
                     score=adjusted_score,
+                    scoreBreakdown=score_breakdown,
                     reason=build_recommendation_reason(
                         matched_keywords,
                         readiness.unlock_value,
@@ -689,7 +702,7 @@ def get_unique_recommendation_at_or_after_index(
 
     return None
 
-def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
+def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int, int]:
     searchable_text = f"{module.title} {module.description or ''}".lower()
     matched_keywords = [
         keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
@@ -702,12 +715,13 @@ def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
     matched_signals = matched_keywords + [f"tag:{tag}" for tag in matched_tags]
     score = sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords)
     score += sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
+    current_semester_bonus = 0
 
     # Prefer modules currently available in the catalog by giving them a small boost.
     if module.is_current_semester:
-        score += 1
+        current_semester_bonus = 1
 
-    return matched_signals, score
+    return matched_signals, score, current_semester_bonus
 
 def normalize_recommendation_tags(tags: list[str]) -> set[str]:
     return {

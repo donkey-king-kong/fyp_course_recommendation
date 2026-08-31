@@ -113,6 +113,36 @@ class RecommendationPrerequisite(BaseModel):
     faculty: Optional[str]
     level: Optional[int]
 
+class RecommendationScoreBreakdown(BaseModel):
+    careerTagScore: int = Field(
+        description="Base relevance score from career keywords and curated recommendation tags.",
+        examples=[13],
+    )
+    currentSemesterBonus: int = Field(
+        description="Small bonus when the module is available in the current catalog semester.",
+        examples=[1],
+    )
+    preferenceBoost: int = Field(
+        description="Soft boost from matching the student's selected topic preferences.",
+        examples=[30],
+    )
+    sameFacultyBoost: int = Field(
+        description="Soft boost when the module faculty matches the student's profile faculty.",
+        examples=[8],
+    )
+    legacyCodePenalty: int = Field(
+        description="Negative adjustment for older CSC/CZ course codes when the student is in CSC.",
+        examples=[0],
+    )
+    unlockContribution: int = Field(
+        description="Small pathway boost from unlocking later fixed curriculum modules.",
+        examples=[1],
+    )
+    finalScore: int = Field(
+        description="Final score used for ranking after all deterministic components are applied.",
+        examples=[53],
+    )
+
 class CourseRecommendation(BaseModel):
     courseCode: str
     title: str
@@ -132,6 +162,7 @@ class CourseRecommendation(BaseModel):
     readinessStatus: RecommendationReadinessStatus
     unlockValue: int
     score: int
+    scoreBreakdown: RecommendationScoreBreakdown
     reason: str
 
 class RecommendationResponse(BaseModel):
@@ -162,6 +193,15 @@ class RecommendationResponse(BaseModel):
                         "readinessStatus": "ready",
                         "unlockValue": 1,
                         "score": 9,
+                        "scoreBreakdown": {
+                            "careerTagScore": 7,
+                            "currentSemesterBonus": 1,
+                            "preferenceBoost": 0,
+                            "sameFacultyBoost": 0,
+                            "legacyCodePenalty": 0,
+                            "unlockContribution": 1,
+                            "finalScore": 9,
+                        },
                         "reason": "Matches Software Engineer keywords: software, engineering.",
                     }
                 ],
