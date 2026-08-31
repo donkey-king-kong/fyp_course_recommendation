@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
-import { uploadTranscript } from '../api/transcriptApi'
+import { matchTranscriptToCurriculum, uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
 import './ProfilePage.css'
 
@@ -87,6 +87,7 @@ function ProfilePage({
   const transcriptCompletedCourseCodes = useProfileStore(
     (state) => state.transcriptCompletedCourseCodes,
   )
+  const transcriptCompletedCourses = useProfileStore((state) => state.transcriptCompletedCourses)
   const setCurriculumGuide = useProfileStore((state) => state.setCurriculumGuide)
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
@@ -158,8 +159,16 @@ function ProfilePage({
       setCurriculumUploadMessage('')
 
       const result = await uploadCurriculumGuide(selectedCurriculumGuide)
+      const transcriptMatch =
+        transcriptCompletedCourseCodes.length > 0
+          ? await matchTranscriptToCurriculum(
+              transcriptCompletedCourseCodes,
+              transcriptCompletedCourses,
+              result,
+            )
+          : undefined
 
-      setCurriculumGuide(result, selectedCurriculumGuide.name)
+      setCurriculumGuide(result, selectedCurriculumGuide.name, transcriptMatch)
       setSelectedCurriculumGuide(null)
       setCurriculumGuideInputKey((currentKey) => currentKey + 1)
       setCurriculumUploadMessage(
@@ -209,14 +218,22 @@ function ProfilePage({
           ...result.completed_transcript_courses.map((course) => course.course_code),
         ]),
       ]
+      const transcriptMatch = curriculumGuide
+        ? await matchTranscriptToCurriculum(
+            completedCourseCodesFromTranscript,
+            result.completed_transcript_courses,
+            curriculumGuide,
+          )
+        : undefined
 
-      // Store transcript codes first; roadmap matching happens only when a curriculum guide exists.
+      // Save parsed transcript data with backend matching when a curriculum guide exists.
       setTranscriptResults(
         selectedTranscript.name,
         completedCourseCodesFromTranscript,
         result.completed_transcript_courses,
         result.completed_transcript_course_count,
         result.total_academic_units_earned,
+        transcriptMatch,
       )
 
       if (curriculumGuide) {

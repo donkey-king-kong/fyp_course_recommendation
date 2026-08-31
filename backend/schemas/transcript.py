@@ -2,6 +2,8 @@ from typing import Optional
 
 from pydantic import BaseModel
 
+from backend.schemas.curriculum import CurriculumCourse
+
 # Object of one course returned extracted from transcript
 class TranscriptCourse(BaseModel):
     course_code: str
@@ -26,3 +28,17 @@ class TranscriptUploadResponse(BaseModel):
     total_academic_units_earned: float
     # Parsed transcript course codes that are not in the current CSC roadmap
     unmatched_course_codes: list[str]
+
+class TranscriptMatchedCourse(BaseModel):
+    courseCode: str
+    title: str
+
+class TranscriptCurriculumMatchRequest(BaseModel):
+    completedCourseCodes: list[str]
+    transcriptCompletedCourses: list[TranscriptCourse]
+    curriculumCourses: list[CurriculumCourse]
+
+class TranscriptCurriculumMatchResponse(BaseModel):
+    completedCourseIds: list[str]
+    transcriptMatchedCourses: list[TranscriptMatchedCourse]
+    transcriptUnmatchedCourseCodes: list[str]
