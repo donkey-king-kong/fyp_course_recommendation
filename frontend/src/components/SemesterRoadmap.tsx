@@ -5,7 +5,7 @@ import type { ModuleSummary } from '../types/module'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
-import type { CourseRecommendation, RecommendationPrerequisite } from '../types/recommendation'
+import type { CourseRecommendation } from '../types/recommendation'
 import ClassicLoader from './ClassicLoader'
 
 // Pass courses and prerequisite links into this component
@@ -162,21 +162,6 @@ function getSemesterGroupLabel(group: SemesterGroup) {
   }
 }
 
-function canFitRecommendationInSlot(
-  choiceSlot: ChoiceSlotCandidate,
-  recommendation: CourseRecommendation | RecommendationPrerequisite | undefined,
-) {
-  if (!recommendation) {
-    return false
-  }
-
-  if (choiceSlot.slotKey.toUpperCase() === 'BDE') {
-    return recommendation.level === getPreferredBdeLevel(choiceSlot.course.year)
-  }
-
-  return recommendation.faculty === 'CSC' && choiceSlot.slotKey === `SC${recommendation.level}xxx`
-}
-
 function sortRecommendationsForSlot(
   choiceSlot: ChoiceSlotCandidate,
   recommendations: CourseRecommendation[],
@@ -230,6 +215,7 @@ function getRecommendedPrerequisiteNodeId(
 function buildRecommendedPrerequisiteNodes(
   choiceSlot: ChoiceSlotCandidate,
   recommendation: CourseRecommendation,
+  prerequisiteCourseCodes: string[],
   remainingSemesterOrders: number[],
 ): CourseNode[] {
   const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
@@ -243,7 +229,7 @@ function buildRecommendedPrerequisiteNodes(
 
   const prerequisiteSemester = getSemesterFromOrder(prerequisiteSemesterOrder)
 
-  return recommendation.missingPrerequisites.map((prerequisiteCode) => {
+  return prerequisiteCourseCodes.map((prerequisiteCode) => {
     const prerequisite = recommendation.prerequisiteRecommendations.find(
       (candidate) => candidate.courseCode === prerequisiteCode,
     )
@@ -277,9 +263,7 @@ function groupCoursesByCode(courses: CourseNode[]) {
   }, new Map())
 }
 
-// The current prerequisite graph is flat, so multi-code prerequisites may represent OR alternatives.
-// If one alternative already appears earlier in the student's roadmap, use that existing path instead
-// of creating extra planning nodes for every other alternative.
+// Backend decides which prerequisite codes should be reused from the uploaded roadmap.
 function getExistingPrerequisiteNodes(
   choiceSlot: ChoiceSlotCandidate,
   recommendation: CourseRecommendation,
@@ -287,7 +271,7 @@ function getExistingPrerequisiteNodes(
 ) {
   const targetSemesterOrder = getSemesterOrder(choiceSlot.course)
 
-  return recommendation.prerequisites.flatMap((prerequisiteCode) =>
+  return recommendation.existingPrerequisiteCourseCodes.flatMap((prerequisiteCode) =>
     (coursesByCode.get(prerequisiteCode.toUpperCase()) ?? []).filter(
       (course) =>
         !course.isChoiceSlot &&
@@ -295,6 +279,12 @@ function getExistingPrerequisiteNodes(
         getSemesterOrder(course) < targetSemesterOrder,
     ),
   )
+}
+
+function getPlannedPrerequisiteCourseCodes(recommendation: CourseRecommendation) {
+  return recommendation.plannedPrerequisiteCourseCodes.length > 0
+    ? recommendation.plannedPrerequisiteCourseCodes
+    : recommendation.missingPrerequisites
 }
 
 function addPrerequisiteLinks(
@@ -356,111 +346,55 @@ function assignRecommendationsToChoiceSlots(
       (semesterOrder) => semesterOrder < getSemesterOrder(choiceSlot.course),
     )
 
-    let fallbackRecommendation: CourseRecommendation | null = null
-
     for (const recommendation of sortRecommendationsForSlot(choiceSlot, matchingRecommendations)) {
       const existingPrerequisiteNodes = getExistingPrerequisiteNodes(
         choiceSlot,
         recommendation,
         coursesByCode,
       )
+      const plannedPrerequisiteCourseCodes = getPlannedPrerequisiteCourseCodes(recommendation)
 
-      if (recommendation.missingPrerequisites.length === 0) {
-        usedCourseCodes.add(recommendation.courseCode)
-        addPrerequisiteLinks(
-          prerequisiteLinks,
-          existingPrerequisiteNodes,
-          choiceSlot.course.id,
-        )
-
-        return {
-          ...currentAssignments,
-          [choiceSlot.course.id]: {
-            courseCode: recommendation.courseCode,
-            title: recommendation.title,
-            label: 'Recommended option',
-          },
-        }
-      }
-
-      if (existingPrerequisiteNodes.length > 0) {
-        usedCourseCodes.add(recommendation.courseCode)
-        addPrerequisiteLinks(
-          prerequisiteLinks,
-          existingPrerequisiteNodes,
-          choiceSlot.course.id,
-        )
-
-        return {
-          ...currentAssignments,
-          [choiceSlot.course.id]: {
-            courseCode: recommendation.courseCode,
-            title: recommendation.title,
-            label: 'Recommended option',
-          },
-        }
-      }
-
-      if (hasEarlierRemainingSemester) {
-        fallbackRecommendation = fallbackRecommendation ?? recommendation
-      }
-
-      const prerequisite = recommendation.prerequisiteRecommendations[0]
-
-      if (recommendation.missingPrerequisites.length !== 1 || !prerequisite) {
+      if (
+        recommendation.readinessStatus === 'needs-prerequisite-planning' &&
+        existingPrerequisiteNodes.length === 0 &&
+        plannedPrerequisiteCourseCodes.length === 0
+      ) {
         continue
       }
 
-      const previousSlot = sortedChoiceSlots.find(
-        (slot) =>
-          getSemesterOrder(slot.course) === getSemesterOrder(choiceSlot.course) - 1 &&
-          !currentAssignments[slot.course.id] &&
-          canFitRecommendationInSlot(slot, prerequisite),
+      if (plannedPrerequisiteCourseCodes.length > 0 && !hasEarlierRemainingSemester) {
+        continue
+      }
+
+      usedCourseCodes.add(recommendation.courseCode)
+      addPrerequisiteLinks(
+        prerequisiteLinks,
+        existingPrerequisiteNodes,
+        choiceSlot.course.id,
       )
 
-      if (!previousSlot) {
-        continue
+      if (plannedPrerequisiteCourseCodes.length > 0) {
+        prerequisiteNodes.push(
+          ...buildRecommendedPrerequisiteNodes(
+            choiceSlot,
+            recommendation,
+            plannedPrerequisiteCourseCodes,
+            remainingSemesterOrders,
+          ),
+        )
+        prerequisiteLinks.push(
+          ...plannedPrerequisiteCourseCodes.map((prerequisiteCode) => ({
+            source: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
+            target: choiceSlot.course.id,
+          })),
+        )
       }
-
-      usedCourseCodes.add(prerequisite.courseCode)
-      usedCourseCodes.add(recommendation.courseCode)
 
       return {
         ...currentAssignments,
-        [previousSlot.course.id]: {
-          courseCode: prerequisite.courseCode,
-          title: prerequisite.title,
-          label: `Prerequisite for ${recommendation.courseCode}`,
-        },
         [choiceSlot.course.id]: {
           courseCode: recommendation.courseCode,
           title: recommendation.title,
-          label: 'Recommended option',
-        },
-      }
-    }
-
-    if (fallbackRecommendation) {
-      usedCourseCodes.add(fallbackRecommendation.courseCode)
-      prerequisiteNodes.push(
-        ...buildRecommendedPrerequisiteNodes(
-          choiceSlot,
-          fallbackRecommendation,
-          remainingSemesterOrders,
-        ),
-      )
-      prerequisiteLinks.push(
-        ...fallbackRecommendation.missingPrerequisites.map((prerequisiteCode) => ({
-          source: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
-          target: choiceSlot.course.id,
-        })),
-      )
-
-      return {
-        ...currentAssignments,
-        [choiceSlot.course.id]: {
-          courseCode: fallbackRecommendation.courseCode,
-          title: fallbackRecommendation.title,
           label: 'Recommended option',
         },
       }

@@ -337,6 +337,11 @@ function App() {
       return
     }
 
+    if (!roadmap) {
+      setRecommendationError('The uploaded curriculum guide could not be converted into a roadmap.')
+      return
+    }
+
     if (profile.careerGoal !== 'software-engineer') {
       setRecommendationError('Select Software Engineer before loading the roadmap.')
       return
@@ -375,6 +380,14 @@ function App() {
         },
       ]
     })
+    const curriculumCourses = roadmap.nodes.map((course) => ({
+      nodeId: course.id,
+      courseCode: course.courseCode,
+      title: course.title,
+      year: course.year,
+      semester: course.semester,
+      isChoiceSlot: Boolean(course.isChoiceSlot),
+    }))
     const fixedCurriculumCourses = curriculumGuide.nodes.filter((course) => !course.isChoiceSlot)
     const excludedCourseCodes = fixedCurriculumCourses.map((course) => course.courseCode)
     const excludedCourseTitles = fixedCurriculumCourses.map((course) => course.title)
@@ -394,6 +407,7 @@ function App() {
         completedCourseCodes,
         choiceSlotCodes,
         choiceSlots,
+        curriculumCourses,
         excludedCourseCodes,
         excludedCourseTitles,
         limit: getRecommendationLimit(openChoiceSlots),
