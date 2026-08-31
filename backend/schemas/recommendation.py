@@ -1,6 +1,8 @@
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
+
+RecommendationReadinessStatus = Literal["ready", "needs-prerequisite-planning"]
 
 class RecommendationChoiceSlot(BaseModel):
     slotId: Optional[str] = Field(
@@ -23,6 +25,36 @@ class RecommendationChoiceSlot(BaseModel):
         examples=[1],
     )
 
+class RecommendationCurriculumCourse(BaseModel):
+    nodeId: Optional[str] = Field(
+        default=None,
+        description="Frontend roadmap node ID for this curriculum course.",
+        examples=["year1-sem2-sc1004"],
+    )
+    courseCode: str = Field(
+        description="Course code or choice-slot placeholder shown in the uploaded curriculum guide.",
+        examples=["SC1004"],
+    )
+    title: Optional[str] = Field(
+        default=None,
+        description="Course title from the uploaded curriculum guide.",
+        examples=["Linear Algebra for Computing"],
+    )
+    year: Optional[int] = Field(
+        default=None,
+        description="Roadmap year where this course appears.",
+        examples=[1],
+    )
+    semester: Optional[int] = Field(
+        default=None,
+        description="Roadmap semester where this course appears.",
+        examples=[2],
+    )
+    isChoiceSlot: bool = Field(
+        default=False,
+        description="Whether this curriculum item is an open BDE/MPE choice slot.",
+    )
+
 class RecommendationRequest(BaseModel):
     careerGoal: str = Field(
         description="Career goal selected by the student.",
@@ -41,6 +73,10 @@ class RecommendationRequest(BaseModel):
     choiceSlots: list[RecommendationChoiceSlot] = Field(
         default_factory=list,
         description="Open curriculum choice slots with roadmap position details for backend slot-fit ranking.",
+    )
+    curriculumCourses: list[RecommendationCurriculumCourse] = Field(
+        default_factory=list,
+        description="Uploaded curriculum courses with roadmap positions for prerequisite readiness checks.",
     )
     excludedCourseCodes: list[str] = Field(
         default_factory=list,
@@ -80,7 +116,11 @@ class CourseRecommendation(BaseModel):
     matchedKeywords: list[str]
     prerequisites: list[str]
     missingPrerequisites: list[str]
+    existingPrerequisiteCourseCodes: list[str]
+    plannedPrerequisiteCourseCodes: list[str]
     prerequisiteRecommendations: list[RecommendationPrerequisite]
+    readinessStatus: RecommendationReadinessStatus
+    unlockValue: int
     score: int
     reason: str
 
@@ -106,7 +146,11 @@ class RecommendationResponse(BaseModel):
                         "matchedKeywords": ["software", "engineering"],
                         "prerequisites": ["SC2006"],
                         "missingPrerequisites": [],
+                        "existingPrerequisiteCourseCodes": ["SC2006"],
+                        "plannedPrerequisiteCourseCodes": [],
                         "prerequisiteRecommendations": [],
+                        "readinessStatus": "ready",
+                        "unlockValue": 1,
                         "score": 9,
                         "reason": "Matches Software Engineer keywords: software, engineering.",
                     }

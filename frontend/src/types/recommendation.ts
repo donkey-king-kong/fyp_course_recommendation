@@ -5,15 +5,27 @@ export interface RecommendationChoiceSlot {
   semester: number
 }
 
+export interface RecommendationCurriculumCourse {
+  nodeId: string
+  courseCode: string
+  title: string
+  year: number
+  semester: number
+  isChoiceSlot: boolean
+}
+
 export interface RecommendationRequest {
   careerGoal: string
   completedCourseCodes: string[]
   choiceSlotCodes: string[]
   choiceSlots: RecommendationChoiceSlot[]
+  curriculumCourses: RecommendationCurriculumCourse[]
   excludedCourseCodes: string[]
   excludedCourseTitles: string[]
   limit: number
 }
+
+export type RecommendationReadinessStatus = 'ready' | 'needs-prerequisite-planning'
 
 export interface CourseRecommendation {
   courseCode: string
@@ -28,7 +40,11 @@ export interface CourseRecommendation {
   matchedKeywords: string[]
   prerequisites: string[]
   missingPrerequisites: string[]
+  existingPrerequisiteCourseCodes: string[]
+  plannedPrerequisiteCourseCodes: string[]
   prerequisiteRecommendations: RecommendationPrerequisite[]
+  readinessStatus: RecommendationReadinessStatus
+  unlockValue: number
   score: number
   reason: string
 }
