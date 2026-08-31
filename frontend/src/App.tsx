@@ -248,17 +248,9 @@ function getChoiceSlotCode(course: CurriculumGuideResponse['nodes'][number]) {
   return course.isChoiceSlot ? course.courseCode : null
 }
 
-// Size the recommendation pool from actual slot demand, not just unique slot labels.
-// BDE needs more candidates because duplicates, wrong-year levels, and prerequisites can be skipped.
+// Backend owns final slot assignment, so request one recommendation per open slot.
 function getRecommendationLimit(openChoiceSlots: CurriculumGuideResponse['nodes']) {
-  const bdeSlotCount = openChoiceSlots.filter(
-    (course) => course.courseCode === 'BDE' || course.type === 'BDE',
-  ).length
-  const mpeSlotCount = openChoiceSlots.filter(
-    (course) => course.courseCode !== 'BDE' && course.type !== 'BDE',
-  ).length
-
-  return Math.min(120, Math.max(24, bdeSlotCount * 18 + mpeSlotCount * 10))
+  return Math.max(1, openChoiceSlots.length)
 }
 
 // Main page component
