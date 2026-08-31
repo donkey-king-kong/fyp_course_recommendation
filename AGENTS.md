@@ -101,6 +101,10 @@ After each milestone, explain:
 - New transcript uploads should override the previous transcript result for the active browser profile and rematch against the current curriculum guide if one exists.
 - New curriculum guide uploads should override the previous curriculum result for the active browser profile and rematch against the current transcript if one exists.
 - The Profile page should store the student's career goal so later MPE/choice-slot recommendations can use it.
+- Browser storage is prototype persistence only; treat localStorage profile, curriculum, transcript, completion, and recommendation data as inspectable and user-editable.
+- Backend recommendation requests currently receive user-controlled browser state, so do not treat submitted completed courses, profile fields, or uploaded-roadmap data as trusted production records.
+- Future NTU login integration should use official NTU SSO redirect/callback flow only; do not build a fake NTU password form, scrape NTU login pages, or hardcode a captured `SAMLRequest` URL.
+- If NTU SSO is added later, use the stable signed identity claim from SAML/OIDC as the external login identifier and keep the app's own internal user ID separate from any optional student ID.
 
 ## Architecture Style
 
@@ -271,6 +275,7 @@ Completed foundations:
 - Recommendation ranking gives a soft same-faculty boost, so a CSC profile prefers CSC modules over CE or other faculties when the candidate is otherwise valid.
 - For CSC profiles, legacy `CZ` course codes are deprioritized behind current `SC` course codes, and older `CSC`-prefixed course codes are deprioritized even further as last-resort fallback candidates.
 - Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
+- Recommendation API responses include a deterministic `scoreBreakdown` for explainability, but the roadmap UI does not display it yet.
 - Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
 - Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
 - Profile page shows Student ID, Major, and Career Goal inline on wider screens and shows a spinner/tick inside the Load Roadmap button.
@@ -279,6 +284,8 @@ Completed foundations:
 - Transcript-to-curriculum matching uses exact course code first, then conservative title matching for course-code changes such as `SC3920 Professional Internship` matching `SC3079 Professional Internship`.
 - Selecting a new curriculum guide file does not replace the active roadmap source until `Upload Curriculum Guide` succeeds; `Load Roadmap` is disabled while a selected guide is pending upload.
 - Loaded roadmap recommendations are saved per Student ID in browser storage, so logging out and back in with the same Student ID restores the latest recommendation cards.
+- Browser-saved student data and recommendation API responses are inspectable by students, so current storage/API behavior is for prototype transparency rather than production security.
+- Real NTU SSO login is intentionally not implemented yet; any future login work should start with a safe mock SSO-shaped flow unless official NTU SAML/OIDC metadata and registration are available.
 
 Current next step:
 
@@ -286,7 +293,7 @@ Current next step:
 - Keep academic-standing requirements based on completed AU, not self-declared profile year.
 - Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
-- Next useful recommendation improvement is an explicit score breakdown in the API/UI.
+- Do not show recommendation score breakdowns in the roadmap UI unless explicitly requested.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 
 ## Expected Working Directory

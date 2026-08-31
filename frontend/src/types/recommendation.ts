@@ -29,6 +29,16 @@ export interface RecommendationRequest {
 
 export type RecommendationReadinessStatus = 'ready' | 'needs-prerequisite-planning'
 
+export interface RecommendationScoreBreakdown {
+  careerTagScore: number
+  currentSemesterBonus: number
+  preferenceBoost: number
+  sameFacultyBoost: number
+  legacyCodePenalty: number
+  unlockContribution: number
+  finalScore: number
+}
+
 export interface CourseRecommendation {
   courseCode: string
   title: string
@@ -48,6 +58,7 @@ export interface CourseRecommendation {
   readinessStatus: RecommendationReadinessStatus
   unlockValue: number
   score: number
+  scoreBreakdown: RecommendationScoreBreakdown
   reason: string
 }
 
