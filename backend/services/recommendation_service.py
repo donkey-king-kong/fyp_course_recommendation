@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 from typing import Optional
 
-from sqlalchemy import and_, or_
+from sqlalchemy import String, and_, cast, or_
 from sqlalchemy.orm import Session
 
 from backend.models import ModuleModel
@@ -34,6 +34,14 @@ SOFTWARE_ENGINEER_KEYWORDS = {
     "architecture": 3,
     "testing": 2,
     "security": 3,
+}
+SOFTWARE_ENGINEER_TAXONOMY_WEIGHTS = {
+    "software-engineering": 5,
+    "web-development": 4,
+    "data": 3,
+    "ai-ml": 3,
+    "systems": 2,
+    "security": 2,
 }
 
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
@@ -86,7 +94,7 @@ def recommend_courses(
     query = db.query(ModuleModel).filter(
         ModuleModel.faculty.in_(active_faculties),
         or_(*slot_filters),
-        or_(*build_keyword_filters()),
+        or_(*build_software_engineer_candidate_filters()),
     )
     modules = query.order_by(ModuleModel.code).all()
     logger.info(
@@ -433,13 +441,16 @@ def build_prerequisite_recommendations(
 
     return recommendations
 
-def build_keyword_filters() -> list:
+def build_software_engineer_candidate_filters() -> list:
     filters = []
 
     for keyword in SOFTWARE_ENGINEER_KEYWORDS:
         pattern = f"%{keyword}%"
         filters.append(ModuleModel.title.ilike(pattern))
         filters.append(ModuleModel.description.ilike(pattern))
+
+    for tag in SOFTWARE_ENGINEER_TAXONOMY_WEIGHTS:
+        filters.append(cast(ModuleModel.categories, String).ilike(f"%{tag}%"))
 
     return filters
 
@@ -572,13 +583,24 @@ def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
     matched_keywords = [
         keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
     ]
-    score = sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords)
+    module_categories = {
+        category.lower()
+        for category in (module.categories or [])
+        if isinstance(category, str)
+    }
+    matched_taxonomy_tags = [
+        tag for tag in SOFTWARE_ENGINEER_TAXONOMY_WEIGHTS if tag in module_categories
+    ]
+    score = (
+        sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
+        sum(SOFTWARE_ENGINEER_TAXONOMY_WEIGHTS[tag] for tag in matched_taxonomy_tags)
+    )
 
     # Prefer modules currently available in the catalog by giving them a small boost.
     if module.is_current_semester:
         score += 1
 
-    return matched_keywords, score
+    return [*matched_keywords, *matched_taxonomy_tags], score
 
 def build_recommendation_reason(matched_keywords: list[str], unlock_value: int) -> str:
     base_reason = (
