@@ -10970,7 +10970,11 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "programming",
+                "professional-skills"
+            ]
         },
         {
             "code": "CC0003",
@@ -11177,7 +11181,10 @@
             "latestYear": "2018",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "CE(2004-2010)"
+            "notAvailableToProgramme": "CE(2004-2010)",
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CE0002",
@@ -11192,7 +11199,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CE(2004-2010), CE(2014-onwards), CSC"
+            "notAvailableToProgramme": "BCG, CE(2004-2010), CE(2014-onwards), CSC",
+            "recommendationTags": [
+                "sustainability-computing"
+            ]
         },
         {
             "code": "CE1002",
@@ -11206,7 +11216,11 @@
             ],
             "latestYear": "2017",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
         },
         {
             "code": "CE1003",
@@ -11221,7 +11235,8 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "AERO(2018-onwards)(Non Direct Entry), AERO(2019-onwards)(Direct Entry), ASEC(2018-onwards), BCG, BEEC(2018-onwards), BIE(2018-onwards)(Non Direct Entry), BIE(2019-onwards)(Direct Entry), BMS(2018-onwards), BS(2018-onwards), BSB(2018-onwards), BSPY(2018-onwards), CBE(2018-onwards)(Non Direct Entry), CBE(2019-onwards)(Direct Entry), CBEC(2018-onwards), CEE(2018-onwards)(Non Direct Entry), CEE(2019-onwards)(Direct Entry), CHEM(2018-onwards), CSC, CSEC, CVEC(2018-onwards), DSAI, EEE(2018-onwards)(Non Direct Entry), EEE(2019-onwards)(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MACS, MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)"
+            "notAvailableToProgramme": "AERO(2018-onwards)(Non Direct Entry), AERO(2019-onwards)(Direct Entry), ASEC(2018-onwards), BCG, BEEC(2018-onwards), BIE(2018-onwards)(Non Direct Entry), BIE(2019-onwards)(Direct Entry), BMS(2018-onwards), BS(2018-onwards), BSB(2018-onwards), BSPY(2018-onwards), CBE(2018-onwards)(Non Direct Entry), CBE(2019-onwards)(Direct Entry), CBEC(2018-onwards), CEE(2018-onwards)(Non Direct Entry), CEE(2019-onwards)(Direct Entry), CHEM(2018-onwards), CSC, CSEC, CVEC(2018-onwards), DSAI, EEE(2018-onwards)(Non Direct Entry), EEE(2019-onwards)(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MACS, MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)",
+            "recommendationTags": []
         },
         {
             "code": "CE1004",
@@ -11235,7 +11250,11 @@
             "latestYear": "2017",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CE(2004-2010), CSC, CSEC"
+            "notAvailableToProgramme": "BCG, CE(2004-2010), CSC, CSEC",
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
         },
         {
             "code": "CE1005",
@@ -11250,7 +11269,11 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC"
+            "notAvailableToProgramme": "BCG, CSC, CSEC",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
         },
         {
             "code": "CE1006",
@@ -11265,7 +11288,10 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "CE1007",
@@ -11280,7 +11306,10 @@
             "latestYear": "2020",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2020-onwards), BCG, CE(2020-onwards), CEEC(2020-onwards), CSC, CSEC, EEE, EEEC, IEEC, IEM, REP(CE) 2(2019-onwards), REP(CSC)"
+            "notAvailableToProgramme": "BCE(2020-onwards), BCG, CE(2020-onwards), CEEC(2020-onwards), CSC, CSEC, EEE, EEEC, IEEC, IEM, REP(CE) 2(2019-onwards), REP(CSC)",
+            "recommendationTags": [
+                "data-structures"
+            ]
         },
         {
             "code": "CE1008",
@@ -11293,7 +11322,10 @@
             "latestYear": "2017",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2015-onwards), BCG, CE(2004-2010), CE(2015-onwards), CSC, CSEC"
+            "notAvailableToProgramme": "BCE(2015-onwards), BCG, CE(2004-2010), CE(2015-onwards), CSC, CSEC",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CE1011",
@@ -11307,7 +11339,10 @@
             "latestYear": "2020",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, ENG, IEM, MATH, PHY"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, ENG, IEM, MATH, PHY",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CE1012",
@@ -11321,7 +11356,10 @@
             "latestYear": "2020",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, ENG, IEM, MATH, PHY"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, ENG, IEM, MATH, PHY",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CE1013",
@@ -11333,7 +11371,8 @@
             ],
             "latestYear": "2019",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": []
         },
         {
             "code": "CE1015",
@@ -11345,7 +11384,11 @@
             ],
             "latestYear": "2019",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml",
+                "data-science"
+            ]
         },
         {
             "code": "CE1103",
@@ -11360,7 +11403,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, BEEC, BIE, CBE, CBEC, CSC, CSEC, DSAI, EEE(2018-onwards)(Non Direct Entry), EEE(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MACS, MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(IMS), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MEEC(DES)(2018-onwards), MEEC(RMS)(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)"
+            "notAvailableToProgramme": "BCG, BEEC, BIE, CBE, CBEC, CSC, CSEC, DSAI, EEE(2018-onwards)(Non Direct Entry), EEE(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MACS, MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(IMS), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MEEC(DES)(2018-onwards), MEEC(RMS)(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)",
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "CE1104",
@@ -11373,7 +11419,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACDA, BCG, CSC, CSEC, DSAI, ECDS, EEE, EEEC, ENG(EEE), IEM, MACS, MATH, PHY"
+            "notAvailableToProgramme": "ACDA, BCG, CSC, CSEC, DSAI, ECDS, EEE, EEEC, ENG(EEE), IEM, MACS, MATH, PHY",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CE1105",
@@ -11388,7 +11437,11 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, BUS(IT), CSC, CSEC, EEE, EEEC, ENE(Direct Entry), ENG(EEE), ENG(NULL), IEEC, IEM, MACS"
+            "notAvailableToProgramme": "BCG, BUS(IT), CSC, CSEC, EEE, EEEC, ENE(Direct Entry), ENG(EEE), ENG(NULL), IEEC, IEM, MACS",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
         },
         {
             "code": "CE1106",
@@ -11403,7 +11456,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM, MACS"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM, MACS",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "CE1107",
@@ -11418,7 +11474,11 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-2019), BCG, CE(2011-2019), CEEC(2011-2019), CSC, CSEC, EEE, EEEC, IEEC, IEM, REP(CE)(2011-2018), REP(CSC)"
+            "notAvailableToProgramme": "BCE(2011-2019), BCG, CE(2011-2019), CEEC(2011-2019), CSC, CSEC, EEE, EEEC, IEEC, IEM, REP(CE)(2011-2018), REP(CSC)",
+            "recommendationTags": [
+                "algorithms",
+                "data-structures"
+            ]
         },
         {
             "code": "CE1113",
@@ -11431,7 +11491,8 @@
             "latestYear": "2020",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, MACS"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, MACS",
+            "recommendationTags": []
         },
         {
             "code": "CE1115",
@@ -11444,7 +11505,11 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, DSAI, MACS"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, DSAI, MACS",
+            "recommendationTags": [
+                "ai-ml",
+                "data-science"
+            ]
         },
         {
             "code": "CE2001",
@@ -11459,7 +11524,10 @@
             "latestYear": "2021",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM",
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CE2002",
@@ -11474,7 +11542,11 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM, REP(CSC)"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM, REP(CSC)",
+            "recommendationTags": [
+                "software-engineering",
+                "programming"
+            ]
         },
         {
             "code": "CE2003",
@@ -11489,7 +11561,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS)"
+            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS)",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
         },
         {
             "code": "CE2004",
@@ -11503,7 +11579,10 @@
             "latestYear": "2021",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE2005",
@@ -11518,7 +11597,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, ENG"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, ENG",
+            "recommendationTags": [
+                "operating-systems"
+            ]
         },
         {
             "code": "CE2006",
@@ -11533,7 +11615,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG, ENG(EEE), IEEC, IEM, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG, ENG(EEE), IEEC, IEM, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "CE2007",
@@ -11548,7 +11633,11 @@
             "latestYear": "2019",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG",
+            "recommendationTags": [
+                "computer-architecture",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE2100",
@@ -11561,7 +11650,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, DSAI, MACS"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, DSAI, MACS",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CE2101",
@@ -11576,7 +11668,10 @@
             "latestYear": "2024",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, DSAI, EEE, EEEC, IEEC, IEM, MACS, REP(CSC)"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, DSAI, EEE, EEEC, IEEC, IEM, MACS, REP(CSC)",
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CE2107",
@@ -11590,7 +11685,11 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, ENG",
+            "recommendationTags": [
+                "computer-architecture",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE3001",
@@ -11604,7 +11703,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC"
+            "notAvailableToProgramme": "BCG, CSC, CSEC",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "CE3002",
@@ -11618,7 +11720,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE3003",
@@ -11632,7 +11737,11 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC"
+            "notAvailableToProgramme": "BCG, CSC, CSEC",
+            "recommendationTags": [
+                "programming",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE3004",
@@ -11645,7 +11754,11 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC"
+            "notAvailableToProgramme": "BCG, CSC, CSEC",
+            "recommendationTags": [
+                "software-engineering",
+                "project-management"
+            ]
         },
         {
             "code": "CE3005",
@@ -11659,7 +11772,10 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, MACS"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, MACS",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CE3006",
@@ -11673,7 +11789,10 @@
             "latestYear": "2022",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC"
+            "notAvailableToProgramme": "BCG, CSC, CSEC",
+            "recommendationTags": [
+                "signal-processing"
+            ]
         },
         {
             "code": "CE3007",
@@ -11687,7 +11806,10 @@
             "latestYear": "2022",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEEC, IEEC, IEM",
+            "recommendationTags": [
+                "signal-processing"
+            ]
         },
         {
             "code": "CE3102",
@@ -11700,7 +11822,8 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1"
+            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1",
+            "recommendationTags": []
         },
         {
             "code": "CE3103",
@@ -11714,7 +11837,11 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, DSAI, MACS"
+            "notAvailableToProgramme": "BCG, DSAI, MACS",
+            "recommendationTags": [
+                "programming",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE4001",
@@ -11727,7 +11854,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "CE4002",
@@ -11741,7 +11871,11 @@
             ],
             "latestYear": "2017",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science",
+                "computer-graphics"
+            ]
         },
         {
             "code": "CE4003",
@@ -11756,7 +11890,12 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "EEE, EEEC, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "EEE, EEEC, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
         },
         {
             "code": "CE4004",
@@ -11769,7 +11908,11 @@
             ],
             "latestYear": "2017",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CE4010",
@@ -11782,7 +11925,11 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
         },
         {
             "code": "CE4011",
@@ -11795,7 +11942,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "parallel-computing"
+            ]
         },
         {
             "code": "CE4013",
@@ -11808,7 +11958,11 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems"
+            ]
         },
         {
             "code": "CE4015",
@@ -11821,7 +11975,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CE4016",
@@ -11834,7 +11991,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CE4021",
@@ -11847,7 +12007,10 @@
             ],
             "latestYear": "2019",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CE4022",
@@ -11860,7 +12023,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CE4023",
@@ -11874,7 +12040,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CE4024",
@@ -11887,7 +12056,11 @@
             ],
             "latestYear": "2020",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
         },
         {
             "code": "CE4031",
@@ -11900,7 +12073,11 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "CE4032",
@@ -11913,7 +12090,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "CE4034",
@@ -11926,7 +12106,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "information-retrieval"
+            ]
         },
         {
             "code": "CE4041",
@@ -11939,7 +12122,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CE4042",
@@ -11953,7 +12139,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CE4045",
@@ -11967,7 +12156,11 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "ai-ml",
+                "natural-language-processing"
+            ]
         },
         {
             "code": "CE4046",
@@ -11980,7 +12173,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CE4051",
@@ -11993,7 +12189,10 @@
             ],
             "latestYear": "2017",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE4052",
@@ -12007,7 +12206,12 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, MACS"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, MACS",
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems",
+                "cloud-computing"
+            ]
         },
         {
             "code": "CE4053",
@@ -12020,7 +12224,11 @@
             ],
             "latestYear": "2017",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "operating-systems",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE4054",
@@ -12033,7 +12241,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CE4055",
@@ -12045,7 +12256,11 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security",
+                "cyber-physical-systems"
+            ]
         },
         {
             "code": "CE4056",
@@ -12057,7 +12272,10 @@
             ],
             "latestYear": "2019",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "cyber-physical-systems"
+            ]
         },
         {
             "code": "CE4057",
@@ -12069,7 +12287,10 @@
             ],
             "latestYear": "2019",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "cyber-physical-systems"
+            ]
         },
         {
             "code": "CE4062",
@@ -12083,7 +12304,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CE4064",
@@ -12097,7 +12321,10 @@
             "latestYear": "2024",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CE4065",
@@ -12111,7 +12338,11 @@
             "latestYear": "2018",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ASEC, BEEC, BIE, BMS, BS, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSEC, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ASEC, BEEC, BIE, BMS, BS, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSEC, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP, SOC, SSM",
+            "recommendationTags": [
+                "computer-security",
+                "digital-forensics"
+            ]
         },
         {
             "code": "CE4067",
@@ -12123,7 +12354,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CE4068",
@@ -12137,7 +12371,11 @@
             "latestYear": "2019",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSC, CSEC, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, REP(ASEN) 4, REP(BIE) 4, REP(CBE) 4, REP(CSC) 4, REP(CVEN) 4, REP(EEE) 4, REP(ENE) 4, REP(MAT) 4, REP(ME) 4, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSC, CSEC, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, REP(ASEN) 4, REP(BIE) 4, REP(CBE) 4, REP(CSC) 4, REP(CVEN) 4, REP(EEE) 4, REP(ENE) 4, REP(MAT) 4, REP(ME) 4, SCED, SOC, SSM",
+            "recommendationTags": [
+                "web-development",
+                "computer-security"
+            ]
         },
         {
             "code": "CE4069",
@@ -12151,7 +12389,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-security",
+                "malware-analysis"
+            ]
         },
         {
             "code": "CE4070",
@@ -12165,7 +12407,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, REP(CSC)"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, REP(CSC)",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CE4071",
@@ -12178,7 +12423,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CE4073",
@@ -12191,7 +12439,10 @@
             ],
             "latestYear": "2019",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "CE4123",
@@ -12203,7 +12454,12 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "database",
+                "data-science"
+            ]
         },
         {
             "code": "CE4153",
@@ -12230,7 +12486,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-network",
+                "internet-of-things"
+            ]
         },
         {
             "code": "CE4172",
@@ -12243,7 +12503,12 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network",
+                "ai-ml",
+                "internet-of-things"
+            ]
         },
         {
             "code": "CE5008",
@@ -12256,7 +12521,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CE8003",
@@ -12284,7 +12552,11 @@
             ],
             "latestYear": "2016",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "programming",
+                "web-development"
+            ]
         },
         {
             "code": "CE9002",
@@ -12298,7 +12570,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "CE9003",
@@ -12312,7 +12587,8 @@
             ],
             "latestYear": "2014",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": []
         },
         {
             "code": "CE9004",
@@ -12327,7 +12603,10 @@
             "latestYear": "2015",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "Java or C++ introductory programme course."
+            "notAvailableToProgramme": "Java or C++ introductory programme course.",
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "CE9010",
@@ -12341,7 +12620,10 @@
             ],
             "latestYear": "2020",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "CH0491",
@@ -14501,7 +14783,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CPE184",
@@ -14514,7 +14799,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG, CE(2011-onwards), CSC, MAT"
+            "notAvailableToProgramme": "BCE, BCG, CE(2011-onwards), CSC, MAT",
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CPE205",
@@ -14527,7 +14815,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "operating-systems"
+            ]
         },
         {
             "code": "CPE206",
@@ -14540,7 +14831,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CPE207",
@@ -14553,7 +14847,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "CPE208",
@@ -14566,7 +14863,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CPE279",
@@ -14578,7 +14878,11 @@
             ],
             "latestYear": "2014",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "software-engineering",
+                "project-management"
+            ]
         },
         {
             "code": "CPE301",
@@ -14591,7 +14895,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "signal-processing"
+            ]
         },
         {
             "code": "CPE302",
@@ -14604,7 +14911,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CPE303",
@@ -14617,7 +14927,11 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "CPE401",
@@ -14631,7 +14945,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CPE402",
@@ -14645,7 +14962,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CPE412",
@@ -14659,7 +14979,12 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
         },
         {
             "code": "CPE413",
@@ -14673,7 +14998,11 @@
             "latestYear": "2015",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
         },
         {
             "code": "CPE416",
@@ -14688,7 +15017,11 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems"
+            ]
         },
         {
             "code": "CPE422",
@@ -14702,7 +15035,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CPE423",
@@ -14716,7 +15052,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "parallel-computing"
+            ]
         },
         {
             "code": "CPE428",
@@ -14730,7 +15069,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CPE433",
@@ -14743,7 +15085,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CPE480",
@@ -14756,7 +15101,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "CPE481",
@@ -14769,7 +15117,11 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CPE482",
@@ -14782,7 +15134,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CPE483",
@@ -14795,7 +15150,11 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "software-engineering",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CPE484",
@@ -14808,7 +15167,11 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "operating-systems",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CPE485",
@@ -14821,7 +15184,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "CPE486",
@@ -14834,7 +15200,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CPE487",
@@ -14847,7 +15216,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CPE489",
@@ -14859,7 +15231,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "CPE490",
@@ -14872,7 +15247,11 @@
             ],
             "latestYear": "2016",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "CPE491",
@@ -14885,7 +15264,11 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics",
+                "signal-processing"
+            ]
         },
         {
             "code": "CS0102",
@@ -17699,7 +18082,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CSC184",
@@ -17713,7 +18099,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCG(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CSC202",
@@ -17726,7 +18115,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CSC204",
@@ -17739,7 +18131,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "CSC205",
@@ -17752,7 +18147,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "operating-systems"
+            ]
         },
         {
             "code": "CSC206",
@@ -17765,7 +18163,11 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "CSC207",
@@ -17778,7 +18180,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "CSC301",
@@ -17792,7 +18197,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "CSC302",
@@ -17805,7 +18213,11 @@
             ],
             "latestYear": "2015",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "web-development",
+                "computer-network"
+            ]
         },
         {
             "code": "CSC303",
@@ -17817,7 +18229,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "CSC304",
@@ -17830,7 +18245,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CSC401",
@@ -17844,7 +18262,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CSC402",
@@ -17858,7 +18279,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CSC408",
@@ -17872,7 +18296,12 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
         },
         {
             "code": "CSC409",
@@ -17886,7 +18315,11 @@
             "latestYear": "2015",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
         },
         {
             "code": "CSC411",
@@ -17901,7 +18334,11 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems"
+            ]
         },
         {
             "code": "CSC415",
@@ -17915,7 +18352,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "information-retrieval"
+            ]
         },
         {
             "code": "CSC416",
@@ -17929,7 +18369,10 @@
             "latestYear": "2015",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CSC419",
@@ -17943,7 +18386,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CSC421",
@@ -17957,7 +18403,11 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml",
+                "natural-language-processing"
+            ]
         },
         {
             "code": "CSC422",
@@ -17971,7 +18421,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CSC423",
@@ -17985,7 +18438,10 @@
             "latestYear": "2016",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "parallel-computing"
+            ]
         },
         {
             "code": "CSC425",
@@ -18000,7 +18456,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)"
+            "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
+            "recommendationTags": [
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CSC480",
@@ -18013,7 +18472,10 @@
             ],
             "latestYear": "2014",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "CSC481",
@@ -18026,7 +18488,11 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CSC486",
@@ -18039,7 +18505,10 @@
             ],
             "latestYear": "2015",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CSC487",
@@ -18052,7 +18521,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CSC489",
@@ -18065,7 +18537,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "CSC490",
@@ -18078,7 +18553,11 @@
             ],
             "latestYear": "2015",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "CT2001",
@@ -18247,7 +18726,10 @@
             "latestYear": "2019",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "CEE 3(2016)(Non Direct Entry), CEE 3(2017)(Direct Entry), ENE 3(2016)(Non Direct Entry), ENE 3(2017)(Direct Entry)"
+            "notAvailableToProgramme": "CEE 3(2016)(Non Direct Entry), CEE 3(2017)(Direct Entry), ENE 3(2016)(Non Direct Entry), ENE 3(2017)(Direct Entry)",
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CV0003",
@@ -19111,7 +19593,10 @@
             "latestYear": "2018",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCG(2004-2010), CSC(2004-2010)"
+            "notAvailableToProgramme": "BCG(2004-2010), CSC(2004-2010)",
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CZ0002",
@@ -19126,7 +19611,10 @@
             "latestYear": "2014",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2004-2010), CE, CSC(2004-2010)"
+            "notAvailableToProgramme": "BCE, BCG(2004-2010), CE, CSC(2004-2010)",
+            "recommendationTags": [
+                "sustainability-computing"
+            ]
         },
         {
             "code": "CZ1002",
@@ -19141,7 +19629,11 @@
             "latestYear": "2015",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2004-2010), CE, CEEC, CSC(2004-2010)"
+            "notAvailableToProgramme": "BCE, BCG(2004-2010), CE, CEEC, CSC(2004-2010)",
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
         },
         {
             "code": "CZ1003",
@@ -19156,7 +19648,8 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "AERO(2018-onwards)(Non Direct Entry), AERO(2019-onwards)(Direct Entry), ASEC(2018-onwards), BCE, BEEC(2018-onwards), BIE(2018-onwards)(Non Direct Entry), BIE(2019-onwards)(Direct Entry), BMS(2018-onwards), BS(2018-onwards), BSB(2018-onwards), BSPY(2018-onwards), CBE(2018-onwards)(Non Direct Entry), CBE(2019-onwards)(Direct Entry), CBEC(2018-onwards), CE, CEE(2018-onwards)(Non Direct Entry), CEE(2019-onwards)(Direct Entry), CEEC, CHEM(2018-onwards), CSEC(2018-onwards), CVEC(2018-onwards), EEE(2018-onwards)(Non Direct Entry), EEE(2019-onwards)(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)"
+            "notAvailableToProgramme": "AERO(2018-onwards)(Non Direct Entry), AERO(2019-onwards)(Direct Entry), ASEC(2018-onwards), BCE, BEEC(2018-onwards), BIE(2018-onwards)(Non Direct Entry), BIE(2019-onwards)(Direct Entry), BMS(2018-onwards), BS(2018-onwards), BSB(2018-onwards), BSPY(2018-onwards), CBE(2018-onwards)(Non Direct Entry), CBE(2019-onwards)(Direct Entry), CBEC(2018-onwards), CE, CEE(2018-onwards)(Non Direct Entry), CEE(2019-onwards)(Direct Entry), CEEC, CHEM(2018-onwards), CSEC(2018-onwards), CVEC(2018-onwards), EEE(2018-onwards)(Non Direct Entry), EEE(2019-onwards)(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)",
+            "recommendationTags": []
         },
         {
             "code": "CZ1004",
@@ -19170,7 +19663,11 @@
             "latestYear": "2017",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2004-2010), CE, CEEC, CSC(2004-2010)"
+            "notAvailableToProgramme": "BCE, BCG(2004-2010), CE, CEEC, CSC(2004-2010)",
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
         },
         {
             "code": "CZ1005",
@@ -19185,7 +19682,11 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC"
+            "notAvailableToProgramme": "BCE, CE, CEEC",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
         },
         {
             "code": "CZ1006",
@@ -19200,7 +19701,10 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM"
+            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "CZ1007",
@@ -19215,7 +19719,10 @@
             "latestYear": "2020",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2020-onwards), CE, CEEC, CSC(2020-onwards), CSEC(2020-onwards), DSAI(2020-onwards), EEE, EEEC, IEEC, IEM, MACS(2020-onwards), REP(CE), REP(CSC) 2(2019-onwards)"
+            "notAvailableToProgramme": "BCE, BCG(2020-onwards), CE, CEEC, CSC(2020-onwards), CSEC(2020-onwards), DSAI(2020-onwards), EEE, EEEC, IEEC, IEM, MACS(2020-onwards), REP(CE), REP(CSC) 2(2019-onwards)",
+            "recommendationTags": [
+                "data-structures"
+            ]
         },
         {
             "code": "CZ1008",
@@ -19228,7 +19735,10 @@
             "latestYear": "2017",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2004-2010), BCG(2015-onwards), CE, CEEC, CSC(2004-2010), CSC(2015-onwards)"
+            "notAvailableToProgramme": "BCE, BCG(2004-2010), BCG(2015-onwards), CE, CEEC, CSC(2004-2010), CSC(2015-onwards)",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CZ1011",
@@ -19242,7 +19752,10 @@
             "latestYear": "2020",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, ENG, IEM, MATH, PHY"
+            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, ENG, IEM, MATH, PHY",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CZ1012",
@@ -19256,7 +19769,10 @@
             "latestYear": "2020",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, ENG, IEM, MATH, PHY"
+            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, ENG, IEM, MATH, PHY",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CZ1013",
@@ -19268,7 +19784,8 @@
             ],
             "latestYear": "2019",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": []
         },
         {
             "code": "CZ1015",
@@ -19280,7 +19797,11 @@
             ],
             "latestYear": "2019",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml",
+                "data-science"
+            ]
         },
         {
             "code": "CZ1016",
@@ -19307,7 +19828,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BEEC, BIE, CBE, CBEC, CE, CEEC, EEE(2018-onwards)(Non Direct Entry), EEE(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(IMS), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MEEC(DES)(2018-onwards), MEEC(RMS)(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)"
+            "notAvailableToProgramme": "BCE, BEEC, BIE, CBE, CBEC, CE, CEEC, EEE(2018-onwards)(Non Direct Entry), EEE(Direct Entry), EEEC(2018-onwards), EESS(2018-onwards), ENE(2018-onwards)(Non Direct Entry), ENE(2019-onwards)(Direct Entry), ENEC(2018-onwards), ENG(2018-onwards), ENG(CEE)(2018-onwards), ENG(EEE)(2018-onwards), ENG(ENE)(2018-onwards), ENG(ME)(2018-onwards), ESPP(2018-onwards), IEEC(2018-onwards), IEM(2018-onwards)(Non Direct Entry), IEM(2019-onwards)(Direct Entry), MAEO(2018-onwards), MAT(2018-onwards)(Non Direct Entry), MAT(2019-onwards)(Direct Entry), MATH(2018-onwards), ME(2018-onwards)(Non Direct Entry), ME(2019-onwards)(Direct Entry), ME(DES)(2018-onwards)(Non Direct Entry), ME(DES)(2019-onwards)(Direct Entry), ME(IMS), ME(RMS)(2018-onwards)(Non Direct Entry), ME(RMS)(2019-onwards)(Direct Entry), MEEC(2018-onwards), MEEC(DES)(2018-onwards), MEEC(RMS)(2018-onwards), MS(2018-onwards), MS-2ndMaj/Spec(MSB)(2018-onwards), MTEC(2018-onwards), PHY(2018-onwards), REP(2018-onwards)",
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "CZ1104",
@@ -19320,7 +19844,10 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACDA, BCE, CE, CEEC, DSAI, ECDS, EEE, EEEC, ENG(EEE), IEM, MACS, MATH, PHY"
+            "notAvailableToProgramme": "ACDA, BCE, CE, CEEC, DSAI, ECDS, EEE, EEEC, ENG(EEE), IEM, MACS, MATH, PHY",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CZ1105",
@@ -19335,7 +19862,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BUS(BA), BUS(IT), CE, CEEC, EEE, EEE 1, EEEC, ENE(Direct Entry), ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "BCE, BUS(BA), BUS(IT), CE, CEEC, EEE, EEE 1, EEEC, ENE(Direct Entry), ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
         },
         {
             "code": "CZ1106",
@@ -19348,7 +19879,10 @@
             "latestYear": "2024",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM"
+            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "CZ1107",
@@ -19363,7 +19897,11 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2011-2019), CE, CEEC, CSC(2011-2019), CSEC(2011-2019), DSAI(2019), EEE, EEEC, IEEC, IEM, MACS(2019), REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CSC)(2011-2018), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "BCE, BCG(2011-2019), CE, CEEC, CSC(2011-2019), CSEC(2011-2019), DSAI(2019), EEE, EEEC, IEEC, IEM, MACS(2019), REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CSC)(2011-2018), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "algorithms",
+                "data-structures"
+            ]
         },
         {
             "code": "CZ1113",
@@ -19376,7 +19914,8 @@
             "latestYear": "2024",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC"
+            "notAvailableToProgramme": "BCE, CE, CEEC",
+            "recommendationTags": []
         },
         {
             "code": "CZ1115",
@@ -19389,7 +19928,11 @@
             "latestYear": "2023",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, DSAI"
+            "notAvailableToProgramme": "BCE, CE, CEEC, DSAI",
+            "recommendationTags": [
+                "ai-ml",
+                "data-science"
+            ]
         },
         {
             "code": "CZ1120",
@@ -19417,7 +19960,10 @@
             "latestYear": "2021",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM, REP(CE)"
+            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM, REP(CE)",
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CZ2002",
@@ -19432,7 +19978,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM, REP(CE)"
+            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM, REP(CE)",
+            "recommendationTags": [
+                "software-engineering",
+                "programming"
+            ]
         },
         {
             "code": "CZ2003",
@@ -19446,7 +19996,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC"
+            "notAvailableToProgramme": "BCE, CE, CEEC",
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "CZ2004",
@@ -19461,7 +20014,11 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE"
+            "notAvailableToProgramme": "BCE, CE",
+            "recommendationTags": [
+                "frontend-engineering",
+                "human-computer-interaction"
+            ]
         },
         {
             "code": "CZ2005",
@@ -19476,7 +20033,10 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC"
+            "notAvailableToProgramme": "BCE, CE, CEEC",
+            "recommendationTags": [
+                "operating-systems"
+            ]
         },
         {
             "code": "CZ2006",
@@ -19491,7 +20051,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "BCE, CE, CEEC, EEE, EEEC, IEEC, IEM, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "CZ2007",
@@ -19506,7 +20069,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG"
+            "notAvailableToProgramme": "BCE, BCG",
+            "recommendationTags": [
+                "database"
+            ]
         },
         {
             "code": "CZ2100",
@@ -19519,7 +20085,10 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, DSAI, MACS"
+            "notAvailableToProgramme": "BCE, CE, CEEC, DSAI, MACS",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "CZ2101",
@@ -19534,7 +20103,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2011-2019), CE, CEEC, CSC(2011-2019), CSEC(2011-2019), DSAI(2011-2019), EEE, EEEC, IEEC, IEM, MACS(2011-2019), REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "BCE, BCG(2011-2019), CE, CEEC, CSC(2011-2019), CSEC(2011-2019), DSAI(2011-2019), EEE, EEEC, IEEC, IEM, MACS(2011-2019), REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CZ3001",
@@ -19547,7 +20119,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "CZ3002",
@@ -19560,7 +20135,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "CZ3003",
@@ -19574,7 +20152,10 @@
             "latestYear": "2022",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG(2020-onwards), CE, CEEC, CSC(2020-onwards)"
+            "notAvailableToProgramme": "BCE, BCG(2020-onwards), CE, CEEC, CSC(2020-onwards)",
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "CZ3004",
@@ -19587,7 +20168,11 @@
             "latestYear": "2024",
             "latestSemester": "S",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG 1, BCG 2, CE, CEEC, CSC 1, CSC 2"
+            "notAvailableToProgramme": "BCE, BCG 1, BCG 2, CE, CEEC, CSC 1, CSC 2",
+            "recommendationTags": [
+                "software-engineering",
+                "project-management"
+            ]
         },
         {
             "code": "CZ3005",
@@ -19600,7 +20185,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CZ3006",
@@ -19615,7 +20203,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC"
+            "notAvailableToProgramme": "BCE, CE, CEEC",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CZ3007",
@@ -19627,7 +20218,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "compiler"
+            ]
         },
         {
             "code": "CZ4001",
@@ -19641,7 +20235,10 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "CZ4002",
@@ -19655,7 +20252,11 @@
             ],
             "latestYear": "2017",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science",
+                "computer-graphics"
+            ]
         },
         {
             "code": "CZ4003",
@@ -19670,7 +20271,12 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "EEE, EEEC, IEEC, IEM, REP(CE)"
+            "notAvailableToProgramme": "EEE, EEEC, IEEC, IEM, REP(CE)",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
         },
         {
             "code": "CZ4004",
@@ -19683,7 +20289,11 @@
             ],
             "latestYear": "2017",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CZ4010",
@@ -19696,7 +20306,11 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
         },
         {
             "code": "CZ4011",
@@ -19709,7 +20323,10 @@
             ],
             "latestYear": "2016",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "parallel-computing"
+            ]
         },
         {
             "code": "CZ4013",
@@ -19723,7 +20340,11 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems"
+            ]
         },
         {
             "code": "CZ4015",
@@ -19736,7 +20357,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "simulation-modelling"
+            ]
         },
         {
             "code": "CZ4016",
@@ -19749,7 +20373,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "CZ4021",
@@ -19762,7 +20389,10 @@
             ],
             "latestYear": "2019",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CZ4022",
@@ -19775,7 +20405,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CZ4023",
@@ -19788,7 +20421,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CZ4024",
@@ -19801,7 +20437,11 @@
             ],
             "latestYear": "2020",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
         },
         {
             "code": "CZ4031",
@@ -19815,7 +20455,11 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "CZ4032",
@@ -19829,7 +20473,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "CZ4033",
@@ -19843,7 +20490,11 @@
             "latestYear": "2016",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ASEC, BEEC, BIE, BMS, BS, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSEC, CVEC, ECON, EEE, EEEC, EESS, ELH, ENE, ENEC, ENG, HIST, IEEC, IEM, LMS, MAEC, MAT, MATH, ME, ME(DES), ME(MEC), MEEC, MEEC(DES), MEEC(MEC), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSY, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ASEC, BEEC, BIE, BMS, BS, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSEC, CVEC, ECON, EEE, EEEC, EESS, ELH, ENE, ENEC, ENG, HIST, IEEC, IEM, LMS, MAEC, MAT, MATH, ME, ME(DES), ME(MEC), MEEC, MEEC(DES), MEEC(MEC), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSY, SOC, SSM",
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "CZ4034",
@@ -19857,7 +20508,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "REP(CE)"
+            "notAvailableToProgramme": "REP(CE)",
+            "recommendationTags": [
+                "information-retrieval"
+            ]
         },
         {
             "code": "CZ4041",
@@ -19871,7 +20525,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO(AMAS), MAEO(NULL), MAEO(PMAS), MAEO(STAT), MAT, MATH(AMAS), MATH(NULL), MATH(PMAS), MATH(STAT), ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO(AMAS), MAEO(NULL), MAEO(PMAS), MAEO(STAT), MAT, MATH(AMAS), MATH(NULL), MATH(PMAS), MATH(STAT), ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CZ4042",
@@ -19885,7 +20542,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO(BA), MAEO(PMAS), MAEO(STAT), MAT, MATH(BA), MATH(PMAS), MATH(STAT), ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO(BA), MAEO(PMAS), MAEO(STAT), MAT, MATH(BA), MATH(PMAS), MATH(STAT), ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CZ4045",
@@ -19899,7 +20559,11 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH 1, MATH 2, MATH 3, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH 1, MATH 2, MATH 3, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "ai-ml",
+                "natural-language-processing"
+            ]
         },
         {
             "code": "CZ4046",
@@ -19913,7 +20577,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "CZ4052",
@@ -19927,7 +20594,12 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)"
+            "notAvailableToProgramme": "BCE, CE, CEEC, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems",
+                "cloud-computing"
+            ]
         },
         {
             "code": "CZ4055",
@@ -19952,7 +20624,10 @@
             ],
             "latestYear": "2019",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "cyber-physical-systems"
+            ]
         },
         {
             "code": "CZ4062",
@@ -19966,7 +20641,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CZ4064",
@@ -19980,7 +20658,10 @@
             "latestYear": "2024",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CZ4065",
@@ -19994,7 +20675,11 @@
             "latestYear": "2018",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ASEC, BEEC, BIE, BMS, BS, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSEC, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ASEC, BEEC, BIE, BMS, BS, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CSEC, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, SOC, SSM",
+            "recommendationTags": [
+                "computer-security",
+                "digital-forensics"
+            ]
         },
         {
             "code": "CZ4067",
@@ -20006,7 +20691,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CZ4068",
@@ -20019,7 +20707,11 @@
             "latestYear": "2024",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, REP(ASEN) 4, REP(BIE) 4, REP(CBE) 4, REP(CE) 4, REP(CVEN) 4, REP(EEE) 4, REP(ENE) 4, REP(MAT) 4, REP(ME) 4, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, REP(ASEN) 4, REP(BIE) 4, REP(CBE) 4, REP(CE) 4, REP(CVEN) 4, REP(EEE) 4, REP(ENE) 4, REP(MAT) 4, REP(ME) 4, SCED, SOC, SSM",
+            "recommendationTags": [
+                "web-development",
+                "computer-security"
+            ]
         },
         {
             "code": "CZ4069",
@@ -20033,7 +20725,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-security",
+                "malware-analysis"
+            ]
         },
         {
             "code": "CZ4070",
@@ -20047,7 +20743,10 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, CE, CEEC, REP(CE)"
+            "notAvailableToProgramme": "BCE, CE, CEEC, REP(CE)",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "CZ4071",
@@ -20061,7 +20760,10 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "CZ4073",
@@ -20075,7 +20777,10 @@
             "latestYear": "2019",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, SCED, SOC, SSM",
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "CZ4123",
@@ -20087,7 +20792,12 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "database",
+                "data-science"
+            ]
         },
         {
             "code": "CZ4124",
@@ -20100,7 +20810,13 @@
             "latestYear": "2025",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, ARED, ASEC, BCE, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CNEL, CNLM, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, ARED, ASEC, BCE, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CNEL, CNLM, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "frontend-engineering",
+                "data-science",
+                "data-visualisation",
+                "computer-graphics"
+            ]
         },
         {
             "code": "CZ4125",
@@ -20139,7 +20855,11 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
+            "recommendationTags": [
+                "computer-network",
+                "internet-of-things"
+            ]
         },
         {
             "code": "CZ5008",
@@ -20152,7 +20872,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "CZ8003",
@@ -42591,7 +43314,10 @@
             "latestYear": "2021",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BCE, BCG, IEEC, IEM, MS(2019-onwards)"
+            "notAvailableToProgramme": "BCE, BCG, IEEC, IEM, MS(2019-onwards)",
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "HW0201",
@@ -47345,7 +48071,8 @@
             "latestYear": "2023",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "BEEC, BIE, CBE, CBEC, ENE(Direct Entry), ENG(CEE)(2011-2019), ENG(EEE)(2011-2019), ENG(ENE)(2011-2019), ENG(ME)(2020-onwards), ENG(NULL)(2011-2019), MAT, ME(2020-onwards)(Non Direct Entry), ME(DES)(2020-onwards)(Non Direct Entry), ME(IMS)(2021-onwards), ME(RMS)(2020-onwards)(Non Direct Entry), MEEC(IMS)(2021-onwards), MTEC"
+            "notAvailableToProgramme": "BEEC, BIE, CBE, CBEC, ENE(Direct Entry), ENG(CEE)(2011-2019), ENG(EEE)(2011-2019), ENG(ENE)(2011-2019), ENG(ME)(2020-onwards), ENG(NULL)(2011-2019), MAT, ME(2020-onwards)(Non Direct Entry), ME(DES)(2020-onwards)(Non Direct Entry), ME(IMS)(2021-onwards), ME(RMS)(2020-onwards)(Non Direct Entry), MEEC(IMS)(2021-onwards), MTEC",
+            "recommendationTags": []
         },
         {
             "code": "MA1008",
@@ -47459,7 +48186,8 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ENE(Direct Entry)"
+            "notAvailableToProgramme": "ENE(Direct Entry)",
+            "recommendationTags": []
         },
         {
             "code": "MA2004",
@@ -47472,7 +48200,8 @@
             "latestYear": "2023",
             "latestSemester": "1",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ENE(Direct Entry), ME(IMS), MEEC(IMS)"
+            "notAvailableToProgramme": "ENE(Direct Entry), ME(IMS), MEEC(IMS)",
+            "recommendationTags": []
         },
         {
             "code": "MA2005",
@@ -47589,7 +48318,8 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ENE(Direct Entry)"
+            "notAvailableToProgramme": "ENE(Direct Entry)",
+            "recommendationTags": []
         },
         {
             "code": "MA2071",
@@ -49087,7 +49817,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "MH1810",
@@ -54310,7 +55043,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "SC1003",
@@ -54325,7 +55061,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "AERO, ASEC, BASA, BEEC, BIE, CBE, CBEC, CHEM, CMED, COMP, EEE, EEEC, EESS, ENE, ENEC, ENG(CEE), ENG(EEE), ENG(ENE), ENG(ME), ENG(NULL), ESPP, IEEC, IEM, MAEO, MAT, MATH, ME, ME(DES), ME(IMS), ME(RMS), MEEC, MEEC(DES), MEEC(IMS), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHMS, PHY, REP, ROBO, SPPE"
+            "notAvailableToProgramme": "AERO, ASEC, BASA, BEEC, BIE, CBE, CBEC, CHEM, CMED, COMP, EEE, EEEC, EESS, ENE, ENEC, ENG(CEE), ENG(EEE), ENG(ENE), ENG(ME), ENG(NULL), ESPP, IEEC, IEM, MAEO, MAT, MATH, ME, ME(DES), ME(IMS), ME(RMS), MEEC, MEEC(DES), MEEC(IMS), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHMS, PHY, REP, ROBO, SPPE",
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "SC1004",
@@ -54338,7 +55077,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACDA, DSAI, ECDS, EEE, EEEC, ENG(EEE), ENG(NULL), IEM, MACS, MAEO, MATH, PHY"
+            "notAvailableToProgramme": "ACDA, DSAI, ECDS, EEE, EEEC, ENG(EEE), ENG(NULL), IEM, MACS, MAEO, MATH, PHY",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "SC1005",
@@ -54353,7 +55095,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "BUS(BA), EEE, EEE 1, EEEC, ENE(Direct Entry), ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "BUS(BA), EEE, EEE 1, EEEC, ENE(Direct Entry), ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
         },
         {
             "code": "SC1006",
@@ -54368,7 +55114,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "SC1007",
@@ -54383,7 +55132,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "EEE, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "algorithms",
+                "data-structures"
+            ]
         },
         {
             "code": "SC1008",
@@ -54395,7 +55148,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "SC1013",
@@ -54407,7 +55163,8 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": []
         },
         {
             "code": "SC1015",
@@ -54420,7 +55177,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACDA(2024-onwards), BCE(2024-onwards), BCG(2024-onwards), CE(2024-onwards), CEEC(2024-onwards), CSC(2024-onwards), CSEC(2024-onwards), DSAI(2024-onwards), ECDS(2025-onwards)"
+            "notAvailableToProgramme": "ACDA(2024-onwards), BCE(2024-onwards), BCG(2024-onwards), CE(2024-onwards), CEEC(2024-onwards), CSC(2024-onwards), CSEC(2024-onwards), DSAI(2024-onwards), ECDS(2025-onwards)",
+            "recommendationTags": [
+                "ai-ml",
+                "data-science"
+            ]
         },
         {
             "code": "SC1104",
@@ -54432,7 +55193,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "SC1123",
@@ -54468,7 +55232,8 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": []
         },
         {
             "code": "SC1302",
@@ -54480,7 +55245,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ethics"
+            ]
         },
         {
             "code": "SC1303",
@@ -54492,7 +55260,12 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "programming",
+                "algorithms",
+                "data-structures"
+            ]
         },
         {
             "code": "SC1304",
@@ -54516,7 +55289,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "SC1315",
@@ -54528,7 +55304,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC2000",
@@ -54541,7 +55320,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "SC2001",
@@ -54556,7 +55338,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "SC2002",
@@ -54571,7 +55356,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "EEE, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "software-engineering",
+                "programming"
+            ]
         },
         {
             "code": "SC2005",
@@ -54586,7 +55375,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "CEE 1, EEE 1, ENE 1, ENG(CEE), ENG(EEE), ENG(ENE), ENG(ME), ENG(NULL), ME 1, ME(DES) 1, ME(IDMS) 1, ME(IMS) 1, ME(RMS) 1"
+            "notAvailableToProgramme": "CEE 1, EEE 1, ENE 1, ENG(CEE), ENG(EEE), ENG(ENE), ENG(ME), ENG(NULL), ME 1, ME(DES) 1, ME(IDMS) 1, ME(IMS) 1, ME(RMS) 1",
+            "recommendationTags": [
+                "operating-systems"
+            ]
         },
         {
             "code": "SC2006",
@@ -54601,7 +55393,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM"
+            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL), IEEC, IEM",
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "SC2008",
@@ -54616,7 +55411,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEE 1, ENG(EEE), ENG(NULL)"
+            "notAvailableToProgramme": "EEE, EEE 1, ENG(EEE), ENG(NULL)",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "SC2079",
@@ -54628,7 +55426,11 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "software-engineering",
+                "project-management"
+            ]
         },
         {
             "code": "SC2103",
@@ -54643,7 +55445,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(ME), ENG(NULL), ME, ME 1, ME(DES), ME(DES) 1, ME(IDMS), ME(IMS), ME(IMS) 1, ME(RMS), ME(RMS) 1, MEEC, MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(RMS)"
+            "notAvailableToProgramme": "EEE, EEE 1, EEEC, ENG(EEE), ENG(ME), ENG(NULL), ME, ME 1, ME(DES), ME(DES) 1, ME(IDMS), ME(IMS), ME(IMS) 1, ME(RMS), ME(RMS) 1, MEEC, MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(RMS)",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
         },
         {
             "code": "SC2104",
@@ -54656,7 +55462,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
         },
         {
             "code": "SC2107",
@@ -54670,7 +55479,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL)"
+            "notAvailableToProgramme": "BCG, CSC, CSEC, EEE, EEE 1, EEEC, ENG(EEE), ENG(NULL)",
+            "recommendationTags": [
+                "computer-architecture",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "SC2203",
@@ -54682,7 +55495,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "theory-of-computing"
+            ]
         },
         {
             "code": "SC2207",
@@ -54697,7 +55513,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "BCE, BCG"
+            "notAvailableToProgramme": "BCE, BCG",
+            "recommendationTags": [
+                "database"
+            ]
         },
         {
             "code": "SC2300",
@@ -54709,7 +55528,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC2301",
@@ -54721,7 +55543,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "SC2302",
@@ -54733,7 +55558,11 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "software-engineering",
+                "programming"
+            ]
         },
         {
             "code": "SC2304",
@@ -54748,7 +55577,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, ADMC, AERO, ARED, ASEC, BACF, BASA, BCE, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CE, CEE, CEEC, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CSC, CSEC, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MACS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, ADMC, AERO, ARED, ASEC, BACF, BASA, BCE, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CE, CEE, CEEC, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CSC, CSEC, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MACS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "ai-ml",
+                "ethics"
+            ]
         },
         {
             "code": "SC2306",
@@ -54772,7 +55605,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "SC2500",
@@ -54784,7 +55620,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "math-foundation"
+            ]
         },
         {
             "code": "SC3000",
@@ -54797,7 +55636,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC3010",
@@ -54811,7 +55653,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "BSB"
+            "notAvailableToProgramme": "BSB",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "SC3020",
@@ -54824,7 +55669,11 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
         },
         {
             "code": "SC3021",
@@ -54839,7 +55688,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACDA(2011-2023), BCE(2011-2023), BCG(2011-2023), CE(2011-2023), CEEC(2011-2023), CSC(2011-2023), CSEC(2011-2023), DSAI(2011-2023)"
+            "notAvailableToProgramme": "ACDA(2011-2023), BCE(2011-2023), BCG(2011-2023), CE(2011-2023), CEEC(2011-2023), CSC(2011-2023), CSEC(2011-2023), DSAI(2011-2023)",
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "SC3030",
@@ -54852,7 +55704,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "SC3040",
@@ -54865,7 +55720,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "software-engineering"
+            ]
         },
         {
             "code": "SC3050",
@@ -54878,7 +55736,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "computer-architecture"
+            ]
         },
         {
             "code": "SC3060",
@@ -54891,7 +55752,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "SC3061",
@@ -54904,7 +55768,11 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "frontend-engineering",
+                "human-computer-interaction"
+            ]
         },
         {
             "code": "SC3098",
@@ -54928,7 +55796,13 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "software-engineering",
+                "backend-engineering",
+                "frontend-engineering",
+                "project-management"
+            ]
         },
         {
             "code": "SC3102",
@@ -54941,7 +55815,8 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1"
+            "notAvailableToProgramme": "BCG, CEE 1, CSC, CSEC, EEE, EEE 1, EEEC, ENE 1, ENG, ME 1",
+            "recommendationTags": []
         },
         {
             "code": "SC3103",
@@ -54955,7 +55830,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "BCG, DSAI, MACS"
+            "notAvailableToProgramme": "BCG, DSAI, MACS",
+            "recommendationTags": [
+                "programming",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "SC3270",
@@ -54969,7 +55848,12 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, AISC, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAT, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, AISC, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAT, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "software-engineering",
+                "programming",
+                "theory-of-computing"
+            ]
         },
         {
             "code": "SC4000",
@@ -54982,7 +55866,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC4001",
@@ -54996,7 +55883,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO(BA), MAEO(PMAS), MAEO(STAT), MAT, MATH(BA), MATH(PMAS), MATH(STAT), ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CEEC, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO(BA), MAEO(PMAS), MAEO(STAT), MAT, MATH(BA), MATH(PMAS), MATH(STAT), ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC4002",
@@ -55010,7 +55900,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH 1, MATH 2, MATH 3, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH 1, MATH 2, MATH 3, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "ai-ml",
+                "natural-language-processing"
+            ]
         },
         {
             "code": "SC4003",
@@ -55024,7 +55918,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC4010",
@@ -55038,7 +55935,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "BASA, CMED, COMP, SPPE"
+            "notAvailableToProgramme": "BASA, CMED, COMP, SPPE",
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
         },
         {
             "code": "SC4011",
@@ -55052,7 +55953,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "SC4012",
@@ -55066,7 +55970,10 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "SC4013",
@@ -55080,7 +55987,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, REP(ASEN) 4, REP(BIE) 4, REP(CBE) 4, REP(CVEN) 4, REP(EEE) 4, REP(ENE) 4, REP(MAT) 4, REP(ME) 4, ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, REP(ASEN) 4, REP(BIE) 4, REP(CBE) 4, REP(CVEN) 4, REP(EEE) 4, REP(ENE) 4, REP(MAT) 4, REP(ME) 4, ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "web-development",
+                "computer-security"
+            ]
         },
         {
             "code": "SC4014",
@@ -55094,7 +56005,11 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "computer-security",
+                "malware-analysis"
+            ]
         },
         {
             "code": "SC4015",
@@ -55108,7 +56023,11 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "computer-security",
+                "cyber-physical-systems"
+            ]
         },
         {
             "code": "SC4016",
@@ -55121,7 +56040,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "SC4017",
@@ -55134,7 +56056,11 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "computer-security",
+                "privacy"
+            ]
         },
         {
             "code": "SC4020",
@@ -55147,7 +56073,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "SC4021",
@@ -55160,7 +56089,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "information-retrieval"
+            ]
         },
         {
             "code": "SC4022",
@@ -55174,7 +56106,10 @@
             "latestYear": "2024",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "SC4023",
@@ -55188,7 +56123,12 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "backend-engineering",
+                "database",
+                "data-science"
+            ]
         },
         {
             "code": "SC4024",
@@ -55202,7 +56142,13 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "frontend-engineering",
+                "data-science",
+                "data-visualisation",
+                "computer-graphics"
+            ]
         },
         {
             "code": "SC4025",
@@ -55214,7 +56160,11 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "data-science",
+                "product-management"
+            ]
         },
         {
             "code": "SC4030",
@@ -55227,7 +56177,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "computer-network"
+            ]
         },
         {
             "code": "SC4031",
@@ -55241,7 +56194,11 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "computer-network",
+                "internet-of-things"
+            ]
         },
         {
             "code": "SC4040",
@@ -55254,7 +56211,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "algorithms"
+            ]
         },
         {
             "code": "SC4050",
@@ -55267,7 +56227,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "parallel-computing"
+            ]
         },
         {
             "code": "SC4051",
@@ -55280,7 +56243,11 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems"
+            ]
         },
         {
             "code": "SC4052",
@@ -55293,7 +56260,12 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems",
+                "cloud-computing"
+            ]
         },
         {
             "code": "SC4053",
@@ -55307,7 +56279,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM"
+            "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationTags": [
+                "computer-security",
+                "distributed-systems"
+            ]
         },
         {
             "code": "SC4054",
@@ -55320,7 +56296,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "simulation-modelling"
+            ]
         },
         {
             "code": "SC4055",
@@ -55333,7 +56312,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "quantum-computing"
+            ]
         },
         {
             "code": "SC4060",
@@ -55346,7 +56328,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-graphics"
+            ]
         },
         {
             "code": "SC4061",
@@ -55360,7 +56345,12 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "EEE, EEEC, IEEC, IEM"
+            "notAvailableToProgramme": "EEE, EEEC, IEEC, IEM",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
         },
         {
             "code": "SC4062",
@@ -55373,7 +56363,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC4063",
@@ -55385,7 +56378,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-security"
+            ]
         },
         {
             "code": "SC4064",
@@ -55397,7 +56393,12 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "programming",
+                "parallel-computing",
+                "hardware-embedded"
+            ]
         },
         {
             "code": "SC4090",
@@ -55422,7 +56423,13 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "computer-network",
+                "ai-ml",
+                "hardware-embedded",
+                "internet-of-things"
+            ]
         },
         {
             "code": "SC4242",
@@ -55435,7 +56442,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "1",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "compiler"
+            ]
         },
         {
             "code": "SC5001",
@@ -55449,7 +56459,10 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "programming"
+            ]
         },
         {
             "code": "SC5002",
@@ -55463,7 +56476,10 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "ai-ml"
+            ]
         },
         {
             "code": "SC5005",
@@ -55477,7 +56493,11 @@
             ],
             "latestYear": "2025",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "ai-ml",
+                "natural-language-processing"
+            ]
         },
         {
             "code": "SC5006",
@@ -55491,7 +56511,12 @@
             ],
             "latestYear": "2026",
             "latestSemester": "1",
-            "isCurrentSemester": true
+            "isCurrentSemester": true,
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
         },
         {
             "code": "SC5008",
@@ -55505,7 +56530,10 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "Year 3 standing and above"
+            "notAvailableToProgramme": "Year 3 standing and above",
+            "recommendationTags": [
+                "professional-skills"
+            ]
         },
         {
             "code": "SC5010",
@@ -55519,7 +56547,10 @@
             ],
             "latestYear": "2024",
             "latestSemester": "2",
-            "isCurrentSemester": false
+            "isCurrentSemester": false,
+            "recommendationTags": [
+                "data-science"
+            ]
         },
         {
             "code": "SC5401",
@@ -55533,7 +56564,11 @@
             "latestYear": "2026",
             "latestSemester": "1",
             "isCurrentSemester": true,
-            "notAvailableToProgramme": "Must be a Turing AI Scholar"
+            "notAvailableToProgramme": "Must be a Turing AI Scholar",
+            "recommendationTags": [
+                "ai-ml",
+                "theory-of-computing"
+            ]
         },
         {
             "code": "SC5404",
@@ -55547,7 +56582,11 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
-            "notAvailableToProgramme": "Must be a Turing AI Scholar"
+            "notAvailableToProgramme": "Must be a Turing AI Scholar",
+            "recommendationTags": [
+                "software-engineering",
+                "programming"
+            ]
         },
         {
             "code": "SP0001",

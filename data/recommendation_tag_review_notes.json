@@ -1,0 +1,959 @@
+{
+    "scope": "Only modules with faculty CE or CSC were considered.",
+    "reason": "These modules did not have a usable description in data/course_catalog.json or data/modules.json, so recommendationTags were assigned from title/code only and should be manually reviewed.",
+    "modules": [
+        {
+            "code": "CE0001",
+            "title": "Engineers & Society",
+            "faculty": "CE",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CE0002",
+            "title": "Green Computing",
+            "faculty": "CE",
+            "recommendationTags": [
+                "sustainability-computing"
+            ]
+        },
+        {
+            "code": "CE1002",
+            "title": "Introduction To Computing Systems (M)",
+            "faculty": "CE",
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
+        },
+        {
+            "code": "CE1003",
+            "title": "Introduction To Computational Thinking",
+            "faculty": "CE",
+            "recommendationTags": []
+        },
+        {
+            "code": "CE1004",
+            "title": "Introduction To Computing Systems",
+            "faculty": "CE",
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
+        },
+        {
+            "code": "CE1005",
+            "title": "Digital Logic",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
+        },
+        {
+            "code": "CE1006",
+            "title": "Computer Organisation & Architecture",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
+        },
+        {
+            "code": "CE1007",
+            "title": "Data Structures",
+            "faculty": "CE",
+            "recommendationTags": [
+                "data-structures"
+            ]
+        },
+        {
+            "code": "CE1008",
+            "title": "Engineering Mathematics",
+            "faculty": "CE",
+            "recommendationTags": [
+                "math-foundation"
+            ]
+        },
+        {
+            "code": "CE1011",
+            "title": "Engineering Mathematics I",
+            "faculty": "CE",
+            "recommendationTags": [
+                "math-foundation"
+            ]
+        },
+        {
+            "code": "CE1012",
+            "title": "Engineering Mathematics Ii",
+            "faculty": "CE",
+            "recommendationTags": [
+                "math-foundation"
+            ]
+        },
+        {
+            "code": "CE1013",
+            "title": "Physics For Computing",
+            "faculty": "CE",
+            "recommendationTags": []
+        },
+        {
+            "code": "CE1015",
+            "title": "Introduction To Data Science & Artificial Intelligence",
+            "faculty": "CE",
+            "recommendationTags": [
+                "ai-ml",
+                "data-science"
+            ]
+        },
+        {
+            "code": "CE2004",
+            "title": "Circuits & Signal Analysis",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CE2007",
+            "title": "Microprocessor-Based Systems Design",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-architecture",
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CE3003",
+            "title": "Microcontroller Programming",
+            "faculty": "CE",
+            "recommendationTags": [
+                "programming",
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CE4002",
+            "title": "Visual Information Processing & Management",
+            "faculty": "CE",
+            "recommendationTags": [
+                "data-science",
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "CE4004",
+            "title": "3D Modelling & Animation",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
+        },
+        {
+            "code": "CE4051",
+            "title": "Embedded Systems Design",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CE4053",
+            "title": "Embedded Operating Systems",
+            "faculty": "CE",
+            "recommendationTags": [
+                "operating-systems",
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CE4054",
+            "title": "Programmable System-On-Chip",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CE5008",
+            "title": "Decode The Industry: Insights & Skills For Career Success",
+            "faculty": "CE",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CE9001",
+            "title": "Java And The Internet",
+            "faculty": "CE",
+            "recommendationTags": [
+                "programming",
+                "web-development"
+            ]
+        },
+        {
+            "code": "CE9002",
+            "title": "How Computers Work",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
+        },
+        {
+            "code": "CE9003",
+            "title": "Applying It",
+            "faculty": "CE",
+            "recommendationTags": []
+        },
+        {
+            "code": "CE9004",
+            "title": "Reasoning With Objects",
+            "faculty": "CE",
+            "recommendationTags": [
+                "programming"
+            ]
+        },
+        {
+            "code": "CE9010",
+            "title": "Introduction To Data Analysis",
+            "faculty": "CE",
+            "recommendationTags": [
+                "data-science"
+            ]
+        },
+        {
+            "code": "CPE183",
+            "title": "Engineers And Society",
+            "faculty": "CE",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CPE184",
+            "title": "Human Resource Management & Entrepreneurship",
+            "faculty": "CE",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CPE205",
+            "title": "Operating Systems",
+            "faculty": "CE",
+            "recommendationTags": [
+                "operating-systems"
+            ]
+        },
+        {
+            "code": "CPE206",
+            "title": "Microcontroller Systems Design",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CPE207",
+            "title": "Software Engineering",
+            "faculty": "CE",
+            "recommendationTags": [
+                "software-engineering"
+            ]
+        },
+        {
+            "code": "CPE208",
+            "title": "Instrumentation And Data Acquisition",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CPE279",
+            "title": "Design & Development Project",
+            "faculty": "CE",
+            "recommendationTags": [
+                "software-engineering",
+                "project-management"
+            ]
+        },
+        {
+            "code": "CPE301",
+            "title": "Digital Communications",
+            "faculty": "CE",
+            "recommendationTags": [
+                "signal-processing"
+            ]
+        },
+        {
+            "code": "CPE302",
+            "title": "Computer Networks",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CPE303",
+            "title": "Database Systems",
+            "faculty": "CE",
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
+        },
+        {
+            "code": "CPE401",
+            "title": "Advanced Algorithms",
+            "faculty": "CE",
+            "recommendationTags": [
+                "algorithms"
+            ]
+        },
+        {
+            "code": "CPE402",
+            "title": "Advanced Computer Networks",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CPE412",
+            "title": "Computer Vision & Image Processing",
+            "faculty": "CE",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "CPE413",
+            "title": "Cryptography And Network Security",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
+        },
+        {
+            "code": "CPE416",
+            "title": "Distributed Systems",
+            "faculty": "CE",
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems"
+            ]
+        },
+        {
+            "code": "CPE422",
+            "title": "Neural Networks",
+            "faculty": "CE",
+            "recommendationTags": [
+                "ai-ml"
+            ]
+        },
+        {
+            "code": "CPE423",
+            "title": "Parallel Processing",
+            "faculty": "CE",
+            "recommendationTags": [
+                "parallel-computing"
+            ]
+        },
+        {
+            "code": "CPE428",
+            "title": "Simulation And Modelling",
+            "faculty": "CE",
+            "recommendationTags": [
+                "simulation-modelling"
+            ]
+        },
+        {
+            "code": "CPE433",
+            "title": "Machine Learning",
+            "faculty": "CE",
+            "recommendationTags": [
+                "ai-ml"
+            ]
+        },
+        {
+            "code": "CPE480",
+            "title": "Virtual & Augmented Reality",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "CPE481",
+            "title": "3D Modelling And Animation",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
+        },
+        {
+            "code": "CPE482",
+            "title": "Embedded Systems Design",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CPE483",
+            "title": "Embedded Software Development",
+            "faculty": "CE",
+            "recommendationTags": [
+                "software-engineering",
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CPE484",
+            "title": "Embedded Operating Systems",
+            "faculty": "CE",
+            "recommendationTags": [
+                "operating-systems",
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CPE485",
+            "title": "Programmable Systems-On-Chip",
+            "faculty": "CE",
+            "recommendationTags": [
+                "hardware-embedded"
+            ]
+        },
+        {
+            "code": "CPE486",
+            "title": "Pervasive Networks",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CPE487",
+            "title": "Personal Mobile Networks",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CPE489",
+            "title": "Data Analytics And Mining",
+            "faculty": "CE",
+            "recommendationTags": [
+                "data-science"
+            ]
+        },
+        {
+            "code": "CPE490",
+            "title": "Advanced Data Management Techniques",
+            "faculty": "CE",
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
+        },
+        {
+            "code": "CPE491",
+            "title": "Visual Media Compression And Processing",
+            "faculty": "CE",
+            "recommendationTags": [
+                "computer-graphics",
+                "signal-processing"
+            ]
+        },
+        {
+            "code": "CSC183",
+            "title": "Engineers And Society",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CSC184",
+            "title": "Human Resource Management & Entrepreneurship",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CSC202",
+            "title": "Algorithms",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "algorithms"
+            ]
+        },
+        {
+            "code": "CSC204",
+            "title": "Computer Graphics And Applications",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "CSC205",
+            "title": "Operating Systems",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "operating-systems"
+            ]
+        },
+        {
+            "code": "CSC206",
+            "title": "Database Systems",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
+        },
+        {
+            "code": "CSC207",
+            "title": "Software Engineering I",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "software-engineering"
+            ]
+        },
+        {
+            "code": "CSC301",
+            "title": "Programming Languages",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "programming"
+            ]
+        },
+        {
+            "code": "CSC302",
+            "title": "Net Centric Computing",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "web-development",
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CSC303",
+            "title": "Software Engineering Ii",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "software-engineering"
+            ]
+        },
+        {
+            "code": "CSC304",
+            "title": "Ai And Intelligent Systems",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml"
+            ]
+        },
+        {
+            "code": "CSC401",
+            "title": "Advanced Algorithms",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "algorithms"
+            ]
+        },
+        {
+            "code": "CSC402",
+            "title": "Advanced Computer Networks",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CSC408",
+            "title": "Computer Vision & Image Processing",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "CSC409",
+            "title": "Cryptography And Network Security",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-security",
+                "cryptography"
+            ]
+        },
+        {
+            "code": "CSC411",
+            "title": "Distributed Computing",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "backend-engineering",
+                "distributed-systems"
+            ]
+        },
+        {
+            "code": "CSC415",
+            "title": "Information Retrieval",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "information-retrieval"
+            ]
+        },
+        {
+            "code": "CSC416",
+            "title": "Intelligent Agents",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml"
+            ]
+        },
+        {
+            "code": "CSC419",
+            "title": "Machine Learning",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml"
+            ]
+        },
+        {
+            "code": "CSC421",
+            "title": "Natural Language Processing",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml",
+                "natural-language-processing"
+            ]
+        },
+        {
+            "code": "CSC422",
+            "title": "Neural Networks",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml"
+            ]
+        },
+        {
+            "code": "CSC423",
+            "title": "Parallel Processing",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "parallel-computing"
+            ]
+        },
+        {
+            "code": "CSC425",
+            "title": "Simulation And Modelling",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "simulation-modelling"
+            ]
+        },
+        {
+            "code": "CSC480",
+            "title": "Virtual & Augmented Reality",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "CSC481",
+            "title": "3D Modelling And Animation",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
+        },
+        {
+            "code": "CSC486",
+            "title": "Pervasive Networks",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CSC487",
+            "title": "Personal Mobile Networks",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-network"
+            ]
+        },
+        {
+            "code": "CSC489",
+            "title": "Data Analytics And Mining",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "data-science"
+            ]
+        },
+        {
+            "code": "CSC490",
+            "title": "Advanced Data Management Techniques",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
+        },
+        {
+            "code": "CV0002",
+            "title": "Engineers & Society",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CZ0001",
+            "title": "Engineers & Society",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "CZ0002",
+            "title": "Green Computing",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "sustainability-computing"
+            ]
+        },
+        {
+            "code": "CZ1002",
+            "title": "Introduction To Computing Systems",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
+        },
+        {
+            "code": "CZ1003",
+            "title": "Introduction To Computational Thinking",
+            "faculty": "CSC",
+            "recommendationTags": []
+        },
+        {
+            "code": "CZ1004",
+            "title": "Introduction To Computing Systems",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "operating-systems",
+                "computer-architecture"
+            ]
+        },
+        {
+            "code": "CZ1005",
+            "title": "Digital Logic",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "hardware-embedded",
+                "digital-logic"
+            ]
+        },
+        {
+            "code": "CZ1006",
+            "title": "Computer Organisation & Architecture",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-architecture"
+            ]
+        },
+        {
+            "code": "CZ1007",
+            "title": "Data Structures",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "data-structures"
+            ]
+        },
+        {
+            "code": "CZ1008",
+            "title": "Engineering Mathematics",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "math-foundation"
+            ]
+        },
+        {
+            "code": "CZ1011",
+            "title": "Engineering Mathematics I",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "math-foundation"
+            ]
+        },
+        {
+            "code": "CZ1012",
+            "title": "Engineering Mathematics Ii",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "math-foundation"
+            ]
+        },
+        {
+            "code": "CZ1013",
+            "title": "Physics For Computing",
+            "faculty": "CSC",
+            "recommendationTags": []
+        },
+        {
+            "code": "CZ1015",
+            "title": "Introduction To Data Science & Artificial Intelligence",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml",
+                "data-science"
+            ]
+        },
+        {
+            "code": "CZ4002",
+            "title": "Visual Information Processing & Management",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "data-science",
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "CZ4004",
+            "title": "3D Modelling & Animation",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "computer-graphics",
+                "simulation-modelling"
+            ]
+        },
+        {
+            "code": "CZ4033",
+            "title": "Advanced Data Management",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "backend-engineering",
+                "database"
+            ]
+        },
+        {
+            "code": "CZ5008",
+            "title": "Decode The Industry: Insights & Skills For Career Success",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "HW0188",
+            "title": "Effective Communication",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "SC2304",
+            "title": "Ethical Artificial Intelligence",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml",
+                "ethics"
+            ]
+        },
+        {
+            "code": "SC4242",
+            "title": "Compiler Techniques",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "compiler"
+            ]
+        },
+        {
+            "code": "SC5001",
+            "title": "Introduction To Computational Thinking & Programming",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "programming"
+            ]
+        },
+        {
+            "code": "SC5002",
+            "title": "Artificial Intelligence Fundamentals & Applications",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml"
+            ]
+        },
+        {
+            "code": "SC5005",
+            "title": "Natural Language Processing, Llms, & Applications",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml",
+                "natural-language-processing"
+            ]
+        },
+        {
+            "code": "SC5006",
+            "title": "Computer Vision & Applications",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml",
+                "computer-vision",
+                "computer-graphics"
+            ]
+        },
+        {
+            "code": "SC5008",
+            "title": "Decode The Industry: Insights & Skills For Career Success",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "professional-skills"
+            ]
+        },
+        {
+            "code": "SC5010",
+            "title": "Introduction To Data Analysis",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "data-science"
+            ]
+        },
+        {
+            "code": "SC5401",
+            "title": "Master Class 1 (Turing On Computability & Intelligence)",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "ai-ml",
+                "theory-of-computing"
+            ]
+        },
+        {
+            "code": "SC5404",
+            "title": "Introduction To Program Synthesis",
+            "faculty": "CSC",
+            "recommendationTags": [
+                "software-engineering",
+                "programming"
+            ]
+        }
+    ]
+}
