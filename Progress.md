@@ -1287,22 +1287,23 @@ Status: Implemented locally
 - Diagnostics return no issues.
 - Confirmed `CE4045` receives no CSC same-faculty boost while `SC4002` and `SC4050` receive the boost.
 
-## Legacy CZ Recommendation Priority
+## Legacy CSC Code Recommendation Priority
 
 Status: Implemented locally
 
 ### Completed
 
-- Added a backend score penalty for legacy `CZ` course codes when the active student faculty is `CSC`.
+- Added backend score penalties for legacy CSC course-code prefixes when the active student faculty is `CSC`.
 - Current `SC` course codes are preferred over legacy `CZ` options for CSC students when both are valid candidates.
-- `CZ` modules remain available as fallback recommendations instead of being hard-filtered out.
-- Recommendation reasons mention when a `CZ` option is being kept as an older-code fallback.
+- Older `CSC`-prefixed course codes are deprioritized even further than `CZ` options.
+- `CZ` and `CSC`-prefixed modules remain available as fallback recommendations instead of being hard-filtered out.
+- Recommendation reasons mention when an older-code option is being kept as a fallback.
 
 ### Rationale Notes
 
-- In the CSC curriculum, `CZ` codes are older course codes while current equivalents generally use `SC`.
+- In the CSC curriculum, `CSC` and `CZ` codes are older course codes while current equivalents generally use `SC`.
 - A CSC student should normally see current `SC` recommendations first.
-- Keeping `CZ` as fallback avoids empty slots if the active catalog lacks enough suitable `SC` options.
+- Keeping older codes as fallback avoids empty slots if the active catalog lacks enough suitable `SC` options.
 
 ### Verified
 
@@ -1311,6 +1312,7 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 - Confirmed `CZ2001` and `CZ2007` receive the CSC legacy-code penalty while `SC4002` and `SC4050` do not.
+- Confirmed `SC4002` receives no legacy-code penalty, `CZ2001` receives a medium legacy-code penalty, and `CSC303` receives the strongest legacy-code penalty.
 
 ## Methodology Handover Review
 

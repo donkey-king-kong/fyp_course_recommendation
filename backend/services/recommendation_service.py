@@ -68,6 +68,8 @@ PREFERENCE_TAG_BOOST = 30
 SAME_FACULTY_BOOST = 8
 # CZ modules are legacy CSC codes; keep them as fallback candidates behind current SC modules.
 CSC_LEGACY_CZ_PENALTY = -40
+# CSC-prefixed module codes are older than CZ in this catalog, so keep them as last-resort fallbacks.
+CSC_LEGACY_CSC_CODE_PENALTY = -80
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -739,7 +741,15 @@ def get_course_code_generation_adjustment(
     module: ModuleModel,
     student_faculty: Optional[str],
 ) -> int:
-    if student_faculty == "CSC" and module.code.upper().startswith("CZ"):
+    if student_faculty != "CSC":
+        return 0
+
+    module_code = module.code.upper()
+
+    if module_code.startswith("CSC"):
+        return CSC_LEGACY_CSC_CODE_PENALTY
+
+    if module_code.startswith("CZ"):
         return CSC_LEGACY_CZ_PENALTY
 
     return 0
@@ -764,7 +774,7 @@ def build_recommendation_reason(
         extra_reasons.append("matches your profile faculty")
 
     if course_code_adjustment < 0:
-        extra_reasons.append("uses an older CZ course code, so it is kept as a fallback")
+        extra_reasons.append("uses an older course code, so it is kept as a fallback")
 
     if unlock_value > 0:
         extra_reasons.append(f"unlocks {unlock_value} later curriculum module(s)")
