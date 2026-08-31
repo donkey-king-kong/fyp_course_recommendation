@@ -67,6 +67,8 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
 # Preferences should visibly influence ordering, but they remain soft boosts after hard checks.
 PREFERENCE_TAG_BOOST = 30
 SAME_FACULTY_BOOST = 8
+DIVERSITY_TAG_REPEAT_PENALTY = 8
+PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
 # CZ modules are legacy CSC codes; keep them as fallback candidates behind current SC modules.
 CSC_LEGACY_CZ_PENALTY = -40
 # CSC-prefixed module codes are older than CZ in this catalog, so keep them as last-resort fallbacks.
@@ -238,6 +240,7 @@ def recommend_courses(
     sorted_recommendations = flatten_ranked_slot_recommendations(
         candidate_slots,
         recommendations_by_slot,
+        preferred_tags,
         limit,
     )
     final_recommendations = sorted_recommendations
@@ -636,6 +639,7 @@ def normalize_choice_slot_code(choice_slot_code: str) -> str:
 def flatten_ranked_slot_recommendations(
     choice_slots: list[RecommendationChoiceSlot],
     recommendations_by_slot: dict[str, list[CourseRecommendation]],
+    preferred_tags: set[str],
     limit: int,
 ) -> list[CourseRecommendation]:
     sorted_recommendations_by_slot = {
@@ -651,6 +655,7 @@ def flatten_ranked_slot_recommendations(
     ranked_recommendations: list[CourseRecommendation] = []
     used_course_codes: set[str] = set()
     used_course_titles: set[str] = set()
+    used_recommendation_tags: dict[str, int] = {}
     candidate_index = 0
 
     while len(ranked_recommendations) < limit:
@@ -663,6 +668,8 @@ def flatten_ranked_slot_recommendations(
                 candidate_index,
                 used_course_codes,
                 used_course_titles,
+                used_recommendation_tags,
+                preferred_tags,
             )
 
             if not unique_recommendation:
@@ -671,6 +678,7 @@ def flatten_ranked_slot_recommendations(
             ranked_recommendations.append(unique_recommendation)
             used_course_codes.add(unique_recommendation.courseCode)
             add_used_title_keys(used_course_titles, unique_recommendation.title)
+            add_used_recommendation_tags(used_recommendation_tags, unique_recommendation)
             added_this_round = True
 
             if len(ranked_recommendations) >= limit:
@@ -688,7 +696,11 @@ def get_unique_recommendation_at_or_after_index(
     start_index: int,
     used_course_codes: set[str],
     used_course_titles: set[str],
+    used_recommendation_tags: dict[str, int],
+    preferred_tags: set[str],
 ) -> Optional[CourseRecommendation]:
+    eligible_recommendations = []
+
     for recommendation in recommendations[start_index:]:
         recommendation_title = normalize_title(recommendation.title)
         recommendation_title_signature = get_title_signature(recommendation.title)
@@ -698,9 +710,58 @@ def get_unique_recommendation_at_or_after_index(
             recommendation_title not in used_course_titles and
             recommendation_title_signature not in used_course_titles
         ):
-            return recommendation
+            eligible_recommendations.append(recommendation)
 
-    return None
+    if not eligible_recommendations:
+        return None
+
+    return max(
+        eligible_recommendations,
+        key=lambda recommendation: (
+            get_diversity_adjusted_score(
+                recommendation,
+                used_recommendation_tags,
+                preferred_tags,
+            ),
+            recommendation.score,
+            _reverse_code_sort_key(recommendation.courseCode),
+        ),
+    )
+
+def get_diversity_adjusted_score(
+    recommendation: CourseRecommendation,
+    used_recommendation_tags: dict[str, int],
+    preferred_tags: set[str],
+) -> int:
+    penalty = 0
+
+    for tag in get_recommendation_tags(recommendation):
+        repeat_count = used_recommendation_tags.get(tag, 0)
+        repeat_penalty = (
+            PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY
+            if tag in preferred_tags
+            else DIVERSITY_TAG_REPEAT_PENALTY
+        )
+        penalty += repeat_count * repeat_penalty
+
+    return recommendation.score - penalty
+
+def get_recommendation_tags(recommendation: CourseRecommendation) -> list[str]:
+    return [
+        signal.removeprefix("tag:")
+        for signal in recommendation.matchedKeywords
+        if signal.startswith("tag:")
+    ]
+
+def add_used_recommendation_tags(
+    used_recommendation_tags: dict[str, int],
+    recommendation: CourseRecommendation,
+) -> None:
+    for tag in get_recommendation_tags(recommendation):
+        used_recommendation_tags[tag] = used_recommendation_tags.get(tag, 0) + 1
+
+def _reverse_code_sort_key(course_code: str) -> tuple[int, ...]:
+    return tuple(-ord(character) for character in course_code)
 
 def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int, int]:
     searchable_text = f"{module.title} {module.description or ''}".lower()
