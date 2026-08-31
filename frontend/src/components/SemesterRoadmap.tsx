@@ -128,10 +128,6 @@ function getChoiceSlotKey(course: CourseNode) {
   return mpeMatch ? `SC${mpeMatch[1]}xxx` : course.courseCode
 }
 
-function getPreferredBdeLevel(year: number) {
-  return Math.min(Math.max(year, 1), 4)
-}
-
 function getSemesterOrder(course: CourseNode) {
   if (course.isTranscriptOnly) {
     return -1
@@ -160,42 +156,6 @@ function getSemesterGroupLabel(group: SemesterGroup) {
     title: `Year ${group.year}`,
     subtitle: `Sem ${group.semester}`,
   }
-}
-
-function sortRecommendationsForSlot(
-  choiceSlot: ChoiceSlotCandidate,
-  recommendations: CourseRecommendation[],
-) {
-  const exactSlotRecommendations = recommendations.filter(
-    (recommendation) => recommendation.matchedChoiceSlotId === choiceSlot.course.id,
-  )
-
-  if (exactSlotRecommendations.length > 0) {
-    return [...exactSlotRecommendations].sort(
-      (first, second) => second.score - first.score || first.courseCode.localeCompare(second.courseCode),
-    )
-  }
-
-  if (choiceSlot.slotKey.toUpperCase() !== 'BDE') {
-    return [...recommendations].sort(
-      (first, second) => second.score - first.score || first.courseCode.localeCompare(second.courseCode),
-    )
-  }
-
-  const preferredLevel = getPreferredBdeLevel(choiceSlot.course.year)
-
-  return recommendations
-    .filter((recommendation) => recommendation.level === preferredLevel)
-    .sort((first, second) => {
-      const firstLevelGap = Math.abs((first.level ?? preferredLevel) - preferredLevel)
-      const secondLevelGap = Math.abs((second.level ?? preferredLevel) - preferredLevel)
-
-      return (
-        firstLevelGap - secondLevelGap ||
-        second.score - first.score ||
-        first.courseCode.localeCompare(second.courseCode)
-      )
-    })
 }
 
 function getSemesterFromOrder(semesterOrder: number) {
@@ -314,7 +274,6 @@ function assignRecommendationsToChoiceSlots(
   recommendations: CourseRecommendation[],
   coursesByCode: Map<string, CourseNode[]>,
 ): RecommendationAssignmentResult {
-  const usedCourseCodes = new Set<string>()
   const sortedChoiceSlots = [...choiceSlots].sort(
     (first, second) =>
       getSemesterOrder(first.course) - getSemesterOrder(second.course) ||
@@ -325,82 +284,61 @@ function assignRecommendationsToChoiceSlots(
   ].sort((first, second) => first - second)
   const prerequisiteNodes: CourseNode[] = []
   const prerequisiteLinks: RoadmapEdge[] = []
+  const recommendationsBySlotId = new Map(
+    recommendations
+      .filter((recommendation) => recommendation.matchedChoiceSlotId)
+      .map((recommendation) => [recommendation.matchedChoiceSlotId, recommendation]),
+  )
 
   const assignments = sortedChoiceSlots.reduce<Record<string, AssignedRecommendation>>((currentAssignments, choiceSlot) => {
     if (currentAssignments[choiceSlot.course.id]) {
       return currentAssignments
     }
 
-    const matchingRecommendations = recommendations.filter(
-      (recommendation) =>
-        (
-          recommendation.matchedChoiceSlotId === choiceSlot.course.id ||
-          (
-            !recommendation.matchedChoiceSlotId &&
-            recommendation.matchedChoiceSlot.toUpperCase() === choiceSlot.slotKey.toUpperCase()
-          )
-        ) &&
-        !usedCourseCodes.has(recommendation.courseCode),
-    )
-    const hasEarlierRemainingSemester = remainingSemesterOrders.some(
-      (semesterOrder) => semesterOrder < getSemesterOrder(choiceSlot.course),
-    )
+    const recommendation = recommendationsBySlotId.get(choiceSlot.course.id)
 
-    for (const recommendation of sortRecommendationsForSlot(choiceSlot, matchingRecommendations)) {
-      const existingPrerequisiteNodes = getExistingPrerequisiteNodes(
-        choiceSlot,
-        recommendation,
-        coursesByCode,
-      )
-      const plannedPrerequisiteCourseCodes = getPlannedPrerequisiteCourseCodes(recommendation)
-
-      if (
-        recommendation.readinessStatus === 'needs-prerequisite-planning' &&
-        existingPrerequisiteNodes.length === 0 &&
-        plannedPrerequisiteCourseCodes.length === 0
-      ) {
-        continue
-      }
-
-      if (plannedPrerequisiteCourseCodes.length > 0 && !hasEarlierRemainingSemester) {
-        continue
-      }
-
-      usedCourseCodes.add(recommendation.courseCode)
-      addPrerequisiteLinks(
-        prerequisiteLinks,
-        existingPrerequisiteNodes,
-        choiceSlot.course.id,
-      )
-
-      if (plannedPrerequisiteCourseCodes.length > 0) {
-        prerequisiteNodes.push(
-          ...buildRecommendedPrerequisiteNodes(
-            choiceSlot,
-            recommendation,
-            plannedPrerequisiteCourseCodes,
-            remainingSemesterOrders,
-          ),
-        )
-        prerequisiteLinks.push(
-          ...plannedPrerequisiteCourseCodes.map((prerequisiteCode) => ({
-            source: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
-            target: choiceSlot.course.id,
-          })),
-        )
-      }
-
-      return {
-        ...currentAssignments,
-        [choiceSlot.course.id]: {
-          courseCode: recommendation.courseCode,
-          title: recommendation.title,
-          label: 'Recommended option',
-        },
-      }
+    if (!recommendation) {
+      return currentAssignments
     }
 
-    return currentAssignments
+    const existingPrerequisiteNodes = getExistingPrerequisiteNodes(
+      choiceSlot,
+      recommendation,
+      coursesByCode,
+    )
+    const plannedPrerequisiteCourseCodes = getPlannedPrerequisiteCourseCodes(recommendation)
+
+    addPrerequisiteLinks(
+      prerequisiteLinks,
+      existingPrerequisiteNodes,
+      choiceSlot.course.id,
+    )
+
+    if (plannedPrerequisiteCourseCodes.length > 0) {
+      prerequisiteNodes.push(
+        ...buildRecommendedPrerequisiteNodes(
+          choiceSlot,
+          recommendation,
+          plannedPrerequisiteCourseCodes,
+          remainingSemesterOrders,
+        ),
+      )
+      prerequisiteLinks.push(
+        ...plannedPrerequisiteCourseCodes.map((prerequisiteCode) => ({
+          source: getRecommendedPrerequisiteNodeId(choiceSlot, prerequisiteCode),
+          target: choiceSlot.course.id,
+        })),
+      )
+    }
+
+    return {
+      ...currentAssignments,
+      [choiceSlot.course.id]: {
+        courseCode: recommendation.courseCode,
+        title: recommendation.title,
+        label: 'Recommended option',
+      },
+    }
   }, {})
 
   return {

@@ -237,7 +237,7 @@ def recommend_courses(
                 )
             )
 
-    sorted_recommendations = flatten_ranked_slot_recommendations(
+    sorted_recommendations = assign_ranked_slot_recommendations(
         candidate_slots,
         recommendations_by_slot,
         preferred_tags,
@@ -636,7 +636,7 @@ def normalize_choice_slot_code(choice_slot_code: str) -> str:
 
     return f"SC{mpe_level}xxx" if mpe_level else choice_slot_code
 
-def flatten_ranked_slot_recommendations(
+def assign_ranked_slot_recommendations(
     choice_slots: list[RecommendationChoiceSlot],
     recommendations_by_slot: dict[str, list[CourseRecommendation]],
     preferred_tags: set[str],
@@ -656,38 +656,28 @@ def flatten_ranked_slot_recommendations(
     used_course_codes: set[str] = set()
     used_course_titles: set[str] = set()
     used_recommendation_tags: dict[str, int] = {}
-    candidate_index = 0
 
-    while len(ranked_recommendations) < limit:
-        added_this_round = False
-
-        for slot in choice_slots:
-            slot_recommendations = sorted_recommendations_by_slot[get_choice_slot_identity(slot)]
-            unique_recommendation = get_unique_recommendation_at_or_after_index(
-                slot_recommendations,
-                candidate_index,
-                used_course_codes,
-                used_course_titles,
-                used_recommendation_tags,
-                preferred_tags,
-            )
-
-            if not unique_recommendation:
-                continue
-
-            ranked_recommendations.append(unique_recommendation)
-            used_course_codes.add(unique_recommendation.courseCode)
-            add_used_title_keys(used_course_titles, unique_recommendation.title)
-            add_used_recommendation_tags(used_recommendation_tags, unique_recommendation)
-            added_this_round = True
-
-            if len(ranked_recommendations) >= limit:
-                break
-
-        if not added_this_round:
+    for slot in choice_slots:
+        if len(ranked_recommendations) >= limit:
             break
 
-        candidate_index += 1
+        slot_recommendations = sorted_recommendations_by_slot[get_choice_slot_identity(slot)]
+        unique_recommendation = get_unique_recommendation_at_or_after_index(
+            slot_recommendations,
+            0,
+            used_course_codes,
+            used_course_titles,
+            used_recommendation_tags,
+            preferred_tags,
+        )
+
+        if not unique_recommendation:
+            continue
+
+        ranked_recommendations.append(unique_recommendation)
+        used_course_codes.add(unique_recommendation.courseCode)
+        add_used_title_keys(used_course_titles, unique_recommendation.title)
+        add_used_recommendation_tags(used_recommendation_tags, unique_recommendation)
 
     return ranked_recommendations
 
