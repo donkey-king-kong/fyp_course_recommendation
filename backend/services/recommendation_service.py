@@ -189,7 +189,10 @@ def recommend_courses(
     )
 
 def normalize_title(title: str) -> str:
-    return " ".join(title.lower().split())
+    normalized_title = title.lower().replace("&", " and ")
+    normalized_title = re.sub(r"[^a-z0-9]+", " ", normalized_title)
+
+    return " ".join(normalized_title.split())
 
 def build_recommendation_choice_slots(
     choice_slot_codes: list[str],

@@ -911,6 +911,7 @@ Status: Implemented locally
 - Kept the current flat prerequisite-list workaround: if one listed prerequisite is completed or already planned earlier, the backend treats that path as sufficient instead of recommending every alternative code.
 - Added a small unlock-value score boost when a recommended module unlocks later fixed curriculum modules.
 - Updated the frontend to send displayed roadmap context, including transcript-only completed modules, and to consume backend prerequisite path fields for arrows and `Recommended Pre-Requisite` nodes.
+- Strengthened duplicate-title filtering so equivalent titles using punctuation variants, such as `and` versus `&`, are not recommended when the curriculum already contains that module under another code.
 
 ### Rationale Notes
 
