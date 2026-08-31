@@ -1463,3 +1463,37 @@ Status: Implemented locally
 - No new recommendation settings or preference sliders.
 - No diversity explanation field in the public API response.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Backend-Owned Recommendation Slot Assignment
+
+Status: Implemented locally
+
+### Completed
+
+- Changed backend final selection so it returns at most one assigned recommendation per exact open choice slot.
+- Kept `recommendations` as the existing response field, but its meaning is now final assigned recommendations rather than a large candidate pool.
+- Changed the frontend recommendation request limit to match the number of open choice slots instead of requesting a large buffer such as 24, 50, or 90 candidates.
+- Simplified roadmap assignment so the frontend uses backend-provided `matchedChoiceSlotId` directly instead of re-ranking candidates by score or slot type.
+- Kept frontend visual rendering, module detail opening, and prerequisite planning-node rendering unchanged.
+
+### Rationale Notes
+
+- Recommendation ranking and allocation should live in the backend service layer, not in the frontend rendering layer.
+- The backend already has the career goal, preferences, completed courses, curriculum slots, prerequisite paths, scoring, and diversity context needed to make the final assignment.
+- The frontend should receive assigned recommendations and render them into the matching roadmap cards.
+- If there are five open choice slots, the normal response should now contain up to five assigned recommendations, not a large candidate pool that the frontend has to interpret.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No new frontend UI.
+- No new API endpoint name or response field rename.
+- No backend persistence for assigned recommendations.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
