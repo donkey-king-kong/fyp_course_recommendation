@@ -11,6 +11,7 @@ class ModuleSummary(BaseModel):
     description: Optional[str]
     level: Optional[int]
     categories: list[str]
+    recommendation_tags: list[str]
     latest_year: Optional[str]
     latest_semester: Optional[str]
     is_current_semester: bool
@@ -31,6 +32,7 @@ class ModuleSummary(BaseModel):
                     "description": None,
                     "level": 0,
                     "categories": ["CORE"],
+                    "recommendation_tags": [],
                     "latest_year": "2026",
                     "latest_semester": "1",
                     "is_current_semester": True,
@@ -64,6 +66,7 @@ class ModuleListResponse(BaseModel):
                             "description": None,
                             "level": 0,
                             "categories": ["CORE"],
+                            "recommendation_tags": [],
                             "latest_year": "2026",
                             "latest_semester": "1",
                             "is_current_semester": True,

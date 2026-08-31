@@ -935,3 +935,424 @@ Status: Implemented locally
 - No true AND/OR prerequisite grouping yet because the stored prerequisite graph still keeps prerequisites as a flat list.
 - No backend persistence for generated recommendations.
 - No manual browser verification has been recorded yet for this local change.
+
+## Curated Course Taxonomy Tags Attempt
+
+Status: Rolled back locally
+
+### Attempted
+
+- Tried a small rule-based taxonomy helper for module tags such as `software-engineering`, `web-development`, `data`, `ai-ml`, `systems`, `security`, `hardware`, `business`, `math`, and `communication`.
+- Wired the helper into the existing seed flow and briefly used taxonomy tags as a recommendation relevance signal.
+- Reran the seed script locally during the experiment, which updated `modules.categories` in PostgreSQL.
+
+### Rationale Notes
+
+- This approach was rolled back because automatic keyword-style taxonomy tagging caused confusing false positives.
+- Example: broad matching could tag unrelated modules as software-related if their title or description contained ambiguous words.
+- Faculty exclusions reduce some mistakes but do not solve the wider problem because relevant software-engineering vocabulary is broad and context-dependent.
+- For now, the seed flow should write only original source categories from `data/modules.json`.
+- Recommendation scoring should remain based on the existing keyword logic and previously completed prerequisite-readiness work.
+
+### Verified
+
+- The seed script was rerun after rollback so local `modules.categories` is reset from `data/modules.json`.
+
+### Not Included
+
+- No student preference UI yet.
+- No curated module taxonomy is active yet.
+- No hand-curated per-module override file.
+- No separate taxonomy table or admin editing workflow.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning tagging.
+
+## CE/CSC Recommendation Tags
+
+Status: Implemented locally
+
+### Completed
+
+- Added a separate `recommendationTags` field in `data/modules.json` for only `CE` and `CSC` modules.
+- Kept original NTU module `categories` unchanged so curriculum/category labels such as `CORE`, `MPE`, `BDE`, `GLOAD`, and `MLOAD` remain separate from recommendation taxonomy.
+- Added a separate `recommendation_tags` JSON column to the `modules` table.
+- Updated the seed script to read `recommendationTags` from `data/modules.json` and write it into `modules.recommendation_tags`.
+- Added a seed-time column check because the project does not use Alembic migrations yet.
+- Exposed `recommendation_tags` through the backend modules API and frontend module type.
+- Updated Software Engineer recommendations to use curated `recommendation_tags` as an additional relevance signal while keeping the existing title/description keyword logic as fallback.
+- Added `data/recommendation_tag_review_notes.json` to list modules tagged from title/code only because they do not have a usable description.
+
+### Rationale Notes
+
+- The previous attempt stored generated tags inside `categories`, which was confusing because those categories came from NTU/source catalog data.
+- `recommendationTags` is intentionally separate because it is project-curated recommendation metadata, not original curriculum metadata.
+- Tagging is limited to `CE` and `CSC` for now to avoid cross-faculty false positives such as unrelated `ACC`, `BUS`, `AED`, or `NIE` modules.
+- The current tag pass is title-first and conservative; descriptions are used as context during review, but not as broad keyword rules that can over-tag modules.
+- Modules without descriptions are explicitly flagged for manual verification instead of being treated as fully verified.
+
+### Verified
+
+- Reran `.venv/bin/python -m backend.database.seed`.
+- Local PostgreSQL `modules` table now has 311 `CE`/`CSC` rows with a `recommendation_tags` column available.
+- 296 `CE`/`CSC` modules currently have at least one non-empty recommendation tag.
+- 0 non-`CE`/`CSC` modules have non-empty recommendation tags.
+- Confirmed `AED28R` has no recommendation tags, while `SC2002`, `SC2302`, and `SC4052` have relevant tags.
+
+### Not Included
+
+- No tags were added for faculties outside `CE` and `CSC`.
+- No student preference UI yet.
+- No separate taxonomy admin editor.
+- No LLM/OpenAI runtime integration; the tagging output is stored as reviewed static data.
+- No Neo4j, ChromaDB, LangGraph, MyCareersFuture, embeddings, or machine-learning tagging.
+
+## Student Topic Preferences
+
+Status: Implemented locally
+
+### Completed
+
+- Added `preferredRecommendationTags` to the browser-saved student profile.
+- Existing saved profiles hydrate with an empty preference list so old localStorage profiles still work.
+- Added a searchable fixed tag selector on the Profile page.
+- The student can type into the search box to filter matching allowed tags instead of scrolling through the full list.
+- Hid the full tag list by default so matching tag options only appear after the student starts typing.
+- Changed selected preference chips to use a small cross remove button instead of a `REMOVE` text label.
+- The student cannot create custom free-text tags; selections must come from the curated tag list used by `recommendationTags`.
+- Sent selected preference tags to `POST /recommendations` as `preferredRecommendationTags`.
+- Updated backend recommendation ranking so matching preference tags add a small soft boost after career-goal, slot-fit, duplicate, and prerequisite-readiness checks.
+- Clearing or changing preferences clears stale visible recommendations until the student clicks `Load Roadmap` again.
+
+### Rationale Notes
+
+- Career goal remains the primary recommendation context.
+- Topic preferences refine ranking within that career goal instead of replacing it.
+- For example, `Career Goal = Software Engineer` and `Preference = AI / ML` means “recommend software-engineering-relevant modules, but prefer AI/ML-related options when they fit.”
+- Preferences are not a hard filter because that could hide useful software modules when no suitable preferred-tag module fits a slot.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited backend files.
+
+### Not Included
+
+- No custom user-created tags.
+- No preference weights/sliders.
+- No score breakdown UI.
+- No tag editor or admin workflow.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning personalization.
+
+## Roadmap Module Detail Lookup
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed exact module detail lookup so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details by course code.
+- Kept active faculty filtering for module list browsing, filters, and recommendation candidate discovery.
+
+### Rationale Notes
+
+- Uploaded curriculum guides can include service modules from faculties that are not enabled for the NTU Modules browsing page.
+- Exact code lookup is used after a module is already visible in the student's roadmap, so it should not reject a real module just because its faculty is inactive for browsing.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Confirmed `get_module_by_code(db, "MH1812")` returns `MH1812 MATH Discrete Mathematics`.
+
+## Profile Layout And Load Feedback
+
+Status: Implemented locally
+
+### Completed
+
+- Changed Student ID, Major, and Career Goal into one inline profile row on wider screens.
+- Kept the profile row responsive so those fields stack again on narrower screens.
+- Added a successful loaded state for the Load Roadmap button after recommendation loading completes.
+- Reset the loaded tick when the active profile, curriculum guide, career goal, preferences, or transcript completed courses change.
+
+### Rationale Notes
+
+- The Student ID field did not need a full-width row, so placing the three profile fields inline reduces wasted vertical space.
+- The loaded tick confirms the request finished successfully without changing the existing roadmap navigation flow.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- Confirmed `data/sample_transcript.pdf` parses `SC3920 Professional Internship` as Year 3 Semester 1.
+
+## Recommendation Preference Ranking Polish
+
+Status: Implemented locally
+
+### Completed
+
+- Added conservative title-signature duplicate detection so similar database module titles such as `Database Systems` and `Database System Principles` are treated as overlapping recommendations.
+- Increased the student topic preference boost so selected tags visibly influence ranking while still allowing non-preferred modules when needed.
+- Kept recommendation output deterministic; pressing Load Roadmap repeatedly with unchanged profile inputs should still return the same ranking.
+
+### Rationale Notes
+
+- Exact duplicate-title checks were not enough because similar course titles can differ by words like `Principles` or plural forms like `Systems`.
+- Preference tags are still soft ranking signals, not hard filters, but the boost now has enough weight to move matching modules above generic software/database candidates.
+
+### Verified
+
+- Confirmed a service-level recommendation request with `SC3020` excluded by title does not include `CSC206`.
+- Confirmed an `ai-ml` preference moves AI/ML-tagged modules into Year 4 BDE recommendations.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+## Load Roadmap Button Feedback Polish
+
+Status: Implemented locally
+
+### Completed
+
+- Moved the loading spinner into the Load Roadmap button instead of showing a separate loader beside it.
+- Styled the Load Roadmap button with a wider rounded teal button, inline spacing, hover state, and centered content.
+- Added an inline tick bubble inside the button after the roadmap recommendations finish loading successfully.
+- Kept the separate `Go to roadmap...` control underneath the main button and styled it like a compact sub action.
+
+### Rationale Notes
+
+- Keeping loading and success feedback inside the button makes the action state easier to see.
+- The tick state confirms a successful load without automatically moving the student away from the Profile page.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+## Curriculum Guide Layout Parsing Fix
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated `POST /curriculum-guide` returning `422 Unprocessable Entity` for `u21-and-after_csc_2bm_bus_07-july-2025 (1).pdf`.
+- Confirmed the newer guide is a different PDF layout from `data/ccds_ay23-24_csc.pdf`.
+- Reworked curriculum row parsing to infer column positions from the PDF table header instead of relying only on old fixed x-coordinates.
+- Added support for second-major `Business` rows in the curriculum table.
+- Ignored auxiliary tables such as `Course Code Type AU Remarks` so they are not mistaken for roadmap rows.
+- Added a temporary first-section-only rule for PDFs that bundle multiple `CURRICULUM FOR...` variants in one file.
+
+### Rationale Notes
+
+- This avoids manually accepting every curriculum guide file by name.
+- Similar NTU guide variants should work as long as they keep recognizable curriculum table headers.
+- Multi-variant PDFs still need a future selection UI if the student must choose a section other than the first one.
+
+### Verified
+
+- `data/ccds_ay23-24_csc.pdf` parses successfully.
+- `data/u21-and-after_csc_2bm_bus_07-july-2025 (1).pdf` parses successfully.
+- `POST /curriculum-guide` returns `200` for `data/ccds_ay23-24_csc.pdf`.
+- `POST /curriculum-guide` returns `200` for `data/u21-and-after_csc_2bm_bus_07-july-2025 (1).pdf`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+## Recommendation Prerequisite Equivalence Fix
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated Year 4 recommendation prerequisite cards showing fallback data such as `Recommended prerequisite` and `0 AU`.
+- Confirmed the module catalog DB data is correct for examples such as `CZ2007` and `CZ2101`.
+- Fixed backend readiness logic so old-code prerequisites can match equivalent earlier roadmap courses by title.
+- Example: `CZ2007 Introduction To Databases` can now reuse `SC2207 Introduction to Databases` when `SC2207` is already earlier in the uploaded curriculum roadmap.
+- Example: `CZ2101 Algorithm Design & Analysis` can now reuse `SC2001 Algorithm Design & Analysis`.
+
+### Rationale Notes
+
+- The wrong display was caused by frontend fallback rendering when backend sent a planned prerequisite code without detail data.
+- The backend should avoid planning duplicate old-code prerequisite nodes when the uploaded curriculum already contains an equivalent newer-code module.
+- Existing browser-saved recommendations may still show the old fallback cards until the curriculum is reuploaded and recommendations are loaded again.
+
+### Verified
+
+- Confirmed DB titles/AU for `BC2402`, `CZ2001`, `CZ2007`, and `CZ2101` are correct.
+- Confirmed `CZ2007` and `CZ2101` map to existing earlier curriculum modules `SC2207` and `SC2001`.
+- Confirmed end-to-end recommendation output has no planned prerequisite codes missing prerequisite detail data.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+## Transcript Curriculum Code Equivalence Fix
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated why `SC3079 Professional Internship` stayed unchecked even though the uploaded transcript clearly contains a completed professional internship.
+- Confirmed the transcript parser correctly extracts `SC3920 Professional Internship`, `10 AU`, grade `A+`.
+- Confirmed the issue is not the transcript parser or DB data; it is a frontend matching issue because the uploaded curriculum uses `SC3079` while the transcript uses `SC3920`.
+- Updated browser-side transcript-to-curriculum matching to use exact course code first, then conservative normalized title matching.
+- `SC3920 Professional Internship` can now match `SC3079 Professional Internship` in the uploaded curriculum roadmap.
+
+### Rationale Notes
+
+- NTU curriculum guides and transcripts may use different course codes for equivalent modules across cohorts.
+- Matching by title is used only after exact code matching, so ordinary same-code matches remain simple.
+- Existing browser-saved transcript/curriculum results may need re-uploading or rematching to show the newly matched checkbox.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+## Pending Curriculum Guide Upload Guard
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed a confusing profile flow where selecting a new curriculum guide file did not immediately replace the active stored roadmap source.
+- `Load Roadmap` is now disabled while a new selected curriculum guide file is pending upload.
+- After `Upload Curriculum Guide` succeeds, the file picker is reset and the parsed guide becomes the active roadmap source.
+- Added helper text so students know they must upload the newly selected PDF before loading the roadmap.
+
+### Rationale Notes
+
+- Choosing a file in the browser only selects it locally; it does not parse or store the curriculum guide yet.
+- Without this guard, students could select a new PDF and then click `Load Roadmap`, but the app would still use the previously uploaded parsed guide.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+## Persist Roadmap Recommendations Per Student
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated why recommendations disappeared after logout and login with the same Student ID.
+- Confirmed recommendation results were stored only in local React state inside `App`, while curriculum, transcript, and completed-course data were persisted in the profile store.
+- Added `roadmapRecommendations` to the per-student browser-saved Zustand profile record.
+- Updated the roadmap page to read recommendation cards from the profile store instead of local-only component state.
+- Saved fresh recommendation results after `Load Roadmap` succeeds.
+- Cleared saved recommendations when recommendation inputs change, such as career goal, topic preferences, curriculum guide, transcript results, or manual completion state.
+
+### Rationale Notes
+
+- Recommendations are part of the active student's roadmap state, so they should follow the same per-Student-ID persistence model as uploaded curriculum and transcript data.
+- Loading/error states remain local UI state because they should not persist across sessions.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+## Same-Faculty Recommendation Boost
+
+Status: Implemented locally
+
+### Completed
+
+- Added `studentFaculty` to the recommendation request payload.
+- Frontend now sends the active profile major as the student faculty when loading recommendations.
+- Backend recommendation scoring now applies a soft same-faculty boost.
+- For a CSC profile, valid CSC modules rank above comparable CE or other-faculty modules where possible.
+- Same-faculty matching is not a hard filter, so BDE can still recommend broader options if they are the best valid choices.
+- Saved recommendations are cleared when the profile major changes so stale results are not shown.
+
+### Rationale Notes
+
+- The curriculum/profile faculty should influence ranking because students usually expect recommendations to prefer modules from their own programme.
+- This is especially useful for BDE slots, where the candidate pool can include many active faculties.
+- The boost remains soft because BDE is intentionally broad and may still include non-CSC courses later if they are relevant.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- Confirmed `CE4045` receives no CSC same-faculty boost while `SC4002` and `SC4050` receive the boost.
+
+## Legacy CSC Code Recommendation Priority
+
+Status: Implemented locally
+
+### Completed
+
+- Added backend score penalties for legacy CSC course-code prefixes when the active student faculty is `CSC`.
+- Current `SC` course codes are preferred over legacy `CZ` options for CSC students when both are valid candidates.
+- Older `CSC`-prefixed course codes are deprioritized even further than `CZ` options.
+- `CZ` and `CSC`-prefixed modules remain available as fallback recommendations instead of being hard-filtered out.
+- Recommendation reasons mention when an older-code option is being kept as a fallback.
+
+### Rationale Notes
+
+- In the CSC curriculum, `CSC` and `CZ` codes are older course codes while current equivalents generally use `SC`.
+- A CSC student should normally see current `SC` recommendations first.
+- Keeping older codes as fallback avoids empty slots if the active catalog lacks enough suitable `SC` options.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- Confirmed `CZ2001` and `CZ2007` receive the CSC legacy-code penalty while `SC4002` and `SC4050` do not.
+- Confirmed `SC4002` receives no legacy-code penalty, `CZ2001` receives a medium legacy-code penalty, and `CSC303` receives the strongest legacy-code penalty.
+
+## Methodology Handover Review
+
+Status: Reviewed locally
+
+### Useful Takeaways
+
+- Keep the recommender as a retrieve, filter, rank, and explain pipeline instead of a generic chatbot or flat top-k list.
+- Treat academic validity as hard rules before ranking: slot fit, completed/equivalent courses, prerequisites, programme rules, and AU constraints should not be solved by scoring alone.
+- Keep student-specific context central: transcript, uploaded curriculum guide, remaining slots, completed AUs, career goal, and preferences should all feed the recommendation request.
+- Separate immediate recommendations from pathway recommendations so students can distinguish courses they can take now from courses that need prerequisite planning.
+- Add score breakdowns and evidence later so recommendations can explain slot fit, eligibility, career alignment, preference match, and caveats.
+- Use job-market data later as a ranking signal only, not as a replacement for curriculum validity.
+- Preserve source/provenance for extracted transcript, curriculum, course, and job-market facts so recommendations stay auditable.
+- Delay Neo4j, ChromaDB, LangGraph, OpenAI, and labour-market ingestion until the current deterministic roadmap and recommendation flow is stable.
+
+### How This Applies Now
+
+- The current branch already follows the recommended order by filtering completed/fixed courses, checking slot fit, evaluating prerequisite readiness, and only then ranking by career and preference signals.
+- The recent duplicate-title and preference-ranking fixes are a small step toward the handover's diversity and student-interest recommendations.
+- The next practical improvement should be an explicit score breakdown in the API/UI before adding heavier AI or graph tooling.
+
+## Transcript Semester Placement Override
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed roadmap placement for completed transcript courses when the transcript course code differs from the curriculum guide code but the course title is equivalent.
+- Roadmap display now uses transcript `study_year` and `transcript_semester` as the final placement source for matched completed courses.
+- Exact course-code placement still works first, and normalized title/title-signature placement handles code changes such as `SC3920 Professional Internship` matching curriculum `SC3079 Professional Internship`.
+
+### Rationale Notes
+
+- The curriculum guide defines the intended study plan, but the transcript is the evidence of when the student actually completed a module.
+- Completed modules should therefore appear in the transcript term on the personalised roadmap, while incomplete curriculum modules should continue following the uploaded curriculum guide.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.

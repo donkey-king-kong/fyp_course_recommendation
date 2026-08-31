@@ -45,6 +45,8 @@ def create_recommendations(
         return recommend_courses(
             db=db,
             career_goal=request.careerGoal,
+            preferred_recommendation_tags=request.preferredRecommendationTags,
+            student_faculty=request.studentFaculty,
             completed_course_codes=request.completedCourseCodes,
             choice_slot_codes=request.choiceSlotCodes,
             choice_slots=request.choiceSlots,

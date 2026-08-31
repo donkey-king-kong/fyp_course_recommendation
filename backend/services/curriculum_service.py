@@ -76,14 +76,20 @@ def extract_words_from_pdf(file_content: bytes) -> list[dict[str, Any]]:
     return words
 
 # Convert raw positioned words into candidate curriculum rows.
-# This first pass supports the current CSC AY2023-24 guide layout.
+# Column positions are inferred from table headers so similar NTU guide variants can be parsed.
 def parse_curriculum_rows(words: list[dict[str, Any]]) -> list[dict[str, Any]]:
     lines = group_words_into_lines(words)
     semester_headers = find_semester_headers(lines)
+    column_headers = find_curriculum_column_headers(lines)
+    section_end = find_first_curriculum_section_end(lines)
     rows: list[dict[str, Any]] = []
 
     for line in lines:
-        course_word = find_main_schedule_course_word(line["words"])
+        if is_after_position(line, section_end):
+            continue
+
+        column_header = find_current_column_header(line, column_headers)
+        course_word = find_main_schedule_course_word(line["words"], column_header)
 
         if course_word is None:
             continue
@@ -93,13 +99,32 @@ def parse_curriculum_rows(words: list[dict[str, Any]]) -> list[dict[str, Any]]:
         if semester_header is None:
             continue
 
-        row = parse_curriculum_row(line["words"], course_word, semester_header)
+        row = parse_curriculum_row(line["words"], course_word, semester_header, column_header)
 
         if row is not None:
             rows.append(row)
 
     logger.info("Parsed %s curriculum guide row(s).", len(rows))
     return rows
+
+# Some guides bundle multiple curriculum variants; use the first section until selection UI exists.
+def find_first_curriculum_section_end(lines: list[dict[str, Any]]) -> Optional[dict[str, Any]]:
+    curriculum_starts = [
+        line
+        for line in lines
+        if build_line_text(line["words"]).upper().startswith("CURRICULUM FOR")
+    ]
+
+    if len(curriculum_starts) < 2:
+        return None
+
+    return curriculum_starts[1]
+
+def is_after_position(line: dict[str, Any], position: Optional[dict[str, Any]]) -> bool:
+    if position is None:
+        return False
+
+    return (line["page"], line["y0"]) >= (position["page"], position["y0"])
 
 # PyMuPDF can give slightly different y-values for words on the same visual row.
 # Group with a small tolerance so course codes, titles, AU, and prerequisites stay together.
@@ -129,6 +154,70 @@ def group_words_into_lines(words: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     return sorted(lines, key=lambda line: (line["page"], line["y0"]))
 
+# Full curriculum tables expose the column positions that differ across guide PDFs.
+def find_curriculum_column_headers(lines: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    column_headers: list[dict[str, Any]] = []
+
+    for line in lines:
+        words = line["words"]
+        line_text = build_line_text(words)
+
+        if not all(label in line_text for label in ["Course Code", "Course Title", "Type", "AU"]):
+            continue
+
+        code_word = find_header_word_pair_start(words, "Course", "Code")
+        title_word = find_header_word_pair_start(words, "Course", "Title")
+        type_word = find_header_word(words, "Type")
+        au_word = find_header_word(words, "AU")
+        prerequisite_word = find_header_word(words, "Pre-requisite")
+
+        if None in [code_word, title_word, type_word, au_word]:
+            continue
+
+        column_headers.append(
+            {
+                "page": line["page"],
+                "y0": line["y0"],
+                "code_x": code_word["x0"],
+                "title_x": title_word["x0"],
+                "type_x": type_word["x0"],
+                "au_x": au_word["x0"],
+                "prerequisite_x": prerequisite_word["x0"] if prerequisite_word else au_word["x1"],
+            }
+        )
+
+    return column_headers
+
+def find_header_word(words: list[dict[str, Any]], label: str) -> Optional[dict[str, Any]]:
+    return next((word for word in words if str(word["text"]).strip() == label), None)
+
+def find_header_word_pair_start(
+    words: list[dict[str, Any]],
+    first_label: str,
+    second_label: str,
+) -> Optional[dict[str, Any]]:
+    for index, word in enumerate(words[:-1]):
+        current_text = str(word["text"]).strip()
+        next_text = str(words[index + 1]["text"]).strip()
+
+        if current_text == first_label and next_text == second_label:
+            return word
+
+    return None
+
+# Uses the nearest full curriculum table header above the row on the same page.
+def find_current_column_header(
+    line: dict[str, Any],
+    column_headers: list[dict[str, Any]],
+) -> Optional[dict[str, Any]]:
+    matching_headers = [
+        header
+        for header in column_headers
+        if header["page"] == line["page"] and header["y0"] < line["y0"]
+    ]
+
+    return max(matching_headers, key=lambda header: header["y0"], default=None)
+
 # Semester headers define which year/semester each following curriculum row belongs to.
 def find_semester_headers(lines: list[dict[str, Any]]) -> list[dict[str, Any]]:
     semester_headers: list[dict[str, Any]] = []
@@ -154,19 +243,32 @@ def build_line_text(words: list[dict[str, Any]]) -> str:
     return " ".join(str(word["text"]).strip() for word in words if str(word["text"]).strip())
 
 # Finds the row anchor: either a real module code like SC1003 or a choice slot like BDE.
-def find_main_schedule_course_word(words: list[dict[str, Any]]) -> Optional[dict[str, Any]]:
+def find_main_schedule_course_word(
+    words: list[dict[str, Any]],
+    column_header: Optional[dict[str, Any]] = None,
+) -> Optional[dict[str, Any]]:
     for word in words:
         text = str(word["text"]).strip()
 
         if not COURSE_OR_SLOT_PATTERN.fullmatch(text):
             continue
 
+        if column_header is not None:
+            code_column_limit = (column_header["code_x"] + column_header["title_x"]) / 2
+            is_in_code_column = word["x0"] <= code_column_limit
+            is_bde_type = text == "BDE" and abs(word["x0"] - column_header["type_x"]) <= 40
+
+            if is_in_code_column or is_bde_type:
+                return word
+
+            continue
+
         # Main curriculum rows place real course codes in the left code column.
-        if word["x0"] < 170:
+        if word["x0"] < 250:
             return word
 
         # BDE rows have no separate course-code column, so the BDE type acts as the slot code.
-        if text == "BDE" and 520 <= word["x0"] <= 620:
+        if text == "BDE" and 300 <= word["x0"] <= 620:
             return word
 
     return None
@@ -185,17 +287,21 @@ def find_current_semester_header(
 
 # Pulls one visual table row into the normalized course/slot fields.
 def parse_curriculum_row(
-    words: list[dict[str, Any]], course_word: dict[str, Any], semester_header: dict[str, Any]
+    words: list[dict[str, Any]],
+    course_word: dict[str, Any],
+    semester_header: dict[str, Any],
+    column_header: Optional[dict[str, Any]] = None,
 ) -> Optional[dict[str, Any]]:
     code = str(course_word["text"]).strip()
-    academic_units = find_academic_units(words)
+    course_type_word = find_course_type_word(words, code, column_header)
+    academic_unit_word = find_academic_unit_word(words, course_type_word, column_header)
 
-    if academic_units is None:
+    if academic_unit_word is None:
         return None
 
-    course_type = find_course_type(words, code)
-    title = find_course_title(words)
-    prerequisite_text = find_prerequisite_text(words)
+    course_type = get_course_type_from_word(course_type_word, code)
+    title = find_course_title(words, course_word, course_type_word, column_header)
+    prerequisite_text = find_prerequisite_text(words, academic_unit_word, column_header)
 
     return {
         "code": code,
@@ -203,44 +309,133 @@ def parse_curriculum_row(
         "type": course_type,
         "year": semester_header["year"],
         "semester": semester_header["semester"],
-        "academic_units": academic_units,
+        "academic_units": int(str(academic_unit_word["text"])),
         "prerequisite_text": prerequisite_text,
         "prerequisites": parse_prerequisites(prerequisite_text),
         "is_choice_slot": is_choice_slot(code, course_type, title),
     }
 
-# AU is in a stable numeric column in the current guide.
-def find_academic_units(words: list[dict[str, Any]]) -> Optional[int]:
+# Course type includes values like Core, F-Core, C-Core, MPE-1, MPE-2, and BDE.
+def find_course_type_word(
+    words: list[dict[str, Any]],
+    code: str,
+    column_header: Optional[dict[str, Any]] = None,
+) -> Optional[dict[str, Any]]:
+    if code == "BDE":
+        return next(
+            (
+                word
+                for word in words
+                if (
+                    str(word["text"]).strip() == "BDE" and
+                    is_near_column(word, column_header, "type_x", fallback_min_x=300)
+                )
+            ),
+            None,
+        )
+
+    valid_types = {"Core", "F-Core", "C-Core", "MPE-1", "MPE-2", "Business"}
+
+    return next(
+        (
+            word
+            for word in words
+            if (
+                str(word["text"]).strip() in valid_types and
+                is_near_column(word, column_header, "type_x", fallback_min_x=0)
+            )
+        ),
+        None,
+    )
+
+def is_near_column(
+    word: dict[str, Any],
+    column_header: Optional[dict[str, Any]],
+    column_key: str,
+    fallback_min_x: float,
+) -> bool:
+    if column_header is None:
+        return word["x0"] >= fallback_min_x
+
+    return abs(word["x0"] - column_header[column_key]) <= 45
+
+# AU is the first numeric value after the detected course type in supported guide layouts.
+def find_academic_unit_word(
+    words: list[dict[str, Any]],
+    course_type_word: Optional[dict[str, Any]],
+    column_header: Optional[dict[str, Any]] = None,
+) -> Optional[dict[str, Any]]:
     au_words = [
         word
         for word in words
-        if 660 <= word["x0"] <= 720 and re.fullmatch(r"\d+", str(word["text"]))
+        if (
+            re.fullmatch(r"\d+", str(word["text"])) and
+            (
+                (
+                    column_header is not None and
+                    abs(word["x0"] - column_header["au_x"]) <= 45
+                ) or (
+                    column_header is None and
+                    course_type_word is not None and
+                    word["x0"] > course_type_word["x1"]
+                )
+            )
+        )
     ]
 
-    if not au_words:
-        return None
+    if au_words:
+        return min(au_words, key=lambda word: word["x0"])
 
-    return int(str(au_words[0]["text"]))
+    return next(
+        (
+            word
+            for word in words
+            if 350 <= word["x0"] <= 720 and re.fullmatch(r"\d+", str(word["text"]))
+        ),
+        None,
+    )
 
-# Course type includes values like Core, F-Core, C-Core, MPE-1, and MPE-2.
-def find_course_type(words: list[dict[str, Any]], code: str) -> str:
+def get_course_type_from_word(course_type_word: Optional[dict[str, Any]], code: str) -> str:
     if code == "BDE":
         return "BDE"
 
-    type_words = [
-        word
-        for word in words
-        if 540 <= word["x0"] <= 640 and str(word["text"]).strip()
-    ]
+    return str(course_type_word["text"]).strip() if course_type_word is not None else ""
 
-    return " ".join(str(word["text"]).strip() for word in type_words)
+# Kept for older call sites and simple tests that only need the parsed AU value.
+def find_academic_units(words: list[dict[str, Any]]) -> Optional[int]:
+    au_word = find_academic_unit_word(words, find_course_type_word(words, ""), None)
 
-# Course titles sit between the code column and the type column.
-def find_course_title(words: list[dict[str, Any]]) -> str:
+    return int(str(au_word["text"])) if au_word is not None else None
+
+# Course types are detected by label text, not only x-position, because NTU guides vary in width.
+def find_course_type(words: list[dict[str, Any]], code: str) -> str:
+    return get_course_type_from_word(find_course_type_word(words, code), code)
+
+# Course titles sit between the code column and type column; BDE rows use the text before `BDE`.
+def find_course_title(
+    words: list[dict[str, Any]],
+    course_word: Optional[dict[str, Any]] = None,
+    course_type_word: Optional[dict[str, Any]] = None,
+    column_header: Optional[dict[str, Any]] = None,
+) -> str:
+    if course_type_word is None:
+        course_type_word = find_course_type_word(words, "")
+
+    if course_type_word is None:
+        title_words = [
+            str(word["text"]).strip()
+            for word in words
+            if 180 <= word["x0"] < 540 and str(word["text"]).strip()
+        ]
+
+        return " ".join(title_words)
+
+    is_bde_slot = course_word is not None and str(course_word["text"]).strip() == "BDE"
+    title_start = 100 if is_bde_slot else (course_word["x1"] if course_word is not None else 100) + 1
     title_words = [
         str(word["text"]).strip()
         for word in words
-        if 180 <= word["x0"] < 540 and str(word["text"]).strip()
+        if title_start <= word["x0"] < course_type_word["x0"] and str(word["text"]).strip()
     ]
 
     return " ".join(title_words)
@@ -252,8 +447,30 @@ def normalize_course_title(code: str, course_type: str, title: str) -> str:
     return title or default_title_for_slot(code, course_type)
 
 
-# Prerequisite text is preserved as raw text and separately simplified into course-code tokens.
-def find_prerequisite_text(words: list[dict[str, Any]]) -> str:
+# Prerequisite text starts in the header's prerequisite column when available.
+def find_prerequisite_text(
+    words: list[dict[str, Any]],
+    academic_unit_word: Optional[dict[str, Any]] = None,
+    column_header: Optional[dict[str, Any]] = None,
+) -> str:
+    if column_header is not None:
+        prerequisite_words = [
+            str(word["text"]).strip()
+            for word in words
+            if word["x0"] >= column_header["prerequisite_x"] - 25 and str(word["text"]).strip()
+        ]
+
+        return " ".join(prerequisite_words)
+
+    if academic_unit_word is not None:
+        prerequisite_words = [
+            str(word["text"]).strip()
+            for word in words
+            if word["x0"] > academic_unit_word["x1"] and str(word["text"]).strip()
+        ]
+
+        return " ".join(prerequisite_words)
+
     prerequisite_words = [
         str(word["text"]).strip()
         for word in words

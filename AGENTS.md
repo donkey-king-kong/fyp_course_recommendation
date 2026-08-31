@@ -263,6 +263,22 @@ Completed foundations:
 - Lower `Curriculum Guide Courses` section reads directly from the uploaded curriculum guide and is not affected by transcript semester overrides.
 - Profile page stores career goal through a dropdown for future MPE/choice-slot recommendation work.
 - Roadmap lock indicators now handle uploaded curriculum prerequisite text, including text-only requirements such as `Year 4 standing`.
+- CE/CSC modules can carry curated `recommendationTags` separate from original NTU `categories`.
+- The modules DB table includes a separate `recommendation_tags` JSON column seeded from `data/modules.json`.
+- Software Engineer recommendations use curated recommendation tags as scoring signals alongside the existing keyword fallback.
+- Profile page stores fixed student topic preferences in `preferredRecommendationTags`; students can type to filter allowed tags, but cannot create custom tags.
+- Student topic preferences are soft ranking boosts, not hard filters.
+- Recommendation ranking gives a soft same-faculty boost, so a CSC profile prefers CSC modules over CE or other faculties when the candidate is otherwise valid.
+- For CSC profiles, legacy `CZ` course codes are deprioritized behind current `SC` course codes, and older `CSC`-prefixed course codes are deprioritized even further as last-resort fallback candidates.
+- Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
+- Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
+- Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
+- Profile page shows Student ID, Major, and Career Goal inline on wider screens and shows a spinner/tick inside the Load Roadmap button.
+- Curriculum guide parsing infers full table column positions from `Course Code`, `Course Title`, `Type`, `AU`, and `Pre-requisite` headers so similar NTU guide layouts can work without filename-specific rules.
+- If a curriculum guide PDF bundles multiple curriculum variants, the upload currently parses the first `CURRICULUM FOR...` section only until a variant-selection UI exists.
+- Transcript-to-curriculum matching uses exact course code first, then conservative title matching for course-code changes such as `SC3920 Professional Internship` matching `SC3079 Professional Internship`.
+- Selecting a new curriculum guide file does not replace the active roadmap source until `Upload Curriculum Guide` succeeds; `Load Roadmap` is disabled while a selected guide is pending upload.
+- Loaded roadmap recommendations are saved per Student ID in browser storage, so logging out and back in with the same Student ID restores the latest recommendation cards.
 
 Current next step:
 
@@ -270,6 +286,7 @@ Current next step:
 - Keep academic-standing requirements based on completed AU, not self-declared profile year.
 - Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
+- Next useful recommendation improvement is an explicit score breakdown in the API/UI.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 
 ## Expected Working Directory

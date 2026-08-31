@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
 import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
-import ClassicLoader from './ClassicLoader'
 import './ProfilePage.css'
 
 function formatAcademicUnits(academicUnits: number) {
@@ -11,13 +10,61 @@ function formatAcademicUnits(academicUnits: number) {
 
 interface ProfilePageProps {
   isLoadingRoadmap: boolean
+  hasLoadedRoadmap: boolean
   recommendationError: string
   onGoToRoadmap: () => void
   onLoadRoadmap: () => void
 }
 
+const RECOMMENDATION_TAG_OPTIONS = [
+  { value: 'software-engineering', label: 'Software Engineering' },
+  { value: 'programming', label: 'Programming' },
+  { value: 'web-development', label: 'Web Development' },
+  { value: 'backend-engineering', label: 'Backend Engineering' },
+  { value: 'frontend-engineering', label: 'Frontend Engineering' },
+  { value: 'database', label: 'Database' },
+  { value: 'computer-network', label: 'Computer Network' },
+  { value: 'computer-security', label: 'Computer Security' },
+  { value: 'cryptography', label: 'Cryptography' },
+  { value: 'malware-analysis', label: 'Malware Analysis' },
+  { value: 'digital-forensics', label: 'Digital Forensics' },
+  { value: 'privacy', label: 'Privacy' },
+  { value: 'algorithms', label: 'Algorithms' },
+  { value: 'data-structures', label: 'Data Structures' },
+  { value: 'operating-systems', label: 'Operating Systems' },
+  { value: 'distributed-systems', label: 'Distributed Systems' },
+  { value: 'cloud-computing', label: 'Cloud Computing' },
+  { value: 'parallel-computing', label: 'Parallel Computing' },
+  { value: 'compiler', label: 'Compiler' },
+  { value: 'ai-ml', label: 'AI / ML' },
+  { value: 'natural-language-processing', label: 'Natural Language Processing' },
+  { value: 'computer-vision', label: 'Computer Vision' },
+  { value: 'data-science', label: 'Data Science' },
+  { value: 'data-visualisation', label: 'Data Visualisation' },
+  { value: 'information-retrieval', label: 'Information Retrieval' },
+  { value: 'computer-graphics', label: 'Computer Graphics' },
+  { value: 'human-computer-interaction', label: 'Human-Computer Interaction' },
+  { value: 'computer-architecture', label: 'Computer Architecture' },
+  { value: 'hardware-embedded', label: 'Hardware / Embedded' },
+  { value: 'internet-of-things', label: 'Internet of Things' },
+  { value: 'cyber-physical-systems', label: 'Cyber-Physical Systems' },
+  { value: 'signal-processing', label: 'Signal Processing' },
+  { value: 'digital-logic', label: 'Digital Logic' },
+  { value: 'simulation-modelling', label: 'Simulation / Modelling' },
+  { value: 'quantum-computing', label: 'Quantum Computing' },
+  { value: 'theory-of-computing', label: 'Theory of Computing' },
+  { value: 'math-foundation', label: 'Math Foundation' },
+  { value: 'project-management', label: 'Project Management' },
+  { value: 'product-management', label: 'Product Management' },
+  { value: 'professional-skills', label: 'Professional Skills' },
+  { value: 'ethics', label: 'Ethics' },
+  { value: 'sustainability-computing', label: 'Sustainability Computing' },
+]
+const EMPTY_RECOMMENDATION_TAGS: string[] = []
+
 function ProfilePage({
   isLoadingRoadmap,
+  hasLoadedRoadmap,
   recommendationError,
   onGoToRoadmap,
   onLoadRoadmap,
@@ -54,7 +101,9 @@ function ProfilePage({
   const [curriculumUploadError, setCurriculumUploadError] = useState('')
   const [uploadMessage, setUploadMessage] = useState('')
   const [uploadError, setUploadError] = useState('')
+  const [preferenceSearch, setPreferenceSearch] = useState('')
   const hasCurriculumGuide = Boolean(curriculumGuide)
+  const hasPendingCurriculumGuideUpload = Boolean(selectedCurriculumGuide)
   const hasTranscriptResults =
     transcriptMatchedCourses.length > 0 ||
     transcriptUnmatchedCourseCodes.length > 0 ||
@@ -63,6 +112,39 @@ function ProfilePage({
   const displayedCurriculumGuideFileName = selectedCurriculumGuide?.name || curriculumGuideFileName
   const displayedTranscriptFileName = selectedTranscript?.name || transcriptFileName
   const transcriptSummaryMessage = `Current transcript: ${transcriptCompletedCourseCount} completed module(s), ${formatAcademicUnits(transcriptTotalAcademicUnitsEarned)} AU earned.`
+  const canLoadRoadmap =
+    hasCurriculumGuide &&
+    !hasPendingCurriculumGuideUpload &&
+    profile.careerGoal === 'software-engineer' &&
+    !isLoadingRoadmap
+  const selectedPreferenceTags = profile.preferredRecommendationTags ?? EMPTY_RECOMMENDATION_TAGS
+  const selectedPreferenceTagSet = useMemo(
+    () => new Set(selectedPreferenceTags),
+    [selectedPreferenceTags],
+  )
+  const hasPreferenceSearch = preferenceSearch.trim().length > 0
+  const filteredRecommendationTagOptions = useMemo(() => {
+    const normalizedSearch = preferenceSearch.trim().toLowerCase()
+
+    if (!normalizedSearch) {
+      return []
+    }
+
+    return RECOMMENDATION_TAG_OPTIONS.filter(
+      (option) =>
+        !selectedPreferenceTagSet.has(option.value) &&
+        (option.label.toLowerCase().includes(normalizedSearch) ||
+          option.value.toLowerCase().includes(normalizedSearch)),
+    )
+  }, [preferenceSearch, selectedPreferenceTagSet])
+
+  function handleTogglePreferenceTag(tag: string) {
+    const nextTags = selectedPreferenceTagSet.has(tag)
+      ? selectedPreferenceTags.filter((selectedTag) => selectedTag !== tag)
+      : [...selectedPreferenceTags, tag]
+
+    updateProfile({ preferredRecommendationTags: nextTags })
+  }
 
   async function handleCurriculumGuideUpload() {
     if (!selectedCurriculumGuide) {
@@ -78,6 +160,8 @@ function ProfilePage({
       const result = await uploadCurriculumGuide(selectedCurriculumGuide)
 
       setCurriculumGuide(result, selectedCurriculumGuide.name)
+      setSelectedCurriculumGuide(null)
+      setCurriculumGuideInputKey((currentKey) => currentKey + 1)
       setCurriculumUploadMessage(
         `Parsed ${result.nodes.length} curriculum row(s) across ${result.semesters.length} semester(s).`,
       )
@@ -178,17 +262,18 @@ function ProfilePage({
 
       <form className="profile-form" onSubmit={(e) => e.preventDefault()}>
         {/* Student ID is the browser-side profile identity. */}
-        <label className="profile-field">
-          <span>Student ID</span>
-          <input
-            type="text"
-            value={profile.studentId}
-            onChange={(e) => updateProfile({ studentId: e.target.value })}
-            placeholder="Enter your student ID"
-          />
-        </label>
+        {/* Keep primary profile inputs together to avoid wasting a full row on Student ID. */}
+        <div className="profile-row profile-identity-row">
+          <label className="profile-field">
+            <span>Student ID</span>
+            <input
+              type="text"
+              value={profile.studentId}
+              onChange={(e) => updateProfile({ studentId: e.target.value })}
+              placeholder="Enter your student ID"
+            />
+          </label>
 
-        <div className="profile-row">
           {/* Major is included now so future roadmap/recommendation logic can branch by programme */}
           <label className="profile-field">
             <span>Major</span>
@@ -213,22 +298,109 @@ function ProfilePage({
           </label>
         </div>
 
+        <section className="profile-preferences-card">
+          <div className="profile-preferences-header">
+            <div>
+              <h3>Topic Preferences</h3>
+              <p>
+                Optional. These tags softly boost matching modules after the career goal,
+                eligibility, and prerequisite checks pass.
+              </p>
+            </div>
+            {selectedPreferenceTags.length > 0 && (
+              <button
+                type="button"
+                className="profile-preferences-clear"
+                onClick={() => updateProfile({ preferredRecommendationTags: [] })}
+              >
+                Clear
+              </button>
+            )}
+          </div>
+
+          <label className="profile-field">
+            <span>Search Tags</span>
+            <input
+              type="search"
+              value={preferenceSearch}
+              onChange={(event) => setPreferenceSearch(event.target.value)}
+              placeholder="Type backend, AI, database..."
+            />
+          </label>
+
+          {selectedPreferenceTags.length > 0 && (
+            <div className="selected-preference-list">
+              {selectedPreferenceTags.map((tag) => {
+                const option = RECOMMENDATION_TAG_OPTIONS.find((item) => item.value === tag)
+
+                return (
+                  <span key={tag} className="selected-preference-tag">
+                    <span className="selected-preference-label">{option?.label ?? tag}</span>
+                    <button
+                      type="button"
+                      aria-label={`Remove ${option?.label ?? tag}`}
+                      onClick={() => handleTogglePreferenceTag(tag)}
+                    >
+                      ×
+                    </button>
+                  </span>
+                )
+              })}
+            </div>
+          )}
+
+          {hasPreferenceSearch && (
+            <div className="preference-option-list">
+              {filteredRecommendationTagOptions.length > 0 ? (
+                filteredRecommendationTagOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    className="preference-option"
+                    onClick={() => {
+                      handleTogglePreferenceTag(option.value)
+                      setPreferenceSearch('')
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))
+              ) : (
+                <p className="preference-empty-message">
+                  No matching tag. Choose from the curated list only.
+                </p>
+              )}
+            </div>
+          )}
+        </section>
+
         <div className="profile-roadmap-actions">
           <div className="profile-roadmap-load-row">
             <button
               type="button"
+              className={hasLoadedRoadmap ? 'load-roadmap-button loaded' : 'load-roadmap-button'}
               onClick={onLoadRoadmap}
-              disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
+              disabled={!canLoadRoadmap}
+              title={hasLoadedRoadmap ? 'Click to reload roadmap recommendations' : 'Load roadmap recommendations'}
             >
-              Load Roadmap
+              {isLoadingRoadmap && <span className="load-roadmap-spinner" aria-hidden="true" />}
+              {hasLoadedRoadmap && !isLoadingRoadmap && (
+                <span className="load-roadmap-tick" aria-hidden="true">
+                  ✓
+                </span>
+              )}
+              {hasLoadedRoadmap ? 'Roadmap Loaded' : 'Load Roadmap'}
             </button>
-
-            {isLoadingRoadmap && <ClassicLoader className="profile-roadmap-loader" />}
           </div>
 
           <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>
             Go to roadmap...
           </button>
+          {hasPendingCurriculumGuideUpload && (
+            <p className="upload-error">
+              Upload the selected curriculum guide before loading the roadmap.
+            </p>
+          )}
           {recommendationError && <p className="upload-error">{recommendationError}</p>}
         </div>
       </form>
@@ -250,9 +422,15 @@ function ProfilePage({
               className="screen-reader-file-input"
               accept="application/pdf"
               onChange={(event) => {
-                setSelectedCurriculumGuide(event.target.files?.[0] ?? null)
+                const selectedFile = event.target.files?.[0] ?? null
+
+                setSelectedCurriculumGuide(selectedFile)
                 setCurriculumUploadError('')
-                setCurriculumUploadMessage('')
+                setCurriculumUploadMessage(
+                  selectedFile && hasCurriculumGuide
+                    ? 'New guide selected. Click Upload Curriculum Guide to replace the current roadmap source.'
+                    : '',
+                )
               }}
             />
             <span className="file-picker-row">

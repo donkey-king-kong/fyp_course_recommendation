@@ -60,12 +60,7 @@ def list_modules(
 
 # Fetches one exact module by code, including its prerequisites and unlocks.
 def get_module_by_code(db: Session, code: str) -> ModuleSummary | None:
-    active_faculties = list_active_faculty_names(db)
-    module = (
-        db.query(ModuleModel)
-        .filter(ModuleModel.code == code.upper(), ModuleModel.faculty.in_(active_faculties))
-        .first()
-    )
+    module = db.query(ModuleModel).filter(ModuleModel.code == code.upper()).first()
 
     if module is None:
         return None
@@ -123,6 +118,7 @@ def build_module_summary(module: ModuleModel, prerequisites: list[str], unlocks:
         description=module.description,
         level=module.level,
         categories=module.categories or [],
+        recommendation_tags=module.recommendation_tags or [],
         latest_year=module.latest_year,
         latest_semester=module.latest_semester,
         is_current_semester=module.is_current_semester,
