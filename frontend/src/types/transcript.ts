@@ -20,3 +20,14 @@ export interface TranscriptUploadResponse {
   total_academic_units_earned: number
   unmatched_course_codes: string[]
 }
+
+export interface TranscriptMatchedCourse {
+  courseCode: string
+  title: string
+}
+
+export interface TranscriptCurriculumMatchResponse {
+  completedCourseIds: string[]
+  transcriptMatchedCourses: TranscriptMatchedCourse[]
+  transcriptUnmatchedCourseCodes: string[]
+}

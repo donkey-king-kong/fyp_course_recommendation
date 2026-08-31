@@ -1,26 +1,17 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import CourseList from './components/CourseList'
 import LoginPage from './components/LoginPage'
 import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
-import { fetchModuleByCode } from './api/modulesApi'
 import { fetchRecommendations } from './api/recommendationsApi'
+import { fetchPersonalizedRoadmap } from './api/roadmapApi'
 import { useProfileStore } from './store/useProfileStore'
 import type { CurriculumGuideResponse } from './types/curriculum'
-import type { ModuleSummary } from './types/module'
-import type { CourseNode, RoadmapEdge, RoadmapResponse } from './types/roadmap'
-import type { TranscriptCourse } from './types/transcript'
+import type { RoadmapResponse } from './types/roadmap'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
-
-interface TranscriptOnlyModule {
-  transcriptCourse: TranscriptCourse
-  module: ModuleSummary
-}
-
-type TranscriptPlacement = Pick<TranscriptCourse, 'study_year' | 'transcript_semester'>
 
 const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
 const DEFAULT_VIEW: ViewState = 'roadmap'
@@ -50,215 +41,13 @@ function getInitialView(): ViewState {
   return DEFAULT_VIEW
 }
 
-function createEdgeKey(edge: RoadmapEdge) {
-  return `${edge.source}->${edge.target}`
-}
-
-function getNodeIdsByCourseCode(nodes: CourseNode[]) {
-  return nodes.reduce<Record<string, string[]>>((map, node) => {
-    const courseCode = node.courseCode.toUpperCase()
-
-    return {
-      ...map,
-      [courseCode]: [...(map[courseCode] ?? []), node.id],
-    }
-  }, {})
-}
-
-function createFallbackTranscriptModule(transcriptCourse: TranscriptCourse): ModuleSummary {
-  return {
-    code: transcriptCourse.course_code,
-    title: transcriptCourse.title || 'Completed transcript module',
-    au: transcriptCourse.academic_units,
-    faculty: null,
-    description: null,
-    level: null,
-    categories: [],
-    recommendation_tags: [],
-    latest_year: null,
-    latest_semester: null,
-    is_current_semester: false,
-    not_available_to_programme: null,
-    prerequisites: [],
-    unlocks: [],
-    prerequisite_count: 0,
-    unlock_count: 0,
-  }
-}
-
-function normalizeCourseTitle(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .join(' ')
-}
-
-function getCourseTitleSignature(title: string) {
-  return normalizeCourseTitle(title)
-    .split(' ')
-    .filter((token) => token !== 'principle' && token !== 'principles')
-    .map((token) => {
-      if (token === 'systems') {
-        return 'system'
-      }
-
-      if (token === 'databases') {
-        return 'database'
-      }
-
-      return token
-    })
-    .join(' ')
-}
-
-function getPrerequisitesByTarget(edges: RoadmapEdge[]) {
-  return edges.reduce<Record<string, string[]>>((map, edge) => {
-    return {
-      ...map,
-      [edge.target]: [...(map[edge.target] ?? []), edge.source],
-    }
-  }, {})
-}
-
-function getCourseMatchingKeys(courseCode: string, title: string) {
-  return [
-    courseCode.toUpperCase(),
-    normalizeCourseTitle(title),
-    getCourseTitleSignature(title),
-  ].filter(Boolean)
-}
-
-function getTranscriptPlacementByCourseKey(transcriptCourses: TranscriptCourse[]) {
-  return transcriptCourses.reduce<Record<string, TranscriptPlacement>>(
-    (placements, course) => {
-      if (!course.study_year || !course.transcript_semester) {
-        return placements
-      }
-
-      const placement = {
-        study_year: course.study_year,
-        transcript_semester: course.transcript_semester,
-      }
-      getCourseMatchingKeys(course.course_code, course.title).forEach((key) => {
-        placements[key] = placement
-      })
-
-      return placements
-    },
-    {},
-  )
-}
-
-function getTranscriptPlacementForCurriculumCourse(
-  course: CurriculumGuideResponse['nodes'][number],
-  transcriptPlacementByCourseKey: Record<string, TranscriptPlacement>,
-) {
-  return getCourseMatchingKeys(course.courseCode, course.title)
-    .map((key) => transcriptPlacementByCourseKey[key])
-    .find(Boolean)
-}
-
-// Convert the uploaded curriculum guide shape into the existing roadmap component shape.
-function mapCurriculumGuideToRoadmap(
-  curriculumGuide: CurriculumGuideResponse,
-  transcriptOnlyModules: TranscriptOnlyModule[],
-  transcriptCompletedCourses: TranscriptCourse[],
-): RoadmapResponse {
-  const transcriptPlacementByCourseKey = getTranscriptPlacementByCourseKey(
-    transcriptCompletedCourses,
-  )
-  const curriculumNodes: CourseNode[] = curriculumGuide.nodes.map((course) => {
-    const transcriptPlacement = getTranscriptPlacementForCurriculumCourse(
-      course,
-      transcriptPlacementByCourseKey,
-    )
-
-    return {
-      id: course.id,
-      courseCode: course.courseCode,
-      title: getCurriculumCourseTitle(course),
-      type: course.type,
-      // The curriculum guide provides the base node; transcript term data overrides where it appears.
-      year: transcriptPlacement?.study_year ?? course.year,
-      semester: transcriptPlacement?.transcript_semester ?? course.semester,
-      academicUnits: course.academicUnits,
-      prerequisites: curriculumGuide.edges
-        .filter((edge) => edge.target === course.id)
-        .map((edge) => edge.source),
-      prerequisiteText: course.prerequisiteText,
-      isCompleted: false,
-      isChoiceSlot: course.isChoiceSlot,
-      isTranscriptOnly: false,
-      jobSkills: [],
-    }
-  })
-  // Transcript-only modules are added without replacing official curriculum slots.
-  const transcriptNodes: CourseNode[] = transcriptOnlyModules.map(({ module, transcriptCourse }) => ({
-    id: `transcript-${module.code.toLowerCase()}`,
-    courseCode: module.code,
-    title: module.title,
-    type: 'Transcript',
-    year: transcriptCourse.study_year ?? 0,
-    semester: transcriptCourse.transcript_semester ?? 0,
-    academicUnits: module.au ?? transcriptCourse.academic_units,
-    prerequisites: [],
-    prerequisiteText: module.prerequisites.join(', '),
-    isCompleted: true,
-    isChoiceSlot: false,
-    isTranscriptOnly: true,
-    jobSkills: [],
-  }))
-  const nodes = [...transcriptNodes, ...curriculumNodes]
-  const nodeIdsByCourseCode = getNodeIdsByCourseCode(nodes)
-  const transcriptEdges = transcriptOnlyModules.flatMap(({ module }) => {
-    const transcriptNodeId = `transcript-${module.code.toLowerCase()}`
-    const prerequisiteEdges = module.prerequisites.flatMap((prerequisiteCode) =>
-      (nodeIdsByCourseCode[prerequisiteCode.toUpperCase()] ?? []).map((prerequisiteNodeId) => ({
-        source: prerequisiteNodeId,
-        target: transcriptNodeId,
-      })),
-    )
-    const unlockEdges = module.unlocks.flatMap((unlockCode) =>
-      (nodeIdsByCourseCode[unlockCode.toUpperCase()] ?? []).map((unlockNodeId) => ({
-        source: transcriptNodeId,
-        target: unlockNodeId,
-      })),
-    )
-
-    return [...prerequisiteEdges, ...unlockEdges]
-  })
-  const edges = [...curriculumGuide.edges, ...transcriptEdges].filter(
-    (edge, index, allEdges) =>
-      allEdges.findIndex((candidate) => createEdgeKey(candidate) === createEdgeKey(edge)) === index,
-  )
-  const prerequisitesByTarget = getPrerequisitesByTarget(edges)
-  const nodesWithUpdatedPrerequisites = nodes.map((node) => ({
-    ...node,
-    prerequisites: prerequisitesByTarget[node.id] ?? [],
-  }))
-
-  return { nodes: nodesWithUpdatedPrerequisites, edges }
-}
-
 function getChoiceSlotCode(course: CurriculumGuideResponse['nodes'][number]) {
   return course.isChoiceSlot ? course.courseCode : null
 }
 
-// Size the recommendation pool from actual slot demand, not just unique slot labels.
-// BDE needs more candidates because duplicates, wrong-year levels, and prerequisites can be skipped.
+// Backend owns final slot assignment, so request one recommendation per open slot.
 function getRecommendationLimit(openChoiceSlots: CurriculumGuideResponse['nodes']) {
-  const bdeSlotCount = openChoiceSlots.filter(
-    (course) => course.courseCode === 'BDE' || course.type === 'BDE',
-  ).length
-  const mpeSlotCount = openChoiceSlots.filter(
-    (course) => course.courseCode !== 'BDE' && course.type !== 'BDE',
-  ).length
-
-  return Math.min(120, Math.max(24, bdeSlotCount * 18 + mpeSlotCount * 10))
+  return Math.max(1, openChoiceSlots.length)
 }
 
 // Main page component
@@ -268,7 +57,8 @@ function App() {
   const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
   const [recommendationError, setRecommendationError] = useState('')
-  const [transcriptOnlyModules, setTranscriptOnlyModules] = useState<TranscriptOnlyModule[]>([])
+  const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
+  const [roadmapProjectionError, setRoadmapProjectionError] = useState('')
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
@@ -291,19 +81,6 @@ function App() {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
   }, [currentView])
 
-  const roadmap = useMemo(
-    () => (
-      curriculumGuide
-        ? mapCurriculumGuideToRoadmap(
-            curriculumGuide,
-            transcriptOnlyModules,
-            transcriptCompletedCourses,
-          )
-        : null
-    ),
-    [curriculumGuide, transcriptCompletedCourses, transcriptOnlyModules],
-  )
-
   useEffect(() => {
     setRecommendationError('')
   }, [
@@ -316,48 +93,33 @@ function App() {
   useEffect(() => {
     let shouldIgnoreResult = false
 
-    async function loadTranscriptOnlyModules() {
-      if (!curriculumGuide || transcriptUnmatchedCourseCodes.length === 0) {
-        setTranscriptOnlyModules([])
+    async function loadPersonalizedRoadmap() {
+      if (!curriculumGuide) {
+        setRoadmap(null)
+        setRoadmapProjectionError('')
         return
       }
 
-      const loadedModules = await Promise.all(
-        transcriptUnmatchedCourseCodes.map(async (courseCode) => {
-          const transcriptCourse = transcriptCompletedCourses.find(
-            (course) => course.course_code === courseCode,
-          ) ?? {
-            course_code: courseCode,
-            course_id: `transcript-${courseCode.toLowerCase()}`,
-            title: 'Completed transcript module',
-            academic_units: 0,
-            grade: '',
-            grade_point: null,
-            academic_year: null,
-            transcript_semester: null,
-            study_year: null,
-          }
+      try {
+        const result = await fetchPersonalizedRoadmap(
+          curriculumGuide,
+          transcriptCompletedCourses,
+          transcriptUnmatchedCourseCodes,
+        )
 
-          try {
-            return {
-              transcriptCourse,
-              module: await fetchModuleByCode(courseCode),
-            }
-          } catch {
-            return {
-              transcriptCourse,
-              module: createFallbackTranscriptModule(transcriptCourse),
-            }
-          }
-        }),
-      )
-
-      if (!shouldIgnoreResult) {
-        setTranscriptOnlyModules(loadedModules)
+        if (!shouldIgnoreResult) {
+          setRoadmap(result)
+          setRoadmapProjectionError('')
+        }
+      } catch {
+        if (!shouldIgnoreResult) {
+          setRoadmap(null)
+          setRoadmapProjectionError('Could not build your personalized roadmap. Make sure the backend is running.')
+        }
       }
     }
 
-    void loadTranscriptOnlyModules()
+    void loadPersonalizedRoadmap()
 
     return () => {
       shouldIgnoreResult = true
@@ -541,6 +303,9 @@ function App() {
             Your roadmap will be generated from your uploaded curriculum guide. Go to Profile and
             upload the PDF before planning courses.
           </p>
+          {roadmapProjectionError && (
+            <p className="roadmap-recommendation-error">{roadmapProjectionError}</p>
+          )}
           <button type="button" onClick={() => setCurrentView('profile')}>
             Go to Profile
           </button>

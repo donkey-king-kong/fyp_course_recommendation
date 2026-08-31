@@ -1463,3 +1463,75 @@ Status: Implemented locally
 - No new recommendation settings or preference sliders.
 - No diversity explanation field in the public API response.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Backend-Owned Recommendation Slot Assignment
+
+Status: Implemented locally
+
+### Completed
+
+- Changed backend final selection so it returns at most one assigned recommendation per exact open choice slot.
+- Kept `recommendations` as the existing response field, but its meaning is now final assigned recommendations rather than a large candidate pool.
+- Changed the frontend recommendation request limit to match the number of open choice slots instead of requesting a large buffer such as 24, 50, or 90 candidates.
+- Simplified roadmap assignment so the frontend uses backend-provided `matchedChoiceSlotId` directly instead of re-ranking candidates by score or slot type.
+- Kept frontend visual rendering, module detail opening, and prerequisite planning-node rendering unchanged.
+
+### Rationale Notes
+
+- Recommendation ranking and allocation should live in the backend service layer, not in the frontend rendering layer.
+- The backend already has the career goal, preferences, completed courses, curriculum slots, prerequisite paths, scoring, and diversity context needed to make the final assignment.
+- The frontend should receive assigned recommendations and render them into the matching roadmap cards.
+- If there are five open choice slots, the normal response should now contain up to five assigned recommendations, not a large candidate pool that the frontend has to interpret.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No new frontend UI.
+- No new API endpoint name or response field rename.
+- No backend persistence for assigned recommendations.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Backend-Owned Roadmap Logic Refactor
+
+Status: Implemented locally
+
+### Completed
+
+- Added backend-planned recommendation roadmap artifacts to recommendation responses.
+- Each assigned recommendation can now include `plannedRoadmapNodes` and `plannedRoadmapEdges`.
+- Removed frontend construction of `Recommended Pre-Requisite` nodes and arrows.
+- Added `POST /roadmap/readiness` so the backend evaluates course readiness states and missing requirements.
+- Updated the roadmap UI to render backend readiness output, with the previous local readiness calculation kept only as a fallback if the backend is unavailable.
+- Added `POST /transcript/match-curriculum` so the backend matches parsed transcript modules to uploaded curriculum rows by exact code first, then conservative title/signature matching.
+- Removed transcript-to-curriculum matching logic from the browser profile store.
+- Added `POST /roadmap/personalized` so the backend combines uploaded curriculum guide data, transcript placement overrides, transcript-only modules, and transcript-only prerequisite/unlock arrows into the roadmap response shape.
+- Removed frontend logic that enriched transcript-only modules and built the combined personalized roadmap locally.
+- Kept backend persistence intentionally out of scope because it should wait for a safe user identity/login design.
+
+### Rationale Notes
+
+- Recommendation ranking, exact slot assignment, prerequisite planning, readiness, transcript matching, and personalized roadmap projection now sit closer to the backend service layer.
+- The frontend still owns rendering, layout, hover behavior, tab navigation, upload controls, and local prototype persistence.
+- Browser storage remains inspectable and user-editable, so backend APIs must continue treating submitted profile, curriculum, transcript, completion, and recommendation state as user-controlled input.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No backend user table, production authentication, or server-side profile storage.
+- No API rename from `recommendations` to `assignments`.
+- No visible recommendation score breakdown on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
