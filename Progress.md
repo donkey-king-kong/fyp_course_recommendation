@@ -1535,3 +1535,41 @@ Status: Implemented locally
 - No API rename from `recommendations` to `assignments`.
 - No visible recommendation score breakdown on roadmap cards.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Backend Roadmap Flow Compatibility Fix
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed a Python 3.9 backend startup crash introduced by the backend-owned roadmap refactor.
+- Replaced new `X | None` annotations in backend roadmap services with Python 3.9-compatible `Optional[X]` annotations.
+- Fixed `POST /roadmap/personalized` returning `500` by converting uploaded curriculum guide `CurriculumEdge` objects into `RoadmapEdge` objects before returning `RoadmapResponse`.
+- Confirmed the curriculum guide upload and recommendation flow works again after the fix.
+- Updated Swagger/OpenAPI descriptions so `/recommendations` now clearly describes backend-assigned recommendations keyed by `matchedChoiceSlotId`.
+- Updated Swagger/OpenAPI descriptions so `/roadmap/personalized` explains backend roadmap projection and normalized roadmap edge output.
+
+### Rationale Notes
+
+- The local backend runs on Python 3.9, so Python 3.10 union syntax can crash during FastAPI import before any endpoint runs.
+- `CurriculumEdge` and `RoadmapEdge` have the same fields, but Pydantic v2 treats them as different model types during response validation.
+- This is a compatibility and schema-normalization fix only; it does not change recommendation ranking, slot assignment, or roadmap UI behavior.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Confirmed `POST /roadmap/personalized` returns `200`.
+- Confirmed `POST /recommendations` returns `200` with the parsed 2025 curriculum guide and open choice slots.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Confirmed OpenAPI schema generation includes the updated summaries for `/roadmap/personalized` and `/recommendations`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No new feature behavior.
+- No backend persistence, user table, production authentication, or SSO implementation.
+- No API rename from `recommendations` to `assignments`.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.

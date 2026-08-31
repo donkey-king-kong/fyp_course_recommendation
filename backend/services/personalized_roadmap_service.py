@@ -1,3 +1,5 @@
+from typing import Optional
+
 from sqlalchemy.orm import Session
 
 from backend.models import ModuleModel
@@ -30,7 +32,11 @@ def build_personalized_roadmap(
         curriculum_nodes,
     )
     nodes = [*transcript_nodes, *curriculum_nodes]
-    edges = deduplicate_edges([*curriculum_guide.edges, *transcript_edges])
+    curriculum_edges = [
+        RoadmapEdge(source=edge.source, target=edge.target)
+        for edge in curriculum_guide.edges
+    ]
+    edges = deduplicate_edges([*curriculum_edges, *transcript_edges])
     prerequisites_by_target = get_prerequisites_by_target(edges)
     nodes_with_updated_prerequisites = [
         node.model_copy(update={"prerequisites": prerequisites_by_target.get(node.id, [])})
@@ -105,8 +111,8 @@ def build_transcript_only_roadmap_items(
     return transcript_nodes, transcript_edges
 
 def build_transcript_node(
-    transcript_course: TranscriptCourse | None,
-    module: ModuleModel | None,
+    transcript_course: Optional[TranscriptCourse],
+    module: Optional[ModuleModel],
     prerequisites: list[str],
     course_code: str,
 ) -> CourseNode:
@@ -177,8 +183,8 @@ def get_curriculum_course_title(course: CurriculumCourse) -> str:
     return course.title
 
 def get_transcript_node_title(
-    transcript_course: TranscriptCourse | None,
-    module: ModuleModel | None,
+    transcript_course: Optional[TranscriptCourse],
+    module: Optional[ModuleModel],
 ) -> str:
     if module:
         return module.title
@@ -189,8 +195,8 @@ def get_transcript_node_title(
     return "Completed transcript module"
 
 def get_transcript_node_au(
-    transcript_course: TranscriptCourse | None,
-    module: ModuleModel | None,
+    transcript_course: Optional[TranscriptCourse],
+    module: Optional[ModuleModel],
 ) -> float:
     if module and module.au is not None:
         return module.au
@@ -219,7 +225,7 @@ def get_transcript_placement_by_course_key(
 def get_transcript_placement_for_curriculum_course(
     course: CurriculumCourse,
     transcript_placement_by_course_key: dict[str, tuple[int, int]],
-) -> tuple[int, int] | None:
+) -> Optional[tuple[int, int]]:
     return next(
         (
             transcript_placement_by_course_key[key]

@@ -82,7 +82,10 @@ class RecommendationRequest(BaseModel):
     )
     choiceSlots: list[RecommendationChoiceSlot] = Field(
         default_factory=list,
-        description="Open curriculum choice slots with roadmap position details for backend slot-fit ranking.",
+        description=(
+            "Open curriculum choice slots with roadmap position details. The backend "
+            "uses these slots for final exact-slot assignment."
+        ),
     )
     curriculumCourses: list[RecommendationCurriculumCourse] = Field(
         default_factory=list,
@@ -103,7 +106,10 @@ class RecommendationRequest(BaseModel):
         default=12,
         ge=1,
         le=120,
-        description="Maximum number of recommendations to return.",
+        description=(
+            "Maximum number of assigned recommendations to return. The frontend "
+            "currently sends one slot per open choice slot."
+        ),
     )
 
 class RecommendationPrerequisite(BaseModel):
@@ -114,19 +120,21 @@ class RecommendationPrerequisite(BaseModel):
     level: Optional[int]
 
 class RecommendationPlannedRoadmapNode(BaseModel):
-    id: str
-    courseCode: str
-    title: str
-    type: str
-    year: int
-    semester: int
-    academicUnits: float
-    prerequisiteText: str
-    recommendedForCourseCode: str
+    id: str = Field(description="Backend-generated roadmap node ID for the planned prerequisite.")
+    courseCode: str = Field(description="Course code of the planned prerequisite module.")
+    title: str = Field(description="Display title of the planned prerequisite module.")
+    type: str = Field(description="Roadmap card type, usually Recommended Pre-Requisite.")
+    year: int = Field(description="Suggested roadmap year for this planned prerequisite card.")
+    semester: int = Field(description="Suggested roadmap semester for this planned prerequisite card.")
+    academicUnits: float = Field(description="Academic units for the planned prerequisite module.")
+    prerequisiteText: str = Field(description="Raw prerequisite text for the planned prerequisite module.")
+    recommendedForCourseCode: str = Field(
+        description="Recommended module code that this planned prerequisite supports.",
+    )
 
 class RecommendationPlannedRoadmapEdge(BaseModel):
-    source: str
-    target: str
+    source: str = Field(description="Source roadmap node ID for the planned prerequisite arrow.")
+    target: str = Field(description="Target roadmap node ID for the planned prerequisite arrow.")
 
 class RecommendationScoreBreakdown(BaseModel):
     careerTagScore: int = Field(
@@ -164,19 +172,36 @@ class CourseRecommendation(BaseModel):
     academicUnits: Optional[float]
     faculty: Optional[str]
     level: Optional[int]
-    matchedChoiceSlot: str
-    matchedChoiceSlotId: Optional[str] = None
-    matchedChoiceSlotYear: Optional[int] = None
-    matchedChoiceSlotSemester: Optional[int] = None
+    matchedChoiceSlot: str = Field(description="Choice-slot code that this recommendation satisfies.")
+    matchedChoiceSlotId: Optional[str] = Field(
+        default=None,
+        description="Exact open roadmap choice-slot node ID assigned by the backend.",
+    )
+    matchedChoiceSlotYear: Optional[int] = Field(
+        default=None,
+        description="Roadmap year of the assigned choice slot.",
+    )
+    matchedChoiceSlotSemester: Optional[int] = Field(
+        default=None,
+        description="Roadmap semester of the assigned choice slot.",
+    )
     matchedKeywords: list[str]
     prerequisites: list[str]
     missingPrerequisites: list[str]
     existingPrerequisiteCourseCodes: list[str]
     plannedPrerequisiteCourseCodes: list[str]
     prerequisiteRecommendations: list[RecommendationPrerequisite]
-    plannedRoadmapNodes: list[RecommendationPlannedRoadmapNode] = Field(default_factory=list)
-    plannedRoadmapEdges: list[RecommendationPlannedRoadmapEdge] = Field(default_factory=list)
-    readinessStatus: RecommendationReadinessStatus
+    plannedRoadmapNodes: list[RecommendationPlannedRoadmapNode] = Field(
+        default_factory=list,
+        description="Backend-planned prerequisite nodes that the frontend can render with the assignment.",
+    )
+    plannedRoadmapEdges: list[RecommendationPlannedRoadmapEdge] = Field(
+        default_factory=list,
+        description="Backend-planned prerequisite arrows that connect planned nodes to the assignment.",
+    )
+    readinessStatus: RecommendationReadinessStatus = Field(
+        description="Whether the recommendation is ready now or needs prerequisite planning.",
+    )
     unlockValue: int
     score: int
     scoreBreakdown: RecommendationScoreBreakdown
@@ -184,7 +209,12 @@ class CourseRecommendation(BaseModel):
 
 class RecommendationResponse(BaseModel):
     careerGoal: str
-    recommendations: list[CourseRecommendation]
+    recommendations: list[CourseRecommendation] = Field(
+        description=(
+            "Backend-assigned recommendations. Each item should be rendered using "
+            "`matchedChoiceSlotId`; the frontend should not re-rank or reassign them."
+        ),
+    )
 
     model_config = ConfigDict(
         json_schema_extra={
@@ -207,6 +237,8 @@ class RecommendationResponse(BaseModel):
                         "existingPrerequisiteCourseCodes": ["SC2006"],
                         "plannedPrerequisiteCourseCodes": [],
                         "prerequisiteRecommendations": [],
+                        "plannedRoadmapNodes": [],
+                        "plannedRoadmapEdges": [],
                         "readinessStatus": "ready",
                         "unlockValue": 1,
                         "score": 9,

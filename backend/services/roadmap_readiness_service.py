@@ -1,4 +1,5 @@
 import re
+from typing import Optional
 
 from backend.schemas.roadmap_readiness import (
     RoadmapCourseReadiness,
@@ -73,7 +74,7 @@ def get_missing_standing_requirement(
     course: RoadmapReadinessCourse,
     completed_academic_units: float,
     standing_requirements: list[RoadmapStandingRequirement],
-) -> str | None:
+) -> Optional[str]:
     if should_ignore_prerequisite_text(course):
         return None
 
@@ -117,10 +118,10 @@ def should_ignore_prerequisite_text(course: RoadmapReadinessCourse) -> bool:
         "refer to class schedule" in prerequisite_text
     )
 
-def get_standing_year(prerequisite_text: str | None) -> int | None:
+def get_standing_year(prerequisite_text: Optional[str]) -> Optional[int]:
     standing_match = re.search(r"\byear\s+([2-4])\s+standing\b", prerequisite_text or "", re.IGNORECASE)
 
     return int(standing_match.group(1)) if standing_match else None
 
-def has_course_code_prerequisite(prerequisite_text: str | None) -> bool:
+def has_course_code_prerequisite(prerequisite_text: Optional[str]) -> bool:
     return bool(COURSE_CODE_PATTERN.search(prerequisite_text or ""))
