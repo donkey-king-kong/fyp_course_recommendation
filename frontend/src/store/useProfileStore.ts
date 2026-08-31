@@ -2,7 +2,11 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { CurriculumGuideResponse } from '../types/curriculum'
 import type { CourseRecommendation } from '../types/recommendation'
-import type { TranscriptCourse } from '../types/transcript'
+import type {
+  TranscriptCourse,
+  TranscriptCurriculumMatchResponse,
+  TranscriptMatchedCourse,
+} from '../types/transcript'
 
 export interface StudentProfile {
   studentId: string
@@ -11,11 +15,6 @@ export interface StudentProfile {
   major: 'CSC'
   careerGoal: string
   preferredRecommendationTags: string[]
-}
-
-export interface TranscriptMatchedCourse {
-  courseCode: string
-  title: string
 }
 
 interface SavedStudentProfile {
@@ -62,7 +61,11 @@ interface ProfileState {
   updateProfile: (updates: Partial<StudentProfile>) => void // Save profile fields.
   toggleCourseCompletion: (courseId: string) => void // Toggle one roadmap checkbox.
   setCompletedCourses: (courseIds: string[]) => void // Replace checked roadmap IDs.
-  setCurriculumGuide: (curriculumGuide: CurriculumGuideResponse, fileName: string) => void // Save guide.
+  setCurriculumGuide: (
+    curriculumGuide: CurriculumGuideResponse,
+    fileName: string,
+    transcriptMatch?: TranscriptCurriculumMatchResponse,
+  ) => void // Save guide.
   clearCurriculumGuide: () => void // Remove uploaded guide only.
   setRoadmapRecommendations: (recommendations: CourseRecommendation[]) => void // Save results.
   clearRoadmapRecommendations: () => void // Remove saved results.
@@ -72,6 +75,7 @@ interface ProfileState {
     transcriptCompletedCourses: TranscriptCourse[],
     transcriptCompletedCourseCount: number,
     transcriptTotalAcademicUnitsEarned: number,
+    transcriptMatch?: TranscriptCurriculumMatchResponse,
   ) => void // Save transcript results.
   clearTranscriptResults: () => void // Remove uploaded transcript data.
   logout: () => void // End active browser session.
@@ -121,106 +125,11 @@ function createSavedStudentProfile(studentId: string): SavedStudentProfile {
   }
 }
 
-function normalizeCourseTitle(title: string) {
-  return title
-    .toLowerCase()
-    .replace(/&/g, ' and ')
-    .replace(/[^a-z0-9]+/g, ' ')
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .join(' ')
-}
-
-function getCourseTitleSignature(title: string) {
-  return normalizeCourseTitle(title)
-    .split(' ')
-    .filter((token) => token !== 'principle' && token !== 'principles')
-    .map((token) => {
-      if (token === 'systems') {
-        return 'system'
-      }
-
-      if (token === 'databases') {
-        return 'database'
-      }
-
-      return token
-    })
-    .join(' ')
-}
-
-function getTranscriptCourseKeys(course: TranscriptCourse) {
-  return new Set([
-    course.course_code,
-    normalizeCourseTitle(course.title),
-    getCourseTitleSignature(course.title),
-  ])
-}
-
-// Match raw transcript codes to the currently uploaded curriculum guide.
-function matchTranscriptToCurriculum(
-  completedCourseCodes: string[],
-  transcriptCompletedCourses: TranscriptCourse[],
-  curriculumGuide: CurriculumGuideResponse | null,
-) {
-  if (!curriculumGuide) {
-    return {
-      completedCourseIds: [],
-      transcriptMatchedCourses: [],
-      transcriptUnmatchedCourseCodes: [],
-    }
-  }
-
-  const completedCodeSet = new Set(completedCourseCodes)
-  const transcriptCourseKeys = transcriptCompletedCourses.reduce<Set<string>>((keys, course) => {
-    getTranscriptCourseKeys(course).forEach((key) => keys.add(key))
-    return keys
-  }, new Set())
-  const matchedCourses = curriculumGuide.nodes
-    // Some NTU modules change code across guide/transcript versions, so match by title too.
-    .filter(
-      (course) =>
-        completedCodeSet.has(course.courseCode) ||
-        transcriptCourseKeys.has(normalizeCourseTitle(course.title)) ||
-        transcriptCourseKeys.has(getCourseTitleSignature(course.title)),
-    )
-    .map((course) => ({
-      courseCode: course.courseCode,
-      title: course.title,
-    }))
-  const matchedCourseKeys = curriculumGuide.nodes
-    .filter((course) => matchedCourses.some((matchedCourse) => matchedCourse.courseCode === course.courseCode))
-    .reduce<Set<string>>((keys, course) => {
-      keys.add(course.courseCode)
-      keys.add(normalizeCourseTitle(course.title))
-      keys.add(getCourseTitleSignature(course.title))
-      return keys
-    }, new Set())
-  const unmatchedCourseCodes = completedCourseCodes.filter(
-    (courseCode) => {
-      const transcriptCourse = transcriptCompletedCourses.find(
-        (course) => course.course_code === courseCode,
-      )
-
-      if (!transcriptCourse) {
-        return !matchedCourseKeys.has(courseCode)
-      }
-
-      return ![...getTranscriptCourseKeys(transcriptCourse)].some((key) =>
-        matchedCourseKeys.has(key),
-      )
-    },
-  )
-
+function createEmptyTranscriptMatch(): TranscriptCurriculumMatchResponse {
   return {
-    completedCourseIds: curriculumGuide.nodes
-      .filter((course) =>
-        matchedCourses.some((matchedCourse) => matchedCourse.courseCode === course.courseCode),
-      )
-      .map((course) => course.id),
-    transcriptMatchedCourses: matchedCourses,
-    transcriptUnmatchedCourseCodes: unmatchedCourseCodes,
+    completedCourseIds: [],
+    transcriptMatchedCourses: [],
+    transcriptUnmatchedCourseCodes: [],
   }
 }
 
@@ -407,13 +316,9 @@ export const useProfileStore = create<ProfileState>()(
             : state.profilesByStudentId,
         })),
 
-      setCurriculumGuide: (curriculumGuide, fileName) =>
+      setCurriculumGuide: (curriculumGuide, fileName, transcriptMatch) =>
         set((state) => {
-          const matchedResults = matchTranscriptToCurriculum(
-            state.transcriptCompletedCourseCodes,
-            state.transcriptCompletedCourses,
-            curriculumGuide,
-          )
+          const matchedResults = transcriptMatch ?? createEmptyTranscriptMatch()
 
           return {
             curriculumGuide,
@@ -534,13 +439,10 @@ export const useProfileStore = create<ProfileState>()(
         transcriptCompletedCourses,
         transcriptCompletedCourseCount,
         transcriptTotalAcademicUnitsEarned,
+        transcriptMatch,
       ) =>
         set((state) => {
-          const matchedResults = matchTranscriptToCurriculum(
-            completedCourseCodes,
-            transcriptCompletedCourses,
-            state.curriculumGuide,
-          )
+          const matchedResults = transcriptMatch ?? createEmptyTranscriptMatch()
 
           return {
             completedCourseIds: matchedResults.completedCourseIds,
