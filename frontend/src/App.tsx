@@ -72,6 +72,7 @@ function createFallbackTranscriptModule(transcriptCourse: TranscriptCourse): Mod
     description: null,
     level: null,
     categories: [],
+    recommendation_tags: [],
     latest_year: null,
     latest_semester: null,
     is_current_semester: false,

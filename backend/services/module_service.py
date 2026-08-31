@@ -123,6 +123,7 @@ def build_module_summary(module: ModuleModel, prerequisites: list[str], unlocks:
         description=module.description,
         level=module.level,
         categories=module.categories or [],
+        recommendation_tags=module.recommendation_tags or [],
         latest_year=module.latest_year,
         latest_semester=module.latest_semester,
         is_current_semester=module.is_current_semester,

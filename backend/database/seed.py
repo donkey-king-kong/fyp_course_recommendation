@@ -4,6 +4,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from sqlalchemy import inspect, text
+
 from backend.database.connection import SessionLocal, engine
 from backend.models import Base, FacultyModel, ModuleModel, ModulePrerequisiteModel
 
@@ -16,6 +18,7 @@ DEFAULT_ACTIVE_FACULTIES = {"CSC", "CE"}
 def seed_database() -> None:
     # Create missing tables before inserting data so local setup stays simple.
     Base.metadata.create_all(bind=engine)
+    ensure_module_recommendation_tags_column()
 
     modules = load_modules(MODULES_JSON_PATH)
     prerequisite_graph = load_prerequisite_graph(PREREQUISITE_GRAPH_JSON_PATH)
@@ -128,6 +131,7 @@ def build_module_data(module: dict[str, Any], description_by_code: dict[str, str
         "description": description,
         "level": infer_level(code),
         "categories": module.get("categories", []),
+        "recommendation_tags": module.get("recommendationTags", []),
         "latest_year": module.get("latestYear"),
         "latest_semester": module.get("latestSemester"),
         "is_current_semester": bool(module.get("isCurrentSemester", False)),
@@ -158,6 +162,24 @@ def build_prerequisite_relationships(prerequisite_graph: dict[str, dict[str, lis
             relationships.add((module_code, prerequisite_code))
 
     return sorted(relationships)
+
+def ensure_module_recommendation_tags_column() -> None:
+    existing_columns = {
+        column["name"]
+        for column in inspect(engine).get_columns(ModuleModel.__tablename__)
+    }
+
+    if "recommendation_tags" in existing_columns:
+        return
+
+    column_type = "JSON DEFAULT '[]'::json"
+    if engine.dialect.name == "sqlite":
+        column_type = "JSON DEFAULT '[]'"
+
+    with engine.begin() as connection:
+        connection.execute(
+            text(f"ALTER TABLE modules ADD COLUMN recommendation_tags {column_type}")
+        )
 
 if __name__ == "__main__":
     seed_database()

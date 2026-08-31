@@ -6,6 +6,7 @@ export interface ModuleSummary {
   description: string | null
   level: number | null
   categories: string[]
+  recommendation_tags: string[]
   latest_year: string | null
   latest_semester: string | null
   is_current_semester: boolean
