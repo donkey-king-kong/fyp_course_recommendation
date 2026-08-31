@@ -1085,3 +1085,27 @@ Status: Implemented locally
 - Ran `npm run lint` from `frontend`.
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
+
+## Recommendation Preference Ranking Polish
+
+Status: Implemented locally
+
+### Completed
+
+- Added conservative title-signature duplicate detection so similar database module titles such as `Database Systems` and `Database System Principles` are treated as overlapping recommendations.
+- Increased the student topic preference boost so selected tags visibly influence ranking while still allowing non-preferred modules when needed.
+- Kept recommendation output deterministic; pressing Load Roadmap repeatedly with unchanged profile inputs should still return the same ranking.
+
+### Rationale Notes
+
+- Exact duplicate-title checks were not enough because similar course titles can differ by words like `Principles` or plural forms like `Systems`.
+- Preference tags are still soft ranking signals, not hard filters, but the boost now has enough weight to move matching modules above generic software/database candidates.
+
+### Verified
+
+- Confirmed a service-level recommendation request with `SC3020` excluded by title does not include `CSC206`.
+- Confirmed an `ai-ml` preference moves AI/ML-tagged modules into Year 4 BDE recommendations.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.

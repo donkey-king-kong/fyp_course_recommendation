@@ -55,6 +55,14 @@ SOFTWARE_ENGINEER_TAG_WEIGHTS = {
     "parallel-computing": 2,
     "computer-architecture": 2,
 }
+TITLE_SIGNATURE_STOP_WORDS = {"principle", "principles"}
+TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
+    "algorithms": "algorithm",
+    "networks": "network",
+    "structures": "structure",
+    "systems": "system",
+}
+PREFERENCE_TAG_BOOST = 30
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -93,7 +101,7 @@ def recommend_courses(
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
     preferred_tags = normalize_recommendation_tags(preferred_recommendation_tags)
     excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
-    excluded_titles = {normalize_title(title) for title in excluded_course_titles}
+    excluded_titles = get_excluded_title_keys(excluded_course_titles)
     candidate_slots = build_recommendation_choice_slots(choice_slot_codes, choice_slots)
     mpe_levels = get_mpe_candidate_levels([slot.courseCode for slot in candidate_slots])
     has_bde_slot = any(slot.courseCode.upper() == "BDE" for slot in candidate_slots)
@@ -219,6 +227,27 @@ def normalize_title(title: str) -> str:
     normalized_title = re.sub(r"[^a-z0-9]+", " ", normalized_title)
 
     return " ".join(normalized_title.split())
+
+def get_title_signature(title: str) -> str:
+    tokens = [
+        TITLE_SIGNATURE_TOKEN_REPLACEMENTS.get(token, token)
+        for token in normalize_title(title).split()
+    ]
+    meaningful_tokens = [
+        token
+        for token in tokens
+        if token not in TITLE_SIGNATURE_STOP_WORDS
+    ]
+
+    return " ".join(meaningful_tokens)
+
+def get_excluded_title_keys(titles: list[str]) -> set[str]:
+    return {
+        key
+        for title in titles
+        for key in (normalize_title(title), get_title_signature(title))
+        if key
+    }
 
 def build_recommendation_choice_slots(
     choice_slot_codes: list[str],
@@ -428,7 +457,18 @@ def is_excluded_module(
     excluded_codes: set[str],
     excluded_titles: set[str],
 ) -> bool:
-    return module.code in excluded_codes or normalize_title(module.title) in excluded_titles
+    return (
+        module.code in excluded_codes or
+        normalize_title(module.title) in excluded_titles or
+        get_title_signature(module.title) in excluded_titles
+    )
+
+def add_used_title_keys(used_course_titles: set[str], title: str) -> None:
+    used_course_titles.add(normalize_title(title))
+    title_signature = get_title_signature(title)
+
+    if title_signature:
+        used_course_titles.add(title_signature)
 
 def build_prerequisite_recommendations(
     missing_prerequisites: list[str],
@@ -566,7 +606,7 @@ def flatten_ranked_slot_recommendations(
 
             ranked_recommendations.append(unique_recommendation)
             used_course_codes.add(unique_recommendation.courseCode)
-            used_course_titles.add(normalize_title(unique_recommendation.title))
+            add_used_title_keys(used_course_titles, unique_recommendation.title)
             added_this_round = True
 
             if len(ranked_recommendations) >= limit:
@@ -587,10 +627,12 @@ def get_unique_recommendation_at_or_after_index(
 ) -> Optional[CourseRecommendation]:
     for recommendation in recommendations[start_index:]:
         recommendation_title = normalize_title(recommendation.title)
+        recommendation_title_signature = get_title_signature(recommendation.title)
 
         if (
             recommendation.courseCode not in used_course_codes and
-            recommendation_title not in used_course_titles
+            recommendation_title not in used_course_titles and
+            recommendation_title_signature not in used_course_titles
         ):
             return recommendation
 
@@ -628,7 +670,7 @@ def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
         return 0
 
     matching_tags = preferred_tags.intersection(module.recommendation_tags or [])
-    return min(len(matching_tags) * 2, 6)
+    return min(len(matching_tags) * PREFERENCE_TAG_BOOST, PREFERENCE_TAG_BOOST * 2)
 
 def build_recommendation_reason(
     matched_signals: list[str],
