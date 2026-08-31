@@ -1334,7 +1334,7 @@ Status: Reviewed locally
 
 - The current branch already follows the recommended order by filtering completed/fixed courses, checking slot fit, evaluating prerequisite readiness, and only then ranking by career and preference signals.
 - The recent duplicate-title and preference-ranking fixes are a small step toward the handover's diversity and student-interest recommendations.
-- The next practical improvement should be an explicit score breakdown in the API/UI before adding heavier AI or graph tooling.
+- The next practical improvement should be an explicit API-level score breakdown before adding heavier AI or graph tooling.
 
 ## Transcript Semester Placement Override
 
@@ -1356,3 +1356,36 @@ Status: Implemented locally
 - Ran `npm run lint` from `frontend`.
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
+
+## Recommendation Score Breakdown
+
+Status: Implemented locally
+
+### Completed
+
+- Added a backend `RecommendationScoreBreakdown` schema for deterministic recommendation scoring components.
+- Extended each recommendation response with `scoreBreakdown` while keeping the existing `score` field unchanged.
+- Split the existing recommendation score into career/tag relevance, current-semester bonus, preference boost, same-faculty boost, legacy-code penalty, unlock contribution, and final score.
+- Updated frontend recommendation types so stored recommendation results can receive the new score breakdown field.
+- Kept the roadmap UI unchanged because the score breakdown should not be shown on the roadmap yet.
+- Added future NTU SSO guidance to `AGENTS.md`, including that the app should not collect NTU passwords or hardcode captured SAML request URLs.
+
+### Rationale Notes
+
+- The score breakdown makes the current rule-based recommender easier to inspect without introducing AI, graph databases, embeddings, or job-market data.
+- Keeping the breakdown out of the roadmap UI avoids clutter while preserving the explanation data for later debugging or a future detail view.
+- NTU login should use an official SSO redirect/callback integration later; any stable SAML/OIDC identity claim should be stored separately from the app's internal user ID.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
+### Not Included
+
+- No visible score breakdown on roadmap cards.
+- No real NTU SSO integration, mock SSO flow, auth sessions, or backend user table.
+- No recommendation ranking algorithm changes beyond exposing existing deterministic score components.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
