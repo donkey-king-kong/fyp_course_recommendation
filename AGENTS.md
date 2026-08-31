@@ -271,6 +271,8 @@ Completed foundations:
 - Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
 - Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
 - Profile page shows Student ID, Major, and Career Goal inline on wider screens and shows a spinner/tick inside the Load Roadmap button.
+- Curriculum guide parsing infers full table column positions from `Course Code`, `Course Title`, `Type`, `AU`, and `Pre-requisite` headers so similar NTU guide layouts can work without filename-specific rules.
+- If a curriculum guide PDF bundles multiple curriculum variants, the upload currently parses the first `CURRICULUM FOR...` section only until a variant-selection UI exists.
 
 Current next step:
 

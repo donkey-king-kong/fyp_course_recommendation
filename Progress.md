@@ -1132,6 +1132,36 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 
+## Curriculum Guide Layout Parsing Fix
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated `POST /curriculum-guide` returning `422 Unprocessable Entity` for `u21-and-after_csc_2bm_bus_07-july-2025 (1).pdf`.
+- Confirmed the newer guide is a different PDF layout from `data/ccds_ay23-24_csc.pdf`.
+- Reworked curriculum row parsing to infer column positions from the PDF table header instead of relying only on old fixed x-coordinates.
+- Added support for second-major `Business` rows in the curriculum table.
+- Ignored auxiliary tables such as `Course Code Type AU Remarks` so they are not mistaken for roadmap rows.
+- Added a temporary first-section-only rule for PDFs that bundle multiple `CURRICULUM FOR...` variants in one file.
+
+### Rationale Notes
+
+- This avoids manually accepting every curriculum guide file by name.
+- Similar NTU guide variants should work as long as they keep recognizable curriculum table headers.
+- Multi-variant PDFs still need a future selection UI if the student must choose a section other than the first one.
+
+### Verified
+
+- `data/ccds_ay23-24_csc.pdf` parses successfully.
+- `data/u21-and-after_csc_2bm_bus_07-july-2025 (1).pdf` parses successfully.
+- `POST /curriculum-guide` returns `200` for `data/ccds_ay23-24_csc.pdf`.
+- `POST /curriculum-guide` returns `200` for `data/u21-and-after_csc_2bm_bus_07-july-2025 (1).pdf`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally
