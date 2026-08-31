@@ -381,6 +381,7 @@ function ProfilePage({
               className={hasLoadedRoadmap ? 'load-roadmap-button loaded' : 'load-roadmap-button'}
               onClick={onLoadRoadmap}
               disabled={!canLoadRoadmap}
+              title={hasLoadedRoadmap ? 'Click to reload roadmap recommendations' : 'Load roadmap recommendations'}
             >
               {isLoadingRoadmap && <span className="load-roadmap-spinner" aria-hidden="true" />}
               {hasLoadedRoadmap && !isLoadingRoadmap && (

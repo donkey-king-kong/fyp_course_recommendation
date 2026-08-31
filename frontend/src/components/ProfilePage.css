@@ -118,6 +118,10 @@
   background: #16a34a;
 }
 
+.load-roadmap-button.loaded:hover:not(:disabled) {
+  background: #15803d;
+}
+
 .load-roadmap-button:disabled {
   cursor: default;
   opacity: 0.7;
@@ -662,6 +666,10 @@
 .app-shell[data-theme='light'] .load-roadmap-button.loaded {
   color: #ffffff;
   background: #16a34a;
+}
+
+.app-shell[data-theme='light'] .load-roadmap-button.loaded:hover:not(:disabled) {
+  background: #15803d;
 }
 
 .app-shell[data-theme='light'] .profile-preferences-card {
