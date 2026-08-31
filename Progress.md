@@ -1063,3 +1063,25 @@ Status: Implemented locally
 
 - Ran `.venv/bin/python -m compileall backend`.
 - Confirmed `get_module_by_code(db, "MH1812")` returns `MH1812 MATH Discrete Mathematics`.
+
+## Profile Layout And Load Feedback
+
+Status: Implemented locally
+
+### Completed
+
+- Changed Student ID, Major, and Career Goal into one inline profile row on wider screens.
+- Kept the profile row responsive so those fields stack again on narrower screens.
+- Added a successful loaded state for the Load Roadmap button after recommendation loading completes.
+- Reset the loaded tick when the active profile, curriculum guide, career goal, preferences, or transcript completed courses change.
+
+### Rationale Notes
+
+- The Student ID field did not need a full-width row, so placing the three profile fields inline reduces wasted vertical space.
+- The loaded tick confirms the request finished successfully without changing the existing roadmap navigation flow.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.

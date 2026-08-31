@@ -215,6 +215,7 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
+  const [hasLoadedRoadmapRecommendations, setHasLoadedRoadmapRecommendations] = useState(false)
   const [recommendationError, setRecommendationError] = useState('')
   const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
   const [transcriptOnlyModules, setTranscriptOnlyModules] = useState<TranscriptOnlyModule[]>([])
@@ -252,6 +253,7 @@ function App() {
   useEffect(() => {
     setRecommendations([])
     setRecommendationError('')
+    setHasLoadedRoadmapRecommendations(false)
   }, [
     activeStudentId,
     curriculumGuide,
@@ -408,6 +410,7 @@ function App() {
 
     try {
       setIsLoadingRecommendations(true)
+      setHasLoadedRoadmapRecommendations(false)
       setRecommendationError('')
       setRecommendations([])
 
@@ -424,7 +427,9 @@ function App() {
       })
 
       setRecommendations(result.recommendations)
+      setHasLoadedRoadmapRecommendations(true)
     } catch {
+      setHasLoadedRoadmapRecommendations(false)
       setRecommendationError('Could not load recommendations. Make sure the backend is running.')
     } finally {
       setIsLoadingRecommendations(false)
@@ -527,6 +532,7 @@ function App() {
       {currentView === 'profile' && (
         <ProfilePage
           isLoadingRoadmap={isLoadingRecommendations}
+          hasLoadedRoadmap={hasLoadedRoadmapRecommendations}
           recommendationError={recommendationError}
           onGoToRoadmap={() => setCurrentView('roadmap')}
           onLoadRoadmap={handleLoadRoadmapRecommendations}

@@ -11,6 +11,7 @@ function formatAcademicUnits(academicUnits: number) {
 
 interface ProfilePageProps {
   isLoadingRoadmap: boolean
+  hasLoadedRoadmap: boolean
   recommendationError: string
   onGoToRoadmap: () => void
   onLoadRoadmap: () => void
@@ -64,6 +65,7 @@ const EMPTY_RECOMMENDATION_TAGS: string[] = []
 
 function ProfilePage({
   isLoadingRoadmap,
+  hasLoadedRoadmap,
   recommendationError,
   onGoToRoadmap,
   onLoadRoadmap,
@@ -253,17 +255,17 @@ function ProfilePage({
 
       <form className="profile-form" onSubmit={(e) => e.preventDefault()}>
         {/* Student ID is the browser-side profile identity. */}
-        <label className="profile-field">
-          <span>Student ID</span>
-          <input
-            type="text"
-            value={profile.studentId}
-            onChange={(e) => updateProfile({ studentId: e.target.value })}
-            placeholder="Enter your student ID"
-          />
-        </label>
+        <div className="profile-row profile-identity-row">
+          <label className="profile-field">
+            <span>Student ID</span>
+            <input
+              type="text"
+              value={profile.studentId}
+              onChange={(e) => updateProfile({ studentId: e.target.value })}
+              placeholder="Enter your student ID"
+            />
+          </label>
 
-        <div className="profile-row">
           {/* Major is included now so future roadmap/recommendation logic can branch by programme */}
           <label className="profile-field">
             <span>Major</span>
@@ -368,10 +370,11 @@ function ProfilePage({
           <div className="profile-roadmap-load-row">
             <button
               type="button"
+              className={hasLoadedRoadmap ? 'load-roadmap-button loaded' : 'load-roadmap-button'}
               onClick={onLoadRoadmap}
               disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
             >
-              Load Roadmap
+              {hasLoadedRoadmap ? '✓ Roadmap Loaded' : 'Load Roadmap'}
             </button>
 
             {isLoadingRoadmap && <ClassicLoader className="profile-roadmap-loader" />}
