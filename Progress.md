@@ -1109,3 +1109,24 @@ Status: Implemented locally
 - Ran `npm run lint` from `frontend`.
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
+
+## Methodology Handover Review
+
+Status: Reviewed locally
+
+### Useful Takeaways
+
+- Keep the recommender as a retrieve, filter, rank, and explain pipeline instead of a generic chatbot or flat top-k list.
+- Treat academic validity as hard rules before ranking: slot fit, completed/equivalent courses, prerequisites, programme rules, and AU constraints should not be solved by scoring alone.
+- Keep student-specific context central: transcript, uploaded curriculum guide, remaining slots, completed AUs, career goal, and preferences should all feed the recommendation request.
+- Separate immediate recommendations from pathway recommendations so students can distinguish courses they can take now from courses that need prerequisite planning.
+- Add score breakdowns and evidence later so recommendations can explain slot fit, eligibility, career alignment, preference match, and caveats.
+- Use job-market data later as a ranking signal only, not as a replacement for curriculum validity.
+- Preserve source/provenance for extracted transcript, curriculum, course, and job-market facts so recommendations stay auditable.
+- Delay Neo4j, ChromaDB, LangGraph, OpenAI, and labour-market ingestion until the current deterministic roadmap and recommendation flow is stable.
+
+### How This Applies Now
+
+- The current branch already follows the recommended order by filtering completed/fixed courses, checking slot fit, evaluating prerequisite readiness, and only then ranking by career and preference signals.
+- The recent duplicate-title and preference-ranking fixes are a small step toward the handover's diversity and student-interest recommendations.
+- The next practical improvement should be an explicit score breakdown in the API/UI before adding heavier AI or graph tooling.
