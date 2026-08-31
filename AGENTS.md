@@ -275,6 +275,7 @@ Completed foundations:
 - Curriculum guide parsing infers full table column positions from `Course Code`, `Course Title`, `Type`, `AU`, and `Pre-requisite` headers so similar NTU guide layouts can work without filename-specific rules.
 - If a curriculum guide PDF bundles multiple curriculum variants, the upload currently parses the first `CURRICULUM FOR...` section only until a variant-selection UI exists.
 - Transcript-to-curriculum matching uses exact course code first, then conservative title matching for course-code changes such as `SC3920 Professional Internship` matching `SC3079 Professional Internship`.
+- Selecting a new curriculum guide file does not replace the active roadmap source until `Upload Curriculum Guide` succeeds; `Load Roadmap` is disabled while a selected guide is pending upload.
 
 Current next step:
 

@@ -103,6 +103,7 @@ function ProfilePage({
   const [uploadError, setUploadError] = useState('')
   const [preferenceSearch, setPreferenceSearch] = useState('')
   const hasCurriculumGuide = Boolean(curriculumGuide)
+  const hasPendingCurriculumGuideUpload = Boolean(selectedCurriculumGuide)
   const hasTranscriptResults =
     transcriptMatchedCourses.length > 0 ||
     transcriptUnmatchedCourseCodes.length > 0 ||
@@ -111,6 +112,11 @@ function ProfilePage({
   const displayedCurriculumGuideFileName = selectedCurriculumGuide?.name || curriculumGuideFileName
   const displayedTranscriptFileName = selectedTranscript?.name || transcriptFileName
   const transcriptSummaryMessage = `Current transcript: ${transcriptCompletedCourseCount} completed module(s), ${formatAcademicUnits(transcriptTotalAcademicUnitsEarned)} AU earned.`
+  const canLoadRoadmap =
+    hasCurriculumGuide &&
+    !hasPendingCurriculumGuideUpload &&
+    profile.careerGoal === 'software-engineer' &&
+    !isLoadingRoadmap
   const selectedPreferenceTags = profile.preferredRecommendationTags ?? EMPTY_RECOMMENDATION_TAGS
   const selectedPreferenceTagSet = useMemo(
     () => new Set(selectedPreferenceTags),
@@ -154,6 +160,8 @@ function ProfilePage({
       const result = await uploadCurriculumGuide(selectedCurriculumGuide)
 
       setCurriculumGuide(result, selectedCurriculumGuide.name)
+      setSelectedCurriculumGuide(null)
+      setCurriculumGuideInputKey((currentKey) => currentKey + 1)
       setCurriculumUploadMessage(
         `Parsed ${result.nodes.length} curriculum row(s) across ${result.semesters.length} semester(s).`,
       )
@@ -372,7 +380,7 @@ function ProfilePage({
               type="button"
               className={hasLoadedRoadmap ? 'load-roadmap-button loaded' : 'load-roadmap-button'}
               onClick={onLoadRoadmap}
-              disabled={!hasCurriculumGuide || profile.careerGoal !== 'software-engineer' || isLoadingRoadmap}
+              disabled={!canLoadRoadmap}
             >
               {isLoadingRoadmap && <span className="load-roadmap-spinner" aria-hidden="true" />}
               {hasLoadedRoadmap && !isLoadingRoadmap && (
@@ -387,6 +395,11 @@ function ProfilePage({
           <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>
             Go to roadmap...
           </button>
+          {hasPendingCurriculumGuideUpload && (
+            <p className="upload-error">
+              Upload the selected curriculum guide before loading the roadmap.
+            </p>
+          )}
           {recommendationError && <p className="upload-error">{recommendationError}</p>}
         </div>
       </form>
@@ -408,9 +421,15 @@ function ProfilePage({
               className="screen-reader-file-input"
               accept="application/pdf"
               onChange={(event) => {
-                setSelectedCurriculumGuide(event.target.files?.[0] ?? null)
+                const selectedFile = event.target.files?.[0] ?? null
+
+                setSelectedCurriculumGuide(selectedFile)
                 setCurriculumUploadError('')
-                setCurriculumUploadMessage('')
+                setCurriculumUploadMessage(
+                  selectedFile && hasCurriculumGuide
+                    ? 'New guide selected. Click Upload Curriculum Guide to replace the current roadmap source.'
+                    : '',
+                )
               }}
             />
             <span className="file-picker-row">

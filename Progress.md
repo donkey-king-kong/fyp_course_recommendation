@@ -1214,6 +1214,28 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 
+## Pending Curriculum Guide Upload Guard
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed a confusing profile flow where selecting a new curriculum guide file did not immediately replace the active stored roadmap source.
+- `Load Roadmap` is now disabled while a new selected curriculum guide file is pending upload.
+- After `Upload Curriculum Guide` succeeds, the file picker is reset and the parsed guide becomes the active roadmap source.
+- Added helper text so students know they must upload the newly selected PDF before loading the roadmap.
+
+### Rationale Notes
+
+- Choosing a file in the browser only selects it locally; it does not parse or store the curriculum guide yet.
+- Without this guard, students could select a new PDF and then click `Load Roadmap`, but the app would still use the previously uploaded parsed guide.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally
