@@ -301,6 +301,7 @@ def evaluate_recommendation_readiness(
         prerequisite_codes,
         slot,
         curriculum_courses,
+        prerequisite_modules_by_code,
     )
     unlock_value = get_unlock_value(unlock_codes, slot, curriculum_courses)
 
@@ -356,6 +357,7 @@ def get_existing_prerequisite_course_codes(
     prerequisite_codes: list[str],
     slot: RecommendationChoiceSlot,
     curriculum_courses: list[RecommendationCurriculumCourse],
+    prerequisite_modules_by_code: dict[str, ModuleModel],
 ) -> list[str]:
     target_order = get_semester_order(slot.year, slot.semester)
 
@@ -367,16 +369,42 @@ def get_existing_prerequisite_course_codes(
     for course in curriculum_courses:
         course_order = get_semester_order(course.year, course.semester)
         course_code = course.courseCode.upper()
+        course_title = course.title or ""
 
         if (
-            course_code in prerequisite_codes and
             not course.isChoiceSlot and
             course_order is not None and
-            course_order < target_order
+            course_order < target_order and
+            (
+                course_code in prerequisite_codes or
+                has_equivalent_prerequisite_title(
+                    course_title,
+                    prerequisite_codes,
+                    prerequisite_modules_by_code,
+                )
+            )
         ):
             existing_codes.append(course_code)
 
     return sorted(set(existing_codes))
+
+# Older CZ prerequisites can correspond to newer SC curriculum rows with the same title.
+def has_equivalent_prerequisite_title(
+    course_title: str,
+    prerequisite_codes: list[str],
+    prerequisite_modules_by_code: dict[str, ModuleModel],
+) -> bool:
+    course_title_keys = {normalize_title(course_title), get_title_signature(course_title)}
+
+    return any(
+        bool(course_title_keys.intersection({
+            normalize_title(prerequisite_module.title),
+            get_title_signature(prerequisite_module.title),
+        }))
+        for prerequisite_code in prerequisite_codes
+        for prerequisite_module in [prerequisite_modules_by_code.get(prerequisite_code)]
+        if prerequisite_module is not None
+    )
 
 def get_plannable_prerequisite_course_codes(
     prerequisite_codes: list[str],

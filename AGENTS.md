@@ -269,6 +269,7 @@ Completed foundations:
 - Profile page stores fixed student topic preferences in `preferredRecommendationTags`; students can type to filter allowed tags, but cannot create custom tags.
 - Student topic preferences are soft ranking boosts, not hard filters.
 - Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
+- Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
 - Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
 - Profile page shows Student ID, Major, and Career Goal inline on wider screens and shows a spinner/tick inside the Load Roadmap button.
 - Curriculum guide parsing infers full table column positions from `Course Code`, `Course Title`, `Type`, `AU`, and `Pre-requisite` headers so similar NTU guide layouts can work without filename-specific rules.

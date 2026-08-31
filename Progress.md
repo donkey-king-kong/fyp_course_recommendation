@@ -1162,6 +1162,34 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 
+## Recommendation Prerequisite Equivalence Fix
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated Year 4 recommendation prerequisite cards showing fallback data such as `Recommended prerequisite` and `0 AU`.
+- Confirmed the module catalog DB data is correct for examples such as `CZ2007` and `CZ2101`.
+- Fixed backend readiness logic so old-code prerequisites can match equivalent earlier roadmap courses by title.
+- Example: `CZ2007 Introduction To Databases` can now reuse `SC2207 Introduction to Databases` when `SC2207` is already earlier in the uploaded curriculum roadmap.
+- Example: `CZ2101 Algorithm Design & Analysis` can now reuse `SC2001 Algorithm Design & Analysis`.
+
+### Rationale Notes
+
+- The wrong display was caused by frontend fallback rendering when backend sent a planned prerequisite code without detail data.
+- The backend should avoid planning duplicate old-code prerequisite nodes when the uploaded curriculum already contains an equivalent newer-code module.
+- Existing browser-saved recommendations may still show the old fallback cards until the curriculum is reuploaded and recommendations are loaded again.
+
+### Verified
+
+- Confirmed DB titles/AU for `BC2402`, `CZ2001`, `CZ2007`, and `CZ2101` are correct.
+- Confirmed `CZ2007` and `CZ2101` map to existing earlier curriculum modules `SC2207` and `SC2001`.
+- Confirmed end-to-end recommendation output has no planned prerequisite codes missing prerequisite detail data.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally
