@@ -275,6 +275,7 @@ Completed foundations:
 - Recommendation ranking gives a soft same-faculty boost, so a CSC profile prefers CSC modules over CE or other faculties when the candidate is otherwise valid.
 - For CSC profiles, legacy `CZ` course codes are deprioritized behind current `SC` course codes, and older `CSC`-prefixed course codes are deprioritized even further as last-resort fallback candidates.
 - Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
+- Recommendation selection uses preference-aware diversity as a gentle tiebreaker so repeated non-preferred tags are reduced without overriding the student's selected topic preferences.
 - Recommendation API responses include a deterministic `scoreBreakdown` for explainability, but the roadmap UI does not display it yet.
 - Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
 - Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
@@ -293,6 +294,7 @@ Current next step:
 - Keep academic-standing requirements based on completed AU, not self-declared profile year.
 - Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
 - Keep polishing the roadmap/profile flow before starting unrelated milestones.
+- Keep recommendation diversity subordinate to eligibility, career relevance, and student topic preferences.
 - Do not show recommendation score breakdowns in the roadmap UI unless explicitly requested.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
 
