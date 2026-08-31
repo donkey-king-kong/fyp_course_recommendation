@@ -9,6 +9,7 @@ export interface StudentProfile {
   // More majors can be added here once the roadmap data supports them.
   major: 'CSC'
   careerGoal: string
+  preferredRecommendationTags: string[]
 }
 
 export interface TranscriptMatchedCourse {
@@ -36,6 +37,7 @@ const DEFAULT_PROFILE: StudentProfile = {
   studentId: '',
   major: 'CSC',
   careerGoal: '',
+  preferredRecommendationTags: [],
 }
 
 interface ProfileState {
@@ -89,6 +91,8 @@ function hydrateStudentProfile(profile: Partial<StudentProfile> | undefined, stu
     studentId,
     major: profile?.major ?? DEFAULT_PROFILE.major,
     careerGoal: profile?.careerGoal ?? DEFAULT_PROFILE.careerGoal,
+    preferredRecommendationTags:
+      profile?.preferredRecommendationTags ?? DEFAULT_PROFILE.preferredRecommendationTags,
   }
 }
 

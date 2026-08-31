@@ -24,6 +24,7 @@ interface TranscriptOnlyModule {
 const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
 const DEFAULT_VIEW: ViewState = 'roadmap'
 const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
+const EMPTY_RECOMMENDATION_TAGS: string[] = []
 
 function getCurriculumCourseTitle(course: CurriculumGuideResponse['nodes'][number]) {
   if (course.courseCode === 'BDE' || course.type === 'BDE') {
@@ -221,6 +222,7 @@ function App() {
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const profile = useProfileStore((state) => state.profile)
+  const preferredRecommendationTags = profile.preferredRecommendationTags ?? EMPTY_RECOMMENDATION_TAGS
   const transcriptCompletedCourseCodes = useProfileStore(
     (state) => state.transcriptCompletedCourseCodes,
   )
@@ -250,7 +252,13 @@ function App() {
   useEffect(() => {
     setRecommendations([])
     setRecommendationError('')
-  }, [activeStudentId, curriculumGuide, profile.careerGoal, transcriptCompletedCourseCodes])
+  }, [
+    activeStudentId,
+    curriculumGuide,
+    profile.careerGoal,
+    preferredRecommendationTags,
+    transcriptCompletedCourseCodes,
+  ])
 
   useEffect(() => {
     let shouldIgnoreResult = false
@@ -405,6 +413,7 @@ function App() {
 
       const result = await fetchRecommendations({
         careerGoal: profile.careerGoal,
+        preferredRecommendationTags,
         completedCourseCodes,
         choiceSlotCodes,
         choiceSlots,

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
 import { uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
@@ -15,6 +15,52 @@ interface ProfilePageProps {
   onGoToRoadmap: () => void
   onLoadRoadmap: () => void
 }
+
+const RECOMMENDATION_TAG_OPTIONS = [
+  { value: 'software-engineering', label: 'Software Engineering' },
+  { value: 'programming', label: 'Programming' },
+  { value: 'web-development', label: 'Web Development' },
+  { value: 'backend-engineering', label: 'Backend Engineering' },
+  { value: 'frontend-engineering', label: 'Frontend Engineering' },
+  { value: 'database', label: 'Database' },
+  { value: 'computer-network', label: 'Computer Network' },
+  { value: 'computer-security', label: 'Computer Security' },
+  { value: 'cryptography', label: 'Cryptography' },
+  { value: 'malware-analysis', label: 'Malware Analysis' },
+  { value: 'digital-forensics', label: 'Digital Forensics' },
+  { value: 'privacy', label: 'Privacy' },
+  { value: 'algorithms', label: 'Algorithms' },
+  { value: 'data-structures', label: 'Data Structures' },
+  { value: 'operating-systems', label: 'Operating Systems' },
+  { value: 'distributed-systems', label: 'Distributed Systems' },
+  { value: 'cloud-computing', label: 'Cloud Computing' },
+  { value: 'parallel-computing', label: 'Parallel Computing' },
+  { value: 'compiler', label: 'Compiler' },
+  { value: 'ai-ml', label: 'AI / ML' },
+  { value: 'natural-language-processing', label: 'Natural Language Processing' },
+  { value: 'computer-vision', label: 'Computer Vision' },
+  { value: 'data-science', label: 'Data Science' },
+  { value: 'data-visualisation', label: 'Data Visualisation' },
+  { value: 'information-retrieval', label: 'Information Retrieval' },
+  { value: 'computer-graphics', label: 'Computer Graphics' },
+  { value: 'human-computer-interaction', label: 'Human-Computer Interaction' },
+  { value: 'computer-architecture', label: 'Computer Architecture' },
+  { value: 'hardware-embedded', label: 'Hardware / Embedded' },
+  { value: 'internet-of-things', label: 'Internet of Things' },
+  { value: 'cyber-physical-systems', label: 'Cyber-Physical Systems' },
+  { value: 'signal-processing', label: 'Signal Processing' },
+  { value: 'digital-logic', label: 'Digital Logic' },
+  { value: 'simulation-modelling', label: 'Simulation / Modelling' },
+  { value: 'quantum-computing', label: 'Quantum Computing' },
+  { value: 'theory-of-computing', label: 'Theory of Computing' },
+  { value: 'math-foundation', label: 'Math Foundation' },
+  { value: 'project-management', label: 'Project Management' },
+  { value: 'product-management', label: 'Product Management' },
+  { value: 'professional-skills', label: 'Professional Skills' },
+  { value: 'ethics', label: 'Ethics' },
+  { value: 'sustainability-computing', label: 'Sustainability Computing' },
+]
+const EMPTY_RECOMMENDATION_TAGS: string[] = []
 
 function ProfilePage({
   isLoadingRoadmap,
@@ -54,6 +100,7 @@ function ProfilePage({
   const [curriculumUploadError, setCurriculumUploadError] = useState('')
   const [uploadMessage, setUploadMessage] = useState('')
   const [uploadError, setUploadError] = useState('')
+  const [preferenceSearch, setPreferenceSearch] = useState('')
   const hasCurriculumGuide = Boolean(curriculumGuide)
   const hasTranscriptResults =
     transcriptMatchedCourses.length > 0 ||
@@ -63,6 +110,34 @@ function ProfilePage({
   const displayedCurriculumGuideFileName = selectedCurriculumGuide?.name || curriculumGuideFileName
   const displayedTranscriptFileName = selectedTranscript?.name || transcriptFileName
   const transcriptSummaryMessage = `Current transcript: ${transcriptCompletedCourseCount} completed module(s), ${formatAcademicUnits(transcriptTotalAcademicUnitsEarned)} AU earned.`
+  const selectedPreferenceTags = profile.preferredRecommendationTags ?? EMPTY_RECOMMENDATION_TAGS
+  const selectedPreferenceTagSet = useMemo(
+    () => new Set(selectedPreferenceTags),
+    [selectedPreferenceTags],
+  )
+  const hasPreferenceSearch = preferenceSearch.trim().length > 0
+  const filteredRecommendationTagOptions = useMemo(() => {
+    const normalizedSearch = preferenceSearch.trim().toLowerCase()
+
+    if (!normalizedSearch) {
+      return []
+    }
+
+    return RECOMMENDATION_TAG_OPTIONS.filter(
+      (option) =>
+        !selectedPreferenceTagSet.has(option.value) &&
+        (option.label.toLowerCase().includes(normalizedSearch) ||
+          option.value.toLowerCase().includes(normalizedSearch)),
+    )
+  }, [preferenceSearch, selectedPreferenceTagSet])
+
+  function handleTogglePreferenceTag(tag: string) {
+    const nextTags = selectedPreferenceTagSet.has(tag)
+      ? selectedPreferenceTags.filter((selectedTag) => selectedTag !== tag)
+      : [...selectedPreferenceTags, tag]
+
+    updateProfile({ preferredRecommendationTags: nextTags })
+  }
 
   async function handleCurriculumGuideUpload() {
     if (!selectedCurriculumGuide) {
@@ -212,6 +287,82 @@ function ProfilePage({
             </select>
           </label>
         </div>
+
+        <section className="profile-preferences-card">
+          <div className="profile-preferences-header">
+            <div>
+              <h3>Topic Preferences</h3>
+              <p>
+                Optional. These tags softly boost matching modules after the career goal,
+                eligibility, and prerequisite checks pass.
+              </p>
+            </div>
+            {selectedPreferenceTags.length > 0 && (
+              <button
+                type="button"
+                className="profile-preferences-clear"
+                onClick={() => updateProfile({ preferredRecommendationTags: [] })}
+              >
+                Clear
+              </button>
+            )}
+          </div>
+
+          <label className="profile-field">
+            <span>Search Tags</span>
+            <input
+              type="search"
+              value={preferenceSearch}
+              onChange={(event) => setPreferenceSearch(event.target.value)}
+              placeholder="Type backend, AI, database..."
+            />
+          </label>
+
+          {selectedPreferenceTags.length > 0 && (
+            <div className="selected-preference-list">
+              {selectedPreferenceTags.map((tag) => {
+                const option = RECOMMENDATION_TAG_OPTIONS.find((item) => item.value === tag)
+
+                return (
+                  <span key={tag} className="selected-preference-tag">
+                    <span className="selected-preference-label">{option?.label ?? tag}</span>
+                    <button
+                      type="button"
+                      aria-label={`Remove ${option?.label ?? tag}`}
+                      onClick={() => handleTogglePreferenceTag(tag)}
+                    >
+                      ×
+                    </button>
+                  </span>
+                )
+              })}
+            </div>
+          )}
+
+          {hasPreferenceSearch && (
+            <div className="preference-option-list">
+              {filteredRecommendationTagOptions.length > 0 ? (
+                filteredRecommendationTagOptions.map((option) => (
+                  <button
+                    key={option.value}
+                    type="button"
+                    className="preference-option"
+                    onClick={() => {
+                      handleTogglePreferenceTag(option.value)
+                      setPreferenceSearch('')
+                    }}
+                  >
+                    {option.label}
+                  </button>
+                ))
+              ) : (
+                <p className="preference-empty-message">
+                  No matching tag. Choose from the curated list only.
+                </p>
+              )}
+            </div>
+          )}
+        </section>
 
         <div className="profile-roadmap-actions">
           <div className="profile-roadmap-load-row">

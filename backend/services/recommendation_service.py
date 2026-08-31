@@ -77,6 +77,7 @@ def summarize_codes(codes: list[str], max_items: int = 80) -> str:
 def recommend_courses(
     db: Session,
     career_goal: str,
+    preferred_recommendation_tags: list[str],
     completed_course_codes: list[str],
     choice_slot_codes: list[str],
     choice_slots: list[RecommendationChoiceSlot],
@@ -90,6 +91,7 @@ def recommend_courses(
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
+    preferred_tags = normalize_recommendation_tags(preferred_recommendation_tags)
     excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
     excluded_titles = {normalize_title(title) for title in excluded_course_titles}
     candidate_slots = build_recommendation_choice_slots(choice_slot_codes, choice_slots)
@@ -159,7 +161,8 @@ def recommend_courses(
                 completed_codes | excluded_codes,
                 excluded_titles,
             )
-            adjusted_score = score + min(readiness.unlock_value, 3)
+            preference_boost = get_preference_boost(module, preferred_tags)
+            adjusted_score = score + min(readiness.unlock_value, 3) + preference_boost
             slot_key = get_choice_slot_identity(slot)
             recommendations_by_slot.setdefault(slot_key, []).append(
                 CourseRecommendation(
@@ -181,7 +184,11 @@ def recommend_courses(
                     readinessStatus=readiness.status,
                     unlockValue=readiness.unlock_value,
                     score=adjusted_score,
-                    reason=build_recommendation_reason(matched_keywords, readiness.unlock_value),
+                    reason=build_recommendation_reason(
+                        matched_keywords,
+                        readiness.unlock_value,
+                        preference_boost,
+                    ),
                 )
             )
 
@@ -609,14 +616,41 @@ def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
 
     return matched_signals, score
 
-def build_recommendation_reason(matched_signals: list[str], unlock_value: int) -> str:
+def normalize_recommendation_tags(tags: list[str]) -> set[str]:
+    return {
+        tag.strip().lower()
+        for tag in tags
+        if tag.strip()
+    }
+
+def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
+    if not preferred_tags:
+        return 0
+
+    matching_tags = preferred_tags.intersection(module.recommendation_tags or [])
+    return min(len(matching_tags) * 2, 6)
+
+def build_recommendation_reason(
+    matched_signals: list[str],
+    unlock_value: int,
+    preference_boost: int,
+) -> str:
     base_reason = (
         "Matches Software Engineer signals: "
         f"{', '.join(matched_signals)}."
     )
 
     if unlock_value == 0:
+        if preference_boost > 0:
+            return f"{base_reason} Also matches selected topic preference(s)."
+
         return base_reason
+
+    if preference_boost > 0:
+        return (
+            f"{base_reason} Also matches selected topic preference(s) and unlocks "
+            f"{unlock_value} later curriculum module(s)."
+        )
 
     return f"{base_reason} Unlocks {unlock_value} later curriculum module(s)."
 

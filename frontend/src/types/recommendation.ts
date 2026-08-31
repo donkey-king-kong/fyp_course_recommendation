@@ -16,6 +16,7 @@ export interface RecommendationCurriculumCourse {
 
 export interface RecommendationRequest {
   careerGoal: string
+  preferredRecommendationTags: string[]
   completedCourseCodes: string[]
   choiceSlotCodes: string[]
   choiceSlots: RecommendationChoiceSlot[]

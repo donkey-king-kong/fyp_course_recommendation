@@ -1004,3 +1004,43 @@ Status: Implemented locally
 - No separate taxonomy admin editor.
 - No LLM/OpenAI runtime integration; the tagging output is stored as reviewed static data.
 - No Neo4j, ChromaDB, LangGraph, MyCareersFuture, embeddings, or machine-learning tagging.
+
+## Student Topic Preferences
+
+Status: Implemented locally
+
+### Completed
+
+- Added `preferredRecommendationTags` to the browser-saved student profile.
+- Existing saved profiles hydrate with an empty preference list so old localStorage profiles still work.
+- Added a searchable fixed tag selector on the Profile page.
+- The student can type into the search box to filter matching allowed tags instead of scrolling through the full list.
+- Hid the full tag list by default so matching tag options only appear after the student starts typing.
+- Changed selected preference chips to use a small cross remove button instead of a `REMOVE` text label.
+- The student cannot create custom free-text tags; selections must come from the curated tag list used by `recommendationTags`.
+- Sent selected preference tags to `POST /recommendations` as `preferredRecommendationTags`.
+- Updated backend recommendation ranking so matching preference tags add a small soft boost after career-goal, slot-fit, duplicate, and prerequisite-readiness checks.
+- Clearing or changing preferences clears stale visible recommendations until the student clicks `Load Roadmap` again.
+
+### Rationale Notes
+
+- Career goal remains the primary recommendation context.
+- Topic preferences refine ranking within that career goal instead of replacing it.
+- For example, `Career Goal = Software Engineer` and `Preference = AI / ML` means “recommend software-engineering-relevant modules, but prefer AI/ML-related options when they fit.”
+- Preferences are not a hard filter because that could hide useful software modules when no suitable preferred-tag module fits a slot.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited backend files.
+
+### Not Included
+
+- No custom user-created tags.
+- No preference weights/sliders.
+- No score breakdown UI.
+- No tag editor or admin workflow.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning personalization.
