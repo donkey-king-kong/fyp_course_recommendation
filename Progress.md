@@ -897,3 +897,40 @@ Status: Implemented locally
 - Recommendation coverage still depends on enough eligible unique module candidates existing for each slot.
 - The one-remaining-semester guard currently lives in the frontend placement layer; a later backend refinement can make the API avoid returning those candidates earlier.
 - True AND/OR prerequisite grouping is not implemented yet because the stored prerequisite graph does not preserve grouping semantics.
+
+## Prerequisite Readiness And Unlock Value
+
+Status: Implemented locally
+
+### Completed
+
+- Added `curriculumCourses` to the recommendation request so the backend can see uploaded roadmap course positions, not only completed and excluded codes.
+- Added backend readiness metadata to each recommendation: `readinessStatus`, `existingPrerequisiteCourseCodes`, `plannedPrerequisiteCourseCodes`, and `unlockValue`.
+- Moved the one-remaining-semester guard into backend recommendation filtering by skipping candidates with unmet prerequisites when no earlier open slot can plan the prerequisite first.
+- Reused earlier uploaded curriculum courses as prerequisite paths before creating new prerequisite planning nodes.
+- Kept the current flat prerequisite-list workaround: if one listed prerequisite is completed or already planned earlier, the backend treats that path as sufficient instead of recommending every alternative code.
+- Added a small unlock-value score boost when a recommended module unlocks later fixed curriculum modules.
+- Updated the frontend to send displayed roadmap context, including transcript-only completed modules, and to consume backend prerequisite path fields for arrows and `Recommended Pre-Requisite` nodes.
+
+### Rationale Notes
+
+- This is not just moving logic from frontend to backend; it improves recommendation quality by filtering impossible final-semester recommendations before they reach the UI.
+- The backend now has enough context to distinguish completed prerequisites, prerequisites already planned earlier in the uploaded curriculum, and prerequisites that need a new planning node.
+- Prerequisites do not reduce career relevance directly; a relevant course can still be recommended if it is ready or realistically plannable before its target slot.
+- Unlock value is intentionally small and rule-based so it prefers pathway-useful courses without overpowering career keyword relevance.
+
+### Verified
+
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- Frontend lint passes with `npm run lint`.
+- Frontend production build passes with `npm run build`.
+- Diagnostics return no issues.
+- Blank-line scan found no repeated empty-line gaps in the edited files.
+
+### Not Included
+
+- No structured score breakdown UI.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+- No true AND/OR prerequisite grouping yet because the stored prerequisite graph still keeps prerequisites as a flat list.
+- No backend persistence for generated recommendations.
+- No manual browser verification has been recorded yet for this local change.
