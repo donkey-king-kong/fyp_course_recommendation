@@ -3,7 +3,7 @@ import re
 from dataclasses import dataclass
 from typing import Optional
 
-from sqlalchemy import and_, or_
+from sqlalchemy import String, and_, or_
 from sqlalchemy.orm import Session
 
 from backend.models import ModuleModel
@@ -34,6 +34,26 @@ SOFTWARE_ENGINEER_KEYWORDS = {
     "architecture": 3,
     "testing": 2,
     "security": 3,
+}
+SOFTWARE_ENGINEER_TAG_WEIGHTS = {
+    "software-engineering": 6,
+    "programming": 4,
+    "backend-engineering": 5,
+    "frontend-engineering": 4,
+    "web-development": 4,
+    "database": 5,
+    "computer-network": 3,
+    "computer-security": 4,
+    "algorithms": 3,
+    "data-structures": 3,
+    "operating-systems": 3,
+    "distributed-systems": 4,
+    "cloud-computing": 4,
+    "ai-ml": 3,
+    "data-science": 3,
+    "compiler": 2,
+    "parallel-computing": 2,
+    "computer-architecture": 2,
 }
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
@@ -81,11 +101,11 @@ def recommend_courses(
     if not candidate_slots or not slot_filters:
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
-    # Filter by keywords in SQL first so BDE does not load the entire catalog.
+    # Filter by keywords/tags in SQL first so BDE does not load the entire catalog.
     query = db.query(ModuleModel).filter(
         ModuleModel.faculty.in_(active_faculties),
         or_(*slot_filters),
-        or_(*build_keyword_filters()),
+        or_(*build_relevance_filters()),
     )
     modules = query.order_by(ModuleModel.code).all()
     logger.info(
@@ -432,13 +452,16 @@ def build_prerequisite_recommendations(
 
     return recommendations
 
-def build_keyword_filters() -> list:
+def build_relevance_filters() -> list:
     filters = []
 
     for keyword in SOFTWARE_ENGINEER_KEYWORDS:
         pattern = f"%{keyword}%"
         filters.append(ModuleModel.title.ilike(pattern))
         filters.append(ModuleModel.description.ilike(pattern))
+
+    for tag in SOFTWARE_ENGINEER_TAG_WEIGHTS:
+        filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
 
     return filters
 
@@ -571,18 +594,25 @@ def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int]:
     matched_keywords = [
         keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
     ]
+    matched_tags = [
+        tag
+        for tag in (module.recommendation_tags or [])
+        if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
+    ]
+    matched_signals = matched_keywords + [f"tag:{tag}" for tag in matched_tags]
     score = sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords)
+    score += sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
 
     # Prefer modules currently available in the catalog by giving them a small boost.
     if module.is_current_semester:
         score += 1
 
-    return matched_keywords, score
+    return matched_signals, score
 
-def build_recommendation_reason(matched_keywords: list[str], unlock_value: int) -> str:
+def build_recommendation_reason(matched_signals: list[str], unlock_value: int) -> str:
     base_reason = (
-        "Matches Software Engineer keywords: "
-        f"{', '.join(matched_keywords)}."
+        "Matches Software Engineer signals: "
+        f"{', '.join(matched_signals)}."
     )
 
     if unlock_value == 0:
