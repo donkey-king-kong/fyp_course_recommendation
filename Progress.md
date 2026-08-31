@@ -935,3 +935,34 @@ Status: Implemented locally
 - No true AND/OR prerequisite grouping yet because the stored prerequisite graph still keeps prerequisites as a flat list.
 - No backend persistence for generated recommendations.
 - No manual browser verification has been recorded yet for this local change.
+
+## Curated Course Taxonomy Tags
+
+Status: Implemented locally
+
+### Completed
+
+- Added a small rule-based taxonomy helper for module tags such as `software-engineering`, `web-development`, `data`, `ai-ml`, `systems`, `security`, `hardware`, `business`, `math`, and `communication`.
+- Used module code, title, and description text to infer taxonomy tags so tagging is more accurate than title-only matching.
+- Wired taxonomy tagging into the existing database seed flow by merging inferred tags with existing NTUMods categories in the `modules.categories` JSON field.
+- Reran the existing seed script locally so PostgreSQL module rows were updated with the new tags.
+- Updated the Software Engineer recommendation candidate query and scoring to consider matching taxonomy tags as a small rule-based relevance signal.
+
+### Rationale Notes
+
+- Keeping taxonomy tags in the existing module catalog table avoids adding a new table before it is necessary.
+- Tags are generated during seeding instead of hardcoded only in the recommendation service, so the module catalog can later expose or filter these tags.
+- Existing source categories such as `CORE` are preserved, and curated tags are appended without duplicates.
+- The taxonomy boost improves brittle keyword matching while still keeping recommendations simple and explainable.
+
+### Verified
+
+- Seed script updated existing module rows with `.venv/bin/python -m backend.database.seed`.
+- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+
+### Not Included
+
+- No student preference UI yet.
+- No hand-curated per-module override file yet.
+- No separate taxonomy table or admin editing workflow.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning tagging.
