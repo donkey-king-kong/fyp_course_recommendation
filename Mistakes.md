@@ -102,6 +102,20 @@ Removed the extra blank lines and checked the newly changed recommendation files
 Lesson:
 Do not make this mistake again. For this project, use one blank line between top-level comment/function/class blocks, not two. Before committing any newly created or edited Python file, explicitly scan imports, constants, classes, functions, and router decorators for accidental double blank lines.
 
+### 2026-08-31
+
+Mistake:
+Repeated offence: created a PR without assigning it and without following `PR_template.md`.
+
+What happened:
+PR #27 was created with a custom `Summary`/`Verification` body instead of the required `Description`, `Why This Change Is Needed`, `How To Test`, `Expected Result`, and `Checklist` sections. It was also left unassigned. This is the 2nd recorded time a PR was created without an assignee, and the 2nd recorded time a PR description did not follow `PR_template.md`.
+
+Correction:
+Updated PR #27 to use the exact `PR_template.md` section headings and assigned it to `@me`.
+
+Lesson:
+Before creating any PR, first read `PR_template.md`, prepare the body using its exact headings, create the PR, then immediately run `gh pr edit <number> --add-assignee @me`. After creation, verify the PR with `gh pr view <number> --json title,assignees,body,url` before telling the user it is done.
+
 ## Entry Format
 
 ```text
