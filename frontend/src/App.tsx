@@ -20,6 +20,8 @@ interface TranscriptOnlyModule {
   module: ModuleSummary
 }
 
+type TranscriptPlacement = Pick<TranscriptCourse, 'study_year' | 'transcript_semester'>
+
 const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
 const DEFAULT_VIEW: ViewState = 'roadmap'
 const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
@@ -84,6 +86,35 @@ function createFallbackTranscriptModule(transcriptCourse: TranscriptCourse): Mod
   }
 }
 
+function normalizeCourseTitle(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .join(' ')
+}
+
+function getCourseTitleSignature(title: string) {
+  return normalizeCourseTitle(title)
+    .split(' ')
+    .filter((token) => token !== 'principle' && token !== 'principles')
+    .map((token) => {
+      if (token === 'systems') {
+        return 'system'
+      }
+
+      if (token === 'databases') {
+        return 'database'
+      }
+
+      return token
+    })
+    .join(' ')
+}
+
 function getPrerequisitesByTarget(edges: RoadmapEdge[]) {
   return edges.reduce<Record<string, string[]>>((map, edge) => {
     return {
@@ -93,23 +124,42 @@ function getPrerequisitesByTarget(edges: RoadmapEdge[]) {
   }, {})
 }
 
-function getTranscriptPlacementByCourseCode(transcriptCourses: TranscriptCourse[]) {
-  return transcriptCourses.reduce<Record<string, Pick<TranscriptCourse, 'study_year' | 'transcript_semester'>>>(
+function getCourseMatchingKeys(courseCode: string, title: string) {
+  return [
+    courseCode.toUpperCase(),
+    normalizeCourseTitle(title),
+    getCourseTitleSignature(title),
+  ].filter(Boolean)
+}
+
+function getTranscriptPlacementByCourseKey(transcriptCourses: TranscriptCourse[]) {
+  return transcriptCourses.reduce<Record<string, TranscriptPlacement>>(
     (placements, course) => {
       if (!course.study_year || !course.transcript_semester) {
         return placements
       }
 
-      return {
-        ...placements,
-        [course.course_code.toUpperCase()]: {
-          study_year: course.study_year,
-          transcript_semester: course.transcript_semester,
-        },
+      const placement = {
+        study_year: course.study_year,
+        transcript_semester: course.transcript_semester,
       }
+      getCourseMatchingKeys(course.course_code, course.title).forEach((key) => {
+        placements[key] = placement
+      })
+
+      return placements
     },
     {},
   )
+}
+
+function getTranscriptPlacementForCurriculumCourse(
+  course: CurriculumGuideResponse['nodes'][number],
+  transcriptPlacementByCourseKey: Record<string, TranscriptPlacement>,
+) {
+  return getCourseMatchingKeys(course.courseCode, course.title)
+    .map((key) => transcriptPlacementByCourseKey[key])
+    .find(Boolean)
 }
 
 // Convert the uploaded curriculum guide shape into the existing roadmap component shape.
@@ -118,11 +168,14 @@ function mapCurriculumGuideToRoadmap(
   transcriptOnlyModules: TranscriptOnlyModule[],
   transcriptCompletedCourses: TranscriptCourse[],
 ): RoadmapResponse {
-  const transcriptPlacementByCourseCode = getTranscriptPlacementByCourseCode(
+  const transcriptPlacementByCourseKey = getTranscriptPlacementByCourseKey(
     transcriptCompletedCourses,
   )
   const curriculumNodes: CourseNode[] = curriculumGuide.nodes.map((course) => {
-    const transcriptPlacement = transcriptPlacementByCourseCode[course.courseCode.toUpperCase()]
+    const transcriptPlacement = getTranscriptPlacementForCurriculumCourse(
+      course,
+      transcriptPlacementByCourseKey,
+    )
 
     return {
       id: course.id,

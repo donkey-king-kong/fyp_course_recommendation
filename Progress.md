@@ -1085,6 +1085,7 @@ Status: Implemented locally
 - Ran `npm run lint` from `frontend`.
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
+- Confirmed `data/sample_transcript.pdf` parses `SC3920 Professional Internship` as Year 3 Semester 1.
 
 ## Recommendation Preference Ranking Polish
 
@@ -1334,3 +1335,24 @@ Status: Reviewed locally
 - The current branch already follows the recommended order by filtering completed/fixed courses, checking slot fit, evaluating prerequisite readiness, and only then ranking by career and preference signals.
 - The recent duplicate-title and preference-ranking fixes are a small step toward the handover's diversity and student-interest recommendations.
 - The next practical improvement should be an explicit score breakdown in the API/UI before adding heavier AI or graph tooling.
+
+## Transcript Semester Placement Override
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed roadmap placement for completed transcript courses when the transcript course code differs from the curriculum guide code but the course title is equivalent.
+- Roadmap display now uses transcript `study_year` and `transcript_semester` as the final placement source for matched completed courses.
+- Exact course-code placement still works first, and normalized title/title-signature placement handles code changes such as `SC3920 Professional Internship` matching curriculum `SC3079 Professional Internship`.
+
+### Rationale Notes
+
+- The curriculum guide defines the intended study plan, but the transcript is the evidence of when the student actually completed a module.
+- Completed modules should therefore appear in the transcript term on the personalised roadmap, while incomplete curriculum modules should continue following the uploaded curriculum guide.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
