@@ -255,6 +255,7 @@ function ProfilePage({
 
       <form className="profile-form" onSubmit={(e) => e.preventDefault()}>
         {/* Student ID is the browser-side profile identity. */}
+        {/* Keep primary profile inputs together to avoid wasting a full row on Student ID. */}
         <div className="profile-row profile-identity-row">
           <label className="profile-field">
             <span>Student ID</span>

@@ -55,6 +55,7 @@ SOFTWARE_ENGINEER_TAG_WEIGHTS = {
     "parallel-computing": 2,
     "computer-architecture": 2,
 }
+# Used for near-duplicate titles where the curriculum and catalog use slightly different wording.
 TITLE_SIGNATURE_STOP_WORDS = {"principle", "principles"}
 TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
     "algorithms": "algorithm",
@@ -62,6 +63,7 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
     "structures": "structure",
     "systems": "system",
 }
+# Preferences should visibly influence ordering, but they remain soft boosts after hard checks.
 PREFERENCE_TAG_BOOST = 30
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
@@ -229,6 +231,7 @@ def normalize_title(title: str) -> str:
     return " ".join(normalized_title.split())
 
 def get_title_signature(title: str) -> str:
+    # Keep this intentionally conservative so unrelated courses are not merged too aggressively.
     tokens = [
         TITLE_SIGNATURE_TOKEN_REPLACEMENTS.get(token, token)
         for token in normalize_title(title).split()

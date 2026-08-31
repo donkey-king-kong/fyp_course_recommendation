@@ -253,6 +253,7 @@ function App() {
   useEffect(() => {
     setRecommendations([])
     setRecommendationError('')
+    // Clear the success tick whenever inputs change so it only reflects the current request.
     setHasLoadedRoadmapRecommendations(false)
   }, [
     activeStudentId,
