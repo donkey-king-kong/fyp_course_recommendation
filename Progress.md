@@ -936,33 +936,32 @@ Status: Implemented locally
 - No backend persistence for generated recommendations.
 - No manual browser verification has been recorded yet for this local change.
 
-## Curated Course Taxonomy Tags
+## Curated Course Taxonomy Tags Attempt
 
-Status: Implemented locally
+Status: Rolled back locally
 
-### Completed
+### Attempted
 
-- Added a small rule-based taxonomy helper for module tags such as `software-engineering`, `web-development`, `data`, `ai-ml`, `systems`, `security`, `hardware`, `business`, `math`, and `communication`.
-- Used module code, title, and description text to infer taxonomy tags so tagging is more accurate than title-only matching.
-- Wired taxonomy tagging into the existing database seed flow by merging inferred tags with existing NTUMods categories in the `modules.categories` JSON field.
-- Reran the existing seed script locally so PostgreSQL module rows were updated with the new tags.
-- Updated the Software Engineer recommendation candidate query and scoring to consider matching taxonomy tags as a small rule-based relevance signal.
+- Tried a small rule-based taxonomy helper for module tags such as `software-engineering`, `web-development`, `data`, `ai-ml`, `systems`, `security`, `hardware`, `business`, `math`, and `communication`.
+- Wired the helper into the existing seed flow and briefly used taxonomy tags as a recommendation relevance signal.
+- Reran the seed script locally during the experiment, which updated `modules.categories` in PostgreSQL.
 
 ### Rationale Notes
 
-- Keeping taxonomy tags in the existing module catalog table avoids adding a new table before it is necessary.
-- Tags are generated during seeding instead of hardcoded only in the recommendation service, so the module catalog can later expose or filter these tags.
-- Existing source categories such as `CORE` are preserved, and curated tags are appended without duplicates.
-- The taxonomy boost improves brittle keyword matching while still keeping recommendations simple and explainable.
+- This approach was rolled back because automatic keyword-style taxonomy tagging caused confusing false positives.
+- Example: broad matching could tag unrelated modules as software-related if their title or description contained ambiguous words.
+- Faculty exclusions reduce some mistakes but do not solve the wider problem because relevant software-engineering vocabulary is broad and context-dependent.
+- For now, the seed flow should write only original source categories from `data/modules.json`.
+- Recommendation scoring should remain based on the existing keyword logic and previously completed prerequisite-readiness work.
 
 ### Verified
 
-- Seed script updated existing module rows with `.venv/bin/python -m backend.database.seed`.
-- Backend compile check passes with `.venv/bin/python -m compileall backend`.
+- The seed script was rerun after rollback so local `modules.categories` is reset from `data/modules.json`.
 
 ### Not Included
 
 - No student preference UI yet.
-- No hand-curated per-module override file yet.
+- No curated module taxonomy is active yet.
+- No hand-curated per-module override file.
 - No separate taxonomy table or admin editing workflow.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning tagging.

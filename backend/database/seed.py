@@ -6,7 +6,6 @@ from typing import Any
 
 from backend.database.connection import SessionLocal, engine
 from backend.models import Base, FacultyModel, ModuleModel, ModulePrerequisiteModel
-from backend.services.module_taxonomy_service import build_curated_taxonomy_tags, merge_module_categories
 
 # Source dataset downloaded from NTUMods and committed under the repo data folder.
 MODULES_JSON_PATH = Path(__file__).resolve().parents[2] / "data" / "modules.json"
@@ -120,11 +119,6 @@ def load_course_catalog_descriptions(input_path: Path) -> dict[str, str]:
 def build_module_data(module: dict[str, Any], description_by_code: dict[str, str] | None = None) -> dict[str, Any]:
     code = module["code"]
     description = (description_by_code or {}).get(code) or module.get("description")
-    taxonomy_tags = build_curated_taxonomy_tags(
-        code=code,
-        title=module.get("title", ""),
-        description=description,
-    )
 
     return {
         "code": code,
@@ -133,7 +127,7 @@ def build_module_data(module: dict[str, Any], description_by_code: dict[str, str
         "faculty": module.get("faculty"),
         "description": description,
         "level": infer_level(code),
-        "categories": merge_module_categories(module.get("categories", []), taxonomy_tags),
+        "categories": module.get("categories", []),
         "latest_year": module.get("latestYear"),
         "latest_semester": module.get("latestSemester"),
         "is_current_semester": bool(module.get("isCurrentSemester", False)),
