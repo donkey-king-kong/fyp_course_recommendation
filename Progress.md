@@ -965,3 +965,42 @@ Status: Rolled back locally
 - No hand-curated per-module override file.
 - No separate taxonomy table or admin editing workflow.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning tagging.
+
+## CE/CSC Recommendation Tags
+
+Status: Implemented locally
+
+### Completed
+
+- Added a separate `recommendationTags` field in `data/modules.json` for only `CE` and `CSC` modules.
+- Kept original NTU module `categories` unchanged so curriculum/category labels such as `CORE`, `MPE`, `BDE`, `GLOAD`, and `MLOAD` remain separate from recommendation taxonomy.
+- Added a separate `recommendation_tags` JSON column to the `modules` table.
+- Updated the seed script to read `recommendationTags` from `data/modules.json` and write it into `modules.recommendation_tags`.
+- Added a seed-time column check because the project does not use Alembic migrations yet.
+- Exposed `recommendation_tags` through the backend modules API and frontend module type.
+- Updated Software Engineer recommendations to use curated `recommendation_tags` as an additional relevance signal while keeping the existing title/description keyword logic as fallback.
+- Added `data/recommendation_tag_review_notes.json` to list modules tagged from title/code only because they do not have a usable description.
+
+### Rationale Notes
+
+- The previous attempt stored generated tags inside `categories`, which was confusing because those categories came from NTU/source catalog data.
+- `recommendationTags` is intentionally separate because it is project-curated recommendation metadata, not original curriculum metadata.
+- Tagging is limited to `CE` and `CSC` for now to avoid cross-faculty false positives such as unrelated `ACC`, `BUS`, `AED`, or `NIE` modules.
+- The current tag pass is title-first and conservative; descriptions are used as context during review, but not as broad keyword rules that can over-tag modules.
+- Modules without descriptions are explicitly flagged for manual verification instead of being treated as fully verified.
+
+### Verified
+
+- Reran `.venv/bin/python -m backend.database.seed`.
+- Local PostgreSQL `modules` table now has 311 `CE`/`CSC` rows with a `recommendation_tags` column available.
+- 296 `CE`/`CSC` modules currently have at least one non-empty recommendation tag.
+- 0 non-`CE`/`CSC` modules have non-empty recommendation tags.
+- Confirmed `AED28R` has no recommendation tags, while `SC2002`, `SC2302`, and `SC4052` have relevant tags.
+
+### Not Included
+
+- No tags were added for faculties outside `CE` and `CSC`.
+- No student preference UI yet.
+- No separate taxonomy admin editor.
+- No LLM/OpenAI runtime integration; the tagging output is stored as reviewed static data.
+- No Neo4j, ChromaDB, LangGraph, MyCareersFuture, embeddings, or machine-learning tagging.
