@@ -269,6 +269,7 @@ Completed foundations:
 - Profile page stores fixed student topic preferences in `preferredRecommendationTags`; students can type to filter allowed tags, but cannot create custom tags.
 - Student topic preferences are soft ranking boosts, not hard filters.
 - Recommendation ranking gives a soft same-faculty boost, so a CSC profile prefers CSC modules over CE or other faculties when the candidate is otherwise valid.
+- For CSC profiles, legacy `CZ` course codes are deprioritized behind current `SC` course codes, but remain fallback candidates if no better current-code option is available.
 - Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
 - Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
 - Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.

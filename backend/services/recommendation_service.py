@@ -66,6 +66,8 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
 # Preferences should visibly influence ordering, but they remain soft boosts after hard checks.
 PREFERENCE_TAG_BOOST = 30
 SAME_FACULTY_BOOST = 8
+# CZ modules are legacy CSC codes; keep them as fallback candidates behind current SC modules.
+CSC_LEGACY_CZ_PENALTY = -40
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -176,12 +178,17 @@ def recommend_courses(
             )
             preference_boost = get_preference_boost(module, preferred_tags)
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
-            adjusted_score = (
+            course_code_adjustment = get_course_code_generation_adjustment(
+                module,
+                normalized_student_faculty,
+            )
+            adjusted_score = max(1, (
                 score +
                 min(readiness.unlock_value, 3) +
                 preference_boost +
-                faculty_boost
-            )
+                faculty_boost +
+                course_code_adjustment
+            ))
             slot_key = get_choice_slot_identity(slot)
             recommendations_by_slot.setdefault(slot_key, []).append(
                 CourseRecommendation(
@@ -208,6 +215,7 @@ def recommend_courses(
                         readiness.unlock_value,
                         preference_boost,
                         faculty_boost,
+                        course_code_adjustment,
                     ),
                 )
             )
@@ -727,11 +735,21 @@ def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> in
 
     return SAME_FACULTY_BOOST if module.faculty == student_faculty else 0
 
+def get_course_code_generation_adjustment(
+    module: ModuleModel,
+    student_faculty: Optional[str],
+) -> int:
+    if student_faculty == "CSC" and module.code.upper().startswith("CZ"):
+        return CSC_LEGACY_CZ_PENALTY
+
+    return 0
+
 def build_recommendation_reason(
     matched_signals: list[str],
     unlock_value: int,
     preference_boost: int,
     faculty_boost: int,
+    course_code_adjustment: int,
 ) -> str:
     base_reason = (
         "Matches Software Engineer signals: "
@@ -744,6 +762,9 @@ def build_recommendation_reason(
 
     if faculty_boost > 0:
         extra_reasons.append("matches your profile faculty")
+
+    if course_code_adjustment < 0:
+        extra_reasons.append("uses an older CZ course code, so it is kept as a fallback")
 
     if unlock_value > 0:
         extra_reasons.append(f"unlocks {unlock_value} later curriculum module(s)")

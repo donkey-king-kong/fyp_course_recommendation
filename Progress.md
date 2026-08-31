@@ -1287,6 +1287,31 @@ Status: Implemented locally
 - Diagnostics return no issues.
 - Confirmed `CE4045` receives no CSC same-faculty boost while `SC4002` and `SC4050` receive the boost.
 
+## Legacy CZ Recommendation Priority
+
+Status: Implemented locally
+
+### Completed
+
+- Added a backend score penalty for legacy `CZ` course codes when the active student faculty is `CSC`.
+- Current `SC` course codes are preferred over legacy `CZ` options for CSC students when both are valid candidates.
+- `CZ` modules remain available as fallback recommendations instead of being hard-filtered out.
+- Recommendation reasons mention when a `CZ` option is being kept as an older-code fallback.
+
+### Rationale Notes
+
+- In the CSC curriculum, `CZ` codes are older course codes while current equivalents generally use `SC`.
+- A CSC student should normally see current `SC` recommendations first.
+- Keeping `CZ` as fallback avoids empty slots if the active catalog lacks enough suitable `SC` options.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- Confirmed `CZ2001` and `CZ2007` receive the CSC legacy-code penalty while `SC4002` and `SC4050` do not.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally
