@@ -1236,6 +1236,30 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 
+## Persist Roadmap Recommendations Per Student
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated why recommendations disappeared after logout and login with the same Student ID.
+- Confirmed recommendation results were stored only in local React state inside `App`, while curriculum, transcript, and completed-course data were persisted in the profile store.
+- Added `roadmapRecommendations` to the per-student browser-saved Zustand profile record.
+- Updated the roadmap page to read recommendation cards from the profile store instead of local-only component state.
+- Saved fresh recommendation results after `Load Roadmap` succeeds.
+- Cleared saved recommendations when recommendation inputs change, such as career goal, topic preferences, curriculum guide, transcript results, or manual completion state.
+
+### Rationale Notes
+
+- Recommendations are part of the active student's roadmap state, so they should follow the same per-Student-ID persistence model as uploaded curriculum and transcript data.
+- Loading/error states remain local UI state because they should not persist across sessions.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally

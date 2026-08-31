@@ -276,6 +276,7 @@ Completed foundations:
 - If a curriculum guide PDF bundles multiple curriculum variants, the upload currently parses the first `CURRICULUM FOR...` section only until a variant-selection UI exists.
 - Transcript-to-curriculum matching uses exact course code first, then conservative title matching for course-code changes such as `SC3920 Professional Internship` matching `SC3079 Professional Internship`.
 - Selecting a new curriculum guide file does not replace the active roadmap source until `Upload Curriculum Guide` succeeds; `Load Roadmap` is disabled while a selected guide is pending upload.
+- Loaded roadmap recommendations are saved per Student ID in browser storage, so logging out and back in with the same Student ID restores the latest recommendation cards.
 
 Current next step:
 

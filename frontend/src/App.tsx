@@ -10,7 +10,6 @@ import { fetchRecommendations } from './api/recommendationsApi'
 import { useProfileStore } from './store/useProfileStore'
 import type { CurriculumGuideResponse } from './types/curriculum'
 import type { ModuleSummary } from './types/module'
-import type { CourseRecommendation } from './types/recommendation'
 import type { CourseNode, RoadmapEdge, RoadmapResponse } from './types/roadmap'
 import type { TranscriptCourse } from './types/transcript'
 
@@ -215,9 +214,7 @@ function App() {
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
-  const [hasLoadedRoadmapRecommendations, setHasLoadedRoadmapRecommendations] = useState(false)
   const [recommendationError, setRecommendationError] = useState('')
-  const [recommendations, setRecommendations] = useState<CourseRecommendation[]>([])
   const [transcriptOnlyModules, setTranscriptOnlyModules] = useState<TranscriptOnlyModule[]>([])
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
@@ -231,7 +228,11 @@ function App() {
   const transcriptUnmatchedCourseCodes = useProfileStore(
     (state) => state.transcriptUnmatchedCourseCodes,
   )
+  const recommendations = useProfileStore((state) => state.roadmapRecommendations)
+  const setRoadmapRecommendations = useProfileStore((state) => state.setRoadmapRecommendations)
+  const clearRoadmapRecommendations = useProfileStore((state) => state.clearRoadmapRecommendations)
   const logout = useProfileStore((state) => state.logout)
+  const hasLoadedRoadmapRecommendations = recommendations.length > 0
 
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
@@ -251,12 +252,8 @@ function App() {
   )
 
   useEffect(() => {
-    setRecommendations([])
     setRecommendationError('')
-    // Clear the success tick whenever inputs change so it only reflects the current request.
-    setHasLoadedRoadmapRecommendations(false)
   }, [
-    activeStudentId,
     curriculumGuide,
     profile.careerGoal,
     preferredRecommendationTags,
@@ -411,9 +408,8 @@ function App() {
 
     try {
       setIsLoadingRecommendations(true)
-      setHasLoadedRoadmapRecommendations(false)
       setRecommendationError('')
-      setRecommendations([])
+      clearRoadmapRecommendations()
 
       const result = await fetchRecommendations({
         careerGoal: profile.careerGoal,
@@ -427,10 +423,8 @@ function App() {
         limit: getRecommendationLimit(openChoiceSlots),
       })
 
-      setRecommendations(result.recommendations)
-      setHasLoadedRoadmapRecommendations(true)
+      setRoadmapRecommendations(result.recommendations)
     } catch {
-      setHasLoadedRoadmapRecommendations(false)
       setRecommendationError('Could not load recommendations. Make sure the backend is running.')
     } finally {
       setIsLoadingRecommendations(false)
