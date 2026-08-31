@@ -115,9 +115,47 @@ function createSavedStudentProfile(studentId: string): SavedStudentProfile {
   }
 }
 
+function normalizeCourseTitle(title: string) {
+  return title
+    .toLowerCase()
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .join(' ')
+}
+
+function getCourseTitleSignature(title: string) {
+  return normalizeCourseTitle(title)
+    .split(' ')
+    .filter((token) => token !== 'principle' && token !== 'principles')
+    .map((token) => {
+      if (token === 'systems') {
+        return 'system'
+      }
+
+      if (token === 'databases') {
+        return 'database'
+      }
+
+      return token
+    })
+    .join(' ')
+}
+
+function getTranscriptCourseKeys(course: TranscriptCourse) {
+  return new Set([
+    course.course_code,
+    normalizeCourseTitle(course.title),
+    getCourseTitleSignature(course.title),
+  ])
+}
+
 // Match raw transcript codes to the currently uploaded curriculum guide.
 function matchTranscriptToCurriculum(
   completedCourseCodes: string[],
+  transcriptCompletedCourses: TranscriptCourse[],
   curriculumGuide: CurriculumGuideResponse | null,
 ) {
   if (!curriculumGuide) {
@@ -129,20 +167,51 @@ function matchTranscriptToCurriculum(
   }
 
   const completedCodeSet = new Set(completedCourseCodes)
+  const transcriptCourseKeys = transcriptCompletedCourses.reduce<Set<string>>((keys, course) => {
+    getTranscriptCourseKeys(course).forEach((key) => keys.add(key))
+    return keys
+  }, new Set())
   const matchedCourses = curriculumGuide.nodes
-    .filter((course) => completedCodeSet.has(course.courseCode))
+    // Some NTU modules change code across guide/transcript versions, so match by title too.
+    .filter(
+      (course) =>
+        completedCodeSet.has(course.courseCode) ||
+        transcriptCourseKeys.has(normalizeCourseTitle(course.title)) ||
+        transcriptCourseKeys.has(getCourseTitleSignature(course.title)),
+    )
     .map((course) => ({
       courseCode: course.courseCode,
       title: course.title,
     }))
-  const matchedCodeSet = new Set(matchedCourses.map((course) => course.courseCode))
+  const matchedCourseKeys = curriculumGuide.nodes
+    .filter((course) => matchedCourses.some((matchedCourse) => matchedCourse.courseCode === course.courseCode))
+    .reduce<Set<string>>((keys, course) => {
+      keys.add(course.courseCode)
+      keys.add(normalizeCourseTitle(course.title))
+      keys.add(getCourseTitleSignature(course.title))
+      return keys
+    }, new Set())
   const unmatchedCourseCodes = completedCourseCodes.filter(
-    (courseCode) => !matchedCodeSet.has(courseCode),
+    (courseCode) => {
+      const transcriptCourse = transcriptCompletedCourses.find(
+        (course) => course.course_code === courseCode,
+      )
+
+      if (!transcriptCourse) {
+        return !matchedCourseKeys.has(courseCode)
+      }
+
+      return ![...getTranscriptCourseKeys(transcriptCourse)].some((key) =>
+        matchedCourseKeys.has(key),
+      )
+    },
   )
 
   return {
     completedCourseIds: curriculumGuide.nodes
-      .filter((course) => completedCodeSet.has(course.courseCode))
+      .filter((course) =>
+        matchedCourses.some((matchedCourse) => matchedCourse.courseCode === course.courseCode),
+      )
       .map((course) => course.id),
     transcriptMatchedCourses: matchedCourses,
     transcriptUnmatchedCourseCodes: unmatchedCourseCodes,
@@ -320,6 +389,7 @@ export const useProfileStore = create<ProfileState>()(
         set((state) => {
           const matchedResults = matchTranscriptToCurriculum(
             state.transcriptCompletedCourseCodes,
+            state.transcriptCompletedCourses,
             curriculumGuide,
           )
 
@@ -392,6 +462,7 @@ export const useProfileStore = create<ProfileState>()(
         set((state) => {
           const matchedResults = matchTranscriptToCurriculum(
             completedCourseCodes,
+            transcriptCompletedCourses,
             state.curriculumGuide,
           )
 

@@ -1190,6 +1190,30 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 
+## Transcript Curriculum Code Equivalence Fix
+
+Status: Implemented locally
+
+### Completed
+
+- Investigated why `SC3079 Professional Internship` stayed unchecked even though the uploaded transcript clearly contains a completed professional internship.
+- Confirmed the transcript parser correctly extracts `SC3920 Professional Internship`, `10 AU`, grade `A+`.
+- Confirmed the issue is not the transcript parser or DB data; it is a frontend matching issue because the uploaded curriculum uses `SC3079` while the transcript uses `SC3920`.
+- Updated browser-side transcript-to-curriculum matching to use exact course code first, then conservative normalized title matching.
+- `SC3920 Professional Internship` can now match `SC3079 Professional Internship` in the uploaded curriculum roadmap.
+
+### Rationale Notes
+
+- NTU curriculum guides and transcripts may use different course codes for equivalent modules across cohorts.
+- Matching by title is used only after exact code matching, so ordinary same-code matches remain simple.
+- Existing browser-saved transcript/curriculum results may need re-uploading or rematching to show the newly matched checkbox.
+
+### Verified
+
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+
 ## Methodology Handover Review
 
 Status: Reviewed locally
