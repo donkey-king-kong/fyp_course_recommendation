@@ -14,6 +14,7 @@ Clean rebuild of a course recommendation system for NTU students.
 - Frontend stores browser-side student profiles, uploaded curriculum guides, uploaded transcript results, and career goal selection.
 - The Roadmap page displays the uploaded curriculum guide as the student's roadmap source of truth.
 - The current recommendation flow supports rule-based `Software Engineer` recommendations for open MPE and BDE choice slots.
+- Backend now owns recommendation slot assignment, recommendation prerequisite planning artifacts, roadmap readiness checks, transcript-to-curriculum matching, and personalized roadmap projection.
 
 ## Current Recommendation Logic
 
@@ -25,6 +26,9 @@ Clean rebuild of a course recommendation system for NTU students.
 - BDE slots can use modules from active faculties, but candidates are filtered by the slot's roadmap year level before frontend placement.
 - Locked choice slots can still show loaded recommendations, while keeping their locked status and missing-requirement message.
 - Missing prerequisites are returned with recommendations so the roadmap can try to place a prerequisite in an earlier suitable choice slot.
+- Recommendation responses include backend-planned prerequisite roadmap nodes and arrows for the frontend to render.
+- `POST /roadmap/readiness` evaluates roadmap course lock state and academic-standing requirements.
+- `POST /roadmap/personalized` combines uploaded curriculum and transcript state into the ready-to-render roadmap shape.
 - This is intentionally not AI-based yet: no Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning ranking.
 
 ## Security And Prototype Limits
@@ -35,6 +39,7 @@ Clean rebuild of a course recommendation system for NTU students.
 - The backend should treat browser-sent profile, curriculum, transcript, and completion data as user-controlled input unless it is later stored and verified server-side.
 - A production version should use official NTU SSO through a redirect/callback flow, store users with an internal backend ID, and keep sensitive student records server-side.
 - This app must not collect NTU passwords directly, scrape NTU login pages, or hardcode captured NTU `SAMLRequest` URLs.
+- Backend persistence is intentionally not implemented yet because it should come after a safe user identity design.
 
 ## Setup
 

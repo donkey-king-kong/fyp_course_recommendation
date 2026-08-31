@@ -1497,3 +1497,41 @@ Status: Implemented locally
 - No new API endpoint name or response field rename.
 - No backend persistence for assigned recommendations.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Backend-Owned Roadmap Logic Refactor
+
+Status: Implemented locally
+
+### Completed
+
+- Added backend-planned recommendation roadmap artifacts to recommendation responses.
+- Each assigned recommendation can now include `plannedRoadmapNodes` and `plannedRoadmapEdges`.
+- Removed frontend construction of `Recommended Pre-Requisite` nodes and arrows.
+- Added `POST /roadmap/readiness` so the backend evaluates course readiness states and missing requirements.
+- Updated the roadmap UI to render backend readiness output, with the previous local readiness calculation kept only as a fallback if the backend is unavailable.
+- Added `POST /transcript/match-curriculum` so the backend matches parsed transcript modules to uploaded curriculum rows by exact code first, then conservative title/signature matching.
+- Removed transcript-to-curriculum matching logic from the browser profile store.
+- Added `POST /roadmap/personalized` so the backend combines uploaded curriculum guide data, transcript placement overrides, transcript-only modules, and transcript-only prerequisite/unlock arrows into the roadmap response shape.
+- Removed frontend logic that enriched transcript-only modules and built the combined personalized roadmap locally.
+- Kept backend persistence intentionally out of scope because it should wait for a safe user identity/login design.
+
+### Rationale Notes
+
+- Recommendation ranking, exact slot assignment, prerequisite planning, readiness, transcript matching, and personalized roadmap projection now sit closer to the backend service layer.
+- The frontend still owns rendering, layout, hover behavior, tab navigation, upload controls, and local prototype persistence.
+- Browser storage remains inspectable and user-editable, so backend APIs must continue treating submitted profile, curriculum, transcript, completion, and recommendation state as user-controlled input.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No backend user table, production authentication, or server-side profile storage.
+- No API rename from `recommendations` to `assignments`.
+- No visible recommendation score breakdown on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
