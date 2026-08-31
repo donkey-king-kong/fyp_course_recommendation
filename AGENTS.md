@@ -101,6 +101,8 @@ After each milestone, explain:
 - New transcript uploads should override the previous transcript result for the active browser profile and rematch against the current curriculum guide if one exists.
 - New curriculum guide uploads should override the previous curriculum result for the active browser profile and rematch against the current transcript if one exists.
 - The Profile page should store the student's career goal so later MPE/choice-slot recommendations can use it.
+- Browser storage is prototype persistence only; treat localStorage profile, curriculum, transcript, completion, and recommendation data as inspectable and user-editable.
+- Backend recommendation requests currently receive user-controlled browser state, so do not treat submitted completed courses, profile fields, or uploaded-roadmap data as trusted production records.
 - Future NTU login integration should use official NTU SSO redirect/callback flow only; do not build a fake NTU password form, scrape NTU login pages, or hardcode a captured `SAMLRequest` URL.
 - If NTU SSO is added later, use the stable signed identity claim from SAML/OIDC as the external login identifier and keep the app's own internal user ID separate from any optional student ID.
 
@@ -282,6 +284,7 @@ Completed foundations:
 - Transcript-to-curriculum matching uses exact course code first, then conservative title matching for course-code changes such as `SC3920 Professional Internship` matching `SC3079 Professional Internship`.
 - Selecting a new curriculum guide file does not replace the active roadmap source until `Upload Curriculum Guide` succeeds; `Load Roadmap` is disabled while a selected guide is pending upload.
 - Loaded roadmap recommendations are saved per Student ID in browser storage, so logging out and back in with the same Student ID restores the latest recommendation cards.
+- Browser-saved student data and recommendation API responses are inspectable by students, so current storage/API behavior is for prototype transparency rather than production security.
 - Real NTU SSO login is intentionally not implemented yet; any future login work should start with a safe mock SSO-shaped flow unless official NTU SAML/OIDC metadata and registration are available.
 
 Current next step:

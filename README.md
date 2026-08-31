@@ -27,6 +27,15 @@ Clean rebuild of a course recommendation system for NTU students.
 - Missing prerequisites are returned with recommendations so the roadmap can try to place a prerequisite in an earlier suitable choice slot.
 - This is intentionally not AI-based yet: no Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning ranking.
 
+## Security And Prototype Limits
+
+- The current login/profile flow is browser-side prototype state, not production authentication.
+- Student profiles, uploaded curriculum guide results, transcript parsing results, completed-course state, and saved recommendations are stored in browser storage and can be inspected or edited by the user.
+- API responses such as `/recommendations` can be inspected in browser developer tools, including scores and score breakdowns.
+- The backend should treat browser-sent profile, curriculum, transcript, and completion data as user-controlled input unless it is later stored and verified server-side.
+- A production version should use official NTU SSO through a redirect/callback flow, store users with an internal backend ID, and keep sensitive student records server-side.
+- This app must not collect NTU passwords directly, scrape NTU login pages, or hardcode captured NTU `SAMLRequest` URLs.
+
 ## Setup
 
 Create and activate a local Python virtual environment:

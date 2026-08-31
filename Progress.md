@@ -1389,3 +1389,27 @@ Status: Implemented locally
 - No real NTU SSO integration, mock SSO flow, auth sessions, or backend user table.
 - No recommendation ranking algorithm changes beyond exposing existing deterministic score components.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Prototype Security Notes
+
+Status: Implemented locally
+
+### Completed
+
+- Added a README section explaining that browser storage is prototype persistence, not production-secure storage.
+- Documented that localStorage profile, curriculum, transcript, completed-course, and saved recommendation data can be inspected or edited by users.
+- Documented that API responses such as `/recommendations` can be inspected in browser developer tools, including score breakdowns.
+- Updated project rules so future work treats frontend-submitted profile, curriculum, transcript, and completed-course data as user-controlled unless it is later stored and verified server-side.
+- Repeated the NTU SSO guardrail that production login should use official redirect/callback integration and must not collect NTU passwords directly.
+
+### Verified
+
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No production authentication implementation.
+- No backend user table or server-side student record persistence.
+- No change to browser storage behavior.
+- No change to recommendation API output.
