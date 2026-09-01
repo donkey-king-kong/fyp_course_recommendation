@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import CourseList from './components/CourseList'
 import LoginPage from './components/LoginPage'
@@ -10,6 +10,7 @@ import { fetchPersonalizedRoadmap } from './api/roadmapApi'
 import { useProfileStore } from './store/useProfileStore'
 import type { CurriculumGuideResponse } from './types/curriculum'
 import type { RoadmapResponse } from './types/roadmap'
+import type { RoadmapRecommendationStaleReason } from './store/useProfileStore'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
 
@@ -50,6 +51,31 @@ function getRecommendationLimit(openChoiceSlots: CurriculumGuideResponse['nodes'
   return Math.max(1, openChoiceSlots.length)
 }
 
+function getRecommendationNotice(
+  staleReasons: RoadmapRecommendationStaleReason[],
+  hasRecommendations: boolean,
+) {
+  if (!hasRecommendations || staleReasons.length === 0) {
+    return ''
+  }
+
+  const changedInputs = staleReasons
+    .map((reason) => {
+      if (reason === 'curriculum-guide') {
+        return 'Curriculum guide'
+      }
+
+      if (reason === 'transcript') {
+        return 'Transcript'
+      }
+
+      return 'Completed courses'
+    })
+    .join(' and ')
+
+  return `${changedInputs} changed. Reload or clear recommendations.`
+}
+
 // Main page component
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -71,11 +97,32 @@ function App() {
   const transcriptUnmatchedCourseCodes = useProfileStore(
     (state) => state.transcriptUnmatchedCourseCodes,
   )
+  const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
   const recommendations = useProfileStore((state) => state.roadmapRecommendations)
+  const roadmapRecommendationStaleReasons = useProfileStore(
+    (state) => state.roadmapRecommendationStaleReasons,
+  )
   const setRoadmapRecommendations = useProfileStore((state) => state.setRoadmapRecommendations)
   const clearRoadmapRecommendations = useProfileStore((state) => state.clearRoadmapRecommendations)
   const logout = useProfileStore((state) => state.logout)
   const hasLoadedRoadmapRecommendations = recommendations.length > 0
+  const recommendationNotice = getRecommendationNotice(
+    roadmapRecommendationStaleReasons,
+    hasLoadedRoadmapRecommendations,
+  )
+  const roadmapPageError = roadmapProjectionError || recommendationError
+  const appliedTranscriptCompletedCourses = useMemo(
+    () => (isTranscriptAppliedToRoadmap ? transcriptCompletedCourses : []),
+    [isTranscriptAppliedToRoadmap, transcriptCompletedCourses],
+  )
+  const appliedTranscriptUnmatchedCourseCodes = useMemo(
+    () => (isTranscriptAppliedToRoadmap ? transcriptUnmatchedCourseCodes : []),
+    [isTranscriptAppliedToRoadmap, transcriptUnmatchedCourseCodes],
+  )
+  const appliedTranscriptCompletedCourseCodes = useMemo(
+    () => (isTranscriptAppliedToRoadmap ? transcriptCompletedCourseCodes : []),
+    [isTranscriptAppliedToRoadmap, transcriptCompletedCourseCodes],
+  )
 
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
@@ -103,8 +150,8 @@ function App() {
       try {
         const result = await fetchPersonalizedRoadmap(
           curriculumGuide,
-          transcriptCompletedCourses,
-          transcriptUnmatchedCourseCodes,
+          appliedTranscriptCompletedCourses,
+          appliedTranscriptUnmatchedCourseCodes,
         )
 
         if (!shouldIgnoreResult) {
@@ -124,7 +171,11 @@ function App() {
     return () => {
       shouldIgnoreResult = true
     }
-  }, [curriculumGuide, transcriptCompletedCourses, transcriptUnmatchedCourseCodes])
+  }, [
+    curriculumGuide,
+    appliedTranscriptCompletedCourses,
+    appliedTranscriptUnmatchedCourseCodes,
+  ])
 
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
@@ -175,7 +226,7 @@ function App() {
       .filter((course) => completedCourseIds.includes(course.id))
       .map((course) => course.courseCode)
     const completedCourseCodes = [
-      ...new Set([...transcriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
+      ...new Set([...appliedTranscriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
     ]
     // Send only uncompleted choice slots; the roadmap decides which slots can display results.
     const openChoiceSlots = curriculumGuide.nodes.filter(
@@ -296,16 +347,23 @@ function App() {
         </div>
       </header>
 
-      {currentView === 'roadmap' && !roadmap && (
+      {currentView === 'roadmap' && roadmapPageError && (
+        <section className="roadmap-empty-state roadmap-error-state">
+          <h2>Roadmap Needs Attention</h2>
+          <p>{roadmapPageError}</p>
+          <button type="button" onClick={() => setCurrentView('profile')}>
+            Go to Profile
+          </button>
+        </section>
+      )}
+
+      {currentView === 'roadmap' && !roadmap && !roadmapPageError && (
         <section className="roadmap-empty-state">
           <h2>Upload Your Curriculum Guide</h2>
           <p>
             Your roadmap will be generated from your uploaded curriculum guide. Go to Profile and
             upload the PDF before planning courses.
           </p>
-          {roadmapProjectionError && (
-            <p className="roadmap-recommendation-error">{roadmapProjectionError}</p>
-          )}
           <button type="button" onClick={() => setCurrentView('profile')}>
             Go to Profile
           </button>
@@ -313,7 +371,7 @@ function App() {
       )}
 
       {/* Show roadmap content only after a curriculum guide exists for this profile. */}
-      {roadmap && currentView === 'roadmap' && (
+      {roadmap && currentView === 'roadmap' && !roadmapPageError && (
         <>
           {/* Shows the curriculum-style roadmap with semester bands and prerequisite arrows. */}
           <SemesterRoadmap
@@ -322,6 +380,8 @@ function App() {
             recommendations={recommendations}
             isLoadingRecommendations={isLoadingRecommendations}
             recommendationError={recommendationError}
+            recommendationNotice={recommendationNotice}
+            onClearRecommendations={clearRoadmapRecommendations}
           />
 
           {/* Search input updates searchTerm */}
@@ -348,8 +408,10 @@ function App() {
           isLoadingRoadmap={isLoadingRecommendations}
           hasLoadedRoadmap={hasLoadedRoadmapRecommendations}
           recommendationError={recommendationError}
+          recommendationNotice={recommendationNotice}
           onGoToRoadmap={() => setCurrentView('roadmap')}
           onLoadRoadmap={handleLoadRoadmapRecommendations}
+          onClearRecommendations={clearRoadmapRecommendations}
         />
       )}
     </main>

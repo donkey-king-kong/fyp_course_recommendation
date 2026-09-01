@@ -1500,7 +1500,7 @@ Status: Implemented locally
 
 ## Backend-Owned Roadmap Logic Refactor
 
-Status: Implemented locally
+Status: Merged to `main`
 
 ### Completed
 
@@ -1528,6 +1528,7 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 - `git diff --check` passes.
+- Manually tested the end-to-end browser flow after merge: curriculum guide upload, transcript upload, personalized roadmap generation, and recommendation loading work.
 
 ### Not Included
 
@@ -1538,7 +1539,7 @@ Status: Implemented locally
 
 ## Backend Roadmap Flow Compatibility Fix
 
-Status: Implemented locally
+Status: Merged to `main`
 
 ### Completed
 
@@ -1573,3 +1574,585 @@ Status: Implemented locally
 - No backend persistence, user table, production authentication, or SSO implementation.
 - No API rename from `recommendations` to `assignments`.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Next Recommender Improvement Decision
+
+Status: Planned on branch `career-skill-recommendations`
+
+### Decision
+
+- Keep roadmap/profile polish in view, especially clearer loading states, empty states, and user-facing error messages.
+- Keep API naming cleanup in view, especially whether the response field `recommendations` should eventually become `assignments`.
+- Start the next recommender improvement with a small deterministic career-skill mapping step.
+- Use static career-to-skill mappings first instead of adding MyCareersFuture scraping or external job-market ingestion.
+
+### Why This Is Next
+
+- Eligibility, scoring breakdowns, prerequisite readiness, taxonomy/preferences, preference-aware diversity, and backend-owned slot assignment are now in place.
+- The next useful recommendation improvement is making career relevance less dependent on raw keyword matching.
+- Static mappings are easier to understand, inspect, and test than job-market scraping or AI-generated skill extraction.
+
+### Planned Scope
+
+- Add a simple backend-owned mapping from supported career goals, such as `Software Engineer`, to relevant skills or recommendation tags.
+- Use that mapping as an additional deterministic scoring signal alongside existing recommendation tags and keyword fallback.
+- Keep student topic preferences as soft boosts, not hard filters.
+- Keep diversity subordinate to eligibility, career relevance, and student preferences.
+- Keep the frontend as a rendering layer for assigned recommendations.
+
+### Out Of Scope
+
+- No MyCareersFuture scraping or live labour-market data.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
+- No production persistence, backend user table, authentication, or SSO.
+- No visible score breakdown UI on roadmap cards unless explicitly requested.
+
+## Static Career-Skill Recommendation Mapping
+
+Status: Implemented locally
+
+### Completed
+
+- Added backend-owned static career-skill mappings for the current supported career goal, `Software Engineer`.
+- Mapped the career goal to deterministic skill areas such as software delivery, backend/data services, systems infrastructure, secure software practice, and algorithmic problem solving.
+- Matched those career skills against existing curated `recommendation_tags` instead of relying only on raw title/description keyword matches.
+- Added `careerSkillScore` to the recommendation score breakdown so the new signal is inspectable through the API response.
+- Kept existing curated tag relevance, keyword fallback, student topic preference boosts, same-faculty boosts, legacy-code penalties, unlock contribution, and diversity behavior in place.
+- Updated the recommendations endpoint description to explain that career relevance now uses static mappings, curated tags, and keyword fallback.
+- Updated the frontend recommendation response type only; the roadmap UI remains visually unchanged.
+- Moved the career-skill mapping data into `backend/services/career_skill_mappings.py` so the mapping is easier to review separately from ranking logic.
+- Added mapping provenance through per-skill `rationale` text that explains why each skill area matters for the Software Engineer career goal.
+- Added `weight_rationale` text for each mapped skill area so the manually chosen weights are easier to inspect and calibrate later.
+- Improved backend recommendation reasons so matched mapped skill areas can explain why a module supports the selected career goal.
+
+### Rationale Notes
+
+- This is the first small job-market-aware step without adding live job scraping or AI.
+- Static mappings are easy to inspect and deterministic, which fits the current beginner-friendly recommendation pipeline.
+- Career-skill matching uses the already curated module tags, so it is less brittle than scanning every module title and description for broad words.
+- This is a meaningful upgrade over raw keyword/tag matching because it introduces an explicit domain model between a user's career goal and course metadata.
+- The model changes career relevance from `goal -> keyword/tag overlap` to `goal -> skill area -> curated module tags`, which is a more defensible structure for an FYP recommender.
+- Explanations can now be grounded in concrete rules, for example: `Recommended because this module supports the Software Engineer skill area: backend and data services.`
+- Determinism is valuable here because the same student data and mapping version should produce the same result, making the logic easier to test, review, and demonstrate.
+- The static mapping is a good cold-start baseline because it does not need historical ratings, prior users, collaborative filtering data, or live job-market data before recommending modules.
+- Keeping the goal-to-skill mapping backend-owned preserves a clean architecture boundary: the frontend renders assigned recommendations, while the backend remains the source of truth for ranking logic.
+- The main limitation is that this remains a manually maintained, one-hop taxonomy matcher. It depends on the completeness and calibration of the mappings and can be brittle across many career goals or ambiguous modules.
+- Content-based recommenders can suffer from over-specialisation, vocabulary mismatch, and dependence on item-feature quality, so later improvements may need stronger provenance, broader mappings, or job-market evidence.
+- Keeping provenance and weight rationale beside the mapping makes future review easier because domain assumptions are documented where the scoring inputs are defined.
+- The mapping remains Python-based for now instead of JSON because typed fields, comments, and rationale strings are easier to maintain during this early backend-only iteration.
+
+### Known Downsides And Mitigations
+
+- Manual taxonomy maintenance remains a risk because every career goal, skill area, and tag relationship must be created and updated by people. New or renamed modules can stop matching if the mapping becomes stale, so future work should version mappings, track unmatched tags/goals, and eventually support review tooling.
+- Coverage gaps can occur when a genuinely relevant module has no curated tag included in the career mapping. This can make students ask why an obviously relevant module is missing, so future work should track unmapped-but-potentially-relevant modules and review coverage metrics.
+- Vocabulary mismatch can still happen if module tags and mapping tags use different labels for the same idea. A future controlled taxonomy should use canonical tag IDs or aliases rather than relying on free-text labels.
+- Over-broad skill areas can match many modules with unequal value. Weights and evidence strength should keep broad matches from pushing introductory or tangential modules too high.
+- Over-specialisation can happen if direct skill matches repeatedly concentrate Software Engineer recommendations around backend, web, or programming courses. Future ranking should reserve room for adjacent skills, exploration, breadth requirements, or subpath diversity.
+- The current mapping does not model student-specific competence. A student already strong in backend work may still receive backend-heavy suggestions, so later profile inputs could capture self-rated confidence, grades, completed modules, and stated interests.
+- Tags alone do not encode prerequisites, timetable feasibility, degree rules, or module availability. The current recommender already applies curriculum and prerequisite checks before ranking, and that boundary should remain a hard eligibility layer.
+- The `Software Engineer` career label is coarse because it can mean frontend, backend, platform, mobile, security, data, or product engineering. Future work can let students choose a subpath or assign importance weights to skill areas.
+- Tag quality becomes a bottleneck because the semantic layer inherits mistakes from module tagging. High-impact tags should be reviewed and eventually include confidence/provenance.
+- Explanation wording can overstate certainty if it sounds like one module guarantees job readiness. Use careful language such as `builds exposure to` or `is aligned with`, and show exact matched tags or skill areas when explanations are displayed.
+- The current system is popularity/outcome blind because taxonomy matching alone cannot learn which modules students value, perform well in, or find useful. Later feedback or outcome signals should be separate reranking components rather than replacements for eligibility.
+- Evaluation can be misleading if offline scores only show agreement with the manually defined mapping. Future evaluation should include independent labels and student or academic-advisor judgment.
+
+### Binary Matching Issue
+
+- The current career-skill layer still behaves like a binary match at the tag-to-skill step: if a module has a mapped tag such as `backend-engineering`, the related skill area is treated as matched and the module receives that skill area's weight.
+- This is a reasonable candidate-generation signal, but it is weak as the complete ranker because not all tag matches are equally meaningful.
+- For example, `Distributed Systems`, `Database Systems`, and `Introductory Web Development` may all match Software Engineer skill areas, but their expected career relevance can differ significantly depending on student level, prior experience, and target subpath.
+- A simple count or binary match can rank these modules too similarly, even though a final-year student aiming for backend or platform engineering may benefit more from distributed systems than from an introductory web module.
+- Future improvements should add evidence strength, course level/context, subpath preference, and tag confidence so a match can be graded rather than treated as simply present or absent.
+
+### Next Planned Improvement
+
+- Replace the current binary skill-area match with a weighted relationship model while keeping the recommender deterministic and backend-owned.
+- Model career fit as a composition of career goal, skill-area importance, tag-to-skill relationship strength, and optional tag confidence rather than treating every mapped tag as equally strong.
+- Keep hard filters separate from ranking: completed/fixed modules, slot fit, prerequisite feasibility, near-duplicate prior learning, and later availability/AU/programme constraints should be checked before final scoring.
+- Keep career relevance as one ranking factor, not the whole definition of usefulness. Ranking should continue to combine career fit, student interest fit, curriculum/pathway fit, faculty/code preferences, unlock value, and diversity.
+- Preserve explanations from the strongest contributing path, for example `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every matched signal.
+- Start without adding tests in this immediate follow-up if requested, but the next quality step should still be focused backend tests for scoring and explanation behavior.
+- Keep UI unchanged unless explicitly requested; the roadmap should continue rendering backend-assigned recommendations by `matchedChoiceSlotId`.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok'); print('RecommendationScoreBreakdown' in str(backend.main.app.openapi()))"`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+- Confirmed a service-level `Software Engineering` module receives both existing career tag/keyword score and the new mapped career-skill score.
+
+### Not Included
+
+- No MyCareersFuture scraping or live labour-market data.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
+- No new frontend UI and no visible score breakdown on roadmap cards.
+- No automated test suite was added in this step; verification remains compile, lint, build, diagnostics, and service-level checks.
+- No API rename from `recommendations` to `assignments`.
+- No backend persistence, user table, authentication, or SSO.
+
+## Weighted Career-Skill Matching
+
+Status: Implemented locally
+
+### Completed
+
+- Replaced each Software Engineer skill area's flat tag list with weighted tag relationships in `backend/services/career_skill_mappings.py`.
+- Added per-tag relationship strength, tag confidence, and rationale so mapped career evidence remains auditable.
+- Updated backend career-skill scoring to calculate each skill area's contribution from `skill importance * strongest matching tag relationship * tag confidence`.
+- Preserved `careerSkillScore` in the existing score breakdown instead of changing the recommendation API response shape.
+- Kept hard filters before ranking: completed/fixed modules, slot fit, prerequisite feasibility, and near-duplicate prior learning still run outside the score calculation.
+- Updated recommendation reasons to show the strongest contributing path, for example `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every mapped skill signal.
+
+### Rationale Notes
+
+- Weighted tag relationships make broad tags and direct tags behave differently, so one weakly related mapped tag no longer grants the full skill-area weight.
+- The score remains deterministic and backend-owned, which keeps the frontend as a rendering layer for assigned recommendation slots.
+- Career relevance remains one ranking component alongside student topic preferences, same-faculty preference, current-semester availability, unlock value, code-generation fallback penalties, and diversity tiebreaking.
+- Each skill area still contributes at most its strongest matching tag so modules with many related tags do not automatically dominate only because of tag count.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok'); print('RecommendationScoreBreakdown' in str(backend.main.app.openapi()))"`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok'); print('weighted static career-to-skill mappings' in str(backend.main.app.openapi()))"`.
+- Ran a service-level scoring check confirming `distributed-systems` receives a stronger career-skill score than `web-development` and the recommendation reason includes the top career-skill path.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No automated tests were added in this step, by request.
+- No roadmap UI change and no visible score breakdown display.
+- No MyCareersFuture scraping, live job-market data, Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
+- No backend persistence, user table, authentication, SSO, or API rename from `recommendations` to `assignments`.
+
+## Old Course-Code Exclusion For Recommendations
+
+Status: Implemented locally
+
+### Completed
+
+- Replaced old-code fallback penalties with a hard eligibility exclusion before slot matching and scoring.
+- Excluded `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes from recommendation candidates because current CE/CSC curricula use `SC` course codes.
+- Kept `SC` modules eligible as the primary current course-code family.
+- Left service/common/math prefixes such as `MA`, `MH`, `CC`, `CV`, and `HW` unblocked until there is a clearer reason to exclude them.
+
+### Rationale Notes
+
+- Old course-code families should not be recommended at all, so they are now treated as eligibility exclusions instead of ranking preferences.
+- This keeps relevance scoring focused on suitable current modules rather than using large negative penalties to approximate a hard rule.
+- A catalog check found the CE faculty currently uses non-`SC` prefixes `CE` and `CPE`, while CSC also contains non-`SC` prefixes such as `CZ`, old `CSC`, `MA`, `MH`, `CC`, `CV`, and `HW`.
+- `CE`, `CPE`, `CSC`, and `CZ` are treated as old course-code families; `MA`, `MH`, `CC`, `CV`, and `HW` are not automatically treated as old computing-course families.
+
+### Not Included
+
+- No contextual fallback penalty for old code families because the current rule is exclusion, not deprioritization.
+- No frontend UI change.
+- No automated tests were added in this step.
+
+## Reviewer Notes On Recommender Validation
+
+Status: Planned
+
+### Decisions
+
+- Treat `SC` as the primary current course-code family for CE/CSC recommendations.
+- Treat `CE`, `CSC`, `CZ`, and `CPE` as old course-code families that should be excluded from recommendation candidates.
+- Keep both safer scoring metadata and safer ranking behavior in view; they are complementary, not mutually exclusive.
+- Implement safer scoring metadata first if the next goal is explainability and debugging.
+- Implement safer ranking behavior first if the next goal is reducing bad visible recommendations such as old-code modules appearing instead of suitable current-code modules.
+- Prefer doing both before the recommender is evaluated formally, but keep each as a separate small work unit.
+
+### Safer Ranking Behavior To Consider
+
+- Keep old course-code families as eligibility exclusions rather than fallback ranking candidates.
+- If a future dataset proves that some non-`SC` code is still valid, handle it through an explicit allowlist or module-equivalence rule instead of weakening the old-code exclusion globally.
+- Longer term, use module equivalence, successor relationships, or curated topic clusters to explain why an old code was excluded and which current-code module replaces it.
+- Keep the hard-filter-before-ranking boundary intact: eligibility, fixed/completed modules, slot fit, prerequisite feasibility, and near-duplicate prior learning should still be checked before scoring.
+
+### Safer Scoring Metadata To Consider
+
+- Keep score components separately observable even if the roadmap UI does not display them.
+- Add or internally log career-skill evidence such as career goal, skill area, skill-area importance, matched tag, relationship weight, tag confidence, and rationale.
+- Add or internally log old-code exclusion details such as excluded code family and exclusion reason when debugging candidate filtering.
+- Version the career-skill mapping or scoring model internally so historical recommendation comparisons remain understandable after weights are tuned.
+- Preserve explanation fidelity: the displayed top career-skill path should match the actual highest-contributing scoring path.
+
+### Aggregation And Confidence Caveats
+
+- Current career-skill scoring takes the strongest matching tag per skill area, then sums skill-area contributions.
+- This max-per-skill-area approach gives a clear explanation path, but can under-reward modules with several genuinely relevant tags inside the same skill area.
+- A future capped top-n aggregation could reward breadth without letting many weak tags dominate, for example `x1 + 0.25*x2 + 0.10*x3`.
+- Keep `relationship_weight` and `tag_confidence` conceptually separate: relationship weight means how strongly a tag supports a skill area, while tag confidence means how reliable the module's tag metadata is.
+- Consider moderating confidence rather than multiplying it directly, for example `relationship_weight * (0.7 + 0.3 * tag_confidence)`, so incomplete metadata does not completely collapse a semantically strong match.
+
+### Evaluation Plan
+
+- Build a fixed labelled benchmark set before making many more ranking changes.
+- Suggested benchmark size: 30 to 60 cases for CSC students with Software Engineer as the career goal.
+- Include completed modules, eligibility constraints, candidate pools, expected relevance labels, expected explanation paths where possible, and whether old-code modules should be excluded.
+- Compare old and new rankers on the same inputs using ranking, diversity, explanation, fallback, and constraint-validity metrics.
+- Useful metrics include Precision@5, nDCG@5, coverage, explanation coverage, explanation fidelity, skill-area diversity@5, fallback exposure, and constraint validity.
+
+### Automated Test Ideas
+
+- Given equal eligibility and other signals, a stronger tag relationship should rank higher.
+- A higher tag confidence should contribute at least as much as a lower confidence for the same relationship.
+- The displayed top explanation path should match the path used to calculate the career-skill score.
+- `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes should be excluded from recommendation candidates.
+- `SC` modules should remain eligible.
+- Lower-priority code-family rules should not cause an ineligible module to be returned just to fill a slot.
+
+## Career-Skill Evidence Metadata
+
+Status: Implemented locally
+
+### Completed
+
+- Added `careerSkillEvidence` inside the existing recommendation `scoreBreakdown` response.
+- Kept the roadmap UI visually unchanged; the new metadata is available through the API response and frontend types only.
+- Included the top career-skill evidence path used for debugging and explanation fidelity: career goal, skill area, skill-area weight, matched recommendation tag, relationship weight, tag confidence, contribution score, and rationale.
+- Updated backend scoring so the evidence object is built from the same top career-skill contribution used by the recommendation reason.
+- Updated the frontend recommendation TypeScript type so browser/API inspection can see the new metadata without rendering it on roadmap cards.
+
+### Value Decisions To Review Later
+
+- First-pass `relationshipWeight` values were manually chosen based on how directly each tag supports the Software Engineer skill area.
+- First-pass `tagConfidence` values were manually chosen as metadata-confidence placeholders because recommendation tags are currently curated/static rather than statistically estimated.
+- `contributionScore` is calculated by the backend from `skillAreaWeight * relationshipWeight * tagConfidence`; it is not manually entered.
+- The current values are intentionally inspectable and should be reviewed later with labelled benchmark cases or adviser feedback.
+
+### Not Included
+
+- No roadmap UI display for score metadata.
+- No automated tests were added in this step.
+- No benchmark dataset or tuning process yet.
+
+## Automated Recommender Tests Decision
+
+Status: Postponed
+
+### Decision
+
+- Do not add automated recommender scoring or eligibility tests right now.
+- A temporary `unittest` file for helper-level recommendation scoring checks was created locally, reviewed, and removed before commit.
+- Keep the automated test ideas in this progress document as future validation work, but continue the next development step first unless tests are explicitly requested again.
+
+### Rationale Notes
+
+- The immediate priority is still to evolve the recommender behavior and metadata in small understandable steps.
+- The intended invariants remain useful later, especially once the scoring shape stabilizes and benchmark cases exist.
+
+## Recommendation Benchmark Plan
+
+Status: Scaffold added
+
+### Goal
+
+- Create a small fixed benchmark set for evaluating deterministic Software Engineer recommendations before adding more ranking complexity.
+- Use the benchmark to compare recommender changes on the same inputs instead of judging quality only from ad hoc roadmap screenshots.
+- Keep the benchmark local and inspectable so it supports FYP explanation, tuning, and later adviser review.
+
+### Proposed Benchmark Scope
+
+- Start with 30 to 60 labelled cases.
+- Focus first on CSC students with `Software Engineer` as the career goal.
+- Include open MPE and BDE slots because these are the recommendation slots currently handled by the backend.
+- Include cases with different completed-module sets so prerequisite readiness and already-completed exclusions are exercised.
+- Include cases where old course-code families such as `CE`, `CPE`, `CSC`, and `CZ` appear in the catalog but should be excluded.
+
+### Scaffold Created
+
+- Added `data/recommendation_benchmark_cases.json` as an empty benchmark scaffold.
+- Included schema version, purpose, review notes, allowed relevance labels, allowed old-code handling labels, and a single case template.
+- Left `cases` empty so no fake labels or unreviewed benchmark cases are introduced.
+- The frontend does not read this file; it is for future offline evaluation and review tooling.
+
+### Case Fields To Capture
+
+- Student programme or faculty, initially `CSC`.
+- Career goal, initially `software-engineer`.
+- Preferred recommendation tags, if any.
+- Completed course codes from transcript state.
+- Open choice-slot definitions, including slot ID, course code, year, and semester.
+- Curriculum courses used for fixed-module exclusion and prerequisite readiness.
+- Candidate modules or expected candidate group, if a smaller manually reviewed pool is used.
+- Expected relevance label per reviewed module: highly relevant, relevant, somewhat relevant, or irrelevant.
+- Expected explanation path where it is clear, such as career goal to skill area to tag to module title.
+- Expected old-code handling: excluded, allowed by explicit exception, or not applicable.
+
+### Metrics To Track
+
+- Precision@5: how many of the first five recommendations are relevant.
+- nDCG@5: whether highly relevant recommendations appear above weaker relevant recommendations.
+- Coverage: how many valid modules and Software Engineer skill areas the recommender can cover.
+- Explanation coverage: how often returned recommendations include a non-empty career-skill evidence path.
+- Explanation fidelity: whether the displayed top path matches the actual highest-contributing career-skill evidence.
+- Skill-area diversity@5: whether top recommendations cover multiple useful Software Engineer skill areas.
+- Old-code exposure: how often `CE`, `CPE`, `CSC`, or `CZ` appears after the exclusion rule; expected value should be zero unless an explicit allowlist is introduced later.
+- Constraint validity: whether returned recommendations are eligible, non-duplicative, and compatible with slot/prerequisite rules.
+
+### Not Included Yet
+
+- No labelled benchmark cases have been added yet.
+- No automated evaluation runner has been added yet.
+- No lecturer/adviser-reviewed labels have been collected yet.
+- No ranking formula changes are included in this scaffold step.
+
+## Recommendation Benchmark Draft Cases And Evaluator
+
+Status: Implemented locally
+
+### Completed
+
+- Added 5 draft CSC `Software Engineer` benchmark cases to `data/recommendation_benchmark_cases.json`.
+- Kept the benchmark status as draft and clearly marked that the labels are not expert-reviewed ground truth.
+- Preserved the existing benchmark scaffold metadata, including allowed relevance labels, allowed old-code handling labels, and the case template.
+- Kept `data/final_output.json` as the temporary Claude-generated source file for comparison and review.
+- Added `scripts/evaluate_recommendation_benchmark.py` as a dependency-free offline evaluator for saved recommendation outputs.
+- The evaluator can calculate Precision@K, nDCG@K, case coverage, explanation coverage, explanation fidelity, skill-area diversity@K, old-code exposure, and constraint validity.
+- Added a `--use-reviewed-candidates` smoke mode so the metric code can be exercised before real saved recommender prediction files exist.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --use-reviewed-candidates --k 5`.
+- Ran `.venv/bin/python -m compileall scripts/evaluate_recommendation_benchmark.py`.
+- Diagnostics return no issues for `data/recommendation_benchmark_cases.json`.
+- `git diff --check` passes.
+
+### Not Included
+
+- No expert-reviewed benchmark ground truth yet.
+- No automated recommender tests.
+- No backend recommendation logic changes.
+- No frontend UI changes.
+- No integration that automatically captures live `POST /recommendations` outputs.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, or backend persistence.
+
+## Live Recommendation Benchmark Prediction Capture
+
+Status: Implemented locally
+
+### Completed
+
+- Marked the 5 benchmark cases as project-owner-reviewed drafts after manual review.
+- Kept the benchmark caveat that labels are not expert-reviewed ground truth until an adviser, lecturer, TA, senior student, or another trusted reviewer approves them.
+- Added `scripts/run_recommendation_benchmark_predictions.py` to call the live backend `POST /recommendations` endpoint for each benchmark case.
+- The runner converts compact benchmark curriculum course-code lists into the object shape expected by the recommendation API.
+- The runner saves backend-assigned recommendation outputs to `data/recommendation_benchmark_predictions.json` by default.
+- Saved prediction files can be passed directly into `scripts/evaluate_recommendation_benchmark.py`.
+
+### How To Run
+
+```bash
+uvicorn backend.main:app --reload
+```
+
+```bash
+.venv/bin/python scripts/run_recommendation_benchmark_predictions.py
+```
+
+```bash
+.venv/bin/python scripts/evaluate_recommendation_benchmark.py \
+  --predictions data/recommendation_benchmark_predictions.json \
+  --k 5
+```
+
+### Not Included
+
+- No expert-reviewed benchmark ground truth yet.
+- No automated recommender tests.
+- No backend recommendation logic changes.
+- No frontend UI changes.
+- No score breakdown display on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## No-Preference Benchmark Label Review
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed the low-scoring `software-engineer-csc-005` no-preference benchmark case against the saved live backend predictions.
+- Confirmed the low score was partly caused by missing labels for valid returned modules, not by old-code exposure or invalid slot assignment.
+- Added `SC4023 Big Data Management` as a `relevant` benchmark candidate because it supports backend and data-service software engineering through the `backend-engineering` tag.
+- Added `SC4050 Parallel Computing` as a `somewhat-relevant` benchmark candidate because it supports performance, concurrency, and infrastructure-heavy software paths, but is more specialised for a generic Software Engineer profile.
+- Changed `SC4053 Blockchain Technology` to `irrelevant` for the no-preference default Software Engineer case because blockchain is too niche unless the student explicitly prefers security, cryptography, distributed systems, blockchain, or fintech-style topics.
+- Kept AI/ML preference behavior unchanged because AI/ML is currently a topic preference under `Software Engineer`, not a separate career mapping.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The live saved-prediction evaluation now reports `averagePrecisionAtK` of `0.36`, `averageNdcgAtK` of `0.5950000793953917`, `oldCodeExposure` of `0`, and `averageConstraintValidity` of `1.0`.
+
+### Not Included
+
+- No recommender ranking changes.
+- No frontend UI changes.
+- No automated recommender tests.
+- No expert-reviewed benchmark ground truth claim.
+
+## No-Preference Recommendation Profile Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Added curated module-level `recommendationProfile` metadata in `data/modules.json`.
+- Marked broad default Software Engineer options such as `SC4013 Application Security`, `SC4023 Big Data Management`, and `SC4040 Advanced Topics In Algorithms` with `recommendationProfile: "broad-default"`.
+- Marked more specialist options such as `SC4050 Parallel Computing` and `SC4053 Blockchain Technology` with `recommendationProfile: "specialist"`.
+- Added a `recommendation_profile` column to the module database model and seed flow.
+- Added a backend scoring adjustment that boosts `broad-default` modules for no-preference students and for students whose only selected topic preference is the broad `software-engineering` tag.
+- Kept the specialist penalty limited to the same broad/default scenarios so explicit specialist preferences, such as `parallel-computing`, can still lift matching modules.
+- Added `defaultProfileAdjustment` to the recommendation score breakdown so the calibration remains inspectable through API responses.
+- Kept roadmap UI unchanged and kept score breakdowns hidden from roadmap cards.
+- Added `SC4051 Distributed Systems` as a `relevant` candidate in `software-engineer-csc-005` after accepting it as a broadly useful Year 4 backend/platform Software Engineer recommendation.
+
+### Rationale Notes
+
+- The benchmark showed that `SC4053 Blockchain Technology` could outrank broader default Software Engineer modules because it matched both `distributed-systems` and `computer-security`.
+- Those tags are still technically correct, so the fix does not remove them.
+- The issue is context-sensitive ranking: blockchain can be relevant for explicit security/distributed/fintech interests, but is too niche as a default no-preference Software Engineer recommendation.
+- The new profile adjustment gives the backend a simple deterministic way to separate broad default recommendations from specialist modules without adding AI, embeddings, or job-market scraping.
+- `SC4051 Distributed Systems` is marked `broad-default` because it is a stronger general Software Engineer recommendation than `SC4064 GPU Programming`; GPU programming remains eligible and unpenalised unless a more specific preference/ranking rule is added later.
+
+### Verified
+
+- Reran the database seed so PostgreSQL has the new `recommendation_profile` column and curated values.
+- Reran live benchmark prediction capture against an updated local backend.
+- Reran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The live saved-prediction evaluation now reports `averagePrecisionAtK` of `0.44000000000000006`, `averageNdcgAtK` of `0.664030778742472`, `oldCodeExposure` of `0`, and `averageConstraintValidity` of `1.0`.
+- For `software-engineer-csc-005`, `SC4053 Blockchain Technology` is no longer selected; the returned modules are `SC4023 Big Data Management`, `SC4013 Application Security`, and `SC4051 Distributed Systems`.
+
+### Not Included
+
+- No frontend UI changes.
+- No new career goal for AI/ML.
+- No automated recommender tests.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Curriculum-Only Prerequisite Planning Policy
+
+Status: Implemented locally
+
+### Decision
+
+- When only a curriculum guide has been uploaded, the recommender should prefer modules whose prerequisites are already covered by earlier compulsory/planned curriculum courses.
+- More relevant modules with unmet prerequisites should not be hard-excluded if the missing prerequisite module exists in the catalog, but they should receive a score penalty because they require extra academic planning.
+- Modules with prerequisites that fit an earlier available choice slot remain valid planned-prerequisite recommendations.
+- Modules whose prerequisites are neither completed nor present earlier in the curriculum can still be considered only as lower-priority options, because they may consume an additional slot or require manual planning.
+- Ready modules should normally beat prerequisite-costly modules unless the relevance gap is large.
+
+### Rationale Notes
+
+- Curriculum-guide-only mode represents a planned degree path, not confirmed completed modules.
+- Without a transcript, the backend should not pretend prerequisites are completed, but it can use the uploaded curriculum structure as planning evidence.
+- A module such as `SC4052 Cloud Computing` can be more relevant to a generic Software Engineer path than `SC4064 GPU Programming`, but it requires `MH2802`; if `MH2802` is not visible as an earlier curriculum module, the recommender should penalise the planning cost instead of removing `SC4052` completely.
+- This keeps the recommender explainable: feasibility remains separate from career relevance, and missing prerequisites appear in the response instead of being hidden by an early filter.
+- The frontend should remain unchanged for now; roadmap cards can continue rendering assigned backend recommendations while planned prerequisite nodes/arrows remain backend-owned.
+
+### Completed
+
+- Added `prerequisitePlanningPenalty` to the recommendation score breakdown.
+- Added a `-10` prerequisite-planning penalty for recommendations that need an extra prerequisite module.
+- Changed prerequisite readiness so catalog-known missing prerequisites can produce `needs-prerequisite-planning` instead of hard-excluding the recommendation.
+- Kept hard exclusions for completed/fixed modules, old course-code families, slot mismatch, and irrelevant candidates.
+- Marked `SC4052 Cloud Computing` as `broad-default` because it is a stronger generic Software Engineer recommendation than `SC4064 GPU Programming`.
+- Kept score breakdowns hidden in the roadmap UI, but made the prerequisite penalty inspectable through the API response.
+- Updated the frontend recommendation response type to include `prerequisitePlanningPenalty` without changing the roadmap UI.
+
+### Verification Notes
+
+- A curriculum-only simulation with no completed transcript modules now keeps `SC4052 Cloud Computing` eligible with missing prerequisite `MH2802` and a `-10` prerequisite-planning penalty.
+- In that simulation, `SC4052 Cloud Computing` replaces `SC4064 GPU Programming`, which matches the intended policy that a more relevant module can beat a weaker ready/default option when the relevance gap is large enough.
+- `SC4064 GPU Programming` remains eligible and unmarked as specialist; it is not treated as bad, only lower priority than broader Software Engineer modules.
+- Reran live benchmark prediction capture against the updated local backend.
+- The live saved-prediction evaluation still reports `averagePrecisionAtK` of `0.44000000000000006`, `averageNdcgAtK` of `0.664030778742472`, `oldCodeExposure` of `0`, and `averageConstraintValidity` of `1.0`.
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -m compileall scripts/run_recommendation_benchmark_predictions.py scripts/evaluate_recommendation_benchmark.py`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues for the edited backend, schema, frontend type, data, and progress files.
+- `git diff --check` passes.
+
+### Out Of Scope
+
+- No frontend UI redesign.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Diversity As Relevance Tiebreaker
+
+Status: Implemented locally
+
+### Completed
+
+- Changed final exact-slot assignment so diversity only compares modules within 10 raw score points of the best eligible module for that slot.
+- Kept repeated-tag diversity as a useful tiebreaker among similarly strong modules.
+- Prevented diversity from selecting a much weaker module only because it has different tags.
+- Preserved the existing hard filters, career-skill scoring, broad-default calibration, prerequisite-planning penalty, and backend-owned slot assignment.
+
+### Rationale Notes
+
+- The previous diversity step could over-penalise strong broad Software Engineer modules after earlier selected modules used the same tags.
+- For example, after `SC3020 Database System Principles` and `SC4052 Cloud Computing` used backend/distributed tags, `SC4051 Distributed Systems` could be reduced below `SC4064 GPU Programming` by repeated-tag penalties.
+- That made diversity override relevance, which conflicts with the intended rule that diversity should stay subordinate to eligibility, career relevance, and student preferences.
+- The new score-gap rule keeps diversity local: if one module is clearly stronger, keep it; if modules are close, use diversity to avoid overly repetitive recommendations.
+
+### Verification Notes
+
+- A targeted service-level check with repeated backend/distributed tags now chooses `SC4051 Distributed Systems` over `SC4064 GPU Programming`, even though GPU has a higher diversity-adjusted score.
+- A curriculum-only 6-slot simulation now returns `SC4052 Cloud Computing`, `SC4023 Big Data Management`, `SC4013 Application Security`, and `SC4051 Distributed Systems` for the `SC4xxx` slots instead of falling back to `SC4064 GPU Programming`.
+
+### Out Of Scope
+
+- No hardcoded preference for `SC4051`.
+- No frontend UI change.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Auto Upload And Recommendation Refresh Notice
+
+Status: Implemented locally
+
+### Completed
+
+- Changed curriculum guide selection so choosing a PDF immediately uploads and parses it.
+- Changed transcript selection so choosing a PDF immediately uploads and parses it.
+- Removed the separate manual upload buttons from the Profile page.
+- Kept recommendation loading manual; uploading a new curriculum guide or transcript does not automatically call the recommendation endpoint.
+- Added persisted recommendation stale reasons when an uploaded curriculum guide or transcript changes after recommendations have already been loaded.
+- Show the same stale recommendation notice on the Profile page and Roadmap page.
+- Added `Clear Recommendations` controls so the student can remove saved recommendation cards and view the curriculum roadmap with or without transcript completions.
+- Polished the stale notice into short red inline helper text and made clear-action buttons visibly active or greyed out when unavailable.
+- Kept `Clear completed` visible but disabled when no completed roadmap courses remain, and stopped the roadmap render from rehydrating cleared completion IDs.
+- Changed `Clear Recommendations` to a distinct purple active style so it does not look the same as `Reload Roadmap`.
+- Added a `Re-apply Transcript` button on the Profile transcript card after roadmap completions are cleared while saved transcript matches still exist.
+- Changed completed-course updates so `Clear completed` keeps existing recommendations visible and marks them stale instead of clearing recommendation cards.
+- Fixed recommended choice-slot readiness display so a recommended MPE/BDE card becomes locked when the assigned recommendation still has unmet prerequisites.
+- Clarified the roadmap clear-completion action: with a saved transcript it is labelled `Clear transcript completions` and removes transcript-applied ticks while keeping the parsed transcript available for `Re-apply Transcript`; without a saved transcript it remains `Clear completed` for manual ticks.
+- Updated the Roadmap page error state so roadmap projection or recommendation errors show a large blocking message instead of rendering the roadmap graph underneath.
+- Split saved transcript data from transcript-applied roadmap state, so clearing transcript completions on the Roadmap returns the roadmap to curriculum-guide-only mode while keeping the saved transcript available for re-apply or replacement upload.
+
+### Rationale Notes
+
+- File selection now matches the student's expectation that choosing a PDF starts the upload workflow immediately.
+- Recommendations remain a deliberate action because changing curriculum or transcript inputs can significantly change eligibility, completion state, prerequisite planning, and slot assignment.
+- Keeping stale recommendations visible with a notice avoids silently deleting useful context while still warning that the displayed recommendation cards may be based on older inputs.
+
+### Not Included
+
+- No backend recommendation changes.
+- No automatic recommendation reload after upload.
+- No backend persistence or production upload storage.
+- No score breakdown display on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, or API renaming.

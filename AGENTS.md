@@ -230,12 +230,12 @@ The first four improvements are practical and sufficient for a strong undergradu
 | 3 | Prerequisite readiness and unlock-value logic | Makes recommendations pathway-aware rather than keyword-only | Medium | Next |
 | 4 | Curated course taxonomy and student preference profile | Reduces brittle keyword matching and enables genuine personalisation | Medium | After priorities 1-3 |
 | 5 | Diversity-aware assignment across slots | Stops repeated or overly similar BDE/MPE suggestions | Medium | After priorities 1-4 |
-| 6 | Career-to-skill mapping and job-market signals | Gives career relevance an evidence layer | Medium | Later |
+| 6 | Career-to-skill mapping and job-market signals | Gives career relevance an evidence layer | Medium | Next, starting with static career-to-skill mapping only |
 | 7 | Neo4j or graph traversal | Useful once prerequisite and skill relationships become difficult to query and explain in SQL | Medium-high | Later |
 | 8 | Embeddings or vector search | Useful for semantic matching of messy free text | Medium-high | Later |
 | 9 | LLM or LangGraph | Useful for input normalisation and explanation generation, not core ranking | High | Last |
 
-Do not jump to Neo4j, embeddings, LangGraph, OpenAI, or job-market integrations before the simpler eligibility, scoring, prerequisite-readiness, and taxonomy improvements are understood.
+Do not jump to Neo4j, embeddings, LangGraph, OpenAI, or job-market integrations before the simpler eligibility, scoring, prerequisite-readiness, taxonomy, diversity, and static career-skill mapping improvements are understood.
 
 ## Current State
 
@@ -278,7 +278,14 @@ Completed foundations:
 - Recommendation selection uses preference-aware diversity as a gentle tiebreaker so repeated non-preferred tags are reduced without overriding the student's selected topic preferences.
 - Backend recommendation responses now contain final exact-slot assignments instead of a large candidate pool; the frontend should render by `matchedChoiceSlotId` and avoid owning recommendation ranking or allocation logic.
 - Recommendation API responses include a deterministic `scoreBreakdown` for explainability, but the roadmap UI does not display it yet.
+- Software Engineer recommendations now use a backend-owned static career-skill mapping layer in `backend/services/career_skill_mappings.py`, moving from `goal -> keyword/tag overlap` toward `goal -> skill area -> curated module tags`.
+- The career-skill mapping includes per-skill rationale and weight rationale so the current deterministic scoring assumptions are inspectable.
 - Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
+- Backend recommendation responses can include planned prerequisite roadmap nodes and arrows through `plannedRoadmapNodes` and `plannedRoadmapEdges`.
+- Backend `POST /roadmap/readiness` evaluates roadmap course readiness and missing requirements, with the frontend retaining local readiness logic only as a fallback.
+- Backend `POST /transcript/match-curriculum` matches parsed transcript modules to uploaded curriculum rows by exact code first, then conservative title/signature matching.
+- Backend `POST /roadmap/personalized` builds the personalized roadmap from uploaded curriculum guide data, transcript placement overrides, transcript-only modules, and transcript-only prerequisite/unlock arrows.
+- The backend roadmap flow has been verified end to end after the Python 3.9 compatibility fix and `CurriculumEdge` to `RoadmapEdge` response normalization.
 - Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
 - Profile page shows Student ID, Major, and Career Goal inline on wider screens and shows a spinner/tick inside the Load Roadmap button.
 - Curriculum guide parsing infers full table column positions from `Course Code`, `Course Title`, `Type`, `AU`, and `Pre-requisite` headers so similar NTU guide layouts can work without filename-specific rules.
@@ -294,11 +301,17 @@ Current next step:
 - Continue from `Progress.md`.
 - Keep academic-standing requirements based on completed AU, not self-declared profile year.
 - Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
-- Keep polishing the roadmap/profile flow before starting unrelated milestones.
+- Keep roadmap/profile polish and API naming cleanup in view, especially clearer loading/error states and a future `recommendations` to `assignments` naming cleanup if the API changes.
 - Keep recommendation ranking and exact-slot allocation in the backend; the frontend should remain a rendering layer for assigned recommendations.
 - Keep recommendation diversity subordinate to eligibility, career relevance, and student topic preferences.
+- Weighted tag-to-skill relationships and top career-skill evidence metadata are implemented for Software Engineer recommendations.
+- `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes are treated as old CE/CSC course-code families and should be excluded from recommendation candidates, not merely deprioritized with penalties.
+- Preserve the hard-filter-before-ranking architecture: completed/fixed modules, slot fit, prerequisite feasibility, near-duplicate prior learning, and later availability/AU/programme constraints should be checked before final scoring.
+- Keep career relevance as one ranking factor, not the whole definition of usefulness. Continue combining career fit with student interests, curriculum/pathway fit, same-faculty/code preferences, unlock value, and diversity.
+- Improve recommendation explanations by keeping the top-contributing path, such as `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every matched signal.
 - Do not show recommendation score breakdowns in the roadmap UI unless explicitly requested.
-- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, or advanced recommendation logic yet.
+- Do not add automated recommender tests right now; scoring and eligibility test ideas are documented for later validation work, but the immediate next work should proceed without creating a test suite unless explicitly requested again.
+- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, or advanced job-market integration yet.
 
 ## Expected Working Directory
 

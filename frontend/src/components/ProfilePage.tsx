@@ -12,8 +12,10 @@ interface ProfilePageProps {
   isLoadingRoadmap: boolean
   hasLoadedRoadmap: boolean
   recommendationError: string
+  recommendationNotice: string
   onGoToRoadmap: () => void
   onLoadRoadmap: () => void
+  onClearRecommendations: () => void
 }
 
 const RECOMMENDATION_TAG_OPTIONS = [
@@ -66,8 +68,10 @@ function ProfilePage({
   isLoadingRoadmap,
   hasLoadedRoadmap,
   recommendationError,
+  recommendationNotice,
   onGoToRoadmap,
   onLoadRoadmap,
+  onClearRecommendations,
 }: ProfilePageProps) {
   // Read the saved student profile from the shared Zustand store
   const profile = useProfileStore((state) => state.profile)
@@ -88,36 +92,43 @@ function ProfilePage({
     (state) => state.transcriptCompletedCourseCodes,
   )
   const transcriptCompletedCourses = useProfileStore((state) => state.transcriptCompletedCourses)
+  const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
   const setCurriculumGuide = useProfileStore((state) => state.setCurriculumGuide)
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
   const clearTranscriptResults = useProfileStore((state) => state.clearTranscriptResults)
-  const [selectedCurriculumGuide, setSelectedCurriculumGuide] = useState<File | null>(null)
-  const [selectedTranscript, setSelectedTranscript] = useState<File | null>(null)
+  const [uploadingCurriculumGuideFileName, setUploadingCurriculumGuideFileName] = useState('')
+  const [uploadingTranscriptFileName, setUploadingTranscriptFileName] = useState('')
   const [curriculumGuideInputKey, setCurriculumGuideInputKey] = useState(0)
   const [transcriptInputKey, setTranscriptInputKey] = useState(0)
   const [isUploadingCurriculumGuide, setIsUploadingCurriculumGuide] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
+  const [isReapplyingTranscript, setIsReapplyingTranscript] = useState(false)
   const [curriculumUploadMessage, setCurriculumUploadMessage] = useState('')
   const [curriculumUploadError, setCurriculumUploadError] = useState('')
   const [uploadMessage, setUploadMessage] = useState('')
   const [uploadError, setUploadError] = useState('')
   const [preferenceSearch, setPreferenceSearch] = useState('')
   const hasCurriculumGuide = Boolean(curriculumGuide)
-  const hasPendingCurriculumGuideUpload = Boolean(selectedCurriculumGuide)
   const hasTranscriptResults =
     transcriptMatchedCourses.length > 0 ||
     transcriptUnmatchedCourseCodes.length > 0 ||
     transcriptCompletedCourseCount > 0
+  const canReapplyTranscript =
+    Boolean(curriculumGuide) &&
+    transcriptCompletedCourses.length > 0 &&
+    !isTranscriptAppliedToRoadmap
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
-  const displayedCurriculumGuideFileName = selectedCurriculumGuide?.name || curriculumGuideFileName
-  const displayedTranscriptFileName = selectedTranscript?.name || transcriptFileName
+  const displayedCurriculumGuideFileName = uploadingCurriculumGuideFileName || curriculumGuideFileName
+  const displayedTranscriptFileName = uploadingTranscriptFileName || transcriptFileName
   const transcriptSummaryMessage = `Current transcript: ${transcriptCompletedCourseCount} completed module(s), ${formatAcademicUnits(transcriptTotalAcademicUnitsEarned)} AU earned.`
+  const hasStaleRecommendations = Boolean(recommendationNotice)
   const canLoadRoadmap =
     hasCurriculumGuide &&
-    !hasPendingCurriculumGuideUpload &&
     profile.careerGoal === 'software-engineer' &&
-    !isLoadingRoadmap
+    !isLoadingRoadmap &&
+    !isUploadingCurriculumGuide &&
+    !isUploading
   const selectedPreferenceTags = profile.preferredRecommendationTags ?? EMPTY_RECOMMENDATION_TAGS
   const selectedPreferenceTagSet = useMemo(
     () => new Set(selectedPreferenceTags),
@@ -147,20 +158,16 @@ function ProfilePage({
     updateProfile({ preferredRecommendationTags: nextTags })
   }
 
-  async function handleCurriculumGuideUpload() {
-    if (!selectedCurriculumGuide) {
-      setCurriculumUploadError('Upload a PDF curriculum guide before uploading.')
-      return
-    }
-
+  async function handleCurriculumGuideUpload(file: File) {
     try {
       setIsUploadingCurriculumGuide(true)
+      setUploadingCurriculumGuideFileName(file.name)
       setCurriculumUploadError('')
-      setCurriculumUploadMessage('')
+      setCurriculumUploadMessage('Uploading and parsing selected curriculum guide...')
 
-      const result = await uploadCurriculumGuide(selectedCurriculumGuide)
+      const result = await uploadCurriculumGuide(file)
       const transcriptMatch =
-        transcriptCompletedCourseCodes.length > 0
+        isTranscriptAppliedToRoadmap && transcriptCompletedCourseCodes.length > 0
           ? await matchTranscriptToCurriculum(
               transcriptCompletedCourseCodes,
               transcriptCompletedCourses,
@@ -168,8 +175,7 @@ function ProfilePage({
             )
           : undefined
 
-      setCurriculumGuide(result, selectedCurriculumGuide.name, transcriptMatch)
-      setSelectedCurriculumGuide(null)
+      setCurriculumGuide(result, file.name, transcriptMatch)
       setCurriculumGuideInputKey((currentKey) => currentKey + 1)
       setCurriculumUploadMessage(
         `Parsed ${result.nodes.length} curriculum row(s) across ${result.semesters.length} semester(s).`,
@@ -178,6 +184,7 @@ function ProfilePage({
       setCurriculumUploadError('Could not process curriculum guide. Make sure the backend is running.')
     } finally {
       setIsUploadingCurriculumGuide(false)
+      setUploadingCurriculumGuideFileName('')
     }
   }
 
@@ -191,27 +198,22 @@ function ProfilePage({
     }
 
     clearCurriculumGuide()
-    setSelectedCurriculumGuide(null)
+    setUploadingCurriculumGuideFileName('')
     setCurriculumGuideInputKey((currentKey) => currentKey + 1)
     setCurriculumUploadError('')
     setCurriculumUploadMessage('Cleared stored curriculum guide for this profile.')
   }
 
-  async function handleTranscriptUpload() {
-    // Error message when upload button clicked without uploading anything
-    if (!selectedTranscript) {
-      setUploadError('Upload a PDF transcript before uploading.')
-      return
-    }
-
+  async function handleTranscriptUpload(file: File) {
     try {
       // Reset previous upload feedback before starting a new upload
       setIsUploading(true)
+      setUploadingTranscriptFileName(file.name)
       setUploadError('')
-      setUploadMessage('')
+      setUploadMessage('Uploading and parsing selected transcript...')
 
       // Send the selected PDF to the backend transcript parser
-      const result = await uploadTranscript(selectedTranscript)
+      const result = await uploadTranscript(file)
 
       const completedCourseCodesFromTranscript = [
         ...new Set([
@@ -228,7 +230,7 @@ function ProfilePage({
 
       // Save parsed transcript data with backend matching when a curriculum guide exists.
       setTranscriptResults(
-        selectedTranscript.name,
+        file.name,
         completedCourseCodesFromTranscript,
         result.completed_transcript_courses,
         result.completed_transcript_course_count,
@@ -251,6 +253,8 @@ function ProfilePage({
     } finally {
       // Always stop the loading state after success, validation, or failure
       setIsUploading(false)
+      setUploadingTranscriptFileName('')
+      setTranscriptInputKey((currentKey) => currentKey + 1)
     }
   }
 
@@ -264,10 +268,42 @@ function ProfilePage({
     }
 
     clearTranscriptResults()
-    setSelectedTranscript(null)
+    setUploadingTranscriptFileName('')
     setTranscriptInputKey((currentKey) => currentKey + 1)
     setUploadError('')
     setUploadMessage('Cleared stored transcript results for this profile.')
+  }
+
+  async function handleReapplyTranscriptResults() {
+    if (!curriculumGuide || transcriptCompletedCourses.length === 0) {
+      return
+    }
+
+    try {
+      setIsReapplyingTranscript(true)
+      setUploadError('')
+      setUploadMessage('')
+
+      const transcriptMatch = await matchTranscriptToCurriculum(
+        transcriptCompletedCourseCodes,
+        transcriptCompletedCourses,
+        curriculumGuide,
+      )
+
+      setTranscriptResults(
+        transcriptFileName,
+        transcriptCompletedCourseCodes,
+        transcriptCompletedCourses,
+        transcriptCompletedCourseCount,
+        transcriptTotalAcademicUnitsEarned,
+        transcriptMatch,
+      )
+      setUploadMessage(`Re-applied ${transcriptMatch.completedCourseIds.length} transcript match(es) to your roadmap.`)
+    } catch {
+      setUploadError('Could not re-apply transcript results. Make sure the backend is running.')
+    } finally {
+      setIsReapplyingTranscript(false)
+    }
   }
 
   return (
@@ -395,29 +431,47 @@ function ProfilePage({
           <div className="profile-roadmap-load-row">
             <button
               type="button"
-              className={hasLoadedRoadmap ? 'load-roadmap-button loaded' : 'load-roadmap-button'}
+              className={[
+                'load-roadmap-button',
+                hasLoadedRoadmap && !hasStaleRecommendations ? 'loaded' : '',
+                hasStaleRecommendations ? 'stale' : '',
+              ]
+                .filter(Boolean)
+                .join(' ')}
               onClick={onLoadRoadmap}
               disabled={!canLoadRoadmap}
               title={hasLoadedRoadmap ? 'Click to reload roadmap recommendations' : 'Load roadmap recommendations'}
             >
               {isLoadingRoadmap && <span className="load-roadmap-spinner" aria-hidden="true" />}
-              {hasLoadedRoadmap && !isLoadingRoadmap && (
+              {hasLoadedRoadmap && !hasStaleRecommendations && !isLoadingRoadmap && (
                 <span className="load-roadmap-tick" aria-hidden="true">
                   ✓
                 </span>
               )}
-              {hasLoadedRoadmap ? 'Roadmap Loaded' : 'Load Roadmap'}
+              {hasStaleRecommendations
+                ? 'Reload Roadmap'
+                : hasLoadedRoadmap
+                  ? 'Roadmap Loaded'
+                  : 'Load Roadmap'}
             </button>
+
+            <button
+              className="profile-clear-recommendations-button"
+              type="button"
+              onClick={onClearRecommendations}
+              disabled={!hasLoadedRoadmap || isLoadingRoadmap}
+            >
+              Clear Recommendations
+            </button>
+
+            {recommendationNotice && (
+              <span className="recommendation-stale-notice">{recommendationNotice}</span>
+            )}
           </div>
 
           <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>
             Go to roadmap...
           </button>
-          {hasPendingCurriculumGuideUpload && (
-            <p className="upload-error">
-              Upload the selected curriculum guide before loading the roadmap.
-            </p>
-          )}
           {recommendationError && <p className="upload-error">{recommendationError}</p>}
         </div>
       </form>
@@ -441,17 +495,19 @@ function ProfilePage({
               onChange={(event) => {
                 const selectedFile = event.target.files?.[0] ?? null
 
-                setSelectedCurriculumGuide(selectedFile)
                 setCurriculumUploadError('')
-                setCurriculumUploadMessage(
-                  selectedFile && hasCurriculumGuide
-                    ? 'New guide selected. Click Upload Curriculum Guide to replace the current roadmap source.'
-                    : '',
-                )
+                setCurriculumUploadMessage('')
+
+                if (selectedFile) {
+                  void handleCurriculumGuideUpload(selectedFile)
+                }
               }}
+              disabled={isUploadingCurriculumGuide}
             />
             <span className="file-picker-row">
-              <span className="file-picker-button">Choose file</span>
+              <span className="file-picker-button">
+                {isUploadingCurriculumGuide ? 'Uploading...' : 'Choose file'}
+              </span>
               <span className="file-picker-name">
                 {displayedCurriculumGuideFileName || 'No file chosen'}
               </span>
@@ -460,19 +516,10 @@ function ProfilePage({
 
           <div className="transcript-action-row">
             <button
-              className="transcript-upload-button"
-              type="button"
-              onClick={handleCurriculumGuideUpload}
-              disabled={isUploadingCurriculumGuide}
-            >
-              {isUploadingCurriculumGuide ? 'Uploading...' : 'Upload Curriculum Guide'}
-            </button>
-
-            <button
               className="clear-transcript-button"
               type="button"
               onClick={handleClearCurriculumGuide}
-              disabled={!hasCurriculumGuide}
+              disabled={!hasCurriculumGuide || isUploadingCurriculumGuide}
             >
               Clear Curriculum Guide
             </button>
@@ -518,13 +565,21 @@ function ProfilePage({
               className="screen-reader-file-input"
               accept="application/pdf"
               onChange={(event) => {
-                setSelectedTranscript(event.target.files?.[0] ?? null)
+                const selectedFile = event.target.files?.[0] ?? null
+
                 setUploadError('')
                 setUploadMessage('')
+
+                if (selectedFile) {
+                  void handleTranscriptUpload(selectedFile)
+                }
               }}
+              disabled={isUploading}
             />
             <span className="file-picker-row">
-              <span className="file-picker-button">Choose file</span>
+              <span className="file-picker-button">
+                {isUploading ? 'Uploading...' : 'Choose file'}
+              </span>
               <span className="file-picker-name">
                 {displayedTranscriptFileName || 'No file chosen'}
               </span>
@@ -533,22 +588,24 @@ function ProfilePage({
 
           <div className="transcript-action-row">
             <button
-              className="transcript-upload-button"
-              type="button"
-              onClick={handleTranscriptUpload}
-              disabled={isUploading}
-            >
-              {isUploading ? 'Uploading...' : 'Upload Transcript'}
-            </button>
-
-            <button
               className="clear-transcript-button"
               type="button"
               onClick={handleClearTranscriptResults}
-              disabled={!hasTranscriptResults}
+              disabled={!hasTranscriptResults || isUploading}
             >
               Clear Transcript
             </button>
+
+            {canReapplyTranscript && (
+              <button
+                className="reapply-transcript-button"
+                type="button"
+                onClick={handleReapplyTranscriptResults}
+                disabled={isReapplyingTranscript}
+              >
+                {isReapplyingTranscript ? 'Re-applying...' : 'Re-apply Transcript'}
+              </button>
+            )}
           </div>
 
           {uploadMessage && <p className="upload-success">{uploadMessage}</p>}

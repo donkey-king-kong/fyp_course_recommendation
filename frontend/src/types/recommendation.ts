@@ -29,12 +29,27 @@ export interface RecommendationRequest {
 
 export type RecommendationReadinessStatus = 'ready' | 'needs-prerequisite-planning'
 
+export interface RecommendationCareerSkillEvidence {
+  careerGoal: string
+  skillArea: string
+  skillAreaWeight: number
+  tag: string
+  relationshipWeight: number
+  tagConfidence: number
+  contributionScore: number
+  rationale: string
+}
+
 export interface RecommendationScoreBreakdown {
   careerTagScore: number
+  careerSkillScore: number
+  careerSkillEvidence: RecommendationCareerSkillEvidence | null
   currentSemesterBonus: number
   preferenceBoost: number
   sameFacultyBoost: number
   legacyCodePenalty: number
+  defaultProfileAdjustment: number
+  prerequisitePlanningPenalty: number
   unlockContribution: number
   finalScore: number
 }

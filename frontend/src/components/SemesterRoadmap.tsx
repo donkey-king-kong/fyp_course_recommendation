@@ -16,6 +16,8 @@ interface SemesterRoadmapProps {
   recommendations: CourseRecommendation[]
   isLoadingRecommendations: boolean
   recommendationError: string
+  recommendationNotice: string
+  onClearRecommendations: () => void
 }
 
 // Shape used after grouping courses into curriculum rows
@@ -49,6 +51,9 @@ interface AssignedRecommendation {
   courseCode: string
   title: string
   label: string
+  missingPrerequisites: string[]
+  existingPrerequisiteCourseCodes: string[]
+  plannedPrerequisiteCourseCodes: string[]
 }
 
 interface RecommendationAssignmentResult {
@@ -192,6 +197,9 @@ function assignRecommendationsToChoiceSlots(
         courseCode: recommendation.courseCode,
         title: recommendation.title,
         label: 'Recommended option',
+        missingPrerequisites: recommendation.missingPrerequisites,
+        existingPrerequisiteCourseCodes: recommendation.existingPrerequisiteCourseCodes,
+        plannedPrerequisiteCourseCodes: recommendation.plannedPrerequisiteCourseCodes,
       },
     }
   }, {})
@@ -319,6 +327,36 @@ function getCourseEligibility(
   }
 }
 
+function getRecommendationEligibility(
+  recommendation: AssignedRecommendation,
+  completedCourseCodes: Set<string>,
+): CourseEligibility {
+  const requiredPrerequisiteCodes = [
+    ...recommendation.existingPrerequisiteCourseCodes,
+    ...recommendation.plannedPrerequisiteCourseCodes,
+    ...recommendation.missingPrerequisites,
+  ]
+  const missingPrerequisites = [
+    ...new Set(
+      requiredPrerequisiteCodes.filter(
+        (courseCode) => !completedCourseCodes.has(courseCode.toUpperCase()),
+      ),
+    ),
+  ]
+
+  if (missingPrerequisites.length === 0) {
+    return {
+      status: 'available',
+      missingPrerequisites: [],
+    }
+  }
+
+  return {
+    status: 'locked',
+    missingPrerequisites,
+  }
+}
+
 // Show curriculum rows, course cards, prerequisite arrows, and hover emphasis
 function SemesterRoadmap({
   courses,
@@ -326,6 +364,8 @@ function SemesterRoadmap({
   recommendations,
   isLoadingRecommendations,
   recommendationError,
+  recommendationNotice,
+  onClearRecommendations,
 }: SemesterRoadmapProps) {
   // Track hover state so connected courses/arrows can be emphasized
   const [hoveredCourseId, setHoveredCourseId] = useState<string | null>(null)
@@ -340,20 +380,16 @@ function SemesterRoadmap({
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
+  const clearAppliedTranscriptFromRoadmap = useProfileStore(
+    (state) => state.clearAppliedTranscriptFromRoadmap,
+  )
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
     (state) => state.transcriptTotalAcademicUnitsEarned,
   )
-  // Hydrate completed courses from roadmap if not already in store
-  useEffect(() => {
-    if (completedCourseIds.length === 0) {
-      const initialCompleted = courses.filter((c) => c.isCompleted).map((c) => c.id)
-      if (initialCompleted.length > 0) {
-        setCompletedCourses(initialCompleted)
-      }
-    }
-  }, [courses, completedCourseIds.length, setCompletedCourses])
+  const transcriptCompletedCourseCount = useProfileStore((state) => state.transcriptCompletedCourseCount)
+  const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
 
   // Let us measure where each course card is on screen so SVG arrows can connect them
   const roadmapRef = useRef<HTMLDivElement | null>(null)
@@ -375,6 +411,7 @@ function SemesterRoadmap({
     transcriptTotalAcademicUnitsEarned > 0
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
+  const hasAppliedTranscript = isTranscriptAppliedToRoadmap && transcriptCompletedCourseCount > 0
   const standingRequirements = curriculumGuide?.standingRequirements ?? EMPTY_STANDING_REQUIREMENTS
   const recommendationChoiceSlots = useMemo(
     () =>
@@ -413,6 +450,11 @@ function SemesterRoadmap({
     [prerequisiteLinks, recommendationAssignmentResult.recommendedPrerequisiteLinks],
   )
   const courseCodeById = new Map(displayCourses.map((course) => [course.id, course.courseCode]))
+  const completedCourseCodes = new Set(
+    displayCourses
+      .filter((course) => effectiveCompletedCourseIds.includes(course.id))
+      .map((course) => course.courseCode.toUpperCase()),
+  )
   // Sort rows so the roadmap follows curriculum order, including virtual prerequisite cards.
   const semesterGroups = groupCoursesBySemester(displayCourses).sort(
     (a, b) => a.year - b.year || a.semester - b.semester,
@@ -610,21 +652,45 @@ function SemesterRoadmap({
       <div className="semester-roadmap-header">
         <h2>Roadmap</h2>
 
+        {recommendationNotice && (
+          <span className="roadmap-recommendation-notice">{recommendationNotice}</span>
+        )}
+
         <div className="roadmap-actions">
           {/* Remove the uploaded curriculum guide while keeping transcript data saved for rematching. */}
           <button type="button" className="clear-roadmap-button" onClick={handleClearRoadmap}>
             Clear roadmap
           </button>
 
-          {/* Clear the completed-course list so every roadmap checkbox becomes unchecked */}
+          <button
+            type="button"
+            className="clear-recommendations-button"
+            onClick={onClearRecommendations}
+            disabled={recommendations.length === 0 || isLoadingRecommendations}
+          >
+            Clear recommendations
+          </button>
+
+          {/* With a saved transcript, this removes transcript-applied ticks but keeps the parsed transcript available to re-apply from Profile. */}
           <button
             type="button"
             className="clear-completed-button"
-            onClick={() => setCompletedCourses([])}
-            // Disable if no completed courses to clear
-            disabled={completedCourseIds.length === 0}
+            onClick={() => {
+              if (hasAppliedTranscript) {
+                clearAppliedTranscriptFromRoadmap()
+                return
+              }
+
+              setCompletedCourses([])
+            }}
+            disabled={hasAppliedTranscript ? false : completedCourseIds.length === 0}
+            title={
+              hasAppliedTranscript
+                ? 'Clear transcript-applied completed ticks. The saved transcript can be re-applied from Profile.'
+                : 'Clear manually completed roadmap ticks.'
+            }
           >
-            Clear completed
+            {hasAppliedTranscript ? 'Clear transcript completions' : 'Clear completed'}
           </button>
 
           {/* Toggle between all prerequisite arrows and only the hovered course's arrows. */}
@@ -761,7 +827,7 @@ function SemesterRoadmap({
                   const isConnected = connectedCourseIds.has(course.id)
                   const isDimmed = Boolean(hoveredCourseId) && !isConnected
                   const isCompleted = effectiveCompletedCourseIds.includes(course.id)
-                  const eligibility =
+                  const baseEligibility =
                     backendReadinessByCourseId?.[course.id] ??
                     getCourseEligibility(
                       course,
@@ -770,6 +836,14 @@ function SemesterRoadmap({
                       standingRequirements,
                     )
                   const slotRecommendation = recommendationByChoiceSlotId[course.id]
+                  const recommendationEligibility =
+                    slotRecommendation && !isCompleted
+                      ? getRecommendationEligibility(slotRecommendation, completedCourseCodes)
+                      : null
+                  const eligibility =
+                    recommendationEligibility?.status === 'locked'
+                      ? recommendationEligibility
+                      : baseEligibility
                   const detailModuleCode = getModuleCodeForDetail(course, slotRecommendation)
 
                   return (

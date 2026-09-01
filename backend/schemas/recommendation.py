@@ -136,10 +136,34 @@ class RecommendationPlannedRoadmapEdge(BaseModel):
     source: str = Field(description="Source roadmap node ID for the planned prerequisite arrow.")
     target: str = Field(description="Target roadmap node ID for the planned prerequisite arrow.")
 
+class RecommendationCareerSkillEvidence(BaseModel):
+    careerGoal: str = Field(description="Career goal used for this career-skill evidence.")
+    skillArea: str = Field(description="Highest-contributing mapped skill area.")
+    skillAreaWeight: int = Field(description="Configured importance weight for the skill area.")
+    tag: str = Field(description="Module recommendation tag that produced the contribution.")
+    relationshipWeight: float = Field(
+        description="How strongly the tag supports the mapped skill area.",
+    )
+    tagConfidence: float = Field(
+        description="Confidence that the module truly has this recommendation tag.",
+    )
+    contributionScore: float = Field(
+        description="Raw contribution before rounding into careerSkillScore.",
+    )
+    rationale: str = Field(description="Rationale for the matched tag relationship.")
+
 class RecommendationScoreBreakdown(BaseModel):
     careerTagScore: int = Field(
-        description="Base relevance score from career keywords and curated recommendation tags.",
+        description="Base relevance score from existing curated tag weights and keyword fallback.",
         examples=[13],
+    )
+    careerSkillScore: int = Field(
+        description="Additional deterministic score from static career-to-skill mappings.",
+        examples=[10],
+    )
+    careerSkillEvidence: Optional[RecommendationCareerSkillEvidence] = Field(
+        default=None,
+        description="Top career-skill evidence path used for explanation and debugging.",
     )
     currentSemesterBonus: int = Field(
         description="Small bonus when the module is available in the current catalog semester.",
@@ -154,8 +178,26 @@ class RecommendationScoreBreakdown(BaseModel):
         examples=[8],
     )
     legacyCodePenalty: int = Field(
-        description="Negative adjustment for older CSC/CZ course codes when the student is in CSC.",
+        description=(
+            "Reserved score adjustment for future code-family preferences. Old CE/CSC "
+            "code families are currently filtered before scoring."
+        ),
         examples=[0],
+    )
+    defaultProfileAdjustment: int = Field(
+        description=(
+            "No-preference calibration from curated recommendationProfile metadata. "
+            "Broad default modules can receive a boost while specialist modules can "
+            "receive a penalty in broad/default preference contexts."
+        ),
+        examples=[0],
+    )
+    prerequisitePlanningPenalty: int = Field(
+        description=(
+            "Penalty applied when a recommendation needs an extra prerequisite plan "
+            "instead of being ready from completed or earlier curriculum modules."
+        ),
+        examples=[-10],
     )
     unlockContribution: int = Field(
         description="Small pathway boost from unlocking later fixed curriculum modules.",
@@ -241,17 +283,36 @@ class RecommendationResponse(BaseModel):
                         "plannedRoadmapEdges": [],
                         "readinessStatus": "ready",
                         "unlockValue": 1,
-                        "score": 9,
+                        "score": 19,
                         "scoreBreakdown": {
                             "careerTagScore": 7,
+                            "careerSkillScore": 10,
+                            "careerSkillEvidence": {
+                                "careerGoal": "software-engineer",
+                                "skillArea": "software design and delivery",
+                                "skillAreaWeight": 10,
+                                "tag": "software-engineering",
+                                "relationshipWeight": 1.0,
+                                "tagConfidence": 1.0,
+                                "contributionScore": 10.0,
+                                "rationale": (
+                                    "Directly represents structured software design "
+                                    "and delivery practice."
+                                ),
+                            },
                             "currentSemesterBonus": 1,
                             "preferenceBoost": 0,
                             "sameFacultyBoost": 0,
                             "legacyCodePenalty": 0,
+                            "defaultProfileAdjustment": 0,
                             "unlockContribution": 1,
-                            "finalScore": 9,
+                            "finalScore": 19,
                         },
-                        "reason": "Matches Software Engineer keywords: software, engineering.",
+                        "reason": (
+                            "Recommended for the Software Engineer career goal. Also top "
+                            "career-skill path: Software Engineer -> software design and "
+                            "delivery -> software-engineering -> Software Engineering."
+                        ),
                     }
                 ],
             }

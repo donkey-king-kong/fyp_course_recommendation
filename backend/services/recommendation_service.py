@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from backend.models import ModuleModel
 from backend.schemas.recommendation import (
     CourseRecommendation,
+    RecommendationCareerSkillEvidence,
     RecommendationChoiceSlot,
     RecommendationCurriculumCourse,
     RecommendationPlannedRoadmapEdge,
@@ -18,6 +19,7 @@ from backend.schemas.recommendation import (
     RecommendationResponse,
     RecommendationScoreBreakdown,
 )
+from backend.services.career_skill_mappings import CAREER_SKILL_MAPPINGS, CareerSkillMapping, SkillTagRelationship
 from backend.services.faculty_service import list_active_faculty_names
 from backend.services.module_service import get_prerequisites_by_module, get_unlocks_by_module
 
@@ -40,23 +42,23 @@ SOFTWARE_ENGINEER_KEYWORDS = {
 }
 SOFTWARE_ENGINEER_TAG_WEIGHTS = {
     "software-engineering": 6,
-    "programming": 4,
-    "backend-engineering": 5,
+    "programming": 3,
+    "backend-engineering": 4,
     "frontend-engineering": 4,
-    "web-development": 4,
+    "web-development": 3,
     "database": 5,
-    "computer-network": 3,
-    "computer-security": 4,
-    "algorithms": 3,
-    "data-structures": 3,
-    "operating-systems": 3,
-    "distributed-systems": 4,
+    "computer-network": 5,
+    "computer-security": 5,
+    "algorithms": 5,
+    "data-structures": 5,
+    "operating-systems": 5,
+    "distributed-systems": 5,
     "cloud-computing": 4,
-    "ai-ml": 3,
-    "data-science": 3,
-    "compiler": 2,
+    "ai-ml": 2,
+    "data-science": 2,
+    "compiler": 3,
     "parallel-computing": 2,
-    "computer-architecture": 2,
+    "computer-architecture": 3,
 }
 # Used for near-duplicate titles where the curriculum and catalog use slightly different wording.
 TITLE_SIGNATURE_STOP_WORDS = {"principle", "principles"}
@@ -71,10 +73,12 @@ PREFERENCE_TAG_BOOST = 30
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
-# CZ modules are legacy CSC codes; keep them as fallback candidates behind current SC modules.
-CSC_LEGACY_CZ_PENALTY = -40
-# CSC-prefixed module codes are older than CZ in this catalog, so keep them as last-resort fallbacks.
-CSC_LEGACY_CSC_CODE_PENALTY = -80
+DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
+BROAD_DEFAULT_PROFILE_BOOST = 14
+SPECIALIST_PROFILE_PENALTY = -16
+EXTRA_PREREQUISITE_PLANNING_PENALTY = -10
+# Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
+DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -84,7 +88,23 @@ class RecommendationReadiness:
     existing_prerequisite_course_codes: list[str]
     planned_prerequisite_course_codes: list[str]
     missing_prerequisites: list[str]
+    prerequisite_planning_penalty: int
     unlock_value: int
+
+@dataclass(frozen=True)
+class CareerSkillContribution:
+    mapping: CareerSkillMapping
+    relationship: SkillTagRelationship
+    score: float
+
+@dataclass(frozen=True)
+class CareerMatchScore:
+    matched_signals: list[str]
+    matched_skill_contributions: list[CareerSkillContribution]
+    top_skill_contribution: Optional[CareerSkillContribution]
+    career_tag_score: int
+    career_skill_score: int
+    current_semester_bonus: int
 
 # Keep debug logs readable while still showing enough candidates to diagnose missed slots.
 def summarize_codes(codes: list[str], max_items: int = 80) -> str:
@@ -125,11 +145,11 @@ def recommend_courses(
     if not candidate_slots or not slot_filters:
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
-    # Filter by keywords/tags in SQL first so BDE does not load the entire catalog.
+    # Filter by keywords, tags, and mapped career skills so BDE does not load the entire catalog.
     query = db.query(ModuleModel).filter(
         ModuleModel.faculty.in_(active_faculties),
         or_(*slot_filters),
-        or_(*build_relevance_filters()),
+        or_(*build_relevance_filters(career_goal)),
     )
     modules = query.order_by(ModuleModel.code).all()
     logger.info(
@@ -148,15 +168,18 @@ def recommend_courses(
         if is_excluded_module(module, completed_codes | excluded_codes, excluded_titles):
             continue
 
+        if is_deprecated_course_code(module):
+            continue
+
         eligible_slots = get_matching_choice_slots(module, candidate_slots)
 
         if not eligible_slots:
             continue
 
-        # Rank remaining modules by career keyword matches in title and description.
-        matched_keywords, relevance_score, current_semester_bonus = score_software_engineer_match(module)
+        # Rank remaining modules by deterministic career signals before softer profile boosts.
+        career_match = score_career_match(module, career_goal)
 
-        if relevance_score == 0:
+        if career_match.career_tag_score == 0 and career_match.career_skill_score == 0:
             continue
 
         # Send all prerequisites for arrows, and missing ones for extra planning nodes.
@@ -189,21 +212,32 @@ def recommend_courses(
                 module,
                 normalized_student_faculty,
             )
+            default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags)
             unlock_contribution = min(readiness.unlock_value, 3)
             adjusted_score = max(1, (
-                relevance_score +
-                current_semester_bonus +
+                career_match.career_tag_score +
+                career_match.career_skill_score +
+                career_match.current_semester_bonus +
                 unlock_contribution +
                 preference_boost +
                 faculty_boost +
-                course_code_adjustment
+                course_code_adjustment +
+                default_profile_adjustment +
+                readiness.prerequisite_planning_penalty
             ))
             score_breakdown = RecommendationScoreBreakdown(
-                careerTagScore=relevance_score,
-                currentSemesterBonus=current_semester_bonus,
+                careerTagScore=career_match.career_tag_score,
+                careerSkillScore=career_match.career_skill_score,
+                careerSkillEvidence=build_career_skill_evidence(
+                    career_goal,
+                    career_match.top_skill_contribution,
+                ),
+                currentSemesterBonus=career_match.current_semester_bonus,
                 preferenceBoost=preference_boost,
                 sameFacultyBoost=faculty_boost,
                 legacyCodePenalty=course_code_adjustment,
+                defaultProfileAdjustment=default_profile_adjustment,
+                prerequisitePlanningPenalty=readiness.prerequisite_planning_penalty,
                 unlockContribution=unlock_contribution,
                 finalScore=adjusted_score,
             )
@@ -219,7 +253,7 @@ def recommend_courses(
                     matchedChoiceSlotId=slot.slotId,
                     matchedChoiceSlotYear=slot.year,
                     matchedChoiceSlotSemester=slot.semester,
-                    matchedKeywords=matched_keywords,
+                    matchedKeywords=career_match.matched_signals,
                     prerequisites=prerequisites,
                     missingPrerequisites=readiness.missing_prerequisites,
                     existingPrerequisiteCourseCodes=readiness.existing_prerequisite_course_codes,
@@ -230,7 +264,9 @@ def recommend_courses(
                     score=adjusted_score,
                     scoreBreakdown=score_breakdown,
                     reason=build_recommendation_reason(
-                        matched_keywords,
+                        module.title,
+                        career_match.matched_signals,
+                        career_match.top_skill_contribution,
                         readiness.unlock_value,
                         preference_boost,
                         faculty_boost,
@@ -359,6 +395,7 @@ def evaluate_recommendation_readiness(
             existing_prerequisite_course_codes=[],
             planned_prerequisite_course_codes=[],
             missing_prerequisites=[],
+            prerequisite_planning_penalty=0,
             unlock_value=unlock_value,
         )
 
@@ -371,6 +408,7 @@ def evaluate_recommendation_readiness(
             existing_prerequisite_course_codes=existing_prerequisite_codes,
             planned_prerequisite_course_codes=[],
             missing_prerequisites=[],
+            prerequisite_planning_penalty=0,
             unlock_value=unlock_value,
         )
 
@@ -380,6 +418,7 @@ def evaluate_recommendation_readiness(
             existing_prerequisite_course_codes=existing_prerequisite_codes,
             planned_prerequisite_course_codes=[],
             missing_prerequisites=[],
+            prerequisite_planning_penalty=0,
             unlock_value=unlock_value,
         )
 
@@ -391,13 +430,34 @@ def evaluate_recommendation_readiness(
     )
 
     if not planned_prerequisite_codes:
-        return None
+        # In curriculum-only mode, keep strong modules visible when their missing
+        # prerequisite is known, but make the extra planning cost affect ranking.
+        catalog_known_prerequisite_codes = [
+            prerequisite_code
+            for prerequisite_code in prerequisite_codes
+            if prerequisite_code in prerequisite_modules_by_code
+        ]
+
+        if not catalog_known_prerequisite_codes:
+            return None
+
+        return RecommendationReadiness(
+            status="needs-prerequisite-planning",
+            existing_prerequisite_course_codes=[],
+            planned_prerequisite_course_codes=catalog_known_prerequisite_codes,
+            missing_prerequisites=catalog_known_prerequisite_codes,
+            prerequisite_planning_penalty=EXTRA_PREREQUISITE_PLANNING_PENALTY,
+            unlock_value=unlock_value,
+        )
+
+    planned_prerequisite_codes = sorted(set(planned_prerequisite_codes))
 
     return RecommendationReadiness(
         status="needs-prerequisite-planning",
         existing_prerequisite_course_codes=[],
         planned_prerequisite_course_codes=planned_prerequisite_codes,
         missing_prerequisites=planned_prerequisite_codes,
+        prerequisite_planning_penalty=EXTRA_PREREQUISITE_PLANNING_PENALTY,
         unlock_value=unlock_value,
     )
 
@@ -725,7 +785,7 @@ def build_prerequisite_recommendations(
 
     return recommendations
 
-def build_relevance_filters() -> list:
+def build_relevance_filters(career_goal: str) -> list:
     filters = []
 
     for keyword in SOFTWARE_ENGINEER_KEYWORDS:
@@ -735,6 +795,12 @@ def build_relevance_filters() -> list:
 
     for tag in SOFTWARE_ENGINEER_TAG_WEIGHTS:
         filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
+
+    for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ()):
+        for relationship in mapping.tag_relationships:
+            filters.append(
+                ModuleModel.recommendation_tags.cast(String).ilike(f"%{relationship.tag}%")
+            )
 
     return filters
 
@@ -864,8 +930,17 @@ def get_unique_recommendation_at_or_after_index(
     if not eligible_recommendations:
         return None
 
+    best_score = max(recommendation.score for recommendation in eligible_recommendations)
+    close_relevance_recommendations = [
+        recommendation
+        for recommendation in eligible_recommendations
+        if recommendation.score >= best_score - DIVERSITY_RELEVANCE_TIE_THRESHOLD
+    ]
+
+    # Diversity should break ties among similarly relevant modules, not replace a
+    # clearly stronger career/pathway match with a weaker but different option.
     return max(
-        eligible_recommendations,
+        close_relevance_recommendations,
         key=lambda recommendation: (
             get_diversity_adjusted_score(
                 recommendation,
@@ -912,7 +987,17 @@ def add_used_recommendation_tags(
 def _reverse_code_sort_key(course_code: str) -> tuple[int, ...]:
     return tuple(-ord(character) for character in course_code)
 
-def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int, int]:
+def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScore:
+    if career_goal != "software-engineer":
+        return CareerMatchScore(
+            matched_signals=[],
+            matched_skill_contributions=[],
+            top_skill_contribution=None,
+            career_tag_score=0,
+            career_skill_score=0,
+            current_semester_bonus=0,
+        )
+
     searchable_text = f"{module.title} {module.description or ''}".lower()
     matched_keywords = [
         keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
@@ -922,16 +1007,104 @@ def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int, 
         for tag in (module.recommendation_tags or [])
         if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
     ]
-    matched_signals = matched_keywords + [f"tag:{tag}" for tag in matched_tags]
-    score = sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords)
-    score += sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
+    matched_skill_contributions = get_career_skill_contributions(module, career_goal)
+    top_skill_contribution = get_top_skill_contribution(matched_skill_contributions)
+    matched_signals = (
+        matched_keywords +
+        [f"tag:{tag}" for tag in matched_tags] +
+        [
+            f"skill:{contribution.mapping.skill}:{contribution.relationship.tag}"
+            for contribution in matched_skill_contributions
+        ]
+    )
+    # Keep raw keyword/tag relevance separate from mapped career-skill relevance so the
+    # score breakdown can show whether the module matched by text, tags, or skill area.
+    career_tag_score = (
+        sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
+        sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
+    )
+    career_skill_score = round_positive_score(
+        sum(contribution.score for contribution in matched_skill_contributions)
+    )
     current_semester_bonus = 0
 
     # Prefer modules currently available in the catalog by giving them a small boost.
     if module.is_current_semester:
         current_semester_bonus = 1
 
-    return matched_signals, score, current_semester_bonus
+    return CareerMatchScore(
+        matched_signals=matched_signals,
+        matched_skill_contributions=matched_skill_contributions,
+        top_skill_contribution=top_skill_contribution,
+        career_tag_score=career_tag_score,
+        career_skill_score=career_skill_score,
+        current_semester_bonus=current_semester_bonus,
+    )
+
+def get_career_skill_contributions(
+    module: ModuleModel,
+    career_goal: str,
+) -> list[CareerSkillContribution]:
+    module_tags = set(module.recommendation_tags or [])
+    contributions: list[CareerSkillContribution] = []
+
+    for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ()):
+        matching_contributions = [
+            CareerSkillContribution(
+                mapping=mapping,
+                relationship=relationship,
+                score=mapping.weight * relationship.relationship_weight * relationship.tag_confidence,
+            )
+            for relationship in mapping.tag_relationships
+            if relationship.tag in module_tags
+        ]
+
+        top_contribution = get_top_skill_contribution(matching_contributions)
+
+        if top_contribution:
+            contributions.append(top_contribution)
+
+    return contributions
+
+def get_top_skill_contribution(
+    contributions: list[CareerSkillContribution],
+) -> Optional[CareerSkillContribution]:
+    if not contributions:
+        return None
+
+    return max(
+        contributions,
+        key=lambda contribution: (
+            contribution.score,
+            contribution.relationship.relationship_weight,
+            contribution.relationship.tag_confidence,
+            contribution.relationship.tag,
+        ),
+    )
+
+def round_positive_score(score: float) -> int:
+    return int(score + 0.5)
+
+def build_career_skill_evidence(
+    career_goal: str,
+    top_skill_contribution: Optional[CareerSkillContribution],
+) -> Optional[RecommendationCareerSkillEvidence]:
+    if not top_skill_contribution:
+        return None
+
+    mapping = top_skill_contribution.mapping
+    relationship = top_skill_contribution.relationship
+
+    return RecommendationCareerSkillEvidence(
+        careerGoal=career_goal,
+        skillArea=mapping.skill,
+        skillAreaWeight=mapping.weight,
+        tag=relationship.tag,
+        relationshipWeight=relationship.relationship_weight,
+        tagConfidence=relationship.tag_confidence,
+        contributionScore=top_skill_contribution.score,
+        rationale=relationship.rationale,
+    )
 
 def normalize_recommendation_tags(tags: list[str]) -> set[str]:
     return {
@@ -965,31 +1138,46 @@ def get_course_code_generation_adjustment(
     module: ModuleModel,
     student_faculty: Optional[str],
 ) -> int:
-    if student_faculty != "CSC":
+    return 0
+
+def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
+    if preferred_tags and preferred_tags != {"software-engineering"}:
         return 0
 
-    module_code = module.code.upper()
+    if module.recommendation_profile == "broad-default":
+        return BROAD_DEFAULT_PROFILE_BOOST
 
-    if module_code.startswith("CSC"):
-        return CSC_LEGACY_CSC_CODE_PENALTY
-
-    if module_code.startswith("CZ"):
-        return CSC_LEGACY_CZ_PENALTY
+    if module.recommendation_profile == "specialist":
+        return SPECIALIST_PROFILE_PENALTY
 
     return 0
 
+def is_deprecated_course_code(module: ModuleModel) -> bool:
+    module_code = module.code.upper()
+
+    return module_code.startswith(DEPRECATED_COURSE_CODE_PREFIXES)
+
 def build_recommendation_reason(
+    course_title: str,
     matched_signals: list[str],
+    top_skill_contribution: Optional[CareerSkillContribution],
     unlock_value: int,
     preference_boost: int,
     faculty_boost: int,
     course_code_adjustment: int,
 ) -> str:
-    base_reason = (
-        "Matches Software Engineer signals: "
-        f"{', '.join(matched_signals)}."
-    )
+    fallback_signals = [
+        signal
+        for signal in matched_signals
+        if not signal.startswith("skill:")
+    ][:3]
+    base_reason = "Recommended for the Software Engineer career goal."
     extra_reasons = []
+
+    if top_skill_contribution:
+        extra_reasons.append(build_career_skill_reason(top_skill_contribution, course_title))
+    elif fallback_signals:
+        extra_reasons.append(f"matches career signals: {', '.join(fallback_signals)}")
 
     if preference_boost > 0:
         extra_reasons.append("matches selected topic preference(s)")
@@ -998,7 +1186,7 @@ def build_recommendation_reason(
         extra_reasons.append("matches your profile faculty")
 
     if course_code_adjustment < 0:
-        extra_reasons.append("uses an older course code, so it is kept as a fallback")
+        extra_reasons.append("uses a lower-priority course code, so it is kept as a fallback")
 
     if unlock_value > 0:
         extra_reasons.append(f"unlocks {unlock_value} later curriculum module(s)")
@@ -1007,6 +1195,19 @@ def build_recommendation_reason(
         return base_reason
 
     return f"{base_reason} Also {' and '.join(extra_reasons)}."
+
+def build_career_skill_reason(
+    top_skill_contribution: CareerSkillContribution,
+    course_title: str,
+) -> str:
+    mapping = top_skill_contribution.mapping
+    relationship = top_skill_contribution.relationship
+
+    return (
+        "top career-skill path: "
+        f"Software Engineer -> {mapping.skill} -> {relationship.tag} -> "
+        f"{course_title}"
+    )
 
 def summarize_recommendations(
     recommendations: list[CourseRecommendation],

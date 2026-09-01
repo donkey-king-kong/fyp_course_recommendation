@@ -19,6 +19,7 @@
 
 .semester-roadmap-header h2 {
   margin: 0;
+  flex-shrink: 0;
   color: #f8fafc;
   font-size: 1rem;
   letter-spacing: 0.02em;
@@ -28,11 +29,15 @@
   display: flex;
   align-items: center;
   gap: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .clear-roadmap-button,
+.clear-recommendations-button,
 .clear-completed-button {
   padding: 0.45rem 0.75rem;
+  border: 2px solid transparent;
   border-radius: 999px;
   font: inherit;
   font-size: 0.7rem;
@@ -40,33 +45,65 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
+  box-shadow: 0 0.35rem 0.9rem rgba(15, 23, 42, 0.12);
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
 }
 
 .clear-roadmap-button {
-  border: 1px solid rgba(15, 124, 138, 0.38);
-  color: #0f7c8a;
-  background: rgba(15, 124, 138, 0.08);
+  border-color: rgba(15, 124, 138, 0.54);
+  color: #ffffff;
+  background: #0f7c8a;
 }
 
 .clear-completed-button {
-  border: 1px solid rgba(251, 113, 133, 0.35);
-  color: #fda4af;
-  background: rgba(244, 63, 94, 0.1);
+  border-color: rgba(190, 18, 60, 0.52);
+  color: #ffffff;
+  background: #be123c;
+}
+
+.clear-recommendations-button {
+  border-color: rgba(124, 58, 237, 0.52);
+  color: #ffffff;
+  background: #7c3aed;
 }
 
 .clear-roadmap-button:hover {
-  border-color: rgba(15, 124, 138, 0.58);
-  background: rgba(15, 124, 138, 0.14);
+  background: #0e7490;
+  box-shadow: 0 0.5rem 1.1rem rgba(15, 124, 138, 0.24);
+  transform: translateY(-1px);
+}
+
+.clear-recommendations-button:hover:not(:disabled) {
+  background: #6d28d9;
+  box-shadow: 0 0.5rem 1.1rem rgba(124, 58, 237, 0.24);
+  transform: translateY(-1px);
 }
 
 .clear-completed-button:hover:not(:disabled) {
-  border-color: rgba(251, 113, 133, 0.65);
-  background: rgba(244, 63, 94, 0.18);
+  background: #9f1239;
+  box-shadow: 0 0.5rem 1.1rem rgba(190, 18, 60, 0.24);
+  transform: translateY(-1px);
 }
 
+.clear-roadmap-button:active:not(:disabled),
+.clear-recommendations-button:active:not(:disabled),
+.clear-completed-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.clear-recommendations-button:disabled,
 .clear-completed-button:disabled {
+  border-color: rgba(148, 163, 184, 0.28);
+  color: #94a3b8;
   cursor: not-allowed;
-  opacity: 0.45;
+  background: rgba(148, 163, 184, 0.12);
+  box-shadow: none;
+  opacity: 1;
 }
 
 .arrow-toggle {
@@ -116,6 +153,15 @@
   font-size: 0.78rem;
   font-weight: 800;
   background: rgba(15, 124, 138, 0.08);
+}
+
+.roadmap-recommendation-notice {
+  flex: 1 1 14rem;
+  color: #dc2626;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: right;
 }
 
 .roadmap-arrows {
@@ -643,25 +689,40 @@
 }
 
 .app-shell[data-theme='dark'] .clear-completed-button {
-  border-color: rgba(251, 113, 133, 0.35);
-  color: #fda4af;
-  background: rgba(244, 63, 94, 0.1);
+  border-color: rgba(251, 113, 133, 0.52);
+  color: #ffffff;
+  background: #be123c;
+}
+
+.app-shell[data-theme='dark'] .clear-recommendations-button {
+  border-color: rgba(196, 181, 253, 0.52);
+  color: #ffffff;
+  background: #7c3aed;
 }
 
 .app-shell[data-theme='dark'] .clear-roadmap-button {
-  border-color: rgba(45, 212, 191, 0.42);
-  color: #67e8f9;
-  background: rgba(14, 116, 144, 0.16);
+  border-color: rgba(45, 212, 191, 0.56);
+  color: #ffffff;
+  background: #0f7c8a;
 }
 
 .app-shell[data-theme='dark'] .clear-completed-button:hover:not(:disabled) {
-  border-color: rgba(251, 113, 133, 0.65);
-  background: rgba(244, 63, 94, 0.18);
+  background: #9f1239;
+}
+
+.app-shell[data-theme='dark'] .clear-recommendations-button:hover:not(:disabled) {
+  background: #6d28d9;
 }
 
 .app-shell[data-theme='dark'] .clear-roadmap-button:hover {
-  border-color: rgba(45, 212, 191, 0.7);
-  background: rgba(14, 116, 144, 0.26);
+  background: #0e7490;
+}
+
+.app-shell[data-theme='dark'] .clear-recommendations-button:disabled,
+.app-shell[data-theme='dark'] .clear-completed-button:disabled {
+  border-color: rgba(148, 163, 184, 0.22);
+  color: #64748b;
+  background: rgba(148, 163, 184, 0.1);
 }
 
 .app-shell[data-theme='dark'] .semester-roadmap {
@@ -759,6 +820,10 @@
   border-bottom-color: rgba(45, 212, 191, 0.2);
   color: #67e8f9;
   background: rgba(14, 116, 144, 0.16);
+}
+
+.app-shell[data-theme='dark'] .roadmap-recommendation-notice {
+  color: #f87171;
 }
 
 .app-shell[data-theme='dark'] .choice-slot-loading {

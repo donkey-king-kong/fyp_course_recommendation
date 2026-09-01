@@ -19,6 +19,7 @@ class ModuleModel(Base):
     level: Mapped[Optional[int]] = mapped_column(Integer, index=True)
     categories: Mapped[list[str]] = mapped_column(JSON, default=list)
     recommendation_tags: Mapped[list[str]] = mapped_column(JSON, default=list)
+    recommendation_profile: Mapped[Optional[str]] = mapped_column(String(40))
     latest_year: Mapped[Optional[str]] = mapped_column(String(10), index=True)
     latest_semester: Mapped[Optional[str]] = mapped_column(String(10), index=True)
     is_current_semester: Mapped[bool] = mapped_column(Boolean, default=False, index=True)

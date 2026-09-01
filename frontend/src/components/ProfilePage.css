@@ -89,6 +89,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 /* The load button owns its progress/success icon so feedback stays in one visible control. */
@@ -120,6 +121,14 @@
 
 .load-roadmap-button.loaded:hover:not(:disabled) {
   background: #15803d;
+}
+
+.load-roadmap-button.stale {
+  background: #d97706;
+}
+
+.load-roadmap-button.stale:hover:not(:disabled) {
+  background: #b45309;
 }
 
 .load-roadmap-button:disabled {
@@ -289,6 +298,50 @@
   text-decoration: underline;
 }
 
+.profile-clear-recommendations-button {
+  padding: 0.7rem 1rem;
+  border: 2px solid rgba(124, 58, 237, 0.52);
+  border-radius: 0.7rem;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  background: #7c3aed;
+  box-shadow: 0 0.35rem 0.9rem rgba(15, 23, 42, 0.12);
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.profile-clear-recommendations-button:hover:not(:disabled) {
+  background: #6d28d9;
+  box-shadow: 0 0.5rem 1.1rem rgba(124, 58, 237, 0.24);
+  transform: translateY(-1px);
+}
+
+.profile-clear-recommendations-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.profile-clear-recommendations-button:disabled {
+  border-color: rgba(148, 163, 184, 0.28);
+  color: #94a3b8;
+  cursor: not-allowed;
+  background: rgba(148, 163, 184, 0.12);
+  box-shadow: none;
+  opacity: 1;
+}
+
+.recommendation-stale-notice {
+  color: #f87171;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
 .profile-upload-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -403,8 +456,25 @@
   background: rgba(244, 63, 94, 0.1);
 }
 
+.reapply-transcript-button {
+  align-self: flex-start;
+  padding: 0.7rem 1rem;
+  border: 2px solid rgba(15, 124, 138, 0.52);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  background: #0f7c8a;
+}
+
+.reapply-transcript-button:hover:not(:disabled) {
+  background: #0e7490;
+}
+
 .transcript-upload-button:disabled,
-.clear-transcript-button:disabled {
+.clear-transcript-button:disabled,
+.reapply-transcript-button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
@@ -672,6 +742,15 @@
   background: #15803d;
 }
 
+.app-shell[data-theme='light'] .load-roadmap-button.stale {
+  color: #ffffff;
+  background: #d97706;
+}
+
+.app-shell[data-theme='light'] .load-roadmap-button.stale:hover:not(:disabled) {
+  background: #b45309;
+}
+
 .app-shell[data-theme='light'] .profile-preferences-card {
   border-color: rgba(15, 124, 138, 0.2);
   background: rgba(255, 255, 255, 0.42);
@@ -727,6 +806,26 @@
   color: #0f7c8a;
 }
 
+.app-shell[data-theme='light'] .profile-clear-recommendations-button {
+  border-color: rgba(124, 58, 237, 0.52);
+  color: #ffffff;
+  background: #7c3aed;
+}
+
+.app-shell[data-theme='light'] .profile-clear-recommendations-button:hover:not(:disabled) {
+  background: #6d28d9;
+}
+
+.app-shell[data-theme='light'] .profile-clear-recommendations-button:disabled {
+  border-color: rgba(148, 163, 184, 0.28);
+  color: #94a3b8;
+  background: rgba(148, 163, 184, 0.12);
+}
+
+.app-shell[data-theme='light'] .recommendation-stale-notice {
+  color: #dc2626;
+}
+
 .app-shell[data-theme='light'] .transcript-upload-card {
   border-color: rgba(15, 124, 138, 0.2);
   background: rgba(255, 255, 255, 0.48);
@@ -763,6 +862,16 @@
   border-color: rgba(190, 18, 60, 0.28);
   color: #be123c;
   background: rgba(225, 29, 72, 0.07);
+}
+
+.app-shell[data-theme='light'] .reapply-transcript-button {
+  border-color: rgba(15, 124, 138, 0.52);
+  color: #ffffff;
+  background: #0f7c8a;
+}
+
+.app-shell[data-theme='light'] .reapply-transcript-button:hover:not(:disabled) {
+  background: #0e7490;
 }
 
 .app-shell[data-theme='light'] .clear-transcript-button:hover:not(:disabled) {
