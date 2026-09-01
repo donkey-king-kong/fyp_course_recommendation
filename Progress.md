@@ -1500,7 +1500,7 @@ Status: Implemented locally
 
 ## Backend-Owned Roadmap Logic Refactor
 
-Status: Implemented locally
+Status: Merged to `main`
 
 ### Completed
 
@@ -1528,6 +1528,7 @@ Status: Implemented locally
 - Ran `npm run build` from `frontend`.
 - Diagnostics return no issues.
 - `git diff --check` passes.
+- Manually tested the end-to-end browser flow after merge: curriculum guide upload, transcript upload, personalized roadmap generation, and recommendation loading work.
 
 ### Not Included
 
@@ -1538,7 +1539,7 @@ Status: Implemented locally
 
 ## Backend Roadmap Flow Compatibility Fix
 
-Status: Implemented locally
+Status: Merged to `main`
 
 ### Completed
 
@@ -1573,3 +1574,35 @@ Status: Implemented locally
 - No backend persistence, user table, production authentication, or SSO implementation.
 - No API rename from `recommendations` to `assignments`.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture, embeddings, or machine-learning recommendation logic.
+
+## Next Recommender Improvement Decision
+
+Status: Planned on branch `career-skill-recommendations`
+
+### Decision
+
+- Keep roadmap/profile polish in view, especially clearer loading states, empty states, and user-facing error messages.
+- Keep API naming cleanup in view, especially whether the response field `recommendations` should eventually become `assignments`.
+- Start the next recommender improvement with a small deterministic career-skill mapping step.
+- Use static career-to-skill mappings first instead of adding MyCareersFuture scraping or external job-market ingestion.
+
+### Why This Is Next
+
+- Eligibility, scoring breakdowns, prerequisite readiness, taxonomy/preferences, preference-aware diversity, and backend-owned slot assignment are now in place.
+- The next useful recommendation improvement is making career relevance less dependent on raw keyword matching.
+- Static mappings are easier to understand, inspect, and test than job-market scraping or AI-generated skill extraction.
+
+### Planned Scope
+
+- Add a simple backend-owned mapping from supported career goals, such as `Software Engineer`, to relevant skills or recommendation tags.
+- Use that mapping as an additional deterministic scoring signal alongside existing recommendation tags and keyword fallback.
+- Keep student topic preferences as soft boosts, not hard filters.
+- Keep diversity subordinate to eligibility, career relevance, and student preferences.
+- Keep the frontend as a rendering layer for assigned recommendations.
+
+### Out Of Scope
+
+- No MyCareersFuture scraping or live labour-market data.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
+- No production persistence, backend user table, authentication, or SSO.
+- No visible score breakdown UI on roadmap cards unless explicitly requested.
