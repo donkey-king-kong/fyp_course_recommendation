@@ -18,6 +18,7 @@ from backend.schemas.recommendation import (
     RecommendationResponse,
     RecommendationScoreBreakdown,
 )
+from backend.services.career_skill_mappings import CAREER_SKILL_MAPPINGS, CareerSkillMapping
 from backend.services.faculty_service import list_active_faculty_names
 from backend.services.module_service import get_prerequisites_by_module, get_unlocks_by_module
 
@@ -87,75 +88,12 @@ class RecommendationReadiness:
     unlock_value: int
 
 @dataclass(frozen=True)
-class CareerSkillMapping:
-    skill: str
-    recommendation_tags: tuple[str, ...]
-    weight: int
-
-@dataclass(frozen=True)
 class CareerMatchScore:
     matched_signals: list[str]
+    matched_skill_mappings: list[CareerSkillMapping]
     career_tag_score: int
     career_skill_score: int
     current_semester_bonus: int
-
-# Static career mappings translate a career goal into skill areas, then into existing
-# curated module tags. This keeps the signal inspectable before adding job-market data.
-SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
-    CareerSkillMapping(
-        skill="software design and delivery",
-        recommendation_tags=(
-            "software-engineering",
-            "backend-engineering",
-            "frontend-engineering",
-            "programming",
-            "web-development",
-        ),
-        weight=10,
-    ),
-    CareerSkillMapping(
-        skill="backend and data services",
-        recommendation_tags=(
-            "backend-engineering",
-            "database",
-            "distributed-systems",
-            "cloud-computing",
-        ),
-        weight=8,
-    ),
-    CareerSkillMapping(
-        skill="systems and infrastructure",
-        recommendation_tags=(
-            "operating-systems",
-            "computer-network",
-            "distributed-systems",
-            "cloud-computing",
-            "parallel-computing",
-        ),
-        weight=7,
-    ),
-    CareerSkillMapping(
-        skill="secure software practice",
-        recommendation_tags=(
-            "computer-security",
-            "cryptography",
-            "privacy",
-        ),
-        weight=6,
-    ),
-    CareerSkillMapping(
-        skill="algorithmic problem solving",
-        recommendation_tags=(
-            "algorithms",
-            "data-structures",
-            "theory-of-computing",
-        ),
-        weight=5,
-    ),
-)
-CAREER_SKILL_MAPPINGS = {
-    "software-engineer": SOFTWARE_ENGINEER_SKILL_MAPPINGS,
-}
 
 # Keep debug logs readable while still showing enough candidates to diagnose missed slots.
 def summarize_codes(codes: list[str], max_items: int = 80) -> str:
@@ -304,7 +242,7 @@ def recommend_courses(
                     scoreBreakdown=score_breakdown,
                     reason=build_recommendation_reason(
                         career_match.matched_signals,
-                        career_match.career_skill_score,
+                        career_match.matched_skill_mappings,
                         readiness.unlock_value,
                         preference_boost,
                         faculty_boost,
@@ -994,6 +932,7 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
     if career_goal != "software-engineer":
         return CareerMatchScore(
             matched_signals=[],
+            matched_skill_mappings=[],
             career_tag_score=0,
             career_skill_score=0,
             current_semester_bonus=0,
@@ -1029,6 +968,7 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
 
     return CareerMatchScore(
         matched_signals=matched_signals,
+        matched_skill_mappings=matched_skills,
         career_tag_score=career_tag_score,
         career_skill_score=career_skill_score,
         current_semester_bonus=current_semester_bonus,
@@ -1093,20 +1033,25 @@ def get_course_code_generation_adjustment(
 
 def build_recommendation_reason(
     matched_signals: list[str],
-    career_skill_score: int,
+    matched_skill_mappings: list[CareerSkillMapping],
     unlock_value: int,
     preference_boost: int,
     faculty_boost: int,
     course_code_adjustment: int,
 ) -> str:
+    direct_signals = [
+        signal
+        for signal in matched_signals
+        if not signal.startswith("skill:")
+    ]
     base_reason = (
         "Matches Software Engineer career signals: "
-        f"{', '.join(matched_signals)}."
+        f"{', '.join(direct_signals or matched_signals)}."
     )
     extra_reasons = []
 
-    if career_skill_score > 0:
-        extra_reasons.append("matches mapped Software Engineer skill area(s)")
+    if matched_skill_mappings:
+        extra_reasons.append(build_career_skill_reason(matched_skill_mappings))
 
     if preference_boost > 0:
         extra_reasons.append("matches selected topic preference(s)")
@@ -1124,6 +1069,15 @@ def build_recommendation_reason(
         return base_reason
 
     return f"{base_reason} Also {' and '.join(extra_reasons)}."
+
+def build_career_skill_reason(matched_skill_mappings: list[CareerSkillMapping]) -> str:
+    skill_names = ", ".join(mapping.skill for mapping in matched_skill_mappings)
+    primary_mapping = matched_skill_mappings[0]
+
+    return (
+        "supports mapped Software Engineer skill area(s): "
+        f"{skill_names}. {primary_mapping.rationale.rstrip('.')}"
+    )
 
 def summarize_recommendations(
     recommendations: list[CourseRecommendation],
