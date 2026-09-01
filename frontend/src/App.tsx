@@ -60,7 +60,17 @@ function getRecommendationNotice(
   }
 
   const changedInputs = staleReasons
-    .map((reason) => (reason === 'curriculum-guide' ? 'Curriculum guide' : 'Transcript'))
+    .map((reason) => {
+      if (reason === 'curriculum-guide') {
+        return 'Curriculum guide'
+      }
+
+      if (reason === 'transcript') {
+        return 'Transcript'
+      }
+
+      return 'Completed courses'
+    })
     .join(' and ')
 
   return `${changedInputs} changed. Reload or clear recommendations.`

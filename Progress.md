@@ -2136,6 +2136,10 @@ Status: Implemented locally
 - Polished the stale notice into short red inline helper text and made clear-action buttons visibly active or greyed out when unavailable.
 - Kept `Clear completed` visible but disabled when no completed roadmap courses remain, and stopped the roadmap render from rehydrating cleared completion IDs.
 - Changed `Clear Recommendations` to a distinct purple active style so it does not look the same as `Reload Roadmap`.
+- Added a `Re-apply Transcript` button on the Profile transcript card after roadmap completions are cleared while saved transcript matches still exist.
+- Changed completed-course updates so `Clear completed` keeps existing recommendations visible and marks them stale instead of clearing recommendation cards.
+- Fixed recommended choice-slot readiness display so a recommended MPE/BDE card becomes locked when the assigned recommendation still has unmet prerequisites.
+- Clarified the roadmap clear-completion action: with a saved transcript it is labelled `Clear transcript completions` and removes transcript-applied ticks while keeping the parsed transcript available for `Re-apply Transcript`; without a saved transcript it remains `Clear completed` for manual ticks.
 
 ### Rationale Notes
 

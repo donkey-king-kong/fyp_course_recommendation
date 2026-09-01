@@ -85,6 +85,7 @@ function ProfilePage({
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
     (state) => state.transcriptTotalAcademicUnitsEarned,
   )
+  const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const curriculumGuideFileName = useProfileStore((state) => state.curriculumGuideFileName)
   const transcriptFileName = useProfileStore((state) => state.transcriptFileName)
@@ -102,6 +103,7 @@ function ProfilePage({
   const [transcriptInputKey, setTranscriptInputKey] = useState(0)
   const [isUploadingCurriculumGuide, setIsUploadingCurriculumGuide] = useState(false)
   const [isUploading, setIsUploading] = useState(false)
+  const [isReapplyingTranscript, setIsReapplyingTranscript] = useState(false)
   const [curriculumUploadMessage, setCurriculumUploadMessage] = useState('')
   const [curriculumUploadError, setCurriculumUploadError] = useState('')
   const [uploadMessage, setUploadMessage] = useState('')
@@ -112,6 +114,10 @@ function ProfilePage({
     transcriptMatchedCourses.length > 0 ||
     transcriptUnmatchedCourseCodes.length > 0 ||
     transcriptCompletedCourseCount > 0
+  const canReapplyTranscript =
+    Boolean(curriculumGuide) &&
+    transcriptCompletedCourses.length > 0 &&
+    completedCourseIds.length === 0
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
   const displayedCurriculumGuideFileName = uploadingCurriculumGuideFileName || curriculumGuideFileName
   const displayedTranscriptFileName = uploadingTranscriptFileName || transcriptFileName
@@ -266,6 +272,38 @@ function ProfilePage({
     setTranscriptInputKey((currentKey) => currentKey + 1)
     setUploadError('')
     setUploadMessage('Cleared stored transcript results for this profile.')
+  }
+
+  async function handleReapplyTranscriptResults() {
+    if (!curriculumGuide || transcriptCompletedCourses.length === 0) {
+      return
+    }
+
+    try {
+      setIsReapplyingTranscript(true)
+      setUploadError('')
+      setUploadMessage('')
+
+      const transcriptMatch = await matchTranscriptToCurriculum(
+        transcriptCompletedCourseCodes,
+        transcriptCompletedCourses,
+        curriculumGuide,
+      )
+
+      setTranscriptResults(
+        transcriptFileName,
+        transcriptCompletedCourseCodes,
+        transcriptCompletedCourses,
+        transcriptCompletedCourseCount,
+        transcriptTotalAcademicUnitsEarned,
+        transcriptMatch,
+      )
+      setUploadMessage(`Re-applied ${transcriptMatch.completedCourseIds.length} transcript match(es) to your roadmap.`)
+    } catch {
+      setUploadError('Could not re-apply transcript results. Make sure the backend is running.')
+    } finally {
+      setIsReapplyingTranscript(false)
+    }
   }
 
   return (
@@ -557,6 +595,17 @@ function ProfilePage({
             >
               Clear Transcript
             </button>
+
+            {canReapplyTranscript && (
+              <button
+                className="reapply-transcript-button"
+                type="button"
+                onClick={handleReapplyTranscriptResults}
+                disabled={isReapplyingTranscript}
+              >
+                {isReapplyingTranscript ? 'Re-applying...' : 'Re-apply Transcript'}
+              </button>
+            )}
           </div>
 
           {uploadMessage && <p className="upload-success">{uploadMessage}</p>}

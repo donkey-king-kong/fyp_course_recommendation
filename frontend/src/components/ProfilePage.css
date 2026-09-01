@@ -456,8 +456,25 @@
   background: rgba(244, 63, 94, 0.1);
 }
 
+.reapply-transcript-button {
+  align-self: flex-start;
+  padding: 0.7rem 1rem;
+  border: 2px solid rgba(15, 124, 138, 0.52);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  background: #0f7c8a;
+}
+
+.reapply-transcript-button:hover:not(:disabled) {
+  background: #0e7490;
+}
+
 .transcript-upload-button:disabled,
-.clear-transcript-button:disabled {
+.clear-transcript-button:disabled,
+.reapply-transcript-button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
@@ -845,6 +862,16 @@
   border-color: rgba(190, 18, 60, 0.28);
   color: #be123c;
   background: rgba(225, 29, 72, 0.07);
+}
+
+.app-shell[data-theme='light'] .reapply-transcript-button {
+  border-color: rgba(15, 124, 138, 0.52);
+  color: #ffffff;
+  background: #0f7c8a;
+}
+
+.app-shell[data-theme='light'] .reapply-transcript-button:hover:not(:disabled) {
+  background: #0e7490;
 }
 
 .app-shell[data-theme='light'] .clear-transcript-button:hover:not(:disabled) {
