@@ -1970,3 +1970,29 @@ uvicorn backend.main:app --reload
 - No frontend UI changes.
 - No score breakdown display on roadmap cards.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## No-Preference Benchmark Label Review
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed the low-scoring `software-engineer-csc-005` no-preference benchmark case against the saved live backend predictions.
+- Confirmed the low score was partly caused by missing labels for valid returned modules, not by old-code exposure or invalid slot assignment.
+- Added `SC4023 Big Data Management` as a `relevant` benchmark candidate because it supports backend and data-service software engineering through the `backend-engineering` tag.
+- Added `SC4050 Parallel Computing` as a `somewhat-relevant` benchmark candidate because it supports performance, concurrency, and infrastructure-heavy software paths, but is more specialised for a generic Software Engineer profile.
+- Changed `SC4053 Blockchain Technology` to `irrelevant` for the no-preference default Software Engineer case because blockchain is too niche unless the student explicitly prefers security, cryptography, distributed systems, blockchain, or fintech-style topics.
+- Kept AI/ML preference behavior unchanged because AI/ML is currently a topic preference under `Software Engineer`, not a separate career mapping.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The live saved-prediction evaluation now reports `averagePrecisionAtK` of `0.36`, `averageNdcgAtK` of `0.5950000793953917`, `oldCodeExposure` of `0`, and `averageConstraintValidity` of `1.0`.
+
+### Not Included
+
+- No recommender ranking changes.
+- No frontend UI changes.
+- No automated recommender tests.
+- No expert-reviewed benchmark ground truth claim.

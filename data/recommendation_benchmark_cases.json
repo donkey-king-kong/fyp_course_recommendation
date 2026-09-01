@@ -149,7 +149,6 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which narrowly beats backend and data services -> distributed-systems (8 * 1.0 * 1.0 = 8.0). Both paths are strongly relevant; expectedSkillPath reflects the backend-engineering tag contributing the higher score. Strong signal for backend SWE roles. NOTE: isCurrentSemester=false \u2014 verify availability before use as a benchmark reference."
         },
         {
@@ -159,7 +158,6 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Tagged distributed-systems and computer-security in modules.json. Blockchain is relevant to distributed backend engineering but is a specialist domain. Included as a second SC4xxx option. isCurrentSemester=true."
         },
         {
@@ -169,7 +167,6 @@
           "expectedRelevance": "somewhat-relevant",
           "expectedSkillPath": "Software Engineer -> systems and infrastructure -> parallel-computing -> Parallel Computing",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Tagged parallel-computing in modules.json. Useful for performance-sensitive backend software but less directly tied to distributed-systems preference than SC4051. Included as a weaker alternative to illustrate ranking logic. isCurrentSemester=true."
         },
         {
@@ -179,7 +176,6 @@
           "expectedRelevance": "irrelevant",
           "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "needsHumanReview": true,
           "reviewNotes": "NEGATIVE EXAMPLE. CZ4013 is topically relevant \u2014 it covers distributed systems, which directly matches this student's backend-engineering and distributed-systems preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. Must never surface as a valid recommendation."
         }
       ]
@@ -296,8 +292,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
-          "reviewNotes": "Module tags in modules.json: ai-ml. The ai-ml tag is not currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The highly-relevant label is preference-driven: the student has explicit ai-ml, computer-vision, and natural-language-processing preference tags, and this module is a direct match for an AI/ML-oriented software engineering path. A human reviewer must confirm whether AI/ML specialisation should count as highly relevant for the Software Engineer benchmark before this label is treated as ground truth \u2014 specifically whether the benchmark should weight preference-tag alignment separately from career-skill mapping evidence. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: ai-ml. The ai-ml tag is not currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The highly-relevant label is preference-driven: the student has explicit ai-ml, computer-vision, and natural-language-processing preference tags, and this module is a direct match for an AI/ML-oriented software engineering path. Keep this as project-owner-reviewed draft judgement only; revisit if AI/ML becomes a separate career mapping or if an expert reviewer later calibrates how preference-tag alignment should be weighted against career-skill mapping evidence. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4061",
@@ -306,8 +301,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
-          "reviewNotes": "Module tags in modules.json: ai-ml, computer-vision, computer-graphics. None of these tags are currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The highly-relevant label is preference-driven: the student has an explicit computer-vision preference tag and this module is a direct match for a computer-vision-oriented software engineering path. A human reviewer must confirm whether AI/ML and computer-vision specialisation should count as highly relevant for the Software Engineer benchmark before this label is treated as ground truth. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: ai-ml, computer-vision, computer-graphics. None of these tags are currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The highly-relevant label is preference-driven: the student has an explicit computer-vision preference tag and this module is a direct match for a computer-vision-oriented software engineering path. Keep this as project-owner-reviewed draft judgement only; revisit if AI/ML or computer vision becomes a separate career mapping or if an expert reviewer later calibrates this benchmark. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4002",
@@ -316,8 +310,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
-          "reviewNotes": "Module tags in modules.json: ai-ml, natural-language-processing. Neither tag is currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The highly-relevant label is preference-driven: the student has an explicit natural-language-processing preference tag and this module is a direct match for an NLP-oriented software engineering path. A human reviewer must confirm whether AI/ML and NLP specialisation should count as highly relevant for the Software Engineer benchmark before this label is treated as ground truth. Alternative to SC4061 for the same SC4xxx slot \u2014 reviewer should determine which is the stronger fit for this student's specific interest. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: ai-ml, natural-language-processing. Neither tag is currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The highly-relevant label is preference-driven: the student has an explicit natural-language-processing preference tag and this module is a direct match for an NLP-oriented software engineering path. Keep this as project-owner-reviewed draft judgement only; revisit if AI/ML or NLP becomes a separate career mapping or if an expert reviewer later calibrates this benchmark. Alternative to SC4061 for the same SC4xxx slot; future review can determine which is the stronger fit for this student's specific interest. isCurrentSemester=true."
         },
         {
           "courseCode": "SC3040",
@@ -326,7 +319,6 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Module tags in modules.json: software-engineering. Maps directly to the highest-weight Software Engineer skill area \u2014 software design and delivery \u2014 via the software-engineering tag (score 10 * 1.0 * 1.0 = 10.0). This makes it career-goal relevant for any Software Engineer student regardless of topic preference. It is weaker than SC4001, SC4061, and SC4002 for this particular student because those modules align with the stated ai-ml, computer-vision, and natural-language-processing preference tags. Included as a diversity option for the SC3xxx slot, where AI/ML-specific choices at level 3 are absent from the current MPE catalogue. isCurrentSemester=true."
         },
         {
@@ -336,7 +328,6 @@
           "expectedRelevance": "irrelevant",
           "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "needsHumanReview": true,
           "reviewNotes": "NEGATIVE EXAMPLE. CZ4042 is topically relevant \u2014 it covers neural networks and deep learning, which directly matches this student's ai-ml preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. The equivalent live offering is SC4001 (Neural Network & Deep Learning). This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance."
         }
       ]
@@ -447,7 +438,6 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Applied Cryptography",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Module tags in modules.json: computer-security, cryptography. Top career-skill evidence path is secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0), which outscores secure software practice -> cryptography (6 * 0.65 * 0.9 = 3.51). The cryptography tag still contributes to the module's overall evidence but does not set the top path. Core cryptography knowledge is foundational for secure software engineers. SC3010 (Computer Security) is completed, making this a natural specialisation progression. isCurrentSemester=true."
         },
         {
@@ -457,7 +447,6 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Application Security",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Tagged web-development, computer-security in modules.json. Application security is directly relevant to SWE roles that build consumer-facing or API-driven systems. Strong career signal for DevSecOps and secure SDLC. isCurrentSemester=true."
         },
         {
@@ -467,8 +456,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Data Privacy & Security",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
-          "reviewNotes": "Module tags in modules.json: computer-security, privacy. Top career-skill evidence path is secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0), which outscores secure software practice -> privacy (6 * 0.75 * 0.9 = 4.05). The privacy tag still contributes to the module's overall evidence but does not set the top path. Assigned to BDE slot y4-s2-bde1. BDE-slot validity must be manually confirmed before using this case as benchmark ground truth \u2014 the reviewer should verify that SC4017 is eligible for the BDE slot in the student's specific curriculum variant. Covers PDPA/GDPR-adjacent concepts relevant to SWE in data-handling roles. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: computer-security, privacy. Top career-skill evidence path is secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0), which outscores secure software practice -> privacy (6 * 0.75 * 0.9 = 4.05). The privacy tag still contributes to the module's overall evidence but does not set the top path. Assigned to BDE slot y4-s2-bde1. Keep this as project-owner-reviewed draft judgement only; later expert review should verify that SC4017 is eligible for the BDE slot in the student's specific curriculum variant. Covers PDPA/GDPR-adjacent concepts relevant to SWE in data-handling roles. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4016",
@@ -477,7 +465,6 @@
           "expectedRelevance": "somewhat-relevant",
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Cyber Threat Intelligence",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Tagged computer-security in modules.json. Threat intelligence is more analyst-oriented than applied SWE security. Included as a weaker alternative to test that the recommender can distinguish applied-security modules from intelligence/operations ones for a SWE career goal. isCurrentSemester=true."
         },
         {
@@ -487,7 +474,6 @@
           "expectedRelevance": "irrelevant",
           "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "needsHumanReview": true,
           "reviewNotes": "NEGATIVE EXAMPLE. CZ4024 (Cryptography & Network Security) is used here as a verified old-code exclusion test. The CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter. The module is topically relevant to this student's computer-security and cryptography preference \u2014 its modules.json tags include computer-security and cryptography \u2014 but topical relevance does not override the code-family exclusion rule. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. The live equivalent is SC4010 (Applied Cryptography)."
         }
       ]
@@ -597,7 +583,6 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Module tags in modules.json: backend-engineering, database. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which outscores backend and data services -> backend-engineering (8 * 0.9 * 1.0 = 7.2) and backend and data services -> database (8 * 0.8 * 1.0 = 6.4). Directly extends SC2207 (Introduction to Databases) which is completed. Covers storage internals, indexing, and query optimisation \u2014 core skills for backend SWEs. isCurrentSemester=true."
         },
         {
@@ -607,7 +592,6 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Tagged software-engineering in modules.json. Relevant to backend SWE roles through software design patterns, testing, and maintainability practices. Included as the second SC3xxx slot option since database-tagged SC3 electives are limited to SC3020. isCurrentSemester=true."
         },
         {
@@ -617,8 +601,7 @@
           "expectedRelevance": "somewhat-relevant",
           "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
-          "reviewNotes": "Module tags in modules.json: data-science. The data-science tag is not currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The student's preference is database and backend-engineering; data-science is adjacent to that preference \u2014 data analytics pipelines sit near backend/data work \u2014 but is not a direct match. Labelled somewhat-relevant rather than relevant because there is no mapped career-skill evidence and the subject-matter fit with the stated preference is indirect. SC3020 and SC4023 are stronger choices for this preference profile. A human reviewer should assess whether this warrants promotion once data-science is added to the mapping. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: data-science. The data-science tag is not currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The student's preference is database and backend-engineering; data-science is adjacent to that preference \u2014 data analytics pipelines sit near backend/data work \u2014 but is not a direct match. Labelled somewhat-relevant rather than relevant because there is no mapped career-skill evidence and the subject-matter fit with the stated preference is indirect. SC3020 and SC4023 are stronger choices for this preference profile. Revisit if data-science is added to the Software Engineer career-skill mapping. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4023",
@@ -627,7 +610,6 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Module tags in modules.json: backend-engineering, database, data-science. data-science is not mapped under the Software Engineer skill areas and does not contribute to the score. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which outscores backend and data services -> backend-engineering (8 * 0.9 * 1.0 = 7.2) and backend and data services -> database (8 * 0.8 * 1.0 = 6.4). Covers large-scale data storage and processing \u2014 core skills for backend data engineers. NOTE: isCurrentSemester=false \u2014 verify availability before treating this as a stable benchmark reference. Listed as alternative to SC4020 for the same slot."
         },
         {
@@ -637,7 +619,6 @@
           "expectedRelevance": "irrelevant",
           "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "needsHumanReview": true,
           "reviewNotes": "NEGATIVE EXAMPLE. CZ2007 is topically relevant \u2014 it covers introductory databases, which is adjacent to this student's database and backend-engineering preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. The module is also the wrong academic level for an SC3xxx slot. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. The live equivalent at introductory level is SC2207 (already completed); the appropriate advanced equivalent is SC3020 (recommended above). This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance."
         }
       ]
@@ -746,7 +727,6 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> algorithmic problem solving -> algorithms -> Advanced Topics In Algorithms",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Module tags in modules.json: algorithms. Maps to the Software Engineer skill area algorithmic problem solving via the algorithms tag (score 5 * 1.0 * 1.0 = 5.0). Algorithmic depth supports performance reasoning, implementation trade-off analysis, and advanced problem-solving across all software engineering roles \u2014 from service optimisation to compiler internals to data-structure selection. With no student preference tags set, a broad high-value module that maps to an established skill area is a sensible default recommendation. SC2001 (Algorithm Design & Analysis) is completed, confirming the student has the prerequisite foundation. isCurrentSemester=true."
         },
         {
@@ -756,18 +736,34 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Application Security",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "Tagged web-development, computer-security in modules.json. Secure software practice is broadly valuable across all SWE roles. With no preference set, security depth is a reasonable second recommendation for diversity. SC3010 (Computer Security) completed. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4053",
           "title": "Blockchain Technology",
           "targetSlotId": "y4-s2-mpe3",
-          "expectedRelevance": "somewhat-relevant",
-          "expectedSkillPath": "Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A \u2014 niche blockchain module is not a default no-preference Software Engineer recommendation",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
-          "reviewNotes": "Tagged computer-security, distributed-systems in modules.json. Relevant to distributed-systems and backend engineering broadly. Lower relevance than SC4040 or SC4013 for a generic SWE profile \u2014 included as a third, weaker option to test that the recommender can distinguish strength of fit across the same slot type. isCurrentSemester=true."
+          "reviewNotes": "Tagged computer-security, distributed-systems in modules.json. Blockchain can be adjacent to security and distributed systems, but it is a specialised distributed-ledger domain rather than a broad default Software Engineer recommendation when the student has no topic preference. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended by default\", not a claim that the module has no technical value. It may become somewhat-relevant or relevant in a future benchmark case where the student explicitly prefers security, cryptography, distributed systems, blockchain, or fintech-style topics. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Added after comparing the project-owner-reviewed draft labels with live backend predictions. Module tags in modules.json: backend-engineering, database, data-science. The strongest career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Big data management is relevant for backend and data-service software engineering because it builds exposure to large-scale data storage, query, and processing concerns. It is not labelled highly-relevant for the generic no-preference case because it is more specialised than broad software design or application security. NOTE: isCurrentSemester=false \u2014 availability is currently a scoring caveat, not a hard benchmark-invalidity rule."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s2-mpe3",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Software Engineer -> systems and infrastructure -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Added after comparing the project-owner-reviewed draft labels with live backend predictions. Module tags in modules.json: parallel-computing. The strongest career-skill evidence path is systems and infrastructure -> parallel-computing (score 7 * 0.6 * 0.85 = 3.57). Parallel computing can help software engineers reason about performance, concurrency, and infrastructure-heavy systems, but it is a more specialised fit than general software design, application security, or backend data-service modules. Therefore it remains somewhat-relevant rather than relevant for the generic no-preference Software Engineer case."
         },
         {
           "courseCode": "SC3000",
@@ -776,7 +772,6 @@
           "expectedRelevance": "irrelevant",
           "expectedSkillPath": "N/A \u2014 module already completed by student",
           "oldCodeHandling": "not-applicable",
-          "needsHumanReview": true,
           "reviewNotes": "NEGATIVE EXAMPLE \u2014 completed module. SC3000 (Artificial Intelligence) is topically relevant to many software engineering paths, including AI/ML-oriented ones. However, it appears in both completedCourseCodes and curriculumCourses for this student, so the backend hard-excludes it from all recommendation slots before ranking begins. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. targetSlotId is null because this entry tests the completed-module exclusion filter, not slot-level fit. oldCodeHandling is not-applicable because the SC prefix is valid \u2014 the exclusion reason is prior completion, not code family."
         }
       ]
