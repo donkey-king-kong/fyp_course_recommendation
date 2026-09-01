@@ -2134,6 +2134,8 @@ Status: Implemented locally
 - Show the same stale recommendation notice on the Profile page and Roadmap page.
 - Added `Clear Recommendations` controls so the student can remove saved recommendation cards and view the curriculum roadmap with or without transcript completions.
 - Polished the stale notice into short red inline helper text and made clear-action buttons visibly active or greyed out when unavailable.
+- Kept `Clear completed` visible but disabled when no completed roadmap courses remain, and stopped the roadmap render from rehydrating cleared completion IDs.
+- Changed `Clear Recommendations` to a distinct purple active style so it does not look the same as `Reload Roadmap`.
 
 ### Rationale Notes
 

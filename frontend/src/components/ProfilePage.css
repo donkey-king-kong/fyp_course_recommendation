@@ -300,13 +300,13 @@
 
 .profile-clear-recommendations-button {
   padding: 0.7rem 1rem;
-  border: 2px solid rgba(217, 119, 6, 0.52);
+  border: 2px solid rgba(124, 58, 237, 0.52);
   border-radius: 0.7rem;
   color: #ffffff;
   font: inherit;
   font-weight: 800;
   cursor: pointer;
-  background: #d97706;
+  background: #7c3aed;
   box-shadow: 0 0.35rem 0.9rem rgba(15, 23, 42, 0.12);
   transition:
     background 150ms ease,
@@ -317,8 +317,8 @@
 }
 
 .profile-clear-recommendations-button:hover:not(:disabled) {
-  background: #b45309;
-  box-shadow: 0 0.5rem 1.1rem rgba(217, 119, 6, 0.24);
+  background: #6d28d9;
+  box-shadow: 0 0.5rem 1.1rem rgba(124, 58, 237, 0.24);
   transform: translateY(-1px);
 }
 
@@ -790,13 +790,13 @@
 }
 
 .app-shell[data-theme='light'] .profile-clear-recommendations-button {
-  border-color: rgba(217, 119, 6, 0.52);
+  border-color: rgba(124, 58, 237, 0.52);
   color: #ffffff;
-  background: #d97706;
+  background: #7c3aed;
 }
 
 .app-shell[data-theme='light'] .profile-clear-recommendations-button:hover:not(:disabled) {
-  background: #b45309;
+  background: #6d28d9;
 }
 
 .app-shell[data-theme='light'] .profile-clear-recommendations-button:disabled {

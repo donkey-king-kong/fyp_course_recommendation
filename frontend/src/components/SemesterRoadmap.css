@@ -67,9 +67,9 @@
 }
 
 .clear-recommendations-button {
-  border-color: rgba(217, 119, 6, 0.52);
+  border-color: rgba(124, 58, 237, 0.52);
   color: #ffffff;
-  background: #d97706;
+  background: #7c3aed;
 }
 
 .clear-roadmap-button:hover {
@@ -79,8 +79,8 @@
 }
 
 .clear-recommendations-button:hover:not(:disabled) {
-  background: #b45309;
-  box-shadow: 0 0.5rem 1.1rem rgba(217, 119, 6, 0.24);
+  background: #6d28d9;
+  box-shadow: 0 0.5rem 1.1rem rgba(124, 58, 237, 0.24);
   transform: translateY(-1px);
 }
 
@@ -695,9 +695,9 @@
 }
 
 .app-shell[data-theme='dark'] .clear-recommendations-button {
-  border-color: rgba(251, 191, 36, 0.52);
+  border-color: rgba(196, 181, 253, 0.52);
   color: #ffffff;
-  background: #d97706;
+  background: #7c3aed;
 }
 
 .app-shell[data-theme='dark'] .clear-roadmap-button {
@@ -711,7 +711,7 @@
 }
 
 .app-shell[data-theme='dark'] .clear-recommendations-button:hover:not(:disabled) {
-  background: #b45309;
+  background: #6d28d9;
 }
 
 .app-shell[data-theme='dark'] .clear-roadmap-button:hover {

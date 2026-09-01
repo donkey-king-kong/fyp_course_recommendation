@@ -349,15 +349,6 @@ function SemesterRoadmap({
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
     (state) => state.transcriptTotalAcademicUnitsEarned,
   )
-  // Hydrate completed courses from roadmap if not already in store
-  useEffect(() => {
-    if (completedCourseIds.length === 0) {
-      const initialCompleted = courses.filter((c) => c.isCompleted).map((c) => c.id)
-      if (initialCompleted.length > 0) {
-        setCompletedCourses(initialCompleted)
-      }
-    }
-  }, [courses, completedCourseIds.length, setCompletedCourses])
 
   // Let us measure where each course card is on screen so SVG arrows can connect them
   const roadmapRef = useRef<HTMLDivElement | null>(null)
