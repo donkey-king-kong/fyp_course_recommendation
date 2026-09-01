@@ -32,7 +32,7 @@ def get_db() -> Session:
         "Returns backend-ranked and backend-assigned module recommendations for exact "
         "open BDE/MPE choice slots. Each returned recommendation includes "
         "`matchedChoiceSlotId`, so the frontend should render it in that slot instead "
-        "of re-ranking or allocating candidates. Career relevance uses static "
+        "of re-ranking or allocating candidates. Career relevance uses weighted static "
         "career-to-skill mappings, curated recommendation tags, and keyword fallback. "
         "Diversity is a gentle tiebreaker and does not override eligibility, career "
         "relevance, or student topic preferences."

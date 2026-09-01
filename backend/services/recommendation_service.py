@@ -18,7 +18,7 @@ from backend.schemas.recommendation import (
     RecommendationResponse,
     RecommendationScoreBreakdown,
 )
-from backend.services.career_skill_mappings import CAREER_SKILL_MAPPINGS, CareerSkillMapping
+from backend.services.career_skill_mappings import CAREER_SKILL_MAPPINGS, CareerSkillMapping, SkillTagRelationship
 from backend.services.faculty_service import list_active_faculty_names
 from backend.services.module_service import get_prerequisites_by_module, get_unlocks_by_module
 
@@ -76,6 +76,8 @@ PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
 CSC_LEGACY_CZ_PENALTY = -40
 # CSC-prefixed module codes are older than CZ in this catalog, so keep them as last-resort fallbacks.
 CSC_LEGACY_CSC_CODE_PENALTY = -80
+# CPE modules can be relevant BDEs, but keep them behind current CSC options for CSC profiles.
+CSC_CPE_CODE_PENALTY = -80
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -88,9 +90,16 @@ class RecommendationReadiness:
     unlock_value: int
 
 @dataclass(frozen=True)
+class CareerSkillContribution:
+    mapping: CareerSkillMapping
+    relationship: SkillTagRelationship
+    score: float
+
+@dataclass(frozen=True)
 class CareerMatchScore:
     matched_signals: list[str]
-    matched_skill_mappings: list[CareerSkillMapping]
+    matched_skill_contributions: list[CareerSkillContribution]
+    top_skill_contribution: Optional[CareerSkillContribution]
     career_tag_score: int
     career_skill_score: int
     current_semester_bonus: int
@@ -241,8 +250,9 @@ def recommend_courses(
                     score=adjusted_score,
                     scoreBreakdown=score_breakdown,
                     reason=build_recommendation_reason(
+                        module.title,
                         career_match.matched_signals,
-                        career_match.matched_skill_mappings,
+                        career_match.top_skill_contribution,
                         readiness.unlock_value,
                         preference_boost,
                         faculty_boost,
@@ -749,8 +759,10 @@ def build_relevance_filters(career_goal: str) -> list:
         filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
 
     for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ()):
-        for tag in mapping.recommendation_tags:
-            filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
+        for relationship in mapping.tag_relationships:
+            filters.append(
+                ModuleModel.recommendation_tags.cast(String).ilike(f"%{relationship.tag}%")
+            )
 
     return filters
 
@@ -932,7 +944,8 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
     if career_goal != "software-engineer":
         return CareerMatchScore(
             matched_signals=[],
-            matched_skill_mappings=[],
+            matched_skill_contributions=[],
+            top_skill_contribution=None,
             career_tag_score=0,
             career_skill_score=0,
             current_semester_bonus=0,
@@ -947,11 +960,15 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
         for tag in (module.recommendation_tags or [])
         if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
     ]
-    matched_skills = get_matched_career_skill_mappings(module, career_goal)
+    matched_skill_contributions = get_career_skill_contributions(module, career_goal)
+    top_skill_contribution = get_top_skill_contribution(matched_skill_contributions)
     matched_signals = (
         matched_keywords +
         [f"tag:{tag}" for tag in matched_tags] +
-        [f"skill:{mapping.skill}" for mapping in matched_skills]
+        [
+            f"skill:{contribution.mapping.skill}:{contribution.relationship.tag}"
+            for contribution in matched_skill_contributions
+        ]
     )
     # Keep raw keyword/tag relevance separate from mapped career-skill relevance so the
     # score breakdown can show whether the module matched by text, tags, or skill area.
@@ -959,7 +976,9 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
         sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
         sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
     )
-    career_skill_score = sum(mapping.weight for mapping in matched_skills)
+    career_skill_score = round_positive_score(
+        sum(contribution.score for contribution in matched_skill_contributions)
+    )
     current_semester_bonus = 0
 
     # Prefer modules currently available in the catalog by giving them a small boost.
@@ -968,23 +987,56 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
 
     return CareerMatchScore(
         matched_signals=matched_signals,
-        matched_skill_mappings=matched_skills,
+        matched_skill_contributions=matched_skill_contributions,
+        top_skill_contribution=top_skill_contribution,
         career_tag_score=career_tag_score,
         career_skill_score=career_skill_score,
         current_semester_bonus=current_semester_bonus,
     )
 
-def get_matched_career_skill_mappings(
+def get_career_skill_contributions(
     module: ModuleModel,
     career_goal: str,
-) -> list[CareerSkillMapping]:
+) -> list[CareerSkillContribution]:
     module_tags = set(module.recommendation_tags or [])
+    contributions: list[CareerSkillContribution] = []
 
-    return [
-        mapping
-        for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ())
-        if module_tags.intersection(mapping.recommendation_tags)
-    ]
+    for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ()):
+        matching_contributions = [
+            CareerSkillContribution(
+                mapping=mapping,
+                relationship=relationship,
+                score=mapping.weight * relationship.relationship_weight * relationship.tag_confidence,
+            )
+            for relationship in mapping.tag_relationships
+            if relationship.tag in module_tags
+        ]
+
+        top_contribution = get_top_skill_contribution(matching_contributions)
+
+        if top_contribution:
+            contributions.append(top_contribution)
+
+    return contributions
+
+def get_top_skill_contribution(
+    contributions: list[CareerSkillContribution],
+) -> Optional[CareerSkillContribution]:
+    if not contributions:
+        return None
+
+    return max(
+        contributions,
+        key=lambda contribution: (
+            contribution.score,
+            contribution.relationship.relationship_weight,
+            contribution.relationship.tag_confidence,
+            contribution.relationship.tag,
+        ),
+    )
+
+def round_positive_score(score: float) -> int:
+    return int(score + 0.5)
 
 def normalize_recommendation_tags(tags: list[str]) -> set[str]:
     return {
@@ -1026,32 +1078,35 @@ def get_course_code_generation_adjustment(
     if module_code.startswith("CSC"):
         return CSC_LEGACY_CSC_CODE_PENALTY
 
+    if module_code.startswith("CPE"):
+        return CSC_CPE_CODE_PENALTY
+
     if module_code.startswith("CZ"):
         return CSC_LEGACY_CZ_PENALTY
 
     return 0
 
 def build_recommendation_reason(
+    course_title: str,
     matched_signals: list[str],
-    matched_skill_mappings: list[CareerSkillMapping],
+    top_skill_contribution: Optional[CareerSkillContribution],
     unlock_value: int,
     preference_boost: int,
     faculty_boost: int,
     course_code_adjustment: int,
 ) -> str:
-    direct_signals = [
+    fallback_signals = [
         signal
         for signal in matched_signals
         if not signal.startswith("skill:")
-    ]
-    base_reason = (
-        "Matches Software Engineer career signals: "
-        f"{', '.join(direct_signals or matched_signals)}."
-    )
+    ][:3]
+    base_reason = "Recommended for the Software Engineer career goal."
     extra_reasons = []
 
-    if matched_skill_mappings:
-        extra_reasons.append(build_career_skill_reason(matched_skill_mappings))
+    if top_skill_contribution:
+        extra_reasons.append(build_career_skill_reason(top_skill_contribution, course_title))
+    elif fallback_signals:
+        extra_reasons.append(f"matches career signals: {', '.join(fallback_signals)}")
 
     if preference_boost > 0:
         extra_reasons.append("matches selected topic preference(s)")
@@ -1060,7 +1115,7 @@ def build_recommendation_reason(
         extra_reasons.append("matches your profile faculty")
 
     if course_code_adjustment < 0:
-        extra_reasons.append("uses an older course code, so it is kept as a fallback")
+        extra_reasons.append("uses a lower-priority course code, so it is kept as a fallback")
 
     if unlock_value > 0:
         extra_reasons.append(f"unlocks {unlock_value} later curriculum module(s)")
@@ -1070,13 +1125,17 @@ def build_recommendation_reason(
 
     return f"{base_reason} Also {' and '.join(extra_reasons)}."
 
-def build_career_skill_reason(matched_skill_mappings: list[CareerSkillMapping]) -> str:
-    skill_names = ", ".join(mapping.skill for mapping in matched_skill_mappings)
-    primary_mapping = matched_skill_mappings[0]
+def build_career_skill_reason(
+    top_skill_contribution: CareerSkillContribution,
+    course_title: str,
+) -> str:
+    mapping = top_skill_contribution.mapping
+    relationship = top_skill_contribution.relationship
 
     return (
-        "supports mapped Software Engineer skill area(s): "
-        f"{skill_names}. {primary_mapping.rationale.rstrip('.')}"
+        "top career-skill path: "
+        f"Software Engineer -> {mapping.skill} -> {relationship.tag} -> "
+        f"{course_title}"
     )
 
 def summarize_recommendations(

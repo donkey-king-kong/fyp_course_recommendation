@@ -1692,3 +1692,63 @@ Status: Implemented locally
 - No automated test suite was added in this step; verification remains compile, lint, build, diagnostics, and service-level checks.
 - No API rename from `recommendations` to `assignments`.
 - No backend persistence, user table, authentication, or SSO.
+
+## Weighted Career-Skill Matching
+
+Status: Implemented locally
+
+### Completed
+
+- Replaced each Software Engineer skill area's flat tag list with weighted tag relationships in `backend/services/career_skill_mappings.py`.
+- Added per-tag relationship strength, tag confidence, and rationale so mapped career evidence remains auditable.
+- Updated backend career-skill scoring to calculate each skill area's contribution from `skill importance * strongest matching tag relationship * tag confidence`.
+- Preserved `careerSkillScore` in the existing score breakdown instead of changing the recommendation API response shape.
+- Kept hard filters before ranking: completed/fixed modules, slot fit, prerequisite feasibility, and near-duplicate prior learning still run outside the score calculation.
+- Updated recommendation reasons to show the strongest contributing path, for example `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every mapped skill signal.
+
+### Rationale Notes
+
+- Weighted tag relationships make broad tags and direct tags behave differently, so one weakly related mapped tag no longer grants the full skill-area weight.
+- The score remains deterministic and backend-owned, which keeps the frontend as a rendering layer for assigned recommendation slots.
+- Career relevance remains one ranking component alongside student topic preferences, same-faculty preference, current-semester availability, unlock value, code-generation fallback penalties, and diversity tiebreaking.
+- Each skill area still contributes at most its strongest matching tag so modules with many related tags do not automatically dominate only because of tag count.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok'); print('RecommendationScoreBreakdown' in str(backend.main.app.openapi()))"`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok'); print('weighted static career-to-skill mappings' in str(backend.main.app.openapi()))"`.
+- Ran a service-level scoring check confirming `distributed-systems` receives a stronger career-skill score than `web-development` and the recommendation reason includes the top career-skill path.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No automated tests were added in this step, by request.
+- No roadmap UI change and no visible score breakdown display.
+- No MyCareersFuture scraping, live job-market data, Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
+- No backend persistence, user table, authentication, SSO, or API rename from `recommendations` to `assignments`.
+
+## CPE Fallback Priority For CSC Recommendations
+
+Status: Implemented locally
+
+### Completed
+
+- Added a `CPE` course-code penalty for CSC student profiles so CPE modules are treated as low-priority fallback recommendations.
+- Kept CPE modules eligible for broad BDE slots, but pushed them behind current CSC options when ranking is otherwise competitive.
+- Updated fallback explanation wording from `older course code` to `lower-priority course code` because CPE is not an old CSC code, but should still be deprioritized for CSC recommendations.
+
+### Rationale Notes
+
+- CPE modules can be relevant to Software Engineer recommendations, especially embedded/software courses, but they should not beat suitable CSC options for a CSC student by default.
+- This preserves broad BDE flexibility while making CPE behave like existing fallback code families such as old `CSC`/`CZ` codes.
+- A catalog check found the CE faculty currently uses non-`SC` prefixes `CE` and `CPE`, while CSC also contains non-`SC` prefixes such as `CZ`, old `CSC`, `MA`, `MH`, `CC`, `CV`, and `HW`.
+- Keep `CE` under review as a possible future low-priority fallback code family for CSC recommendations, but do not penalize math/common/service prefixes such as `MA`, `MH`, `CC`, `CV`, or `HW` without a clearer reason.
+
+### Not Included
+
+- No hard filter blocking all CPE modules.
+- No `CE` course-code penalty yet.
+- No frontend UI change.
+- No automated tests were added in this step.

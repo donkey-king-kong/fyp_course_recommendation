@@ -1,9 +1,16 @@
 from dataclasses import dataclass
 
 @dataclass(frozen=True)
+class SkillTagRelationship:
+    tag: str
+    relationship_weight: float
+    tag_confidence: float
+    rationale: str
+
+@dataclass(frozen=True)
 class CareerSkillMapping:
     skill: str
-    recommendation_tags: tuple[str, ...]
+    tag_relationships: tuple[SkillTagRelationship, ...]
     weight: int
     rationale: str
     weight_rationale: str
@@ -13,12 +20,37 @@ class CareerSkillMapping:
 SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
     CareerSkillMapping(
         skill="software design and delivery",
-        recommendation_tags=(
-            "software-engineering",
-            "backend-engineering",
-            "frontend-engineering",
-            "programming",
-            "web-development",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="software-engineering",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Directly represents structured software design and delivery practice.",
+            ),
+            SkillTagRelationship(
+                tag="backend-engineering",
+                relationship_weight=0.85,
+                tag_confidence=1.0,
+                rationale="Backend implementation is a major applied software delivery path.",
+            ),
+            SkillTagRelationship(
+                tag="frontend-engineering",
+                relationship_weight=0.8,
+                tag_confidence=1.0,
+                rationale="Frontend implementation is a major applied software delivery path.",
+            ),
+            SkillTagRelationship(
+                tag="programming",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Programming is foundational but can be broad or introductory.",
+            ),
+            SkillTagRelationship(
+                tag="web-development",
+                relationship_weight=0.65,
+                tag_confidence=0.9,
+                rationale="Web development is useful for software delivery but not universal to all roles.",
+            ),
         ),
         weight=10,
         rationale=(
@@ -32,11 +64,37 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
     ),
     CareerSkillMapping(
         skill="backend and data services",
-        recommendation_tags=(
-            "backend-engineering",
-            "database",
-            "distributed-systems",
-            "cloud-computing",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="distributed-systems",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Strongest signal for scalable backend services and service reliability.",
+            ),
+            SkillTagRelationship(
+                tag="backend-engineering",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Directly supports API and server-side service implementation.",
+            ),
+            SkillTagRelationship(
+                tag="database",
+                relationship_weight=0.8,
+                tag_confidence=1.0,
+                rationale="Data modelling and querying are common backend service responsibilities.",
+            ),
+            SkillTagRelationship(
+                tag="cloud-computing",
+                relationship_weight=0.7,
+                tag_confidence=0.9,
+                rationale="Cloud concepts support deployment and operations, but may be broader than backend work.",
+            ),
+            SkillTagRelationship(
+                tag="web-development",
+                relationship_weight=0.5,
+                tag_confidence=0.85,
+                rationale="Web modules can support service integration, but are weaker backend evidence.",
+            ),
         ),
         weight=8,
         rationale=(
@@ -50,12 +108,37 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
     ),
     CareerSkillMapping(
         skill="systems and infrastructure",
-        recommendation_tags=(
-            "operating-systems",
-            "computer-network",
-            "distributed-systems",
-            "cloud-computing",
-            "parallel-computing",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="operating-systems",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Direct systems foundation for runtime, memory, process, and concurrency behavior.",
+            ),
+            SkillTagRelationship(
+                tag="distributed-systems",
+                relationship_weight=0.95,
+                tag_confidence=1.0,
+                rationale="Strong signal for infrastructure and networked software behavior.",
+            ),
+            SkillTagRelationship(
+                tag="computer-network",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Networking knowledge directly supports distributed and internet-facing software.",
+            ),
+            SkillTagRelationship(
+                tag="cloud-computing",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Cloud modules often cover deployment platforms and infrastructure concepts.",
+            ),
+            SkillTagRelationship(
+                tag="parallel-computing",
+                relationship_weight=0.6,
+                tag_confidence=0.85,
+                rationale="Parallel computing is useful for performance but more specialised.",
+            ),
         ),
         weight=7,
         rationale=(
@@ -69,10 +152,25 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
     ),
     CareerSkillMapping(
         skill="secure software practice",
-        recommendation_tags=(
-            "computer-security",
-            "cryptography",
-            "privacy",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="computer-security",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Directly represents secure software and systems practice.",
+            ),
+            SkillTagRelationship(
+                tag="privacy",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Privacy is important for responsible data-handling software.",
+            ),
+            SkillTagRelationship(
+                tag="cryptography",
+                relationship_weight=0.65,
+                tag_confidence=0.9,
+                rationale="Cryptography is important but more specialist than general secure development.",
+            ),
         ),
         weight=6,
         rationale=(
@@ -86,10 +184,25 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
     ),
     CareerSkillMapping(
         skill="algorithmic problem solving",
-        recommendation_tags=(
-            "algorithms",
-            "data-structures",
-            "theory-of-computing",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="algorithms",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Directly supports algorithmic reasoning and implementation trade-offs.",
+            ),
+            SkillTagRelationship(
+                tag="data-structures",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Data structures are a practical foundation for efficient software implementation.",
+            ),
+            SkillTagRelationship(
+                tag="theory-of-computing",
+                relationship_weight=0.55,
+                tag_confidence=0.85,
+                rationale="Theory supports reasoning, but is less direct for most applied software roles.",
+            ),
         ),
         weight=5,
         rationale=(

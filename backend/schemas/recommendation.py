@@ -257,9 +257,9 @@ class RecommendationResponse(BaseModel):
                             "finalScore": 19,
                         },
                         "reason": (
-                            "Matches Software Engineer career signals: software, engineering, "
-                            "skill:software design and delivery. Also matches mapped Software "
-                            "Engineer skill area(s)."
+                            "Recommended for the Software Engineer career goal. Also top "
+                            "career-skill path: Software Engineer -> software design and "
+                            "delivery -> software-engineering -> Software Engineering."
                         ),
                     }
                 ],
