@@ -1729,27 +1729,27 @@ Status: Implemented locally
 - No MyCareersFuture scraping, live job-market data, Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
 - No backend persistence, user table, authentication, SSO, or API rename from `recommendations` to `assignments`.
 
-## CPE Fallback Priority For CSC Recommendations
+## Old Course-Code Exclusion For Recommendations
 
 Status: Implemented locally
 
 ### Completed
 
-- Added a `CPE` course-code penalty for CSC student profiles so CPE modules are treated as low-priority fallback recommendations.
-- Kept CPE modules eligible for broad BDE slots, but pushed them behind current CSC options when ranking is otherwise competitive.
-- Updated fallback explanation wording from `older course code` to `lower-priority course code` because CPE is not an old CSC code, but should still be deprioritized for CSC recommendations.
+- Replaced old-code fallback penalties with a hard eligibility exclusion before slot matching and scoring.
+- Excluded `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes from recommendation candidates because current CE/CSC curricula use `SC` course codes.
+- Kept `SC` modules eligible as the primary current course-code family.
+- Left service/common/math prefixes such as `MA`, `MH`, `CC`, `CV`, and `HW` unblocked until there is a clearer reason to exclude them.
 
 ### Rationale Notes
 
-- CPE modules can be relevant to Software Engineer recommendations, especially embedded/software courses, but they should not beat suitable CSC options for a CSC student by default.
-- This preserves broad BDE flexibility while making CPE behave like existing fallback code families such as old `CSC`/`CZ` codes.
+- Old course-code families should not be recommended at all, so they are now treated as eligibility exclusions instead of ranking preferences.
+- This keeps relevance scoring focused on suitable current modules rather than using large negative penalties to approximate a hard rule.
 - A catalog check found the CE faculty currently uses non-`SC` prefixes `CE` and `CPE`, while CSC also contains non-`SC` prefixes such as `CZ`, old `CSC`, `MA`, `MH`, `CC`, `CV`, and `HW`.
-- Keep `CE` under review as a possible future low-priority fallback code family for CSC recommendations, but do not penalize math/common/service prefixes such as `MA`, `MH`, `CC`, `CV`, or `HW` without a clearer reason.
+- `CE`, `CPE`, `CSC`, and `CZ` are treated as old course-code families; `MA`, `MH`, `CC`, `CV`, and `HW` are not automatically treated as old computing-course families.
 
 ### Not Included
 
-- No hard filter blocking all CPE modules.
-- No `CE` course-code penalty yet.
+- No contextual fallback penalty for old code families because the current rule is exclusion, not deprioritization.
 - No frontend UI change.
 - No automated tests were added in this step.
 
@@ -1759,26 +1759,25 @@ Status: Planned
 
 ### Decisions
 
-- Treat `SC` as the primary current course-code family for CSC student recommendations.
-- Treat `CSC`, `CZ`, and `CPE` as old or fallback course-code families in the CSC recommendation context.
+- Treat `SC` as the primary current course-code family for CE/CSC recommendations.
+- Treat `CE`, `CSC`, `CZ`, and `CPE` as old course-code families that should be excluded from recommendation candidates.
 - Keep both safer scoring metadata and safer ranking behavior in view; they are complementary, not mutually exclusive.
 - Implement safer scoring metadata first if the next goal is explainability and debugging.
-- Implement safer ranking behavior first if the next goal is reducing bad visible recommendations such as old/fallback-code modules outranking suitable current-code modules.
+- Implement safer ranking behavior first if the next goal is reducing bad visible recommendations such as old-code modules appearing instead of suitable current-code modules.
 - Prefer doing both before the recommender is evaluated formally, but keep each as a separate small work unit.
 
 ### Safer Ranking Behavior To Consider
 
-- Replace unconditional full code-family penalties with a contextual fallback policy.
-- Apply the strongest fallback penalty only when a suitable current-code alternative exists in the same recommendation slot or a similar topic cluster.
-- If no current-code equivalent exists, apply a weaker fallback penalty or no penalty so a highly relevant fallback-code module is not buried below a tangential `SC` module.
-- Longer term, use module equivalence, successor relationships, or curated topic clusters to decide when an old/fallback code should be strongly deprioritized.
+- Keep old course-code families as eligibility exclusions rather than fallback ranking candidates.
+- If a future dataset proves that some non-`SC` code is still valid, handle it through an explicit allowlist or module-equivalence rule instead of weakening the old-code exclusion globally.
+- Longer term, use module equivalence, successor relationships, or curated topic clusters to explain why an old code was excluded and which current-code module replaces it.
 - Keep the hard-filter-before-ranking boundary intact: eligibility, fixed/completed modules, slot fit, prerequisite feasibility, and near-duplicate prior learning should still be checked before scoring.
 
 ### Safer Scoring Metadata To Consider
 
 - Keep score components separately observable even if the roadmap UI does not display them.
 - Add or internally log career-skill evidence such as career goal, skill area, skill-area importance, matched tag, relationship weight, tag confidence, and rationale.
-- Add or internally log code-family adjustment details such as `codeFamilyAdjustment` and `codeFamilyReason`.
+- Add or internally log old-code exclusion details such as excluded code family and exclusion reason when debugging candidate filtering.
 - Version the career-skill mapping or scoring model internally so historical recommendation comparisons remain understandable after weights are tuned.
 - Preserve explanation fidelity: the displayed top career-skill path should match the actual highest-contributing scoring path.
 
@@ -1794,7 +1793,7 @@ Status: Planned
 
 - Build a fixed labelled benchmark set before making many more ranking changes.
 - Suggested benchmark size: 30 to 60 cases for CSC students with Software Engineer as the career goal.
-- Include completed modules, eligibility constraints, candidate pools, expected relevance labels, expected explanation paths where possible, and whether fallback codes should be permitted, discouraged, or excluded.
+- Include completed modules, eligibility constraints, candidate pools, expected relevance labels, expected explanation paths where possible, and whether old-code modules should be excluded.
 - Compare old and new rankers on the same inputs using ranking, diversity, explanation, fallback, and constraint-validity metrics.
 - Useful metrics include Precision@5, nDCG@5, coverage, explanation coverage, explanation fidelity, skill-area diversity@5, fallback exposure, and constraint validity.
 
@@ -1803,6 +1802,6 @@ Status: Planned
 - Given equal eligibility and other signals, a stronger tag relationship should rank higher.
 - A higher tag confidence should contribute at least as much as a lower confidence for the same relationship.
 - The displayed top explanation path should match the path used to calculate the career-skill score.
-- `CPE`, `CSC`, and `CZ` code-family adjustments should match the configured CSC fallback policy.
-- `SC` modules should receive no course-family penalty for CSC profiles.
+- `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes should be excluded from recommendation candidates.
+- `SC` modules should remain eligible.
 - Lower-priority code-family rules should not cause an ineligible module to be returned just to fill a slot.

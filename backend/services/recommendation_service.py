@@ -72,12 +72,8 @@ PREFERENCE_TAG_BOOST = 30
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
-# CZ modules are legacy CSC codes; keep them as fallback candidates behind current SC modules.
-CSC_LEGACY_CZ_PENALTY = -40
-# CSC-prefixed module codes are older than CZ in this catalog, so keep them as last-resort fallbacks.
-CSC_LEGACY_CSC_CODE_PENALTY = -80
-# CPE modules can be relevant BDEs, but keep them behind current CSC options for CSC profiles.
-CSC_CPE_CODE_PENALTY = -80
+# Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
+DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -164,6 +160,9 @@ def recommend_courses(
 
     for module in modules:
         if is_excluded_module(module, completed_codes | excluded_codes, excluded_titles):
+            continue
+
+        if is_deprecated_course_code(module):
             continue
 
         eligible_slots = get_matching_choice_slots(module, candidate_slots)
@@ -1070,21 +1069,12 @@ def get_course_code_generation_adjustment(
     module: ModuleModel,
     student_faculty: Optional[str],
 ) -> int:
-    if student_faculty != "CSC":
-        return 0
+    return 0
 
+def is_deprecated_course_code(module: ModuleModel) -> bool:
     module_code = module.code.upper()
 
-    if module_code.startswith("CSC"):
-        return CSC_LEGACY_CSC_CODE_PENALTY
-
-    if module_code.startswith("CPE"):
-        return CSC_CPE_CODE_PENALTY
-
-    if module_code.startswith("CZ"):
-        return CSC_LEGACY_CZ_PENALTY
-
-    return 0
+    return module_code.startswith(DEPRECATED_COURSE_CODE_PREFIXES)
 
 def build_recommendation_reason(
     course_title: str,
