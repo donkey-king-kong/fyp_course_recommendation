@@ -2119,3 +2119,31 @@ Status: Implemented locally
 - No frontend UI change.
 - No automated recommender tests unless explicitly requested.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Auto Upload And Recommendation Refresh Notice
+
+Status: Implemented locally
+
+### Completed
+
+- Changed curriculum guide selection so choosing a PDF immediately uploads and parses it.
+- Changed transcript selection so choosing a PDF immediately uploads and parses it.
+- Removed the separate manual upload buttons from the Profile page.
+- Kept recommendation loading manual; uploading a new curriculum guide or transcript does not automatically call the recommendation endpoint.
+- Added persisted recommendation stale reasons when an uploaded curriculum guide or transcript changes after recommendations have already been loaded.
+- Show the same stale recommendation notice on the Profile page and Roadmap page.
+- Added `Clear Recommendations` controls so the student can remove saved recommendation cards and view the curriculum roadmap with or without transcript completions.
+
+### Rationale Notes
+
+- File selection now matches the student's expectation that choosing a PDF starts the upload workflow immediately.
+- Recommendations remain a deliberate action because changing curriculum or transcript inputs can significantly change eligibility, completion state, prerequisite planning, and slot assignment.
+- Keeping stale recommendations visible with a notice avoids silently deleting useful context while still warning that the displayed recommendation cards may be based on older inputs.
+
+### Not Included
+
+- No backend recommendation changes.
+- No automatic recommendation reload after upload.
+- No backend persistence or production upload storage.
+- No score breakdown display on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, or API renaming.

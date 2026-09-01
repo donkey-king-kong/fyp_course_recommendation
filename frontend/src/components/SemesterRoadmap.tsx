@@ -16,6 +16,8 @@ interface SemesterRoadmapProps {
   recommendations: CourseRecommendation[]
   isLoadingRecommendations: boolean
   recommendationError: string
+  recommendationNotice: string
+  onClearRecommendations: () => void
 }
 
 // Shape used after grouping courses into curriculum rows
@@ -326,6 +328,8 @@ function SemesterRoadmap({
   recommendations,
   isLoadingRecommendations,
   recommendationError,
+  recommendationNotice,
+  onClearRecommendations,
 }: SemesterRoadmapProps) {
   // Track hover state so connected courses/arrows can be emphasized
   const [hoveredCourseId, setHoveredCourseId] = useState<string | null>(null)
@@ -616,6 +620,17 @@ function SemesterRoadmap({
             Clear roadmap
           </button>
 
+          {recommendations.length > 0 && (
+            <button
+              type="button"
+              className="clear-recommendations-button"
+              onClick={onClearRecommendations}
+              disabled={isLoadingRecommendations}
+            >
+              Clear recommendations
+            </button>
+          )}
+
           {/* Clear the completed-course list so every roadmap checkbox becomes unchecked */}
           <button
             type="button"
@@ -641,6 +656,9 @@ function SemesterRoadmap({
 
       {recommendationError && (
         <p className="roadmap-recommendation-error">{recommendationError}</p>
+      )}
+      {recommendationNotice && (
+        <p className="roadmap-recommendation-notice">{recommendationNotice}</p>
       )}
       {isLoadingRecommendations && (
         <p className="roadmap-recommendation-loading">

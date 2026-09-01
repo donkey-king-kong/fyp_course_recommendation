@@ -8,6 +8,8 @@ import type {
   TranscriptMatchedCourse,
 } from '../types/transcript'
 
+export type RoadmapRecommendationStaleReason = 'curriculum-guide' | 'transcript'
+
 export interface StudentProfile {
   studentId: string
   // CSC is the only supported major currently
@@ -31,6 +33,7 @@ interface SavedStudentProfile {
   transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
   transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
   roadmapRecommendations: CourseRecommendation[] // Last loaded recommendation results.
+  roadmapRecommendationStaleReasons: RoadmapRecommendationStaleReason[] // Changed inputs since recommendations loaded.
 }
 
 // Reuse these defaults before anyone logs in and after logout
@@ -57,6 +60,7 @@ interface ProfileState {
   transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
   transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
   roadmapRecommendations: CourseRecommendation[] // Last loaded recommendation results.
+  roadmapRecommendationStaleReasons: RoadmapRecommendationStaleReason[] // Changed inputs since recommendations loaded.
   loginWithStudentId: (studentId: string) => void // Load or create profile.
   updateProfile: (updates: Partial<StudentProfile>) => void // Save profile fields.
   toggleCourseCompletion: (courseId: string) => void // Toggle one roadmap checkbox.
@@ -122,6 +126,7 @@ function createSavedStudentProfile(studentId: string): SavedStudentProfile {
     transcriptMatchedCourses: [],
     transcriptUnmatchedCourseCodes: [],
     roadmapRecommendations: [],
+    roadmapRecommendationStaleReasons: [],
   }
 }
 
@@ -131,6 +136,18 @@ function createEmptyTranscriptMatch(): TranscriptCurriculumMatchResponse {
     transcriptMatchedCourses: [],
     transcriptUnmatchedCourseCodes: [],
   }
+}
+
+function getUpdatedStaleReasons(
+  currentReasons: RoadmapRecommendationStaleReason[],
+  changedReason: RoadmapRecommendationStaleReason,
+  hasRecommendations: boolean,
+) {
+  if (!hasRecommendations) {
+    return []
+  }
+
+  return [...new Set([...currentReasons, changedReason])]
 }
 
 export const useProfileStore = create<ProfileState>()(
@@ -152,6 +169,7 @@ export const useProfileStore = create<ProfileState>()(
       transcriptMatchedCourses: [],
       transcriptUnmatchedCourseCodes: [],
       roadmapRecommendations: [],
+      roadmapRecommendationStaleReasons: [],
 
       loginWithStudentId: (studentId) =>
         set((state) => {
@@ -178,6 +196,8 @@ export const useProfileStore = create<ProfileState>()(
             transcriptMatchedCourses: activeProfile.transcriptMatchedCourses ?? [],
             transcriptUnmatchedCourseCodes: activeProfile.transcriptUnmatchedCourseCodes ?? [],
             roadmapRecommendations: activeProfile.roadmapRecommendations ?? [],
+            roadmapRecommendationStaleReasons:
+              activeProfile.roadmapRecommendationStaleReasons ?? [],
           }
           const completedCourseIds = hydratedProfile.curriculumGuide
             ? activeProfile.completedCourseIds ?? []
@@ -200,6 +220,8 @@ export const useProfileStore = create<ProfileState>()(
             transcriptMatchedCourses: hydratedProfile.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: hydratedProfile.transcriptUnmatchedCourseCodes,
             roadmapRecommendations: hydratedProfile.roadmapRecommendations,
+            roadmapRecommendationStaleReasons:
+              hydratedProfile.roadmapRecommendationStaleReasons,
             // Store the active profile back into the map so it persists under this Student ID
             profilesByStudentId: {
               ...state.profilesByStudentId,
@@ -246,6 +268,9 @@ export const useProfileStore = create<ProfileState>()(
               transcriptMatchedCourses: state.transcriptMatchedCourses,
               transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
               roadmapRecommendations: nextRoadmapRecommendations,
+              roadmapRecommendationStaleReasons: shouldClearRoadmapRecommendations
+                ? []
+                : state.roadmapRecommendationStaleReasons,
             }
           }
 
@@ -253,6 +278,9 @@ export const useProfileStore = create<ProfileState>()(
             activeStudentId: nextProfile.studentId,
             profile: nextProfile,
             roadmapRecommendations: nextRoadmapRecommendations,
+            roadmapRecommendationStaleReasons: shouldClearRoadmapRecommendations
+              ? []
+              : state.roadmapRecommendationStaleReasons,
             profilesByStudentId: nextProfilesByStudentId,
           }
         }),
@@ -267,6 +295,7 @@ export const useProfileStore = create<ProfileState>()(
           return {
             completedCourseIds: nextCompletedCourseIds,
             roadmapRecommendations: [],
+            roadmapRecommendationStaleReasons: [],
             profilesByStudentId: state.activeStudentId
               ? {
                   ...state.profilesByStudentId,
@@ -284,6 +313,7 @@ export const useProfileStore = create<ProfileState>()(
                     transcriptMatchedCourses: state.transcriptMatchedCourses,
                     transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
                     roadmapRecommendations: [],
+                    roadmapRecommendationStaleReasons: [],
                   },
                 }
               : state.profilesByStudentId,
@@ -294,6 +324,7 @@ export const useProfileStore = create<ProfileState>()(
         set((state) => ({
           completedCourseIds: courseIds,
           roadmapRecommendations: [],
+          roadmapRecommendationStaleReasons: [],
           profilesByStudentId: state.activeStudentId
             ? {
                 ...state.profilesByStudentId,
@@ -311,6 +342,7 @@ export const useProfileStore = create<ProfileState>()(
                   transcriptMatchedCourses: state.transcriptMatchedCourses,
                   transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
                   roadmapRecommendations: [],
+                  roadmapRecommendationStaleReasons: [],
                 },
               }
             : state.profilesByStudentId,
@@ -319,12 +351,17 @@ export const useProfileStore = create<ProfileState>()(
       setCurriculumGuide: (curriculumGuide, fileName, transcriptMatch) =>
         set((state) => {
           const matchedResults = transcriptMatch ?? createEmptyTranscriptMatch()
+          const nextStaleReasons = getUpdatedStaleReasons(
+            state.roadmapRecommendationStaleReasons,
+            'curriculum-guide',
+            state.roadmapRecommendations.length > 0,
+          )
 
           return {
             curriculumGuide,
             curriculumGuideFileName: fileName,
             completedCourseIds: matchedResults.completedCourseIds,
-            roadmapRecommendations: [],
+            roadmapRecommendationStaleReasons: nextStaleReasons,
             transcriptUnmatchedCourseCount: matchedResults.transcriptUnmatchedCourseCodes.length,
             transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
@@ -336,7 +373,8 @@ export const useProfileStore = create<ProfileState>()(
                     completedCourseIds: matchedResults.completedCourseIds,
                     curriculumGuide,
                     curriculumGuideFileName: fileName,
-                    roadmapRecommendations: [],
+                    roadmapRecommendations: state.roadmapRecommendations,
+                    roadmapRecommendationStaleReasons: nextStaleReasons,
                     transcriptFileName: state.transcriptFileName,
                     transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                     transcriptCompletedCourses: state.transcriptCompletedCourses,
@@ -361,6 +399,7 @@ export const useProfileStore = create<ProfileState>()(
           transcriptUnmatchedCourseCodes: state.transcriptCompletedCourseCodes,
           transcriptUnmatchedCourseCount: state.transcriptCompletedCourseCodes.length,
           roadmapRecommendations: [],
+          roadmapRecommendationStaleReasons: [],
           profilesByStudentId: state.activeStudentId
             ? {
                 ...state.profilesByStudentId,
@@ -370,6 +409,7 @@ export const useProfileStore = create<ProfileState>()(
                   curriculumGuide: null,
                   curriculumGuideFileName: '',
                   roadmapRecommendations: [],
+                  roadmapRecommendationStaleReasons: [],
                   transcriptFileName: state.transcriptFileName,
                   transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                   transcriptCompletedCourses: state.transcriptCompletedCourses,
@@ -386,6 +426,7 @@ export const useProfileStore = create<ProfileState>()(
       setRoadmapRecommendations: (recommendations) =>
         set((state) => ({
           roadmapRecommendations: recommendations,
+          roadmapRecommendationStaleReasons: [],
           profilesByStudentId: state.activeStudentId
             ? {
                 ...state.profilesByStudentId,
@@ -395,6 +436,7 @@ export const useProfileStore = create<ProfileState>()(
                   curriculumGuide: state.curriculumGuide,
                   curriculumGuideFileName: state.curriculumGuideFileName,
                   roadmapRecommendations: recommendations,
+                  roadmapRecommendationStaleReasons: [],
                   transcriptFileName: state.transcriptFileName,
                   transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                   transcriptCompletedCourses: state.transcriptCompletedCourses,
@@ -411,6 +453,7 @@ export const useProfileStore = create<ProfileState>()(
       clearRoadmapRecommendations: () =>
         set((state) => ({
           roadmapRecommendations: [],
+          roadmapRecommendationStaleReasons: [],
           profilesByStudentId: state.activeStudentId
             ? {
                 ...state.profilesByStudentId,
@@ -420,6 +463,7 @@ export const useProfileStore = create<ProfileState>()(
                   curriculumGuide: state.curriculumGuide,
                   curriculumGuideFileName: state.curriculumGuideFileName,
                   roadmapRecommendations: [],
+                  roadmapRecommendationStaleReasons: [],
                   transcriptFileName: state.transcriptFileName,
                   transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
                   transcriptCompletedCourses: state.transcriptCompletedCourses,
@@ -443,10 +487,15 @@ export const useProfileStore = create<ProfileState>()(
       ) =>
         set((state) => {
           const matchedResults = transcriptMatch ?? createEmptyTranscriptMatch()
+          const nextStaleReasons = getUpdatedStaleReasons(
+            state.roadmapRecommendationStaleReasons,
+            'transcript',
+            state.roadmapRecommendations.length > 0,
+          )
 
           return {
             completedCourseIds: matchedResults.completedCourseIds,
-            roadmapRecommendations: [],
+            roadmapRecommendationStaleReasons: nextStaleReasons,
             transcriptFileName: fileName,
             transcriptCompletedCourseCodes: completedCourseCodes,
             transcriptCompletedCourses,
@@ -463,7 +512,8 @@ export const useProfileStore = create<ProfileState>()(
                     completedCourseIds: matchedResults.completedCourseIds,
                     curriculumGuide: state.curriculumGuide,
                     curriculumGuideFileName: state.curriculumGuideFileName,
-                    roadmapRecommendations: [],
+                    roadmapRecommendations: state.roadmapRecommendations,
+                    roadmapRecommendationStaleReasons: nextStaleReasons,
                     transcriptFileName: fileName,
                     transcriptCompletedCourseCodes: completedCourseCodes,
                     transcriptCompletedCourses,
@@ -480,38 +530,47 @@ export const useProfileStore = create<ProfileState>()(
         }),
 
       clearTranscriptResults: () =>
-        set((state) => ({
-          completedCourseIds: [],
-          transcriptFileName: '',
-          transcriptCompletedCourseCodes: [],
-          transcriptCompletedCourses: [],
-          transcriptCompletedCourseCount: 0,
-          transcriptTotalAcademicUnitsEarned: 0,
-          transcriptUnmatchedCourseCount: 0,
-          transcriptMatchedCourses: [],
-          transcriptUnmatchedCourseCodes: [],
-          roadmapRecommendations: [],
-          profilesByStudentId: state.activeStudentId
-            ? {
-                ...state.profilesByStudentId,
-                [state.activeStudentId]: {
-                  profile: state.profile,
-                  completedCourseIds: [],
-                  curriculumGuide: state.curriculumGuide,
-                  curriculumGuideFileName: state.curriculumGuideFileName,
-                  roadmapRecommendations: [],
-                  transcriptFileName: '',
-                  transcriptCompletedCourseCodes: [],
-                  transcriptCompletedCourses: [],
-                  transcriptCompletedCourseCount: 0,
-                  transcriptTotalAcademicUnitsEarned: 0,
-                  transcriptUnmatchedCourseCount: 0,
-                  transcriptMatchedCourses: [],
-                  transcriptUnmatchedCourseCodes: [],
-                },
-              }
-            : state.profilesByStudentId,
-        })),
+        set((state) => {
+          const nextStaleReasons = getUpdatedStaleReasons(
+            state.roadmapRecommendationStaleReasons,
+            'transcript',
+            state.roadmapRecommendations.length > 0,
+          )
+
+          return {
+            completedCourseIds: [],
+            transcriptFileName: '',
+            transcriptCompletedCourseCodes: [],
+            transcriptCompletedCourses: [],
+            transcriptCompletedCourseCount: 0,
+            transcriptTotalAcademicUnitsEarned: 0,
+            transcriptUnmatchedCourseCount: 0,
+            transcriptMatchedCourses: [],
+            transcriptUnmatchedCourseCodes: [],
+            roadmapRecommendationStaleReasons: nextStaleReasons,
+            profilesByStudentId: state.activeStudentId
+              ? {
+                  ...state.profilesByStudentId,
+                  [state.activeStudentId]: {
+                    profile: state.profile,
+                    completedCourseIds: [],
+                    curriculumGuide: state.curriculumGuide,
+                    curriculumGuideFileName: state.curriculumGuideFileName,
+                    roadmapRecommendations: state.roadmapRecommendations,
+                    roadmapRecommendationStaleReasons: nextStaleReasons,
+                    transcriptFileName: '',
+                    transcriptCompletedCourseCodes: [],
+                    transcriptCompletedCourses: [],
+                    transcriptCompletedCourseCount: 0,
+                    transcriptTotalAcademicUnitsEarned: 0,
+                    transcriptUnmatchedCourseCount: 0,
+                    transcriptMatchedCourses: [],
+                    transcriptUnmatchedCourseCodes: [],
+                  },
+                }
+              : state.profilesByStudentId,
+          }
+        }),
 
       logout: () =>
         set(() => ({
@@ -529,6 +588,7 @@ export const useProfileStore = create<ProfileState>()(
           transcriptMatchedCourses: [],
           transcriptUnmatchedCourseCodes: [],
           roadmapRecommendations: [],
+          roadmapRecommendationStaleReasons: [],
         })),
     }),
     {

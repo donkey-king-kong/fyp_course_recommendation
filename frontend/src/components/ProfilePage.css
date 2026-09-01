@@ -122,6 +122,14 @@
   background: #15803d;
 }
 
+.load-roadmap-button.stale {
+  background: #d97706;
+}
+
+.load-roadmap-button.stale:hover:not(:disabled) {
+  background: #b45309;
+}
+
 .load-roadmap-button:disabled {
   cursor: default;
   opacity: 0.7;
@@ -287,6 +295,40 @@
 
 .profile-roadmap-link:hover {
   text-decoration: underline;
+}
+
+.profile-clear-recommendations-button {
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(251, 191, 36, 0.38);
+  border-radius: 0.7rem;
+  color: #fde68a;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  background: rgba(251, 191, 36, 0.1);
+}
+
+.profile-clear-recommendations-button:hover:not(:disabled) {
+  border-color: rgba(251, 191, 36, 0.65);
+  background: rgba(251, 191, 36, 0.16);
+}
+
+.profile-clear-recommendations-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.recommendation-stale-notice {
+  max-width: 48rem;
+  margin: 0.25rem 0 0;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 0.65rem;
+  color: #fde68a;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.45;
+  background: rgba(251, 191, 36, 0.1);
 }
 
 .profile-upload-grid {
@@ -672,6 +714,15 @@
   background: #15803d;
 }
 
+.app-shell[data-theme='light'] .load-roadmap-button.stale {
+  color: #ffffff;
+  background: #d97706;
+}
+
+.app-shell[data-theme='light'] .load-roadmap-button.stale:hover:not(:disabled) {
+  background: #b45309;
+}
+
 .app-shell[data-theme='light'] .profile-preferences-card {
   border-color: rgba(15, 124, 138, 0.2);
   background: rgba(255, 255, 255, 0.42);
@@ -725,6 +776,23 @@
 
 .app-shell[data-theme='light'] .profile-roadmap-link {
   color: #0f7c8a;
+}
+
+.app-shell[data-theme='light'] .profile-clear-recommendations-button {
+  border-color: rgba(217, 119, 6, 0.34);
+  color: #92400e;
+  background: rgba(217, 119, 6, 0.08);
+}
+
+.app-shell[data-theme='light'] .profile-clear-recommendations-button:hover:not(:disabled) {
+  border-color: rgba(217, 119, 6, 0.5);
+  background: rgba(217, 119, 6, 0.13);
+}
+
+.app-shell[data-theme='light'] .recommendation-stale-notice {
+  border-color: rgba(217, 119, 6, 0.28);
+  color: #92400e;
+  background: rgba(217, 119, 6, 0.08);
 }
 
 .app-shell[data-theme='light'] .transcript-upload-card {

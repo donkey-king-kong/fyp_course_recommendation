@@ -10,6 +10,7 @@ import { fetchPersonalizedRoadmap } from './api/roadmapApi'
 import { useProfileStore } from './store/useProfileStore'
 import type { CurriculumGuideResponse } from './types/curriculum'
 import type { RoadmapResponse } from './types/roadmap'
+import type { RoadmapRecommendationStaleReason } from './store/useProfileStore'
 
 type ViewState = 'roadmap' | 'modules' | 'profile'
 
@@ -50,6 +51,21 @@ function getRecommendationLimit(openChoiceSlots: CurriculumGuideResponse['nodes'
   return Math.max(1, openChoiceSlots.length)
 }
 
+function getRecommendationNotice(
+  staleReasons: RoadmapRecommendationStaleReason[],
+  hasRecommendations: boolean,
+) {
+  if (!hasRecommendations || staleReasons.length === 0) {
+    return ''
+  }
+
+  const changedInputs = staleReasons
+    .map((reason) => (reason === 'curriculum-guide' ? 'curriculum guide' : 'transcript'))
+    .join(' and ')
+
+  return `Your ${changedInputs} changed after these recommendations were loaded. Press Load Roadmap on Profile again to refresh them, or clear recommendations to view the roadmap without saved recommendations.`
+}
+
 // Main page component
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -72,10 +88,17 @@ function App() {
     (state) => state.transcriptUnmatchedCourseCodes,
   )
   const recommendations = useProfileStore((state) => state.roadmapRecommendations)
+  const roadmapRecommendationStaleReasons = useProfileStore(
+    (state) => state.roadmapRecommendationStaleReasons,
+  )
   const setRoadmapRecommendations = useProfileStore((state) => state.setRoadmapRecommendations)
   const clearRoadmapRecommendations = useProfileStore((state) => state.clearRoadmapRecommendations)
   const logout = useProfileStore((state) => state.logout)
   const hasLoadedRoadmapRecommendations = recommendations.length > 0
+  const recommendationNotice = getRecommendationNotice(
+    roadmapRecommendationStaleReasons,
+    hasLoadedRoadmapRecommendations,
+  )
 
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
@@ -322,6 +345,8 @@ function App() {
             recommendations={recommendations}
             isLoadingRecommendations={isLoadingRecommendations}
             recommendationError={recommendationError}
+            recommendationNotice={recommendationNotice}
+            onClearRecommendations={clearRoadmapRecommendations}
           />
 
           {/* Search input updates searchTerm */}
@@ -348,8 +373,10 @@ function App() {
           isLoadingRoadmap={isLoadingRecommendations}
           hasLoadedRoadmap={hasLoadedRoadmapRecommendations}
           recommendationError={recommendationError}
+          recommendationNotice={recommendationNotice}
           onGoToRoadmap={() => setCurrentView('roadmap')}
           onLoadRoadmap={handleLoadRoadmapRecommendations}
+          onClearRecommendations={clearRoadmapRecommendations}
         />
       )}
     </main>

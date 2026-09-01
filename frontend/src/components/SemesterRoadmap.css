@@ -31,6 +31,7 @@
 }
 
 .clear-roadmap-button,
+.clear-recommendations-button,
 .clear-completed-button {
   padding: 0.45rem 0.75rem;
   border-radius: 999px;
@@ -54,9 +55,20 @@
   background: rgba(244, 63, 94, 0.1);
 }
 
+.clear-recommendations-button {
+  border: 1px solid rgba(251, 191, 36, 0.38);
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.1);
+}
+
 .clear-roadmap-button:hover {
   border-color: rgba(15, 124, 138, 0.58);
   background: rgba(15, 124, 138, 0.14);
+}
+
+.clear-recommendations-button:hover:not(:disabled) {
+  border-color: rgba(251, 191, 36, 0.65);
+  background: rgba(251, 191, 36, 0.16);
 }
 
 .clear-completed-button:hover:not(:disabled) {
@@ -64,6 +76,7 @@
   background: rgba(244, 63, 94, 0.18);
 }
 
+.clear-recommendations-button:disabled,
 .clear-completed-button:disabled {
   cursor: not-allowed;
   opacity: 0.45;
@@ -116,6 +129,17 @@
   font-size: 0.78rem;
   font-weight: 800;
   background: rgba(15, 124, 138, 0.08);
+}
+
+.roadmap-recommendation-notice {
+  margin: 0;
+  padding: 0.7rem 1.25rem;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.26);
+  color: #92400e;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.45;
+  background: rgba(217, 119, 6, 0.08);
 }
 
 .roadmap-arrows {
@@ -648,6 +672,12 @@
   background: rgba(244, 63, 94, 0.1);
 }
 
+.app-shell[data-theme='dark'] .clear-recommendations-button {
+  border-color: rgba(251, 191, 36, 0.38);
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.1);
+}
+
 .app-shell[data-theme='dark'] .clear-roadmap-button {
   border-color: rgba(45, 212, 191, 0.42);
   color: #67e8f9;
@@ -657,6 +687,11 @@
 .app-shell[data-theme='dark'] .clear-completed-button:hover:not(:disabled) {
   border-color: rgba(251, 113, 133, 0.65);
   background: rgba(244, 63, 94, 0.18);
+}
+
+.app-shell[data-theme='dark'] .clear-recommendations-button:hover:not(:disabled) {
+  border-color: rgba(251, 191, 36, 0.65);
+  background: rgba(251, 191, 36, 0.16);
 }
 
 .app-shell[data-theme='dark'] .clear-roadmap-button:hover {
@@ -759,6 +794,12 @@
   border-bottom-color: rgba(45, 212, 191, 0.2);
   color: #67e8f9;
   background: rgba(14, 116, 144, 0.16);
+}
+
+.app-shell[data-theme='dark'] .roadmap-recommendation-notice {
+  border-bottom-color: rgba(251, 191, 36, 0.32);
+  color: #fde68a;
+  background: rgba(251, 191, 36, 0.1);
 }
 
 .app-shell[data-theme='dark'] .choice-slot-loading {
