@@ -1,7 +1,7 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-01T08:55:50.053747+00:00",
-  "apiUrl": "http://127.0.0.1:8000/recommendations",
+  "generatedAt": "2026-09-01T09:27:55.226896+00:00",
+  "apiUrl": "http://127.0.0.1:8001/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
     {
@@ -246,6 +246,7 @@
             "preferenceBoost": 60,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 109
           },
@@ -302,6 +303,7 @@
             "preferenceBoost": 30,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 82
           },
@@ -560,6 +562,7 @@
             "preferenceBoost": 0,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 64
           },
@@ -613,6 +616,7 @@
             "preferenceBoost": 0,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 44
           },
@@ -652,6 +656,7 @@
             "preferenceBoost": 60,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 71
           },
@@ -688,6 +693,7 @@
             "preferenceBoost": 60,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 71
           },
@@ -939,6 +945,7 @@
             "preferenceBoost": 60,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 89
           },
@@ -990,6 +997,7 @@
             "preferenceBoost": 60,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 85
           },
@@ -1046,6 +1054,7 @@
             "preferenceBoost": 30,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 82
           },
@@ -1294,6 +1303,7 @@
             "preferenceBoost": 60,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 104
           },
@@ -1350,6 +1360,7 @@
             "preferenceBoost": 30,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 94
           },
@@ -1403,6 +1414,7 @@
             "preferenceBoost": 60,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
             "unlockContribution": 0,
             "finalScore": 108
           },
@@ -1605,8 +1617,8 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC4053",
-          "title": "Blockchain Technology",
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -1614,62 +1626,6 @@
           "matchedChoiceSlotId": "y4-s1-mpe1",
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
-          "matchedKeywords": [
-            "engineering",
-            "distributed",
-            "systems",
-            "security",
-            "tag:computer-security",
-            "tag:distributed-systems",
-            "skill:backend and data services:distributed-systems",
-            "skill:systems and infrastructure:distributed-systems",
-            "skill:secure software practice:computer-security"
-          ],
-          "prerequisites": [
-            "SC1007",
-            "SC2001"
-          ],
-          "missingPrerequisites": [],
-          "existingPrerequisiteCourseCodes": [],
-          "plannedPrerequisiteCourseCodes": [],
-          "prerequisiteRecommendations": [],
-          "plannedRoadmapNodes": [],
-          "plannedRoadmapEdges": [],
-          "readinessStatus": "ready",
-          "unlockValue": 0,
-          "score": 52,
-          "scoreBreakdown": {
-            "careerTagScore": 22,
-            "careerSkillScore": 21,
-            "careerSkillEvidence": {
-              "careerGoal": "software-engineer",
-              "skillArea": "backend and data services",
-              "skillAreaWeight": 8,
-              "tag": "distributed-systems",
-              "relationshipWeight": 1.0,
-              "tagConfidence": 1.0,
-              "contributionScore": 8.0,
-              "rationale": "Strongest signal for scalable backend services and service reliability."
-            },
-            "currentSemesterBonus": 1,
-            "preferenceBoost": 0,
-            "sameFacultyBoost": 8,
-            "legacyCodePenalty": 0,
-            "unlockContribution": 0,
-            "finalScore": 52
-          },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches your profile faculty."
-        },
-        {
-          "courseCode": "SC4023",
-          "title": "Big Data Management",
-          "academicUnits": 3.0,
-          "faculty": "CSC",
-          "level": 4,
-          "matchedChoiceSlot": "SC4xxx",
-          "matchedChoiceSlotId": "y4-s2-mpe2",
-          "matchedChoiceSlotYear": 4,
-          "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
             "cloud",
@@ -1690,7 +1646,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 48,
+          "score": 62,
           "scoreBreakdown": {
             "careerTagScore": 24,
             "careerSkillScore": 16,
@@ -1708,34 +1664,35 @@
             "preferenceBoost": 0,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 14,
             "unlockContribution": 0,
-            "finalScore": 48
+            "finalScore": 62
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management and matches your profile faculty."
         },
         {
-          "courseCode": "SC4050",
-          "title": "Parallel Computing",
+          "courseCode": "SC4013",
+          "title": "Application Security",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
           "matchedChoiceSlot": "SC4xxx",
-          "matchedChoiceSlotId": "y4-s2-mpe3",
+          "matchedChoiceSlotId": "y4-s2-mpe2",
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
-            "programming",
-            "development",
-            "cloud",
-            "distributed",
-            "systems",
-            "algorithm",
-            "architecture",
-            "tag:parallel-computing",
-            "skill:systems and infrastructure:parallel-computing"
+            "web",
+            "testing",
+            "security",
+            "tag:web-development",
+            "tag:computer-security",
+            "skill:software design and delivery:web-development",
+            "skill:backend and data services:web-development",
+            "skill:secure software practice:computer-security"
           ],
           "prerequisites": [
-            "SC2001"
+            "SC2005",
+            "SC2008"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -1745,28 +1702,85 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 38,
+          "score": 55,
           "scoreBreakdown": {
-            "careerTagScore": 25,
-            "careerSkillScore": 4,
+            "careerTagScore": 17,
+            "careerSkillScore": 15,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
-              "skillArea": "systems and infrastructure",
-              "skillAreaWeight": 7,
-              "tag": "parallel-computing",
-              "relationshipWeight": 0.6,
-              "tagConfidence": 0.85,
-              "contributionScore": 3.57,
-              "rationale": "Parallel computing is useful for performance but more specialised."
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 1,
             "preferenceBoost": 0,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 14,
             "unlockContribution": 0,
-            "finalScore": 38
+            "finalScore": 55
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> parallel-computing -> Parallel Computing and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Application Security and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s2-mpe3",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "distributed",
+            "systems",
+            "algorithm",
+            "tag:backend-engineering",
+            "tag:distributed-systems",
+            "skill:software design and delivery:backend-engineering",
+            "skill:backend and data services:distributed-systems",
+            "skill:systems and infrastructure:distributed-systems"
+          ],
+          "prerequisites": [
+            "SC2005",
+            "SC2008"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 49,
+          "scoreBreakdown": {
+            "careerTagScore": 18,
+            "careerSkillScore": 23,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "backend-engineering",
+              "relationshipWeight": 0.85,
+              "tagConfidence": 1.0,
+              "contributionScore": 8.5,
+              "rationale": "Backend implementation is a major applied software delivery path."
+            },
+            "currentSemesterBonus": 0,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "unlockContribution": 0,
+            "finalScore": 49
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches your profile faculty."
         }
       ]
     }

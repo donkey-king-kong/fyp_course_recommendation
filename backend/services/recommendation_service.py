@@ -73,6 +73,8 @@ PREFERENCE_TAG_BOOST = 30
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
+BROAD_DEFAULT_PROFILE_BOOST = 14
+SPECIALIST_PROFILE_PENALTY = -16
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
 DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
@@ -207,6 +209,7 @@ def recommend_courses(
                 module,
                 normalized_student_faculty,
             )
+            default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags)
             unlock_contribution = min(readiness.unlock_value, 3)
             adjusted_score = max(1, (
                 career_match.career_tag_score +
@@ -215,7 +218,8 @@ def recommend_courses(
                 unlock_contribution +
                 preference_boost +
                 faculty_boost +
-                course_code_adjustment
+                course_code_adjustment +
+                default_profile_adjustment
             ))
             score_breakdown = RecommendationScoreBreakdown(
                 careerTagScore=career_match.career_tag_score,
@@ -228,6 +232,7 @@ def recommend_courses(
                 preferenceBoost=preference_boost,
                 sameFacultyBoost=faculty_boost,
                 legacyCodePenalty=course_code_adjustment,
+                defaultProfileAdjustment=default_profile_adjustment,
                 unlockContribution=unlock_contribution,
                 finalScore=adjusted_score,
             )
@@ -1095,6 +1100,18 @@ def get_course_code_generation_adjustment(
     module: ModuleModel,
     student_faculty: Optional[str],
 ) -> int:
+    return 0
+
+def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
+    if preferred_tags:
+        return 0
+
+    if module.recommendation_profile == "broad-default":
+        return BROAD_DEFAULT_PROFILE_BOOST
+
+    if module.recommendation_profile == "specialist":
+        return SPECIALIST_PROFILE_PENALTY
+
     return 0
 
 def is_deprecated_course_code(module: ModuleModel) -> bool:

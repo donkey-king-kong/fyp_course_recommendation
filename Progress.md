@@ -1996,3 +1996,39 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests.
 - No expert-reviewed benchmark ground truth claim.
+
+## No-Preference Recommendation Profile Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Added curated module-level `recommendationProfile` metadata in `data/modules.json`.
+- Marked broad default Software Engineer options such as `SC4013 Application Security`, `SC4023 Big Data Management`, and `SC4040 Advanced Topics In Algorithms` with `recommendationProfile: "broad-default"`.
+- Marked more specialist options such as `SC4050 Parallel Computing` and `SC4053 Blockchain Technology` with `recommendationProfile: "specialist"`.
+- Added a `recommendation_profile` column to the module database model and seed flow.
+- Added a no-preference backend scoring adjustment that boosts `broad-default` modules and penalises `specialist` modules only when the student has no selected topic preferences.
+- Added `defaultProfileAdjustment` to the recommendation score breakdown so the calibration remains inspectable through API responses.
+- Kept roadmap UI unchanged and kept score breakdowns hidden from roadmap cards.
+
+### Rationale Notes
+
+- The benchmark showed that `SC4053 Blockchain Technology` could outrank broader default Software Engineer modules because it matched both `distributed-systems` and `computer-security`.
+- Those tags are still technically correct, so the fix does not remove them.
+- The issue is context-sensitive ranking: blockchain can be relevant for explicit security/distributed/fintech interests, but is too niche as a default no-preference Software Engineer recommendation.
+- The new profile adjustment gives the backend a simple deterministic way to separate broad default recommendations from specialist modules without adding AI, embeddings, or job-market scraping.
+
+### Verified
+
+- Reran the database seed so PostgreSQL has the new `recommendation_profile` column and curated values.
+- Reran live benchmark prediction capture against an updated local backend.
+- Reran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The live saved-prediction evaluation now reports `averagePrecisionAtK` of `0.4`, `averageNdcgAtK` of `0.647700667773412`, `oldCodeExposure` of `0`, and `averageConstraintValidity` of `1.0`.
+- For `software-engineer-csc-005`, `SC4053 Blockchain Technology` is no longer selected; the returned modules are `SC4023 Big Data Management`, `SC4013 Application Security`, and `SC4051 Distributed Systems`.
+
+### Not Included
+
+- No frontend UI changes.
+- No new career goal for AI/ML.
+- No automated recommender tests.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.

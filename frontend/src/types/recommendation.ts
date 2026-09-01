@@ -48,6 +48,7 @@ export interface RecommendationScoreBreakdown {
   preferenceBoost: number
   sameFacultyBoost: number
   legacyCodePenalty: number
+  defaultProfileAdjustment: number
   unlockContribution: number
   finalScore: number
 }

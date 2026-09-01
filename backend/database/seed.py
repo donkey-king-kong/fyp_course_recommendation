@@ -19,6 +19,7 @@ def seed_database() -> None:
     # Create missing tables before inserting data so local setup stays simple.
     Base.metadata.create_all(bind=engine)
     ensure_module_recommendation_tags_column()
+    ensure_module_recommendation_profile_column()
 
     modules = load_modules(MODULES_JSON_PATH)
     prerequisite_graph = load_prerequisite_graph(PREREQUISITE_GRAPH_JSON_PATH)
@@ -132,6 +133,7 @@ def build_module_data(module: dict[str, Any], description_by_code: dict[str, str
         "level": infer_level(code),
         "categories": module.get("categories", []),
         "recommendation_tags": module.get("recommendationTags", []),
+        "recommendation_profile": module.get("recommendationProfile"),
         "latest_year": module.get("latestYear"),
         "latest_semester": module.get("latestSemester"),
         "is_current_semester": bool(module.get("isCurrentSemester", False)),
@@ -179,6 +181,20 @@ def ensure_module_recommendation_tags_column() -> None:
     with engine.begin() as connection:
         connection.execute(
             text(f"ALTER TABLE modules ADD COLUMN recommendation_tags {column_type}")
+        )
+
+def ensure_module_recommendation_profile_column() -> None:
+    existing_columns = {
+        column["name"]
+        for column in inspect(engine).get_columns(ModuleModel.__tablename__)
+    }
+
+    if "recommendation_profile" in existing_columns:
+        return
+
+    with engine.begin() as connection:
+        connection.execute(
+            text("ALTER TABLE modules ADD COLUMN recommendation_profile VARCHAR(40)")
         )
 
 if __name__ == "__main__":

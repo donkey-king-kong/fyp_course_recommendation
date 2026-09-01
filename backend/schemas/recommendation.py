@@ -184,6 +184,14 @@ class RecommendationScoreBreakdown(BaseModel):
         ),
         examples=[0],
     )
+    defaultProfileAdjustment: int = Field(
+        description=(
+            "No-preference calibration from curated recommendationProfile metadata. "
+            "Broad default modules can receive a boost while specialist modules can "
+            "receive a penalty when the student has no selected topic preferences."
+        ),
+        examples=[0],
+    )
     unlockContribution: int = Field(
         description="Small pathway boost from unlocking later fixed curriculum modules.",
         examples=[1],
@@ -289,6 +297,7 @@ class RecommendationResponse(BaseModel):
                             "preferenceBoost": 0,
                             "sameFacultyBoost": 0,
                             "legacyCodePenalty": 0,
+                            "defaultProfileAdjustment": 0,
                             "unlockContribution": 1,
                             "finalScore": 19,
                         },
