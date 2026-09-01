@@ -278,6 +278,8 @@ Completed foundations:
 - Recommendation selection uses preference-aware diversity as a gentle tiebreaker so repeated non-preferred tags are reduced without overriding the student's selected topic preferences.
 - Backend recommendation responses now contain final exact-slot assignments instead of a large candidate pool; the frontend should render by `matchedChoiceSlotId` and avoid owning recommendation ranking or allocation logic.
 - Recommendation API responses include a deterministic `scoreBreakdown` for explainability, but the roadmap UI does not display it yet.
+- Software Engineer recommendations now use a backend-owned static career-skill mapping layer in `backend/services/career_skill_mappings.py`, moving from `goal -> keyword/tag overlap` toward `goal -> skill area -> curated module tags`.
+- The career-skill mapping includes per-skill rationale and weight rationale so the current deterministic scoring assumptions are inspectable.
 - Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
 - Backend recommendation responses can include planned prerequisite roadmap nodes and arrows through `plannedRoadmapNodes` and `plannedRoadmapEdges`.
 - Backend `POST /roadmap/readiness` evaluates roadmap course readiness and missing requirements, with the frontend retaining local readiness logic only as a fallback.
@@ -302,7 +304,10 @@ Current next step:
 - Keep roadmap/profile polish and API naming cleanup in view, especially clearer loading/error states and a future `recommendations` to `assignments` naming cleanup if the API changes.
 - Keep recommendation ranking and exact-slot allocation in the backend; the frontend should remain a rendering layer for assigned recommendations.
 - Keep recommendation diversity subordinate to eligibility, career relevance, and student topic preferences.
-- Next recommender improvement should be a small deterministic career-skill mapping step, starting with static career-to-skill mappings and scoring signals only.
+- Next recommender improvement should refine the current static career-skill mapping into weighted tag-to-skill relationships so `careerSkillScore` is no longer a mostly binary tag match.
+- Preserve the hard-filter-before-ranking architecture: completed/fixed modules, slot fit, prerequisite feasibility, near-duplicate prior learning, and later availability/AU/programme constraints should be checked before final scoring.
+- Keep career relevance as one ranking factor, not the whole definition of usefulness. Continue combining career fit with student interests, curriculum/pathway fit, same-faculty/code preferences, unlock value, and diversity.
+- Improve recommendation explanations by keeping the top-contributing path, such as `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every matched signal.
 - Do not show recommendation score breakdowns in the roadmap UI unless explicitly requested.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, or advanced job-market integration yet.
 

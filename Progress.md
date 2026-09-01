@@ -1664,6 +1664,16 @@ Status: Implemented locally
 - A simple count or binary match can rank these modules too similarly, even though a final-year student aiming for backend or platform engineering may benefit more from distributed systems than from an introductory web module.
 - Future improvements should add evidence strength, course level/context, subpath preference, and tag confidence so a match can be graded rather than treated as simply present or absent.
 
+### Next Planned Improvement
+
+- Replace the current binary skill-area match with a weighted relationship model while keeping the recommender deterministic and backend-owned.
+- Model career fit as a composition of career goal, skill-area importance, tag-to-skill relationship strength, and optional tag confidence rather than treating every mapped tag as equally strong.
+- Keep hard filters separate from ranking: completed/fixed modules, slot fit, prerequisite feasibility, near-duplicate prior learning, and later availability/AU/programme constraints should be checked before final scoring.
+- Keep career relevance as one ranking factor, not the whole definition of usefulness. Ranking should continue to combine career fit, student interest fit, curriculum/pathway fit, faculty/code preferences, unlock value, and diversity.
+- Preserve explanations from the strongest contributing path, for example `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every matched signal.
+- Start without adding tests in this immediate follow-up if requested, but the next quality step should still be focused backend tests for scoring and explanation behavior.
+- Keep UI unchanged unless explicitly requested; the roadmap should continue rendering backend-assigned recommendations by `matchedChoiceSlotId`.
+
 ### Verified
 
 - Ran `.venv/bin/python -m compileall backend`.
