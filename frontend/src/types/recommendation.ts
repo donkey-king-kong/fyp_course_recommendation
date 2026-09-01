@@ -31,6 +31,7 @@ export type RecommendationReadinessStatus = 'ready' | 'needs-prerequisite-planni
 
 export interface RecommendationScoreBreakdown {
   careerTagScore: number
+  careerSkillScore: number
   currentSemesterBonus: number
   preferenceBoost: number
   sameFacultyBoost: number

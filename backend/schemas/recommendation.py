@@ -138,8 +138,12 @@ class RecommendationPlannedRoadmapEdge(BaseModel):
 
 class RecommendationScoreBreakdown(BaseModel):
     careerTagScore: int = Field(
-        description="Base relevance score from career keywords and curated recommendation tags.",
+        description="Base relevance score from existing curated tag weights and keyword fallback.",
         examples=[13],
+    )
+    careerSkillScore: int = Field(
+        description="Additional deterministic score from static career-to-skill mappings.",
+        examples=[10],
     )
     currentSemesterBonus: int = Field(
         description="Small bonus when the module is available in the current catalog semester.",
@@ -241,17 +245,22 @@ class RecommendationResponse(BaseModel):
                         "plannedRoadmapEdges": [],
                         "readinessStatus": "ready",
                         "unlockValue": 1,
-                        "score": 9,
+                        "score": 19,
                         "scoreBreakdown": {
                             "careerTagScore": 7,
+                            "careerSkillScore": 10,
                             "currentSemesterBonus": 1,
                             "preferenceBoost": 0,
                             "sameFacultyBoost": 0,
                             "legacyCodePenalty": 0,
                             "unlockContribution": 1,
-                            "finalScore": 9,
+                            "finalScore": 19,
                         },
-                        "reason": "Matches Software Engineer keywords: software, engineering.",
+                        "reason": (
+                            "Matches Software Engineer career signals: software, engineering, "
+                            "skill:software design and delivery. Also matches mapped Software "
+                            "Engineer skill area(s)."
+                        ),
                     }
                 ],
             }

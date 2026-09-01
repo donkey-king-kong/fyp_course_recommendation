@@ -1606,3 +1606,41 @@ Status: Planned on branch `career-skill-recommendations`
 - No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
 - No production persistence, backend user table, authentication, or SSO.
 - No visible score breakdown UI on roadmap cards unless explicitly requested.
+
+## Static Career-Skill Recommendation Mapping
+
+Status: Implemented locally
+
+### Completed
+
+- Added backend-owned static career-skill mappings for the current supported career goal, `Software Engineer`.
+- Mapped the career goal to deterministic skill areas such as software delivery, backend/data services, systems infrastructure, secure software practice, and algorithmic problem solving.
+- Matched those career skills against existing curated `recommendation_tags` instead of relying only on raw title/description keyword matches.
+- Added `careerSkillScore` to the recommendation score breakdown so the new signal is inspectable through the API response.
+- Kept existing curated tag relevance, keyword fallback, student topic preference boosts, same-faculty boosts, legacy-code penalties, unlock contribution, and diversity behavior in place.
+- Updated the recommendations endpoint description to explain that career relevance now uses static mappings, curated tags, and keyword fallback.
+- Updated the frontend recommendation response type only; the roadmap UI remains visually unchanged.
+
+### Rationale Notes
+
+- This is the first small job-market-aware step without adding live job scraping or AI.
+- Static mappings are easy to inspect and deterministic, which fits the current beginner-friendly recommendation pipeline.
+- Career-skill matching uses the already curated module tags, so it is less brittle than scanning every module title and description for broad words.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok'); print('RecommendationScoreBreakdown' in str(backend.main.app.openapi()))"`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+- Confirmed a service-level `Software Engineering` module receives both existing career tag/keyword score and the new mapped career-skill score.
+
+### Not Included
+
+- No MyCareersFuture scraping or live labour-market data.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
+- No new frontend UI and no visible score breakdown on roadmap cards.
+- No API rename from `recommendations` to `assignments`.
+- No backend persistence, user table, authentication, or SSO.

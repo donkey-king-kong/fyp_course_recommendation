@@ -86,6 +86,77 @@ class RecommendationReadiness:
     missing_prerequisites: list[str]
     unlock_value: int
 
+@dataclass(frozen=True)
+class CareerSkillMapping:
+    skill: str
+    recommendation_tags: tuple[str, ...]
+    weight: int
+
+@dataclass(frozen=True)
+class CareerMatchScore:
+    matched_signals: list[str]
+    career_tag_score: int
+    career_skill_score: int
+    current_semester_bonus: int
+
+# Static career mappings translate a career goal into skill areas, then into existing
+# curated module tags. This keeps the signal inspectable before adding job-market data.
+SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
+    CareerSkillMapping(
+        skill="software design and delivery",
+        recommendation_tags=(
+            "software-engineering",
+            "backend-engineering",
+            "frontend-engineering",
+            "programming",
+            "web-development",
+        ),
+        weight=10,
+    ),
+    CareerSkillMapping(
+        skill="backend and data services",
+        recommendation_tags=(
+            "backend-engineering",
+            "database",
+            "distributed-systems",
+            "cloud-computing",
+        ),
+        weight=8,
+    ),
+    CareerSkillMapping(
+        skill="systems and infrastructure",
+        recommendation_tags=(
+            "operating-systems",
+            "computer-network",
+            "distributed-systems",
+            "cloud-computing",
+            "parallel-computing",
+        ),
+        weight=7,
+    ),
+    CareerSkillMapping(
+        skill="secure software practice",
+        recommendation_tags=(
+            "computer-security",
+            "cryptography",
+            "privacy",
+        ),
+        weight=6,
+    ),
+    CareerSkillMapping(
+        skill="algorithmic problem solving",
+        recommendation_tags=(
+            "algorithms",
+            "data-structures",
+            "theory-of-computing",
+        ),
+        weight=5,
+    ),
+)
+CAREER_SKILL_MAPPINGS = {
+    "software-engineer": SOFTWARE_ENGINEER_SKILL_MAPPINGS,
+}
+
 # Keep debug logs readable while still showing enough candidates to diagnose missed slots.
 def summarize_codes(codes: list[str], max_items: int = 80) -> str:
     visible_codes = codes[:max_items]
@@ -125,11 +196,11 @@ def recommend_courses(
     if not candidate_slots or not slot_filters:
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
-    # Filter by keywords/tags in SQL first so BDE does not load the entire catalog.
+    # Filter by keywords, tags, and mapped career skills so BDE does not load the entire catalog.
     query = db.query(ModuleModel).filter(
         ModuleModel.faculty.in_(active_faculties),
         or_(*slot_filters),
-        or_(*build_relevance_filters()),
+        or_(*build_relevance_filters(career_goal)),
     )
     modules = query.order_by(ModuleModel.code).all()
     logger.info(
@@ -153,10 +224,10 @@ def recommend_courses(
         if not eligible_slots:
             continue
 
-        # Rank remaining modules by career keyword matches in title and description.
-        matched_keywords, relevance_score, current_semester_bonus = score_software_engineer_match(module)
+        # Rank remaining modules by deterministic career signals before softer profile boosts.
+        career_match = score_career_match(module, career_goal)
 
-        if relevance_score == 0:
+        if career_match.career_tag_score == 0 and career_match.career_skill_score == 0:
             continue
 
         # Send all prerequisites for arrows, and missing ones for extra planning nodes.
@@ -191,16 +262,18 @@ def recommend_courses(
             )
             unlock_contribution = min(readiness.unlock_value, 3)
             adjusted_score = max(1, (
-                relevance_score +
-                current_semester_bonus +
+                career_match.career_tag_score +
+                career_match.career_skill_score +
+                career_match.current_semester_bonus +
                 unlock_contribution +
                 preference_boost +
                 faculty_boost +
                 course_code_adjustment
             ))
             score_breakdown = RecommendationScoreBreakdown(
-                careerTagScore=relevance_score,
-                currentSemesterBonus=current_semester_bonus,
+                careerTagScore=career_match.career_tag_score,
+                careerSkillScore=career_match.career_skill_score,
+                currentSemesterBonus=career_match.current_semester_bonus,
                 preferenceBoost=preference_boost,
                 sameFacultyBoost=faculty_boost,
                 legacyCodePenalty=course_code_adjustment,
@@ -219,7 +292,7 @@ def recommend_courses(
                     matchedChoiceSlotId=slot.slotId,
                     matchedChoiceSlotYear=slot.year,
                     matchedChoiceSlotSemester=slot.semester,
-                    matchedKeywords=matched_keywords,
+                    matchedKeywords=career_match.matched_signals,
                     prerequisites=prerequisites,
                     missingPrerequisites=readiness.missing_prerequisites,
                     existingPrerequisiteCourseCodes=readiness.existing_prerequisite_course_codes,
@@ -230,7 +303,8 @@ def recommend_courses(
                     score=adjusted_score,
                     scoreBreakdown=score_breakdown,
                     reason=build_recommendation_reason(
-                        matched_keywords,
+                        career_match.matched_signals,
+                        career_match.career_skill_score,
                         readiness.unlock_value,
                         preference_boost,
                         faculty_boost,
@@ -725,7 +799,7 @@ def build_prerequisite_recommendations(
 
     return recommendations
 
-def build_relevance_filters() -> list:
+def build_relevance_filters(career_goal: str) -> list:
     filters = []
 
     for keyword in SOFTWARE_ENGINEER_KEYWORDS:
@@ -735,6 +809,10 @@ def build_relevance_filters() -> list:
 
     for tag in SOFTWARE_ENGINEER_TAG_WEIGHTS:
         filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
+
+    for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ()):
+        for tag in mapping.recommendation_tags:
+            filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
 
     return filters
 
@@ -912,7 +990,15 @@ def add_used_recommendation_tags(
 def _reverse_code_sort_key(course_code: str) -> tuple[int, ...]:
     return tuple(-ord(character) for character in course_code)
 
-def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int, int]:
+def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScore:
+    if career_goal != "software-engineer":
+        return CareerMatchScore(
+            matched_signals=[],
+            career_tag_score=0,
+            career_skill_score=0,
+            current_semester_bonus=0,
+        )
+
     searchable_text = f"{module.title} {module.description or ''}".lower()
     matched_keywords = [
         keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
@@ -922,16 +1008,43 @@ def score_software_engineer_match(module: ModuleModel) -> tuple[list[str], int, 
         for tag in (module.recommendation_tags or [])
         if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
     ]
-    matched_signals = matched_keywords + [f"tag:{tag}" for tag in matched_tags]
-    score = sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords)
-    score += sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
+    matched_skills = get_matched_career_skill_mappings(module, career_goal)
+    matched_signals = (
+        matched_keywords +
+        [f"tag:{tag}" for tag in matched_tags] +
+        [f"skill:{mapping.skill}" for mapping in matched_skills]
+    )
+    # Keep raw keyword/tag relevance separate from mapped career-skill relevance so the
+    # score breakdown can show whether the module matched by text, tags, or skill area.
+    career_tag_score = (
+        sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
+        sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
+    )
+    career_skill_score = sum(mapping.weight for mapping in matched_skills)
     current_semester_bonus = 0
 
     # Prefer modules currently available in the catalog by giving them a small boost.
     if module.is_current_semester:
         current_semester_bonus = 1
 
-    return matched_signals, score, current_semester_bonus
+    return CareerMatchScore(
+        matched_signals=matched_signals,
+        career_tag_score=career_tag_score,
+        career_skill_score=career_skill_score,
+        current_semester_bonus=current_semester_bonus,
+    )
+
+def get_matched_career_skill_mappings(
+    module: ModuleModel,
+    career_goal: str,
+) -> list[CareerSkillMapping]:
+    module_tags = set(module.recommendation_tags or [])
+
+    return [
+        mapping
+        for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ())
+        if module_tags.intersection(mapping.recommendation_tags)
+    ]
 
 def normalize_recommendation_tags(tags: list[str]) -> set[str]:
     return {
@@ -980,16 +1093,20 @@ def get_course_code_generation_adjustment(
 
 def build_recommendation_reason(
     matched_signals: list[str],
+    career_skill_score: int,
     unlock_value: int,
     preference_boost: int,
     faculty_boost: int,
     course_code_adjustment: int,
 ) -> str:
     base_reason = (
-        "Matches Software Engineer signals: "
+        "Matches Software Engineer career signals: "
         f"{', '.join(matched_signals)}."
     )
     extra_reasons = []
+
+    if career_skill_score > 0:
+        extra_reasons.append("matches mapped Software Engineer skill area(s)")
 
     if preference_boost > 0:
         extra_reasons.append("matches selected topic preference(s)")
