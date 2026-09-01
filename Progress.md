@@ -1848,7 +1848,7 @@ Status: Postponed
 
 ## Recommendation Benchmark Plan
 
-Status: Planned
+Status: Scaffold added
 
 ### Goal
 
@@ -1863,6 +1863,13 @@ Status: Planned
 - Include open MPE and BDE slots because these are the recommendation slots currently handled by the backend.
 - Include cases with different completed-module sets so prerequisite readiness and already-completed exclusions are exercised.
 - Include cases where old course-code families such as `CE`, `CPE`, `CSC`, and `CZ` appear in the catalog but should be excluded.
+
+### Scaffold Created
+
+- Added `data/recommendation_benchmark_cases.json` as an empty benchmark scaffold.
+- Included schema version, purpose, review notes, allowed relevance labels, allowed old-code handling labels, and a single case template.
+- Left `cases` empty so no fake labels or unreviewed benchmark cases are introduced.
+- The frontend does not read this file; it is for future offline evaluation and review tooling.
 
 ### Case Fields To Capture
 
@@ -1890,7 +1897,7 @@ Status: Planned
 
 ### Not Included Yet
 
-- No benchmark data file has been created yet.
+- No labelled benchmark cases have been added yet.
 - No automated evaluation runner has been added yet.
 - No lecturer/adviser-reviewed labels have been collected yet.
-- No ranking formula changes are included in this documentation step.
+- No ranking formula changes are included in this scaffold step.
