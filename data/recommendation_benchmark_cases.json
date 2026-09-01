@@ -757,6 +757,15 @@
           "reviewNotes": "Added after comparing the project-owner-reviewed draft labels with live backend predictions. Module tags in modules.json: backend-engineering, database, data-science. The strongest career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Big data management is relevant for backend and data-service software engineering because it builds exposure to large-scale data storage, query, and processing concerns. It is not labelled highly-relevant for the generic no-preference case because it is more specialised than broad software design or application security. NOTE: isCurrentSemester=false \u2014 availability is currently a scoring caveat, not a hard benchmark-invalidity rule."
         },
         {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s2-mpe3",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Added after the no-preference recommendation profile calibration caused the refreshed live benchmark to return SC4051 instead of the niche SC4053 Blockchain Technology. Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), narrowly ahead of backend and data services -> distributed-systems (score 8 * 1.0 * 1.0 = 8.0). Distributed systems is relevant for a Year 4 no-preference Software Engineer case because it supports scalable backend and platform engineering, while remaining broader than blockchain. NOTE: isCurrentSemester=false \u2014 availability is currently a scoring caveat, not a hard benchmark-invalidity rule."
+        },
+        {
           "courseCode": "SC4050",
           "title": "Parallel Computing",
           "targetSlotId": "y4-s2-mpe3",

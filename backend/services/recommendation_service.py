@@ -1103,7 +1103,7 @@ def get_course_code_generation_adjustment(
     return 0
 
 def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
-    if preferred_tags:
+    if preferred_tags and preferred_tags != {"software-engineering"}:
         return 0
 
     if module.recommendation_profile == "broad-default":

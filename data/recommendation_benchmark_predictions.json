@@ -1,6 +1,6 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-01T09:27:55.226896+00:00",
+  "generatedAt": "2026-09-01T09:42:55.116950+00:00",
   "apiUrl": "http://127.0.0.1:8001/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
@@ -1617,8 +1617,8 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC4023",
-          "title": "Big Data Management",
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -1627,17 +1627,19 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
           "matchedKeywords": [
-            "software",
-            "cloud",
             "distributed",
             "systems",
+            "algorithm",
             "tag:backend-engineering",
-            "tag:database",
-            "tag:data-science",
+            "tag:distributed-systems",
             "skill:software design and delivery:backend-engineering",
-            "skill:backend and data services:backend-engineering"
+            "skill:backend and data services:distributed-systems",
+            "skill:systems and infrastructure:distributed-systems"
           ],
-          "prerequisites": [],
+          "prerequisites": [
+            "SC2005",
+            "SC2008"
+          ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
           "plannedPrerequisiteCourseCodes": [],
@@ -1646,10 +1648,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 62,
+          "score": 63,
           "scoreBreakdown": {
-            "careerTagScore": 24,
-            "careerSkillScore": 16,
+            "careerTagScore": 18,
+            "careerSkillScore": 23,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -1666,9 +1668,9 @@
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 14,
             "unlockContribution": 0,
-            "finalScore": 62
+            "finalScore": 63
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches your profile faculty."
         },
         {
           "courseCode": "SC4013",
@@ -1727,8 +1729,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Application Security and matches your profile faculty."
         },
         {
-          "courseCode": "SC4051",
-          "title": "Distributed Systems",
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -1737,19 +1739,17 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
+            "software",
+            "cloud",
             "distributed",
             "systems",
-            "algorithm",
             "tag:backend-engineering",
-            "tag:distributed-systems",
+            "tag:database",
+            "tag:data-science",
             "skill:software design and delivery:backend-engineering",
-            "skill:backend and data services:distributed-systems",
-            "skill:systems and infrastructure:distributed-systems"
+            "skill:backend and data services:backend-engineering"
           ],
-          "prerequisites": [
-            "SC2005",
-            "SC2008"
-          ],
+          "prerequisites": [],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
           "plannedPrerequisiteCourseCodes": [],
@@ -1758,10 +1758,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 49,
+          "score": 62,
           "scoreBreakdown": {
-            "careerTagScore": 18,
-            "careerSkillScore": 23,
+            "careerTagScore": 24,
+            "careerSkillScore": 16,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -1776,11 +1776,11 @@
             "preferenceBoost": 0,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
-            "defaultProfileAdjustment": 0,
+            "defaultProfileAdjustment": 14,
             "unlockContribution": 0,
-            "finalScore": 49
+            "finalScore": 62
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management and matches your profile faculty."
         }
       ]
     }
