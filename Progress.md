@@ -2089,3 +2089,33 @@ Status: Implemented locally
 - No frontend UI redesign.
 - No automated recommender tests unless explicitly requested.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Diversity As Relevance Tiebreaker
+
+Status: Implemented locally
+
+### Completed
+
+- Changed final exact-slot assignment so diversity only compares modules within 10 raw score points of the best eligible module for that slot.
+- Kept repeated-tag diversity as a useful tiebreaker among similarly strong modules.
+- Prevented diversity from selecting a much weaker module only because it has different tags.
+- Preserved the existing hard filters, career-skill scoring, broad-default calibration, prerequisite-planning penalty, and backend-owned slot assignment.
+
+### Rationale Notes
+
+- The previous diversity step could over-penalise strong broad Software Engineer modules after earlier selected modules used the same tags.
+- For example, after `SC3020 Database System Principles` and `SC4052 Cloud Computing` used backend/distributed tags, `SC4051 Distributed Systems` could be reduced below `SC4064 GPU Programming` by repeated-tag penalties.
+- That made diversity override relevance, which conflicts with the intended rule that diversity should stay subordinate to eligibility, career relevance, and student preferences.
+- The new score-gap rule keeps diversity local: if one module is clearly stronger, keep it; if modules are close, use diversity to avoid overly repetitive recommendations.
+
+### Verification Notes
+
+- A targeted service-level check with repeated backend/distributed tags now chooses `SC4051 Distributed Systems` over `SC4064 GPU Programming`, even though GPU has a higher diversity-adjusted score.
+- A curriculum-only 6-slot simulation now returns `SC4052 Cloud Computing`, `SC4023 Big Data Management`, `SC4013 Application Security`, and `SC4051 Distributed Systems` for the `SC4xxx` slots instead of falling back to `SC4064 GPU Programming`.
+
+### Out Of Scope
+
+- No hardcoded preference for `SC4051`.
+- No frontend UI change.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.

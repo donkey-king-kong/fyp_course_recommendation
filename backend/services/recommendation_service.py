@@ -73,6 +73,7 @@ PREFERENCE_TAG_BOOST = 30
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
+DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
 BROAD_DEFAULT_PROFILE_BOOST = 14
 SPECIALIST_PROFILE_PENALTY = -16
 EXTRA_PREREQUISITE_PLANNING_PENALTY = -10
@@ -929,8 +930,17 @@ def get_unique_recommendation_at_or_after_index(
     if not eligible_recommendations:
         return None
 
+    best_score = max(recommendation.score for recommendation in eligible_recommendations)
+    close_relevance_recommendations = [
+        recommendation
+        for recommendation in eligible_recommendations
+        if recommendation.score >= best_score - DIVERSITY_RELEVANCE_TIE_THRESHOLD
+    ]
+
+    # Diversity should break ties among similarly relevant modules, not replace a
+    # clearly stronger career/pathway match with a weaker but different option.
     return max(
-        eligible_recommendations,
+        close_relevance_recommendations,
         key=lambda recommendation: (
             get_diversity_adjusted_score(
                 recommendation,
