@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Manual benchmark scaffold for evaluating deterministic Software Engineer recommendations before adding more ranking complexity.",
+  "status": "empty-scaffold",
+  "notes": [
+    "Do not fabricate labels. Add cases only after manual review by the project owner, adviser, lecturer, TA, senior student, or another trusted reviewer.",
+    "Keep cases stable so old and new recommender versions can be compared on the same inputs.",
+    "The frontend does not read this file. It is for offline evaluation planning and later tooling."
+  ],
+  "allowedRelevanceLabels": [
+    "highly-relevant",
+    "relevant",
+    "somewhat-relevant",
+    "irrelevant"
+  ],
+  "allowedOldCodeHandling": [
+    "excluded",
+    "allowed-by-explicit-exception",
+    "not-applicable"
+  ],
+  "caseTemplate": {
+    "caseId": "software-engineer-csc-001",
+    "description": "Short human-readable case description.",
+    "studentFaculty": "CSC",
+    "careerGoal": "software-engineer",
+    "preferredRecommendationTags": [],
+    "completedCourseCodes": [],
+    "choiceSlots": [
+      {
+        "slotId": "year3-sem1-slot1",
+        "courseCode": "SC3xxx",
+        "year": 3,
+        "semester": 1
+      }
+    ],
+    "curriculumCourses": [],
+    "reviewedCandidates": [
+      {
+        "courseCode": "SC4001",
+        "expectedRelevance": "highly-relevant",
+        "expectedSkillPath": "Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems",
+        "oldCodeHandling": "not-applicable",
+        "reviewNotes": "Explain why this label was assigned."
+      }
+    ]
+  },
+  "cases": []
+}
