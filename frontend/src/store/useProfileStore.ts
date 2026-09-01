@@ -35,6 +35,7 @@ interface SavedStudentProfile {
   transcriptUnmatchedCourseCount: number // Transcript modules outside roadmap.
   transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
   transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
+  isTranscriptAppliedToRoadmap: boolean // Whether saved transcript data is currently applied to the roadmap.
   roadmapRecommendations: CourseRecommendation[] // Last loaded recommendation results.
   roadmapRecommendationStaleReasons: RoadmapRecommendationStaleReason[] // Changed inputs since recommendations loaded.
 }
@@ -62,6 +63,7 @@ interface ProfileState {
   transcriptUnmatchedCourseCount: number // Transcript modules outside roadmap.
   transcriptMatchedCourses: TranscriptMatchedCourse[] // Transcript modules found in roadmap.
   transcriptUnmatchedCourseCodes: string[] // Transcript codes outside roadmap.
+  isTranscriptAppliedToRoadmap: boolean // Whether transcript effects are active on the roadmap.
   roadmapRecommendations: CourseRecommendation[] // Last loaded recommendation results.
   roadmapRecommendationStaleReasons: RoadmapRecommendationStaleReason[] // Changed inputs since recommendations loaded.
   loginWithStudentId: (studentId: string) => void // Load or create profile.
@@ -84,6 +86,7 @@ interface ProfileState {
     transcriptTotalAcademicUnitsEarned: number,
     transcriptMatch?: TranscriptCurriculumMatchResponse,
   ) => void // Save transcript results.
+  clearAppliedTranscriptFromRoadmap: () => void // Remove transcript effects while keeping parsed transcript saved.
   clearTranscriptResults: () => void // Remove uploaded transcript data.
   logout: () => void // End active browser session.
 }
@@ -128,6 +131,7 @@ function createSavedStudentProfile(studentId: string): SavedStudentProfile {
     transcriptUnmatchedCourseCount: 0,
     transcriptMatchedCourses: [],
     transcriptUnmatchedCourseCodes: [],
+    isTranscriptAppliedToRoadmap: false,
     roadmapRecommendations: [],
     roadmapRecommendationStaleReasons: [],
   }
@@ -171,6 +175,7 @@ export const useProfileStore = create<ProfileState>()(
       transcriptUnmatchedCourseCount: 0,
       transcriptMatchedCourses: [],
       transcriptUnmatchedCourseCodes: [],
+      isTranscriptAppliedToRoadmap: false,
       roadmapRecommendations: [],
       roadmapRecommendationStaleReasons: [],
 
@@ -198,6 +203,7 @@ export const useProfileStore = create<ProfileState>()(
             transcriptUnmatchedCourseCount: activeProfile.transcriptUnmatchedCourseCount ?? 0,
             transcriptMatchedCourses: activeProfile.transcriptMatchedCourses ?? [],
             transcriptUnmatchedCourseCodes: activeProfile.transcriptUnmatchedCourseCodes ?? [],
+            isTranscriptAppliedToRoadmap: activeProfile.isTranscriptAppliedToRoadmap ?? false,
             roadmapRecommendations: activeProfile.roadmapRecommendations ?? [],
             roadmapRecommendationStaleReasons:
               activeProfile.roadmapRecommendationStaleReasons ?? [],
@@ -222,6 +228,7 @@ export const useProfileStore = create<ProfileState>()(
             transcriptUnmatchedCourseCount: hydratedProfile.transcriptUnmatchedCourseCount,
             transcriptMatchedCourses: hydratedProfile.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: hydratedProfile.transcriptUnmatchedCourseCodes,
+            isTranscriptAppliedToRoadmap: hydratedProfile.isTranscriptAppliedToRoadmap,
             roadmapRecommendations: hydratedProfile.roadmapRecommendations,
             roadmapRecommendationStaleReasons:
               hydratedProfile.roadmapRecommendationStaleReasons,
@@ -270,6 +277,7 @@ export const useProfileStore = create<ProfileState>()(
               transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
               transcriptMatchedCourses: state.transcriptMatchedCourses,
               transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
+              isTranscriptAppliedToRoadmap: state.isTranscriptAppliedToRoadmap,
               roadmapRecommendations: nextRoadmapRecommendations,
               roadmapRecommendationStaleReasons: shouldClearRoadmapRecommendations
                 ? []
@@ -319,6 +327,7 @@ export const useProfileStore = create<ProfileState>()(
                     transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                     transcriptMatchedCourses: state.transcriptMatchedCourses,
                     transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
+                    isTranscriptAppliedToRoadmap: state.isTranscriptAppliedToRoadmap,
                     roadmapRecommendations: state.roadmapRecommendations,
                     roadmapRecommendationStaleReasons: nextStaleReasons,
                   },
@@ -354,6 +363,7 @@ export const useProfileStore = create<ProfileState>()(
                     transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                     transcriptMatchedCourses: state.transcriptMatchedCourses,
                     transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
+                    isTranscriptAppliedToRoadmap: state.isTranscriptAppliedToRoadmap,
                     roadmapRecommendations: state.roadmapRecommendations,
                     roadmapRecommendationStaleReasons: nextStaleReasons,
                   },
@@ -379,6 +389,7 @@ export const useProfileStore = create<ProfileState>()(
             transcriptUnmatchedCourseCount: matchedResults.transcriptUnmatchedCourseCodes.length,
             transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+            isTranscriptAppliedToRoadmap: Boolean(transcriptMatch),
             profilesByStudentId: state.activeStudentId
               ? {
                   ...state.profilesByStudentId,
@@ -398,6 +409,7 @@ export const useProfileStore = create<ProfileState>()(
                       matchedResults.transcriptUnmatchedCourseCodes.length,
                     transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
                     transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+                    isTranscriptAppliedToRoadmap: Boolean(transcriptMatch),
                   },
                 }
               : state.profilesByStudentId,
@@ -412,6 +424,7 @@ export const useProfileStore = create<ProfileState>()(
           transcriptMatchedCourses: [],
           transcriptUnmatchedCourseCodes: state.transcriptCompletedCourseCodes,
           transcriptUnmatchedCourseCount: state.transcriptCompletedCourseCodes.length,
+          isTranscriptAppliedToRoadmap: false,
           roadmapRecommendations: [],
           roadmapRecommendationStaleReasons: [],
           profilesByStudentId: state.activeStudentId
@@ -432,6 +445,7 @@ export const useProfileStore = create<ProfileState>()(
                   transcriptUnmatchedCourseCount: state.transcriptCompletedCourseCodes.length,
                   transcriptMatchedCourses: [],
                   transcriptUnmatchedCourseCodes: state.transcriptCompletedCourseCodes,
+                  isTranscriptAppliedToRoadmap: false,
                 },
               }
             : state.profilesByStudentId,
@@ -459,6 +473,7 @@ export const useProfileStore = create<ProfileState>()(
                   transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                   transcriptMatchedCourses: state.transcriptMatchedCourses,
                   transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
+                  isTranscriptAppliedToRoadmap: state.isTranscriptAppliedToRoadmap,
                 },
               }
             : state.profilesByStudentId,
@@ -486,6 +501,7 @@ export const useProfileStore = create<ProfileState>()(
                   transcriptUnmatchedCourseCount: state.transcriptUnmatchedCourseCount,
                   transcriptMatchedCourses: state.transcriptMatchedCourses,
                   transcriptUnmatchedCourseCodes: state.transcriptUnmatchedCourseCodes,
+                  isTranscriptAppliedToRoadmap: state.isTranscriptAppliedToRoadmap,
                 },
               }
             : state.profilesByStudentId,
@@ -518,6 +534,7 @@ export const useProfileStore = create<ProfileState>()(
             transcriptUnmatchedCourseCount: matchedResults.transcriptUnmatchedCourseCodes.length,
             transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+            isTranscriptAppliedToRoadmap: true,
             profilesByStudentId: state.activeStudentId
               ? {
                   ...state.profilesByStudentId,
@@ -537,6 +554,47 @@ export const useProfileStore = create<ProfileState>()(
                       matchedResults.transcriptUnmatchedCourseCodes.length,
                     transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
                     transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
+                    isTranscriptAppliedToRoadmap: true,
+                  },
+                }
+              : state.profilesByStudentId,
+          }
+        }),
+
+      clearAppliedTranscriptFromRoadmap: () =>
+        set((state) => {
+          const nextStaleReasons = getUpdatedStaleReasons(
+            state.roadmapRecommendationStaleReasons,
+            'transcript',
+            state.roadmapRecommendations.length > 0,
+          )
+
+          return {
+            completedCourseIds: [],
+            transcriptUnmatchedCourseCount: 0,
+            transcriptMatchedCourses: [],
+            transcriptUnmatchedCourseCodes: [],
+            isTranscriptAppliedToRoadmap: false,
+            roadmapRecommendationStaleReasons: nextStaleReasons,
+            profilesByStudentId: state.activeStudentId
+              ? {
+                  ...state.profilesByStudentId,
+                  [state.activeStudentId]: {
+                    profile: state.profile,
+                    completedCourseIds: [],
+                    curriculumGuide: state.curriculumGuide,
+                    curriculumGuideFileName: state.curriculumGuideFileName,
+                    roadmapRecommendations: state.roadmapRecommendations,
+                    roadmapRecommendationStaleReasons: nextStaleReasons,
+                    transcriptFileName: state.transcriptFileName,
+                    transcriptCompletedCourseCodes: state.transcriptCompletedCourseCodes,
+                    transcriptCompletedCourses: state.transcriptCompletedCourses,
+                    transcriptCompletedCourseCount: state.transcriptCompletedCourseCount,
+                    transcriptTotalAcademicUnitsEarned: state.transcriptTotalAcademicUnitsEarned,
+                    transcriptUnmatchedCourseCount: 0,
+                    transcriptMatchedCourses: [],
+                    transcriptUnmatchedCourseCodes: [],
+                    isTranscriptAppliedToRoadmap: false,
                   },
                 }
               : state.profilesByStudentId,
@@ -561,6 +619,7 @@ export const useProfileStore = create<ProfileState>()(
             transcriptUnmatchedCourseCount: 0,
             transcriptMatchedCourses: [],
             transcriptUnmatchedCourseCodes: [],
+            isTranscriptAppliedToRoadmap: false,
             roadmapRecommendationStaleReasons: nextStaleReasons,
             profilesByStudentId: state.activeStudentId
               ? {
@@ -580,6 +639,7 @@ export const useProfileStore = create<ProfileState>()(
                     transcriptUnmatchedCourseCount: 0,
                     transcriptMatchedCourses: [],
                     transcriptUnmatchedCourseCodes: [],
+                    isTranscriptAppliedToRoadmap: false,
                   },
                 }
               : state.profilesByStudentId,
@@ -601,6 +661,7 @@ export const useProfileStore = create<ProfileState>()(
           transcriptUnmatchedCourseCount: 0,
           transcriptMatchedCourses: [],
           transcriptUnmatchedCourseCodes: [],
+          isTranscriptAppliedToRoadmap: false,
           roadmapRecommendations: [],
           roadmapRecommendationStaleReasons: [],
         })),

@@ -85,7 +85,6 @@ function ProfilePage({
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
     (state) => state.transcriptTotalAcademicUnitsEarned,
   )
-  const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const curriculumGuideFileName = useProfileStore((state) => state.curriculumGuideFileName)
   const transcriptFileName = useProfileStore((state) => state.transcriptFileName)
@@ -93,6 +92,7 @@ function ProfilePage({
     (state) => state.transcriptCompletedCourseCodes,
   )
   const transcriptCompletedCourses = useProfileStore((state) => state.transcriptCompletedCourses)
+  const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
   const setCurriculumGuide = useProfileStore((state) => state.setCurriculumGuide)
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const setTranscriptResults = useProfileStore((state) => state.setTranscriptResults)
@@ -117,7 +117,7 @@ function ProfilePage({
   const canReapplyTranscript =
     Boolean(curriculumGuide) &&
     transcriptCompletedCourses.length > 0 &&
-    completedCourseIds.length === 0
+    !isTranscriptAppliedToRoadmap
   const standingRequirements = curriculumGuide?.standingRequirements ?? []
   const displayedCurriculumGuideFileName = uploadingCurriculumGuideFileName || curriculumGuideFileName
   const displayedTranscriptFileName = uploadingTranscriptFileName || transcriptFileName
@@ -167,7 +167,7 @@ function ProfilePage({
 
       const result = await uploadCurriculumGuide(file)
       const transcriptMatch =
-        transcriptCompletedCourseCodes.length > 0
+        isTranscriptAppliedToRoadmap && transcriptCompletedCourseCodes.length > 0
           ? await matchTranscriptToCurriculum(
               transcriptCompletedCourseCodes,
               transcriptCompletedCourses,

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import './App.css'
 import CourseList from './components/CourseList'
 import LoginPage from './components/LoginPage'
@@ -97,6 +97,7 @@ function App() {
   const transcriptUnmatchedCourseCodes = useProfileStore(
     (state) => state.transcriptUnmatchedCourseCodes,
   )
+  const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
   const recommendations = useProfileStore((state) => state.roadmapRecommendations)
   const roadmapRecommendationStaleReasons = useProfileStore(
     (state) => state.roadmapRecommendationStaleReasons,
@@ -110,6 +111,18 @@ function App() {
     hasLoadedRoadmapRecommendations,
   )
   const roadmapPageError = roadmapProjectionError || recommendationError
+  const appliedTranscriptCompletedCourses = useMemo(
+    () => (isTranscriptAppliedToRoadmap ? transcriptCompletedCourses : []),
+    [isTranscriptAppliedToRoadmap, transcriptCompletedCourses],
+  )
+  const appliedTranscriptUnmatchedCourseCodes = useMemo(
+    () => (isTranscriptAppliedToRoadmap ? transcriptUnmatchedCourseCodes : []),
+    [isTranscriptAppliedToRoadmap, transcriptUnmatchedCourseCodes],
+  )
+  const appliedTranscriptCompletedCourseCodes = useMemo(
+    () => (isTranscriptAppliedToRoadmap ? transcriptCompletedCourseCodes : []),
+    [isTranscriptAppliedToRoadmap, transcriptCompletedCourseCodes],
+  )
 
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
@@ -137,8 +150,8 @@ function App() {
       try {
         const result = await fetchPersonalizedRoadmap(
           curriculumGuide,
-          transcriptCompletedCourses,
-          transcriptUnmatchedCourseCodes,
+          appliedTranscriptCompletedCourses,
+          appliedTranscriptUnmatchedCourseCodes,
         )
 
         if (!shouldIgnoreResult) {
@@ -158,7 +171,11 @@ function App() {
     return () => {
       shouldIgnoreResult = true
     }
-  }, [curriculumGuide, transcriptCompletedCourses, transcriptUnmatchedCourseCodes])
+  }, [
+    curriculumGuide,
+    appliedTranscriptCompletedCourses,
+    appliedTranscriptUnmatchedCourseCodes,
+  ])
 
   // Normalize the user input so search is case-insensitive and ignores extra spaces.
   const normalizedSearchTerm = searchTerm.trim().toLowerCase()
@@ -209,7 +226,7 @@ function App() {
       .filter((course) => completedCourseIds.includes(course.id))
       .map((course) => course.courseCode)
     const completedCourseCodes = [
-      ...new Set([...transcriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
+      ...new Set([...appliedTranscriptCompletedCourseCodes, ...completedRoadmapCourseCodes]),
     ]
     // Send only uncompleted choice slots; the roadmap decides which slots can display results.
     const openChoiceSlots = curriculumGuide.nodes.filter(

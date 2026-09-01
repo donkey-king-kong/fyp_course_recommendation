@@ -380,12 +380,16 @@ function SemesterRoadmap({
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const toggleCourseCompletion = useProfileStore((state) => state.toggleCourseCompletion)
   const setCompletedCourses = useProfileStore((state) => state.setCompletedCourses)
+  const clearAppliedTranscriptFromRoadmap = useProfileStore(
+    (state) => state.clearAppliedTranscriptFromRoadmap,
+  )
   const clearCurriculumGuide = useProfileStore((state) => state.clearCurriculumGuide)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const transcriptTotalAcademicUnitsEarned = useProfileStore(
     (state) => state.transcriptTotalAcademicUnitsEarned,
   )
   const transcriptCompletedCourseCount = useProfileStore((state) => state.transcriptCompletedCourseCount)
+  const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
 
   // Let us measure where each course card is on screen so SVG arrows can connect them
   const roadmapRef = useRef<HTMLDivElement | null>(null)
@@ -407,7 +411,7 @@ function SemesterRoadmap({
     transcriptTotalAcademicUnitsEarned > 0
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
-  const hasSavedTranscript = transcriptCompletedCourseCount > 0
+  const hasAppliedTranscript = isTranscriptAppliedToRoadmap && transcriptCompletedCourseCount > 0
   const standingRequirements = curriculumGuide?.standingRequirements ?? EMPTY_STANDING_REQUIREMENTS
   const recommendationChoiceSlots = useMemo(
     () =>
@@ -671,15 +675,22 @@ function SemesterRoadmap({
           <button
             type="button"
             className="clear-completed-button"
-            onClick={() => setCompletedCourses([])}
-            disabled={completedCourseIds.length === 0}
+            onClick={() => {
+              if (hasAppliedTranscript) {
+                clearAppliedTranscriptFromRoadmap()
+                return
+              }
+
+              setCompletedCourses([])
+            }}
+            disabled={hasAppliedTranscript ? false : completedCourseIds.length === 0}
             title={
-              hasSavedTranscript
+              hasAppliedTranscript
                 ? 'Clear transcript-applied completed ticks. The saved transcript can be re-applied from Profile.'
                 : 'Clear manually completed roadmap ticks.'
             }
           >
-            {hasSavedTranscript ? 'Clear transcript completions' : 'Clear completed'}
+            {hasAppliedTranscript ? 'Clear transcript completions' : 'Clear completed'}
           </button>
 
           {/* Toggle between all prerequisite arrows and only the hovered course's arrows. */}
