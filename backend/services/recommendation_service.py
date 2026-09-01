@@ -75,6 +75,7 @@ DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
 BROAD_DEFAULT_PROFILE_BOOST = 14
 SPECIALIST_PROFILE_PENALTY = -16
+EXTRA_PREREQUISITE_PLANNING_PENALTY = -10
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
 DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
@@ -86,6 +87,7 @@ class RecommendationReadiness:
     existing_prerequisite_course_codes: list[str]
     planned_prerequisite_course_codes: list[str]
     missing_prerequisites: list[str]
+    prerequisite_planning_penalty: int
     unlock_value: int
 
 @dataclass(frozen=True)
@@ -219,7 +221,8 @@ def recommend_courses(
                 preference_boost +
                 faculty_boost +
                 course_code_adjustment +
-                default_profile_adjustment
+                default_profile_adjustment +
+                readiness.prerequisite_planning_penalty
             ))
             score_breakdown = RecommendationScoreBreakdown(
                 careerTagScore=career_match.career_tag_score,
@@ -233,6 +236,7 @@ def recommend_courses(
                 sameFacultyBoost=faculty_boost,
                 legacyCodePenalty=course_code_adjustment,
                 defaultProfileAdjustment=default_profile_adjustment,
+                prerequisitePlanningPenalty=readiness.prerequisite_planning_penalty,
                 unlockContribution=unlock_contribution,
                 finalScore=adjusted_score,
             )
@@ -390,6 +394,7 @@ def evaluate_recommendation_readiness(
             existing_prerequisite_course_codes=[],
             planned_prerequisite_course_codes=[],
             missing_prerequisites=[],
+            prerequisite_planning_penalty=0,
             unlock_value=unlock_value,
         )
 
@@ -402,6 +407,7 @@ def evaluate_recommendation_readiness(
             existing_prerequisite_course_codes=existing_prerequisite_codes,
             planned_prerequisite_course_codes=[],
             missing_prerequisites=[],
+            prerequisite_planning_penalty=0,
             unlock_value=unlock_value,
         )
 
@@ -411,6 +417,7 @@ def evaluate_recommendation_readiness(
             existing_prerequisite_course_codes=existing_prerequisite_codes,
             planned_prerequisite_course_codes=[],
             missing_prerequisites=[],
+            prerequisite_planning_penalty=0,
             unlock_value=unlock_value,
         )
 
@@ -422,13 +429,34 @@ def evaluate_recommendation_readiness(
     )
 
     if not planned_prerequisite_codes:
-        return None
+        # In curriculum-only mode, keep strong modules visible when their missing
+        # prerequisite is known, but make the extra planning cost affect ranking.
+        catalog_known_prerequisite_codes = [
+            prerequisite_code
+            for prerequisite_code in prerequisite_codes
+            if prerequisite_code in prerequisite_modules_by_code
+        ]
+
+        if not catalog_known_prerequisite_codes:
+            return None
+
+        return RecommendationReadiness(
+            status="needs-prerequisite-planning",
+            existing_prerequisite_course_codes=[],
+            planned_prerequisite_course_codes=catalog_known_prerequisite_codes,
+            missing_prerequisites=catalog_known_prerequisite_codes,
+            prerequisite_planning_penalty=EXTRA_PREREQUISITE_PLANNING_PENALTY,
+            unlock_value=unlock_value,
+        )
+
+    planned_prerequisite_codes = sorted(set(planned_prerequisite_codes))
 
     return RecommendationReadiness(
         status="needs-prerequisite-planning",
         existing_prerequisite_course_codes=[],
         planned_prerequisite_course_codes=planned_prerequisite_codes,
         missing_prerequisites=planned_prerequisite_codes,
+        prerequisite_planning_penalty=EXTRA_PREREQUISITE_PLANNING_PENALTY,
         unlock_value=unlock_value,
     )
 

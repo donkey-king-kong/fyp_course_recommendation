@@ -56266,6 +56266,7 @@
             "latestYear": "2025",
             "latestSemester": "2",
             "isCurrentSemester": false,
+            "recommendationProfile": "broad-default",
             "recommendationTags": [
                 "backend-engineering",
                 "distributed-systems",

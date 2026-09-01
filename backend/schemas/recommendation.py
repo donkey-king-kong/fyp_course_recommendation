@@ -188,9 +188,16 @@ class RecommendationScoreBreakdown(BaseModel):
         description=(
             "No-preference calibration from curated recommendationProfile metadata. "
             "Broad default modules can receive a boost while specialist modules can "
-            "receive a penalty when the student has no selected topic preferences."
+            "receive a penalty in broad/default preference contexts."
         ),
         examples=[0],
+    )
+    prerequisitePlanningPenalty: int = Field(
+        description=(
+            "Penalty applied when a recommendation needs an extra prerequisite plan "
+            "instead of being ready from completed or earlier curriculum modules."
+        ),
+        examples=[-10],
     )
     unlockContribution: int = Field(
         description="Small pathway boost from unlocking later fixed curriculum modules.",

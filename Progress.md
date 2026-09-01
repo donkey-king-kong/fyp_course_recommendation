@@ -2035,3 +2035,57 @@ Status: Implemented locally
 - No new career goal for AI/ML.
 - No automated recommender tests.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Curriculum-Only Prerequisite Planning Policy
+
+Status: Implemented locally
+
+### Decision
+
+- When only a curriculum guide has been uploaded, the recommender should prefer modules whose prerequisites are already covered by earlier compulsory/planned curriculum courses.
+- More relevant modules with unmet prerequisites should not be hard-excluded if the missing prerequisite module exists in the catalog, but they should receive a score penalty because they require extra academic planning.
+- Modules with prerequisites that fit an earlier available choice slot remain valid planned-prerequisite recommendations.
+- Modules whose prerequisites are neither completed nor present earlier in the curriculum can still be considered only as lower-priority options, because they may consume an additional slot or require manual planning.
+- Ready modules should normally beat prerequisite-costly modules unless the relevance gap is large.
+
+### Rationale Notes
+
+- Curriculum-guide-only mode represents a planned degree path, not confirmed completed modules.
+- Without a transcript, the backend should not pretend prerequisites are completed, but it can use the uploaded curriculum structure as planning evidence.
+- A module such as `SC4052 Cloud Computing` can be more relevant to a generic Software Engineer path than `SC4064 GPU Programming`, but it requires `MH2802`; if `MH2802` is not visible as an earlier curriculum module, the recommender should penalise the planning cost instead of removing `SC4052` completely.
+- This keeps the recommender explainable: feasibility remains separate from career relevance, and missing prerequisites appear in the response instead of being hidden by an early filter.
+- The frontend should remain unchanged for now; roadmap cards can continue rendering assigned backend recommendations while planned prerequisite nodes/arrows remain backend-owned.
+
+### Completed
+
+- Added `prerequisitePlanningPenalty` to the recommendation score breakdown.
+- Added a `-10` prerequisite-planning penalty for recommendations that need an extra prerequisite module.
+- Changed prerequisite readiness so catalog-known missing prerequisites can produce `needs-prerequisite-planning` instead of hard-excluding the recommendation.
+- Kept hard exclusions for completed/fixed modules, old course-code families, slot mismatch, and irrelevant candidates.
+- Marked `SC4052 Cloud Computing` as `broad-default` because it is a stronger generic Software Engineer recommendation than `SC4064 GPU Programming`.
+- Kept score breakdowns hidden in the roadmap UI, but made the prerequisite penalty inspectable through the API response.
+- Updated the frontend recommendation response type to include `prerequisitePlanningPenalty` without changing the roadmap UI.
+
+### Verification Notes
+
+- A curriculum-only simulation with no completed transcript modules now keeps `SC4052 Cloud Computing` eligible with missing prerequisite `MH2802` and a `-10` prerequisite-planning penalty.
+- In that simulation, `SC4052 Cloud Computing` replaces `SC4064 GPU Programming`, which matches the intended policy that a more relevant module can beat a weaker ready/default option when the relevance gap is large enough.
+- `SC4064 GPU Programming` remains eligible and unmarked as specialist; it is not treated as bad, only lower priority than broader Software Engineer modules.
+- Reran live benchmark prediction capture against the updated local backend.
+- The live saved-prediction evaluation still reports `averagePrecisionAtK` of `0.44000000000000006`, `averageNdcgAtK` of `0.664030778742472`, `oldCodeExposure` of `0`, and `averageConstraintValidity` of `1.0`.
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -m compileall scripts/run_recommendation_benchmark_predictions.py scripts/evaluate_recommendation_benchmark.py`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `npm run lint` from `frontend`.
+- Ran `npm run build` from `frontend`.
+- Diagnostics return no issues for the edited backend, schema, frontend type, data, and progress files.
+- `git diff --check` passes.
+
+### Out Of Scope
+
+- No frontend UI redesign.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
