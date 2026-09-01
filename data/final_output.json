@@ -1,50 +1,15 @@
 {
   "schemaVersion": 1,
-  "purpose": "Manual benchmark scaffold for evaluating deterministic Software Engineer recommendations before adding more ranking complexity.",
-  "status": "draft-cases-ready-for-manual-review",
+  "purpose": "Draft AI-suggested benchmark cases for future manual review of deterministic Software Engineer recommendations.",
+  "status": "draft-ai-suggested-not-ground-truth",
   "notes": [
-    "These cases are AI-assisted drafts reviewed for file structure, catalog consistency, tag validity, and obvious recommendation-rule issues.",
-    "Do not treat labels as expert ground truth until the project owner, adviser, lecturer, TA, senior student, or another trusted reviewer approves them.",
-    "Keep cases stable so old and new recommender versions can be compared on the same inputs.",
-    "The frontend does not read this file. It is for offline evaluation planning and later tooling."
+    "These cases are not expert-reviewed.",
+    "Use only after manual review by the project owner, adviser, lecturer, TA, senior student, or another trusted reviewer.",
+    "Every valid course code and title matches data/modules.json at the time this file was generated.",
+    "Codes marked oldCodeHandling=excluded are deliberately invalid examples \u2014 they must not be used as valid recommendations.",
+    "Modules where isCurrentSemester=false are noted in reviewNotes and need extra verification before use.",
+    "Repaired from data/benchmark_cases.json: corrected fabricated course codes (SC3033, SC3035, SC3038, SC3207), wrong titles on SC4013, SC4053, SC4051, SC4010, SC4020, SC4061, SC4011, SC4054, MH3600, and non-canonical preference tags."
   ],
-  "allowedRelevanceLabels": [
-    "highly-relevant",
-    "relevant",
-    "somewhat-relevant",
-    "irrelevant"
-  ],
-  "allowedOldCodeHandling": [
-    "excluded",
-    "allowed-by-explicit-exception",
-    "not-applicable"
-  ],
-  "caseTemplate": {
-    "caseId": "software-engineer-csc-001",
-    "description": "Short human-readable case description.",
-    "studentFaculty": "CSC",
-    "careerGoal": "software-engineer",
-    "preferredRecommendationTags": [],
-    "completedCourseCodes": [],
-    "choiceSlots": [
-      {
-        "slotId": "year3-sem1-slot1",
-        "courseCode": "SC3xxx",
-        "year": 3,
-        "semester": 1
-      }
-    ],
-    "curriculumCourses": [],
-    "reviewedCandidates": [
-      {
-        "courseCode": "SC4001",
-        "expectedRelevance": "highly-relevant",
-        "expectedSkillPath": "Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems",
-        "oldCodeHandling": "not-applicable",
-        "reviewNotes": "Explain why this label was assigned."
-      }
-    ]
-  },
   "cases": [
     {
       "caseId": "software-engineer-csc-001",

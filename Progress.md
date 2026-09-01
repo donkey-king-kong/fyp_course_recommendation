@@ -1901,3 +1901,34 @@ Status: Scaffold added
 - No automated evaluation runner has been added yet.
 - No lecturer/adviser-reviewed labels have been collected yet.
 - No ranking formula changes are included in this scaffold step.
+
+## Recommendation Benchmark Draft Cases And Evaluator
+
+Status: Implemented locally
+
+### Completed
+
+- Added 5 draft CSC `Software Engineer` benchmark cases to `data/recommendation_benchmark_cases.json`.
+- Kept the benchmark status as draft and clearly marked that the labels are not expert-reviewed ground truth.
+- Preserved the existing benchmark scaffold metadata, including allowed relevance labels, allowed old-code handling labels, and the case template.
+- Kept `data/final_output.json` as the temporary Claude-generated source file for comparison and review.
+- Added `scripts/evaluate_recommendation_benchmark.py` as a dependency-free offline evaluator for saved recommendation outputs.
+- The evaluator can calculate Precision@K, nDCG@K, case coverage, explanation coverage, explanation fidelity, skill-area diversity@K, old-code exposure, and constraint validity.
+- Added a `--use-reviewed-candidates` smoke mode so the metric code can be exercised before real saved recommender prediction files exist.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --use-reviewed-candidates --k 5`.
+- Ran `.venv/bin/python -m compileall scripts/evaluate_recommendation_benchmark.py`.
+- Diagnostics return no issues for `data/recommendation_benchmark_cases.json`.
+- `git diff --check` passes.
+
+### Not Included
+
+- No expert-reviewed benchmark ground truth yet.
+- No automated recommender tests.
+- No backend recommendation logic changes.
+- No frontend UI changes.
+- No integration that automatically captures live `POST /recommendations` outputs.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, or backend persistence.
