@@ -60,10 +60,10 @@ function getRecommendationNotice(
   }
 
   const changedInputs = staleReasons
-    .map((reason) => (reason === 'curriculum-guide' ? 'curriculum guide' : 'transcript'))
+    .map((reason) => (reason === 'curriculum-guide' ? 'Curriculum guide' : 'Transcript'))
     .join(' and ')
 
-  return `Your ${changedInputs} changed after these recommendations were loaded. Press Load Roadmap on Profile again to refresh them, or clear recommendations to view the roadmap without saved recommendations.`
+  return `${changedInputs} changed. Reload or clear recommendations.`
 }
 
 // Main page component

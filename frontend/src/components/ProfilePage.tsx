@@ -417,21 +417,20 @@ function ProfilePage({
                   : 'Load Roadmap'}
             </button>
 
-            {hasLoadedRoadmap && (
-              <button
-                className="profile-clear-recommendations-button"
-                type="button"
-                onClick={onClearRecommendations}
-                disabled={isLoadingRoadmap}
-              >
-                Clear Recommendations
-              </button>
+            <button
+              className="profile-clear-recommendations-button"
+              type="button"
+              onClick={onClearRecommendations}
+              disabled={!hasLoadedRoadmap || isLoadingRoadmap}
+            >
+              Clear Recommendations
+            </button>
+
+            {recommendationNotice && (
+              <span className="recommendation-stale-notice">{recommendationNotice}</span>
             )}
           </div>
 
-          {recommendationNotice && (
-            <p className="recommendation-stale-notice">{recommendationNotice}</p>
-          )}
           <button className="profile-roadmap-link" type="button" onClick={onGoToRoadmap}>
             Go to roadmap...
           </button>

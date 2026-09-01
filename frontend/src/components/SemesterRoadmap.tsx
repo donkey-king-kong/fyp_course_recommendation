@@ -614,22 +614,24 @@ function SemesterRoadmap({
       <div className="semester-roadmap-header">
         <h2>Roadmap</h2>
 
+        {recommendationNotice && (
+          <span className="roadmap-recommendation-notice">{recommendationNotice}</span>
+        )}
+
         <div className="roadmap-actions">
           {/* Remove the uploaded curriculum guide while keeping transcript data saved for rematching. */}
           <button type="button" className="clear-roadmap-button" onClick={handleClearRoadmap}>
             Clear roadmap
           </button>
 
-          {recommendations.length > 0 && (
-            <button
-              type="button"
-              className="clear-recommendations-button"
-              onClick={onClearRecommendations}
-              disabled={isLoadingRecommendations}
-            >
-              Clear recommendations
-            </button>
-          )}
+          <button
+            type="button"
+            className="clear-recommendations-button"
+            onClick={onClearRecommendations}
+            disabled={recommendations.length === 0 || isLoadingRecommendations}
+          >
+            Clear recommendations
+          </button>
 
           {/* Clear the completed-course list so every roadmap checkbox becomes unchecked */}
           <button
@@ -656,9 +658,6 @@ function SemesterRoadmap({
 
       {recommendationError && (
         <p className="roadmap-recommendation-error">{recommendationError}</p>
-      )}
-      {recommendationNotice && (
-        <p className="roadmap-recommendation-notice">{recommendationNotice}</p>
       )}
       {isLoadingRecommendations && (
         <p className="roadmap-recommendation-loading">

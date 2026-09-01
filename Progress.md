@@ -2133,6 +2133,7 @@ Status: Implemented locally
 - Added persisted recommendation stale reasons when an uploaded curriculum guide or transcript changes after recommendations have already been loaded.
 - Show the same stale recommendation notice on the Profile page and Roadmap page.
 - Added `Clear Recommendations` controls so the student can remove saved recommendation cards and view the curriculum roadmap with or without transcript completions.
+- Polished the stale notice into short red inline helper text and made clear-action buttons visibly active or greyed out when unavailable.
 
 ### Rationale Notes
 
