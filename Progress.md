@@ -1620,6 +1620,10 @@ Status: Implemented locally
 - Kept existing curated tag relevance, keyword fallback, student topic preference boosts, same-faculty boosts, legacy-code penalties, unlock contribution, and diversity behavior in place.
 - Updated the recommendations endpoint description to explain that career relevance now uses static mappings, curated tags, and keyword fallback.
 - Updated the frontend recommendation response type only; the roadmap UI remains visually unchanged.
+- Moved the career-skill mapping data into `backend/services/career_skill_mappings.py` so the mapping is easier to review separately from ranking logic.
+- Added mapping provenance through per-skill `rationale` text that explains why each skill area matters for the Software Engineer career goal.
+- Added `weight_rationale` text for each mapped skill area so the manually chosen weights are easier to inspect and calibrate later.
+- Improved backend recommendation reasons so matched mapped skill areas can explain why a module supports the selected career goal.
 
 ### Rationale Notes
 
@@ -1634,6 +1638,8 @@ Status: Implemented locally
 - Keeping the goal-to-skill mapping backend-owned preserves a clean architecture boundary: the frontend renders assigned recommendations, while the backend remains the source of truth for ranking logic.
 - The main limitation is that this remains a manually maintained, one-hop taxonomy matcher. It depends on the completeness and calibration of the mappings and can be brittle across many career goals or ambiguous modules.
 - Content-based recommenders can suffer from over-specialisation, vocabulary mismatch, and dependence on item-feature quality, so later improvements may need stronger provenance, broader mappings, or job-market evidence.
+- Keeping provenance and weight rationale beside the mapping makes future review easier because domain assumptions are documented where the scoring inputs are defined.
+- The mapping remains Python-based for now instead of JSON because typed fields, comments, and rationale strings are easier to maintain during this early backend-only iteration.
 
 ### Verified
 
@@ -1650,5 +1656,6 @@ Status: Implemented locally
 - No MyCareersFuture scraping or live labour-market data.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, or agent workflow.
 - No new frontend UI and no visible score breakdown on roadmap cards.
+- No automated test suite was added in this step; verification remains compile, lint, build, diagnostics, and service-level checks.
 - No API rename from `recommendations` to `assignments`.
 - No backend persistence, user table, authentication, or SSO.
