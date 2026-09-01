@@ -109,6 +109,7 @@ function App() {
     roadmapRecommendationStaleReasons,
     hasLoadedRoadmapRecommendations,
   )
+  const roadmapPageError = roadmapProjectionError || recommendationError
 
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
@@ -329,16 +330,23 @@ function App() {
         </div>
       </header>
 
-      {currentView === 'roadmap' && !roadmap && (
+      {currentView === 'roadmap' && roadmapPageError && (
+        <section className="roadmap-empty-state roadmap-error-state">
+          <h2>Roadmap Needs Attention</h2>
+          <p>{roadmapPageError}</p>
+          <button type="button" onClick={() => setCurrentView('profile')}>
+            Go to Profile
+          </button>
+        </section>
+      )}
+
+      {currentView === 'roadmap' && !roadmap && !roadmapPageError && (
         <section className="roadmap-empty-state">
           <h2>Upload Your Curriculum Guide</h2>
           <p>
             Your roadmap will be generated from your uploaded curriculum guide. Go to Profile and
             upload the PDF before planning courses.
           </p>
-          {roadmapProjectionError && (
-            <p className="roadmap-recommendation-error">{roadmapProjectionError}</p>
-          )}
           <button type="button" onClick={() => setCurrentView('profile')}>
             Go to Profile
           </button>
@@ -346,7 +354,7 @@ function App() {
       )}
 
       {/* Show roadmap content only after a curriculum guide exists for this profile. */}
-      {roadmap && currentView === 'roadmap' && (
+      {roadmap && currentView === 'roadmap' && !roadmapPageError && (
         <>
           {/* Shows the curriculum-style roadmap with semester bands and prerequisite arrows. */}
           <SemesterRoadmap

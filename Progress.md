@@ -2140,6 +2140,7 @@ Status: Implemented locally
 - Changed completed-course updates so `Clear completed` keeps existing recommendations visible and marks them stale instead of clearing recommendation cards.
 - Fixed recommended choice-slot readiness display so a recommended MPE/BDE card becomes locked when the assigned recommendation still has unmet prerequisites.
 - Clarified the roadmap clear-completion action: with a saved transcript it is labelled `Clear transcript completions` and removes transcript-applied ticks while keeping the parsed transcript available for `Re-apply Transcript`; without a saved transcript it remains `Clear completed` for manual ticks.
+- Updated the Roadmap page error state so roadmap projection or recommendation errors show a large blocking message instead of rendering the roadmap graph underneath.
 
 ### Rationale Notes
 

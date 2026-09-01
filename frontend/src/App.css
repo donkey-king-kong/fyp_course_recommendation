@@ -253,6 +253,23 @@
   line-height: 1.6;
 }
 
+.roadmap-error-state {
+  border-color: rgba(220, 38, 38, 0.32);
+}
+
+.roadmap-error-state h2 {
+  color: #dc2626;
+}
+
+.roadmap-error-state p {
+  color: #991b1b;
+  font-weight: 800;
+}
+
+.app-shell[data-theme='dark'] .roadmap-error-state p {
+  color: #fecaca;
+}
+
 .roadmap-empty-state button {
   padding: 0.7rem 1rem;
   border: 0;
