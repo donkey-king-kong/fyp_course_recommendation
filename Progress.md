@@ -1932,3 +1932,41 @@ Status: Implemented locally
 - No frontend UI changes.
 - No integration that automatically captures live `POST /recommendations` outputs.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, or backend persistence.
+
+## Live Recommendation Benchmark Prediction Capture
+
+Status: Implemented locally
+
+### Completed
+
+- Marked the 5 benchmark cases as project-owner-reviewed drafts after manual review.
+- Kept the benchmark caveat that labels are not expert-reviewed ground truth until an adviser, lecturer, TA, senior student, or another trusted reviewer approves them.
+- Added `scripts/run_recommendation_benchmark_predictions.py` to call the live backend `POST /recommendations` endpoint for each benchmark case.
+- The runner converts compact benchmark curriculum course-code lists into the object shape expected by the recommendation API.
+- The runner saves backend-assigned recommendation outputs to `data/recommendation_benchmark_predictions.json` by default.
+- Saved prediction files can be passed directly into `scripts/evaluate_recommendation_benchmark.py`.
+
+### How To Run
+
+```bash
+uvicorn backend.main:app --reload
+```
+
+```bash
+.venv/bin/python scripts/run_recommendation_benchmark_predictions.py
+```
+
+```bash
+.venv/bin/python scripts/evaluate_recommendation_benchmark.py \
+  --predictions data/recommendation_benchmark_predictions.json \
+  --k 5
+```
+
+### Not Included
+
+- No expert-reviewed benchmark ground truth yet.
+- No automated recommender tests.
+- No backend recommendation logic changes.
+- No frontend UI changes.
+- No score breakdown display on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.

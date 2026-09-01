@@ -63,6 +63,9 @@ def prediction_course_code(prediction: dict[str, Any]) -> str:
 def prediction_slot_id(prediction: dict[str, Any]) -> str | None:
     return prediction.get("matchedChoiceSlotId") or prediction.get("targetSlotId")
 
+def display_career_goal(career_goal: str) -> str:
+    return career_goal.replace("-", " ").title()
+
 
 def is_old_code(course_code: str) -> bool:
     return course_code.startswith(OLD_CODE_PREFIXES)
@@ -110,7 +113,7 @@ def career_skill_path(prediction: dict[str, Any]) -> str | None:
     if not all([career_goal, skill_area, tag, title]):
         return None
 
-    return f"{career_goal} -> {skill_area} -> {tag} -> {title}"
+    return f"{display_career_goal(career_goal)} -> {skill_area} -> {tag} -> {title}"
 
 
 def slot_fits(prediction: dict[str, Any], case: dict[str, Any]) -> bool:

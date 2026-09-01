@@ -1,10 +1,11 @@
 {
   "schemaVersion": 1,
   "purpose": "Manual benchmark scaffold for evaluating deterministic Software Engineer recommendations before adding more ranking complexity.",
-  "status": "draft-cases-ready-for-manual-review",
+  "status": "project-owner-reviewed-draft-cases",
   "notes": [
     "These cases are AI-assisted drafts reviewed for file structure, catalog consistency, tag validity, and obvious recommendation-rule issues.",
-    "Do not treat labels as expert ground truth until the project owner, adviser, lecturer, TA, senior student, or another trusted reviewer approves them.",
+    "The project owner has reviewed these draft cases as acceptable for initial local benchmarking.",
+    "Do not treat labels as expert ground truth until an adviser, lecturer, TA, senior student, or another trusted reviewer approves them.",
     "Keep cases stable so old and new recommender versions can be compared on the same inputs.",
     "The frontend does not read this file. It is for offline evaluation planning and later tooling."
   ],
@@ -51,7 +52,7 @@
       "description": "Y4 CSC student with backend and distributed-systems preference. All core modules and internship completed. Only SC4xxx MPE slots remain open. Tests that the recommender surfaces distributed-systems and cloud-adjacent modules at SC4 level.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
-      "reviewerStatus": "draft-ai-suggested-not-ground-truth",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
       "preferredRecommendationTags": [
         "backend-engineering",
         "distributed-systems",
@@ -188,7 +189,7 @@
       "description": "Y3 CSC student with AI/ML preference. Core Year 1-2 modules completed plus fixed SC3 compulsory modules. Two SC3xxx and two SC4xxx MPE slots open. Tests that the recommender prioritises ai-ml-tagged modules at appropriate levels.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
-      "reviewerStatus": "draft-ai-suggested-not-ground-truth",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
       "preferredRecommendationTags": [
         "ai-ml",
         "computer-vision",
@@ -345,7 +346,7 @@
       "description": "Y3-Y4 CSC student with computer-security and cryptography preference. Core modules and internship completed. Two SC4xxx MPE slots and one BDE slot open. Tests that the recommender surfaces security-track modules at SC4 level and appropriately handles the BDE slot.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
-      "reviewerStatus": "draft-ai-suggested-not-ground-truth",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
       "preferredRecommendationTags": [
         "computer-security",
         "cryptography",
@@ -496,7 +497,7 @@
       "description": "Y3 CSC student with database and backend-engineering preference. Core Year 1-2 modules completed. Two SC3xxx MPE slots and one SC4xxx MPE slot open. Tests that the recommender surfaces database-tagged SC3 modules and data-adjacent SC4 modules.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
-      "reviewerStatus": "draft-ai-suggested-not-ground-truth",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
       "preferredRecommendationTags": [
         "database",
         "backend-engineering"
@@ -646,7 +647,7 @@
       "description": "Y4 CSC student with no topic preference. All core modules and internship completed using the actual sample transcript (U2320608L). Three SC4xxx MPE slots remain. Tests the recommender default behaviour when no preference tags are set \u2014 expects diverse, broadly SWE-relevant recommendations, correct exclusion of already-completed modules.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
-      "reviewerStatus": "draft-ai-suggested-not-ground-truth",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
       "preferredRecommendationTags": [],
       "completedCourseCodes": [
         "SC1003",
