@@ -136,6 +136,22 @@ class RecommendationPlannedRoadmapEdge(BaseModel):
     source: str = Field(description="Source roadmap node ID for the planned prerequisite arrow.")
     target: str = Field(description="Target roadmap node ID for the planned prerequisite arrow.")
 
+class RecommendationCareerSkillEvidence(BaseModel):
+    careerGoal: str = Field(description="Career goal used for this career-skill evidence.")
+    skillArea: str = Field(description="Highest-contributing mapped skill area.")
+    skillAreaWeight: int = Field(description="Configured importance weight for the skill area.")
+    tag: str = Field(description="Module recommendation tag that produced the contribution.")
+    relationshipWeight: float = Field(
+        description="How strongly the tag supports the mapped skill area.",
+    )
+    tagConfidence: float = Field(
+        description="Confidence that the module truly has this recommendation tag.",
+    )
+    contributionScore: float = Field(
+        description="Raw contribution before rounding into careerSkillScore.",
+    )
+    rationale: str = Field(description="Rationale for the matched tag relationship.")
+
 class RecommendationScoreBreakdown(BaseModel):
     careerTagScore: int = Field(
         description="Base relevance score from existing curated tag weights and keyword fallback.",
@@ -144,6 +160,10 @@ class RecommendationScoreBreakdown(BaseModel):
     careerSkillScore: int = Field(
         description="Additional deterministic score from static career-to-skill mappings.",
         examples=[10],
+    )
+    careerSkillEvidence: Optional[RecommendationCareerSkillEvidence] = Field(
+        default=None,
+        description="Top career-skill evidence path used for explanation and debugging.",
     )
     currentSemesterBonus: int = Field(
         description="Small bonus when the module is available in the current catalog semester.",
@@ -158,7 +178,10 @@ class RecommendationScoreBreakdown(BaseModel):
         examples=[8],
     )
     legacyCodePenalty: int = Field(
-        description="Negative adjustment for older CSC/CZ course codes when the student is in CSC.",
+        description=(
+            "Reserved score adjustment for future code-family preferences. Old CE/CSC "
+            "code families are currently filtered before scoring."
+        ),
         examples=[0],
     )
     unlockContribution: int = Field(
@@ -249,6 +272,19 @@ class RecommendationResponse(BaseModel):
                         "scoreBreakdown": {
                             "careerTagScore": 7,
                             "careerSkillScore": 10,
+                            "careerSkillEvidence": {
+                                "careerGoal": "software-engineer",
+                                "skillArea": "software design and delivery",
+                                "skillAreaWeight": 10,
+                                "tag": "software-engineering",
+                                "relationshipWeight": 1.0,
+                                "tagConfidence": 1.0,
+                                "contributionScore": 10.0,
+                                "rationale": (
+                                    "Directly represents structured software design "
+                                    "and delivery practice."
+                                ),
+                            },
                             "currentSemesterBonus": 1,
                             "preferenceBoost": 0,
                             "sameFacultyBoost": 0,

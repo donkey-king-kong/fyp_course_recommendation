@@ -9,6 +9,7 @@ from sqlalchemy.orm import Session
 from backend.models import ModuleModel
 from backend.schemas.recommendation import (
     CourseRecommendation,
+    RecommendationCareerSkillEvidence,
     RecommendationChoiceSlot,
     RecommendationCurriculumCourse,
     RecommendationPlannedRoadmapEdge,
@@ -219,6 +220,10 @@ def recommend_courses(
             score_breakdown = RecommendationScoreBreakdown(
                 careerTagScore=career_match.career_tag_score,
                 careerSkillScore=career_match.career_skill_score,
+                careerSkillEvidence=build_career_skill_evidence(
+                    career_goal,
+                    career_match.top_skill_contribution,
+                ),
                 currentSemesterBonus=career_match.current_semester_bonus,
                 preferenceBoost=preference_boost,
                 sameFacultyBoost=faculty_boost,
@@ -1036,6 +1041,27 @@ def get_top_skill_contribution(
 
 def round_positive_score(score: float) -> int:
     return int(score + 0.5)
+
+def build_career_skill_evidence(
+    career_goal: str,
+    top_skill_contribution: Optional[CareerSkillContribution],
+) -> Optional[RecommendationCareerSkillEvidence]:
+    if not top_skill_contribution:
+        return None
+
+    mapping = top_skill_contribution.mapping
+    relationship = top_skill_contribution.relationship
+
+    return RecommendationCareerSkillEvidence(
+        careerGoal=career_goal,
+        skillArea=mapping.skill,
+        skillAreaWeight=mapping.weight,
+        tag=relationship.tag,
+        relationshipWeight=relationship.relationship_weight,
+        tagConfidence=relationship.tag_confidence,
+        contributionScore=top_skill_contribution.score,
+        rationale=relationship.rationale,
+    )
 
 def normalize_recommendation_tags(tags: list[str]) -> set[str]:
     return {

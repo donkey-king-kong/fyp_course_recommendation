@@ -1805,3 +1805,28 @@ Status: Planned
 - `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes should be excluded from recommendation candidates.
 - `SC` modules should remain eligible.
 - Lower-priority code-family rules should not cause an ineligible module to be returned just to fill a slot.
+
+## Career-Skill Evidence Metadata
+
+Status: Implemented locally
+
+### Completed
+
+- Added `careerSkillEvidence` inside the existing recommendation `scoreBreakdown` response.
+- Kept the roadmap UI visually unchanged; the new metadata is available through the API response and frontend types only.
+- Included the top career-skill evidence path used for debugging and explanation fidelity: career goal, skill area, skill-area weight, matched recommendation tag, relationship weight, tag confidence, contribution score, and rationale.
+- Updated backend scoring so the evidence object is built from the same top career-skill contribution used by the recommendation reason.
+- Updated the frontend recommendation TypeScript type so browser/API inspection can see the new metadata without rendering it on roadmap cards.
+
+### Value Decisions To Review Later
+
+- First-pass `relationshipWeight` values were manually chosen based on how directly each tag supports the Software Engineer skill area.
+- First-pass `tagConfidence` values were manually chosen as metadata-confidence placeholders because recommendation tags are currently curated/static rather than statistically estimated.
+- `contributionScore` is calculated by the backend from `skillAreaWeight * relationshipWeight * tagConfidence`; it is not manually entered.
+- The current values are intentionally inspectable and should be reviewed later with labelled benchmark cases or adviser feedback.
+
+### Not Included
+
+- No roadmap UI display for score metadata.
+- No automated tests were added in this step.
+- No benchmark dataset or tuning process yet.
