@@ -1641,6 +1641,29 @@ Status: Implemented locally
 - Keeping provenance and weight rationale beside the mapping makes future review easier because domain assumptions are documented where the scoring inputs are defined.
 - The mapping remains Python-based for now instead of JSON because typed fields, comments, and rationale strings are easier to maintain during this early backend-only iteration.
 
+### Known Downsides And Mitigations
+
+- Manual taxonomy maintenance remains a risk because every career goal, skill area, and tag relationship must be created and updated by people. New or renamed modules can stop matching if the mapping becomes stale, so future work should version mappings, track unmatched tags/goals, and eventually support review tooling.
+- Coverage gaps can occur when a genuinely relevant module has no curated tag included in the career mapping. This can make students ask why an obviously relevant module is missing, so future work should track unmapped-but-potentially-relevant modules and review coverage metrics.
+- Vocabulary mismatch can still happen if module tags and mapping tags use different labels for the same idea. A future controlled taxonomy should use canonical tag IDs or aliases rather than relying on free-text labels.
+- Over-broad skill areas can match many modules with unequal value. Weights and evidence strength should keep broad matches from pushing introductory or tangential modules too high.
+- Over-specialisation can happen if direct skill matches repeatedly concentrate Software Engineer recommendations around backend, web, or programming courses. Future ranking should reserve room for adjacent skills, exploration, breadth requirements, or subpath diversity.
+- The current mapping does not model student-specific competence. A student already strong in backend work may still receive backend-heavy suggestions, so later profile inputs could capture self-rated confidence, grades, completed modules, and stated interests.
+- Tags alone do not encode prerequisites, timetable feasibility, degree rules, or module availability. The current recommender already applies curriculum and prerequisite checks before ranking, and that boundary should remain a hard eligibility layer.
+- The `Software Engineer` career label is coarse because it can mean frontend, backend, platform, mobile, security, data, or product engineering. Future work can let students choose a subpath or assign importance weights to skill areas.
+- Tag quality becomes a bottleneck because the semantic layer inherits mistakes from module tagging. High-impact tags should be reviewed and eventually include confidence/provenance.
+- Explanation wording can overstate certainty if it sounds like one module guarantees job readiness. Use careful language such as `builds exposure to` or `is aligned with`, and show exact matched tags or skill areas when explanations are displayed.
+- The current system is popularity/outcome blind because taxonomy matching alone cannot learn which modules students value, perform well in, or find useful. Later feedback or outcome signals should be separate reranking components rather than replacements for eligibility.
+- Evaluation can be misleading if offline scores only show agreement with the manually defined mapping. Future evaluation should include independent labels and student or academic-advisor judgment.
+
+### Binary Matching Issue
+
+- The current career-skill layer still behaves like a binary match at the tag-to-skill step: if a module has a mapped tag such as `backend-engineering`, the related skill area is treated as matched and the module receives that skill area's weight.
+- This is a reasonable candidate-generation signal, but it is weak as the complete ranker because not all tag matches are equally meaningful.
+- For example, `Distributed Systems`, `Database Systems`, and `Introductory Web Development` may all match Software Engineer skill areas, but their expected career relevance can differ significantly depending on student level, prior experience, and target subpath.
+- A simple count or binary match can rank these modules too similarly, even though a final-year student aiming for backend or platform engineering may benefit more from distributed systems than from an introductory web module.
+- Future improvements should add evidence strength, course level/context, subpath preference, and tag confidence so a match can be graded rather than treated as simply present or absent.
+
 ### Verified
 
 - Ran `.venv/bin/python -m compileall backend`.
