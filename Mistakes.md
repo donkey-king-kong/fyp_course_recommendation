@@ -116,6 +116,20 @@ Updated PR #27 to use the exact `PR_template.md` section headings and assigned i
 Lesson:
 Before creating any PR, first read `PR_template.md`, prepare the body using its exact headings, create the PR, then immediately run `gh pr edit <number> --add-assignee @me`. After creation, verify the PR with `gh pr view <number> --json title,assignees,body,url` before telling the user it is done.
 
+### 2026-09-01
+
+Mistake:
+Repeated offence again: created PR #33 without following `PR_template.md` and without assigning it.
+
+What happened:
+PR #33 was created with custom `Summary` and `Verification` headings instead of the required `Description`, `Why This Change Is Needed`, `How To Test`, `Expected Result`, and `Checklist` headings. The PR was also left with no assignee even though this exact process mistake had already been recorded multiple times.
+
+Correction:
+Update PR #33 to use the exact `PR_template.md` sections, assign it to `@me`, and verify the PR metadata with `gh pr view`.
+
+Lesson:
+Do not create PRs from memory. Before every `gh pr create`, read `PR_template.md`, draft the body with the exact required headings, include the checklist, create the PR, immediately assign `@me`, and verify title/body/assignee before reporting completion.
+
 ## Entry Format
 
 ```text
