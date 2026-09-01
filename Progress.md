@@ -1830,3 +1830,67 @@ Status: Implemented locally
 - No roadmap UI display for score metadata.
 - No automated tests were added in this step.
 - No benchmark dataset or tuning process yet.
+
+## Automated Recommender Tests Decision
+
+Status: Postponed
+
+### Decision
+
+- Do not add automated recommender scoring or eligibility tests right now.
+- A temporary `unittest` file for helper-level recommendation scoring checks was created locally, reviewed, and removed before commit.
+- Keep the automated test ideas in this progress document as future validation work, but continue the next development step first unless tests are explicitly requested again.
+
+### Rationale Notes
+
+- The immediate priority is still to evolve the recommender behavior and metadata in small understandable steps.
+- The intended invariants remain useful later, especially once the scoring shape stabilizes and benchmark cases exist.
+
+## Recommendation Benchmark Plan
+
+Status: Planned
+
+### Goal
+
+- Create a small fixed benchmark set for evaluating deterministic Software Engineer recommendations before adding more ranking complexity.
+- Use the benchmark to compare recommender changes on the same inputs instead of judging quality only from ad hoc roadmap screenshots.
+- Keep the benchmark local and inspectable so it supports FYP explanation, tuning, and later adviser review.
+
+### Proposed Benchmark Scope
+
+- Start with 30 to 60 labelled cases.
+- Focus first on CSC students with `Software Engineer` as the career goal.
+- Include open MPE and BDE slots because these are the recommendation slots currently handled by the backend.
+- Include cases with different completed-module sets so prerequisite readiness and already-completed exclusions are exercised.
+- Include cases where old course-code families such as `CE`, `CPE`, `CSC`, and `CZ` appear in the catalog but should be excluded.
+
+### Case Fields To Capture
+
+- Student programme or faculty, initially `CSC`.
+- Career goal, initially `software-engineer`.
+- Preferred recommendation tags, if any.
+- Completed course codes from transcript state.
+- Open choice-slot definitions, including slot ID, course code, year, and semester.
+- Curriculum courses used for fixed-module exclusion and prerequisite readiness.
+- Candidate modules or expected candidate group, if a smaller manually reviewed pool is used.
+- Expected relevance label per reviewed module: highly relevant, relevant, somewhat relevant, or irrelevant.
+- Expected explanation path where it is clear, such as career goal to skill area to tag to module title.
+- Expected old-code handling: excluded, allowed by explicit exception, or not applicable.
+
+### Metrics To Track
+
+- Precision@5: how many of the first five recommendations are relevant.
+- nDCG@5: whether highly relevant recommendations appear above weaker relevant recommendations.
+- Coverage: how many valid modules and Software Engineer skill areas the recommender can cover.
+- Explanation coverage: how often returned recommendations include a non-empty career-skill evidence path.
+- Explanation fidelity: whether the displayed top path matches the actual highest-contributing career-skill evidence.
+- Skill-area diversity@5: whether top recommendations cover multiple useful Software Engineer skill areas.
+- Old-code exposure: how often `CE`, `CPE`, `CSC`, or `CZ` appears after the exclusion rule; expected value should be zero unless an explicit allowlist is introduced later.
+- Constraint validity: whether returned recommendations are eligible, non-duplicative, and compatible with slot/prerequisite rules.
+
+### Not Included Yet
+
+- No benchmark data file has been created yet.
+- No automated evaluation runner has been added yet.
+- No lecturer/adviser-reviewed labels have been collected yet.
+- No ranking formula changes are included in this documentation step.

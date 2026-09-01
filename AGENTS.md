@@ -304,11 +304,13 @@ Current next step:
 - Keep roadmap/profile polish and API naming cleanup in view, especially clearer loading/error states and a future `recommendations` to `assignments` naming cleanup if the API changes.
 - Keep recommendation ranking and exact-slot allocation in the backend; the frontend should remain a rendering layer for assigned recommendations.
 - Keep recommendation diversity subordinate to eligibility, career relevance, and student topic preferences.
-- Next recommender improvement should refine the current static career-skill mapping into weighted tag-to-skill relationships so `careerSkillScore` is no longer a mostly binary tag match.
+- Weighted tag-to-skill relationships and top career-skill evidence metadata are implemented for Software Engineer recommendations.
+- `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes are treated as old CE/CSC course-code families and should be excluded from recommendation candidates, not merely deprioritized with penalties.
 - Preserve the hard-filter-before-ranking architecture: completed/fixed modules, slot fit, prerequisite feasibility, near-duplicate prior learning, and later availability/AU/programme constraints should be checked before final scoring.
 - Keep career relevance as one ranking factor, not the whole definition of usefulness. Continue combining career fit with student interests, curriculum/pathway fit, same-faculty/code preferences, unlock value, and diversity.
 - Improve recommendation explanations by keeping the top-contributing path, such as `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every matched signal.
 - Do not show recommendation score breakdowns in the roadmap UI unless explicitly requested.
+- Do not add automated recommender tests right now; scoring and eligibility test ideas are documented for later validation work, but the immediate next work should proceed without creating a test suite unless explicitly requested again.
 - Do not add Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, or advanced job-market integration yet.
 
 ## Expected Working Directory
