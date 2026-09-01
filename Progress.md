@@ -1752,3 +1752,57 @@ Status: Implemented locally
 - No `CE` course-code penalty yet.
 - No frontend UI change.
 - No automated tests were added in this step.
+
+## Reviewer Notes On Recommender Validation
+
+Status: Planned
+
+### Decisions
+
+- Treat `SC` as the primary current course-code family for CSC student recommendations.
+- Treat `CSC`, `CZ`, and `CPE` as old or fallback course-code families in the CSC recommendation context.
+- Keep both safer scoring metadata and safer ranking behavior in view; they are complementary, not mutually exclusive.
+- Implement safer scoring metadata first if the next goal is explainability and debugging.
+- Implement safer ranking behavior first if the next goal is reducing bad visible recommendations such as old/fallback-code modules outranking suitable current-code modules.
+- Prefer doing both before the recommender is evaluated formally, but keep each as a separate small work unit.
+
+### Safer Ranking Behavior To Consider
+
+- Replace unconditional full code-family penalties with a contextual fallback policy.
+- Apply the strongest fallback penalty only when a suitable current-code alternative exists in the same recommendation slot or a similar topic cluster.
+- If no current-code equivalent exists, apply a weaker fallback penalty or no penalty so a highly relevant fallback-code module is not buried below a tangential `SC` module.
+- Longer term, use module equivalence, successor relationships, or curated topic clusters to decide when an old/fallback code should be strongly deprioritized.
+- Keep the hard-filter-before-ranking boundary intact: eligibility, fixed/completed modules, slot fit, prerequisite feasibility, and near-duplicate prior learning should still be checked before scoring.
+
+### Safer Scoring Metadata To Consider
+
+- Keep score components separately observable even if the roadmap UI does not display them.
+- Add or internally log career-skill evidence such as career goal, skill area, skill-area importance, matched tag, relationship weight, tag confidence, and rationale.
+- Add or internally log code-family adjustment details such as `codeFamilyAdjustment` and `codeFamilyReason`.
+- Version the career-skill mapping or scoring model internally so historical recommendation comparisons remain understandable after weights are tuned.
+- Preserve explanation fidelity: the displayed top career-skill path should match the actual highest-contributing scoring path.
+
+### Aggregation And Confidence Caveats
+
+- Current career-skill scoring takes the strongest matching tag per skill area, then sums skill-area contributions.
+- This max-per-skill-area approach gives a clear explanation path, but can under-reward modules with several genuinely relevant tags inside the same skill area.
+- A future capped top-n aggregation could reward breadth without letting many weak tags dominate, for example `x1 + 0.25*x2 + 0.10*x3`.
+- Keep `relationship_weight` and `tag_confidence` conceptually separate: relationship weight means how strongly a tag supports a skill area, while tag confidence means how reliable the module's tag metadata is.
+- Consider moderating confidence rather than multiplying it directly, for example `relationship_weight * (0.7 + 0.3 * tag_confidence)`, so incomplete metadata does not completely collapse a semantically strong match.
+
+### Evaluation Plan
+
+- Build a fixed labelled benchmark set before making many more ranking changes.
+- Suggested benchmark size: 30 to 60 cases for CSC students with Software Engineer as the career goal.
+- Include completed modules, eligibility constraints, candidate pools, expected relevance labels, expected explanation paths where possible, and whether fallback codes should be permitted, discouraged, or excluded.
+- Compare old and new rankers on the same inputs using ranking, diversity, explanation, fallback, and constraint-validity metrics.
+- Useful metrics include Precision@5, nDCG@5, coverage, explanation coverage, explanation fidelity, skill-area diversity@5, fallback exposure, and constraint validity.
+
+### Automated Test Ideas
+
+- Given equal eligibility and other signals, a stronger tag relationship should rank higher.
+- A higher tag confidence should contribute at least as much as a lower confidence for the same relationship.
+- The displayed top explanation path should match the path used to calculate the career-skill score.
+- `CPE`, `CSC`, and `CZ` code-family adjustments should match the configured CSC fallback policy.
+- `SC` modules should receive no course-family penalty for CSC profiles.
+- Lower-priority code-family rules should not cause an ineligible module to be returned just to fill a slot.
