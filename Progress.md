@@ -1626,6 +1626,14 @@ Status: Implemented locally
 - This is the first small job-market-aware step without adding live job scraping or AI.
 - Static mappings are easy to inspect and deterministic, which fits the current beginner-friendly recommendation pipeline.
 - Career-skill matching uses the already curated module tags, so it is less brittle than scanning every module title and description for broad words.
+- This is a meaningful upgrade over raw keyword/tag matching because it introduces an explicit domain model between a user's career goal and course metadata.
+- The model changes career relevance from `goal -> keyword/tag overlap` to `goal -> skill area -> curated module tags`, which is a more defensible structure for an FYP recommender.
+- Explanations can now be grounded in concrete rules, for example: `Recommended because this module supports the Software Engineer skill area: backend and data services.`
+- Determinism is valuable here because the same student data and mapping version should produce the same result, making the logic easier to test, review, and demonstrate.
+- The static mapping is a good cold-start baseline because it does not need historical ratings, prior users, collaborative filtering data, or live job-market data before recommending modules.
+- Keeping the goal-to-skill mapping backend-owned preserves a clean architecture boundary: the frontend renders assigned recommendations, while the backend remains the source of truth for ranking logic.
+- The main limitation is that this remains a manually maintained, one-hop taxonomy matcher. It depends on the completeness and calibration of the mappings and can be brittle across many career goals or ambiguous modules.
+- Content-based recommenders can suffer from over-specialisation, vocabulary mismatch, and dependence on item-feature quality, so later improvements may need stronger provenance, broader mappings, or job-market evidence.
 
 ### Verified
 
