@@ -2156,3 +2156,26 @@ Status: Implemented locally
 - No backend persistence or production upload storage.
 - No score breakdown display on roadmap cards.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, or API renaming.
+
+## Transcript-Cleared Recommendation Standing Lock
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed roadmap standing checks after clearing transcript-applied completions.
+- Changed the Roadmap page completed-AU calculation so saved transcript AU only counts when the transcript is currently applied to the roadmap.
+- After `Clear transcript completions`, existing stale recommendation cards now inherit the curriculum-guide-only standing state from their choice slot.
+- This keeps MPE slot lock messages clean, such as `Year 4 standing requires 106 AU; you have 0 AU`, instead of adding noisy missing-course lists.
+
+### Rationale Notes
+
+- Clearing transcript effects should return the roadmap to the same eligibility state as having only a curriculum guide uploaded.
+- Saved transcript data remains available on Profile for re-apply or replacement upload, but it should not satisfy roadmap standing requirements while it is not applied.
+
+### Not Included
+
+- No backend readiness API change.
+- No recommendation ranking or slot-assignment change.
+- No score breakdown display on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.

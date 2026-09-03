@@ -390,6 +390,7 @@ function SemesterRoadmap({
   )
   const transcriptCompletedCourseCount = useProfileStore((state) => state.transcriptCompletedCourseCount)
   const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
+  const hasAppliedTranscript = isTranscriptAppliedToRoadmap && transcriptCompletedCourseCount > 0
 
   // Let us measure where each course card is on screen so SVG arrows can connect them
   const roadmapRef = useRef<HTMLDivElement | null>(null)
@@ -408,10 +409,9 @@ function SemesterRoadmap({
     .filter((course) => effectiveCompletedCourseIds.includes(course.id))
     .reduce((total, course) => total + course.academicUnits, 0)
   const completedAcademicUnits =
-    transcriptTotalAcademicUnitsEarned > 0
+    hasAppliedTranscript && transcriptTotalAcademicUnitsEarned > 0
       ? transcriptTotalAcademicUnitsEarned
       : completedRoadmapAcademicUnits
-  const hasAppliedTranscript = isTranscriptAppliedToRoadmap && transcriptCompletedCourseCount > 0
   const standingRequirements = curriculumGuide?.standingRequirements ?? EMPTY_STANDING_REQUIREMENTS
   const recommendationChoiceSlots = useMemo(
     () =>
