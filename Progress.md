@@ -2156,3 +2156,64 @@ Status: Implemented locally
 - No backend persistence or production upload storage.
 - No score breakdown display on roadmap cards.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, or API renaming.
+
+## Transcript-Cleared Recommendation Standing Lock
+
+Status: Implemented locally
+
+### Completed
+
+- Fixed roadmap standing checks after clearing transcript-applied completions.
+- Changed the Roadmap page completed-AU calculation so saved transcript AU only counts when the transcript is currently applied to the roadmap.
+- After `Clear transcript completions`, existing stale recommendation cards now inherit the curriculum-guide-only standing state from their choice slot.
+- This keeps MPE slot lock messages clean, such as `Year 4 standing requires 106 AU; you have 0 AU`, instead of adding noisy missing-course lists.
+
+### Rationale Notes
+
+- Clearing transcript effects should return the roadmap to the same eligibility state as having only a curriculum guide uploaded.
+- Saved transcript data remains available on Profile for re-apply or replacement upload, but it should not satisfy roadmap standing requirements while it is not applied.
+
+### Not Included
+
+- No backend readiness API change.
+- No recommendation ranking or slot-assignment change.
+- No score breakdown display on roadmap cards.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Locked Course Completion Guard
+
+Status: Implemented locally
+
+### Completed
+
+- Disabled the roadmap completion checkbox for incomplete courses whose readiness status is `locked`.
+- Prevented students from marking a course such as `SC1007` complete while prerequisite requirements such as `SC1005` are still missing.
+- Kept already-completed courses removable, so students can still uncheck a course if they marked it complete earlier or need to correct their roadmap.
+- Kept transcript-only and recommended-prerequisite planning nodes read-only as before.
+
+### Rationale Notes
+
+- Locked prerequisite state should be more than visual feedback because allowing locked courses to be checked can incorrectly unlock later courses.
+- This keeps the roadmap flow consistent with prerequisite arrows and missing-requirement messages.
+
+### Not Included
+
+- No backend readiness API change.
+- No recommendation ranking or assignment change.
+- No override flow for exemptions, transfer credits, exchange modules, or special approvals yet.
+
+## README Concision Pass
+
+Status: Implemented locally
+
+### Completed
+
+- Rewrote `README.md` into a shorter project handoff document.
+- Kept only the practical backend startup, frontend startup, module data source, and current recommendation logic sections.
+- Removed the verbose module scraper programme list and long prototype-state explanation from the README.
+- Kept the recommendation logic as point-form notes so the current backend-owned deterministic flow is easier to scan.
+
+### Not Included
+
+- No code behavior changes.
+- No new setup scripts or dependency changes.
