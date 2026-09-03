@@ -845,6 +845,9 @@ function SemesterRoadmap({
                       ? recommendationEligibility
                       : baseEligibility
                   const detailModuleCode = getModuleCodeForDetail(course, slotRecommendation)
+                  const isCompletionLocked = eligibility.status === 'locked' && !isCompleted
+                  const isCompletionDisabled =
+                    course.isTranscriptOnly || course.isRecommendedPrerequisite || isCompletionLocked
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -925,9 +928,9 @@ function SemesterRoadmap({
                           type="checkbox"
                           className="completion-indicator"
                           checked={isCompleted}
-                          disabled={course.isTranscriptOnly || course.isRecommendedPrerequisite}
+                          disabled={isCompletionDisabled}
                           onChange={() => {
-                            if (!course.isTranscriptOnly && !course.isRecommendedPrerequisite) {
+                            if (!isCompletionDisabled) {
                               toggleCourseCompletion(course.id)
                             }
                           }}
@@ -937,9 +940,11 @@ function SemesterRoadmap({
                               ? 'Completed from uploaded transcript'
                               : course.isRecommendedPrerequisite
                                 ? 'Recommended prerequisite planning node'
-                                : isCompleted
-                                  ? 'Mark course as incomplete'
-                                  : 'Mark course as complete'
+                                : isCompletionLocked
+                                  ? 'Complete prerequisites before marking course as complete'
+                                  : isCompleted
+                                    ? 'Mark course as incomplete'
+                                    : 'Mark course as complete'
                           }
                         />
                       </div>

@@ -2179,3 +2179,25 @@ Status: Implemented locally
 - No recommendation ranking or slot-assignment change.
 - No score breakdown display on roadmap cards.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Locked Course Completion Guard
+
+Status: Implemented locally
+
+### Completed
+
+- Disabled the roadmap completion checkbox for incomplete courses whose readiness status is `locked`.
+- Prevented students from marking a course such as `SC1007` complete while prerequisite requirements such as `SC1005` are still missing.
+- Kept already-completed courses removable, so students can still uncheck a course if they marked it complete earlier or need to correct their roadmap.
+- Kept transcript-only and recommended-prerequisite planning nodes read-only as before.
+
+### Rationale Notes
+
+- Locked prerequisite state should be more than visual feedback because allowing locked courses to be checked can incorrectly unlock later courses.
+- This keeps the roadmap flow consistent with prerequisite arrows and missing-requirement messages.
+
+### Not Included
+
+- No backend readiness API change.
+- No recommendation ranking or assignment change.
+- No override flow for exemptions, transfer credits, exchange modules, or special approvals yet.
