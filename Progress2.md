@@ -105,6 +105,34 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
 
+## Benchmark Evaluator Reporting Cleanup
+
+Status: Implemented locally
+
+### Completed
+
+- Updated `scripts/evaluate_recommendation_benchmark.py` to make metric ordering explicit in the JSON output.
+- Added top-level `metricOrder` and `metricOrderNote` fields.
+- Added each case's `rankedCourseOrder`, showing course code, backend score, and matched choice slot ID.
+- Kept the evaluator aligned with the backend contract: API responses are exact slot assignments for frontend rendering, while rank-sensitive benchmark metrics use backend score order.
+
+### Rationale Notes
+
+- This makes future case-by-case review easier because reviewers can immediately see the score-ranked order without manually inspecting the full prediction payload.
+- The cleanup documents why nDCG may differ from response order and prevents future confusion between roadmap display order and ranking order.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall scripts/evaluate_recommendation_benchmark.py`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+
+### Not Included
+
+- No production recommendation scoring or allocation changes.
+- No benchmark label changes in this cleanup.
+- No regenerated prediction file.
+- No frontend UI changes.
+
 ## Blockchain Relevance Label Correction
 
 Status: Implemented locally

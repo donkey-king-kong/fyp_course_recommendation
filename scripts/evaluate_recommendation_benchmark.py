@@ -21,6 +21,10 @@ RELEVANCE_GAINS = {
     "irrelevant": 0,
 }
 RELEVANT_LABELS = {"highly-relevant", "relevant"}
+METRIC_ORDER_NOTE = (
+    "Rank-sensitive metrics sort predictions by backend score because "
+    "recommendation responses are exact slot assignments for roadmap rendering."
+)
 
 
 def load_json(path: Path) -> dict[str, Any]:
@@ -118,6 +122,16 @@ def rank_predictions_for_relevance_metrics(predictions: list[dict[str, Any]]) ->
         )
     ]
 
+def ranked_prediction_summary(predictions: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return [
+        {
+            "courseCode": prediction_course_code(prediction),
+            "score": prediction_score(prediction),
+            "matchedChoiceSlotId": prediction_slot_id(prediction),
+        }
+        for prediction in rank_predictions_for_relevance_metrics(predictions)
+    ]
+
 def career_skill_path(prediction: dict[str, Any]) -> str | None:
     evidence = (
         prediction.get("scoreBreakdown", {})
@@ -199,6 +213,7 @@ def evaluate_case(case: dict[str, Any], predictions: list[dict[str, Any]], k: in
     return {
         "caseId": case["caseId"],
         "recommendationCount": len(top_predictions),
+        "rankedCourseOrder": ranked_prediction_summary(predictions)[:k],
         "precisionAtK": relevant_count / k,
         "ndcgAtK": ndcg_at_k(top_predictions, candidates, k),
         "explanationCoverage": len(evidence_predictions) / len(top_predictions) if top_predictions else 0.0,
@@ -236,6 +251,8 @@ def evaluate_benchmark(
 
     return {
         "k": k,
+        "metricOrder": "backend-score-desc",
+        "metricOrderNote": METRIC_ORDER_NOTE,
         "caseCount": len(case_results),
         "caseCoverage": cases_with_predictions / len(case_results) if case_results else 0.0,
         "totalPredictionsEvaluated": total_predictions,
