@@ -2352,3 +2352,36 @@ Status: Implemented locally
 - No hard exclusion for prerequisite-planning recommendations.
 - No preference, career-skill, diversity, current-semester, or unlock-value formula changes in this step.
 - No automated recommender tests unless explicitly requested.
+
+## Benchmark Candidate Review
+
+Status: Implemented locally
+
+### Completed
+
+- Compared the current benchmark predictions against reviewed candidates for `software-engineer-csc-001` and `software-engineer-csc-004`.
+- Confirmed `software-engineer-csc-001` now matches the reviewed top two in the intended order: `SC4051 Distributed Systems` first, then `SC4052 Cloud Computing`.
+- Identified `software-engineer-csc-004` as the main focused-case nDCG kink because `SC3099 Capstone Project` ranked first but was missing from the draft reviewed candidate list.
+- Added `SC3099 Capstone Project` to the `software-engineer-csc-004` reviewed candidates as `relevant`, not `highly-relevant`, because it is applied SWE/backend-adjacent but less directly database-focused than `SC3020 Database System Principles` and `SC4023 Big Data Management`.
+- Kept recommender scoring unchanged because this review pointed to a benchmark-label gap rather than a clear scoring bug.
+
+### Rationale Notes
+
+- `SC3099` has curated tags for `software-engineering`, `backend-engineering`, `frontend-engineering`, and `project-management`, so treating it as irrelevant only because the draft benchmark omitted it would be misleading.
+- The review note keeps programme and availability constraints visible because project-style modules may need future hard-filtering once reliable programme eligibility data is used.
+- This preserves the instruction not to blindly tune constants to chase nDCG.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `averagePrecisionAtK` `0.4800000000000001`, `averageNdcgAtK` `0.643476438885008`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- `software-engineer-csc-004` now reports `precisionAtK` `0.6` and `ndcgAtK` `0.7551873543795546`.
+
+### Not Included
+
+- No recommendation scoring or ranking code changes.
+- No regenerated prediction file because the saved predictions are still current; only the draft labels changed.
+- No frontend UI changes.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.

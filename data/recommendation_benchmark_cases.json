@@ -604,6 +604,15 @@
           "reviewNotes": "Tagged software-engineering in modules.json. Relevant to backend SWE roles through software design patterns, testing, and maintainability practices. Included as the second SC3xxx slot option since database-tagged SC3 electives are limited to SC3020. isCurrentSemester=true."
         },
         {
+          "courseCode": "SC3099",
+          "title": "Capstone Project",
+          "targetSlotId": "y3-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> software-engineering -> Capstone Project",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tagged software-engineering, backend-engineering, frontend-engineering, and project-management in modules.json. Relevant to backend SWE roles as an applied project module and a valid SC3xxx fit in the current deterministic benchmark, but less directly aligned with the database preference than SC3020 and SC4023. Keep programme/availability constraints in view before treating project-style modules as universally valid electives. isCurrentSemester=true."
+        },
+        {
           "courseCode": "SC4020",
           "title": "Data Analytics & Mining",
           "targetSlotId": "y4-s1-mpe3",
