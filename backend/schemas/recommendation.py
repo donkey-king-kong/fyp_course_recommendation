@@ -155,8 +155,8 @@ class RecommendationCareerSkillEvidence(BaseModel):
 class RecommendationScoreBreakdown(BaseModel):
     careerTagScore: int = Field(
         description=(
-            "Fallback relevance score from raw keyword and curated tag matching. "
-            "This contributes only when mapped career-skill evidence is unavailable."
+            "Fallback top-up score from raw keyword and curated tag matching when "
+            "those signals exceed the mapped career-skill score."
         ),
         examples=[13],
     )

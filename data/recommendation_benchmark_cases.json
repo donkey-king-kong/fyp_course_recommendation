@@ -152,6 +152,15 @@
           "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which narrowly beats backend and data services -> distributed-systems (8 * 1.0 * 1.0 = 8.0). Both paths are strongly relevant; expectedSkillPath reflects the backend-engineering tag contributing the higher score. Strong signal for backend SWE roles. NOTE: isCurrentSemester=false \u2014 verify availability before use as a benchmark reference."
         },
         {
+          "courseCode": "SC4052",
+          "title": "Cloud Computing",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems, cloud-computing. Relevant for this backend/distributed/cloud preference case, but weaker than SC4051 when it requires extra prerequisite planning for MH2802."
+        },
+        {
           "courseCode": "SC4053",
           "title": "Blockchain Technology",
           "targetSlotId": "y4-s2-mpe2",

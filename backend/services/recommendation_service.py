@@ -68,8 +68,10 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
     "structures": "structure",
     "systems": "system",
 }
-# Preferences should visibly influence ordering, but they remain soft boosts after hard checks.
-PREFERENCE_TAG_BOOST = 30
+# Preferences should visibly influence ordering, while extra matches taper after two.
+PREFERENCE_TAG_BOOST_STEPS = (30, 30, 2)
+PREFERENCE_TAG_EXTRA_BOOST = 1
+PREFERENCE_TAG_BOOST_CAP = 64
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
@@ -1024,9 +1026,9 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
     career_skill_score = round_positive_score(
         sum(contribution.score for contribution in matched_skill_contributions)
     )
-    # Career-skill mappings are the primary career relevance model. Raw keyword/tag
-    # scoring is kept as fallback coverage for modules that are not mapped yet.
-    career_tag_score = 0 if career_skill_score > 0 else raw_career_tag_score
+    # Career-skill mappings are primary. Raw keyword/tag relevance only tops up cases
+    # where the mapping under-scores a module, instead of double-counting the same fit.
+    career_tag_score = max(0, raw_career_tag_score - career_skill_score)
     current_semester_bonus = 0
 
     # Prefer modules currently available in the catalog by giving them a small boost.
@@ -1126,8 +1128,12 @@ def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
     if not preferred_tags:
         return 0
 
-    matching_tags = preferred_tags.intersection(module.recommendation_tags or [])
-    return min(len(matching_tags) * PREFERENCE_TAG_BOOST, PREFERENCE_TAG_BOOST * 2)
+    matching_count = len(preferred_tags.intersection(module.recommendation_tags or []))
+    stepped_boost = sum(PREFERENCE_TAG_BOOST_STEPS[:matching_count])
+    extra_match_count = max(0, matching_count - len(PREFERENCE_TAG_BOOST_STEPS))
+    total_boost = stepped_boost + (extra_match_count * PREFERENCE_TAG_EXTRA_BOOST)
+
+    return min(total_boost, PREFERENCE_TAG_BOOST_CAP)
 
 def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> int:
     if not student_faculty:

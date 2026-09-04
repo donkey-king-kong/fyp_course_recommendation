@@ -2251,14 +2251,14 @@ Status: Implemented locally
 
 - Started the focused branch `recommendation-score-calibration`.
 - Changed Software Engineer career relevance scoring so mapped career-skill evidence is the primary career relevance signal.
-- Kept raw keyword and curated tag scoring as fallback coverage only when a module has no mapped career-skill score.
+- Kept raw keyword and curated tag scoring as fallback top-up coverage when those signals exceed the mapped career-skill score.
 - Preserved the existing recommendation API response shape, including `careerTagScore`, `careerSkillScore`, and `careerSkillEvidence`.
 - Updated the recommendation score breakdown schema descriptions so API docs explain that `careerTagScore` is now fallback relevance, not an additional always-on score.
 
 ### Rationale Notes
 
 - The previous scoring could double-count the same career relevance through both direct keyword/tag matching and career-skill mappings.
-- The new behavior better matches the explanation model: if a mapped career-skill path exists, it drives the career relevance score; otherwise, raw keyword/tag matching keeps unmapped modules from disappearing.
+- The new behavior better matches the explanation model: mapped career-skill paths drive the score, while raw keyword/tag matching can still protect modules that are under-covered by the mapping.
 - This keeps the recommender deterministic, backend-owned, and inspectable without adding AI, embeddings, graph databases, or job-market scraping.
 
 ### Verified
@@ -2280,5 +2280,43 @@ Status: Implemented locally
 - No frontend UI changes.
 - No visible score breakdown display on roadmap cards.
 - No preference-boost, unlock-value, current-semester, or diversity formula changes.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Preference Boost Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Replaced the previous hard-capped preference boost formula with a conservative diminishing-returns formula.
+- Preserved the existing boost for the first two matched student topic preferences.
+- Added smaller boosts for the third and later matching preferences, up to an overall cap.
+- Kept student topic preferences as soft ranking boosts after hard eligibility checks, not as filters.
+- Added `SC4052 Cloud Computing` as a relevant reviewed candidate in the backend/distributed/cloud benchmark case because that case explicitly includes a `cloud-computing` preference.
+
+### Rationale Notes
+
+- The previous formula capped after two matching tags, so a module matching three or more selected interests received no extra preference signal over a two-tag match.
+- The new formula avoids disrupting existing one-tag and two-tag behavior while making stronger multi-preference alignment visible.
+- Diminishing returns preserve the idea that preferences should matter while reducing the risk that preference overlap overwhelms career relevance, prerequisite readiness, and pathway usefulness.
+- This keeps the recommendation logic deterministic and backend-owned.
+- The benchmark label update avoids penalising a sensible cloud recommendation only because the initial draft case omitted it.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8000/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- The current benchmark reports `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.6347659807251291`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- The lower `averageNdcgAtK` compared with the previous saved prediction baseline is concentrated in the backend/distributed/cloud case, where `SC4052 Cloud Computing` is now selected as a relevant but prerequisite-planning option.
+
+### Not Included
+
+- No frontend UI changes.
+- No unlock-value, current-semester, diversity, or career-skill formula changes in this step.
 - No automated recommender tests unless explicitly requested.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
