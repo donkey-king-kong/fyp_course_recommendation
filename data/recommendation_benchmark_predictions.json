@@ -1,6 +1,6 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-04T07:28:28.537298+00:00",
+  "generatedAt": "2026-09-04T07:33:37.210574+00:00",
   "apiUrl": "http://127.0.0.1:8000/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
@@ -197,8 +197,8 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC4052",
-          "title": "Cloud Computing",
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -206,82 +206,6 @@
           "matchedChoiceSlotId": "y4-s1-mpe1",
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
-          "matchedKeywords": [
-            "software",
-            "database",
-            "cloud",
-            "distributed",
-            "algorithm",
-            "tag:backend-engineering",
-            "tag:distributed-systems",
-            "tag:cloud-computing",
-            "skill:software design and delivery:backend-engineering",
-            "skill:backend and data services:distributed-systems",
-            "skill:systems and infrastructure:distributed-systems"
-          ],
-          "prerequisites": [
-            "MH2802"
-          ],
-          "missingPrerequisites": [
-            "MH2802"
-          ],
-          "existingPrerequisiteCourseCodes": [],
-          "plannedPrerequisiteCourseCodes": [
-            "MH2802"
-          ],
-          "prerequisiteRecommendations": [
-            {
-              "courseCode": "MH2802",
-              "title": "Linear Algebra For Scientists",
-              "academicUnits": 3.0,
-              "faculty": "MATH",
-              "level": 2
-            }
-          ],
-          "plannedRoadmapNodes": [],
-          "plannedRoadmapEdges": [
-            {
-              "source": "recommended-prerequisite-y4-s1-mpe1-mh2802",
-              "target": "y4-s1-mpe1"
-            }
-          ],
-          "readinessStatus": "needs-prerequisite-planning",
-          "unlockValue": 0,
-          "score": 79,
-          "scoreBreakdown": {
-            "careerTagScore": 8,
-            "careerSkillScore": 23,
-            "careerSkillEvidence": {
-              "careerGoal": "software-engineer",
-              "skillArea": "software design and delivery",
-              "skillAreaWeight": 10,
-              "tag": "backend-engineering",
-              "relationshipWeight": 0.85,
-              "tagConfidence": 1.0,
-              "contributionScore": 8.5,
-              "rationale": "Backend implementation is a major applied software delivery path."
-            },
-            "currentSemesterBonus": 0,
-            "preferenceBoost": 50,
-            "sameFacultyBoost": 8,
-            "legacyCodePenalty": 0,
-            "defaultProfileAdjustment": 0,
-            "prerequisitePlanningPenalty": -10,
-            "unlockContribution": 0,
-            "finalScore": 79
-          },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing and matches selected topic preference(s) and matches your profile faculty."
-        },
-        {
-          "courseCode": "SC4051",
-          "title": "Distributed Systems",
-          "academicUnits": 3.0,
-          "faculty": "CSC",
-          "level": 4,
-          "matchedChoiceSlot": "SC4xxx",
-          "matchedChoiceSlotId": "y4-s2-mpe2",
-          "matchedChoiceSlotYear": 4,
-          "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "distributed",
             "systems",
@@ -328,6 +252,94 @@
             "finalScore": 73
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4052",
+          "title": "Cloud Computing",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s2-mpe2",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "database",
+            "cloud",
+            "distributed",
+            "algorithm",
+            "tag:backend-engineering",
+            "tag:distributed-systems",
+            "tag:cloud-computing",
+            "skill:software design and delivery:backend-engineering",
+            "skill:backend and data services:distributed-systems",
+            "skill:systems and infrastructure:distributed-systems"
+          ],
+          "prerequisites": [
+            "MH2802"
+          ],
+          "missingPrerequisites": [
+            "MH2802"
+          ],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [
+            "MH2802"
+          ],
+          "prerequisiteRecommendations": [
+            {
+              "courseCode": "MH2802",
+              "title": "Linear Algebra For Scientists",
+              "academicUnits": 3.0,
+              "faculty": "MATH",
+              "level": 2
+            }
+          ],
+          "plannedRoadmapNodes": [
+            {
+              "id": "recommended-prerequisite-y4-s2-mpe2-mh2802",
+              "courseCode": "MH2802",
+              "title": "Linear Algebra For Scientists",
+              "type": "Recommended Pre-Requisite",
+              "year": 4,
+              "semester": 1,
+              "academicUnits": 3.0,
+              "prerequisiteText": "Recommended prerequisite for SC4052",
+              "recommendedForCourseCode": "SC4052"
+            }
+          ],
+          "plannedRoadmapEdges": [
+            {
+              "source": "recommended-prerequisite-y4-s2-mpe2-mh2802",
+              "target": "y4-s2-mpe2"
+            }
+          ],
+          "readinessStatus": "needs-prerequisite-planning",
+          "unlockValue": 0,
+          "score": 69,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 23,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "backend-engineering",
+              "relationshipWeight": 0.85,
+              "tagConfidence": 1.0,
+              "contributionScore": 8.5,
+              "rationale": "Backend implementation is a major applied software delivery path."
+            },
+            "currentSemesterBonus": 0,
+            "preferenceBoost": 50,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": -20,
+            "unlockContribution": 0,
+            "finalScore": 69
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },

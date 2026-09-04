@@ -2320,3 +2320,35 @@ Status: Implemented locally
 - No unlock-value, current-semester, diversity, or career-skill formula changes in this step.
 - No automated recommender tests unless explicitly requested.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Prerequisite Planning Penalty Tuning
+
+Status: Implemented locally
+
+### Completed
+
+- Increased the extra prerequisite-planning penalty from `-10` to `-20`.
+- Kept prerequisite planning as a ranking penalty instead of a hard exclusion, so highly relevant modules with missing catalog-known prerequisites can still be recommended.
+- Verified the backend/distributed/cloud benchmark case now ranks ready `SC4051 Distributed Systems` above `SC4052 Cloud Computing`, which still requires planned prerequisite `MH2802`.
+
+### Rationale Notes
+
+- The smoother preference boost made preference-rich modules more explainable, but it also exposed that a prerequisite-planning module could beat an equally strong ready module too easily.
+- Increasing the penalty makes academic readiness matter more while still allowing prerequisite-planning recommendations when their relevance advantage is large enough.
+- This keeps feasibility separate from career relevance and student preference scoring.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8000/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The current benchmark reports `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.599746870287433`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- In `software-engineer-csc-001`, `SC4051 Distributed Systems` scores `73` with no prerequisite-planning penalty, while `SC4052 Cloud Computing` scores `69` with `prerequisitePlanningPenalty` `-20`.
+
+### Not Included
+
+- No frontend UI changes.
+- No hard exclusion for prerequisite-planning recommendations.
+- No preference, career-skill, diversity, current-semester, or unlock-value formula changes in this step.
+- No automated recommender tests unless explicitly requested.
