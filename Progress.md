@@ -2217,3 +2217,28 @@ Status: Implemented locally
 
 - No code behavior changes.
 - No new setup scripts or dependency changes.
+
+## Database Error Handling Clarity
+
+Status: Implemented locally
+
+### Completed
+
+- Improved database-backed router error handling for modules, faculties, recommendations, and personalized roadmap projection.
+- Added router-level logging with `logger.exception(...)` so the backend terminal shows the real SQLAlchemy failure, such as Postgres being stopped, connection refused, or missing tables.
+- Kept API responses safe by not exposing raw database connection details or stack traces to the frontend.
+- Updated the `503` response messages to be more actionable for local development, for example telling the developer to check that PostgreSQL is running and seeded.
+- Kept the implementation inline in each router instead of adding a new shared helper file, because the project currently favors simple readable code over small abstractions.
+
+### Rationale Notes
+
+- The previous `503 Service Unavailable` responses hid the underlying cause, which made a stopped local PostgreSQL service look like a recommendation bug.
+- Logging the original exception preserves useful debugging evidence in the backend terminal while keeping the browser response clean.
+- Keeping the logic local to each router makes the control flow easier to understand during this rebuild phase.
+
+### Not Included
+
+- No frontend error UI changes.
+- No database startup automation.
+- No `.env` or database credential changes.
+- No recommendation ranking or scoring changes in this error-handling step.

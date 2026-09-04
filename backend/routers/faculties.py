@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException, Path
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
@@ -18,10 +20,14 @@ from backend.services.faculty_service import (
 )
 
 router = APIRouter(tags=["Faculties"])
+logger = logging.getLogger(__name__)
+FACULTY_DATABASE_UNAVAILABLE_DETAIL = (
+    "Faculty database is unavailable. Check that PostgreSQL is running and the database has been seeded."
+)
 
 FACULTY_DATABASE_ERROR_RESPONSE = {
     "description": "PostgreSQL is unavailable or the faculty table cannot be queried.",
-    "content": {"application/json": {"example": {"detail": "Faculty database is currently unavailable."}}},
+    "content": {"application/json": {"example": {"detail": FACULTY_DATABASE_UNAVAILABLE_DETAIL}}},
 }
 
 FACULTY_NOT_FOUND_RESPONSE = {
@@ -43,8 +49,9 @@ def get_db() -> Session:
         db.close()
 
 # Shared error response for database failures in faculty endpoints.
-def raise_faculty_database_error() -> None:
-    raise HTTPException(status_code=503, detail="Faculty database is currently unavailable.")
+def raise_faculty_database_error(error: SQLAlchemyError) -> None:
+    logger.exception("Faculty database operation failed.")
+    raise HTTPException(status_code=503, detail=FACULTY_DATABASE_UNAVAILABLE_DETAIL) from error
 
 # Returns every faculty and its active status.
 @router.get(
@@ -58,8 +65,8 @@ def raise_faculty_database_error() -> None:
 def read_faculties(db: Session = Depends(get_db)) -> FacultyListResponse:
     try:
         return list_faculties(db)
-    except SQLAlchemyError:
-        raise_faculty_database_error()
+    except SQLAlchemyError as error:
+        raise_faculty_database_error(error)
 
 # Returns only faculties that are active in the module catalogue.
 @router.get(
@@ -73,8 +80,8 @@ def read_faculties(db: Session = Depends(get_db)) -> FacultyListResponse:
 def read_active_faculties(db: Session = Depends(get_db)) -> FacultyListResponse:
     try:
         return list_faculties(db, is_active=True)
-    except SQLAlchemyError:
-        raise_faculty_database_error()
+    except SQLAlchemyError as error:
+        raise_faculty_database_error(error)
 
 # Returns only faculties that are hidden from the module catalogue.
 @router.get(
@@ -88,8 +95,8 @@ def read_active_faculties(db: Session = Depends(get_db)) -> FacultyListResponse:
 def read_inactive_faculties(db: Session = Depends(get_db)) -> FacultyListResponse:
     try:
         return list_faculties(db, is_active=False)
-    except SQLAlchemyError:
-        raise_faculty_database_error()
+    except SQLAlchemyError as error:
+        raise_faculty_database_error(error)
 
 # Sets every faculty to active or inactive using a request body.
 @router.patch(
@@ -112,8 +119,8 @@ def update_all_faculty_statuses(
         return set_all_faculties_status(db, payload.is_active)
     except NoFacultyStatusChangeError as error:
         raise HTTPException(status_code=409, detail=str(error)) from error
-    except SQLAlchemyError:
-        raise_faculty_database_error()
+    except SQLAlchemyError as error:
+        raise_faculty_database_error(error)
 
 # Activates one faculty by exact faculty name.
 @router.patch(
@@ -137,8 +144,8 @@ def activate_one_faculty(
         raise HTTPException(status_code=404, detail=str(error)) from error
     except FacultyAlreadyActiveError as error:
         raise HTTPException(status_code=409, detail=str(error)) from error
-    except SQLAlchemyError:
-        raise_faculty_database_error()
+    except SQLAlchemyError as error:
+        raise_faculty_database_error(error)
 
 # Deactivates one faculty by exact faculty name.
 @router.patch(
@@ -162,5 +169,5 @@ def deactivate_one_faculty(
         raise HTTPException(status_code=404, detail=str(error)) from error
     except FacultyAlreadyInactiveError as error:
         raise HTTPException(status_code=409, detail=str(error)) from error
-    except SQLAlchemyError:
-        raise_faculty_database_error()
+    except SQLAlchemyError as error:
+        raise_faculty_database_error(error)

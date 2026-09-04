@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
@@ -7,12 +9,16 @@ from backend.schemas.recommendation import RecommendationRequest, Recommendation
 from backend.services.recommendation_service import recommend_courses
 
 router = APIRouter(tags=["Recommendations"])
+logger = logging.getLogger(__name__)
+RECOMMENDATION_DATABASE_UNAVAILABLE_DETAIL = (
+    "Recommendation data is unavailable. Check that PostgreSQL is running and the module database has been seeded."
+)
 
 RECOMMENDATION_DATABASE_ERROR_RESPONSE = {
     "description": "PostgreSQL is unavailable or the module tables cannot be queried.",
     "content": {
         "application/json": {
-            "example": {"detail": "Recommendation data is currently unavailable."}
+            "example": {"detail": RECOMMENDATION_DATABASE_UNAVAILABLE_DETAIL}
         }
     },
 }
@@ -59,7 +65,8 @@ def create_recommendations(
             limit=request.limit,
         )
     except SQLAlchemyError as error:
+        logger.exception("Recommendation database operation failed.")
         raise HTTPException(
             status_code=503,
-            detail="Recommendation data is currently unavailable.",
+            detail=RECOMMENDATION_DATABASE_UNAVAILABLE_DETAIL,
         ) from error
