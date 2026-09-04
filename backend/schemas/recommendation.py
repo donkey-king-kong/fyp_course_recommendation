@@ -154,11 +154,14 @@ class RecommendationCareerSkillEvidence(BaseModel):
 
 class RecommendationScoreBreakdown(BaseModel):
     careerTagScore: int = Field(
-        description="Base relevance score from existing curated tag weights and keyword fallback.",
+        description=(
+            "Fallback top-up score from raw keyword and curated tag matching when "
+            "those signals exceed the mapped career-skill score."
+        ),
         examples=[13],
     )
     careerSkillScore: int = Field(
-        description="Additional deterministic score from static career-to-skill mappings.",
+        description="Primary deterministic career relevance score from static career-to-skill mappings.",
         examples=[10],
     )
     careerSkillEvidence: Optional[RecommendationCareerSkillEvidence] = Field(
@@ -285,7 +288,7 @@ class RecommendationResponse(BaseModel):
                         "unlockValue": 1,
                         "score": 19,
                         "scoreBreakdown": {
-                            "careerTagScore": 7,
+                            "careerTagScore": 0,
                             "careerSkillScore": 10,
                             "careerSkillEvidence": {
                                 "careerGoal": "software-engineer",
@@ -305,8 +308,9 @@ class RecommendationResponse(BaseModel):
                             "sameFacultyBoost": 0,
                             "legacyCodePenalty": 0,
                             "defaultProfileAdjustment": 0,
+                            "prerequisitePlanningPenalty": 0,
                             "unlockContribution": 1,
-                            "finalScore": 19,
+                            "finalScore": 12,
                         },
                         "reason": (
                             "Recommended for the Software Engineer career goal. Also top "

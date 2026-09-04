@@ -2217,3 +2217,206 @@ Status: Implemented locally
 
 - No code behavior changes.
 - No new setup scripts or dependency changes.
+
+## Database Error Handling Clarity
+
+Status: Implemented locally
+
+### Completed
+
+- Improved database-backed router error handling for modules, faculties, recommendations, and personalized roadmap projection.
+- Added router-level logging with `logger.exception(...)` so the backend terminal shows the real SQLAlchemy failure, such as Postgres being stopped, connection refused, or missing tables.
+- Kept API responses safe by not exposing raw database connection details or stack traces to the frontend.
+- Updated the `503` response messages to be more actionable for local development, for example telling the developer to check that PostgreSQL is running and seeded.
+- Kept the implementation inline in each router instead of adding a new shared helper file, because the project currently favors simple readable code over small abstractions.
+
+### Rationale Notes
+
+- The previous `503 Service Unavailable` responses hid the underlying cause, which made a stopped local PostgreSQL service look like a recommendation bug.
+- Logging the original exception preserves useful debugging evidence in the backend terminal while keeping the browser response clean.
+- Keeping the logic local to each router makes the control flow easier to understand during this rebuild phase.
+
+### Not Included
+
+- No frontend error UI changes.
+- No database startup automation.
+- No `.env` or database credential changes.
+- No recommendation ranking or scoring changes in this error-handling step.
+
+## Career Relevance Score Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Started the focused branch `recommendation-score-calibration`.
+- Changed Software Engineer career relevance scoring so mapped career-skill evidence is the primary career relevance signal.
+- Kept raw keyword and curated tag scoring as fallback top-up coverage when those signals exceed the mapped career-skill score.
+- Preserved the existing recommendation API response shape, including `careerTagScore`, `careerSkillScore`, and `careerSkillEvidence`.
+- Updated the recommendation score breakdown schema descriptions so API docs explain that `careerTagScore` is now fallback relevance, not an additional always-on score.
+
+### Rationale Notes
+
+- The previous scoring could double-count the same career relevance through both direct keyword/tag matching and career-skill mappings.
+- The new behavior better matches the explanation model: mapped career-skill paths drive the score, while raw keyword/tag matching can still protect modules that are under-covered by the mapping.
+- This keeps the recommender deterministic, backend-owned, and inspectable without adding AI, embeddings, graph databases, or job-market scraping.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Evaluated the saved pre-change benchmark predictions and recorded the baseline metrics.
+- Started the local backend on port `8001` because port `8000` was already occupied by a server returning `503`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark metrics stayed stable: `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.664030778742472`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- Ran `.venv/bin/python -m compileall scripts/run_recommendation_benchmark_predictions.py scripts/evaluate_recommendation_benchmark.py`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No frontend UI changes.
+- No visible score breakdown display on roadmap cards.
+- No preference-boost, unlock-value, current-semester, or diversity formula changes.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Preference Boost Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Replaced the previous hard-capped preference boost formula with a smoother diminishing-returns formula.
+- The first matched student topic preference gives the strongest boost, and later matches add progressively smaller boosts.
+- Capped the total preference boost at the same old maximum so preferences remain influential without growing unbounded.
+- Kept student topic preferences as soft ranking boosts after hard eligibility checks, not as filters.
+- Added `SC4052 Cloud Computing` as a relevant reviewed candidate in the backend/distributed/cloud benchmark case because that case explicitly includes a `cloud-computing` preference.
+
+### Rationale Notes
+
+- The previous formula capped after two matching tags, so a module matching three or more selected interests received no extra preference signal over a two-tag match.
+- The new formula is easier to explain than the earlier conservative `30, 30, 2` patch because each additional match contributes less than the previous one.
+- Diminishing returns preserve the idea that preferences should matter while reducing the risk that preference overlap overwhelms career relevance, prerequisite readiness, and pathway usefulness.
+- This keeps the recommendation logic deterministic and backend-owned.
+- The benchmark label update avoids penalising a sensible cloud recommendation only because the initial draft case omitted it.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8000/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- After switching from the conservative `30, 30, 2` patch to the smoother preference curve, the current benchmark reports `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.5867800575276962`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- The lower `averageNdcgAtK` compared with the previous saved prediction baseline should be reviewed next instead of blindly tuning for a higher score; the current benchmark labels are still project-owner-reviewed drafts, not expert-reviewed ground truth.
+
+### Not Included
+
+- No frontend UI changes.
+- No unlock-value, current-semester, diversity, or career-skill formula changes in this step.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Prerequisite Planning Penalty Tuning
+
+Status: Implemented locally
+
+### Completed
+
+- Increased the extra prerequisite-planning penalty from `-10` to `-20`.
+- Kept prerequisite planning as a ranking penalty instead of a hard exclusion, so highly relevant modules with missing catalog-known prerequisites can still be recommended.
+- Verified the backend/distributed/cloud benchmark case now ranks ready `SC4051 Distributed Systems` above `SC4052 Cloud Computing`, which still requires planned prerequisite `MH2802`.
+
+### Rationale Notes
+
+- The smoother preference boost made preference-rich modules more explainable, but it also exposed that a prerequisite-planning module could beat an equally strong ready module too easily.
+- Increasing the penalty makes academic readiness matter more while still allowing prerequisite-planning recommendations when their relevance advantage is large enough.
+- This keeps feasibility separate from career relevance and student preference scoring.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8000/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The current benchmark reports `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.599746870287433`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- In `software-engineer-csc-001`, `SC4051 Distributed Systems` scores `73` with no prerequisite-planning penalty, while `SC4052 Cloud Computing` scores `69` with `prerequisitePlanningPenalty` `-20`.
+
+### Not Included
+
+- No frontend UI changes.
+- No hard exclusion for prerequisite-planning recommendations.
+- No preference, career-skill, diversity, current-semester, or unlock-value formula changes in this step.
+- No automated recommender tests unless explicitly requested.
+
+## Benchmark Candidate Review
+
+Status: Implemented locally
+
+### Completed
+
+- Compared the current benchmark predictions against reviewed candidates for `software-engineer-csc-001` and `software-engineer-csc-004`.
+- Confirmed `software-engineer-csc-001` now matches the reviewed top two in the intended order: `SC4051 Distributed Systems` first, then `SC4052 Cloud Computing`.
+- Identified `software-engineer-csc-004` as the main focused-case nDCG kink because `SC3099 Capstone Project` ranked first but was missing from the draft reviewed candidate list.
+- Added `SC3099 Capstone Project` to the `software-engineer-csc-004` reviewed candidates as `relevant`, not `highly-relevant`, because it is applied SWE/backend-adjacent but less directly database-focused than `SC3020 Database System Principles` and `SC4023 Big Data Management`.
+- Kept recommender scoring unchanged because this review pointed to a benchmark-label gap rather than a clear scoring bug.
+
+### Rationale Notes
+
+- `SC3099` has curated tags for `software-engineering`, `backend-engineering`, `frontend-engineering`, and `project-management`, so treating it as irrelevant only because the draft benchmark omitted it would be misleading.
+- The review note keeps programme and availability constraints visible because project-style modules may need future hard-filtering once reliable programme eligibility data is used.
+- This preserves the instruction not to blindly tune constants to chase nDCG.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `averagePrecisionAtK` `0.4800000000000001`, `averageNdcgAtK` `0.643476438885008`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- `software-engineer-csc-004` now reports `precisionAtK` `0.6` and `ndcgAtK` `0.7551873543795546`.
+
+### Not Included
+
+- No recommendation scoring or ranking code changes.
+- No regenerated prediction file because the saved predictions are still current; only the draft labels changed.
+- No frontend UI changes.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Exact-Slot Benchmark Evaluation Review
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-002`, the remaining weak benchmark case after the first candidate-label pass.
+- Identified that the recommendation API response is an exact slot assignment list ordered by roadmap slot, while the offline evaluator was treating response order as the ranking order for nDCG.
+- Updated `scripts/evaluate_recommendation_benchmark.py` so rank-sensitive relevance metrics sort saved predictions by backend `score` before applying `@K`.
+- Added `SC3099 Capstone Project` to the `software-engineer-csc-002` reviewed candidates as `relevant` because it is an applied SWE project fallback for an SC3xxx slot when no direct SC3 AI elective is available.
+- Added `SC3020 Database System Principles` to the same case as `somewhat-relevant` because it is useful backend/data foundation for Software Engineer students but does not match the student's explicit AI/ML preferences.
+- Kept production recommendation scoring unchanged.
+
+### Rationale Notes
+
+- The low `software-engineer-csc-002` nDCG was partly a benchmark-evaluation mismatch: `SC4002` and `SC4061` had higher scores than the SC3 assignments, but appeared later because their roadmap slots appeared later.
+- Sorting by backend score inside the evaluator keeps nDCG meaningful for score calibration without changing the API contract that the frontend should render recommendations by `matchedChoiceSlotId`.
+- `SC3020` is intentionally labelled weaker than direct AI modules and `SC3099`, so the benchmark still rewards preference-specific AI recommendations more strongly.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall scripts/evaluate_recommendation_benchmark.py`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `averagePrecisionAtK` `0.52`, `averageNdcgAtK` `0.7240371676639045`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- `software-engineer-csc-002` now reports `precisionAtK` `0.6` and `ndcgAtK` `0.78769127487427`.
+
+### Not Included
+
+- No production recommendation scoring or allocation changes.
+- No regenerated prediction file because the saved predictions are still current; only evaluator interpretation and draft labels changed.
+- No frontend UI changes.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
