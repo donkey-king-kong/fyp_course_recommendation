@@ -72,6 +72,7 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
 PREFERENCE_FIRST_MATCH_BOOST = 30
 PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
 PREFERENCE_TAG_BOOST_CAP = 60
+UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
@@ -219,7 +220,7 @@ def recommend_courses(
                 normalized_student_faculty,
             )
             default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags)
-            unlock_contribution = min(readiness.unlock_value, 3)
+            unlock_contribution = get_unlock_contribution(readiness.unlock_value)
             adjusted_score = max(1, (
                 career_match.career_tag_score +
                 career_match.career_skill_score +
@@ -727,6 +728,9 @@ def get_unlock_value(
             get_semester_order(course.year, course.semester) > target_order
         )
     })
+
+def get_unlock_contribution(unlock_value: int) -> int:
+    return sum(UNLOCK_CONTRIBUTION_STEPS[:unlock_value])
 
 def get_prerequisite_modules_by_code(
     db: Session,

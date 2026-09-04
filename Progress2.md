@@ -105,6 +105,43 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
 
+## Unlock Contribution Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Audited current benchmark predictions and confirmed selected recommendations currently have `unlockValue` `0`.
+- Checked CSC modules with large catalog unlock counts and found they are mostly foundational fixed/core modules that are already completed or excluded from recommendation candidates.
+- Kept the existing definition of `unlockValue`: it counts later fixed curriculum modules unlocked by a recommendation.
+- Replaced the old `min(readiness.unlock_value, 3)` contribution with a named diminishing-returns helper.
+- New unlock contribution steps are `4`, `3`, `2`, and `1`, so unlock values map to `0`, `4`, `7`, `9`, and a maximum of `10`.
+- Regenerated benchmark predictions and confirmed current benchmark recommendation choices and metrics did not change because the current selected benchmark recommendations still have no later fixed-curriculum unlocks.
+
+### Rationale Notes
+
+- This addresses the weak cap without broadening unlock value into speculative future elective-candidate unlocks.
+- A recommendation that unlocks multiple later fixed curriculum modules now matters more than before, but the cap remains modest so unlock value does not dominate career relevance or student preferences.
+- Because the current benchmark cases mostly recommend late-year electives, unchanged metrics are expected and not a sign that the helper is unused in earlier-pathway scenarios.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; from backend.services.recommendation_service import get_unlock_contribution; print('backend import ok'); print([get_unlock_contribution(v) for v in range(6)])"`.
+- Confirmed unlock contribution mapping `[0, 4, 7, 9, 10, 10]`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Benchmark metrics remained `averagePrecisionAtK` `0.56`, `averageNdcgAtK` `0.7747931100825681`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- The regenerated prediction file had only timestamp/API-url changes, so those generated metadata changes were not kept.
+
+### Not Included
+
+- No change to which modules count as unlocked.
+- No speculative unlock value for future elective candidates.
+- No benchmark label changes.
+- No frontend UI changes.
+- No automated recommender test suite unless explicitly requested.
+
 ## BDE-Specific Availability Filter
 
 Status: Implemented locally
