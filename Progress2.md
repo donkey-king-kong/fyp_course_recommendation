@@ -8,11 +8,11 @@ This file continues the project progress log after `Progress.md` became large.
 
 ## Latest Commits
 
+- `adfd2da fix: exclude core project recommendations`
+- `57282fb test: add big data benchmark label`
+- `95d4b46 feat: calibrate preference match boost`
 - `f92c1a4 test: expand recommendation benchmark cases`
 - `a3c7e58 feat: calibrate current semester bonus`
-- `d9376bc refactor: remove dead legacy code adjustment`
-- `fa6cce7 feat: calibrate unlock contribution`
-- `93663a9 feat: filter bde unavailable modules`
 
 ## Current Direction
 
@@ -53,9 +53,10 @@ After excluding fixed/core project modules from recommendation candidates and re
 
 Review the weakest expanded benchmark cases before more scoring work:
 
-- `software-engineer-csc-010`: inspect why the SC3xxx slot still favors broad software delivery over the intended signal.
-- `software-engineer-csc-014`: verify whether `SC4022 Network Science` should be accepted as a reviewed positive or whether networking-course specificity needs another scoring signal.
-- `software-engineer-csc-006` and `software-engineer-csc-008`: inspect low precision with decent nDCG, likely caused by missing reviewed positives or intentionally narrow labels.
+- `software-engineer-csc-014`: decide whether `SC4022 Network Science` should be accepted as a reviewed positive or whether networking-course specificity/current availability needs another scoring signal.
+- `software-engineer-csc-006`: inspect low precision with decent nDCG, likely caused by missing reviewed positives or intentionally narrow labels.
+- `software-engineer-csc-008`: inspect low precision with decent nDCG, likely caused by missing reviewed positives or intentionally narrow labels.
+- `software-engineer-csc-011`: inspect why the second SC3xxx backend-preference slot falls back to `SC3270 Mobile Application Development`.
 
 For each case, decide whether:
 
@@ -186,6 +187,44 @@ Status: Implemented locally
 - No frontend UI changes.
 - No broader fixed/core module taxonomy yet.
 - No automated recommender test suite.
+
+## Networking Benchmark Candidate Review
+
+Status: Reviewed, not changed
+
+### Completed
+
+- Reviewed `software-engineer-csc-014`, which covers a Y3 CSC student with `computer-network` and `operating-systems` preferences.
+- Confirmed the current predictions are `SC3030 Advanced Computer Networks` for the SC3xxx slot and `SC4022 Network Science` for the SC4xxx slot.
+- Confirmed `SC3030` is now selected correctly for the SC3xxx slot after the earlier preference-boost calibration and core-project exclusion.
+- Inspected `SC4022 Network Science`, `SC4030 Wireless & Mobile Networks`, `SC4051 Distributed Systems`, `SC4050 Parallel Computing`, and `SC3030 Advanced Computer Networks` scoring signals.
+- Kept production recommendation scoring unchanged for now.
+- Kept benchmark labels unchanged until reviewer judgement decides whether `SC4022` should be accepted as a positive.
+
+### Findings
+
+- `SC4022` and `SC4030` both have the `computer-network` recommendation tag.
+- `SC4030` is the more direct networking course for this preference because its title and catalogue description focus on wireless and mobile networks.
+- `SC4030` is current-semester, while `SC4022` is not current-semester.
+- `SC4022` wins because its broad catalogue text matches extra raw Software Engineer keywords such as `distributed`, `systems`, `algorithm`, and `security`.
+- Current scoring for the inspected modules was:
+- `SC3030`: career tag `0`, career skill `6`, current-semester `3`, preference `35`, same-faculty `8`.
+- `SC4022`: career tag `11`, career skill `6`, current-semester `0`, preference `35`, same-faculty `8`.
+- `SC4030`: career tag `0`, career skill `6`, current-semester `3`, preference `35`, same-faculty `8`.
+- `SC4051`: career tag `0`, career skill `23`, current-semester `0`, preference `0`, same-faculty `8`.
+- `SC4050`: career tag `21`, career skill `4`, current-semester `3`, preference `0`, same-faculty `8`, with specialist-profile penalty applied later.
+
+### Decision Needed
+
+- Option 1: Add `SC4022 Network Science` as a `relevant` reviewed candidate, but not `highly-relevant`, because it is defensible for network preference but broader and less direct than `SC4030`.
+- Option 2: Calibrate raw keyword top-up so broad catalogue descriptions do not outrank direct/current preference-tag matches.
+- Recommended next move: do a small calibration review of raw keyword top-up before editing labels, because this issue may affect other broad-description courses beyond case `014`.
+
+### Not Included
+
+- No benchmark-label edit for `SC4022` yet.
+- No scoring change yet.
+- No frontend UI changes.
 
 ## Security Benchmark Candidate Review
 
