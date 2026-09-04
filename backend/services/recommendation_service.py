@@ -69,7 +69,7 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
     "systems": "system",
 }
 # Preferences use diminishing returns so topic fit matters without dominating ranking.
-PREFERENCE_FIRST_MATCH_BOOST = 30
+PREFERENCE_FIRST_MATCH_BOOST = 35
 PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
 PREFERENCE_TAG_BOOST_CAP = 60
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)

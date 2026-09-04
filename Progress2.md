@@ -8,8 +8,11 @@ This file continues the project progress log after `Progress.md` became large.
 
 ## Latest Commits
 
-- `05fbee5 docs: add benchmark candidate review`
-- `b0f3fb6 test: align recommendation benchmark evaluation`
+- `f92c1a4 test: expand recommendation benchmark cases`
+- `a3c7e58 feat: calibrate current semester bonus`
+- `d9376bc refactor: remove dead legacy code adjustment`
+- `fa6cce7 feat: calibrate unlock contribution`
+- `93663a9 feat: filter bde unavailable modules`
 
 ## Current Direction
 
@@ -20,13 +23,16 @@ This file continues the project progress log after `Progress.md` became large.
 
 ## Current Benchmark Snapshot
 
-After aligning the offline evaluator with backend score order for exact-slot assignments:
+After expanding the benchmark from 5 to 14 cases and calibrating the first preference-match boost:
 
-- `averagePrecisionAtK`: `0.52`
-- `averageNdcgAtK`: `0.7240371676639045`
-- `averageExplanationCoverage`: `0.9`
-- `averageExplanationFidelity`: `1.0`
-- `averageSkillAreaDiversityAtK`: `1.4`
+- `caseCount`: `14`
+- `caseCoverage`: `1.0`
+- `totalPredictionsEvaluated`: `32`
+- `averagePrecisionAtK`: `0.38571428571428584`
+- `averageNdcgAtK`: `0.6751174799887892`
+- `averageExplanationCoverage`: `0.8214285714285714`
+- `averageExplanationFidelity`: `0.9583333333333334`
+- `averageSkillAreaDiversityAtK`: `1.2142857142857142`
 - `oldCodeExposure`: `0`
 - `averageConstraintValidity`: `1.0`
 
@@ -45,10 +51,11 @@ After aligning the offline evaluator with backend score order for exact-slot ass
 
 ## Recommended Next Step
 
-Review the remaining benchmark cases:
+Review the weakest expanded benchmark cases before more scoring work:
 
-- `software-engineer-csc-003`: confirm security/cryptography recommendations, BDE handling, and diversity behavior.
-- `software-engineer-csc-005`: confirm no-preference default recommendations, broad-default behavior, and whether currently selected modules match the intended default Software Engineer profile.
+- `software-engineer-csc-009`: inspect why security/privacy preferences still produce low nDCG.
+- `software-engineer-csc-010`: inspect why the SC3xxx slot still favors broad software delivery over the intended signal.
+- `software-engineer-csc-014`: after preference calibration, verify whether `SC4022 Network Science` should be accepted as a reviewed positive or whether networking-course specificity needs another scoring signal.
 
 For each case, decide whether:
 
@@ -70,6 +77,49 @@ For each case, decide whether:
 - No backend persistence for user state.
 - No frontend score-breakdown UI unless explicitly requested.
 - No automated recommender test suite unless explicitly requested.
+
+## Expanded Benchmark And Preference Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Imported Claude's normalized expanded benchmark file into `data/recommendation_benchmark_cases.json`.
+- Increased benchmark coverage from 5 cases to 14 cases.
+- Kept the expanded benchmark import as a separate commit: `f92c1a4 test: expand recommendation benchmark cases`.
+- Confirmed all `curriculumCourses` entries are plain string course codes.
+- Confirmed null `targetSlotId` values are only used for irrelevant negative reviewed candidates, following the original case-005 pattern.
+- Regenerated `data/recommendation_benchmark_predictions.json` against a fresh local backend on port `8001`.
+- Debugged `software-engineer-csc-014` and confirmed `SC3030 Advanced Computer Networks` was eligible but lost the SC3xxx slot to `SC3099 Capstone Project` by 2 points.
+- Increased `PREFERENCE_FIRST_MATCH_BOOST` from `30` to `35` so explicit student topic preferences can win close comparisons against broad but non-preference software-engineering modules.
+- Kept additional preference-match boosts and the preference cap unchanged.
+- Regenerated predictions after the preference calibration.
+
+### Rationale Notes
+
+- The expanded benchmark exposed ranking gaps that the original 5-case smoke benchmark did not cover.
+- In `software-engineer-csc-014`, the student explicitly selected `computer-network` and `operating-systems`; `SC3030` matched the preferred `computer-network` tag but was narrowly beaten by the broad capstone module `SC3099`.
+- Raising the first preference boost is a small calibration, not a hard filter: career relevance, eligibility, same-faculty fit, slot fit, and diversity still remain active.
+- `SC4022 Network Science` still outranks `SC4030 Wireless & Mobile Networks` for the SC4xxx slot because both match `computer-network`, while `SC4022` has additional raw relevance signals. This needs reviewer judgement before further scoring changes.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Before preference calibration on the 14-case benchmark: `averagePrecisionAtK` `0.37142857142857155`, `averageNdcgAtK` `0.6537369211651016`, `averageExplanationCoverage` `0.8214285714285714`, `averageExplanationFidelity` `0.9545454545454546`, `averageSkillAreaDiversityAtK` `1.2857142857142858`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- After preference calibration on the 14-case benchmark: `averagePrecisionAtK` `0.38571428571428584`, `averageNdcgAtK` `0.6751174799887892`, `averageExplanationCoverage` `0.8214285714285714`, `averageExplanationFidelity` `0.9583333333333334`, `averageSkillAreaDiversityAtK` `1.2142857142857142`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- `software-engineer-csc-014` improved from `precisionAtK` `0.0` and `ndcgAtK` `0.0` to `precisionAtK` `0.2` and `ndcgAtK` `0.2993278235316259`, with `SC3030` now selected for the SC3xxx slot.
+
+### Not Included
+
+- No benchmark label changes during the scoring calibration.
+- No hard preference filter.
+- No changes to additional preference boost steps or the preference cap.
+- No frontend UI changes.
+- No automated recommender test suite.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, MyCareersFuture scraping, auth, SSO, or backend user persistence.
 
 ## Security Benchmark Candidate Review
 

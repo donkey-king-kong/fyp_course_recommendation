@@ -1,6 +1,6 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-04T09:29:27.210305+00:00",
+  "generatedAt": "2026-09-04T09:46:46.354509+00:00",
   "apiUrl": "http://127.0.0.1:8001/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
@@ -228,7 +228,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 73,
+          "score": 78,
           "scoreBreakdown": {
             "careerTagScore": 0,
             "careerSkillScore": 23,
@@ -243,13 +243,13 @@
               "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 0,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 73
+            "finalScore": 78
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -316,7 +316,7 @@
           ],
           "readinessStatus": "needs-prerequisite-planning",
           "unlockValue": 0,
-          "score": 69,
+          "score": 74,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 23,
@@ -331,13 +331,13 @@
               "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 0,
-            "preferenceBoost": 50,
+            "preferenceBoost": 55,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": -20,
             "unlockContribution": 0,
-            "finalScore": 69
+            "finalScore": 74
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -681,19 +681,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 55,
+          "score": 60,
           "scoreBreakdown": {
             "careerTagScore": 2,
             "careerSkillScore": 0,
             "careerSkillEvidence": null,
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 55
+            "finalScore": 60
           },
           "reason": "Recommended for the Software Engineer career goal. Also matches career signals: tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -719,19 +719,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 55,
+          "score": 60,
           "scoreBreakdown": {
             "careerTagScore": 2,
             "careerSkillScore": 0,
             "careerSkillEvidence": null,
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 55
+            "finalScore": 60
           },
           "reason": "Recommended for the Software Engineer career goal. Also matches career signals: tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -963,7 +963,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 67,
+          "score": 72,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 6,
@@ -978,13 +978,13 @@
               "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 67
+            "finalScore": 72
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -1016,7 +1016,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 63,
+          "score": 68,
           "scoreBreakdown": {
             "careerTagScore": 4,
             "careerSkillScore": 6,
@@ -1031,13 +1031,13 @@
               "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 63
+            "finalScore": 68
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Data Privacy & Security and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -1074,7 +1074,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 63,
+          "score": 68,
           "scoreBreakdown": {
             "careerTagScore": 1,
             "careerSkillScore": 21,
@@ -1089,13 +1089,13 @@
               "rationale": "Strongest signal for scalable backend services and service reliability."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 63
+            "finalScore": 68
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -1327,7 +1327,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 79,
+          "score": 84,
           "scoreBreakdown": {
             "careerTagScore": 21,
             "careerSkillScore": 17,
@@ -1342,13 +1342,13 @@
               "rationale": "Directly represents structured software design and delivery practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 79
+            "finalScore": 84
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -1382,7 +1382,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 72,
+          "score": 77,
           "scoreBreakdown": {
             "careerTagScore": 3,
             "careerSkillScore": 16,
@@ -1397,13 +1397,13 @@
               "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 72
+            "finalScore": 77
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -1437,7 +1437,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 74,
+          "score": 79,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 16,
@@ -1452,13 +1452,13 @@
               "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 0,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 74
+            "finalScore": 79
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -2048,19 +2048,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 49,
+          "score": 54,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 0,
             "careerSkillEvidence": null,
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 49
+            "finalScore": 54
           },
           "reason": "Recommended for the Software Engineer career goal. Also matches career signals: algorithm, architecture, tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -2291,7 +2291,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 73,
+          "score": 78,
           "scoreBreakdown": {
             "careerTagScore": 0,
             "careerSkillScore": 23,
@@ -2306,13 +2306,13 @@
               "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 0,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 73
+            "finalScore": 78
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -2379,7 +2379,7 @@
           ],
           "readinessStatus": "needs-prerequisite-planning",
           "unlockValue": 0,
-          "score": 69,
+          "score": 74,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 23,
@@ -2394,13 +2394,13 @@
               "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 0,
-            "preferenceBoost": 50,
+            "preferenceBoost": 55,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": -20,
             "unlockContribution": 0,
-            "finalScore": 69
+            "finalScore": 74
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -2627,7 +2627,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 67,
+          "score": 72,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 6,
@@ -2642,13 +2642,13 @@
               "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 67
+            "finalScore": 72
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -2685,7 +2685,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 63,
+          "score": 68,
           "scoreBreakdown": {
             "careerTagScore": 1,
             "careerSkillScore": 21,
@@ -2700,13 +2700,13 @@
               "rationale": "Strongest signal for scalable backend services and service reliability."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 63
+            "finalScore": 68
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -3539,7 +3539,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 79,
+          "score": 84,
           "scoreBreakdown": {
             "careerTagScore": 21,
             "careerSkillScore": 17,
@@ -3554,13 +3554,13 @@
               "rationale": "Directly represents structured software design and delivery practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 79
+            "finalScore": 84
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -3594,7 +3594,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 60,
+          "score": 65,
           "scoreBreakdown": {
             "careerTagScore": 3,
             "careerSkillScore": 16,
@@ -3609,13 +3609,13 @@
               "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 60
+            "finalScore": 65
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -3831,7 +3831,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 55,
+          "score": 60,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 6,
@@ -3846,13 +3846,13 @@
               "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 55
+            "finalScore": 60
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Computer Security and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -3885,7 +3885,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 67,
+          "score": 72,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 6,
@@ -3900,13 +3900,13 @@
               "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 67
+            "finalScore": 72
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -4127,19 +4127,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 55,
+          "score": 60,
           "scoreBreakdown": {
             "careerTagScore": 2,
             "careerSkillScore": 0,
             "careerSkillEvidence": null,
             "currentSemesterBonus": 3,
-            "preferenceBoost": 42,
+            "preferenceBoost": 47,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 55
+            "finalScore": 60
           },
           "reason": "Recommended for the Software Engineer career goal. Also matches career signals: tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
         },
@@ -4174,19 +4174,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 49,
+          "score": 54,
           "scoreBreakdown": {
             "careerTagScore": 8,
             "careerSkillScore": 0,
             "careerSkillEvidence": null,
             "currentSemesterBonus": 3,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 49
+            "finalScore": 54
           },
           "reason": "Recommended for the Software Engineer career goal. Also matches career signals: algorithm, architecture, tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
         }
@@ -4382,9 +4382,9 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC3099",
-          "title": "Capstone Project",
-          "academicUnits": 4.0,
+          "courseCode": "SC3030",
+          "title": "Advanced Computer Networks",
+          "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
           "matchedChoiceSlot": "SC3xxx",
@@ -4392,20 +4392,12 @@
           "matchedChoiceSlotYear": 3,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
-            "software",
-            "engineering",
-            "development",
-            "database",
-            "web",
-            "systems",
-            "algorithm",
-            "tag:software-engineering",
-            "tag:backend-engineering",
-            "tag:frontend-engineering",
-            "skill:software design and delivery:software-engineering",
-            "skill:backend and data services:backend-engineering"
+            "tag:computer-network",
+            "skill:systems and infrastructure:computer-network"
           ],
-          "prerequisites": [],
+          "prerequisites": [
+            "SC2008"
+          ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
           "plannedPrerequisiteCourseCodes": [],
@@ -4414,30 +4406,30 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 49,
+          "score": 52,
           "scoreBreakdown": {
-            "careerTagScore": 21,
-            "careerSkillScore": 17,
+            "careerTagScore": 0,
+            "careerSkillScore": 6,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
-              "skillArea": "software design and delivery",
-              "skillAreaWeight": 10,
-              "tag": "software-engineering",
-              "relationshipWeight": 1.0,
+              "skillArea": "systems and infrastructure",
+              "skillAreaWeight": 7,
+              "tag": "computer-network",
+              "relationshipWeight": 0.9,
               "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents structured software design and delivery practice."
+              "contributionScore": 6.3,
+              "rationale": "Networking knowledge directly supports distributed and internet-facing software."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 0,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 49
+            "finalScore": 52
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Advanced Computer Networks and matches selected topic preference(s) and matches your profile faculty."
         },
         {
           "courseCode": "SC4022",
@@ -4469,7 +4461,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 55,
+          "score": 60,
           "scoreBreakdown": {
             "careerTagScore": 11,
             "careerSkillScore": 6,
@@ -4484,13 +4476,13 @@
               "rationale": "Networking knowledge directly supports distributed and internet-facing software."
             },
             "currentSemesterBonus": 0,
-            "preferenceBoost": 30,
+            "preferenceBoost": 35,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 55
+            "finalScore": 60
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Network Science and matches selected topic preference(s) and matches your profile faculty."
         }
