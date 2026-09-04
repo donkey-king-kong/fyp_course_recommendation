@@ -68,10 +68,10 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
     "structures": "structure",
     "systems": "system",
 }
-# Preferences should visibly influence ordering, while extra matches taper after two.
-PREFERENCE_TAG_BOOST_STEPS = (30, 30, 2)
-PREFERENCE_TAG_EXTRA_BOOST = 1
-PREFERENCE_TAG_BOOST_CAP = 64
+# Preferences use diminishing returns so topic fit matters without dominating ranking.
+PREFERENCE_FIRST_MATCH_BOOST = 30
+PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
+PREFERENCE_TAG_BOOST_CAP = 60
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
@@ -1129,9 +1129,12 @@ def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
         return 0
 
     matching_count = len(preferred_tags.intersection(module.recommendation_tags or []))
-    stepped_boost = sum(PREFERENCE_TAG_BOOST_STEPS[:matching_count])
-    extra_match_count = max(0, matching_count - len(PREFERENCE_TAG_BOOST_STEPS))
-    total_boost = stepped_boost + (extra_match_count * PREFERENCE_TAG_EXTRA_BOOST)
+    if matching_count == 0:
+        return 0
+
+    additional_match_count = matching_count - 1
+    stepped_boost = sum(PREFERENCE_ADDITIONAL_BOOST_STEPS[:additional_match_count])
+    total_boost = PREFERENCE_FIRST_MATCH_BOOST + stepped_boost
 
     return min(total_boost, PREFERENCE_TAG_BOOST_CAP)
 

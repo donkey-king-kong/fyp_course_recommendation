@@ -2289,16 +2289,16 @@ Status: Implemented locally
 
 ### Completed
 
-- Replaced the previous hard-capped preference boost formula with a conservative diminishing-returns formula.
-- Preserved the existing boost for the first two matched student topic preferences.
-- Added smaller boosts for the third and later matching preferences, up to an overall cap.
+- Replaced the previous hard-capped preference boost formula with a smoother diminishing-returns formula.
+- The first matched student topic preference gives the strongest boost, and later matches add progressively smaller boosts.
+- Capped the total preference boost at the same old maximum so preferences remain influential without growing unbounded.
 - Kept student topic preferences as soft ranking boosts after hard eligibility checks, not as filters.
 - Added `SC4052 Cloud Computing` as a relevant reviewed candidate in the backend/distributed/cloud benchmark case because that case explicitly includes a `cloud-computing` preference.
 
 ### Rationale Notes
 
 - The previous formula capped after two matching tags, so a module matching three or more selected interests received no extra preference signal over a two-tag match.
-- The new formula avoids disrupting existing one-tag and two-tag behavior while making stronger multi-preference alignment visible.
+- The new formula is easier to explain than the earlier conservative `30, 30, 2` patch because each additional match contributes less than the previous one.
 - Diminishing returns preserve the idea that preferences should matter while reducing the risk that preference overlap overwhelms career relevance, prerequisite readiness, and pathway usefulness.
 - This keeps the recommendation logic deterministic and backend-owned.
 - The benchmark label update avoids penalising a sensible cloud recommendation only because the initial draft case omitted it.
@@ -2311,8 +2311,8 @@ Status: Implemented locally
 - Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
 - Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
 - Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
-- The current benchmark reports `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.6347659807251291`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
-- The lower `averageNdcgAtK` compared with the previous saved prediction baseline is concentrated in the backend/distributed/cloud case, where `SC4052 Cloud Computing` is now selected as a relevant but prerequisite-planning option.
+- After switching from the conservative `30, 30, 2` patch to the smoother preference curve, the current benchmark reports `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.5867800575276962`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- The lower `averageNdcgAtK` compared with the previous saved prediction baseline should be reviewed next instead of blindly tuning for a higher score; the current benchmark labels are still project-owner-reviewed drafts, not expert-reviewed ground truth.
 
 ### Not Included
 
