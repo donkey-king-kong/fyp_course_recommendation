@@ -73,6 +73,7 @@ PREFERENCE_FIRST_MATCH_BOOST = 30
 PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
 PREFERENCE_TAG_BOOST_CAP = 60
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
+CURRENT_SEMESTER_BONUS = 3
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
@@ -1049,7 +1050,7 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
 
     # Prefer modules currently available in the catalog by giving them a small boost.
     if module.is_current_semester:
-        current_semester_bonus = 1
+        current_semester_bonus = CURRENT_SEMESTER_BONUS
 
     return CareerMatchScore(
         matched_signals=matched_signals,

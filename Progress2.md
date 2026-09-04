@@ -105,6 +105,40 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
 
+## Current-Semester Bonus Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Replaced the hardcoded current-semester score bonus `1` with a named `CURRENT_SEMESTER_BONUS`.
+- Set `CURRENT_SEMESTER_BONUS` to `3` so current-catalog availability is a small but visible tie-breaking signal.
+- Kept current-semester availability as a soft boost, not a hard filter.
+- Regenerated benchmark predictions because recommendation `score`, `currentSemesterBonus`, and `finalScore` values changed for currently offered modules.
+- Confirmed selected recommendation choices and rank-sensitive benchmark metrics did not change.
+
+### Rationale Notes
+
+- Claude's note was accurate that a `+1` bonus was barely meaningful compared with career relevance, preference boosts, same-faculty boosts, and default-profile adjustments.
+- A modest `+3` keeps availability subordinate to relevance while making it visible in score breakdowns.
+- The project should not hard-filter non-current-semester modules yet because catalog current-semester data may not represent future offering plans.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; from backend.services.recommendation_service import CURRENT_SEMESTER_BONUS; print('backend import ok'); print(CURRENT_SEMESTER_BONUS)"`.
+- Confirmed `CURRENT_SEMESTER_BONUS` is `3`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Benchmark metrics remained `averagePrecisionAtK` `0.56`, `averageNdcgAtK` `0.7747931100825681`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No hard current-semester availability filter.
+- No recommendation choice changes.
+- No benchmark label changes.
+- No frontend UI changes.
+
 ## Unlock Contribution Calibration
 
 Status: Implemented locally
