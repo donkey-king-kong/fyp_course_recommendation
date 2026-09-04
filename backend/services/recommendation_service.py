@@ -1017,15 +1017,16 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
             for contribution in matched_skill_contributions
         ]
     )
-    # Keep raw keyword/tag relevance separate from mapped career-skill relevance so the
-    # score breakdown can show whether the module matched by text, tags, or skill area.
-    career_tag_score = (
+    raw_career_tag_score = (
         sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
         sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
     )
     career_skill_score = round_positive_score(
         sum(contribution.score for contribution in matched_skill_contributions)
     )
+    # Career-skill mappings are the primary career relevance model. Raw keyword/tag
+    # scoring is kept as fallback coverage for modules that are not mapped yet.
+    career_tag_score = 0 if career_skill_score > 0 else raw_career_tag_score
     current_semester_bonus = 0
 
     # Prefer modules currently available in the catalog by giving them a small boost.

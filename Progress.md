@@ -2242,3 +2242,43 @@ Status: Implemented locally
 - No database startup automation.
 - No `.env` or database credential changes.
 - No recommendation ranking or scoring changes in this error-handling step.
+
+## Career Relevance Score Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Started the focused branch `recommendation-score-calibration`.
+- Changed Software Engineer career relevance scoring so mapped career-skill evidence is the primary career relevance signal.
+- Kept raw keyword and curated tag scoring as fallback coverage only when a module has no mapped career-skill score.
+- Preserved the existing recommendation API response shape, including `careerTagScore`, `careerSkillScore`, and `careerSkillEvidence`.
+- Updated the recommendation score breakdown schema descriptions so API docs explain that `careerTagScore` is now fallback relevance, not an additional always-on score.
+
+### Rationale Notes
+
+- The previous scoring could double-count the same career relevance through both direct keyword/tag matching and career-skill mappings.
+- The new behavior better matches the explanation model: if a mapped career-skill path exists, it drives the career relevance score; otherwise, raw keyword/tag matching keeps unmapped modules from disappearing.
+- This keeps the recommender deterministic, backend-owned, and inspectable without adding AI, embeddings, graph databases, or job-market scraping.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Evaluated the saved pre-change benchmark predictions and recorded the baseline metrics.
+- Started the local backend on port `8001` because port `8000` was already occupied by a server returning `503`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark metrics stayed stable: `averagePrecisionAtK` `0.44000000000000006`, `averageNdcgAtK` `0.664030778742472`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- Ran `.venv/bin/python -m compileall scripts/run_recommendation_benchmark_predictions.py scripts/evaluate_recommendation_benchmark.py`.
+- Diagnostics return no issues.
+- `git diff --check` passes.
+
+### Not Included
+
+- No frontend UI changes.
+- No visible score breakdown display on roadmap cards.
+- No preference-boost, unlock-value, current-semester, or diversity formula changes.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
