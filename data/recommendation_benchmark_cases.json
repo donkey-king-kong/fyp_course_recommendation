@@ -1332,6 +1332,15 @@
           "reviewNotes": "Module tags in modules.json: algorithms. Career-skill evidence path: algorithmic problem solving -> algorithms (score 5 * 1.0 * 1.0 = 5.0). isCurrentSemester=true \u2014 receives CURRENT_SEMESTER_BONUS=3. recommendationProfile=broad-default. Labelled relevant; included to show that the current-semester bonus is available to multiple modules and does not uniquely distinguish candidates when career scores differ. SC4040 has the same current-semester bonus as SC4013 but a weaker career-skill score."
         },
         {
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Module tags in modules.json: backend-engineering, database, data-science. Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). recommendationProfile=broad-default. Labelled relevant because backend/data management is a defensible no-preference Software Engineer recommendation, even though it is not currently offered and should not be considered highly relevant by default."
+        },
+        {
           "courseCode": "SC4052",
           "title": "Cloud Computing",
           "targetSlotId": "y4-s2-mpe2",

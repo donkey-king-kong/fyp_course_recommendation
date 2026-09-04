@@ -28,8 +28,8 @@ After expanding the benchmark from 5 to 14 cases and calibrating the first prefe
 - `caseCount`: `14`
 - `caseCoverage`: `1.0`
 - `totalPredictionsEvaluated`: `32`
-- `averagePrecisionAtK`: `0.38571428571428584`
-- `averageNdcgAtK`: `0.6751174799887892`
+- `averagePrecisionAtK`: `0.4000000000000002`
+- `averageNdcgAtK`: `0.6970349143650328`
 - `averageExplanationCoverage`: `0.8214285714285714`
 - `averageExplanationFidelity`: `0.9583333333333334`
 - `averageSkillAreaDiversityAtK`: `1.2142857142857142`
@@ -53,9 +53,9 @@ After expanding the benchmark from 5 to 14 cases and calibrating the first prefe
 
 Review the weakest expanded benchmark cases before more scoring work:
 
-- `software-engineer-csc-009`: inspect why security/privacy preferences still produce low nDCG.
 - `software-engineer-csc-010`: inspect why the SC3xxx slot still favors broad software delivery over the intended signal.
-- `software-engineer-csc-014`: after preference calibration, verify whether `SC4022 Network Science` should be accepted as a reviewed positive or whether networking-course specificity needs another scoring signal.
+- `software-engineer-csc-014`: verify whether `SC4022 Network Science` should be accepted as a reviewed positive or whether networking-course specificity needs another scoring signal.
+- `software-engineer-csc-006` and `software-engineer-csc-008`: inspect low precision with decent nDCG, likely caused by missing reviewed positives or intentionally narrow labels.
 
 For each case, decide whether:
 
@@ -120,6 +120,37 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender test suite.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, MyCareersFuture scraping, auth, SSO, or backend user persistence.
+
+## Current-Semester Benchmark Label Review
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-009`, a no-preference Y4 CSC case with two SC4xxx MPE slots.
+- Confirmed the backend predictions are `SC4023 Big Data Management` and `SC4013 Application Security`.
+- Added `SC4023 Big Data Management` as a `relevant` reviewed candidate for this case.
+- Kept production recommendation scoring unchanged.
+
+### Rationale Notes
+
+- `SC4023` has `backend-engineering`, `database`, and `data-science` recommendation tags.
+- Its top career-skill evidence path is `Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management`.
+- For a no-preference Software Engineer profile, backend/data management is a defensible broad recommendation, even though it is not current-semester and should not be labelled highly relevant by default.
+- This case still supports the current-semester interpretation: availability is a modest tie-breaker, not a hard relevance override.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- `software-engineer-csc-009` improved from `precisionAtK` `0.2` and `ndcgAtK` `0.24630238874073` to `precisionAtK` `0.4` and `ndcgAtK` `0.5531464700081437`.
+- Overall benchmark metrics are now `averagePrecisionAtK` `0.4000000000000002`, `averageNdcgAtK` `0.6970349143650328`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No recommendation scoring changes.
+- No regenerated prediction file because backend choices and scores did not change.
+- No frontend UI changes.
 
 ## Security Benchmark Candidate Review
 
