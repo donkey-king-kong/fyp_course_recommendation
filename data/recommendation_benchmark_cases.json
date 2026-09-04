@@ -769,10 +769,10 @@
           "courseCode": "SC4040",
           "title": "Advanced Topics In Algorithms",
           "targetSlotId": "y4-s1-mpe1",
-          "expectedRelevance": "highly-relevant",
+          "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> algorithmic problem solving -> algorithms -> Advanced Topics In Algorithms",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: algorithms. Maps to the Software Engineer skill area algorithmic problem solving via the algorithms tag (score 5 * 1.0 * 1.0 = 5.0). Algorithmic depth supports performance reasoning, implementation trade-off analysis, and advanced problem-solving across all software engineering roles \u2014 from service optimisation to compiler internals to data-structure selection. With no student preference tags set, a broad high-value module that maps to an established skill area is a sensible default recommendation. SC2001 (Algorithm Design & Analysis) is completed, confirming the student has the prerequisite foundation. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: algorithms. Maps to the Software Engineer skill area algorithmic problem solving via the algorithms tag (score 5 * 1.0 * 1.0 = 5.0). Algorithmic depth supports performance reasoning, implementation trade-off analysis, and advanced problem-solving across software engineering roles. However, Advanced Topics in Algorithms is a deeper specialist/theory-leaning option rather than an obvious top default for a no-preference Software Engineer profile. Labelled relevant, not highly-relevant, so broad applied backend, distributed, and application-security modules can rank ahead. SC2001 (Algorithm Design & Analysis) is completed, confirming the student has the prerequisite foundation. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4013",

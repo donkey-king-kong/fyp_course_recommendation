@@ -125,3 +125,35 @@ Status: Implemented locally
 - No production recommendation scoring or allocation changes.
 - No regenerated prediction file.
 - No frontend UI changes.
+
+## No-Preference Benchmark Candidate Review
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-005`, which covers default Software Engineer recommendations when no topic preferences are selected.
+- Confirmed the current predictions are `SC4023 Big Data Management`, `SC4013 Application Security`, and `SC4051 Distributed Systems`.
+- Compared the current predictions against the reviewed candidates and score breakdowns.
+- Changed `SC4040 Advanced Topics In Algorithms` from `highly-relevant` to `relevant`.
+- Kept production recommender scoring unchanged.
+
+### Rationale Notes
+
+- `SC4040` is useful for algorithmic reasoning, performance trade-offs, and implementation depth, so it remains relevant.
+- It is not an obvious top no-preference default because it is an advanced/specialist algorithmic module rather than a broadly applied backend, distributed, or secure software engineering module.
+- The current selected modules are defensible defaults under the existing broad-default metadata and deterministic scoring.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `averagePrecisionAtK` `0.56`, `averageNdcgAtK` `0.7747931100825681`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- `software-engineer-csc-005` now reports `precisionAtK` `0.6` and `ndcgAtK` `0.773468039695752`.
+
+### Not Included
+
+- No production recommendation scoring or allocation changes.
+- No regenerated prediction file because the saved predictions are still current; only draft benchmark labels changed.
+- No frontend UI changes.
+- No automated recommender tests unless explicitly requested.
