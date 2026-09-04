@@ -105,6 +105,50 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
 
+## BDE-Specific Availability Filter
+
+Status: Implemented locally
+
+### Completed
+
+- Added `not_available_as_bde_ue_to_programme` to the `modules` table model as a JSON list.
+- Updated the seed script to read `not_available_as_bde_ue_to_programme` from `data/course_catalog.json` and populate the modules table by course code.
+- Added a seed-time schema helper so local databases gain the new column without introducing Alembic yet.
+- Added a BDE-only hard eligibility filter in `backend/services/recommendation_service.py`.
+- Kept MPE slot behavior separate; the new BDE/UE restriction only affects BDE slot matching and prerequisite planning into BDE slots.
+- Used conservative programme-token matching so `CSC`, `CSC(2024-onwards)`, and `CSC 4` can match a CSC profile while `CSEC` and `REP(CSC)` do not.
+- Regenerated benchmark predictions against a fresh local backend and confirmed recommendation choices did not change, so timestamp/API-url-only prediction changes were not kept.
+
+### Rationale Notes
+
+- This preserves the hard-filter-before-ranking architecture by removing modules that are known to be unavailable as BDE/UE before scoring and exact-slot assignment.
+- The BDE/UE metadata is different from general `not_available_to_programme`, so it should not affect MPE slots.
+- The matching rule is intentionally narrower than substring matching to avoid excluding unrelated programmes that merely contain the same letters.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python -m json.tool data/course_catalog.json`.
+- Ran `.venv/bin/python -m backend.database.seed`.
+- Confirmed 24 local module rows now have non-empty `not_available_as_bde_ue_to_programme` metadata.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Benchmark metrics remained `averagePrecisionAtK` `0.56`, `averageNdcgAtK` `0.7747931100825681`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_predictions.json`.
+- Ran `git diff --check`.
+- IDE diagnostics reported no errors in the edited files.
+
+### Not Included
+
+- No recommendation scoring or ranking constant changes.
+- No benchmark label changes.
+- No kept prediction-file changes because choices did not change.
+- No frontend UI changes.
+- No automated recommender test suite unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, MyCareersFuture scraping, auth, SSO, or backend user persistence.
+
 ## Benchmark Evaluator Reporting Cleanup
 
 Status: Implemented locally

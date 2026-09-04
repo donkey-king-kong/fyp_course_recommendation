@@ -176,7 +176,7 @@ def recommend_courses(
         if is_unavailable_to_student_programme(module, normalized_student_faculty):
             continue
 
-        eligible_slots = get_matching_choice_slots(module, candidate_slots)
+        eligible_slots = get_matching_choice_slots(module, candidate_slots, normalized_student_faculty)
 
         if not eligible_slots:
             continue
@@ -200,6 +200,7 @@ def recommend_courses(
                 curriculum_courses=curriculum_courses,
                 prerequisite_modules_by_code=prerequisite_modules_by_code,
                 unlock_codes=unlock_codes,
+                student_programme=normalized_student_faculty,
             )
 
             if readiness is None:
@@ -384,6 +385,7 @@ def evaluate_recommendation_readiness(
     curriculum_courses: list[RecommendationCurriculumCourse],
     prerequisite_modules_by_code: dict[str, ModuleModel],
     unlock_codes: list[str],
+    student_programme: Optional[str],
 ) -> Optional[RecommendationReadiness]:
     prerequisite_codes = [prerequisite.upper() for prerequisite in prerequisites]
     existing_prerequisite_codes = get_existing_prerequisite_course_codes(
@@ -432,6 +434,7 @@ def evaluate_recommendation_readiness(
         slot,
         choice_slots,
         prerequisite_modules_by_code,
+        student_programme,
     )
 
     if not planned_prerequisite_codes:
@@ -671,6 +674,7 @@ def get_plannable_prerequisite_course_codes(
     slot: RecommendationChoiceSlot,
     choice_slots: list[RecommendationChoiceSlot],
     prerequisite_modules_by_code: dict[str, ModuleModel],
+    student_programme: Optional[str],
 ) -> list[str]:
     target_order = get_semester_order(slot.year, slot.semester)
 
@@ -695,7 +699,7 @@ def get_plannable_prerequisite_course_codes(
         prerequisite_module = prerequisite_modules_by_code.get(prerequisite_code)
 
         if prerequisite_module and any(
-            can_module_fit_choice_slot(prerequisite_module, earlier_slot)
+            can_module_fit_choice_slot(prerequisite_module, earlier_slot, student_programme)
             for earlier_slot in earlier_slots
         ):
             plannable_codes.append(prerequisite_code)
@@ -827,16 +831,21 @@ def get_mpe_candidate_levels(choice_slot_codes: list[str]) -> list[int]:
 def get_matching_choice_slots(
     module: ModuleModel,
     choice_slots: list[RecommendationChoiceSlot],
+    student_programme: Optional[str],
 ) -> list[RecommendationChoiceSlot]:
     matching_slots: list[RecommendationChoiceSlot] = []
 
     for slot in choice_slots:
-        if can_module_fit_choice_slot(module, slot):
+        if can_module_fit_choice_slot(module, slot, student_programme):
             matching_slots.append(slot)
 
     return matching_slots
 
-def can_module_fit_choice_slot(module: ModuleModel, slot: RecommendationChoiceSlot) -> bool:
+def can_module_fit_choice_slot(
+    module: ModuleModel,
+    slot: RecommendationChoiceSlot,
+    student_programme: Optional[str] = None,
+) -> bool:
     slot_code = normalize_choice_slot_code(slot.courseCode)
     mpe_level = get_mpe_slot_level(slot_code)
 
@@ -844,8 +853,14 @@ def can_module_fit_choice_slot(module: ModuleModel, slot: RecommendationChoiceSl
     if mpe_level:
         return module.faculty == "CSC" and module.level == mpe_level
 
+    if slot_code != "BDE":
+        return False
+
+    if is_unavailable_as_bde_ue_to_student_programme(module, student_programme):
+        return False
+
     # BDE is broader, but each BDE slot should still fit its roadmap year level.
-    return slot_code == "BDE" and can_fit_bde_slot(module, slot)
+    return can_fit_bde_slot(module, slot)
 
 def can_fit_bde_slot(module: ModuleModel, slot: RecommendationChoiceSlot) -> bool:
     if slot.year is None:
@@ -1183,6 +1198,30 @@ def is_unavailable_to_student_programme(
     }
 
     return student_programme.upper() in unavailable_programmes
+
+def is_unavailable_as_bde_ue_to_student_programme(
+    module: ModuleModel,
+    student_programme: Optional[str],
+) -> bool:
+    if not student_programme or not module.not_available_as_bde_ue_to_programme:
+        return False
+
+    return any(
+        does_availability_token_match_programme(token, student_programme)
+        for token in module.not_available_as_bde_ue_to_programme
+    )
+
+def does_availability_token_match_programme(token: str, student_programme: str) -> bool:
+    normalized_token = token.strip().upper()
+    normalized_programme = student_programme.strip().upper()
+
+    if normalized_token == normalized_programme:
+        return True
+
+    return (
+        normalized_token.startswith(f"{normalized_programme}(") or
+        normalized_token.startswith(f"{normalized_programme} ")
+    )
 
 def build_recommendation_reason(
     course_title: str,
