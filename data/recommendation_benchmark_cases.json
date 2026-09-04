@@ -164,10 +164,10 @@
           "courseCode": "SC4053",
           "title": "Blockchain Technology",
           "targetSlotId": "y4-s2-mpe2",
-          "expectedRelevance": "relevant",
+          "expectedRelevance": "somewhat-relevant",
           "expectedSkillPath": "Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Tagged distributed-systems and computer-security in modules.json. Blockchain is relevant to distributed backend engineering but is a specialist domain. Included as a second SC4xxx option. isCurrentSemester=true."
+          "reviewNotes": "Tagged distributed-systems and computer-security in modules.json. Blockchain is related to distributed backend engineering through consensus and decentralised systems, but it is a specialist domain rather than a broadly useful backend recommendation. Included as a weaker SC4xxx alternative. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4050",

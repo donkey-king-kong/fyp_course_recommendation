@@ -104,3 +104,24 @@ Status: Implemented locally
 - No regenerated prediction file because the saved predictions are still current; only draft benchmark labels changed.
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
+
+## Blockchain Relevance Label Correction
+
+Status: Implemented locally
+
+### Completed
+
+- Revisited `SC4053 Blockchain Technology` in `software-engineer-csc-001`.
+- Changed its expected relevance from `relevant` to `somewhat-relevant`.
+- Updated the review note to make clear that blockchain is related to distributed backend engineering through consensus and decentralised systems, but remains a specialist domain.
+
+### Rationale Notes
+
+- `SC4053` should not be treated as equally useful as broader backend/distributed recommendations such as `SC4051 Distributed Systems` or `SC4052 Cloud Computing`.
+- Keeping it as `somewhat-relevant` still gives partial credit for the distributed-systems/security connection without overvaluing a niche blockchain module.
+
+### Not Included
+
+- No production recommendation scoring or allocation changes.
+- No regenerated prediction file.
+- No frontend UI changes.
