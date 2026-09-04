@@ -173,6 +173,9 @@ def recommend_courses(
         if is_deprecated_course_code(module):
             continue
 
+        if is_unavailable_to_student_programme(module, normalized_student_faculty):
+            continue
+
         eligible_slots = get_matching_choice_slots(module, candidate_slots)
 
         if not eligible_slots:
@@ -1166,6 +1169,20 @@ def is_deprecated_course_code(module: ModuleModel) -> bool:
     module_code = module.code.upper()
 
     return module_code.startswith(DEPRECATED_COURSE_CODE_PREFIXES)
+
+def is_unavailable_to_student_programme(
+    module: ModuleModel,
+    student_programme: Optional[str],
+) -> bool:
+    if not student_programme or not module.not_available_to_programme:
+        return False
+
+    unavailable_programmes = {
+        programme.strip().upper()
+        for programme in module.not_available_to_programme.split(",")
+    }
+
+    return student_programme.upper() in unavailable_programmes
 
 def build_recommendation_reason(
     course_title: str,

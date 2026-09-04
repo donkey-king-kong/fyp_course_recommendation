@@ -133,6 +133,36 @@ Status: Implemented locally
 - No regenerated prediction file.
 - No frontend UI changes.
 
+## Programme Availability Filter
+
+Status: Implemented locally
+
+### Completed
+
+- Added a pre-ranking hard filter in `backend/services/recommendation_service.py` for modules that explicitly list the student's programme in `not_available_to_programme`.
+- Kept the check conservative by matching exact comma-separated programme tokens only, so `CSC` does not accidentally match similar programme codes such as `CSEC` or `REP(CSC)`.
+- Regenerated benchmark predictions against a fresh local backend and confirmed the current CSC benchmark recommendations did not change.
+
+### Rationale Notes
+
+- This preserves the hard-filter-before-ranking architecture: candidates known to be unavailable to the student's programme are removed before scoring.
+- The first implementation uses the existing database column only, avoiding schema changes.
+- BDE-specific availability such as `not_available_as_bde_ue_to_programme` is still not enforced because that metadata is not currently stored in the modules table.
+
+### Verified
+
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The regenerated recommendation choices stayed the same, so the prediction file was not kept with timestamp-only changes.
+
+### Not Included
+
+- No database schema changes.
+- No BDE-specific `not_available_as_bde_ue_to_programme` filtering yet.
+- No current-semester hard availability filter.
+- No production scoring or allocation changes.
+- No frontend UI changes.
+
 ## Blockchain Relevance Label Correction
 
 Status: Implemented locally
