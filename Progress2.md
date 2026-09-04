@@ -142,6 +142,30 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender test suite unless explicitly requested.
 
+## Legacy Code Penalty Cleanup
+
+Status: Implemented locally
+
+### Completed
+
+- Removed the dead `get_course_code_generation_adjustment()` helper from `backend/services/recommendation_service.py`.
+- Removed the unused internal `course_code_adjustment` variable from recommendation scoring and explanations.
+- Kept `legacyCodePenalty` in the API score breakdown as `0` for frontend and saved-prediction compatibility.
+- Kept old CE/CPE/CSC/CZ handling as a hard eligibility filter before ranking instead of a soft score penalty.
+
+### Rationale Notes
+
+- Claude's note was accurate that `get_course_code_generation_adjustment()` always returned `0`.
+- Since deprecated code families are now filtered before scoring, a soft legacy-code penalty is no longer part of the active ranking design.
+- Keeping the public `legacyCodePenalty` field avoids a frontend/type/storage compatibility change while making the backend implementation less misleading.
+
+### Not Included
+
+- No recommendation behavior change.
+- No API response field removal.
+- No frontend type changes.
+- No new soft code-generation gradient between current `SC` modules.
+
 ## BDE-Specific Availability Filter
 
 Status: Implemented locally

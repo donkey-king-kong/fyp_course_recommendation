@@ -215,10 +215,6 @@ def recommend_courses(
             )
             preference_boost = get_preference_boost(module, preferred_tags)
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
-            course_code_adjustment = get_course_code_generation_adjustment(
-                module,
-                normalized_student_faculty,
-            )
             default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags)
             unlock_contribution = get_unlock_contribution(readiness.unlock_value)
             adjusted_score = max(1, (
@@ -228,7 +224,6 @@ def recommend_courses(
                 unlock_contribution +
                 preference_boost +
                 faculty_boost +
-                course_code_adjustment +
                 default_profile_adjustment +
                 readiness.prerequisite_planning_penalty
             ))
@@ -242,7 +237,7 @@ def recommend_courses(
                 currentSemesterBonus=career_match.current_semester_bonus,
                 preferenceBoost=preference_boost,
                 sameFacultyBoost=faculty_boost,
-                legacyCodePenalty=course_code_adjustment,
+                legacyCodePenalty=0,
                 defaultProfileAdjustment=default_profile_adjustment,
                 prerequisitePlanningPenalty=readiness.prerequisite_planning_penalty,
                 unlockContribution=unlock_contribution,
@@ -277,7 +272,6 @@ def recommend_courses(
                         readiness.unlock_value,
                         preference_boost,
                         faculty_boost,
-                        course_code_adjustment,
                     ),
                 )
             )
@@ -1166,12 +1160,6 @@ def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> in
 
     return SAME_FACULTY_BOOST if module.faculty == student_faculty else 0
 
-def get_course_code_generation_adjustment(
-    module: ModuleModel,
-    student_faculty: Optional[str],
-) -> int:
-    return 0
-
 def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
     if preferred_tags and preferred_tags != {"software-engineering"}:
         return 0
@@ -1234,7 +1222,6 @@ def build_recommendation_reason(
     unlock_value: int,
     preference_boost: int,
     faculty_boost: int,
-    course_code_adjustment: int,
 ) -> str:
     fallback_signals = [
         signal
@@ -1254,9 +1241,6 @@ def build_recommendation_reason(
 
     if faculty_boost > 0:
         extra_reasons.append("matches your profile faculty")
-
-    if course_code_adjustment < 0:
-        extra_reasons.append("uses a lower-priority course code, so it is kept as a fallback")
 
     if unlock_value > 0:
         extra_reasons.append(f"unlocks {unlock_value} later curriculum module(s)")
