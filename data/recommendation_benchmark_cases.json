@@ -486,6 +486,15 @@
           "reviewNotes": "Module tags in modules.json: computer-security, privacy. Top career-skill evidence path is secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0), which outscores secure software practice -> privacy (6 * 0.75 * 0.9 = 4.05). The privacy tag still contributes to the module's overall evidence but does not set the top path. Assigned to BDE slot y4-s2-bde1. Keep this as project-owner-reviewed draft judgement only; later expert review should verify that SC4017 is eligible for the BDE slot in the student's specific curriculum variant. Covers PDPA/GDPR-adjacent concepts relevant to SWE in data-handling roles. isCurrentSemester=true."
         },
         {
+          "courseCode": "SC4053",
+          "title": "Blockchain Technology",
+          "targetSlotId": "y4-s2-bde1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tagged computer-security and distributed-systems in modules.json. The catalog description covers security, privacy, consensus protocols, distributed systems, and decentralized applications, making it a valid security-adjacent BDE recommendation for this preference profile. Labelled relevant rather than highly-relevant because SC4010 and SC4013 are more directly aligned with cryptography and application-security practice. isCurrentSemester=true."
+        },
+        {
           "courseCode": "SC4016",
           "title": "Cyber Threat Intelligence",
           "targetSlotId": "y4-s1-mpe1",

@@ -70,3 +70,37 @@ For each case, decide whether:
 - No backend persistence for user state.
 - No frontend score-breakdown UI unless explicitly requested.
 - No automated recommender test suite unless explicitly requested.
+
+## Security Benchmark Candidate Review
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-003`, which covers computer-security, cryptography, two SC4xxx MPE slots, and one BDE slot.
+- Confirmed the current predictions are `SC4010 Applied Cryptography`, `SC4017 Data Privacy & Security`, and `SC4053 Blockchain Technology`.
+- Verified `SC4010` is the strongest match because it directly satisfies the cryptography/security preference.
+- Verified `SC4017` remains a valid privacy/security recommendation and can fit either the SC4xxx path or the BDE slot under the current slot rules.
+- Added `SC4053 Blockchain Technology` as a `relevant` reviewed candidate because the catalog description covers security, privacy, consensus protocols, distributed systems, and decentralized applications.
+- Kept `SC4053` below `highly-relevant` because `SC4010` and `SC4013` are more directly aligned with cryptography and application-security practice.
+- Kept production recommender scoring unchanged.
+
+### Rationale Notes
+
+- The current result is defensible as a security-adjacent BDE recommendation, not a clear scoring bug.
+- `SC4053` receives strong career-skill evidence from distributed-systems plus computer-security, so the benchmark should not treat it as irrelevant for a security preference profile.
+- A future programme-eligibility pass should decide whether MPE/BDE assignment should account for `not_available_to_programme` and `not_available_as_bde_ue_to_programme` metadata.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `averagePrecisionAtK` `0.56`, `averageNdcgAtK` `0.736612597935391`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- `software-engineer-csc-003` now reports `precisionAtK` `0.6` and `ndcgAtK` `0.7368524094319567`.
+
+### Not Included
+
+- No production recommendation scoring or allocation changes.
+- No regenerated prediction file because the saved predictions are still current; only draft benchmark labels changed.
+- No frontend UI changes.
+- No automated recommender tests unless explicitly requested.
