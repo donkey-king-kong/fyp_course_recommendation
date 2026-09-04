@@ -1,6 +1,6 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-04T08:52:12.099884+00:00",
+  "generatedAt": "2026-09-04T09:29:27.210305+00:00",
   "apiUrl": "http://127.0.0.1:8001/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
@@ -1826,6 +1826,2673 @@
             "finalScore": 45
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-006",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [
+          "ai-ml"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "SC3920",
+          "AD2102",
+          "BE1402",
+          "SC3010",
+          "SC4000",
+          "SC4002"
+        ],
+        "choiceSlotCodes": [
+          "SC4xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y4-s1-mpe1",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          },
+          {
+            "courseCode": "SC4062"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920",
+          "SC4062"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 1
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC4001",
+          "title": "Neural Network & Deep Learning",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe1",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "algorithm",
+            "architecture",
+            "tag:ai-ml"
+          ],
+          "prerequisites": [
+            "MH1201",
+            "MH1403",
+            "MH2802",
+            "SC1004",
+            "SC1007",
+            "SC1123"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 49,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 0,
+            "careerSkillEvidence": null,
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 30,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 49
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also matches career signals: algorithm, architecture, tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-007",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [
+          "software-engineering",
+          "backend-engineering",
+          "cloud-computing",
+          "distributed-systems"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "SC3920",
+          "AD2102",
+          "BE1402",
+          "SC3010",
+          "SC4000",
+          "SC4002"
+        ],
+        "choiceSlotCodes": [
+          "SC4xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y4-s1-mpe1",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          },
+          {
+            "slotId": "y4-s2-mpe2",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 2
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe1",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "distributed",
+            "systems",
+            "algorithm",
+            "tag:backend-engineering",
+            "tag:distributed-systems",
+            "skill:software design and delivery:backend-engineering",
+            "skill:backend and data services:distributed-systems",
+            "skill:systems and infrastructure:distributed-systems"
+          ],
+          "prerequisites": [
+            "SC2005",
+            "SC2008"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 73,
+          "scoreBreakdown": {
+            "careerTagScore": 0,
+            "careerSkillScore": 23,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "backend-engineering",
+              "relationshipWeight": 0.85,
+              "tagConfidence": 1.0,
+              "contributionScore": 8.5,
+              "rationale": "Backend implementation is a major applied software delivery path."
+            },
+            "currentSemesterBonus": 0,
+            "preferenceBoost": 42,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 73
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4052",
+          "title": "Cloud Computing",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s2-mpe2",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "database",
+            "cloud",
+            "distributed",
+            "algorithm",
+            "tag:backend-engineering",
+            "tag:distributed-systems",
+            "tag:cloud-computing",
+            "skill:software design and delivery:backend-engineering",
+            "skill:backend and data services:distributed-systems",
+            "skill:systems and infrastructure:distributed-systems"
+          ],
+          "prerequisites": [
+            "MH2802"
+          ],
+          "missingPrerequisites": [
+            "MH2802"
+          ],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [
+            "MH2802"
+          ],
+          "prerequisiteRecommendations": [
+            {
+              "courseCode": "MH2802",
+              "title": "Linear Algebra For Scientists",
+              "academicUnits": 3.0,
+              "faculty": "MATH",
+              "level": 2
+            }
+          ],
+          "plannedRoadmapNodes": [
+            {
+              "id": "recommended-prerequisite-y4-s2-mpe2-mh2802",
+              "courseCode": "MH2802",
+              "title": "Linear Algebra For Scientists",
+              "type": "Recommended Pre-Requisite",
+              "year": 4,
+              "semester": 1,
+              "academicUnits": 3.0,
+              "prerequisiteText": "Recommended prerequisite for SC4052",
+              "recommendedForCourseCode": "SC4052"
+            }
+          ],
+          "plannedRoadmapEdges": [
+            {
+              "source": "recommended-prerequisite-y4-s2-mpe2-mh2802",
+              "target": "y4-s2-mpe2"
+            }
+          ],
+          "readinessStatus": "needs-prerequisite-planning",
+          "unlockValue": 0,
+          "score": 69,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 23,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "backend-engineering",
+              "relationshipWeight": 0.85,
+              "tagConfidence": 1.0,
+              "contributionScore": 8.5,
+              "rationale": "Backend implementation is a major applied software delivery path."
+            },
+            "currentSemesterBonus": 0,
+            "preferenceBoost": 50,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": -20,
+            "unlockContribution": 0,
+            "finalScore": 69
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing and matches selected topic preference(s) and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-008",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [
+          "computer-security",
+          "cryptography"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "SC3920",
+          "AD2102",
+          "BE1402",
+          "SC3010",
+          "SC4000",
+          "SC4002"
+        ],
+        "choiceSlotCodes": [
+          "SC4xxx",
+          "BDE"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y4-s1-mpe1",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          },
+          {
+            "slotId": "y4-s2-bde1",
+            "courseCode": "BDE",
+            "year": 4,
+            "semester": 2
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC4010",
+          "title": "Applied Cryptography",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe1",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "engineering",
+            "algorithm",
+            "security",
+            "tag:computer-security",
+            "skill:secure software practice:computer-security"
+          ],
+          "prerequisites": [
+            "AB1202",
+            "SC2000"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 67,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 6,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 42,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 67
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4053",
+          "title": "Blockchain Technology",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "BDE",
+          "matchedChoiceSlotId": "y4-s2-bde1",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "engineering",
+            "distributed",
+            "systems",
+            "security",
+            "tag:computer-security",
+            "tag:distributed-systems",
+            "skill:backend and data services:distributed-systems",
+            "skill:systems and infrastructure:distributed-systems",
+            "skill:secure software practice:computer-security"
+          ],
+          "prerequisites": [
+            "SC1007",
+            "SC2001"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 63,
+          "scoreBreakdown": {
+            "careerTagScore": 1,
+            "careerSkillScore": 21,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "backend and data services",
+              "skillAreaWeight": 8,
+              "tag": "distributed-systems",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 8.0,
+              "rationale": "Strongest signal for scalable backend services and service reliability."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 30,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 63
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches selected topic preference(s) and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-009",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "SC3920",
+          "AD2102",
+          "BE1402",
+          "SC3010",
+          "SC4000",
+          "SC4002"
+        ],
+        "choiceSlotCodes": [
+          "SC4xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y4-s1-mpe1",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          },
+          {
+            "slotId": "y4-s2-mpe2",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 2
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe1",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "software",
+            "cloud",
+            "distributed",
+            "systems",
+            "tag:backend-engineering",
+            "tag:database",
+            "tag:data-science",
+            "skill:software design and delivery:backend-engineering",
+            "skill:backend and data services:backend-engineering"
+          ],
+          "prerequisites": [],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 46,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 16,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "backend-engineering",
+              "relationshipWeight": 0.85,
+              "tagConfidence": 1.0,
+              "contributionScore": 8.5,
+              "rationale": "Backend implementation is a major applied software delivery path."
+            },
+            "currentSemesterBonus": 0,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 14,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 46
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4013",
+          "title": "Application Security",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s2-mpe2",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "web",
+            "testing",
+            "security",
+            "tag:web-development",
+            "tag:computer-security",
+            "skill:software design and delivery:web-development",
+            "skill:backend and data services:web-development",
+            "skill:secure software practice:computer-security"
+          ],
+          "prerequisites": [
+            "SC2005",
+            "SC2008"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 42,
+          "scoreBreakdown": {
+            "careerTagScore": 2,
+            "careerSkillScore": 15,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 14,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 42
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Application Security and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-010",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC2079",
+          "HW0288",
+          "AD2102",
+          "AB1301"
+        ],
+        "choiceSlotCodes": [
+          "SC3xxx",
+          "SC4xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y3-s2-mpe1",
+            "courseCode": "SC3xxx",
+            "year": 3,
+            "semester": 2
+          },
+          {
+            "slotId": "y4-s1-mpe2",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC3099",
+          "title": "Capstone Project",
+          "academicUnits": 4.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s2-mpe1",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "engineering",
+            "development",
+            "database",
+            "web",
+            "systems",
+            "algorithm",
+            "tag:software-engineering",
+            "tag:backend-engineering",
+            "tag:frontend-engineering",
+            "skill:software design and delivery:software-engineering",
+            "skill:backend and data services:backend-engineering"
+          ],
+          "prerequisites": [],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 49,
+          "scoreBreakdown": {
+            "careerTagScore": 21,
+            "careerSkillScore": 17,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "software-engineering",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 10.0,
+              "rationale": "Directly represents structured software design and delivery practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 49
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4013",
+          "title": "Application Security",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe2",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "web",
+            "testing",
+            "security",
+            "tag:web-development",
+            "tag:computer-security",
+            "skill:software design and delivery:web-development",
+            "skill:backend and data services:web-development",
+            "skill:secure software practice:computer-security"
+          ],
+          "prerequisites": [
+            "SC2005",
+            "SC2008"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 42,
+          "scoreBreakdown": {
+            "careerTagScore": 2,
+            "careerSkillScore": 15,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 14,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 42
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Application Security and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-011",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [
+          "backend-engineering",
+          "distributed-systems",
+          "cloud-computing"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC2079",
+          "HW0288",
+          "AD2102",
+          "AB1301"
+        ],
+        "choiceSlotCodes": [
+          "SC3xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y3-s2-mpe1",
+            "courseCode": "SC3xxx",
+            "year": 3,
+            "semester": 2
+          },
+          {
+            "slotId": "y3-s2-mpe2",
+            "courseCode": "SC3xxx",
+            "year": 3,
+            "semester": 2
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC3099",
+          "title": "Capstone Project",
+          "academicUnits": 4.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s2-mpe1",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "engineering",
+            "development",
+            "database",
+            "web",
+            "systems",
+            "algorithm",
+            "tag:software-engineering",
+            "tag:backend-engineering",
+            "tag:frontend-engineering",
+            "skill:software design and delivery:software-engineering",
+            "skill:backend and data services:backend-engineering"
+          ],
+          "prerequisites": [],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 79,
+          "scoreBreakdown": {
+            "careerTagScore": 21,
+            "careerSkillScore": 17,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "software-engineering",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 10.0,
+              "rationale": "Directly represents structured software design and delivery practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 30,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 79
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s2-mpe2",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "database",
+            "systems",
+            "tag:backend-engineering",
+            "tag:database",
+            "skill:software design and delivery:backend-engineering",
+            "skill:backend and data services:backend-engineering"
+          ],
+          "prerequisites": [
+            "SC2207"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 60,
+          "scoreBreakdown": {
+            "careerTagScore": 3,
+            "careerSkillScore": 16,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "backend-engineering",
+              "relationshipWeight": 0.85,
+              "tagConfidence": 1.0,
+              "contributionScore": 8.5,
+              "rationale": "Backend implementation is a major applied software delivery path."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 30,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 60
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-012",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [
+          "computer-security",
+          "cryptography",
+          "privacy"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "HW0288",
+          "AD2102",
+          "AB1301"
+        ],
+        "choiceSlotCodes": [
+          "SC3xxx",
+          "SC4xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y3-s1-mpe1",
+            "courseCode": "SC3xxx",
+            "year": 3,
+            "semester": 1
+          },
+          {
+            "slotId": "y4-s1-mpe2",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "HW0288",
+          "SC4079"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC3010",
+          "title": "Computer Security",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s1-mpe1",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "software",
+            "systems",
+            "security",
+            "tag:computer-security",
+            "skill:secure software practice:computer-security"
+          ],
+          "prerequisites": [
+            "SC2005"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 55,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 6,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 30,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 55
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Computer Security and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4010",
+          "title": "Applied Cryptography",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe2",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "engineering",
+            "algorithm",
+            "security",
+            "tag:computer-security",
+            "skill:secure software practice:computer-security"
+          ],
+          "prerequisites": [
+            "AB1202",
+            "SC2000"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 67,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 6,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 42,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 67
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-013",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [
+          "ai-ml",
+          "natural-language-processing"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "SC3920",
+          "AD2102",
+          "BE1402",
+          "SC3010",
+          "SC4000"
+        ],
+        "choiceSlotCodes": [
+          "SC4xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y4-s1-mpe1",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          },
+          {
+            "slotId": "y4-s2-mpe2",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 2
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC4002",
+          "title": "Natural Language Processing",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe1",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "tag:ai-ml"
+          ],
+          "prerequisites": [
+            "MH1403",
+            "SC2001"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 55,
+          "scoreBreakdown": {
+            "careerTagScore": 2,
+            "careerSkillScore": 0,
+            "careerSkillEvidence": null,
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 42,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 55
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also matches career signals: tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4001",
+          "title": "Neural Network & Deep Learning",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s2-mpe2",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "algorithm",
+            "architecture",
+            "tag:ai-ml"
+          ],
+          "prerequisites": [
+            "MH1201",
+            "MH1403",
+            "MH2802",
+            "SC1004",
+            "SC1007",
+            "SC1123"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 49,
+          "scoreBreakdown": {
+            "careerTagScore": 8,
+            "careerSkillScore": 0,
+            "careerSkillEvidence": null,
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 30,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 49
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also matches career signals: algorithm, architecture, tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
+        }
+      ]
+    },
+    {
+      "caseId": "software-engineer-csc-014",
+      "request": {
+        "careerGoal": "software-engineer",
+        "preferredRecommendationTags": [
+          "computer-network",
+          "operating-systems"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC2079",
+          "HW0288",
+          "AD2102",
+          "AB1301"
+        ],
+        "choiceSlotCodes": [
+          "SC3xxx",
+          "SC4xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "y3-s2-mpe1",
+            "courseCode": "SC3xxx",
+            "year": 3,
+            "semester": 2
+          },
+          {
+            "slotId": "y4-s1-mpe2",
+            "courseCode": "SC4xxx",
+            "year": 4,
+            "semester": 1
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 2
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC3099",
+          "title": "Capstone Project",
+          "academicUnits": 4.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s2-mpe1",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "engineering",
+            "development",
+            "database",
+            "web",
+            "systems",
+            "algorithm",
+            "tag:software-engineering",
+            "tag:backend-engineering",
+            "tag:frontend-engineering",
+            "skill:software design and delivery:software-engineering",
+            "skill:backend and data services:backend-engineering"
+          ],
+          "prerequisites": [],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 49,
+          "scoreBreakdown": {
+            "careerTagScore": 21,
+            "careerSkillScore": 17,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "software-engineering",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 10.0,
+              "rationale": "Directly represents structured software design and delivery practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 49
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4022",
+          "title": "Network Science",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s1-mpe2",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 1,
+          "matchedKeywords": [
+            "distributed",
+            "systems",
+            "algorithm",
+            "security",
+            "tag:computer-network",
+            "skill:systems and infrastructure:computer-network"
+          ],
+          "prerequisites": [
+            "MH1403",
+            "SC2001"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 55,
+          "scoreBreakdown": {
+            "careerTagScore": 11,
+            "careerSkillScore": 6,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "systems and infrastructure",
+              "skillAreaWeight": 7,
+              "tag": "computer-network",
+              "relationshipWeight": 0.9,
+              "tagConfidence": 1.0,
+              "contributionScore": 6.3,
+              "rationale": "Networking knowledge directly supports distributed and internet-facing software."
+            },
+            "currentSemesterBonus": 0,
+            "preferenceBoost": 30,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 55
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Network Science and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     }
