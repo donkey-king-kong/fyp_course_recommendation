@@ -1,7 +1,7 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-04T09:46:46.354509+00:00",
-  "apiUrl": "http://127.0.0.1:8001/recommendations",
+  "generatedAt": "2026-09-04T10:15:44.215595+00:00",
+  "apiUrl": "http://127.0.0.1:8002/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
     {
@@ -544,71 +544,13 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC3099",
-          "title": "Capstone Project",
-          "academicUnits": 4.0,
-          "faculty": "CSC",
-          "level": 3,
-          "matchedChoiceSlot": "SC3xxx",
-          "matchedChoiceSlotId": "y3-s2-mpe1",
-          "matchedChoiceSlotYear": 3,
-          "matchedChoiceSlotSemester": 2,
-          "matchedKeywords": [
-            "software",
-            "engineering",
-            "development",
-            "database",
-            "web",
-            "systems",
-            "algorithm",
-            "tag:software-engineering",
-            "tag:backend-engineering",
-            "tag:frontend-engineering",
-            "skill:software design and delivery:software-engineering",
-            "skill:backend and data services:backend-engineering"
-          ],
-          "prerequisites": [],
-          "missingPrerequisites": [],
-          "existingPrerequisiteCourseCodes": [],
-          "plannedPrerequisiteCourseCodes": [],
-          "prerequisiteRecommendations": [],
-          "plannedRoadmapNodes": [],
-          "plannedRoadmapEdges": [],
-          "readinessStatus": "ready",
-          "unlockValue": 0,
-          "score": 49,
-          "scoreBreakdown": {
-            "careerTagScore": 21,
-            "careerSkillScore": 17,
-            "careerSkillEvidence": {
-              "careerGoal": "software-engineer",
-              "skillArea": "software design and delivery",
-              "skillAreaWeight": 10,
-              "tag": "software-engineering",
-              "relationshipWeight": 1.0,
-              "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents structured software design and delivery practice."
-            },
-            "currentSemesterBonus": 3,
-            "preferenceBoost": 0,
-            "sameFacultyBoost": 8,
-            "legacyCodePenalty": 0,
-            "defaultProfileAdjustment": 0,
-            "prerequisitePlanningPenalty": 0,
-            "unlockContribution": 0,
-            "finalScore": 49
-          },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches your profile faculty."
-        },
-        {
           "courseCode": "SC3020",
           "title": "Database System Principles",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
           "matchedChoiceSlot": "SC3xxx",
-          "matchedChoiceSlotId": "y3-s2-mpe2",
+          "matchedChoiceSlotId": "y3-s2-mpe1",
           "matchedChoiceSlotYear": 3,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
@@ -655,6 +597,64 @@
             "finalScore": 30
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC3270",
+          "title": "Reasoning About Programs",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s2-mpe2",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "programming",
+            "systems",
+            "tag:software-engineering",
+            "tag:programming",
+            "skill:software design and delivery:software-engineering",
+            "skill:algorithmic problem solving:theory-of-computing"
+          ],
+          "prerequisites": [
+            "MH1403",
+            "MH1812",
+            "SC2001",
+            "SC2301"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 30,
+          "scoreBreakdown": {
+            "careerTagScore": 7,
+            "careerSkillScore": 12,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "software-engineering",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 10.0,
+              "rationale": "Directly represents structured software design and delivery practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 30
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
         },
         {
           "courseCode": "SC4002",
@@ -1295,71 +1295,13 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC3099",
-          "title": "Capstone Project",
-          "academicUnits": 4.0,
-          "faculty": "CSC",
-          "level": 3,
-          "matchedChoiceSlot": "SC3xxx",
-          "matchedChoiceSlotId": "y3-s2-mpe1",
-          "matchedChoiceSlotYear": 3,
-          "matchedChoiceSlotSemester": 2,
-          "matchedKeywords": [
-            "software",
-            "engineering",
-            "development",
-            "database",
-            "web",
-            "systems",
-            "algorithm",
-            "tag:software-engineering",
-            "tag:backend-engineering",
-            "tag:frontend-engineering",
-            "skill:software design and delivery:software-engineering",
-            "skill:backend and data services:backend-engineering"
-          ],
-          "prerequisites": [],
-          "missingPrerequisites": [],
-          "existingPrerequisiteCourseCodes": [],
-          "plannedPrerequisiteCourseCodes": [],
-          "prerequisiteRecommendations": [],
-          "plannedRoadmapNodes": [],
-          "plannedRoadmapEdges": [],
-          "readinessStatus": "ready",
-          "unlockValue": 0,
-          "score": 84,
-          "scoreBreakdown": {
-            "careerTagScore": 21,
-            "careerSkillScore": 17,
-            "careerSkillEvidence": {
-              "careerGoal": "software-engineer",
-              "skillArea": "software design and delivery",
-              "skillAreaWeight": 10,
-              "tag": "software-engineering",
-              "relationshipWeight": 1.0,
-              "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents structured software design and delivery practice."
-            },
-            "currentSemesterBonus": 3,
-            "preferenceBoost": 35,
-            "sameFacultyBoost": 8,
-            "legacyCodePenalty": 0,
-            "defaultProfileAdjustment": 0,
-            "prerequisitePlanningPenalty": 0,
-            "unlockContribution": 0,
-            "finalScore": 84
-          },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches selected topic preference(s) and matches your profile faculty."
-        },
-        {
           "courseCode": "SC3020",
           "title": "Database System Principles",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
           "matchedChoiceSlot": "SC3xxx",
-          "matchedChoiceSlotId": "y3-s2-mpe2",
+          "matchedChoiceSlotId": "y3-s2-mpe1",
           "matchedChoiceSlotYear": 3,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
@@ -1406,6 +1348,64 @@
             "finalScore": 77
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC3270",
+          "title": "Reasoning About Programs",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s2-mpe2",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "programming",
+            "systems",
+            "tag:software-engineering",
+            "tag:programming",
+            "skill:software design and delivery:software-engineering",
+            "skill:algorithmic problem solving:theory-of-computing"
+          ],
+          "prerequisites": [
+            "MH1403",
+            "MH1812",
+            "SC2001",
+            "SC2301"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 30,
+          "scoreBreakdown": {
+            "careerTagScore": 7,
+            "careerSkillScore": 12,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "software-engineering",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 10.0,
+              "rationale": "Directly represents structured software design and delivery practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 30
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
         },
         {
           "courseCode": "SC4023",
@@ -3155,6 +3155,9 @@
             "courseCode": "SC3010"
           },
           {
+            "courseCode": "SC3099"
+          },
+          {
             "courseCode": "HW0288"
           },
           {
@@ -3192,6 +3195,7 @@
           "SC2079",
           "SC3000",
           "SC3010",
+          "SC3099",
           "HW0288",
           "SC4079",
           "SC3920"
@@ -3201,9 +3205,9 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC3099",
-          "title": "Capstone Project",
-          "academicUnits": 4.0,
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
           "matchedChoiceSlot": "SC3xxx",
@@ -3212,19 +3216,16 @@
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
-            "engineering",
-            "development",
             "database",
-            "web",
             "systems",
-            "algorithm",
-            "tag:software-engineering",
             "tag:backend-engineering",
-            "tag:frontend-engineering",
-            "skill:software design and delivery:software-engineering",
+            "tag:database",
+            "skill:software design and delivery:backend-engineering",
             "skill:backend and data services:backend-engineering"
           ],
-          "prerequisites": [],
+          "prerequisites": [
+            "SC2207"
+          ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
           "plannedPrerequisiteCourseCodes": [],
@@ -3233,19 +3234,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 49,
+          "score": 30,
           "scoreBreakdown": {
-            "careerTagScore": 21,
-            "careerSkillScore": 17,
+            "careerTagScore": 3,
+            "careerSkillScore": 16,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
               "skillAreaWeight": 10,
-              "tag": "software-engineering",
-              "relationshipWeight": 1.0,
+              "tag": "backend-engineering",
+              "relationshipWeight": 0.85,
               "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents structured software design and delivery practice."
+              "contributionScore": 8.5,
+              "rationale": "Backend implementation is a major applied software delivery path."
             },
             "currentSemesterBonus": 3,
             "preferenceBoost": 0,
@@ -3254,9 +3255,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 49
+            "finalScore": 30
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches your profile faculty."
         },
         {
           "courseCode": "SC4013",
@@ -3507,71 +3508,13 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC3099",
-          "title": "Capstone Project",
-          "academicUnits": 4.0,
-          "faculty": "CSC",
-          "level": 3,
-          "matchedChoiceSlot": "SC3xxx",
-          "matchedChoiceSlotId": "y3-s2-mpe1",
-          "matchedChoiceSlotYear": 3,
-          "matchedChoiceSlotSemester": 2,
-          "matchedKeywords": [
-            "software",
-            "engineering",
-            "development",
-            "database",
-            "web",
-            "systems",
-            "algorithm",
-            "tag:software-engineering",
-            "tag:backend-engineering",
-            "tag:frontend-engineering",
-            "skill:software design and delivery:software-engineering",
-            "skill:backend and data services:backend-engineering"
-          ],
-          "prerequisites": [],
-          "missingPrerequisites": [],
-          "existingPrerequisiteCourseCodes": [],
-          "plannedPrerequisiteCourseCodes": [],
-          "prerequisiteRecommendations": [],
-          "plannedRoadmapNodes": [],
-          "plannedRoadmapEdges": [],
-          "readinessStatus": "ready",
-          "unlockValue": 0,
-          "score": 84,
-          "scoreBreakdown": {
-            "careerTagScore": 21,
-            "careerSkillScore": 17,
-            "careerSkillEvidence": {
-              "careerGoal": "software-engineer",
-              "skillArea": "software design and delivery",
-              "skillAreaWeight": 10,
-              "tag": "software-engineering",
-              "relationshipWeight": 1.0,
-              "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents structured software design and delivery practice."
-            },
-            "currentSemesterBonus": 3,
-            "preferenceBoost": 35,
-            "sameFacultyBoost": 8,
-            "legacyCodePenalty": 0,
-            "defaultProfileAdjustment": 0,
-            "prerequisitePlanningPenalty": 0,
-            "unlockContribution": 0,
-            "finalScore": 84
-          },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Capstone Project and matches selected topic preference(s) and matches your profile faculty."
-        },
-        {
           "courseCode": "SC3020",
           "title": "Database System Principles",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
           "matchedChoiceSlot": "SC3xxx",
-          "matchedChoiceSlotId": "y3-s2-mpe2",
+          "matchedChoiceSlotId": "y3-s2-mpe1",
           "matchedChoiceSlotYear": 3,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
@@ -3618,6 +3561,64 @@
             "finalScore": 65
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC3270",
+          "title": "Reasoning About Programs",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 3,
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "y3-s2-mpe2",
+          "matchedChoiceSlotYear": 3,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "software",
+            "programming",
+            "systems",
+            "tag:software-engineering",
+            "tag:programming",
+            "skill:software design and delivery:software-engineering",
+            "skill:algorithmic problem solving:theory-of-computing"
+          ],
+          "prerequisites": [
+            "MH1403",
+            "MH1812",
+            "SC2001",
+            "SC2301"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 30,
+          "scoreBreakdown": {
+            "careerTagScore": 7,
+            "careerSkillScore": 12,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "skillAreaWeight": 10,
+              "tag": "software-engineering",
+              "relationshipWeight": 1.0,
+              "tagConfidence": 1.0,
+              "contributionScore": 10.0,
+              "rationale": "Directly represents structured software design and delivery practice."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 30
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
         }
       ]
     },

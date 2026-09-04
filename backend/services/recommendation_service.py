@@ -83,6 +83,8 @@ SPECIALIST_PROFILE_PENALTY = -16
 EXTRA_PREREQUISITE_PLANNING_PENALTY = -20
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
 DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
+# Core project modules are fixed curriculum requirements, not elective recommendation targets.
+NON_RECOMMENDABLE_CORE_PROJECT_CODES = {"SC2079", "SC3099"}
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -173,6 +175,9 @@ def recommend_courses(
             continue
 
         if is_deprecated_course_code(module):
+            continue
+
+        if is_non_recommendable_core_project(module):
             continue
 
         if is_unavailable_to_student_programme(module, normalized_student_faculty):
@@ -1177,6 +1182,9 @@ def is_deprecated_course_code(module: ModuleModel) -> bool:
     module_code = module.code.upper()
 
     return module_code.startswith(DEPRECATED_COURSE_CODE_PREFIXES)
+
+def is_non_recommendable_core_project(module: ModuleModel) -> bool:
+    return module.code.upper() in NON_RECOMMENDABLE_CORE_PROJECT_CODES
 
 def is_unavailable_to_student_programme(
     module: ModuleModel,

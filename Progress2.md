@@ -23,15 +23,15 @@ This file continues the project progress log after `Progress.md` became large.
 
 ## Current Benchmark Snapshot
 
-After expanding the benchmark from 5 to 14 cases and calibrating the first preference-match boost:
+After excluding fixed/core project modules from recommendation candidates and regenerating the 14-case benchmark:
 
 - `caseCount`: `14`
 - `caseCoverage`: `1.0`
 - `totalPredictionsEvaluated`: `32`
-- `averagePrecisionAtK`: `0.4000000000000002`
-- `averageNdcgAtK`: `0.6970349143650328`
+- `averagePrecisionAtK`: `0.3714285714285715`
+- `averageNdcgAtK`: `0.7051533174757374`
 - `averageExplanationCoverage`: `0.8214285714285714`
-- `averageExplanationFidelity`: `0.9583333333333334`
+- `averageExplanationFidelity`: `1.0`
 - `averageSkillAreaDiversityAtK`: `1.2142857142857142`
 - `oldCodeExposure`: `0`
 - `averageConstraintValidity`: `1.0`
@@ -151,6 +151,41 @@ Status: Implemented locally
 - No recommendation scoring changes.
 - No regenerated prediction file because backend choices and scores did not change.
 - No frontend UI changes.
+
+## Core Project Recommendation Exclusion
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-010`, where `SC3099 Capstone Project` appeared as a recommendation for a Y3 CSC student.
+- Confirmed from curriculum context that `SC3099` is core for more recently matriculated CSC students, so it should be excluded as fixed curriculum context instead of treated as an MPE recommendation candidate.
+- Added `SC3099` to `software-engineer-csc-010` `curriculumCourses`.
+- Confirmed `SC2079 Multidisciplinary Design Project` should also not be recommended because it is a core project module and is phasing out for newer batches.
+- Added a backend hard filter for non-recommendable core project modules: `SC2079` and `SC3099`.
+
+### Rationale Notes
+
+- This is an eligibility fix, not score tuning.
+- Fixed/core project modules should be excluded before ranking because they are curriculum requirements, not elective choices.
+- The backend guard protects the live app even if browser-provided curriculum exclusions are incomplete or user-editable.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Regenerated predictions with `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8002/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Confirmed no benchmark predictions contain `SC2079` or `SC3099`.
+- `software-engineer-csc-010` now recommends `SC3020 Database System Principles` for the SC3xxx slot and `SC4013 Application Security` for the SC4xxx slot.
+- Overall benchmark metrics are now `averagePrecisionAtK` `0.3714285714285715`, `averageNdcgAtK` `0.7051533174757374`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No frontend UI changes.
+- No broader fixed/core module taxonomy yet.
+- No automated recommender test suite.
 
 ## Security Benchmark Candidate Review
 
