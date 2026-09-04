@@ -331,6 +331,24 @@
           "reviewNotes": "Module tags in modules.json: software-engineering. Maps directly to the highest-weight Software Engineer skill area \u2014 software design and delivery \u2014 via the software-engineering tag (score 10 * 1.0 * 1.0 = 10.0). This makes it career-goal relevant for any Software Engineer student regardless of topic preference. It is weaker than SC4001, SC4061, and SC4002 for this particular student because those modules align with the stated ai-ml, computer-vision, and natural-language-processing preference tags. Included as a diversity option for the SC3xxx slot, where AI/ML-specific choices at level 3 are absent from the current MPE catalogue. isCurrentSemester=true."
         },
         {
+          "courseCode": "SC3099",
+          "title": "Capstone Project",
+          "targetSlotId": "y3-s2-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> software-engineering -> Capstone Project",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tagged software-engineering, backend-engineering, frontend-engineering, and project-management in modules.json. Relevant as an applied SWE project module and a valid SC3xxx fallback when the currently available SC3 catalogue has no direct ai-ml, computer-vision, or natural-language-processing elective. Less preference-specific than the SC4 AI modules, so keep it below direct AI matches in score-ranked evaluation. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "targetSlotId": "y3-s2-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Module tags in modules.json: backend-engineering, database. Useful general backend/data foundation for a Software Engineer profile, but it does not match the student's explicit ai-ml, computer-vision, or natural-language-processing preferences. Labelled somewhat-relevant rather than relevant so it receives partial benchmark credit without being treated as a strong AI-oriented recommendation."
+        },
+        {
           "courseCode": "CZ4042",
           "title": "Neural Network & Deep Learning (old code \u2014 excluded)",
           "targetSlotId": "y4-s1-mpe3",

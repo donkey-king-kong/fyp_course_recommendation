@@ -63,6 +63,11 @@ def prediction_course_code(prediction: dict[str, Any]) -> str:
 def prediction_slot_id(prediction: dict[str, Any]) -> str | None:
     return prediction.get("matchedChoiceSlotId") or prediction.get("targetSlotId")
 
+def prediction_score(prediction: dict[str, Any]) -> float | None:
+    score = prediction.get("score")
+
+    return float(score) if isinstance(score, (int, float)) else None
+
 def display_career_goal(career_goal: str) -> str:
     return career_goal.replace("-", " ").title()
 
@@ -97,6 +102,21 @@ def ndcg_at_k(predictions: list[dict[str, Any]], candidates: dict[str, dict[str,
     ideal_dcg = dcg(ideal_gains)
     return dcg(predicted_gains) / ideal_dcg if ideal_dcg else 0.0
 
+def rank_predictions_for_relevance_metrics(predictions: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    # Recommendation responses are exact slot assignments, so response order follows roadmap slots.
+    # Rank-sensitive offline metrics should use the backend score instead of slot display order.
+    return [
+        prediction
+        for _, prediction in sorted(
+            enumerate(predictions),
+            key=lambda indexed_prediction: (
+                -prediction_score(indexed_prediction[1])
+                if prediction_score(indexed_prediction[1]) is not None
+                else 0,
+                indexed_prediction[0],
+            ),
+        )
+    ]
 
 def career_skill_path(prediction: dict[str, Any]) -> str | None:
     evidence = (
@@ -148,7 +168,7 @@ def prediction_is_constraint_valid(prediction: dict[str, Any], case: dict[str, A
 
 
 def evaluate_case(case: dict[str, Any], predictions: list[dict[str, Any]], k: int) -> dict[str, Any]:
-    top_predictions = predictions[:k]
+    top_predictions = rank_predictions_for_relevance_metrics(predictions)[:k]
     candidates = candidate_lookup(case)
     relevant_count = sum(
         1

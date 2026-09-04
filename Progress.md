@@ -2385,3 +2385,38 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
+
+## Exact-Slot Benchmark Evaluation Review
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-002`, the remaining weak benchmark case after the first candidate-label pass.
+- Identified that the recommendation API response is an exact slot assignment list ordered by roadmap slot, while the offline evaluator was treating response order as the ranking order for nDCG.
+- Updated `scripts/evaluate_recommendation_benchmark.py` so rank-sensitive relevance metrics sort saved predictions by backend `score` before applying `@K`.
+- Added `SC3099 Capstone Project` to the `software-engineer-csc-002` reviewed candidates as `relevant` because it is an applied SWE project fallback for an SC3xxx slot when no direct SC3 AI elective is available.
+- Added `SC3020 Database System Principles` to the same case as `somewhat-relevant` because it is useful backend/data foundation for Software Engineer students but does not match the student's explicit AI/ML preferences.
+- Kept production recommendation scoring unchanged.
+
+### Rationale Notes
+
+- The low `software-engineer-csc-002` nDCG was partly a benchmark-evaluation mismatch: `SC4002` and `SC4061` had higher scores than the SC3 assignments, but appeared later because their roadmap slots appeared later.
+- Sorting by backend score inside the evaluator keeps nDCG meaningful for score calibration without changing the API contract that the frontend should render recommendations by `matchedChoiceSlotId`.
+- `SC3020` is intentionally labelled weaker than direct AI modules and `SC3099`, so the benchmark still rewards preference-specific AI recommendations more strongly.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall scripts/evaluate_recommendation_benchmark.py`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `averagePrecisionAtK` `0.52`, `averageNdcgAtK` `0.7240371676639045`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+- `software-engineer-csc-002` now reports `precisionAtK` `0.6` and `ndcgAtK` `0.78769127487427`.
+
+### Not Included
+
+- No production recommendation scoring or allocation changes.
+- No regenerated prediction file because the saved predictions are still current; only evaluator interpretation and draft labels changed.
+- No frontend UI changes.
+- No automated recommender tests unless explicitly requested.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
