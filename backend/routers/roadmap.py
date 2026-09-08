@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
@@ -8,12 +10,16 @@ from backend.services.personalized_roadmap_service import build_personalized_roa
 from backend.services.roadmap_service import get_csc_roadmap
 
 router = APIRouter()
+logger = logging.getLogger(__name__)
+ROADMAP_DATABASE_UNAVAILABLE_DETAIL = (
+    "Roadmap module data is unavailable. Check that PostgreSQL is running and the database has been seeded."
+)
 
 ROADMAP_DATABASE_ERROR_RESPONSE = {
     "description": "PostgreSQL is unavailable or module metadata cannot be queried.",
     "content": {
         "application/json": {
-            "example": {"detail": "Roadmap module data is currently unavailable."}
+            "example": {"detail": ROADMAP_DATABASE_UNAVAILABLE_DETAIL}
         }
     },
 }
@@ -55,7 +61,8 @@ def create_personalized_roadmap(
             transcript_unmatched_course_codes=request.transcriptUnmatchedCourseCodes,
         )
     except SQLAlchemyError as error:
+        logger.exception("Roadmap database operation failed.")
         raise HTTPException(
             status_code=503,
-            detail="Roadmap module data is currently unavailable.",
+            detail=ROADMAP_DATABASE_UNAVAILABLE_DETAIL,
         ) from error

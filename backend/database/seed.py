@@ -20,14 +20,23 @@ def seed_database() -> None:
     Base.metadata.create_all(bind=engine)
     ensure_module_recommendation_tags_column()
     ensure_module_recommendation_profile_column()
+    ensure_module_bde_ue_unavailability_column()
 
     modules = load_modules(MODULES_JSON_PATH)
     prerequisite_graph = load_prerequisite_graph(PREREQUISITE_GRAPH_JSON_PATH)
     description_by_code = load_course_catalog_descriptions(COURSE_CATALOG_JSON_PATH)
+    bde_ue_unavailable_by_code = load_course_catalog_bde_ue_unavailability(
+        COURSE_CATALOG_JSON_PATH
+    )
     db = SessionLocal()
 
     try:
-        inserted_count, updated_count = seed_modules(db, modules, description_by_code)
+        inserted_count, updated_count = seed_modules(
+            db,
+            modules,
+            description_by_code,
+            bde_ue_unavailable_by_code,
+        )
         faculty_count = seed_faculties(db, modules)
         prerequisite_count = seed_prerequisite_relationships(db, prerequisite_graph)
         db.commit()
@@ -41,7 +50,12 @@ def seed_database() -> None:
     finally:
         db.close()
 
-def seed_modules(db: Any, modules: list[dict[str, Any]], description_by_code: dict[str, str]) -> tuple[int, int]:
+def seed_modules(
+    db: Any,
+    modules: list[dict[str, Any]],
+    description_by_code: dict[str, str],
+    bde_ue_unavailable_by_code: dict[str, list[str]],
+) -> tuple[int, int]:
     inserted_count = 0
     updated_count = 0
 
@@ -54,7 +68,7 @@ def seed_modules(db: Any, modules: list[dict[str, Any]], description_by_code: di
             continue
 
         existing = db.query(ModuleModel).filter_by(code=code).first()
-        module_data = build_module_data(module, description_by_code)
+        module_data = build_module_data(module, description_by_code, bde_ue_unavailable_by_code)
 
         if existing:
             # Update existing rows so the seed script can be rerun safely.
@@ -120,7 +134,23 @@ def load_course_catalog_descriptions(input_path: Path) -> dict[str, str]:
         if course.get("code") and isinstance(course.get("description"), str) and course["description"].strip()
     }
 
-def build_module_data(module: dict[str, Any], description_by_code: dict[str, str] | None = None) -> dict[str, Any]:
+def load_course_catalog_bde_ue_unavailability(input_path: Path) -> dict[str, list[str]]:
+    try:
+        courses = json.loads(input_path.read_text(encoding="utf-8"))
+    except FileNotFoundError:
+        return {}
+
+    return {
+        course["code"]: course["not_available_as_bde_ue_to_programme"]
+        for course in courses
+        if course.get("code") and isinstance(course.get("not_available_as_bde_ue_to_programme"), list)
+    }
+
+def build_module_data(
+    module: dict[str, Any],
+    description_by_code: dict[str, str] | None = None,
+    bde_ue_unavailable_by_code: dict[str, list[str]] | None = None,
+) -> dict[str, Any]:
     code = module["code"]
     description = (description_by_code or {}).get(code) or module.get("description")
 
@@ -138,6 +168,10 @@ def build_module_data(module: dict[str, Any], description_by_code: dict[str, str
         "latest_semester": module.get("latestSemester"),
         "is_current_semester": bool(module.get("isCurrentSemester", False)),
         "not_available_to_programme": module.get("notAvailableToProgramme"),
+        "not_available_as_bde_ue_to_programme": (bde_ue_unavailable_by_code or {}).get(
+            code,
+            [],
+        ),
     }
 
 def parse_au(value: Any) -> float | None:
@@ -195,6 +229,27 @@ def ensure_module_recommendation_profile_column() -> None:
     with engine.begin() as connection:
         connection.execute(
             text("ALTER TABLE modules ADD COLUMN recommendation_profile VARCHAR(40)")
+        )
+
+def ensure_module_bde_ue_unavailability_column() -> None:
+    existing_columns = {
+        column["name"]
+        for column in inspect(engine).get_columns(ModuleModel.__tablename__)
+    }
+
+    if "not_available_as_bde_ue_to_programme" in existing_columns:
+        return
+
+    column_type = "JSON DEFAULT '[]'::json"
+    if engine.dialect.name == "sqlite":
+        column_type = "JSON DEFAULT '[]'"
+
+    with engine.begin() as connection:
+        connection.execute(
+            text(
+                "ALTER TABLE modules "
+                f"ADD COLUMN not_available_as_bde_ue_to_programme {column_type}"
+            )
         )
 
 if __name__ == "__main__":

@@ -24,3 +24,4 @@ class ModuleModel(Base):
     latest_semester: Mapped[Optional[str]] = mapped_column(String(10), index=True)
     is_current_semester: Mapped[bool] = mapped_column(Boolean, default=False, index=True)
     not_available_to_programme: Mapped[Optional[str]] = mapped_column(Text)
+    not_available_as_bde_ue_to_programme: Mapped[list[str]] = mapped_column(JSON, default=list)

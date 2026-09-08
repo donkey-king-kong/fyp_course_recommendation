@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import logging
 from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Path, Query
@@ -11,10 +12,14 @@ from backend.schemas.module import ModuleFilterOptionsResponse, ModuleListRespon
 from backend.services.module_service import get_module_by_code, get_module_filter_options, list_modules
 
 router = APIRouter(tags=["Modules"])
+logger = logging.getLogger(__name__)
+MODULE_DATABASE_UNAVAILABLE_DETAIL = (
+    "Database is unavailable. Check that PostgreSQL is running and the database has been seeded."
+)
 
 MODULE_DATABASE_ERROR_RESPONSE = {
     "description": "PostgreSQL is unavailable or the module tables cannot be queried.",
-    "content": {"application/json": {"example": {"detail": "Module database is currently unavailable."}}},
+    "content": {"application/json": {"example": {"detail": MODULE_DATABASE_UNAVAILABLE_DETAIL}}},
 }
 
 MODULE_NOT_FOUND_RESPONSE = {
@@ -31,8 +36,9 @@ def get_db() -> Session:
         db.close()
 
 # Shared error response for database failures in module endpoints.
-def raise_module_database_error() -> None:
-    raise HTTPException(status_code=503, detail="Module database is currently unavailable.")
+def raise_module_database_error(error: SQLAlchemyError) -> None:
+    logger.exception("Module database operation failed.")
+    raise HTTPException(status_code=503, detail=MODULE_DATABASE_UNAVAILABLE_DETAIL) from error
 
 # Returns valid filter values so the frontend does not hardcode database labels.
 @router.get(
@@ -50,8 +56,8 @@ def raise_module_database_error() -> None:
 def read_module_filters(db: Session = Depends(get_db)) -> ModuleFilterOptionsResponse:
     try:
         return get_module_filter_options(db)
-    except SQLAlchemyError:
-        raise_module_database_error()
+    except SQLAlchemyError as error:
+        raise_module_database_error(error)
 
 # Returns a paginated module list with optional search and filter parameters.
 @router.get(
@@ -88,8 +94,8 @@ def read_modules(
             limit=limit,
             offset=offset,
         )
-    except SQLAlchemyError:
-        raise_module_database_error()
+    except SQLAlchemyError as error:
+        raise_module_database_error(error)
 
 # Returns one exact module by code, or 404 when the code is not in PostgreSQL.
 @router.get(
@@ -110,8 +116,8 @@ def read_module(
 ) -> ModuleSummary:
     try:
         module = get_module_by_code(db, code)
-    except SQLAlchemyError:
-        raise_module_database_error()
+    except SQLAlchemyError as error:
+        raise_module_database_error(error)
     if module is None:
         raise HTTPException(status_code=404, detail=f"Module {code.upper()} was not found.")
 
