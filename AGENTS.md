@@ -103,8 +103,8 @@ After each milestone, explain:
 - The Profile page should store the student's career goal so later MPE/choice-slot recommendations can use it.
 - Browser storage is prototype persistence only; treat localStorage profile, curriculum, transcript, completion, and recommendation data as inspectable and user-editable.
 - Backend recommendation requests currently receive user-controlled browser state, so do not treat submitted completed courses, profile fields, or uploaded-roadmap data as trusted production records.
-- Future NTU login integration should use official NTU SSO redirect/callback flow only; do not build a fake NTU password form, scrape NTU login pages, or hardcode a captured `SAMLRequest` URL.
-- If NTU SSO is added later, use the stable signed identity claim from SAML/OIDC as the external login identifier and keep the app's own internal user ID separate from any optional student ID.
+- NTU SSO uses Microsoft Azure AD OAuth 2.0 Authorization Code flow via `msal`; do not build a fake NTU password form, scrape NTU login pages, or hardcode captured auth URLs.
+- Use the Azure Object ID (`oid` from `id_token_claims`) as the stable user identity key; keep it separate from the student's matriculation number or email.
 
 ## Architecture Style
 
@@ -191,149 +191,237 @@ Follow this order unless I explicitly say otherwise.
 
 For the high-level architecture and request flow, refer to `Diagrams.md`.
 
+Struck-through items are complete. They are kept for history.
+
 ### Phase 1: Core App Foundation
 
-1. FastAPI health check
-2. Backend schemas and router structure
+1. ~~FastAPI health check~~
+2. ~~Backend schemas and router structure~~
 
 ### Phase 2: Course Recommendation MVP
 
-3. Static roadmap API
-4. Minimal React frontend
-5. Connect frontend to roadmap API
-6. Profile page and state
-7. Transcript upload
-8. Curriculum guide upload and parsed roadmap display
-9. Chat stub
+3. ~~Static roadmap API~~
+4. ~~Minimal React frontend~~
+5. ~~Connect frontend to roadmap API~~
+6. ~~Profile page and state~~
+7. ~~Transcript upload~~
+8. ~~Curriculum guide upload and parsed roadmap display~~
+9. ~~Basic MPE/choice-slot recommendation flow~~ (chat stub was deprioritised; recommendation engine was built instead)
+10. ~~Backend-owned deterministic scoring, exact-slot assignment, career-skill mapping~~
+11. ~~Offline benchmark evaluator (14 cases, nDCG ~0.705)~~
+12. **NTU SSO authentication** ← next major milestone
+13. Migrate user data from `localStorage` to server-side storage keyed by `oid`
 
-### Phase 3: AI and Data Integrations
+### Phase 3: Recommendation Depth and Evaluation
 
-10. Basic MPE/choice-slot recommendation flow
-11. MyCareersFuture scraper
-12. Skill extractor
-13. Neo4j client
-14. Graph loader
-15. ChromaDB client
-16. LangGraph state, workflow, and nodes
-17. Replace chat stub with LangGraph
-18. OpenAI integration
+14. Expand career coverage beyond Software Engineer
+15. Counterfactual sensitivity tests
+16. Coverage audit (check slot-fill rate across degree/cohort combinations)
+17. Expert review / think-aloud evaluation session
+18. RAGAS evaluation layer for explanation quality
+
+### Phase 4: AI and Data Integrations (deferred)
+
+These are intentionally deferred. Do not start them until phases 1–3 are solid.
+
+19. ~~MyCareersFuture scraper~~ (deprioritised; static career-skill mapping is sufficient for now)
+20. Neo4j client and graph loader
+21. ChromaDB client
+22. LangGraph state, workflow, and nodes
+23. OpenAI integration for explanation generation
 
 ## Recommendation Improvement Priority
 
-After the basic recommendation flow is working, improve recommendations in this order.
-The first four improvements are practical and sufficient for a strong undergraduate FYP system.
+This table tracks the improvement work on the deterministic recommendation engine specifically. It overlaps with the milestones above intentionally — the milestones track feature delivery order, this table tracks scoring/ranking improvement order within the recommendation system.
 
-| Priority | Improvement | Why it matters | Complexity | Recommended timing |
-| --- | --- | --- | --- | --- |
-| 1 | Backend-side eligibility and per-slot ranking | Prevents invalid or weak matches before frontend placement | Low-medium | Next |
-| 2 | Structured scoring features and score breakdown | Improves relevance while remaining explainable | Low | Next |
-| 3 | Prerequisite readiness and unlock-value logic | Makes recommendations pathway-aware rather than keyword-only | Medium | Next |
-| 4 | Curated course taxonomy and student preference profile | Reduces brittle keyword matching and enables genuine personalisation | Medium | After priorities 1-3 |
-| 5 | Diversity-aware assignment across slots | Stops repeated or overly similar BDE/MPE suggestions | Medium | After priorities 1-4 |
-| 6 | Career-to-skill mapping and job-market signals | Gives career relevance an evidence layer | Medium | Next, starting with static career-to-skill mapping only |
-| 7 | Neo4j or graph traversal | Useful once prerequisite and skill relationships become difficult to query and explain in SQL | Medium-high | Later |
-| 8 | Embeddings or vector search | Useful for semantic matching of messy free text | Medium-high | Later |
-| 9 | LLM or LangGraph | Useful for input normalisation and explanation generation, not core ranking | High | Last |
+| Priority | Improvement | Status |
+| --- | --- | --- |
+| 1 | Backend-side eligibility and per-slot ranking | ~~Done~~ |
+| 2 | Structured scoring features and score breakdown | ~~Done~~ |
+| 3 | Prerequisite readiness and unlock-value logic | ~~Done~~ |
+| 4 | Curated course taxonomy and student preference profile | ~~Done~~ |
+| 5 | Diversity-aware assignment across slots | ~~Done~~ |
+| 6 | Static career-to-skill mapping | ~~Done~~ (Software Engineer only) |
+| 7 | Benchmark calibration and weak-case review | In progress (`recommendation-score-calibration`) |
+| 8 | Expand career-skill mapping to more career goals | Next after benchmark stabilises |
+| 9 | Counterfactual sensitivity tests | After career expansion |
+| 10 | RAGAS / expert review evaluation | After system is stable |
+| 11 | Neo4j or graph traversal | Later — only if prerequisite/skill queries outgrow SQL |
+| 12 | Embeddings or vector search | Later — only for semantic matching of messy free text |
+| 13 | LLM or LangGraph | Last — for explanation generation, not core ranking |
 
-Do not jump to Neo4j, embeddings, LangGraph, OpenAI, or job-market integrations before the simpler eligibility, scoring, prerequisite-readiness, taxonomy, diversity, and static career-skill mapping improvements are understood.
+Do not jump to Neo4j, embeddings, LangGraph, or OpenAI before career expansion, counterfactual tests, and evaluation are done.
 
 ## Current State
 
-Completed foundations:
+See `Progress.md` and `Progress2.md` for the full history. Summary of completed work:
 
-- FastAPI backend with `GET /health`.
-- Backend router, schema, and service structure.
-- Static CSC roadmap data in `data/test_csc_roadmap.json`.
-- Backend `GET /roadmap` endpoint.
-- Minimal Vite React TypeScript frontend.
-- Frontend API call to `GET /roadmap`.
-- Semester roadmap UI with course cards, prerequisite arrows, search, and completed-course state.
-- Roadmap visually marks prerequisite-blocked courses with locked styling and missing prerequisite codes.
+- FastAPI backend, router/schema/service structure, PostgreSQL module catalog, faculty controls.
+- Static CSC roadmap data, `GET /roadmap`, `GET /modules`, `GET /modules/filters`, `GET /modules/{code}` endpoints.
+- Vite React TypeScript frontend with roadmap UI (course cards, prerequisite arrows, search, lock indicators).
 - Browser-side student login/profile state using Zustand and `localStorage`.
-- Transcript upload endpoint and frontend upload UI for marking completed roadmap courses.
-- Transcript parser handles two-column transcript layouts and treats `EX` and `TC` as completed.
-- Profile page shows separate counts for completed roadmap courses, completed transcript modules, and unmatched transcript modules.
-- Profile page shows latest transcript upload details for matched roadmap courses and unmatched transcript module codes.
-- PostgreSQL module catalog data seeded from static module JSON files.
-- Backend module catalog API with `GET /modules`, `GET /modules/filters`, and `GET /modules/{code}`.
-- Module descriptions seeded from `data/course_catalog.json` where available.
-- Faculty activation controls through a `faculties` table and `/faculties` API endpoints.
-- Frontend NTU Modules page with search, filters, pagination, module detail overlay, and persisted tab/filter state.
-- Backend `POST /curriculum-guide` endpoint parses the CSC AY2023-24 curriculum guide PDF into roadmap-shaped data.
-- Frontend Profile page can upload a curriculum guide PDF and stores the parsed guide in browser state per active Student ID.
-- Frontend Roadmap page now uses the uploaded curriculum guide as the student roadmap source of truth.
-- Roadmap page shows an empty state instead of the static roadmap when the active profile has no uploaded curriculum guide.
-- Roadmap page includes a `Clear roadmap` action that removes the uploaded curriculum guide while keeping transcript results saved.
-- Lower `Curriculum Guide Courses` section reads directly from the uploaded curriculum guide and is not affected by transcript semester overrides.
-- Profile page stores career goal through a dropdown for future MPE/choice-slot recommendation work.
-- Roadmap lock indicators now handle uploaded curriculum prerequisite text, including text-only requirements such as `Year 4 standing`.
-- CE/CSC modules can carry curated `recommendationTags` separate from original NTU `categories`.
-- The modules DB table includes a separate `recommendation_tags` JSON column seeded from `data/modules.json`.
-- Software Engineer recommendations use curated recommendation tags as scoring signals alongside the existing keyword fallback.
-- Profile page stores fixed student topic preferences in `preferredRecommendationTags`; students can type to filter allowed tags, but cannot create custom tags.
-- Student topic preferences are soft ranking boosts, not hard filters.
-- Recommendation ranking gives a soft same-faculty boost, so a CSC profile prefers CSC modules over CE or other faculties when the candidate is otherwise valid.
-- For CSC profiles, legacy `CZ` course codes are deprioritized behind current `SC` course codes, and older `CSC`-prefixed course codes are deprioritized even further as last-resort fallback candidates.
-- Recommendation ranking includes conservative near-duplicate title detection to avoid recommending very similar modules such as `Database Systems` and `Database System Principles` together.
-- Recommendation selection uses preference-aware diversity as a gentle tiebreaker so repeated non-preferred tags are reduced without overriding the student's selected topic preferences.
-- Backend recommendation responses now contain final exact-slot assignments instead of a large candidate pool; the frontend should render by `matchedChoiceSlotId` and avoid owning recommendation ranking or allocation logic.
-- Recommendation API responses include a deterministic `scoreBreakdown` for explainability, but the roadmap UI does not display it yet.
-- Software Engineer recommendations now use a backend-owned static career-skill mapping layer in `backend/services/career_skill_mappings.py`, moving from `goal -> keyword/tag overlap` toward `goal -> skill area -> curated module tags`.
-- The career-skill mapping includes per-skill rationale and weight rationale so the current deterministic scoring assumptions are inspectable.
-- Recommendation prerequisite planning matches old prerequisite codes to equivalent earlier curriculum courses by title, for example `CZ2007` can reuse `SC2207` instead of creating a fake 0 AU prerequisite card.
-- Backend recommendation responses can include planned prerequisite roadmap nodes and arrows through `plannedRoadmapNodes` and `plannedRoadmapEdges`.
-- Backend `POST /roadmap/readiness` evaluates roadmap course readiness and missing requirements, with the frontend retaining local readiness logic only as a fallback.
-- Backend `POST /transcript/match-curriculum` matches parsed transcript modules to uploaded curriculum rows by exact code first, then conservative title/signature matching.
-- Backend `POST /roadmap/personalized` builds the personalized roadmap from uploaded curriculum guide data, transcript placement overrides, transcript-only modules, and transcript-only prerequisite/unlock arrows.
-- The backend roadmap flow has been verified end to end after the Python 3.9 compatibility fix and `CurriculumEdge` to `RoadmapEdge` response normalization.
-- Exact module detail lookup uses course code only so roadmap modules from inactive browse faculties, such as `MH1812`, can still load details.
-- Profile page shows Student ID, Major, and Career Goal inline on wider screens and shows a spinner/tick inside the Load Roadmap button.
-- Curriculum guide parsing infers full table column positions from `Course Code`, `Course Title`, `Type`, `AU`, and `Pre-requisite` headers so similar NTU guide layouts can work without filename-specific rules.
-- If a curriculum guide PDF bundles multiple curriculum variants, the upload currently parses the first `CURRICULUM FOR...` section only until a variant-selection UI exists.
-- Transcript-to-curriculum matching uses exact course code first, then conservative title matching for course-code changes such as `SC3920 Professional Internship` matching `SC3079 Professional Internship`.
-- Selecting a new curriculum guide file does not replace the active roadmap source until `Upload Curriculum Guide` succeeds; `Load Roadmap` is disabled while a selected guide is pending upload.
-- Loaded roadmap recommendations are saved per Student ID in browser storage, so logging out and back in with the same Student ID restores the latest recommendation cards.
-- Browser-saved student data and recommendation API responses are inspectable by students, so current storage/API behavior is for prototype transparency rather than production security.
-- Real NTU SSO login is intentionally not implemented yet; any future login work should start with a safe mock SSO-shaped flow unless official NTU SAML/OIDC metadata and registration are available.
+- Transcript upload and parser (two-column layout, `EX`/`TC` treated as completed).
+- Curriculum guide upload: `POST /curriculum-guide` parses PDF into roadmap-shaped data; roadmap page uses it as source of truth.
+- `POST /roadmap/personalized`, `POST /roadmap/readiness`, `POST /transcript/match-curriculum` endpoints.
+- Profile page: Student ID, Major, Career Goal, topic preferences, curriculum guide and transcript upload.
+- Recommendation system: backend-owned deterministic scoring, exact-slot assignment, career-skill mapping layer (`backend/services/career_skill_mappings.py`), near-duplicate detection, diversity tiebreaker, planned prerequisite nodes/edges.
+- Offline benchmark evaluator with 14 cases; current nDCG ~0.705.
 
-Current next step:
+Current branch: `recommendation-score-calibration`
 
-- Continue from `Progress.md`.
-- Keep academic-standing requirements based on completed AU, not self-declared profile year.
-- Use transcript AU and parsed curriculum guide standing rules for requirements like `Year 4 standing`.
-- Keep roadmap/profile polish and API naming cleanup in view, especially clearer loading/error states and a future `recommendations` to `assignments` naming cleanup if the API changes.
-- Keep recommendation ranking and exact-slot allocation in the backend; the frontend should remain a rendering layer for assigned recommendations.
-- Keep recommendation diversity subordinate to eligibility, career relevance, and student topic preferences.
-- Weighted tag-to-skill relationships and top career-skill evidence metadata are implemented for Software Engineer recommendations.
-- `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes are treated as old CE/CSC course-code families and should be excluded from recommendation candidates, not merely deprioritized with penalties.
-- Preserve the hard-filter-before-ranking architecture: completed/fixed modules, slot fit, prerequisite feasibility, near-duplicate prior learning, and later availability/AU/programme constraints should be checked before final scoring.
-- Keep career relevance as one ranking factor, not the whole definition of usefulness. Continue combining career fit with student interests, curriculum/pathway fit, same-faculty/code preferences, unlock value, and diversity.
-- Improve recommendation explanations by keeping the top-contributing path, such as `Software Engineer -> backend and data services -> distributed-systems -> Distributed Systems`, instead of listing every matched signal.
-- Do not show recommendation score breakdowns in the roadmap UI unless explicitly requested.
-- Do not add automated recommender tests right now; scoring and eligibility test ideas are documented for later validation work, but the immediate next work should proceed without creating a test suite unless explicitly requested again.
-- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, or advanced job-market integration yet.
+Active rules and constraints:
+- Keep recommendation ranking and slot allocation in the backend; frontend is a rendering layer only.
+- Hard-filter before ranking: completed/fixed modules, slot fit, prerequisite feasibility, near-duplicate prior learning.
+- `CE`, `CPE`, `CSC`, `CZ` course-code prefixes are excluded from recommendation candidates (hard filter, not penalty).
+- Career relevance is one factor among eligibility, student interests, curriculum fit, unlock value, and diversity.
+- Do not show score breakdowns in the roadmap UI unless explicitly requested.
+- Do not add automated recommender tests yet.
+- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, or ML logic yet.
+- Academic-standing requirements should use completed AU from transcript, not self-declared profile year.
+
+Current next steps (from `Progress2.md`):
+- Review weak benchmark cases: `software-engineer-csc-014`, `-006`, `-008`, `-011`.
+- Then: NTU SSO authentication (see section below).
+
+## NTU SSO Authentication
+
+**Status: Not yet implemented. This is the next major feature after benchmark review.**
+
+NTU SSO is done via **Microsoft Azure AD** (NTU uses Microsoft 365), using the OAuth 2.0 Authorization Code flow with the `msal` Python library. Reference implementation: `NTUCourseGenie` at `/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/NTUCourseGenie/course_v2/login_utils/login_ui.py`.
+
+### How it works
+
+1. **App Registration**: Register an app in NTU's Azure AD tenant. Requires `APP_REG_CLIENT_ID`, `APP_REG_CLIENT_SECRET`, and `AUTHORITY` (`https://login.microsoftonline.com/<ntu-tenant-id>`).
+
+2. **Login initiation**: Backend (or frontend redirect) calls `app.get_authorization_request_url(scopes=["User.Read"])` to get the Azure AD auth URL, then redirects the user there.
+
+3. **Callback**: After NTU login, Azure AD redirects back to the app with `?code=<auth_code>` in the URL.
+
+4. **Token exchange**: Backend calls `app.acquire_token_by_authorization_code(auth_code, scopes=["User.Read"])`. Returns `access_token` and `id_token_claims`.
+
+5. **NTU email validation**: Check `"ntu.edu.sg" in id_token_claims["preferred_username"]` to reject non-NTU accounts.
+
+6. **User identity**: Use `id_token_claims["oid"]` (Azure Object ID) as the stable unique user identifier — it never changes even if the student's email or name changes.
+
+7. **Profile picture**: Optionally fetch from `https://graph.microsoft.com/v1.0/users/{oid}/photo/$value` with the access token.
+
+### Key design decisions
+
+- Use `oid` (Azure Object ID) as the primary key for the user record in the database, not the student ID or email.
+- Store `email` and `name` from `id_token_claims["preferred_username"]` and `id_token_claims["name"]` as display fields only.
+- Do not build a fake NTU password form, scrape NTU login pages, or hardcode captured SAML/auth URLs.
+- Do not use SAML unless NTU specifically provides a SAML metadata URL; prefer OIDC/OAuth via Azure AD.
+- The `oid` is stable across devices and sessions: the same student logging in from any device gets the same `oid`, enabling cross-device persistence.
+
+### How user data persists across sessions and devices
+
+The `oid` from Azure AD is the anchor. It is stable forever — the same value is returned every time the same student logs in, from any device or browser.
+
+**Why `oid` and not email or student ID:**
+
+| Identifier | Problem |
+|---|---|
+| Email | Can change (graduation, name change) |
+| Student/matric number | Not reliably exposed as an OIDC claim |
+| `oid` | Stable forever, unique per user per tenant, same on every device |
+
+**Session token flow:**
+
+After the OAuth code exchange succeeds, the FastAPI backend should:
+1. Verify the `oid` from `msal` token claims.
+2. Look up or create the user record in the database by `oid`.
+3. Issue its own JWT (or signed httpOnly cookie) with the `oid` embedded.
+4. Return that JWT to the frontend.
+
+The frontend sends the JWT on every API request. The Azure access token is used once to verify identity and never sent to the frontend.
+
+```
+First login (any device):
+  Azure returns oid → backend checks DB → not found → create user record → issue JWT
+
+Any later login (same or different device):
+  Azure returns same oid → backend finds existing record → issue JWT with their data
+```
+
+**Current state vs. after SSO:**
+
+- Right now the app uses `localStorage` with a self-declared Student ID.
+- After SSO: the Student ID field goes away; `oid` is the identity.
+- All profile, curriculum, transcript, and recommendation data moves to server-side storage keyed by `oid`.
+- `localStorage` becomes a UI cache only (e.g., last active tab), not a data store.
+- A student logging in on a phone gets the exact same state as on their laptop.
+
+**Watch out for multiple Azure AD tenants:** NTU may have separate tenants for students and staff. Pin the `AUTHORITY` URL to the student tenant so non-NTU Microsoft accounts are rejected at the tenant level, before the email check.
+
+### Required env vars
+
+```
+APP_REG_CLIENT_ID=<azure app registration client id>
+APP_REG_CLIENT_SECRET=<azure client secret>
+AUTHORITY=https://login.microsoftonline.com/<ntu-tenant-id>
+```
+
+### Rules for implementation
+
+- Use Microsoft MSAL (`msal` Python package) for the backend token exchange.
+- The FastAPI backend should own the OAuth callback endpoint (e.g., `GET /auth/callback`).
+- Issue a server-side session token (e.g., JWT or opaque token stored in an httpOnly cookie) after the token exchange succeeds; do not pass the Azure access token to the frontend.
+- Keep the app's internal user ID (`oid`) separate from the student's matriculation number.
+- The student's matriculation number may be derivable from their NTU email but should not be treated as a stable identity key.
+
+## Recommendation Evaluation
+
+### Current approach
+
+The current offline benchmark uses a hand-reviewed set of 14 cases evaluated with precision@k, nDCG@k, explanation coverage, explanation fidelity, skill-area diversity, old-code exposure, and constraint validity. This is deterministic and fast but relies entirely on manually reviewed labels.
+
+### RAGAS eval framework
+
+Explore using **RAGAS** (`ragas` Python package) for a more structured evaluation layer. RAGAS was designed for RAG pipelines but its metrics transfer well to recommendation systems with LLM-generated explanations:
+
+- **Faithfulness**: does the recommendation explanation only make claims supported by the student's actual profile and curriculum data?
+- **Answer relevancy**: does the recommended module actually address the student's career goal and topic preferences?
+- **Context precision / recall**: are the right signals (career-skill mappings, prerequisite chain, student preferences) being used and weighted correctly?
+
+RAGAS needs a dataset of `(question, context, answer, ground_truth)` tuples. For this system that maps to `(student profile, curriculum + career-skill context, recommended modules + explanation, reviewed positive labels)`.
+
+Reference implementation in a past FYP: `/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/NTUCourseGenie/course_v2/ragas_eval/`
+
+### Other evaluation approaches to explore
+
+| Approach | What it measures | When to use it |
+|---|---|---|
+| **Offline benchmark (current)** | Precision@k, nDCG@k against hand-reviewed labels | Fast iteration; catches ranking regressions |
+| **RAGAS** | Faithfulness and relevancy of LLM-generated explanations | Once explanations become a key output |
+| **A/B or interleaving test** | Which ranking produces more clicks/accepts from real users | If real NTU students use the system |
+| **Expert review / think-aloud** | Whether a knowledgeable person (supervisor, senior student) agrees with the top recommendations | Good for FYP evaluation chapter; low sample count is fine |
+| **Counterfactual sensitivity** | Does changing career goal, completed modules, or preferences actually shift the ranked list in a sensible direction? | Catches cases where scoring is correct on average but insensitive to meaningful input changes |
+| **Coverage audit** | What fraction of valid MPE/BDE slots can the system fill with at least one eligible recommendation? | Ensures the system does not silently leave slots empty for certain degree/cohort combinations |
+| **Constraint validity (current)** | Are all hard rules (no old codes, no completed modules, slot type match) always satisfied? | Keep as a required pass on every benchmark run |
+
+### Rules
+
+- Do not replace the current offline benchmark with RAGAS; add it alongside as a complementary layer.
+- Expert review is the most credible evaluation for an undergraduate FYP and should be included in the final report.
+- Counterfactual sensitivity tests can be written as simple assertion scripts without a full test suite.
+- Do not build the RAGAS or A/B evaluation layer until the recommendation system itself is stable.
 
 ## Expected Working Directory
 
 Always work inside:
 
 ```text
-/Users/bytedance/Desktop/fyp_course_recommendation
+/Users/zacklau/Desktop/y4s1/fyp/fyp_course_recommendation
 ```
 
-## Reference Files From Old Repo
+## Reference Files From Past FYP Repos
 
 Use these only when needed:
 
 ```text
-/Users/bytedance/Desktop/course-recommendation-system/backend/main.py
-/Users/bytedance/Desktop/course-recommendation-system/backend/routers/
-/Users/bytedance/Desktop/course-recommendation-system/backend/models/schemas.py
-/Users/bytedance/Desktop/course-recommendation-system/backend/db/
-/Users/bytedance/Desktop/course-recommendation-system/backend/agents/
-/Users/bytedance/Desktop/course-recommendation-system/backend/pipeline/
-/Users/bytedance/Desktop/course-recommendation-system/backend/utils/
-/Users/bytedance/Desktop/course-recommendation-system/frontend/src/
+/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/NTUCourseGenie/
+/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/CourseNavigator/
+/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/shing-hao/
 ```
 
 ## Communication Style
