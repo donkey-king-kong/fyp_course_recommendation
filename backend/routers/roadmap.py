@@ -7,7 +7,6 @@ from sqlalchemy.orm import Session
 from backend.database.connection import SessionLocal
 from backend.schemas.roadmap import PersonalizedRoadmapRequest, RoadmapResponse
 from backend.services.personalized_roadmap_service import build_personalized_roadmap
-from backend.services.roadmap_service import get_csc_roadmap
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
@@ -30,10 +29,6 @@ def get_db() -> Session:
         yield db
     finally:
         db.close()
-
-@router.get("/roadmap", response_model=RoadmapResponse)
-def read_roadmap() -> RoadmapResponse:
-    return get_csc_roadmap()
 
 @router.post(
     "/roadmap/personalized",
