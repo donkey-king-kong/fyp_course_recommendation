@@ -5,7 +5,6 @@ from typing import Any, Optional
 import fitz
 
 from backend.schemas.transcript import TranscriptCourse, TranscriptUploadResponse
-from backend.services.roadmap_service import get_csc_roadmap
 
 logger = logging.getLogger(__name__)
 
@@ -384,14 +383,8 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
     if not transcript_rows:
         logger.info("Word-position parsing found no rows; falling back to line-based parsing.")
         transcript_rows = parse_transcript_rows(transcript_text)
-    roadmap = get_csc_roadmap()
-    # Build a quick lookup so transcript course codes can be matched to roadmap nodes.
-    roadmap_courses_by_code = {course.courseCode: course for course in roadmap.nodes}
-
-    completed_courses: list[TranscriptCourse] = []
     completed_transcript_courses: list[TranscriptCourse] = []
     unmatched_course_codes: list[str] = []
-    # Counts completed transcript rows before roadmap matching, so the UI can show both numbers.
     completed_transcript_course_count = 0
     completed_transcript_academic_units = 0.0
 
@@ -407,11 +400,10 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
 
         completed_transcript_course_count += 1
         completed_transcript_academic_units += academic_units
-        roadmap_course = roadmap_courses_by_code.get(course_code)
         transcript_course = TranscriptCourse(
             course_code=course_code,
-            course_id=roadmap_course.id if roadmap_course else f"transcript-{course_code.lower()}",
-            title=roadmap_course.title if roadmap_course else transcript_row["title"],
+            course_id=f"transcript-{course_code.lower()}",
+            title=transcript_row["title"],
             academic_units=academic_units,
             grade=grade,
             grade_point=(
@@ -424,20 +416,11 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
             study_year=transcript_row.get("study_year"),
         )
         completed_transcript_courses.append(transcript_course)
-
-        if roadmap_course is None:
-            # The transcript can contain non-roadmap modules such as business/common-core courses.
-            logger.info("Parsed course %s but it is not in the CSC roadmap.", course_code)
-            unmatched_course_codes.append(course_code)
-            continue
-
-        logger.info("Matched completed roadmap course: %s (%s).", course_code, grade)
-        completed_courses.append(transcript_course)
+        logger.info("Parsed completed course: %s (%s).", course_code, grade)
 
     logger.info(
-        "Transcript parsing complete: %s completed roadmap course(s), %s unmatched course code(s).",
-        len(completed_courses),
-        len(unmatched_course_codes),
+        "Transcript parsing complete: %s completed course(s).",
+        len(completed_transcript_courses),
     )
 
     total_academic_units_earned = (
@@ -446,7 +429,7 @@ def extract_completed_courses(file_content: bytes) -> TranscriptUploadResponse:
     )
 
     return TranscriptUploadResponse(
-        completed_courses=completed_courses,
+        completed_courses=completed_transcript_courses,
         completed_transcript_courses=completed_transcript_courses,
         completed_transcript_course_count=completed_transcript_course_count,
         total_academic_units_earned=total_academic_units_earned,
