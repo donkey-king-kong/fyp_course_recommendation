@@ -180,6 +180,10 @@ class RecommendationScoreBreakdown(BaseModel):
         description="Soft boost when the module faculty matches the student's profile faculty.",
         examples=[8],
     )
+    mpeSpecialisationBoost: int = Field(
+        description="Soft boost when an official MPE path directly supports the selected career goal.",
+        examples=[12],
+    )
     legacyCodePenalty: int = Field(
         description=(
             "Reserved score adjustment for future code-family preferences. Old CE/CSC "

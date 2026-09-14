@@ -47,6 +47,7 @@ export interface RecommendationScoreBreakdown {
   currentSemesterBonus: number
   preferenceBoost: number
   sameFacultyBoost: number
+  mpeSpecialisationBoost: number
   legacyCodePenalty: number
   defaultProfileAdjustment: number
   prerequisitePlanningPenalty: number
