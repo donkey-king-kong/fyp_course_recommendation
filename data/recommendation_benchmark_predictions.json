@@ -1,7 +1,7 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-04T10:15:44.215595+00:00",
-  "apiUrl": "http://127.0.0.1:8002/recommendations",
+  "generatedAt": "2026-09-14T03:44:19.665093+00:00",
+  "apiUrl": "http://127.0.0.1:8009/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
     {
@@ -599,8 +599,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches your profile faculty."
         },
         {
-          "courseCode": "SC3270",
-          "title": "Reasoning About Programs",
+          "courseCode": "SC3040",
+          "title": "Advanced Software Engineering",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
@@ -610,18 +610,12 @@
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
-            "programming",
-            "systems",
+            "engineering",
             "tag:software-engineering",
-            "tag:programming",
-            "skill:software design and delivery:software-engineering",
-            "skill:algorithmic problem solving:theory-of-computing"
+            "skill:software design and delivery:software-engineering"
           ],
           "prerequisites": [
-            "MH1403",
-            "MH1812",
-            "SC2001",
-            "SC2301"
+            "SC2006"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -631,10 +625,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 30,
+          "score": 24,
           "scoreBreakdown": {
-            "careerTagScore": 7,
-            "careerSkillScore": 12,
+            "careerTagScore": 3,
+            "careerSkillScore": 10,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -652,9 +646,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 30
+            "finalScore": 24
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering and matches your profile faculty."
         },
         {
           "courseCode": "SC4002",
@@ -1042,8 +1036,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Data Privacy & Security and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC4053",
-          "title": "Blockchain Technology",
+          "courseCode": "SC4013",
+          "title": "Application Security",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -1052,19 +1046,18 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
-            "engineering",
-            "distributed",
-            "systems",
+            "web",
+            "testing",
             "security",
+            "tag:web-development",
             "tag:computer-security",
-            "tag:distributed-systems",
-            "skill:backend and data services:distributed-systems",
-            "skill:systems and infrastructure:distributed-systems",
+            "skill:software design and delivery:web-development",
+            "skill:backend and data services:web-development",
             "skill:secure software practice:computer-security"
           ],
           "prerequisites": [
-            "SC1007",
-            "SC2001"
+            "SC2005",
+            "SC2008"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -1074,19 +1067,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 68,
+          "score": 63,
           "scoreBreakdown": {
-            "careerTagScore": 1,
-            "careerSkillScore": 21,
+            "careerTagScore": 2,
+            "careerSkillScore": 15,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
-              "skillArea": "backend and data services",
-              "skillAreaWeight": 8,
-              "tag": "distributed-systems",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
               "relationshipWeight": 1.0,
               "tagConfidence": 1.0,
-              "contributionScore": 8.0,
-              "rationale": "Strongest signal for scalable backend services and service reliability."
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
             "preferenceBoost": 35,
@@ -1095,9 +1088,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 68
+            "finalScore": 63
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Application Security and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },
@@ -1350,8 +1343,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC3270",
-          "title": "Reasoning About Programs",
+          "courseCode": "SC3040",
+          "title": "Advanced Software Engineering",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
@@ -1361,18 +1354,12 @@
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
-            "programming",
-            "systems",
+            "engineering",
             "tag:software-engineering",
-            "tag:programming",
-            "skill:software design and delivery:software-engineering",
-            "skill:algorithmic problem solving:theory-of-computing"
+            "skill:software design and delivery:software-engineering"
           ],
           "prerequisites": [
-            "MH1403",
-            "MH1812",
-            "SC2001",
-            "SC2301"
+            "SC2006"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -1382,10 +1369,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 30,
+          "score": 24,
           "scoreBreakdown": {
-            "careerTagScore": 7,
-            "careerSkillScore": 12,
+            "careerTagScore": 3,
+            "careerSkillScore": 10,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -1403,9 +1390,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 30
+            "finalScore": 24
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering and matches your profile faculty."
         },
         {
           "courseCode": "SC4023",
@@ -1826,243 +1813,6 @@
             "finalScore": 45
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems and matches your profile faculty."
-        }
-      ]
-    },
-    {
-      "caseId": "software-engineer-csc-006",
-      "request": {
-        "careerGoal": "software-engineer",
-        "preferredRecommendationTags": [
-          "ai-ml"
-        ],
-        "studentFaculty": "CSC",
-        "completedCourseCodes": [
-          "SC1003",
-          "SC1013",
-          "MH1810",
-          "MH1812",
-          "CC0003",
-          "CC0005",
-          "AB1201",
-          "AB1501",
-          "AD1102",
-          "CC0001",
-          "CC0002",
-          "EG1001",
-          "SC1004",
-          "SC1005",
-          "SC1007",
-          "SC1015",
-          "CC0007",
-          "SC1006",
-          "SC2000",
-          "SC2001",
-          "SC2002",
-          "SC2006",
-          "AB1601",
-          "CC0006",
-          "ML0004",
-          "SC2005",
-          "SC2008",
-          "SC2207",
-          "SC3000",
-          "SC3920",
-          "AD2102",
-          "BE1402",
-          "SC3010",
-          "SC4000",
-          "SC4002"
-        ],
-        "choiceSlotCodes": [
-          "SC4xxx"
-        ],
-        "choiceSlots": [
-          {
-            "slotId": "y4-s1-mpe1",
-            "courseCode": "SC4xxx",
-            "year": 4,
-            "semester": 1
-          }
-        ],
-        "curriculumCourses": [
-          {
-            "courseCode": "SC1003"
-          },
-          {
-            "courseCode": "SC1013"
-          },
-          {
-            "courseCode": "MH1810"
-          },
-          {
-            "courseCode": "MH1812"
-          },
-          {
-            "courseCode": "CC0003"
-          },
-          {
-            "courseCode": "CC0005"
-          },
-          {
-            "courseCode": "SC1005"
-          },
-          {
-            "courseCode": "SC1007"
-          },
-          {
-            "courseCode": "SC1015"
-          },
-          {
-            "courseCode": "EG1001"
-          },
-          {
-            "courseCode": "CC0001"
-          },
-          {
-            "courseCode": "CC0002"
-          },
-          {
-            "courseCode": "SC1004"
-          },
-          {
-            "courseCode": "SC1006"
-          },
-          {
-            "courseCode": "SC2001"
-          },
-          {
-            "courseCode": "SC2002"
-          },
-          {
-            "courseCode": "CC0007"
-          },
-          {
-            "courseCode": "SC2000"
-          },
-          {
-            "courseCode": "SC2005"
-          },
-          {
-            "courseCode": "SC2006"
-          },
-          {
-            "courseCode": "SC2207"
-          },
-          {
-            "courseCode": "CC0006"
-          },
-          {
-            "courseCode": "ML0004"
-          },
-          {
-            "courseCode": "SC2008"
-          },
-          {
-            "courseCode": "SC2079"
-          },
-          {
-            "courseCode": "SC3000"
-          },
-          {
-            "courseCode": "SC3010"
-          },
-          {
-            "courseCode": "HW0288"
-          },
-          {
-            "courseCode": "SC4079"
-          },
-          {
-            "courseCode": "SC3920"
-          },
-          {
-            "courseCode": "SC4062"
-          }
-        ],
-        "excludedCourseCodes": [
-          "SC1003",
-          "SC1013",
-          "MH1810",
-          "MH1812",
-          "CC0003",
-          "CC0005",
-          "SC1005",
-          "SC1007",
-          "SC1015",
-          "EG1001",
-          "CC0001",
-          "CC0002",
-          "SC1004",
-          "SC1006",
-          "SC2001",
-          "SC2002",
-          "CC0007",
-          "SC2000",
-          "SC2005",
-          "SC2006",
-          "SC2207",
-          "CC0006",
-          "ML0004",
-          "SC2008",
-          "SC2079",
-          "SC3000",
-          "SC3010",
-          "HW0288",
-          "SC4079",
-          "SC3920",
-          "SC4062"
-        ],
-        "excludedCourseTitles": [],
-        "limit": 1
-      },
-      "recommendations": [
-        {
-          "courseCode": "SC4001",
-          "title": "Neural Network & Deep Learning",
-          "academicUnits": 3.0,
-          "faculty": "CSC",
-          "level": 4,
-          "matchedChoiceSlot": "SC4xxx",
-          "matchedChoiceSlotId": "y4-s1-mpe1",
-          "matchedChoiceSlotYear": 4,
-          "matchedChoiceSlotSemester": 1,
-          "matchedKeywords": [
-            "algorithm",
-            "architecture",
-            "tag:ai-ml"
-          ],
-          "prerequisites": [
-            "MH1201",
-            "MH1403",
-            "MH2802",
-            "SC1004",
-            "SC1007",
-            "SC1123"
-          ],
-          "missingPrerequisites": [],
-          "existingPrerequisiteCourseCodes": [],
-          "plannedPrerequisiteCourseCodes": [],
-          "prerequisiteRecommendations": [],
-          "plannedRoadmapNodes": [],
-          "plannedRoadmapEdges": [],
-          "readinessStatus": "ready",
-          "unlockValue": 0,
-          "score": 54,
-          "scoreBreakdown": {
-            "careerTagScore": 8,
-            "careerSkillScore": 0,
-            "careerSkillEvidence": null,
-            "currentSemesterBonus": 3,
-            "preferenceBoost": 35,
-            "sameFacultyBoost": 8,
-            "legacyCodePenalty": 0,
-            "defaultProfileAdjustment": 0,
-            "prerequisitePlanningPenalty": 0,
-            "unlockContribution": 0,
-            "finalScore": 54
-          },
-          "reason": "Recommended for the Software Engineer career goal. Also matches career signals: algorithm, architecture, tag:ai-ml and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },
@@ -2653,8 +2403,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC4053",
-          "title": "Blockchain Technology",
+          "courseCode": "SC4017",
+          "title": "Data Privacy & Security",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -2663,18 +2413,13 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
-            "engineering",
-            "distributed",
             "systems",
             "security",
             "tag:computer-security",
-            "tag:distributed-systems",
-            "skill:backend and data services:distributed-systems",
-            "skill:systems and infrastructure:distributed-systems",
             "skill:secure software practice:computer-security"
           ],
           "prerequisites": [
-            "SC1007",
+            "SC2000",
             "SC2001"
           ],
           "missingPrerequisites": [],
@@ -2685,30 +2430,30 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 68,
+          "score": 64,
           "scoreBreakdown": {
-            "careerTagScore": 1,
-            "careerSkillScore": 21,
+            "careerTagScore": 4,
+            "careerSkillScore": 6,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
-              "skillArea": "backend and data services",
-              "skillAreaWeight": 8,
-              "tag": "distributed-systems",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
               "relationshipWeight": 1.0,
               "tagConfidence": 1.0,
-              "contributionScore": 8.0,
-              "rationale": "Strongest signal for scalable backend services and service reliability."
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 35,
+            "preferenceBoost": 43,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 68
+            "finalScore": 64
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Data Privacy & Security and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },
@@ -3563,8 +3308,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC3270",
-          "title": "Reasoning About Programs",
+          "courseCode": "SC3040",
+          "title": "Advanced Software Engineering",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
@@ -3574,18 +3319,12 @@
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
-            "programming",
-            "systems",
+            "engineering",
             "tag:software-engineering",
-            "tag:programming",
-            "skill:software design and delivery:software-engineering",
-            "skill:algorithmic problem solving:theory-of-computing"
+            "skill:software design and delivery:software-engineering"
           ],
           "prerequisites": [
-            "MH1403",
-            "MH1812",
-            "SC2001",
-            "SC2301"
+            "SC2006"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -3595,10 +3334,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 30,
+          "score": 24,
           "scoreBreakdown": {
-            "careerTagScore": 7,
-            "careerSkillScore": 12,
+            "careerTagScore": 3,
+            "careerSkillScore": 10,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -3616,9 +3355,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 30
+            "finalScore": 24
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering and matches your profile faculty."
         }
       ]
     },
@@ -4407,7 +4146,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 52,
+          "score": 61,
           "scoreBreakdown": {
             "careerTagScore": 0,
             "careerSkillScore": 6,
@@ -4422,19 +4161,19 @@
               "rationale": "Networking knowledge directly supports distributed and internet-facing software."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 35,
+            "preferenceBoost": 44,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 52
+            "finalScore": 61
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Advanced Computer Networks and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC4022",
-          "title": "Network Science",
+          "courseCode": "SC4030",
+          "title": "Wireless & Mobile Networks",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -4443,16 +4182,11 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
           "matchedKeywords": [
-            "distributed",
-            "systems",
-            "algorithm",
-            "security",
             "tag:computer-network",
             "skill:systems and infrastructure:computer-network"
           ],
           "prerequisites": [
-            "MH1403",
-            "SC2001"
+            "SC2008"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -4462,9 +4196,9 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 60,
+          "score": 61,
           "scoreBreakdown": {
-            "careerTagScore": 11,
+            "careerTagScore": 0,
             "careerSkillScore": 6,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
@@ -4476,16 +4210,16 @@
               "contributionScore": 6.3,
               "rationale": "Networking knowledge directly supports distributed and internet-facing software."
             },
-            "currentSemesterBonus": 0,
-            "preferenceBoost": 35,
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 44,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 60
+            "finalScore": 61
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Network Science and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Wireless & Mobile Networks and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     }

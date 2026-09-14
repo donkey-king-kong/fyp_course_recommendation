@@ -260,6 +260,142 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
 
+## Network Preference Current-Availability Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-014` after project-owner feedback that `SC4030 Wireless & Mobile Networks` is clearly better than `SC4022 Network Science` for a student who selected `computer-network` and `operating-systems`.
+- Added a targeted current-semester preference boost for `computer-network` matches.
+- Kept `SC4022` unlabelled as a reviewed positive, because the intended behaviour is to prefer the more direct/current networking module rather than accepting the broader network-science fallback.
+- Regenerated benchmark predictions against a fresh local backend.
+
+### Rationale Notes
+
+- `SC4022` was winning because broad raw keywords in its catalogue text, such as distributed, systems, algorithm, and security, added enough fallback score to beat `SC4030`.
+- A general raw keyword cap fixed case `014` but caused unrelated regressions, so it was not kept.
+- The final adjustment is narrower: it only boosts current-semester modules that directly match the `computer-network` preference tag.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; from backend.services.recommendation_service import CURRENT_PREFERENCE_TAG_BONUSES; print('backend import ok'); print(CURRENT_PREFERENCE_TAG_BONUSES)"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8004/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Case `software-engineer-csc-014` now recommends `SC3030 Advanced Computer Networks` and `SC4030 Wireless & Mobile Networks`.
+- The benchmark now reports `averagePrecisionAtK` `0.3857142857142858`, `averageNdcgAtK` `0.739040701455745`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No benchmark label change for `SC4022`.
+- No broad raw keyword top-up cap.
+- No frontend UI changes.
+- No automated recommender test suite unless explicitly requested.
+
+## SC3 Software Fallback Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-011` after project-owner feedback that `SC3040 Advanced Software Engineering` should be preferred over `SC3270 Reasoning About Programs`.
+- Confirmed `SC3040` is eligible: it is a current-semester CSC level-3 module, its `SC2006` prerequisite is completed in the case, and it is not unavailable to CSC.
+- Updated the benchmark case so `SC3099 Capstone Project` is a negative core-project exclusion example instead of a positive reviewed candidate.
+- Added `SC3270 Reasoning About Programs` as a `somewhat-relevant` fallback candidate, because it is acceptable only when `SC3040` is not eligible.
+- Marked `SC3270` as `recommendationProfile: specialist` in `data/modules.json`.
+- Updated specialist profile adjustment so specialist modules receive the specialist penalty when the student selected preferences and the module does not match any selected preference.
+- Regenerated benchmark predictions after reseeding the local module table.
+
+### Rationale Notes
+
+- `SC3270` previously beat `SC3040` because it had extra `programming` and `theory-of-computing` signals, even though it is more formal/theory-oriented.
+- `SC3040` is the more direct applied software-engineering fallback when no SC3 module matches backend-engineering, distributed-systems, or cloud-computing.
+- The specialist penalty still does not apply when a specialist module directly matches a selected preference, so security, networking, or distributed-systems specialist matches are not broadly suppressed.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -m backend.database.seed`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8005/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Case `software-engineer-csc-011` now recommends `SC3020 Database System Principles` and `SC3040 Advanced Software Engineering`.
+- The benchmark now reports `averagePrecisionAtK` `0.42857142857142877`, `averageNdcgAtK` `0.7799114514168929`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No automated recommender test suite unless explicitly requested.
+- No frontend UI changes.
+- No change to the global core-project exclusion for `SC3099`.
+
+## Security Privacy BDE Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-008` after project-owner feedback that `SC4017 Data Privacy & Security` should be preferred over `SC4053 Blockchain Technology`.
+- Added `SC4053 Blockchain Technology` to the case as a `somewhat-relevant` fallback rather than the preferred BDE answer.
+- Tightened specialist profile adjustment so specialist modules are penalized when they only partially match the selected preference set.
+- Marked `SC4011 Security Management` as `recommendationProfile: specialist` because it is broader and more management-oriented than technical privacy/security modules.
+- Added a narrow security/privacy adjacency boost for the exact `computer-security` + `cryptography` preference combination so `SC4017` can beat generic security fallbacks for this case.
+- Regenerated benchmark predictions against a fresh local backend.
+
+### Rationale Notes
+
+- `SC4053` previously won because it combined `computer-security` with strong Software Engineer `distributed-systems` career-skill evidence.
+- After suppressing blockchain, `SC4011 Security Management` became the fallback because raw catalogue wording gave it a higher general security score than `SC4017`.
+- The final rule is intentionally narrow: it only treats privacy as an adjacent fallback when the selected preferences are exactly `computer-security` and `cryptography`, avoiding regressions where privacy is already explicitly selected.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8008/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Case `software-engineer-csc-008` now recommends `SC4010 Applied Cryptography` and `SC4017 Data Privacy & Security`.
+- The benchmark now reports `averagePrecisionAtK` `0.442857142857143`, `averageNdcgAtK` `0.7985613917770757`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No frontend UI changes.
+- No automated recommender test suite unless explicitly requested.
+- No broad security-course reshuffling beyond the reviewed `csc-008` calibration.
+
+## AI/ML Benchmark Case Deferral
+
+Status: Implemented locally
+
+### Completed
+
+- Removed `software-engineer-csc-006` from the current Software Engineer benchmark set.
+- Deferred the AI/ML preference scenario until the project has an explicit AI/ML career goal or AI/ML-focused evaluation track.
+- Regenerated benchmark predictions for the remaining 13 Software Engineer cases.
+
+### Rationale Notes
+
+- The case recommended the correct course, `SC4001 Neural Network & Deep Learning`, but it was weak for reasons unrelated to Software Engineer ranking quality.
+- The case relied on `ai-ml`, which is not currently mapped as Software Engineer career-skill evidence.
+- The case also expected unlock credit toward `SC4062 Generative Artificial Intelligence - Advanced Topics`, but the benchmark curriculum data did not include enough year/semester metadata for the backend to prove that `SC4062` is a later fixed module.
+- Keeping this case in the Software Engineer benchmark would mix a future AI/ML career path concern into the current Software Engineer calibration.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8009/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `caseCount` `13`, `averagePrecisionAtK` `0.4615384615384617`, `averageNdcgAtK` `0.805841645834225`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No AI/ML career goal was added.
+- No `ai-ml` Software Engineer career-skill mapping was added.
+- No recommender scoring changes were made for this deferral.
+
 ## Current-Semester Bonus Calibration
 
 Status: Implemented locally

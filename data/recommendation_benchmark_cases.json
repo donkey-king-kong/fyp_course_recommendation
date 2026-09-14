@@ -831,123 +831,6 @@
       ]
     },
     {
-      "caseId": "software-engineer-csc-006",
-      "description": "Y4 CSC student with ai-ml preference. SC4062 (Generative AI - Advanced Topics) is a fixed curriculum module in Y4-S2. One SC4xxx MPE slot open in Y4-S1. Tests that SC4001 (Neural Network & Deep Learning) gets unlock-value credit for unlocking the fixed SC4062, separating it from SC4000 (Machine Learning) which has identical ai-ml tag but zero unlock value for SC4062.",
-      "studentFaculty": "CSC",
-      "careerGoal": "software-engineer",
-      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
-      "preferredRecommendationTags": [
-        "ai-ml"
-      ],
-      "completedCourseCodes": [
-        "SC1003",
-        "SC1013",
-        "MH1810",
-        "MH1812",
-        "CC0003",
-        "CC0005",
-        "AB1201",
-        "AB1501",
-        "AD1102",
-        "CC0001",
-        "CC0002",
-        "EG1001",
-        "SC1004",
-        "SC1005",
-        "SC1007",
-        "SC1015",
-        "CC0007",
-        "SC1006",
-        "SC2000",
-        "SC2001",
-        "SC2002",
-        "SC2006",
-        "AB1601",
-        "CC0006",
-        "ML0004",
-        "SC2005",
-        "SC2008",
-        "SC2207",
-        "SC3000",
-        "SC3920",
-        "AD2102",
-        "BE1402",
-        "SC3010",
-        "SC4000",
-        "SC4002"
-      ],
-      "choiceSlots": [
-        {
-          "slotId": "y4-s1-mpe1",
-          "courseCode": "SC4xxx",
-          "year": 4,
-          "semester": 1
-        }
-      ],
-      "curriculumCourses": [
-        "SC1003",
-        "SC1013",
-        "MH1810",
-        "MH1812",
-        "CC0003",
-        "CC0005",
-        "SC1005",
-        "SC1007",
-        "SC1015",
-        "EG1001",
-        "CC0001",
-        "CC0002",
-        "SC1004",
-        "SC1006",
-        "SC2001",
-        "SC2002",
-        "CC0007",
-        "SC2000",
-        "SC2005",
-        "SC2006",
-        "SC2207",
-        "CC0006",
-        "ML0004",
-        "SC2008",
-        "SC2079",
-        "SC3000",
-        "SC3010",
-        "HW0288",
-        "SC4079",
-        "SC3920",
-        "SC4062"
-      ],
-      "reviewedCandidates": [
-        {
-          "courseCode": "SC4001",
-          "title": "Neural Network & Deep Learning",
-          "targetSlotId": "y4-s1-mpe1",
-          "expectedRelevance": "highly-relevant",
-          "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
-          "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: ai-ml. SC4001 unlocks SC4062 (Generative AI - Advanced Topics) per ntu_prerequisite_unlock_graph.json. SC4062 is a fixed curriculum course in Y4-S2, which is after the candidate slot Y4-S1. get_unlock_value() should return 1 for this candidate, producing an unlock contribution of UNLOCK_CONTRIBUTION_STEPS[0] = 4. The ai-ml preference tag matches, giving the same preference boost as SC4000. The distinguishing factor over SC4000 is the +4 unlock contribution. Labelled highly-relevant because the unlock contribution plus matching ai-ml preference make this the stronger choice for this slot given the fixed SC4062 curriculum requirement. NOTE: ai-ml is not currently mapped to Software Engineer career-skill evidence in career_skill_mappings.py \u2014 expectedSkillPath is N/A for career evidence; relevance here is preference-driven. isCurrentSemester=true."
-        },
-        {
-          "courseCode": "SC4000",
-          "title": "Machine Learning",
-          "targetSlotId": "y4-s1-mpe1",
-          "expectedRelevance": "relevant",
-          "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
-          "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: ai-ml. SC4000 does NOT appear in the 'unlocks' list for any module in ntu_prerequisite_unlock_graph.json that would unlock SC4062. Its get_unlock_value() is 0 for this slot. Career-skill evidence and preference boost are identical to SC4001, but the absence of unlock contribution makes SC4000 slightly weaker for this specific slot. Labelled relevant rather than highly-relevant because in this case the unlock difference is the key distinguishing factor; SC4000 is still a good AI/ML recommendation in general. isCurrentSemester=true."
-        },
-        {
-          "courseCode": "SC4062",
-          "title": "Generative Artificial Intelligence - Advanced Topics",
-          "targetSlotId": null,
-          "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 module is a fixed curriculum course, hard-excluded before ranking",
-          "oldCodeHandling": "not-applicable",
-          "reviewNotes": "NEGATIVE EXAMPLE \u2014 fixed curriculum exclusion. SC4062 is listed as a fixed curriculum course (isChoiceSlot=False) in this benchmark case. The run_recommendation_benchmark_predictions.py script passes all curriculumCourses to excludedCourseCodes before calling the backend, so SC4062 is hard-excluded from recommendations. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended', not a judgement on the module's topical quality. targetSlotId is null because this entry tests the curriculum-exclusion filter. isCurrentSemester=false."
-        }
-      ]
-    },
-    {
       "caseId": "software-engineer-csc-007",
       "description": "Y4 CSC student with 4 topic preferences: software-engineering, backend-engineering, cloud-computing, distributed-systems. Two SC4xxx MPE slots open. Tests the diminishing-returns preference boost by including candidates that match 3, 2, 1, and 0 of the stated preferences. No single SC4xxx module in the catalog spans all 4 preferences simultaneously. Verifies that the preference boost is meaningful but does not dominate: a 0-match broad-default module (SC4040) should still rank as relevant, and a 1-match specialist (SC4053) should not outrank it despite the preference touch.",
       "studentFaculty": "CSC",
@@ -1192,6 +1075,15 @@
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Data Privacy & Security",
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "Module tags in modules.json: computer-security, privacy. Top career-skill evidence path: secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0). SC4017 is a level-4 module (SC4xxx), which passes the year-4 BDE level-matching check (get_preferred_bde_level(4) = 4). Relevant for the BDE slot as a security/privacy match; weaker than SC4010 for the SC4xxx MPE slot because cryptography is less directly covered. Expert review should confirm SC4017 is eligible as BDE for CSC. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4053",
+          "title": "Blockchain Technology",
+          "targetSlotId": "y4-s2-bde1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Blockchain Technology",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Module tags in modules.json: computer-security, distributed-systems. This is security-adjacent because blockchain covers security/privacy and consensus topics, but it is a specialist module and does not match the student's cryptography preference as directly as SC4010 or the privacy/security focus of SC4017. Labelled somewhat-relevant as an acceptable fallback, but SC4017 should be preferred for the BDE slot in this case. isCurrentSemester=true."
         },
         {
           "courseCode": "SC3030",
@@ -1591,11 +1483,20 @@
         {
           "courseCode": "SC3099",
           "title": "Capstone Project",
-          "targetSlotId": "y3-s2-mpe2",
-          "expectedRelevance": "relevant",
-          "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Capstone Project",
+          "targetSlotId": null,
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A - module is a core project module, hard-excluded before ranking",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: software-engineering, backend-engineering, frontend-engineering, project-management. Matches 1 of 3 stated preferences (backend-engineering). Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Relevant as an applied project module with backend-engineering tag match. Included to show that multi-tagged SC3 modules can score well on preference match even without a perfect preference overlap. isCurrentSemester=true."
+          "reviewNotes": "NEGATIVE EXAMPLE - core project exclusion. SC3099 has software-engineering and backend-engineering tags, but it is a fixed/core project module rather than an elective recommendation target. The backend hard-excludes SC3099 before ranking through NON_RECOMMENDABLE_CORE_PROJECT_CODES. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended', not a judgement on the module's topical quality. targetSlotId is null because this entry tests the core-project exclusion filter. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC3270",
+          "title": "Reasoning About Programs",
+          "targetSlotId": "y3-s2-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Module tags in modules.json: software-engineering, programming, theory-of-computing. This is a valid fallback when applied software-engineering options are unavailable, but it is more formal/theory-oriented than SC3040 and does not match the stated backend-engineering, distributed-systems, or cloud-computing preferences. Labelled somewhat-relevant so the benchmark gives partial credit only if SC3040 is not eligible. isCurrentSemester=true."
         },
         {
           "courseCode": "SC3060",

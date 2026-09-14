@@ -189,9 +189,9 @@ class RecommendationScoreBreakdown(BaseModel):
     )
     defaultProfileAdjustment: int = Field(
         description=(
-            "No-preference calibration from curated recommendationProfile metadata. "
-            "Broad default modules can receive a boost while specialist modules can "
-            "receive a penalty in broad/default preference contexts."
+            "Calibration from curated recommendationProfile metadata. Broad default "
+            "modules can receive a boost in default contexts, while specialist modules "
+            "can receive a penalty when they do not match selected preferences."
         ),
         examples=[0],
     )
