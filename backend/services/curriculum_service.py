@@ -317,7 +317,7 @@ def parse_curriculum_row(
         "is_choice_slot": is_choice_slot(code, course_type, title),
     }
 
-# Course type includes values like Core, F-Core, C-Core, MPE-1, MPE-2, and BDE.
+# Course type includes values like Core, P-Series, F-Core, C-Core, MPE, MPE-1, and BDE.
 def find_course_type_word(
     words: list[dict[str, Any]],
     code: str,
@@ -336,19 +336,22 @@ def find_course_type_word(
             None,
         )
 
-    valid_types = {"Core", "F-Core", "C-Core", "MPE-1", "MPE-2", "Business"}
-
     return next(
         (
             word
             for word in words
             if (
-                str(word["text"]).strip() in valid_types and
+                is_course_type_text(str(word["text"]).strip()) and
                 is_near_column(word, column_header, "type_x", fallback_min_x=0)
             )
         ),
         None,
     )
+
+def is_course_type_text(text: str) -> bool:
+    known_types = {"Core", "P-Series", "F-Core", "C-Core", "Business"}
+
+    return text in known_types or re.fullmatch(r"MPE(?:-\d+)?", text) is not None
 
 def is_near_column(
     word: dict[str, Any],
