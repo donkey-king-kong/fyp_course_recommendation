@@ -54,7 +54,7 @@ class RoadmapReadinessResponse(BaseModel):
                         "courseId": "year4-sem1-sc4079",
                         "status": "locked",
                         "missingRequirements": [
-                            "Year 4 standing requires 101 AU; you have 86 AU"
+                            "Year 4 standing requires 101 AU"
                         ],
                     }
                 ]

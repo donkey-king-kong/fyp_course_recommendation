@@ -101,6 +101,7 @@ function shouldIgnorePrerequisiteText(course: CourseNode) {
   return (
     !prerequisiteText ||
     prerequisiteText === 'nil' ||
+    /^\d+\s+nil$/.test(prerequisiteText) ||
     course.courseCode === 'BDE' ||
     course.type === 'BDE' ||
     prerequisiteText.includes('refer to class schedule')
@@ -285,7 +286,7 @@ function getMissingStandingRequirement(
     return null
   }
 
-  return `Year ${standingYear} standing requires ${standingRequirement.minimumAcademicUnits} AU; you have ${completedAcademicUnits} AU`
+  return `Year ${standingYear} standing requires ${standingRequirement.minimumAcademicUnits} AU`
 }
 
 // A course is available when every listed prerequisite is already completed.

@@ -45,6 +45,13 @@ TOTAL_AU_EARNED_PATTERN = re.compile(
     r"TOTAL\s+ACADEMIC\s+UNITS\s+EARNED\s*:?\s*(?P<total>\d+(?:\.\d+)?)",
     re.IGNORECASE,
 )
+COURSE_TITLE_STOP_PHRASES = (
+    "NO. OF ACADEMIC UNITS",
+    "TOTAL ACADEMIC UNITS",
+    "ACADEMIC UNITS EARNED",
+    "CUMULATIVE GPA",
+    "CGPA",
+)
 
 def extract_text_from_pdf(file_content: bytes) -> str:
     # Plain text extraction is used as a fallback if word-position parsing finds no rows
@@ -81,6 +88,19 @@ def extract_words_from_pdf(file_content: bytes) -> list[dict[str, Any]]:
 def normalize_line(line: str) -> str:
     # Make extracted text easier to compare by removing extra spaces and casing differences
     return " ".join(line.strip().upper().split())
+
+def clean_course_title(title: str) -> str:
+    normalized_title = normalize_line(title)
+    stop_indexes = [
+        normalized_title.find(stop_phrase)
+        for stop_phrase in COURSE_TITLE_STOP_PHRASES
+        if normalized_title.find(stop_phrase) != -1
+    ]
+
+    if stop_indexes:
+        normalized_title = normalized_title[:min(stop_indexes)]
+
+    return normalized_title.strip(" :-")
 
 def extract_total_academic_units_earned(transcript_text: str) -> Optional[float]:
     normalized_text = normalize_line(transcript_text)
@@ -131,7 +151,9 @@ def parse_transcript_rows(transcript_text: str) -> list[dict[str, Any]]:
         row_match = TRANSCRIPT_ROW_PATTERN.match(current_row)
 
         if row_match:
-            rows.append({**row_match.groupdict(), **current_term})
+            row = row_match.groupdict()
+            row["title"] = clean_course_title(row["title"])
+            rows.append({**row, **current_term})
             current_row = ""
 
     return rows
@@ -366,7 +388,7 @@ def parse_course_row_from_words(
 
     return {
         "code": code,
-        "title": normalize_line(" ".join(title_words)),
+        "title": clean_course_title(" ".join(title_words)),
         "academic_units": str(academic_unit_word["text"]) if academic_unit_word else "0.0",
         "grade": str(grade_word["text"]).upper() if grade_word else "",
         "grade_point": str(grade_point_word["text"]) if grade_point_word else None,
