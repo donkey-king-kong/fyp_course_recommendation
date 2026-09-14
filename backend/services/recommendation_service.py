@@ -136,7 +136,7 @@ def recommend_courses(
     limit: int,
 ) -> RecommendationResponse:
     # Keep unsupported career goals empty instead of pretending we can recommend them.
-    if career_goal != "software-engineer":
+    if career_goal not in CAREER_SKILL_MAPPINGS:
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
@@ -1017,7 +1017,7 @@ def _reverse_code_sort_key(course_code: str) -> tuple[int, ...]:
     return tuple(-ord(character) for character in course_code)
 
 def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScore:
-    if career_goal != "software-engineer":
+    if career_goal not in CAREER_SKILL_MAPPINGS:
         return CareerMatchScore(
             matched_signals=[],
             matched_skill_contributions=[],
@@ -1028,14 +1028,18 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
         )
 
     searchable_text = f"{module.title} {module.description or ''}".lower()
-    matched_keywords = [
-        keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
-    ]
-    matched_tags = [
-        tag
-        for tag in (module.recommendation_tags or [])
-        if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
-    ]
+    matched_keywords = []
+    matched_tags = []
+
+    if career_goal == "software-engineer":
+        matched_keywords = [
+            keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
+        ]
+        matched_tags = [
+            tag
+            for tag in (module.recommendation_tags or [])
+            if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
+        ]
     matched_skill_contributions = get_career_skill_contributions(module, career_goal)
     top_skill_contribution = get_top_skill_contribution(matched_skill_contributions)
     matched_signals = (
@@ -1046,10 +1050,13 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
             for contribution in matched_skill_contributions
         ]
     )
-    raw_career_tag_score = (
-        sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
-        sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
-    )
+    raw_career_tag_score = 0
+
+    if career_goal == "software-engineer":
+        raw_career_tag_score = (
+            sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
+            sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
+        )
     career_skill_score = round_positive_score(
         sum(contribution.score for contribution in matched_skill_contributions)
     )
