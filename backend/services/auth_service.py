@@ -16,7 +16,7 @@ load_dotenv()
 AUTH_SCOPES = ["User.Read"]
 AUTH_SESSION_STATE_KEY = "auth_state"
 AUTH_SESSION_USER_KEY = "auth_user"
-NTU_EMAIL_DOMAIN = "@ntu.edu.sg"
+NTU_EMAIL_DOMAIN = "ntu.edu.sg"
 AUTHORITY_HOST = "https://login.microsoftonline.com/"
 UNPINNED_AUTHORITY_SEGMENTS = {"common", "organizations", "consumers"}
 
@@ -130,10 +130,15 @@ def build_authenticated_user(claims: dict) -> AuthenticatedUser:
     if not oid:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Microsoft login did not return an oid.")
 
-    if not email.lower().endswith(NTU_EMAIL_DOMAIN):
+    if not is_ntu_email(email):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Please sign in with an NTU email account.")
 
     return AuthenticatedUser(oid=oid, email=email, name=name)
+
+
+def is_ntu_email(email: str) -> bool:
+    _, separator, domain = email.lower().partition("@")
+    return bool(separator) and (domain == NTU_EMAIL_DOMAIN or domain.endswith(f".{NTU_EMAIL_DOMAIN}"))
 
 
 def get_session_user(request: Request) -> AuthenticatedUser | None:
