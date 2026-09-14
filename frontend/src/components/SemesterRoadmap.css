@@ -528,15 +528,42 @@
   padding: 0.16rem 0.45rem;
   border: 1px solid rgba(245, 158, 11, 0.55);
   border-radius: 999px;
-  color: #fbbf24;
+  color: #b45309;
   font-size: 0.62rem;
   font-weight: 800;
+  background: rgba(245, 158, 11, 0.08);
   text-transform: uppercase;
+}
+
+.semester-course-type.core {
+  border-color: rgba(15, 124, 138, 0.4);
+  color: #0f7c8a;
+  background: rgba(15, 124, 138, 0.07);
 }
 
 .semester-course-type.common-core {
   border-color: rgba(236, 72, 153, 0.55);
-  color: #f472b6;
+  color: #be185d;
+  background: rgba(236, 72, 153, 0.08);
+}
+
+.semester-course-type.c-core {
+  border-color: rgba(124, 58, 237, 0.42);
+  color: #6d28d9;
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.semester-course-type.p-series {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.semester-course-type.bde,
+.semester-course-type.mpe {
+  border-color: rgba(8, 145, 178, 0.42);
+  color: #0e7490;
+  background: rgba(8, 145, 178, 0.08);
 }
 
 .completion-indicator {
@@ -626,8 +653,10 @@
 }
 
 .semester-course-card-completed {
-  border-color: rgba(34, 197, 94, 0.5);
-  background: rgba(216, 243, 240, 0.88);
+  border-color: rgba(22, 163, 74, 0.56);
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.16), rgba(216, 243, 240, 0.26)),
+    rgba(225, 247, 238, 0.9);
 }
 
 .semester-course-card-locked {
@@ -651,7 +680,7 @@
 }
 
 .semester-course-card .missing-prerequisites {
-  color: #92400e;
+  color: #d97706;
 }
 
 .choice-slot-recommendations {
@@ -672,14 +701,14 @@
 }
 
 .app-shell[data-theme='dark'] .semester-roadmap-section {
-  border-color: rgba(148, 163, 184, 0.24);
-  background: rgba(15, 23, 42, 0.86);
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+  border-color: rgba(148, 163, 184, 0.26);
+  background: rgba(24, 32, 45, 0.96);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
 .app-shell[data-theme='dark'] .semester-roadmap-header {
-  border-bottom-color: rgba(148, 163, 184, 0.18);
-  background: rgba(30, 41, 59, 0.7);
+  border-bottom-color: rgba(148, 163, 184, 0.22);
+  background: rgba(31, 41, 55, 0.94);
 }
 
 .app-shell[data-theme='dark'] .semester-roadmap-header h2 {
@@ -729,27 +758,30 @@
 
 .app-shell[data-theme='dark'] .semester-roadmap {
   background:
-    radial-gradient(circle, rgba(56, 189, 248, 0.14) 1px, transparent 1px),
-    #07111f;
+    radial-gradient(circle, rgba(148, 163, 184, 0.11) 1px, transparent 1px),
+    #111827;
   background-size: 18px 18px;
 }
 
 .app-shell[data-theme='dark'] .roadmap-arrow {
-  opacity: 0.22;
-  stroke: #ffffff;
+  opacity: 0.36;
+  stroke: #cbd5e1;
+  stroke-width: 1.7;
 }
 
 .app-shell[data-theme='dark'] .roadmap-arrows marker path {
-  fill: #ffffff;
+  fill: #cbd5e1;
 }
 
 .app-shell[data-theme='dark'] .roadmap-arrow-highlighted {
-  stroke: #ffffff;
-  filter: none;
+  opacity: 1;
+  stroke: #f8fafc;
+  stroke-width: 4;
+  filter: drop-shadow(0 0 8px rgba(248, 250, 252, 0.34));
 }
 
 .app-shell[data-theme='dark'] .roadmap-arrows #roadmap-arrow-highlighted path {
-  fill: #ffffff;
+  fill: #f8fafc;
 }
 
 .app-shell[data-theme='dark'] .semester-band {
@@ -758,37 +790,61 @@
 
 .app-shell[data-theme='dark'] .semester-label span,
 .app-shell[data-theme='dark'] .semester-course-card p {
-  color: #94a3b8;
+  color: #d2dae5;
 }
 
 .app-shell[data-theme='dark'] .semester-course-card {
-  border-color: rgba(56, 189, 248, 0.16);
-  background: rgba(15, 23, 42, 0.92);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+  border-color: rgba(148, 163, 184, 0.36);
+  background:
+    linear-gradient(180deg, rgba(34, 44, 60, 0.98), rgba(25, 34, 48, 0.98)),
+    #1b2432;
+  box-shadow:
+    0 0 0 1px rgba(15, 23, 42, 0.42),
+    0 12px 28px rgba(0, 0, 0, 0.2);
 }
 
 .app-shell[data-theme='dark'] .semester-course-card:hover,
 .app-shell[data-theme='dark'] .semester-course-card-connected {
-  border-color: rgba(34, 211, 238, 0.95);
+  border-color: rgba(103, 183, 200, 0.72);
   box-shadow:
-    0 0 0 2px rgba(34, 211, 238, 0.42),
-    0 0 24px rgba(34, 211, 238, 0.28),
-    0 16px 32px rgba(8, 145, 178, 0.24);
+    0 0 0 1px rgba(103, 183, 200, 0.28),
+    0 16px 32px rgba(15, 23, 42, 0.32);
+}
+
+.app-shell[data-theme='dark'] .semester-course-card-dimmed {
+  opacity: 0.42;
+}
+
+.app-shell[data-theme='dark'] .semester-course-card-dimmed:not(.semester-course-card-completed) {
+  border-color: rgba(148, 163, 184, 0.24);
+  background:
+    linear-gradient(180deg, rgba(31, 41, 55, 0.9), rgba(24, 32, 45, 0.9)),
+    #1f2937;
+}
+
+.app-shell[data-theme='dark'] .semester-course-card-dimmed:not(.semester-course-card-completed) p {
+  color: #c2cad6;
+}
+
+.app-shell[data-theme='dark'] .semester-course-card-dimmed:not(.semester-course-card-completed) .semester-course-card-top strong {
+  color: #eef2f7;
 }
 
 .app-shell[data-theme='dark'] .semester-course-card-completed {
-  border-color: rgba(34, 197, 94, 0.55);
-  background: rgba(20, 83, 45, 0.36);
+  border-color: rgba(74, 222, 128, 0.44);
+  background:
+    linear-gradient(135deg, rgba(34, 197, 94, 0.16), rgba(20, 28, 40, 0.18)),
+    rgba(19, 55, 40, 0.78);
 }
 
 .app-shell[data-theme='dark'] .semester-course-card-locked {
-  border-color: rgba(248, 113, 113, 0.42);
+  border-color: rgba(248, 113, 113, 0.44);
   background:
-    linear-gradient(135deg, rgba(248, 113, 113, 0.18), rgba(15, 23, 42, 0.2)),
-    rgba(31, 14, 18, 0.8);
+    linear-gradient(135deg, rgba(248, 113, 113, 0.16), rgba(20, 28, 40, 0.16)),
+    rgba(52, 25, 30, 0.82);
   box-shadow:
-    inset 0 0 0 999px rgba(127, 29, 29, 0.12),
-    0 12px 28px rgba(127, 29, 29, 0.16);
+    inset 0 0 0 999px rgba(127, 29, 29, 0.08),
+    0 12px 28px rgba(0, 0, 0, 0.18);
 }
 
 .app-shell[data-theme='dark'] .course-lock-badge {
@@ -801,21 +857,62 @@
   color: #fca5a5;
 }
 
+.app-shell[data-theme='dark'] .semester-course-type {
+  border-color: rgba(251, 191, 36, 0.42);
+  color: #fde68a;
+  background: rgba(146, 64, 14, 0.16);
+}
+
+.app-shell[data-theme='dark'] .semester-course-type.core {
+  border-color: rgba(103, 183, 200, 0.42);
+  color: #a7d8e3;
+  background: rgba(15, 124, 138, 0.18);
+}
+
+.app-shell[data-theme='dark'] .semester-course-type.common-core {
+  border-color: rgba(244, 114, 182, 0.42);
+  color: #f9a8d4;
+  background: rgba(190, 24, 93, 0.16);
+}
+
+.app-shell[data-theme='dark'] .semester-course-type.c-core {
+  border-color: rgba(196, 181, 253, 0.42);
+  color: #ddd6fe;
+  background: rgba(109, 40, 217, 0.18);
+}
+
+.app-shell[data-theme='dark'] .semester-course-type.p-series {
+  border-color: rgba(251, 191, 36, 0.46);
+  color: #fde68a;
+  background: rgba(146, 64, 14, 0.18);
+}
+
+.app-shell[data-theme='dark'] .semester-course-type.bde,
+.app-shell[data-theme='dark'] .semester-course-type.mpe {
+  border-color: rgba(103, 183, 200, 0.42);
+  color: #b8e1ea;
+  background: rgba(15, 124, 138, 0.18);
+}
+
 .app-shell[data-theme='dark'] .choice-slot-recommendations {
-  border-color: rgba(196, 181, 253, 0.22);
-  background: rgba(124, 58, 237, 0.12);
+  border-color: rgba(165, 180, 252, 0.28);
+  background: rgba(79, 70, 229, 0.14);
 }
 
 .app-shell[data-theme='dark'] .choice-slot-recommendations > span {
-  color: #c4b5fd;
+  color: #d8d4ff;
 }
 
 .app-shell[data-theme='dark'] .choice-slot-recommendations strong {
-  color: #67e8f9;
+  color: #9ed7e3;
 }
 
 .app-shell[data-theme='dark'] .choice-slot-recommendations small {
-  color: #cbd5e1;
+  color: #d3dbe6;
+}
+
+.app-shell[data-theme='dark'] .completion-indicator:not(:checked) {
+  filter: brightness(1.35);
 }
 
 .app-shell[data-theme='dark'] .roadmap-recommendation-loading {
@@ -835,7 +932,7 @@
 }
 
 .app-shell[data-theme='dark'] .semester-course-card-top strong {
-  color: #f8fafc;
+  color: #ffffff;
 }
 
 @media (max-width: 900px) {
