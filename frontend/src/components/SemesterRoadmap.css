@@ -182,7 +182,7 @@
 
 .roadmap-arrow {
   fill: none;
-  marker-end: url("#roadmap-arrow");
+  marker-end: none;
   opacity: 0.22;
   stroke: #0891b2;
   stroke-width: 1.3;
@@ -197,7 +197,7 @@
 }
 
 .roadmap-arrow-highlighted {
-  marker-end: url("#roadmap-arrow-highlighted");
+  marker-end: none;
   opacity: 1;
   stroke: #ffffff;
   stroke-width: 3.2;
@@ -209,7 +209,7 @@
   marker-end: none;
 }
 
-.roadmap-arrow-outgoing-from-hovered {
+.semester-roadmap-hovering .roadmap-arrow-highlighted {
   marker-end: none;
 }
 
