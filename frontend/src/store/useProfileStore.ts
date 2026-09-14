@@ -517,6 +517,7 @@ export const useProfileStore = create<ProfileState>()(
       ) =>
         set((state) => {
           const matchedResults = transcriptMatch ?? createEmptyTranscriptMatch()
+          const isAppliedToRoadmap = Boolean(transcriptMatch)
           const nextStaleReasons = getUpdatedStaleReasons(
             state.roadmapRecommendationStaleReasons,
             'transcript',
@@ -534,7 +535,7 @@ export const useProfileStore = create<ProfileState>()(
             transcriptUnmatchedCourseCount: matchedResults.transcriptUnmatchedCourseCodes.length,
             transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
             transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
-            isTranscriptAppliedToRoadmap: true,
+            isTranscriptAppliedToRoadmap: isAppliedToRoadmap,
             profilesByStudentId: state.activeStudentId
               ? {
                   ...state.profilesByStudentId,
@@ -554,7 +555,7 @@ export const useProfileStore = create<ProfileState>()(
                       matchedResults.transcriptUnmatchedCourseCodes.length,
                     transcriptMatchedCourses: matchedResults.transcriptMatchedCourses,
                     transcriptUnmatchedCourseCodes: matchedResults.transcriptUnmatchedCourseCodes,
-                    isTranscriptAppliedToRoadmap: true,
+                    isTranscriptAppliedToRoadmap: isAppliedToRoadmap,
                   },
                 }
               : state.profilesByStudentId,

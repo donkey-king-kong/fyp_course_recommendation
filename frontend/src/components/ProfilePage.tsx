@@ -106,6 +106,8 @@ function ProfilePage({
   const [isReapplyingTranscript, setIsReapplyingTranscript] = useState(false)
   const [curriculumUploadMessage, setCurriculumUploadMessage] = useState('')
   const [curriculumUploadError, setCurriculumUploadError] = useState('')
+  const [curriculumReappliedTranscriptCount, setCurriculumReappliedTranscriptCount] =
+    useState<number | null>(null)
   const [uploadMessage, setUploadMessage] = useState('')
   const [uploadError, setUploadError] = useState('')
   const [preferenceSearch, setPreferenceSearch] = useState('')
@@ -164,10 +166,11 @@ function ProfilePage({
       setUploadingCurriculumGuideFileName(file.name)
       setCurriculumUploadError('')
       setCurriculumUploadMessage('Uploading and parsing selected curriculum guide...')
+      setCurriculumReappliedTranscriptCount(null)
 
       const result = await uploadCurriculumGuide(file)
       const transcriptMatch =
-        isTranscriptAppliedToRoadmap && transcriptCompletedCourseCodes.length > 0
+        transcriptCompletedCourseCodes.length > 0
           ? await matchTranscriptToCurriculum(
               transcriptCompletedCourseCodes,
               transcriptCompletedCourses,
@@ -177,6 +180,7 @@ function ProfilePage({
 
       setCurriculumGuide(result, file.name, transcriptMatch)
       setCurriculumGuideInputKey((currentKey) => currentKey + 1)
+      setCurriculumReappliedTranscriptCount(transcriptMatch?.completedCourseIds.length ?? null)
       setCurriculumUploadMessage(
         `Parsed ${result.nodes.length} curriculum row(s) across ${result.semesters.length} semester(s).`,
       )
@@ -201,6 +205,7 @@ function ProfilePage({
     setUploadingCurriculumGuideFileName('')
     setCurriculumGuideInputKey((currentKey) => currentKey + 1)
     setCurriculumUploadError('')
+    setCurriculumReappliedTranscriptCount(null)
     setCurriculumUploadMessage('Cleared stored curriculum guide for this profile.')
   }
 
@@ -440,7 +445,7 @@ function ProfilePage({
                 .join(' ')}
               onClick={onLoadRoadmap}
               disabled={!canLoadRoadmap}
-              title={hasLoadedRoadmap ? 'Click to reload roadmap recommendations' : 'Load roadmap recommendations'}
+              title={hasLoadedRoadmap ? 'Click to reload recommendations' : 'Load recommendations'}
             >
               {isLoadingRoadmap && <span className="load-roadmap-spinner" aria-hidden="true" />}
               {hasLoadedRoadmap && !hasStaleRecommendations && !isLoadingRoadmap && (
@@ -449,10 +454,10 @@ function ProfilePage({
                 </span>
               )}
               {hasStaleRecommendations
-                ? 'Reload Roadmap'
+                ? 'Reload Recommendations'
                 : hasLoadedRoadmap
-                  ? 'Roadmap Loaded'
-                  : 'Load Roadmap'}
+                  ? 'Recommendations Loaded'
+                  : 'Load Recommendations'}
             </button>
 
             <button
@@ -497,6 +502,7 @@ function ProfilePage({
 
                 setCurriculumUploadError('')
                 setCurriculumUploadMessage('')
+                setCurriculumReappliedTranscriptCount(null)
 
                 if (selectedFile) {
                   void handleCurriculumGuideUpload(selectedFile)
@@ -526,6 +532,11 @@ function ProfilePage({
           </div>
 
           {curriculumUploadMessage && <p className="upload-success">{curriculumUploadMessage}</p>}
+          {!curriculumUploadMessage && !hasCurriculumGuide && hasTranscriptResults && (
+            <p className="upload-success">
+              Transcript results are still saved. Upload a curriculum guide again to rebuild the roadmap and re-apply transcript matches automatically.
+            </p>
+          )}
           {curriculumUploadError && <p className="upload-error">{curriculumUploadError}</p>}
           {hasCurriculumGuide && (
             <>
@@ -611,6 +622,11 @@ function ProfilePage({
           {uploadMessage && <p className="upload-success">{uploadMessage}</p>}
           {!uploadMessage && hasTranscriptResults && (
             <p className="upload-success">{transcriptSummaryMessage}</p>
+          )}
+          {curriculumReappliedTranscriptCount !== null && (
+            <div className="transcript-reapplied-notice" role="status">
+              <strong>Transcript re-applied</strong>
+            </div>
           )}
           {uploadError && <p className="upload-error">{uploadError}</p>}
 
