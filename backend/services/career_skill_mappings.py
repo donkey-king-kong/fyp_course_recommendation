@@ -67,7 +67,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
         tag_relationships=(
             SkillTagRelationship(
                 tag="distributed-systems",
-                relationship_weight=1.0,
+                relationship_weight=0.8,
                 tag_confidence=1.0,
                 rationale="Strongest signal for scalable backend services and service reliability.",
             ),
@@ -123,7 +123,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="computer-network",
-                relationship_weight=0.9,
+                relationship_weight=0.75,
                 tag_confidence=1.0,
                 rationale="Networking knowledge directly supports distributed and internet-facing software.",
             ),
@@ -244,6 +244,12 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
                 tag_confidence=0.9,
                 rationale="Retrieval methods are useful for text-heavy and search-oriented data products.",
             ),
+            SkillTagRelationship(
+                tag="privacy",
+                relationship_weight=0.45,
+                tag_confidence=0.8,
+                rationale="Privacy supports responsible handling of user data and analytics governance.",
+            ),
         ),
         weight=10,
         rationale=(
@@ -272,6 +278,12 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
                 relationship_weight=0.7,
                 tag_confidence=0.9,
                 rationale="Algorithmic reasoning helps with model implementation and efficiency trade-offs.",
+            ),
+            SkillTagRelationship(
+                tag="data-structures",
+                relationship_weight=0.55,
+                tag_confidence=0.85,
+                rationale="Data structures support efficient data processing and model implementation.",
             ),
             SkillTagRelationship(
                 tag="natural-language-processing",
@@ -412,13 +424,13 @@ CYBERSECURITY_ANALYST_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="software-engineering",
-                relationship_weight=0.65,
+                relationship_weight=0.55,
                 tag_confidence=0.85,
                 rationale="Secure implementation depends on understanding how software is designed and maintained.",
             ),
             SkillTagRelationship(
                 tag="programming",
-                relationship_weight=0.55,
+                relationship_weight=0.45,
                 tag_confidence=0.85,
                 rationale="Programming supports practical security tooling and code-level analysis.",
             ),
