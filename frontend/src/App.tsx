@@ -18,6 +18,11 @@ const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
 const DEFAULT_VIEW: ViewState = 'roadmap'
 const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
 const EMPTY_RECOMMENDATION_TAGS: string[] = []
+const SUPPORTED_CAREER_GOALS = new Set([
+  'software-engineer',
+  'data-scientist',
+  'cybersecurity-analyst',
+])
 
 function getCurriculumCourseTitle(course: CurriculumGuideResponse['nodes'][number]) {
   if (course.courseCode === 'BDE' || course.type === 'BDE') {
@@ -217,8 +222,8 @@ function App() {
       return
     }
 
-    if (profile.careerGoal !== 'software-engineer') {
-      setRecommendationError('Select Software Engineer before loading the roadmap.')
+    if (!SUPPORTED_CAREER_GOALS.has(profile.careerGoal)) {
+      setRecommendationError('Select a supported career goal before loading the roadmap.')
       return
     }
 

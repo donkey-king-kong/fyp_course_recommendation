@@ -63,6 +63,12 @@ const RECOMMENDATION_TAG_OPTIONS = [
   { value: 'sustainability-computing', label: 'Sustainability Computing' },
 ]
 const EMPTY_RECOMMENDATION_TAGS: string[] = []
+const CAREER_GOAL_OPTIONS = [
+  { value: 'software-engineer', label: 'Software Engineer' },
+  { value: 'data-scientist', label: 'Data Scientist' },
+  { value: 'cybersecurity-analyst', label: 'Cybersecurity Analyst' },
+]
+const SUPPORTED_CAREER_GOALS = new Set(CAREER_GOAL_OPTIONS.map((option) => option.value))
 
 function ProfilePage({
   isLoadingRoadmap,
@@ -127,7 +133,7 @@ function ProfilePage({
   const hasStaleRecommendations = Boolean(recommendationNotice)
   const canLoadRoadmap =
     hasCurriculumGuide &&
-    profile.careerGoal === 'software-engineer' &&
+    SUPPORTED_CAREER_GOALS.has(profile.careerGoal) &&
     !isLoadingRoadmap &&
     !isUploadingCurriculumGuide &&
     !isUploading
@@ -351,7 +357,11 @@ function ProfilePage({
               onChange={(e) => updateProfile({ careerGoal: e.target.value })}
             >
               <option value="">Select a career goal</option>
-              <option value="software-engineer">Software Engineer</option>
+              {CAREER_GOAL_OPTIONS.map((careerGoal) => (
+                <option key={careerGoal.value} value={careerGoal.value}>
+                  {careerGoal.label}
+                </option>
+              ))}
             </select>
           </label>
         </div>
