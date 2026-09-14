@@ -330,6 +330,42 @@ Status: Implemented locally
 - No frontend UI changes.
 - No change to the global core-project exclusion for `SC3099`.
 
+## Security Privacy BDE Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-008` after project-owner feedback that `SC4017 Data Privacy & Security` should be preferred over `SC4053 Blockchain Technology`.
+- Added `SC4053 Blockchain Technology` to the case as a `somewhat-relevant` fallback rather than the preferred BDE answer.
+- Tightened specialist profile adjustment so specialist modules are penalized when they only partially match the selected preference set.
+- Marked `SC4011 Security Management` as `recommendationProfile: specialist` because it is broader and more management-oriented than technical privacy/security modules.
+- Added a narrow security/privacy adjacency boost for the exact `computer-security` + `cryptography` preference combination so `SC4017` can beat generic security fallbacks for this case.
+- Regenerated benchmark predictions against a fresh local backend.
+
+### Rationale Notes
+
+- `SC4053` previously won because it combined `computer-security` with strong Software Engineer `distributed-systems` career-skill evidence.
+- After suppressing blockchain, `SC4011 Security Management` became the fallback because raw catalogue wording gave it a higher general security score than `SC4017`.
+- The final rule is intentionally narrow: it only treats privacy as an adjacent fallback when the selected preferences are exactly `computer-security` and `cryptography`, avoiding regressions where privacy is already explicitly selected.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8008/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Case `software-engineer-csc-008` now recommends `SC4010 Applied Cryptography` and `SC4017 Data Privacy & Security`.
+- The benchmark now reports `averagePrecisionAtK` `0.442857142857143`, `averageNdcgAtK` `0.7985613917770757`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No frontend UI changes.
+- No automated recommender test suite unless explicitly requested.
+- No broad security-course reshuffling beyond the reviewed `csc-008` calibration.
+
 ## Current-Semester Bonus Calibration
 
 Status: Implemented locally

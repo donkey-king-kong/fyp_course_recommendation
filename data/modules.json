@@ -55955,6 +55955,7 @@
             "latestSemester": "1",
             "isCurrentSemester": true,
             "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
+            "recommendationProfile": "specialist",
             "recommendationTags": [
                 "computer-security"
             ]

@@ -1194,6 +1194,15 @@
           "reviewNotes": "Module tags in modules.json: computer-security, privacy. Top career-skill evidence path: secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0). SC4017 is a level-4 module (SC4xxx), which passes the year-4 BDE level-matching check (get_preferred_bde_level(4) = 4). Relevant for the BDE slot as a security/privacy match; weaker than SC4010 for the SC4xxx MPE slot because cryptography is less directly covered. Expert review should confirm SC4017 is eligible as BDE for CSC. isCurrentSemester=true."
         },
         {
+          "courseCode": "SC4053",
+          "title": "Blockchain Technology",
+          "targetSlotId": "y4-s2-bde1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Blockchain Technology",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Module tags in modules.json: computer-security, distributed-systems. This is security-adjacent because blockchain covers security/privacy and consensus topics, but it is a specialist module and does not match the student's cryptography preference as directly as SC4010 or the privacy/security focus of SC4017. Labelled somewhat-relevant as an acceptable fallback, but SC4017 should be preferred for the BDE slot in this case. isCurrentSemester=true."
+        },
+        {
           "courseCode": "SC3030",
           "title": "Advanced Computer Networks",
           "targetSlotId": null,

@@ -1,7 +1,7 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-14T02:52:23.927175+00:00",
-  "apiUrl": "http://127.0.0.1:8005/recommendations",
+  "generatedAt": "2026-09-14T03:12:30.208349+00:00",
+  "apiUrl": "http://127.0.0.1:8008/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
     {
@@ -1036,8 +1036,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Data Privacy & Security and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC4053",
-          "title": "Blockchain Technology",
+          "courseCode": "SC4013",
+          "title": "Application Security",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -1046,19 +1046,18 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
-            "engineering",
-            "distributed",
-            "systems",
+            "web",
+            "testing",
             "security",
+            "tag:web-development",
             "tag:computer-security",
-            "tag:distributed-systems",
-            "skill:backend and data services:distributed-systems",
-            "skill:systems and infrastructure:distributed-systems",
+            "skill:software design and delivery:web-development",
+            "skill:backend and data services:web-development",
             "skill:secure software practice:computer-security"
           ],
           "prerequisites": [
-            "SC1007",
-            "SC2001"
+            "SC2005",
+            "SC2008"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -1068,19 +1067,19 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 68,
+          "score": 63,
           "scoreBreakdown": {
-            "careerTagScore": 1,
-            "careerSkillScore": 21,
+            "careerTagScore": 2,
+            "careerSkillScore": 15,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
-              "skillArea": "backend and data services",
-              "skillAreaWeight": 8,
-              "tag": "distributed-systems",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
               "relationshipWeight": 1.0,
               "tagConfidence": 1.0,
-              "contributionScore": 8.0,
-              "rationale": "Strongest signal for scalable backend services and service reliability."
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
             "preferenceBoost": 35,
@@ -1089,9 +1088,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 68
+            "finalScore": 63
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Application Security and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },
@@ -2641,8 +2640,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC4053",
-          "title": "Blockchain Technology",
+          "courseCode": "SC4017",
+          "title": "Data Privacy & Security",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -2651,18 +2650,13 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
-            "engineering",
-            "distributed",
             "systems",
             "security",
             "tag:computer-security",
-            "tag:distributed-systems",
-            "skill:backend and data services:distributed-systems",
-            "skill:systems and infrastructure:distributed-systems",
             "skill:secure software practice:computer-security"
           ],
           "prerequisites": [
-            "SC1007",
+            "SC2000",
             "SC2001"
           ],
           "missingPrerequisites": [],
@@ -2673,30 +2667,30 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 68,
+          "score": 64,
           "scoreBreakdown": {
-            "careerTagScore": 1,
-            "careerSkillScore": 21,
+            "careerTagScore": 4,
+            "careerSkillScore": 6,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
-              "skillArea": "backend and data services",
-              "skillAreaWeight": 8,
-              "tag": "distributed-systems",
+              "skillArea": "secure software practice",
+              "skillAreaWeight": 6,
+              "tag": "computer-security",
               "relationshipWeight": 1.0,
               "tagConfidence": 1.0,
-              "contributionScore": 8.0,
-              "rationale": "Strongest signal for scalable backend services and service reliability."
+              "contributionScore": 6.0,
+              "rationale": "Directly represents secure software and systems practice."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 35,
+            "preferenceBoost": 43,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 68
+            "finalScore": 64
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> distributed-systems -> Blockchain Technology and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> secure software practice -> computer-security -> Data Privacy & Security and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },
