@@ -209,6 +209,10 @@
   marker-end: none;
 }
 
+.roadmap-arrow-outgoing-from-hovered {
+  marker-end: none;
+}
+
 .roadmap-arrows #roadmap-arrow-highlighted path {
   fill: #0f7c8a;
 }

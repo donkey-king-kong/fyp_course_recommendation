@@ -33,6 +33,7 @@ interface ArrowPath {
   d: string
   isHighlighted: boolean
   isDimmed: boolean
+  isOutgoingFromHovered: boolean
 }
 
 type CourseEligibilityStatus = 'completed' | 'available' | 'locked'
@@ -601,6 +602,7 @@ function SemesterRoadmap({
         const controlOffset = Math.max(80, Math.abs(endX - startX) * 0.45)
         const isHighlighted =
           hoveredCourseId === link.source || hoveredCourseId === link.target
+        const isOutgoingFromHovered = hoveredCourseId === link.source
         const shouldShow = hoveredCourseId ? isHighlighted : showAllArrows
 
         if (!shouldShow) {
@@ -616,6 +618,7 @@ function SemesterRoadmap({
             } ${endY}, ${endX} ${endY}`,
             isHighlighted,
             isDimmed: Boolean(hoveredCourseId) && !isHighlighted,
+            isOutgoingFromHovered,
           },
         ]
       })
@@ -799,6 +802,7 @@ function SemesterRoadmap({
                 'roadmap-arrow',
                 arrowPath.isHighlighted ? 'roadmap-arrow-highlighted' : '',
                 arrowPath.isDimmed ? 'roadmap-arrow-dimmed' : '',
+                arrowPath.isOutgoingFromHovered ? 'roadmap-arrow-outgoing-from-hovered' : '',
               ]
                 .filter(Boolean)
                 .join(' ')}
