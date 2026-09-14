@@ -74,6 +74,7 @@ PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
 PREFERENCE_TAG_BOOST_CAP = 60
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
 CURRENT_SEMESTER_BONUS = 3
+CURRENT_PREFERENCE_TAG_BONUSES = {"computer-network": 9}
 SAME_FACULTY_BOOST = 8
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
@@ -219,7 +220,10 @@ def recommend_courses(
                 completed_codes | excluded_codes,
                 excluded_titles,
             )
-            preference_boost = get_preference_boost(module, preferred_tags)
+            preference_boost = (
+                get_preference_boost(module, preferred_tags) +
+                get_current_preference_match_boost(module, preferred_tags)
+            )
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
             default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags)
             unlock_contribution = get_unlock_contribution(readiness.unlock_value)
@@ -1159,6 +1163,17 @@ def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
     total_boost = PREFERENCE_FIRST_MATCH_BOOST + stepped_boost
 
     return min(total_boost, PREFERENCE_TAG_BOOST_CAP)
+
+def get_current_preference_match_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
+    if not module.is_current_semester or not preferred_tags:
+        return 0
+
+    matching_tags = preferred_tags.intersection(module.recommendation_tags or [])
+
+    return sum(
+        CURRENT_PREFERENCE_TAG_BONUSES.get(tag, 0)
+        for tag in matching_tags
+    )
 
 def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> int:
     if not student_faculty:

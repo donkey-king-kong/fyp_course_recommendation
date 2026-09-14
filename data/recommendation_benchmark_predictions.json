@@ -1,7 +1,7 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-04T10:15:44.215595+00:00",
-  "apiUrl": "http://127.0.0.1:8002/recommendations",
+  "generatedAt": "2026-09-14T02:26:40.221515+00:00",
+  "apiUrl": "http://127.0.0.1:8004/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
     {
@@ -4407,7 +4407,7 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 52,
+          "score": 61,
           "scoreBreakdown": {
             "careerTagScore": 0,
             "careerSkillScore": 6,
@@ -4422,19 +4422,19 @@
               "rationale": "Networking knowledge directly supports distributed and internet-facing software."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 35,
+            "preferenceBoost": 44,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 52
+            "finalScore": 61
           },
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Advanced Computer Networks and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC4022",
-          "title": "Network Science",
+          "courseCode": "SC4030",
+          "title": "Wireless & Mobile Networks",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
@@ -4443,16 +4443,11 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
           "matchedKeywords": [
-            "distributed",
-            "systems",
-            "algorithm",
-            "security",
             "tag:computer-network",
             "skill:systems and infrastructure:computer-network"
           ],
           "prerequisites": [
-            "MH1403",
-            "SC2001"
+            "SC2008"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -4462,9 +4457,9 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 60,
+          "score": 61,
           "scoreBreakdown": {
-            "careerTagScore": 11,
+            "careerTagScore": 0,
             "careerSkillScore": 6,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
@@ -4476,16 +4471,16 @@
               "contributionScore": 6.3,
               "rationale": "Networking knowledge directly supports distributed and internet-facing software."
             },
-            "currentSemesterBonus": 0,
-            "preferenceBoost": 35,
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 44,
             "sameFacultyBoost": 8,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 60
+            "finalScore": 61
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Network Science and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> computer-network -> Wireless & Mobile Networks and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     }

@@ -260,6 +260,39 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
 
+## Network Preference Current-Availability Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-014` after project-owner feedback that `SC4030 Wireless & Mobile Networks` is clearly better than `SC4022 Network Science` for a student who selected `computer-network` and `operating-systems`.
+- Added a targeted current-semester preference boost for `computer-network` matches.
+- Kept `SC4022` unlabelled as a reviewed positive, because the intended behaviour is to prefer the more direct/current networking module rather than accepting the broader network-science fallback.
+- Regenerated benchmark predictions against a fresh local backend.
+
+### Rationale Notes
+
+- `SC4022` was winning because broad raw keywords in its catalogue text, such as distributed, systems, algorithm, and security, added enough fallback score to beat `SC4030`.
+- A general raw keyword cap fixed case `014` but caused unrelated regressions, so it was not kept.
+- The final adjustment is narrower: it only boosts current-semester modules that directly match the `computer-network` preference tag.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; from backend.services.recommendation_service import CURRENT_PREFERENCE_TAG_BONUSES; print('backend import ok'); print(CURRENT_PREFERENCE_TAG_BONUSES)"`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8004/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Case `software-engineer-csc-014` now recommends `SC3030 Advanced Computer Networks` and `SC4030 Wireless & Mobile Networks`.
+- The benchmark now reports `averagePrecisionAtK` `0.3857142857142858`, `averageNdcgAtK` `0.739040701455745`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No benchmark label change for `SC4022`.
+- No broad raw keyword top-up cap.
+- No frontend UI changes.
+- No automated recommender test suite unless explicitly requested.
+
 ## Current-Semester Bonus Calibration
 
 Status: Implemented locally
