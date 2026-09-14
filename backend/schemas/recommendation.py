@@ -217,6 +217,10 @@ class CourseRecommendation(BaseModel):
     academicUnits: Optional[float]
     faculty: Optional[str]
     level: Optional[int]
+    mpeSpecialisations: list[str] = Field(
+        default_factory=list,
+        description="Official CE/CSC MPE paths this module belongs to, if any.",
+    )
     matchedChoiceSlot: str = Field(description="Choice-slot code that this recommendation satisfies.")
     matchedChoiceSlotId: Optional[str] = Field(
         default=None,

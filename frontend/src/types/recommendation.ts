@@ -60,6 +60,7 @@ export interface CourseRecommendation {
   academicUnits: number | null
   faculty: string | null
   level: number | null
+  mpeSpecialisations: string[]
   matchedChoiceSlot: string
   matchedChoiceSlotId: string | null
   matchedChoiceSlotYear: number | null

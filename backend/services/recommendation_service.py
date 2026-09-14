@@ -262,6 +262,7 @@ def recommend_courses(
                     academicUnits=module.au,
                     faculty=module.faculty,
                     level=module.level,
+                    mpeSpecialisations=module.mpe_specialisations or [],
                     matchedChoiceSlot=normalize_choice_slot_code(slot.courseCode),
                     matchedChoiceSlotId=slot.slotId,
                     matchedChoiceSlotYear=slot.year,
@@ -911,10 +912,21 @@ def assign_ranked_slot_recommendations(
     used_course_titles: set[str] = set()
     used_recommendation_tags: dict[str, int] = {}
 
-    for slot in choice_slots:
+    ordered_choice_slots = get_assignment_ordered_choice_slots(choice_slots)
+    remaining_unfilled_mpe_slots = sum(
+        1 for slot in ordered_choice_slots if is_mpe_choice_slot(slot)
+    )
+
+    for slot in ordered_choice_slots:
         if len(ranked_recommendations) >= limit:
             break
 
+        is_mpe_slot = is_mpe_choice_slot(slot)
+        should_reserve_mpe_modules = (
+            not is_mpe_slot and
+            normalize_choice_slot_code(slot.courseCode) == "BDE" and
+            remaining_unfilled_mpe_slots > 0
+        )
         slot_recommendations = sorted_recommendations_by_slot[get_choice_slot_identity(slot)]
         unique_recommendation = get_unique_recommendation_at_or_after_index(
             slot_recommendations,
@@ -923,6 +935,7 @@ def assign_ranked_slot_recommendations(
             used_course_titles,
             used_recommendation_tags,
             preferred_tags,
+            should_reserve_mpe_modules,
         )
 
         if not unique_recommendation:
@@ -933,7 +946,37 @@ def assign_ranked_slot_recommendations(
         add_used_title_keys(used_course_titles, unique_recommendation.title)
         add_used_recommendation_tags(used_recommendation_tags, unique_recommendation)
 
+        if is_mpe_slot:
+            remaining_unfilled_mpe_slots -= 1
+
     return ranked_recommendations
+
+def get_assignment_ordered_choice_slots(
+    choice_slots: list[RecommendationChoiceSlot],
+) -> list[RecommendationChoiceSlot]:
+    return [
+        slot
+        for _, slot in sorted(
+            enumerate(choice_slots),
+            key=lambda item: (
+                get_choice_slot_assignment_priority(item[1]),
+                get_semester_order(item[1].year, item[1].semester) or 999,
+                item[0],
+            ),
+        )
+    ]
+
+def get_choice_slot_assignment_priority(slot: RecommendationChoiceSlot) -> int:
+    if is_mpe_choice_slot(slot):
+        return 0
+
+    if normalize_choice_slot_code(slot.courseCode) == "BDE":
+        return 1
+
+    return 2
+
+def is_mpe_choice_slot(slot: RecommendationChoiceSlot) -> bool:
+    return get_mpe_slot_level(slot.courseCode) is not None
 
 def get_unique_recommendation_at_or_after_index(
     recommendations: list[CourseRecommendation],
@@ -942,10 +985,14 @@ def get_unique_recommendation_at_or_after_index(
     used_course_titles: set[str],
     used_recommendation_tags: dict[str, int],
     preferred_tags: set[str],
+    exclude_mpe_listed: bool = False,
 ) -> Optional[CourseRecommendation]:
     eligible_recommendations = []
 
     for recommendation in recommendations[start_index:]:
+        if exclude_mpe_listed and recommendation.mpeSpecialisations:
+            continue
+
         recommendation_title = normalize_title(recommendation.title)
         recommendation_title_signature = get_title_signature(recommendation.title)
 

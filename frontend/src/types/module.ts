@@ -7,6 +7,7 @@ export interface ModuleSummary {
   level: number | null
   categories: string[]
   recommendation_tags: string[]
+  mpe_specialisations: string[]
   latest_year: string | null
   latest_semester: string | null
   is_current_semester: boolean
