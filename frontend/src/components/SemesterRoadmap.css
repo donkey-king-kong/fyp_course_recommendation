@@ -36,7 +36,6 @@
 .clear-roadmap-button,
 .clear-recommendations-button,
 .clear-completed-button {
-  min-height: 2.75rem;
   padding: 0.45rem 0.75rem;
   border: 2px solid transparent;
   border-radius: 999px;
@@ -53,24 +52,6 @@
     box-shadow 150ms ease,
     color 150ms ease,
     transform 150ms ease;
-}
-
-.clear-roadmap-button:focus,
-.clear-roadmap-button:focus-visible,
-.clear-recommendations-button:focus,
-.clear-recommendations-button:focus-visible,
-.clear-completed-button:focus,
-.clear-completed-button:focus-visible,
-.choice-slot-recommendations:focus,
-.choice-slot-recommendations:focus-visible,
-.course-detail-button:focus,
-.course-detail-button:focus-visible,
-.completion-indicator:focus,
-.completion-indicator:focus-visible,
-.arrow-toggle input:focus,
-.arrow-toggle input:focus-visible {
-  outline: 3px solid rgba(15, 124, 138, 0.42);
-  outline-offset: 3px;
 }
 
 .clear-roadmap-button {
@@ -129,7 +110,6 @@
   display: inline-flex;
   gap: 0.6rem;
   align-items: center;
-  min-height: 2.75rem;
   color: #94a3b8;
   font-size: 0.7rem;
   font-weight: 700;
@@ -138,8 +118,8 @@
 }
 
 .arrow-toggle input {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1rem;
+  height: 1rem;
   accent-color: #22d3ee;
 }
 
@@ -284,8 +264,9 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 5.75rem;
-  padding: 0.75rem 0.75rem 0.75rem 1.1rem;
+  padding: 0.75rem;
   border: 1px solid rgba(56, 189, 248, 0.16);
+  border-left: 4px solid var(--year-accent);
   border-radius: 0.35rem;
   background: rgba(15, 23, 42, 0.92);
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
@@ -296,13 +277,8 @@
     transform 160ms ease;
 }
 
-.semester-course-card::before {
-  position: absolute;
-  inset: 0.65rem auto 0.65rem 0.65rem;
-  width: 0.2rem;
-  border-radius: 999px;
-  background: var(--year-accent);
-  content: "";
+.semester-course-card-clickable {
+  cursor: pointer;
 }
 
 .semester-course-card:hover,
@@ -546,33 +522,6 @@
   gap: 0.75rem;
 }
 
-.semester-course-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-inline-start: auto;
-}
-
-.course-detail-button {
-  min-height: 2.75rem;
-  padding: 0.45rem 0.7rem;
-  border: 1px solid rgba(15, 124, 138, 0.28);
-  border-radius: 999px;
-  color: #0f7c8a;
-  font: inherit;
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(15, 124, 138, 0.08);
-  cursor: pointer;
-}
-
-.course-detail-button:hover {
-  border-color: rgba(15, 124, 138, 0.46);
-  background: rgba(15, 124, 138, 0.14);
-}
-
 .semester-course-type {
   padding: 0.16rem 0.45rem;
   border: 1px solid rgba(245, 158, 11, 0.55);
@@ -589,8 +538,8 @@
 }
 
 .completion-indicator {
-  width: 2.75rem;
-  height: 2.75rem;
+  width: 0.75rem;
+  height: 0.75rem;
   margin: 0;
   accent-color: #22c55e;
   cursor: pointer;
@@ -867,17 +816,6 @@
   color: #cbd5e1;
 }
 
-.app-shell[data-theme='dark'] .course-detail-button {
-  border-color: rgba(103, 232, 249, 0.28);
-  color: #67e8f9;
-  background: rgba(14, 116, 144, 0.16);
-}
-
-.app-shell[data-theme='dark'] .course-detail-button:hover {
-  border-color: rgba(103, 232, 249, 0.46);
-  background: rgba(14, 116, 144, 0.26);
-}
-
 .app-shell[data-theme='dark'] .roadmap-recommendation-loading {
   border-bottom-color: rgba(45, 212, 191, 0.2);
   color: #67e8f9;
@@ -899,22 +837,10 @@
 }
 
 @media (max-width: 900px) {
-  .semester-roadmap-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
   .roadmap-actions {
-    align-items: stretch;
-    width: 100%;
+    align-items: flex-end;
+    flex-direction: column;
     gap: 0.6rem;
-  }
-
-  .clear-roadmap-button,
-  .clear-recommendations-button,
-  .clear-completed-button,
-  .arrow-toggle {
-    justify-content: center;
   }
 
   .semester-band {
@@ -923,60 +849,5 @@
 
   .semester-courses {
     grid-template-columns: repeat(5, 10rem);
-  }
-}
-
-@media (max-width: 760px) {
-  .semester-roadmap {
-    overflow-x: visible;
-  }
-
-  .roadmap-arrows,
-  .arrow-toggle {
-    display: none;
-  }
-
-  .semester-band {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-    min-height: auto;
-  }
-
-  .semester-label {
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    min-height: 2.75rem;
-    padding-block-end: 0.6rem;
-    border-right: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--year-accent) 35%, transparent);
-  }
-
-  .semester-courses {
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
-  }
-
-  .semester-course-card {
-    min-height: 8rem;
-  }
-
-  .semester-course-card-bottom {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .semester-course-actions {
-    justify-content: space-between;
-    width: 100%;
-    margin-inline-start: 0;
-  }
-
-  .course-detail-button,
-  .completion-indicator {
-    min-height: 2.75rem;
-  }
-
-  .completion-indicator {
-    width: 2.75rem;
   }
 }
