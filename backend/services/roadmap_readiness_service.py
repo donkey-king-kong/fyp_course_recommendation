@@ -101,11 +101,7 @@ def get_missing_standing_requirement(
     if completed_academic_units >= standing_requirement.minimumAcademicUnits:
         return None
 
-    return (
-        f"Year {standing_year} standing requires "
-        f"{standing_requirement.minimumAcademicUnits} AU; "
-        f"you have {completed_academic_units:g} AU"
-    )
+    return f"Year {standing_year} standing requires {standing_requirement.minimumAcademicUnits} AU"
 
 def should_ignore_prerequisite_text(course: RoadmapReadinessCourse) -> bool:
     prerequisite_text = (course.prerequisiteText or "").strip().lower()
