@@ -396,6 +396,7 @@ function SemesterRoadmap({
   // Let us measure where each course card is on screen so SVG arrows can connect them
   const roadmapRef = useRef<HTMLDivElement | null>(null)
   const courseRefs = useRef<Record<string, HTMLElement | null>>({})
+  const detailCloseButtonRef = useRef<HTMLButtonElement | null>(null)
 
   const connectedCourseIds = new Set<string>()
   const transcriptOnlyCourseIds = useMemo(
@@ -541,25 +542,6 @@ function SemesterRoadmap({
     return slotRecommendation?.courseCode ?? (course.isChoiceSlot ? null : course.courseCode)
   }
 
-  function openCourseCardDetail(course: CourseNode, slotRecommendation?: AssignedRecommendation) {
-    const moduleCode = getModuleCodeForDetail(course, slotRecommendation)
-
-    if (moduleCode) {
-      void openRecommendedModuleDetail(moduleCode)
-    }
-  }
-
-  function handleCourseCardKeyDown(
-    event: React.KeyboardEvent<HTMLElement>,
-    course: CourseNode,
-    slotRecommendation?: AssignedRecommendation,
-  ) {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      openCourseCardDetail(course, slotRecommendation)
-    }
-  }
-
   // When hovering a course, keep that course and its direct prerequisite links visually active
   if (hoveredCourseId) {
     connectedCourseIds.add(hoveredCourseId)
@@ -623,14 +605,29 @@ function SemesterRoadmap({
       setArrowPaths(nextArrowPaths)
     }
 
-    // Calculate arrows after cards appear, then recalculate them if the window size changes
-    const animationFrameId = window.requestAnimationFrame(updateArrowPaths)
+    let animationFrameId: number | null = null
 
-    window.addEventListener('resize', updateArrowPaths)
+    function scheduleArrowPathUpdate() {
+      if (animationFrameId !== null) {
+        return
+      }
+
+      animationFrameId = window.requestAnimationFrame(() => {
+        animationFrameId = null
+        updateArrowPaths()
+      })
+    }
+
+    // Calculate arrows after cards appear, then batch resize recalculations into animation frames.
+    scheduleArrowPathUpdate()
+    window.addEventListener('resize', scheduleArrowPathUpdate)
 
     return () => {
-      window.cancelAnimationFrame(animationFrameId)
-      window.removeEventListener('resize', updateArrowPaths)
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId)
+      }
+
+      window.removeEventListener('resize', scheduleArrowPathUpdate)
     }
   }, [displayPrerequisiteLinks, hoveredCourseId, showAllArrows])
 
@@ -646,6 +643,12 @@ function SemesterRoadmap({
     }
 
     return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [isDetailOpen])
+
+  useEffect(() => {
+    if (isDetailOpen) {
+      detailCloseButtonRef.current?.focus()
+    }
   }, [isDetailOpen])
 
   return (
@@ -726,16 +729,20 @@ function SemesterRoadmap({
             aria-modal="true"
             aria-label="Recommended module details"
           >
+            <div className="roadmap-module-detail-header">
+              <span>{selectedModule?.code ?? 'Module details'}</span>
+              <button
+                type="button"
+                ref={detailCloseButtonRef}
+                onClick={closeRecommendedModuleDetail}
+              >
+                Close
+              </button>
+            </div>
             {isDetailLoading && <p>Loading selected module...</p>}
             {!isDetailLoading && detailError && <p className="roadmap-recommendation-error">{detailError}</p>}
             {!isDetailLoading && selectedModule && (
               <>
-                <div className="roadmap-module-detail-header">
-                  <span>{selectedModule.code}</span>
-                  <button type="button" onClick={closeRecommendedModuleDetail}>
-                    Close
-                  </button>
-                </div>
                 <h3>{selectedModule.title}</h3>
                 <p>{selectedModule.description ?? 'No description available yet.'}</p>
                 <dl>
@@ -865,14 +872,9 @@ function SemesterRoadmap({
                         course.isTranscriptOnly ? 'semester-course-card-transcript-only' : '',
                         course.isRecommendedPrerequisite ? 'semester-course-card-recommended-prerequisite' : '',
                         eligibility.status === 'locked' ? 'semester-course-card-locked' : '',
-                        detailModuleCode ? 'semester-course-card-clickable' : '',
                       ]
                         .filter(Boolean)
                         .join(' ')}
-                      role={detailModuleCode ? 'button' : undefined}
-                      tabIndex={detailModuleCode ? 0 : undefined}
-                      onClick={() => openCourseCardDetail(course, slotRecommendation)}
-                      onKeyDown={(event) => handleCourseCardKeyDown(event, course, slotRecommendation)}
                       onMouseEnter={() => setHoveredCourseId(course.id)}
                       onMouseLeave={() => setHoveredCourseId(null)}
                     >
@@ -925,29 +927,40 @@ function SemesterRoadmap({
                         >
                           {course.type}
                         </span>
-                        <input
-                          type="checkbox"
-                          className="completion-indicator"
-                          checked={isCompleted}
-                          disabled={isCompletionDisabled}
-                          onChange={() => {
-                            if (!isCompletionDisabled) {
-                              toggleCourseCompletion(course.id)
+                        <div className="semester-course-actions">
+                          {detailModuleCode && (
+                            <button
+                              type="button"
+                              className="course-detail-button"
+                              onClick={() => void openRecommendedModuleDetail(detailModuleCode)}
+                              aria-label={`View details for ${detailModuleCode}`}
+                            >
+                              Details
+                            </button>
+                          )}
+                          <input
+                            type="checkbox"
+                            className="completion-indicator"
+                            checked={isCompleted}
+                            disabled={isCompletionDisabled}
+                            onChange={() => {
+                              if (!isCompletionDisabled) {
+                                toggleCourseCompletion(course.id)
+                              }
+                            }}
+                            aria-label={
+                              course.isTranscriptOnly
+                                ? 'Completed from uploaded transcript'
+                                : course.isRecommendedPrerequisite
+                                  ? 'Recommended prerequisite planning node'
+                                  : isCompletionLocked
+                                    ? 'Complete prerequisites before marking course as complete'
+                                    : isCompleted
+                                      ? 'Mark course as incomplete'
+                                      : 'Mark course as complete'
                             }
-                          }}
-                          onClick={(event) => event.stopPropagation()}
-                          aria-label={
-                            course.isTranscriptOnly
-                              ? 'Completed from uploaded transcript'
-                              : course.isRecommendedPrerequisite
-                                ? 'Recommended prerequisite planning node'
-                                : isCompletionLocked
-                                  ? 'Complete prerequisites before marking course as complete'
-                                  : isCompleted
-                                    ? 'Mark course as incomplete'
-                                    : 'Mark course as complete'
-                          }
-                        />
+                          />
+                        </div>
                       </div>
                     </article>
                   )
