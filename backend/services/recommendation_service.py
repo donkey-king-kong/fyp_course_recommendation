@@ -77,6 +77,11 @@ UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
 CURRENT_SEMESTER_BONUS = 3
 CURRENT_PREFERENCE_TAG_BONUSES = {"computer-network": 9}
 SAME_FACULTY_BOOST = 8
+MPE_SPECIALISATION_CAREER_BOOST = 12
+CAREER_MPE_SPECIALISATION_BOOSTS = {
+    "data-scientist": {"data-science": MPE_SPECIALISATION_CAREER_BOOST},
+    "cybersecurity-analyst": {"security": MPE_SPECIALISATION_CAREER_BOOST},
+}
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
 DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
@@ -136,7 +141,7 @@ def recommend_courses(
     limit: int,
 ) -> RecommendationResponse:
     # Keep unsupported career goals empty instead of pretending we can recommend them.
-    if career_goal != "software-engineer":
+    if career_goal not in CAREER_SKILL_MAPPINGS:
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
@@ -192,8 +197,13 @@ def recommend_courses(
 
         # Rank remaining modules by deterministic career signals before softer profile boosts.
         career_match = score_career_match(module, career_goal)
+        mpe_specialisation_boost = get_mpe_specialisation_boost(module, career_goal)
 
-        if career_match.career_tag_score == 0 and career_match.career_skill_score == 0:
+        if (
+            career_match.career_tag_score == 0 and
+            career_match.career_skill_score == 0 and
+            mpe_specialisation_boost == 0
+        ):
             continue
 
         # Send all prerequisites for arrows, and missing ones for extra planning nodes.
@@ -235,6 +245,7 @@ def recommend_courses(
                 unlock_contribution +
                 preference_boost +
                 faculty_boost +
+                mpe_specialisation_boost +
                 default_profile_adjustment +
                 readiness.prerequisite_planning_penalty
             ))
@@ -248,6 +259,7 @@ def recommend_courses(
                 currentSemesterBonus=career_match.current_semester_bonus,
                 preferenceBoost=preference_boost,
                 sameFacultyBoost=faculty_boost,
+                mpeSpecialisationBoost=mpe_specialisation_boost,
                 legacyCodePenalty=0,
                 defaultProfileAdjustment=default_profile_adjustment,
                 prerequisitePlanningPenalty=readiness.prerequisite_planning_penalty,
@@ -262,11 +274,15 @@ def recommend_courses(
                     academicUnits=module.au,
                     faculty=module.faculty,
                     level=module.level,
+                    mpeSpecialisations=module.mpe_specialisations or [],
                     matchedChoiceSlot=normalize_choice_slot_code(slot.courseCode),
                     matchedChoiceSlotId=slot.slotId,
                     matchedChoiceSlotYear=slot.year,
                     matchedChoiceSlotSemester=slot.semester,
-                    matchedKeywords=career_match.matched_signals,
+                    matchedKeywords=(
+                        career_match.matched_signals +
+                        get_mpe_specialisation_signals(module, career_goal)
+                    ),
                     prerequisites=prerequisites,
                     missingPrerequisites=readiness.missing_prerequisites,
                     existingPrerequisiteCourseCodes=readiness.existing_prerequisite_course_codes,
@@ -277,12 +293,14 @@ def recommend_courses(
                     score=adjusted_score,
                     scoreBreakdown=score_breakdown,
                     reason=build_recommendation_reason(
+                        career_goal,
                         module.title,
                         career_match.matched_signals,
                         career_match.top_skill_contribution,
                         readiness.unlock_value,
                         preference_boost,
                         faculty_boost,
+                        mpe_specialisation_boost,
                     ),
                 )
             )
@@ -820,6 +838,11 @@ def build_relevance_filters(career_goal: str) -> list:
                 ModuleModel.recommendation_tags.cast(String).ilike(f"%{relationship.tag}%")
             )
 
+    for mpe_specialisation in CAREER_MPE_SPECIALISATION_BOOSTS.get(career_goal, {}):
+        filters.append(
+            ModuleModel.mpe_specialisations.cast(String).ilike(f"%{mpe_specialisation}%")
+        )
+
     return filters
 
 def get_mpe_slot_level(choice_slot_code: str) -> Optional[int]:
@@ -911,10 +934,21 @@ def assign_ranked_slot_recommendations(
     used_course_titles: set[str] = set()
     used_recommendation_tags: dict[str, int] = {}
 
-    for slot in choice_slots:
+    ordered_choice_slots = get_assignment_ordered_choice_slots(choice_slots)
+    remaining_unfilled_mpe_slots = sum(
+        1 for slot in ordered_choice_slots if is_mpe_choice_slot(slot)
+    )
+
+    for slot in ordered_choice_slots:
         if len(ranked_recommendations) >= limit:
             break
 
+        is_mpe_slot = is_mpe_choice_slot(slot)
+        should_reserve_mpe_modules = (
+            not is_mpe_slot and
+            normalize_choice_slot_code(slot.courseCode) == "BDE" and
+            remaining_unfilled_mpe_slots > 0
+        )
         slot_recommendations = sorted_recommendations_by_slot[get_choice_slot_identity(slot)]
         unique_recommendation = get_unique_recommendation_at_or_after_index(
             slot_recommendations,
@@ -923,6 +957,7 @@ def assign_ranked_slot_recommendations(
             used_course_titles,
             used_recommendation_tags,
             preferred_tags,
+            should_reserve_mpe_modules,
         )
 
         if not unique_recommendation:
@@ -933,7 +968,37 @@ def assign_ranked_slot_recommendations(
         add_used_title_keys(used_course_titles, unique_recommendation.title)
         add_used_recommendation_tags(used_recommendation_tags, unique_recommendation)
 
+        if is_mpe_slot:
+            remaining_unfilled_mpe_slots -= 1
+
     return ranked_recommendations
+
+def get_assignment_ordered_choice_slots(
+    choice_slots: list[RecommendationChoiceSlot],
+) -> list[RecommendationChoiceSlot]:
+    return [
+        slot
+        for _, slot in sorted(
+            enumerate(choice_slots),
+            key=lambda item: (
+                get_choice_slot_assignment_priority(item[1]),
+                get_semester_order(item[1].year, item[1].semester) or 999,
+                item[0],
+            ),
+        )
+    ]
+
+def get_choice_slot_assignment_priority(slot: RecommendationChoiceSlot) -> int:
+    if is_mpe_choice_slot(slot):
+        return 0
+
+    if normalize_choice_slot_code(slot.courseCode) == "BDE":
+        return 1
+
+    return 2
+
+def is_mpe_choice_slot(slot: RecommendationChoiceSlot) -> bool:
+    return get_mpe_slot_level(slot.courseCode) is not None
 
 def get_unique_recommendation_at_or_after_index(
     recommendations: list[CourseRecommendation],
@@ -942,10 +1007,14 @@ def get_unique_recommendation_at_or_after_index(
     used_course_titles: set[str],
     used_recommendation_tags: dict[str, int],
     preferred_tags: set[str],
+    exclude_mpe_listed: bool = False,
 ) -> Optional[CourseRecommendation]:
     eligible_recommendations = []
 
     for recommendation in recommendations[start_index:]:
+        if exclude_mpe_listed and recommendation.mpeSpecialisations:
+            continue
+
         recommendation_title = normalize_title(recommendation.title)
         recommendation_title_signature = get_title_signature(recommendation.title)
 
@@ -1017,7 +1086,7 @@ def _reverse_code_sort_key(course_code: str) -> tuple[int, ...]:
     return tuple(-ord(character) for character in course_code)
 
 def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScore:
-    if career_goal != "software-engineer":
+    if career_goal not in CAREER_SKILL_MAPPINGS:
         return CareerMatchScore(
             matched_signals=[],
             matched_skill_contributions=[],
@@ -1028,14 +1097,18 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
         )
 
     searchable_text = f"{module.title} {module.description or ''}".lower()
-    matched_keywords = [
-        keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
-    ]
-    matched_tags = [
-        tag
-        for tag in (module.recommendation_tags or [])
-        if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
-    ]
+    matched_keywords = []
+    matched_tags = []
+
+    if career_goal == "software-engineer":
+        matched_keywords = [
+            keyword for keyword in SOFTWARE_ENGINEER_KEYWORDS if keyword in searchable_text
+        ]
+        matched_tags = [
+            tag
+            for tag in (module.recommendation_tags or [])
+            if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
+        ]
     matched_skill_contributions = get_career_skill_contributions(module, career_goal)
     top_skill_contribution = get_top_skill_contribution(matched_skill_contributions)
     matched_signals = (
@@ -1046,10 +1119,13 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
             for contribution in matched_skill_contributions
         ]
     )
-    raw_career_tag_score = (
-        sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
-        sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
-    )
+    raw_career_tag_score = 0
+
+    if career_goal == "software-engineer":
+        raw_career_tag_score = (
+            sum(SOFTWARE_ENGINEER_KEYWORDS[keyword] for keyword in matched_keywords) +
+            sum(SOFTWARE_ENGINEER_TAG_WEIGHTS[tag] for tag in matched_tags)
+        )
     career_skill_score = round_positive_score(
         sum(contribution.score for contribution in matched_skill_contributions)
     )
@@ -1185,6 +1261,23 @@ def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> in
 
     return SAME_FACULTY_BOOST if module.faculty == student_faculty else 0
 
+def get_mpe_specialisation_boost(module: ModuleModel, career_goal: str) -> int:
+    boost_by_specialisation = CAREER_MPE_SPECIALISATION_BOOSTS.get(career_goal, {})
+
+    return sum(
+        boost_by_specialisation.get(specialisation, 0)
+        for specialisation in (module.mpe_specialisations or [])
+    )
+
+def get_mpe_specialisation_signals(module: ModuleModel, career_goal: str) -> list[str]:
+    boost_by_specialisation = CAREER_MPE_SPECIALISATION_BOOSTS.get(career_goal, {})
+
+    return [
+        f"mpe-specialisation:{specialisation}"
+        for specialisation in (module.mpe_specialisations or [])
+        if specialisation in boost_by_specialisation
+    ]
+
 def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
     module_tags = set(module.recommendation_tags or [])
 
@@ -1253,23 +1346,25 @@ def does_availability_token_match_programme(token: str, student_programme: str) 
     )
 
 def build_recommendation_reason(
+    career_goal: str,
     course_title: str,
     matched_signals: list[str],
     top_skill_contribution: Optional[CareerSkillContribution],
     unlock_value: int,
     preference_boost: int,
     faculty_boost: int,
+    mpe_specialisation_boost: int,
 ) -> str:
     fallback_signals = [
         signal
         for signal in matched_signals
         if not signal.startswith("skill:")
     ][:3]
-    base_reason = "Recommended for the Software Engineer career goal."
+    base_reason = f"Recommended for the {format_career_goal_label(career_goal)} career goal."
     extra_reasons = []
 
     if top_skill_contribution:
-        extra_reasons.append(build_career_skill_reason(top_skill_contribution, course_title))
+        extra_reasons.append(build_career_skill_reason(career_goal, top_skill_contribution, course_title))
     elif fallback_signals:
         extra_reasons.append(f"matches career signals: {', '.join(fallback_signals)}")
 
@@ -1279,6 +1374,9 @@ def build_recommendation_reason(
     if faculty_boost > 0:
         extra_reasons.append("matches your profile faculty")
 
+    if mpe_specialisation_boost > 0:
+        extra_reasons.append("matches an official MPE specialisation path for this career goal")
+
     if unlock_value > 0:
         extra_reasons.append(f"unlocks {unlock_value} later curriculum module(s)")
 
@@ -1287,7 +1385,11 @@ def build_recommendation_reason(
 
     return f"{base_reason} Also {' and '.join(extra_reasons)}."
 
+def format_career_goal_label(career_goal: str) -> str:
+    return " ".join(word.capitalize() for word in career_goal.split("-"))
+
 def build_career_skill_reason(
+    career_goal: str,
     top_skill_contribution: CareerSkillContribution,
     course_title: str,
 ) -> str:
@@ -1296,7 +1398,7 @@ def build_career_skill_reason(
 
     return (
         "top career-skill path: "
-        f"Software Engineer -> {mapping.skill} -> {relationship.tag} -> "
+        f"{format_career_goal_label(career_goal)} -> {mapping.skill} -> {relationship.tag} -> "
         f"{course_title}"
     )
 

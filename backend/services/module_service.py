@@ -119,6 +119,7 @@ def build_module_summary(module: ModuleModel, prerequisites: list[str], unlocks:
         level=module.level,
         categories=module.categories or [],
         recommendation_tags=module.recommendation_tags or [],
+        mpe_specialisations=module.mpe_specialisations or [],
         latest_year=module.latest_year,
         latest_semester=module.latest_semester,
         is_current_semester=module.is_current_semester,

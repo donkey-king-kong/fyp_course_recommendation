@@ -180,6 +180,10 @@ class RecommendationScoreBreakdown(BaseModel):
         description="Soft boost when the module faculty matches the student's profile faculty.",
         examples=[8],
     )
+    mpeSpecialisationBoost: int = Field(
+        description="Soft boost when an official MPE path directly supports the selected career goal.",
+        examples=[12],
+    )
     legacyCodePenalty: int = Field(
         description=(
             "Reserved score adjustment for future code-family preferences. Old CE/CSC "
@@ -217,6 +221,10 @@ class CourseRecommendation(BaseModel):
     academicUnits: Optional[float]
     faculty: Optional[str]
     level: Optional[int]
+    mpeSpecialisations: list[str] = Field(
+        default_factory=list,
+        description="Official CE/CSC MPE paths this module belongs to, if any.",
+    )
     matchedChoiceSlot: str = Field(description="Choice-slot code that this recommendation satisfies.")
     matchedChoiceSlotId: Optional[str] = Field(
         default=None,

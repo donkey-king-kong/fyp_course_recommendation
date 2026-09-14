@@ -47,6 +47,7 @@ export interface RecommendationScoreBreakdown {
   currentSemesterBonus: number
   preferenceBoost: number
   sameFacultyBoost: number
+  mpeSpecialisationBoost: number
   legacyCodePenalty: number
   defaultProfileAdjustment: number
   prerequisitePlanningPenalty: number
@@ -60,6 +61,7 @@ export interface CourseRecommendation {
   academicUnits: number | null
   faculty: string | null
   level: number | null
+  mpeSpecialisations: string[]
   matchedChoiceSlot: string
   matchedChoiceSlotId: string | null
   matchedChoiceSlotYear: number | null

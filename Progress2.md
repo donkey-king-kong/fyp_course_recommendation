@@ -4,66 +4,69 @@ This file continues the project progress log after `Progress.md` became large.
 
 ## Current Branch
 
-- `recommendation-score-calibration`
+- `main` includes merged recommendation calibration, prototype bug fixes, and roadmap UI polish.
+- `ntu-sso-auth` exists as open PR #40 but is parked because NTU controls Azure app access.
 
 ## Latest Commits
 
-- `adfd2da fix: exclude core project recommendations`
-- `57282fb test: add big data benchmark label`
-- `95d4b46 feat: calibrate preference match boost`
-- `f92c1a4 test: expand recommendation benchmark cases`
-- `a3c7e58 feat: calibrate current semester bonus`
+- `996b4f9 feat: expose expanded career goals`
+- `730d84e feat: add data and security career mappings`
+- `0fc947f docs: update progress handoff`
+- `cee8d4a Merge pull request #39 from donkey-king-kong/impeccable-product-init`
+- `2c1c761 Merge pull request #38 from donkey-king-kong/prototype-bug-fixes`
+- `06d181d Merge pull request #37 from donkey-king-kong/recommendation-score-calibration`
 
 ## Current Direction
 
-- Continue improving the deterministic backend-owned recommendation system.
+- Keep NTU SSO on hold until Azure app registration access is available.
+- Keep PR #40 open as the SSO implementation reference, but do not merge it yet.
+- Continue with non-auth work that strengthens the current prototype and evaluation story.
 - Keep recommendation ranking and exact-slot allocation in the backend.
 - Treat benchmark cases as project-owner-reviewed draft calibration data, not expert ground truth.
 - Avoid blind constant tuning just to improve nDCG.
+- Career coverage now includes `Software Engineer`, `Data Scientist`, and `Cybersecurity Analyst`.
 
 ## Current Benchmark Snapshot
 
-After excluding fixed/core project modules from recommendation candidates and regenerating the 14-case benchmark:
+After merged recommendation calibration and deferring the AI/ML case:
 
-- `caseCount`: `14`
+- `caseCount`: `13`
 - `caseCoverage`: `1.0`
-- `totalPredictionsEvaluated`: `32`
-- `averagePrecisionAtK`: `0.3714285714285715`
-- `averageNdcgAtK`: `0.7051533174757374`
-- `averageExplanationCoverage`: `0.8214285714285714`
+- `totalPredictionsEvaluated`: `31`
+- `averagePrecisionAtK`: `0.4615384615384617`
+- `averageNdcgAtK`: `0.805841645834225`
+- `averageExplanationCoverage`: `0.8846153846153846`
 - `averageExplanationFidelity`: `1.0`
-- `averageSkillAreaDiversityAtK`: `1.2142857142857142`
+- `averageSkillAreaDiversityAtK`: `1.1538461538461537`
 - `oldCodeExposure`: `0`
 - `averageConstraintValidity`: `1.0`
 
 ## Latest Completed Work
 
-- Reviewed `software-engineer-csc-001`, `software-engineer-csc-002`, and `software-engineer-csc-004`.
-- Added missing draft candidate labels where the benchmark omitted valid recommendations.
-- Updated the offline benchmark evaluator so rank-sensitive metrics sort exact-slot assignments by backend score instead of roadmap slot display order.
-- Kept production recommender scoring unchanged during the review.
+- Merged recommendation score calibration in PR #37.
+- Reviewed and addressed the previously flagged weak benchmark areas, including networking preference ranking, SC3 software fallback ranking, security/privacy fallback ranking, and AI/ML case deferral.
+- Merged prototype bug fixes in PR #38 for transcript/curriculum parsing and reload behavior.
+- Merged roadmap UI polish in PR #39, including header layout, dark-mode contrast, and plain prerequisite lines without arrowheads.
+- Implemented NTU SSO on `ntu-sso-auth` and opened PR #40, but left it unmerged because Azure app registration access depends on NTU.
+- Added deterministic career-skill mappings for Data Scientist and Cybersecurity Analyst.
+- Updated the frontend career dropdown and recommendation guard to support all three mapped careers.
 
 ## Current Assessment
 
 - Constraint validity is strong and old CE/CPE/CSC/CZ code exposure remains zero.
-- The biggest recent issue was benchmark interpretation and incomplete draft labels, not a clear production scoring bug.
-- `software-engineer-csc-002` still has lower explanation coverage because direct AI/ML preference modules currently do not have mapped Software Engineer career-skill evidence.
+- The benchmark review/calibration pass is stable enough to pause; current active-case nDCG is about `0.806`.
+- SSO code exists but should remain parked until real NTU Azure credentials and redirect registration are available.
+- The main app can continue improving prototype reliability, documentation, and evaluation without introducing deferred AI/database integrations.
+- The new career mappings are a first pass and do not yet have dedicated benchmark cases.
 
 ## Recommended Next Step
 
-Review the weakest expanded benchmark cases before more scoring work:
+Pick one non-auth task:
 
-- `software-engineer-csc-014`: decide whether `SC4022 Network Science` should be accepted as a reviewed positive or whether networking-course specificity/current availability needs another scoring signal.
-- `software-engineer-csc-006`: inspect low precision with decent nDCG, likely caused by missing reviewed positives or intentionally narrow labels.
-- `software-engineer-csc-008`: inspect low precision with decent nDCG, likely caused by missing reviewed positives or intentionally narrow labels.
-- `software-engineer-csc-011`: inspect why the second SC3xxx backend-preference slot falls back to `SC3270 Mobile Application Development`.
-
-For each case, decide whether:
-
-- The recommendation is genuinely worse and scoring should be adjusted.
-- The benchmark is missing a valid reviewed candidate.
-- The benchmark relevance label should be adjusted.
-- A future signal, such as availability, programme eligibility, or diversity weighting, should be documented instead of implemented now.
+- Add lightweight benchmark/evaluation cases for the new Data Scientist and Cybersecurity Analyst mappings.
+- Coverage audit planning: design a lightweight script/checklist to measure whether valid MPE/BDE slots can be filled across supported curriculum inputs.
+- Counterfactual sensitivity checks: verify that changing career goals shifts recommendations in sensible ways.
+- Evaluation prep: document benchmark methodology and current metrics for the FYP report.
 
 ## Out Of Scope
 
@@ -74,7 +77,7 @@ For each case, decide whether:
 - No embeddings.
 - No ML ranking.
 - No MyCareersFuture scraping.
-- No auth or SSO.
+- No further auth or SSO work until Azure access is available.
 - No backend persistence for user state.
 - No frontend score-breakdown UI unless explicitly requested.
 - No automated recommender test suite unless explicitly requested.

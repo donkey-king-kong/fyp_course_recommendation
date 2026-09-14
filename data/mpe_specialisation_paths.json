@@ -1,0 +1,96 @@
+{
+  "source": "AY25_MPEs_CE & CSC_14Jul2026.pdf",
+  "asOf": "2026-07-14",
+  "notes": [
+    "Official CE/CSC MPE list for AY2025 and later cohorts.",
+    "A module may appear in multiple paths, but one taken module must not be double-counted across specialisations.",
+    "Modules in other-mpes are official MPE-listed modules without a named specialisation path.",
+    "SC3271 appears in the official PDF and normalized course_catalog/course_offerings data, but is absent from the current modules.json seed input."
+  ],
+  "paths": {
+    "artificial-intelligence": {
+      "label": "Artificial Intelligence",
+      "courseCodes": [
+        "SC3000",
+        "SC4000",
+        "SC4001",
+        "SC4002",
+        "SC4003",
+        "SC4061",
+        "SC4062",
+        "SC4172"
+      ]
+    },
+    "security": {
+      "label": "Security",
+      "courseCodes": [
+        "SC3010",
+        "SC4010",
+        "SC4011",
+        "SC4012",
+        "SC4013",
+        "SC4014",
+        "SC4015",
+        "SC4016",
+        "SC4017",
+        "SC4063"
+      ]
+    },
+    "data-science": {
+      "label": "Data Science",
+      "courseCodes": [
+        "SC3020",
+        "SC3021",
+        "SC4000",
+        "SC4002",
+        "SC4020",
+        "SC4021",
+        "SC4022",
+        "SC4023",
+        "SC4024",
+        "SC4025"
+      ]
+    },
+    "high-performance-computing": {
+      "label": "High-Performance Computing",
+      "courseCodes": [
+        "SC3050",
+        "SC4023",
+        "SC4050",
+        "SC4051",
+        "SC4052",
+        "SC4054",
+        "SC4055",
+        "SC4062",
+        "SC4064"
+      ]
+    },
+    "edge-computing": {
+      "label": "Edge Computing",
+      "courseCodes": [
+        "SC3050",
+        "SC3103",
+        "SC4015",
+        "SC4030",
+        "SC4031",
+        "SC4064",
+        "SC4172"
+      ]
+    },
+    "other-mpes": {
+      "label": "Other MPEs",
+      "courseCodes": [
+        "SC3030",
+        "SC3040",
+        "SC3060",
+        "SC3061",
+        "SC3270",
+        "SC3271",
+        "SC4040",
+        "SC4053",
+        "SC4060",
+        "SC4242"
+      ]
+    }
+  }
+}
