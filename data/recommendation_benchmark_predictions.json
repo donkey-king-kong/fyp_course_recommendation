@@ -1,7 +1,7 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-14T02:26:40.221515+00:00",
-  "apiUrl": "http://127.0.0.1:8004/recommendations",
+  "generatedAt": "2026-09-14T02:52:23.927175+00:00",
+  "apiUrl": "http://127.0.0.1:8005/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
     {
@@ -599,8 +599,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches your profile faculty."
         },
         {
-          "courseCode": "SC3270",
-          "title": "Reasoning About Programs",
+          "courseCode": "SC3040",
+          "title": "Advanced Software Engineering",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
@@ -610,18 +610,12 @@
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
-            "programming",
-            "systems",
+            "engineering",
             "tag:software-engineering",
-            "tag:programming",
-            "skill:software design and delivery:software-engineering",
-            "skill:algorithmic problem solving:theory-of-computing"
+            "skill:software design and delivery:software-engineering"
           ],
           "prerequisites": [
-            "MH1403",
-            "MH1812",
-            "SC2001",
-            "SC2301"
+            "SC2006"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -631,10 +625,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 30,
+          "score": 24,
           "scoreBreakdown": {
-            "careerTagScore": 7,
-            "careerSkillScore": 12,
+            "careerTagScore": 3,
+            "careerSkillScore": 10,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -652,9 +646,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 30
+            "finalScore": 24
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering and matches your profile faculty."
         },
         {
           "courseCode": "SC4002",
@@ -1350,8 +1344,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC3270",
-          "title": "Reasoning About Programs",
+          "courseCode": "SC3040",
+          "title": "Advanced Software Engineering",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
@@ -1361,18 +1355,12 @@
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
-            "programming",
-            "systems",
+            "engineering",
             "tag:software-engineering",
-            "tag:programming",
-            "skill:software design and delivery:software-engineering",
-            "skill:algorithmic problem solving:theory-of-computing"
+            "skill:software design and delivery:software-engineering"
           ],
           "prerequisites": [
-            "MH1403",
-            "MH1812",
-            "SC2001",
-            "SC2301"
+            "SC2006"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -1382,10 +1370,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 30,
+          "score": 24,
           "scoreBreakdown": {
-            "careerTagScore": 7,
-            "careerSkillScore": 12,
+            "careerTagScore": 3,
+            "careerSkillScore": 10,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -1403,9 +1391,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 30
+            "finalScore": 24
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering and matches your profile faculty."
         },
         {
           "courseCode": "SC4023",
@@ -3563,8 +3551,8 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC3270",
-          "title": "Reasoning About Programs",
+          "courseCode": "SC3040",
+          "title": "Advanced Software Engineering",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 3,
@@ -3574,18 +3562,12 @@
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
             "software",
-            "programming",
-            "systems",
+            "engineering",
             "tag:software-engineering",
-            "tag:programming",
-            "skill:software design and delivery:software-engineering",
-            "skill:algorithmic problem solving:theory-of-computing"
+            "skill:software design and delivery:software-engineering"
           ],
           "prerequisites": [
-            "MH1403",
-            "MH1812",
-            "SC2001",
-            "SC2301"
+            "SC2006"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -3595,10 +3577,10 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 30,
+          "score": 24,
           "scoreBreakdown": {
-            "careerTagScore": 7,
-            "careerSkillScore": 12,
+            "careerTagScore": 3,
+            "careerSkillScore": 10,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -3616,9 +3598,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 30
+            "finalScore": 24
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering and matches your profile faculty."
         }
       ]
     },

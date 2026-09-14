@@ -1182,6 +1182,13 @@ def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> in
     return SAME_FACULTY_BOOST if module.faculty == student_faculty else 0
 
 def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
+    if (
+        module.recommendation_profile == "specialist" and
+        preferred_tags and
+        not preferred_tags.intersection(module.recommendation_tags or [])
+    ):
+        return SPECIALIST_PROFILE_PENALTY
+
     if preferred_tags and preferred_tags != {"software-engineering"}:
         return 0
 

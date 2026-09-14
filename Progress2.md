@@ -293,6 +293,43 @@ Status: Implemented locally
 - No frontend UI changes.
 - No automated recommender test suite unless explicitly requested.
 
+## SC3 Software Fallback Calibration
+
+Status: Implemented locally
+
+### Completed
+
+- Reviewed `software-engineer-csc-011` after project-owner feedback that `SC3040 Advanced Software Engineering` should be preferred over `SC3270 Reasoning About Programs`.
+- Confirmed `SC3040` is eligible: it is a current-semester CSC level-3 module, its `SC2006` prerequisite is completed in the case, and it is not unavailable to CSC.
+- Updated the benchmark case so `SC3099 Capstone Project` is a negative core-project exclusion example instead of a positive reviewed candidate.
+- Added `SC3270 Reasoning About Programs` as a `somewhat-relevant` fallback candidate, because it is acceptable only when `SC3040` is not eligible.
+- Marked `SC3270` as `recommendationProfile: specialist` in `data/modules.json`.
+- Updated specialist profile adjustment so specialist modules receive the specialist penalty when the student selected preferences and the module does not match any selected preference.
+- Regenerated benchmark predictions after reseeding the local module table.
+
+### Rationale Notes
+
+- `SC3270` previously beat `SC3040` because it had extra `programming` and `theory-of-computing` signals, even though it is more formal/theory-oriented.
+- `SC3040` is the more direct applied software-engineering fallback when no SC3 module matches backend-engineering, distributed-systems, or cloud-computing.
+- The specialist penalty still does not apply when a specialist module directly matches a selected preference, so security, networking, or distributed-systems specialist matches are not broadly suppressed.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -m backend.database.seed`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8005/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Case `software-engineer-csc-011` now recommends `SC3020 Database System Principles` and `SC3040 Advanced Software Engineering`.
+- The benchmark now reports `averagePrecisionAtK` `0.42857142857142877`, `averageNdcgAtK` `0.7799114514168929`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No automated recommender test suite unless explicitly requested.
+- No frontend UI changes.
+- No change to the global core-project exclusion for `SC3099`.
+
 ## Current-Semester Bonus Calibration
 
 Status: Implemented locally

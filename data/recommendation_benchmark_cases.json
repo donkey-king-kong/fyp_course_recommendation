@@ -1591,11 +1591,20 @@
         {
           "courseCode": "SC3099",
           "title": "Capstone Project",
-          "targetSlotId": "y3-s2-mpe2",
-          "expectedRelevance": "relevant",
-          "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Capstone Project",
+          "targetSlotId": null,
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A - module is a core project module, hard-excluded before ranking",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: software-engineering, backend-engineering, frontend-engineering, project-management. Matches 1 of 3 stated preferences (backend-engineering). Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Relevant as an applied project module with backend-engineering tag match. Included to show that multi-tagged SC3 modules can score well on preference match even without a perfect preference overlap. isCurrentSemester=true."
+          "reviewNotes": "NEGATIVE EXAMPLE - core project exclusion. SC3099 has software-engineering and backend-engineering tags, but it is a fixed/core project module rather than an elective recommendation target. The backend hard-excludes SC3099 before ranking through NON_RECOMMENDABLE_CORE_PROJECT_CODES. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended', not a judgement on the module's topical quality. targetSlotId is null because this entry tests the core-project exclusion filter. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC3270",
+          "title": "Reasoning About Programs",
+          "targetSlotId": "y3-s2-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Software Engineer -> software design and delivery -> software-engineering -> Reasoning About Programs",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Module tags in modules.json: software-engineering, programming, theory-of-computing. This is a valid fallback when applied software-engineering options are unavailable, but it is more formal/theory-oriented than SC3040 and does not match the stated backend-engineering, distributed-systems, or cloud-computing preferences. Labelled somewhat-relevant so the benchmark gives partial credit only if SC3040 is not eligible. isCurrentSemester=true."
         },
         {
           "courseCode": "SC3060",
