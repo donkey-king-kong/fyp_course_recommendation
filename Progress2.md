@@ -9,13 +9,12 @@ This file continues the project progress log after `Progress.md` became large.
 
 ## Latest Commits
 
+- `996b4f9 feat: expose expanded career goals`
+- `730d84e feat: add data and security career mappings`
+- `0fc947f docs: update progress handoff`
 - `cee8d4a Merge pull request #39 from donkey-king-kong/impeccable-product-init`
 - `2c1c761 Merge pull request #38 from donkey-king-kong/prototype-bug-fixes`
 - `06d181d Merge pull request #37 from donkey-king-kong/recommendation-score-calibration`
-- `9e4b3c9 chore: defer ai ml benchmark case`
-- `367e932 feat: calibrate security privacy fallback ranking`
-- `bf13809 feat: calibrate sc3 software fallback ranking`
-- `94274bb feat: calibrate network preference ranking`
 
 ## Current Direction
 
@@ -25,6 +24,7 @@ This file continues the project progress log after `Progress.md` became large.
 - Keep recommendation ranking and exact-slot allocation in the backend.
 - Treat benchmark cases as project-owner-reviewed draft calibration data, not expert ground truth.
 - Avoid blind constant tuning just to improve nDCG.
+- Career coverage now includes `Software Engineer`, `Data Scientist`, and `Cybersecurity Analyst`.
 
 ## Current Benchmark Snapshot
 
@@ -48,6 +48,8 @@ After merged recommendation calibration and deferring the AI/ML case:
 - Merged prototype bug fixes in PR #38 for transcript/curriculum parsing and reload behavior.
 - Merged roadmap UI polish in PR #39, including header layout, dark-mode contrast, and plain prerequisite lines without arrowheads.
 - Implemented NTU SSO on `ntu-sso-auth` and opened PR #40, but left it unmerged because Azure app registration access depends on NTU.
+- Added deterministic career-skill mappings for Data Scientist and Cybersecurity Analyst.
+- Updated the frontend career dropdown and recommendation guard to support all three mapped careers.
 
 ## Current Assessment
 
@@ -55,15 +57,16 @@ After merged recommendation calibration and deferring the AI/ML case:
 - The benchmark review/calibration pass is stable enough to pause; current active-case nDCG is about `0.806`.
 - SSO code exists but should remain parked until real NTU Azure credentials and redirect registration are available.
 - The main app can continue improving prototype reliability, documentation, and evaluation without introducing deferred AI/database integrations.
+- The new career mappings are a first pass and do not yet have dedicated benchmark cases.
 
 ## Recommended Next Step
 
 Pick one non-auth task:
 
-- Documentation handoff: update `README.md` and progress docs to explain that NTU SSO is implemented but parked behind NTU Azure access.
-- Prototype reliability: review current upload/profile flows for small UX or error-message fixes.
-- Evaluation prep: document benchmark methodology and current metrics for the FYP report.
+- Add lightweight benchmark/evaluation cases for the new Data Scientist and Cybersecurity Analyst mappings.
 - Coverage audit planning: design a lightweight script/checklist to measure whether valid MPE/BDE slots can be filled across supported curriculum inputs.
+- Counterfactual sensitivity checks: verify that changing career goals shifts recommendations in sensible ways.
+- Evaluation prep: document benchmark methodology and current metrics for the FYP report.
 
 ## Out Of Scope
 
