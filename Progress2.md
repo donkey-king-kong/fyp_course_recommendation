@@ -366,6 +366,36 @@ Status: Implemented locally
 - No automated recommender test suite unless explicitly requested.
 - No broad security-course reshuffling beyond the reviewed `csc-008` calibration.
 
+## AI/ML Benchmark Case Deferral
+
+Status: Implemented locally
+
+### Completed
+
+- Removed `software-engineer-csc-006` from the current Software Engineer benchmark set.
+- Deferred the AI/ML preference scenario until the project has an explicit AI/ML career goal or AI/ML-focused evaluation track.
+- Regenerated benchmark predictions for the remaining 13 Software Engineer cases.
+
+### Rationale Notes
+
+- The case recommended the correct course, `SC4001 Neural Network & Deep Learning`, but it was weak for reasons unrelated to Software Engineer ranking quality.
+- The case relied on `ai-ml`, which is not currently mapped as Software Engineer career-skill evidence.
+- The case also expected unlock credit toward `SC4062 Generative Artificial Intelligence - Advanced Topics`, but the benchmark curriculum data did not include enough year/semester metadata for the backend to prove that `SC4062` is a later fixed module.
+- Keeping this case in the Software Engineer benchmark would mix a future AI/ML career path concern into the current Software Engineer calibration.
+
+### Verified
+
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8009/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- The benchmark now reports `caseCount` `13`, `averagePrecisionAtK` `0.4615384615384617`, `averageNdcgAtK` `0.805841645834225`, `oldCodeExposure` `0`, and `averageConstraintValidity` `1.0`.
+
+### Not Included
+
+- No AI/ML career goal was added.
+- No `ai-ml` Software Engineer career-skill mapping was added.
+- No recommender scoring changes were made for this deferral.
+
 ## Current-Semester Bonus Calibration
 
 Status: Implemented locally
