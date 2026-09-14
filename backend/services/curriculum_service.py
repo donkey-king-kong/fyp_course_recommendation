@@ -301,7 +301,9 @@ def parse_curriculum_row(
 
     course_type = get_course_type_from_word(course_type_word, code)
     title = find_course_title(words, course_word, course_type_word, column_header)
-    prerequisite_text = find_prerequisite_text(words, academic_unit_word, column_header)
+    prerequisite_text = clean_prerequisite_text(
+        find_prerequisite_text(words, academic_unit_word, column_header)
+    )
 
     return {
         "code": code,
@@ -454,10 +456,15 @@ def find_prerequisite_text(
     column_header: Optional[dict[str, Any]] = None,
 ) -> str:
     if column_header is not None:
+        prerequisite_start_x = column_header["prerequisite_x"] - 25
+
+        if academic_unit_word is not None:
+            prerequisite_start_x = max(prerequisite_start_x, academic_unit_word["x1"] + 1)
+
         prerequisite_words = [
             str(word["text"]).strip()
             for word in words
-            if word["x0"] >= column_header["prerequisite_x"] - 25 and str(word["text"]).strip()
+            if word["x0"] >= prerequisite_start_x and str(word["text"]).strip()
         ]
 
         return " ".join(prerequisite_words)
@@ -491,7 +498,7 @@ def default_title_for_slot(code: str, course_type: str) -> str:
 
 # Keep real module prerequisites as course codes, while preserving standing requirements as text.
 def parse_prerequisites(prerequisite_text: str) -> list[str]:
-    cleaned_text = prerequisite_text.strip()
+    cleaned_text = clean_prerequisite_text(prerequisite_text)
 
     if not cleaned_text or cleaned_text.lower() == "nil":
         return []
@@ -502,6 +509,14 @@ def parse_prerequisites(prerequisite_text: str) -> list[str]:
         return course_codes
 
     return [cleaned_text]
+
+def clean_prerequisite_text(prerequisite_text: str) -> str:
+    cleaned_text = " ".join(prerequisite_text.split())
+
+    if re.fullmatch(r"\d+\s+nil", cleaned_text, flags=re.IGNORECASE):
+        return "Nil"
+
+    return cleaned_text
 
 # Choice slots are placeholders that students can fill later with recommended real modules.
 def is_choice_slot(code: str, course_type: str, title: str) -> bool:

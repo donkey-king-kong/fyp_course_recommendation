@@ -101,6 +101,7 @@ function shouldIgnorePrerequisiteText(course: CourseNode) {
   return (
     !prerequisiteText ||
     prerequisiteText === 'nil' ||
+    /^\d+\s+nil$/.test(prerequisiteText) ||
     course.courseCode === 'BDE' ||
     course.type === 'BDE' ||
     prerequisiteText.includes('refer to class schedule')

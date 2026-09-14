@@ -113,6 +113,7 @@ def should_ignore_prerequisite_text(course: RoadmapReadinessCourse) -> bool:
     return (
         not prerequisite_text or
         prerequisite_text == "nil" or
+        re.fullmatch(r"\d+\s+nil", prerequisite_text) is not None or
         course.courseCode == "BDE" or
         course.type == "BDE" or
         "refer to class schedule" in prerequisite_text
