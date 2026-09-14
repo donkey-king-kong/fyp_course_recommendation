@@ -5,9 +5,11 @@ import LoginPage from './components/LoginPage'
 import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
+import { fetchCurrentUser, logoutCurrentUser } from './api/authApi'
 import { fetchRecommendations } from './api/recommendationsApi'
 import { fetchPersonalizedRoadmap } from './api/roadmapApi'
 import { useProfileStore } from './store/useProfileStore'
+import type { AuthenticatedUser } from './types/auth'
 import type { CurriculumGuideResponse } from './types/curriculum'
 import type { RoadmapResponse } from './types/roadmap'
 import type { RoadmapRecommendationStaleReason } from './store/useProfileStore'
@@ -85,6 +87,9 @@ function App() {
   const [recommendationError, setRecommendationError] = useState('')
   const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
   const [roadmapProjectionError, setRoadmapProjectionError] = useState('')
+  const [authUser, setAuthUser] = useState<AuthenticatedUser | null>(null)
+  const [authError, setAuthError] = useState('')
+  const [isCheckingAuth, setIsCheckingAuth] = useState(true)
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
@@ -105,6 +110,7 @@ function App() {
   const setRoadmapRecommendations = useProfileStore((state) => state.setRoadmapRecommendations)
   const clearRoadmapRecommendations = useProfileStore((state) => state.clearRoadmapRecommendations)
   const logout = useProfileStore((state) => state.logout)
+  const loginWithStudentId = useProfileStore((state) => state.loginWithStudentId)
   const hasLoadedRoadmapRecommendations = recommendations.length > 0
   const recommendationNotice = getRecommendationNotice(
     roadmapRecommendationStaleReasons,
@@ -127,6 +133,44 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
   }, [currentView])
+
+  useEffect(() => {
+    let shouldIgnoreResult = false
+
+    async function loadCurrentUser() {
+      try {
+        const user = await fetchCurrentUser()
+
+        if (shouldIgnoreResult) {
+          return
+        }
+
+        setAuthUser(user)
+        setAuthError('')
+
+        if (user) {
+          loginWithStudentId(user.oid)
+        } else {
+          logout()
+        }
+      } catch {
+        if (!shouldIgnoreResult) {
+          setAuthUser(null)
+          setAuthError('Could not check your sign-in session. Make sure the backend is running.')
+        }
+      } finally {
+        if (!shouldIgnoreResult) {
+          setIsCheckingAuth(false)
+        }
+      }
+    }
+
+    void loadCurrentUser()
+
+    return () => {
+      shouldIgnoreResult = true
+    }
+  }, [loginWithStudentId, logout])
 
   useEffect(() => {
     setRecommendationError('')
@@ -196,14 +240,20 @@ function App() {
       )
     }) ?? []
 
-  // Show the login page until a studentID is entered
-  if (!activeStudentId) {
-    return <LoginPage />
+  // Show the login page until the backend confirms an NTU SSO session.
+  if (isCheckingAuth || !authUser || !activeStudentId) {
+    return <LoginPage authError={authError} isCheckingSession={isCheckingAuth} />
   }
 
-  function handleLogout() {
+  async function handleLogout() {
     setCurrentView(DEFAULT_VIEW)
-    logout()
+    setAuthUser(null)
+
+    try {
+      await logoutCurrentUser()
+    } finally {
+      logout()
+    }
   }
 
   async function handleLoadRoadmapRecommendations() {
@@ -342,7 +392,7 @@ function App() {
         <div className="app-header-copy">
           <h1>NTU Course Recommender</h1>
           <p className="app-subtitle">
-            Get your course roadmap to plan your NTU journey.
+            Signed in as {authUser.name} ({authUser.email}).
           </p>
         </div>
       </header>
@@ -412,6 +462,7 @@ function App() {
           onGoToRoadmap={() => setCurrentView('roadmap')}
           onLoadRoadmap={handleLoadRoadmapRecommendations}
           onClearRecommendations={clearRoadmapRecommendations}
+          authUser={authUser}
         />
       )}
     </main>

@@ -1,78 +1,42 @@
-import { useState } from 'react'
-import { useProfileStore } from '../store/useProfileStore'
+import { useMemo } from 'react'
+import { redirectToNtuLogin } from '../api/authApi'
 import './LoginPage.css'
 
-const STUDENT_ID_PATTERN = /^[A-Z]{4}\d{4}$/
+interface LoginPageProps {
+  authError?: string
+  isCheckingSession?: boolean
+}
 
-function LoginPage() {
-  // Activate an existing browser-saved profile, or create one for this Student ID.
-  const loginWithStudentId = useProfileStore((state) => state.loginWithStudentId)
-
-  // Keep what the user is typing before it is saved into the profile store
-  const [studentIdInput, setStudentIdInput] = useState('')
-  const [error, setError] = useState('')
-
-  function handleSubmit(event: { preventDefault: () => void }) {
-    // HTML forms reload the page by default
-    // React handles this submit instead.
-    event.preventDefault()
-
-    const normalizedStudentId = studentIdInput.trim().toUpperCase()
-
-    // Empty Student ID should not create a profile
-    if (!normalizedStudentId) {
-      setError('Enter your Student ID to continue.')
-      return
-    }
-
-    // Student IDs currently follow a four-letter, four-digit format.
-    if (!STUDENT_ID_PATTERN.test(normalizedStudentId)) {
-      setError('Enter a valid Student ID.')
-      return
-    }
-
-    setError('')
-
-    // Load the saved browser profile for this ID, or create one if it is new
-    loginWithStudentId(normalizedStudentId)
-  }
+function LoginPage({ authError = '', isCheckingSession = false }: LoginPageProps) {
+  const loginError = useMemo(() => {
+    const queryError = new URLSearchParams(window.location.search).get('authError')
+    return authError || queryError || ''
+  }, [authError])
 
   return (
     <main className="login-shell">
       <section className="login-card">
         <p className="login-eyebrow">NTU Course Recommender</p>
-        <h1>Start with your student profile</h1>
+        <h1>Sign in with NTU</h1>
         <p className="login-copy">
-          Enter your Student ID to continue. This identifies your profile and keeps
-          your roadmap progress available.
+          Use your NTU Microsoft account to continue. The app uses your Azure Object ID
+          as the stable profile key, not your email or matriculation number.
         </p>
 
-        <form className="login-form" onSubmit={handleSubmit}>
-          {/* Student ID is the user identity for the profile flow. */}
-          <label>
-            <span>Student ID</span>
-            <input
-              type="text"
-              value={studentIdInput}
-              onChange={(event) => {
-                setStudentIdInput(event.target.value)
-                setError('')
-              }}
-              placeholder="Enter your student ID"
-              aria-invalid={Boolean(error)}
-              aria-describedby={error ? 'student-id-error' : undefined}
-              autoFocus
-            />
-          </label>
+        {loginError && (
+          <p className="login-error" role="alert">
+            {loginError}
+          </p>
+        )}
 
-          {error && (
-            <p className="login-error" id="student-id-error">
-              {error}
-            </p>
-          )}
-
-          <button type="submit">Continue</button>
-        </form>
+        <button
+          className="login-button"
+          type="button"
+          onClick={redirectToNtuLogin}
+          disabled={isCheckingSession}
+        >
+          {isCheckingSession ? 'Checking sign-in...' : 'Sign in with NTU'}
+        </button>
       </section>
     </main>
   )

@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { uploadCurriculumGuide } from '../api/curriculumApi'
 import { matchTranscriptToCurriculum, uploadTranscript } from '../api/transcriptApi'
 import { useProfileStore } from '../store/useProfileStore'
+import type { AuthenticatedUser } from '../types/auth'
 import './ProfilePage.css'
 
 function formatAcademicUnits(academicUnits: number) {
@@ -16,6 +17,7 @@ interface ProfilePageProps {
   onGoToRoadmap: () => void
   onLoadRoadmap: () => void
   onClearRecommendations: () => void
+  authUser: AuthenticatedUser
 }
 
 const RECOMMENDATION_TAG_OPTIONS = [
@@ -72,6 +74,7 @@ function ProfilePage({
   onGoToRoadmap,
   onLoadRoadmap,
   onClearRecommendations,
+  authUser,
 }: ProfilePageProps) {
   // Read the saved student profile from the shared Zustand store
   const profile = useProfileStore((state) => state.profile)
@@ -319,16 +322,14 @@ function ProfilePage({
       </div>
 
       <form className="profile-form" onSubmit={(e) => e.preventDefault()}>
-        {/* Student ID is the browser-side profile identity. */}
-        {/* Keep primary profile inputs together to avoid wasting a full row on Student ID. */}
+        {/* The first SSO pass still stores prototype profile data in localStorage under the oid. */}
         <div className="profile-row profile-identity-row">
           <label className="profile-field">
-            <span>Student ID</span>
+            <span>Signed-in NTU account</span>
             <input
               type="text"
-              value={profile.studentId}
-              onChange={(e) => updateProfile({ studentId: e.target.value })}
-              placeholder="Enter your student ID"
+              value={`${authUser.name} (${authUser.email})`}
+              readOnly
             />
           </label>
 
