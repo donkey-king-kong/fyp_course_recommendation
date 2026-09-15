@@ -84,7 +84,11 @@ CAREER_GOAL_ALIASES = {
 CAREER_MPE_SPECIALISATION_BOOSTS = {
     "data-scientist": {"data-science": MPE_SPECIALISATION_CAREER_BOOST},
     "cybersecurity-engineer": {"security": MPE_SPECIALISATION_CAREER_BOOST},
-    "ai-ml-engineer": {"artificial-intelligence": MPE_SPECIALISATION_CAREER_BOOST},
+    "ai-ml-engineer": {
+        "artificial-intelligence": MPE_SPECIALISATION_CAREER_BOOST,
+        "data-science": 6,
+        "high-performance-computing": 5,
+    },
     "data-engineer": {
         "data-science": MPE_SPECIALISATION_CAREER_BOOST,
         "high-performance-computing": 8,
@@ -98,6 +102,8 @@ DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
 DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
 BROAD_DEFAULT_PROFILE_BOOST = 14
+MIN_ASSIGNED_RECOMMENDATION_SCORE = 10
+AI_ML_WEAK_STANDALONE_TAGS = {"algorithms", "database", "programming"}
 SPECIALIST_PROFILE_PENALTY = -16
 EXTRA_PREREQUISITE_PLANNING_PENALTY = -20
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
@@ -213,6 +219,15 @@ def recommend_courses(
         career_match = score_career_match(module, career_goal)
         mpe_specialisation_boost = get_mpe_specialisation_boost(module, career_goal)
 
+        if is_weak_specialized_career_match(
+            module,
+            career_goal,
+            career_match,
+            mpe_specialisation_boost,
+            preferred_tags,
+        ):
+            continue
+
         if (
             career_match.career_tag_score == 0 and
             career_match.career_skill_score == 0 and
@@ -250,7 +265,7 @@ def recommend_courses(
                 get_current_preference_match_boost(module, preferred_tags)
             )
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
-            default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags)
+            default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags, career_goal)
             unlock_contribution = get_unlock_contribution(readiness.unlock_value)
             adjusted_score = max(1, (
                 career_match.career_tag_score +
@@ -263,6 +278,10 @@ def recommend_courses(
                 default_profile_adjustment +
                 readiness.prerequisite_planning_penalty
             ))
+
+            if adjusted_score < MIN_ASSIGNED_RECOMMENDATION_SCORE:
+                continue
+
             score_breakdown = RecommendationScoreBreakdown(
                 careerTagScore=career_match.career_tag_score,
                 careerSkillScore=career_match.career_skill_score,
@@ -1292,7 +1311,32 @@ def get_mpe_specialisation_signals(module: ModuleModel, career_goal: str) -> lis
         if specialisation in boost_by_specialisation
     ]
 
-def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
+def is_weak_specialized_career_match(
+    module: ModuleModel,
+    career_goal: str,
+    career_match: CareerMatchScore,
+    mpe_specialisation_boost: int,
+    preferred_tags: set[str],
+) -> bool:
+    if career_goal != "ai-ml-engineer" or mpe_specialisation_boost > 0:
+        return False
+
+    matched_tags = {
+        contribution.relationship.tag
+        for contribution in career_match.matched_skill_contributions
+    }
+
+    return bool(
+        matched_tags and
+        matched_tags.issubset(AI_ML_WEAK_STANDALONE_TAGS) and
+        not matched_tags.intersection(preferred_tags)
+    )
+
+def get_default_profile_adjustment(
+    module: ModuleModel,
+    preferred_tags: set[str],
+    career_goal: str,
+) -> int:
     module_tags = set(module.recommendation_tags or [])
 
     if (
@@ -1303,6 +1347,9 @@ def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]
         return SPECIALIST_PROFILE_PENALTY
 
     if preferred_tags and preferred_tags != {"software-engineering"}:
+        return 0
+
+    if career_goal != "software-engineer":
         return 0
 
     if module.recommendation_profile == "broad-default":
