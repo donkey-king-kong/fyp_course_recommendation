@@ -6,7 +6,7 @@ import type { ModuleSummary } from '../types/module'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
-import type { CourseRecommendation } from '../types/recommendation'
+import type { CourseRecommendation, RecommendationConfidence } from '../types/recommendation'
 import ClassicLoader from './ClassicLoader'
 
 // Pass courses and prerequisite links into this component
@@ -54,6 +54,7 @@ interface AssignedRecommendation {
   missingPrerequisites: string[]
   existingPrerequisiteCourseCodes: string[]
   plannedPrerequisiteCourseCodes: string[]
+  recommendationConfidence: RecommendationConfidence
 }
 
 interface RecommendationAssignmentResult {
@@ -201,6 +202,7 @@ function assignRecommendationsToChoiceSlots(
         missingPrerequisites: recommendation.missingPrerequisites,
         existingPrerequisiteCourseCodes: recommendation.existingPrerequisiteCourseCodes,
         plannedPrerequisiteCourseCodes: recommendation.plannedPrerequisiteCourseCodes,
+        recommendationConfidence: recommendation.recommendationConfidence ?? 'standard',
       },
     }
   }, {})
@@ -903,7 +905,12 @@ function SemesterRoadmap({
                             void openRecommendedModuleDetail(slotRecommendation.courseCode)
                           }}
                         >
-                          <span>{slotRecommendation.label}</span>
+                          <span className="recommendation-label-row">
+                            <span>{slotRecommendation.label}</span>
+                            {slotRecommendation.recommendationConfidence === 'low' && (
+                              <span className="recommendation-confidence-badge">Low confidence</span>
+                            )}
+                          </span>
                           <strong>{slotRecommendation.courseCode}</strong>
                           <small>{slotRecommendation.title}</small>
                         </button>
