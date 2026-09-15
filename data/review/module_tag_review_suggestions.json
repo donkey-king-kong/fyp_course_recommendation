@@ -1,0 +1,1549 @@
+[
+  {
+    "code": "AE2003",
+    "title": "Aerodynamics I",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mechanical-engineering"
+    ],
+    "reason": "Module is in aerospace engineering; 'general' is not useful. Suggest 'mechanical-engineering' as the closest available tag. Consider adding an 'aerospace' tag to the taxonomy.",
+    "confidence": "high"
+  },
+  {
+    "code": "AE4001",
+    "title": "Aircraft Structures Ii",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mechanical-engineering"
+    ],
+    "reason": "Module is in aerospace engineering; 'general' is not useful. Suggest 'mechanical-engineering' as the closest available tag. Consider adding an 'aerospace' tag to the taxonomy.",
+    "confidence": "high"
+  },
+  {
+    "code": "AE4003",
+    "title": "Aircraft Navigation & Flight Computers",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mechanical-engineering"
+    ],
+    "reason": "Module is in aerospace engineering; 'general' is not useful. Suggest 'mechanical-engineering' as the closest available tag. Consider adding an 'aerospace' tag to the taxonomy.",
+    "confidence": "high"
+  },
+  {
+    "code": "MA2072",
+    "title": "Laboratory Experiments (Ae)",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mechanical-engineering"
+    ],
+    "reason": "Module is in aerospace engineering; 'general' is not useful. Suggest 'mechanical-engineering' as the closest available tag. Consider adding an 'aerospace' tag to the taxonomy.",
+    "confidence": "high"
+  },
+  {
+    "code": "MA3072",
+    "title": "Engineering Experiments (Ae)",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mechanical-engineering"
+    ],
+    "reason": "Module is in aerospace engineering; 'general' is not useful. Suggest 'mechanical-engineering' as the closest available tag. Consider adding an 'aerospace' tag to the taxonomy.",
+    "confidence": "high"
+  },
+  {
+    "code": "MA3703",
+    "title": "Flight Dynamics",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mechanical-engineering"
+    ],
+    "reason": "Module is in aerospace engineering; 'general' is not useful. Suggest 'mechanical-engineering' as the closest available tag. Consider adding an 'aerospace' tag to the taxonomy.",
+    "confidence": "high"
+  },
+  {
+    "code": "MA4702",
+    "title": "Aircraft Structures II",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mechanical-engineering"
+    ],
+    "reason": "Module is in aerospace engineering; 'general' is not useful. Suggest 'mechanical-engineering' as the closest available tag. Consider adding an 'aerospace' tag to the taxonomy.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG1109",
+    "title": "Anatomy & Physiology",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG1801",
+    "title": "Bioengineering Lab 1A",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "research"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG1802",
+    "title": "Bioengineering Lab 1B",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "research"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG2112",
+    "title": "Cardiovascular Engineering",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare",
+      "mechanical-engineering"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG2211",
+    "title": "Introduction To Computational Thinking",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "computing",
+      "programming"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG2801",
+    "title": "Bioengineering Lab 2A",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "research"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG2802",
+    "title": "Bioengineering Lab 2B",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "research"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG3002",
+    "title": "Control In Biosystems",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "electrical-engineering"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG3102",
+    "title": "Control In Biosystems",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "electrical-engineering"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG3112",
+    "title": "Cardiovascular Engineering",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare",
+      "mechanical-engineering"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG3801",
+    "title": "Bioengineering Lab 3",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "research"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BG4309",
+    "title": "Drug Delivery & Tissue Engineering",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare"
+    ],
+    "reason": "Module currently tagged only 'general'; specific tags derived from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS1101",
+    "title": "Basics Of Tcm",
+    "faculty": "BMS",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS1106",
+    "title": "Basics Of Acupuncture",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS2101",
+    "title": "Anatomy",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS2106",
+    "title": "Tcm Formulary",
+    "faculty": "BMS",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS2113",
+    "title": "Pharmacology",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS3101",
+    "title": "Treatise On Exogenous Febrile Diseases",
+    "faculty": "BMS",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare",
+      "history"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS3102",
+    "title": "Synopsis Of The Golden Chamber",
+    "faculty": "BMS",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare",
+      "history"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS3106",
+    "title": "Seasonal Febrile Diseases",
+    "faculty": "BMS",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS3108",
+    "title": "Acupuncture & Moxibustion",
+    "faculty": "BMS",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS3109",
+    "title": "Fundamentals Of Immunology",
+    "faculty": "BMS",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "BS3111",
+    "title": "Cm Classic: Treatise On Febrile Diseases",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare",
+      "history"
+    ],
+    "reason": "TCM/BMS module currently tagged only 'general'. These are health-related traditional Chinese medicine modules.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS1008",
+    "title": "Introduction To Computational Thinking",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "computing",
+      "programming"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS1012",
+    "title": "Materials Physics",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "law",
+      "biology",
+      "physics",
+      "materials",
+      "electrical-engineering",
+      "energy",
+      "research"
+    ],
+    "suggestedRecommendationTags": [
+      "physics",
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS2016",
+    "title": "Introduction To Metallurgy",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS2081",
+    "title": "Laboratory Iia",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials",
+      "research"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS2082",
+    "title": "Laboratory Iib",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials",
+      "research"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS2084",
+    "title": "Phase Transformations & Kinetics In Steels",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS3011",
+    "title": "Metals & Ceramics",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS3081",
+    "title": "Laboratory Iii",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials",
+      "research"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS4012",
+    "title": "Quality Control",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials",
+      "business"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS4612",
+    "title": "Drug Delivery & Tissue Engineering",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare",
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS4614",
+    "title": "Practical Laboratory In Drug Delivery Systems",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare",
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS4631",
+    "title": "Corrosion Engineering",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS4652",
+    "title": "Failure Analysis",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS4670",
+    "title": "Commodities' Geology & Metallurgy",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "materials",
+      "environmental"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "MS4681",
+    "title": "Carbon Markets: Towards A Low-Carbon Future",
+    "faculty": "MAT",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "environmental",
+      "economics"
+    ],
+    "reason": "Materials science module currently tagged only 'general'. Suggested tags from module title.",
+    "confidence": "high"
+  },
+  {
+    "code": "SP0005",
+    "title": "Quantitative Reasoning",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "mathematics",
+      "statistics"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0008",
+    "title": "Being & Becoming",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "philosophy"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0012",
+    "title": "International Trade",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "economics"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0017",
+    "title": "The Changing Global Economy",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "economics"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0021",
+    "title": "Information Tomorrow",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "computing",
+      "media"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0023",
+    "title": "Error & Bias",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "psychology",
+      "philosophy"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0026",
+    "title": "Superheroes & Supervillains",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "media",
+      "literature"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0030",
+    "title": "Travels & Travellers",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "history",
+      "geography"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0034",
+    "title": "Mindfulness",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "psychology",
+      "healthcare"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0035",
+    "title": "The South East Asian Economy",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "economics"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0036",
+    "title": "Paleoanthropology & Human Evolution",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "history"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0040",
+    "title": "Maritime Silk Roads. Past, Present, &  Future",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "history",
+      "geography"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0050",
+    "title": "Deep Happiness",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "philosophy",
+      "psychology"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0051",
+    "title": "Astronomy",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "physics"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0052",
+    "title": "Make Peace, Not War",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "public-policy",
+      "history"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0054",
+    "title": "A Life: Between Care, Suffering, & Resilience",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "healthcare",
+      "philosophy"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0056",
+    "title": "Workings Of The Human Body",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "biology",
+      "healthcare"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0067",
+    "title": "Creativity, Cognition, & The Imagination",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "psychology",
+      "philosophy"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0070",
+    "title": "The Creative Conundrum: To Connecting Or Disconnect",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "media",
+      "sociology"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0071",
+    "title": "Love & Sex",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "sociology",
+      "psychology"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0073",
+    "title": "The Great Ideas",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "philosophy",
+      "history"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0074",
+    "title": "Straight Or Slant: Challenging Societal Norms",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "sociology"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SP0082",
+    "title": "Truth, Lies & Hype",
+    "faculty": "",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "philosophy",
+      "media"
+    ],
+    "reason": "SP0xxx special topics module currently only tagged 'general'. Suggested tags inferred from module title.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CBC421",
+    "title": "Advanced Analytical And Bioanalytical Techniques",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "biology"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM4014",
+    "title": "Nanoscience & Nanotechnology",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM4063",
+    "title": "Nanoscience & Nanotechnology",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM5002",
+    "title": "Forensic Science",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "law"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM5012",
+    "title": "Introduction To Forensic Science",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "law"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM5022",
+    "title": "Applications Of Forensic Science",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "law"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM8002",
+    "title": "Forensic Science",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "law"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM8012",
+    "title": "Introduction To Forensic Science",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "law"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM8022",
+    "title": "Applications Of Forensic Science",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "law"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM9102",
+    "title": "Food Analysis And Safety",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "biology",
+      "healthcare"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "CM9103",
+    "title": "Food Processing & Preservation",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "general"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "biology"
+    ],
+    "reason": "Chemistry module currently only tagged 'general'. Suggested tags from module title/content.",
+    "confidence": "high"
+  },
+  {
+    "code": "RE1402",
+    "title": "Strategic Marketing",
+    "faculty": "ME",
+    "currentRecommendationTags": [
+      "cybersecurity",
+      "systems",
+      "business",
+      "marketing",
+      "design",
+      "philosophy",
+      "education",
+      "language",
+      "materials",
+      "environmental",
+      "project"
+    ],
+    "suggestedRecommendationTags": [
+      "business",
+      "marketing",
+      "entrepreneurship"
+    ],
+    "reason": "Over-tagged with 12 tags including irrelevant ones like 'cybersecurity', 'systems', 'materials', 'environmental'. Strategic Marketing should be narrowly tagged.",
+    "confidence": "high"
+  },
+  {
+    "code": "SC3000",
+    "title": "Artificial Intelligence",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "artificial-intelligence",
+      "embedded-systems",
+      "finance",
+      "communication",
+      "art",
+      "materials"
+    ],
+    "suggestedRecommendationTags": [
+      "artificial-intelligence",
+      "machine-learning",
+      "algorithms"
+    ],
+    "reason": "AI module has 'finance', 'materials', 'communication' which seem noise/over-tagged.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SC4025",
+    "title": "Digital Product Management",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "machine-learning",
+      "programming",
+      "algorithms",
+      "natural-language-processing",
+      "statistics",
+      "communication",
+      "education",
+      "language",
+      "materials"
+    ],
+    "suggestedRecommendationTags": [
+      "machine-learning",
+      "programming",
+      "algorithms",
+      "natural-language-processing",
+      "statistics",
+      "communication",
+      "education",
+      "language"
+    ],
+    "reason": "Remove 'materials' tag \u2014 not relevant to digital product management.",
+    "confidence": "high"
+  },
+  {
+    "code": "SC4055",
+    "title": "Introduction To Quantum Computing",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "quantum-computing",
+      "artificial-intelligence",
+      "machine-learning",
+      "programming",
+      "algorithms",
+      "cloud-computing",
+      "mathematics",
+      "optimization",
+      "design",
+      "education",
+      "physics",
+      "electrical-engineering",
+      "mechanical-engineering"
+    ],
+    "suggestedRecommendationTags": [
+      "quantum-computing",
+      "artificial-intelligence",
+      "machine-learning",
+      "programming",
+      "algorithms",
+      "cloud-computing",
+      "mathematics",
+      "optimization",
+      "physics",
+      "electrical-engineering"
+    ],
+    "reason": "Remove 'mechanical-engineering' and 'design' \u2014 not relevant to quantum computing.",
+    "confidence": "high"
+  },
+  {
+    "code": "HW0288",
+    "title": "Engineering Communication",
+    "faculty": "EEE",
+    "currentRecommendationTags": [
+      "database",
+      "communication",
+      "writing",
+      "project"
+    ],
+    "suggestedRecommendationTags": [
+      "communication",
+      "writing",
+      "professional-skills"
+    ],
+    "reason": "Remove 'database' and 'art' \u2014 communication course for engineers should focus on communication/writing/professional skills.",
+    "confidence": "high"
+  },
+  {
+    "code": "CH4305",
+    "title": "Special Topics In Biotechnology",
+    "faculty": "CHEM",
+    "currentRecommendationTags": [
+      "networks",
+      "seminar"
+    ],
+    "suggestedRecommendationTags": [
+      "chemistry",
+      "biology",
+      "seminar"
+    ],
+    "reason": "Biotechnology special topic has 'networks' tag which is incorrect. Should have chemistry/biology tags.",
+    "confidence": "high"
+  },
+  {
+    "code": "CE4003",
+    "title": "Computer Vision",
+    "faculty": "CE",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "computer-vision",
+      "computer-graphics"
+    ],
+    "suggestedRecommendationTags": [
+      "computer-vision",
+      "computer-graphics",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CE4041",
+    "title": "Machine Learning",
+    "faculty": "CE",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "machine-learning",
+      "education"
+    ],
+    "suggestedRecommendationTags": [
+      "machine-learning",
+      "education",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CE4045",
+    "title": "Natural Language Processing",
+    "faculty": "CE",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "natural-language-processing",
+      "language"
+    ],
+    "suggestedRecommendationTags": [
+      "natural-language-processing",
+      "language",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CE4172",
+    "title": "Internet Of Things: Tiny Machine Learning",
+    "faculty": "CE",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "internet-of-things",
+      "machine-learning",
+      "networks",
+      "education"
+    ],
+    "suggestedRecommendationTags": [
+      "internet-of-things",
+      "machine-learning",
+      "networks",
+      "education",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CPE412",
+    "title": "Computer Vision & Image Processing",
+    "faculty": "CE",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "computer-vision",
+      "computer-graphics"
+    ],
+    "suggestedRecommendationTags": [
+      "computer-vision",
+      "computer-graphics",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CPE433",
+    "title": "Machine Learning",
+    "faculty": "CE",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "machine-learning",
+      "education"
+    ],
+    "suggestedRecommendationTags": [
+      "machine-learning",
+      "education",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CSC408",
+    "title": "Computer Vision & Image Processing",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "computer-vision",
+      "computer-graphics"
+    ],
+    "suggestedRecommendationTags": [
+      "computer-vision",
+      "computer-graphics",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CSC419",
+    "title": "Machine Learning",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "machine-learning",
+      "education"
+    ],
+    "suggestedRecommendationTags": [
+      "machine-learning",
+      "education",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CSC421",
+    "title": "Natural Language Processing",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "natural-language-processing",
+      "language"
+    ],
+    "suggestedRecommendationTags": [
+      "natural-language-processing",
+      "language",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CZ4003",
+    "title": "Computer Vision",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "computer-vision",
+      "computer-graphics"
+    ],
+    "suggestedRecommendationTags": [
+      "computer-vision",
+      "computer-graphics",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CZ4041",
+    "title": "Machine Learning",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "machine-learning",
+      "education"
+    ],
+    "suggestedRecommendationTags": [
+      "machine-learning",
+      "education",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CZ4045",
+    "title": "Natural Language Processing",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "natural-language-processing",
+      "language"
+    ],
+    "suggestedRecommendationTags": [
+      "natural-language-processing",
+      "language",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SC4000",
+    "title": "Machine Learning",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "data-science",
+      "statistics",
+      "machine-learning",
+      "education"
+    ],
+    "suggestedRecommendationTags": [
+      "data-science",
+      "statistics",
+      "machine-learning",
+      "education",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SC4002",
+    "title": "Natural Language Processing",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "natural-language-processing",
+      "language"
+    ],
+    "suggestedRecommendationTags": [
+      "natural-language-processing",
+      "language",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SC5005",
+    "title": "Natural Language Processing, Llms, & Applications",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "natural-language-processing",
+      "language"
+    ],
+    "suggestedRecommendationTags": [
+      "natural-language-processing",
+      "language",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SC5006",
+    "title": "Computer Vision & Applications",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "computer-vision",
+      "computer-graphics"
+    ],
+    "suggestedRecommendationTags": [
+      "computer-vision",
+      "computer-graphics",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "SC5401",
+    "title": "Master Class 1 (Turing On Computability & Intelligence)",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "ai-ml",
+      "theory-of-computing",
+      "computing"
+    ],
+    "suggestedRecommendationTags": [
+      "theory-of-computing",
+      "computing",
+      "artificial-intelligence"
+    ],
+    "reason": "Has 'ai-ml' without 'artificial-intelligence'. Consider replacing with canonical 'artificial-intelligence' for consistency. 'ai-ml' is the legacy tag.",
+    "confidence": "medium"
+  },
+  {
+    "code": "CSC302",
+    "title": "Net Centric Computing",
+    "faculty": "CSC",
+    "currentRecommendationTags": [
+      "web-development",
+      "computer-network",
+      "computing"
+    ],
+    "suggestedRecommendationTags": [
+      "web-development",
+      "networks",
+      "computing"
+    ],
+    "reason": "Only remaining module with 'computer-network' (not 'networks'). Should rename to canonical 'networks' for consistency.",
+    "confidence": "high"
+  }
+]

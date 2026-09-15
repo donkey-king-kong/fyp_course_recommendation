@@ -69663,7 +69663,9 @@
       "recommendationTags": [
         "backend-engineering",
         "database",
-        "data-engineering"
+        "data-engineering",
+        "business",
+        "design"
       ]
     },
     {
@@ -69744,7 +69746,10 @@
       "isCurrentSemester": true,
       "recommendationTags": [
         "computer-architecture",
-        "embedded-systems"
+        "networks",
+        "embedded-systems",
+        "communication",
+        "design"
       ]
     },
     {
@@ -70218,7 +70223,12 @@
         "big-data",
         "distributed-systems",
         "data-science",
-        "systems"
+        "systems",
+        "cloud-computing",
+        "embedded-systems",
+        "design",
+        "philosophy",
+        "sociology"
       ]
     },
     {
@@ -70393,10 +70403,13 @@
         "distributed-systems",
         "cloud-computing",
         "infrastructure",
+        "artificial-intelligence",
+        "machine-learning",
         "data-science",
         "database",
         "algorithms",
-        "networks"
+        "networks",
+        "education"
       ]
     },
     {
@@ -70454,8 +70467,11 @@
       "isCurrentSemester": true,
       "recommendationTags": [
         "quantum-computing",
+        "artificial-intelligence",
+        "machine-learning",
         "programming",
         "algorithms",
+        "cloud-computing",
         "mathematics",
         "optimization",
         "physics",
@@ -70495,7 +70511,10 @@
       "recommendationTags": [
         "computer-vision",
         "artificial-intelligence",
-        "programming"
+        "programming",
+        "networks",
+        "business",
+        "communication"
       ]
     },
     {
@@ -70591,10 +70610,14 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "machine-learning",
         "artificial-intelligence",
+        "machine-learning",
+        "data-science",
+        "networks",
+        "cloud-computing",
         "embedded-systems",
-        "internet-of-things"
+        "education",
+        "energy"
       ]
     },
     {

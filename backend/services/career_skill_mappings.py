@@ -49,7 +49,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
                 tag="web-development",
                 relationship_weight=0.65,
                 tag_confidence=0.9,
-                rationale="Web development is useful for software delivery but not universal to all roles.",
+                rationale="Web modules support delivery work, but the tag can be framework-specific rather than design-principle-focused.",
             ),
         ),
         weight=10,
@@ -84,6 +84,12 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Data modelling and querying are common backend service responsibilities.",
             ),
             SkillTagRelationship(
+                tag="algorithms",
+                relationship_weight=0.5,
+                tag_confidence=0.85,
+                rationale="Algorithmic reasoning helps with query planning, indexing, search, and service performance trade-offs.",
+            ),
+            SkillTagRelationship(
                 tag="cloud-computing",
                 relationship_weight=0.7,
                 tag_confidence=0.9,
@@ -91,9 +97,9 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="web-development",
-                relationship_weight=0.5,
-                tag_confidence=0.85,
-                rationale="Web modules can support service integration, but are weaker backend evidence.",
+                relationship_weight=0.4,
+                tag_confidence=0.75,
+                rationale="Web modules support API consumption and integration more often than backend service construction.",
             ),
         ),
         weight=8,
@@ -200,7 +206,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
             SkillTagRelationship(
                 tag="theory-of-computing",
                 relationship_weight=0.55,
-                tag_confidence=0.85,
+                tag_confidence=0.8,
                 rationale="Theory supports reasoning, but is less direct for most applied software roles.",
             ),
         ),
@@ -246,7 +252,7 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="privacy",
-                relationship_weight=0.45,
+                relationship_weight=0.55,
                 tag_confidence=0.8,
                 rationale="Privacy supports responsible handling of user data and analytics governance.",
             ),
@@ -281,19 +287,19 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="data-structures",
-                relationship_weight=0.55,
+                relationship_weight=0.65,
                 tag_confidence=0.85,
-                rationale="Data structures support efficient data processing and model implementation.",
+                rationale="Data structures support efficient data processing, vectorisation, batching, and model implementation.",
             ),
             SkillTagRelationship(
                 tag="natural-language-processing",
-                relationship_weight=0.65,
+                relationship_weight=0.7,
                 tag_confidence=0.9,
                 rationale="NLP is a specialised applied machine learning area for text data.",
             ),
             SkillTagRelationship(
                 tag="computer-vision",
-                relationship_weight=0.65,
+                relationship_weight=0.7,
                 tag_confidence=0.9,
                 rationale="Computer vision is a specialised applied machine learning area for image data.",
             ),
@@ -342,7 +348,324 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
     ),
 )
 
-CYBERSECURITY_ANALYST_SKILL_MAPPINGS = (
+AI_ML_ENGINEER_SKILL_MAPPINGS = (
+    CareerSkillMapping(
+        skill="machine learning systems",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="artificial-intelligence",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Directly represents AI concepts and model-driven system design.",
+            ),
+            SkillTagRelationship(
+                tag="machine-learning",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Directly represents applied machine learning and model-building work.",
+            ),
+            SkillTagRelationship(
+                tag="natural-language-processing",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="NLP is a major applied AI engineering area for text and language products.",
+            ),
+            SkillTagRelationship(
+                tag="computer-vision",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Computer vision is a major applied AI engineering area for image and video systems.",
+            ),
+        ),
+        weight=10,
+        rationale=(
+            "AI and machine learning engineers build model-driven systems, including "
+            "NLP, vision, generative AI, and applied ML products."
+        ),
+        weight_rationale="Highest weight because model-building is central to this career goal.",
+    ),
+    CareerSkillMapping(
+        skill="model implementation foundations",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="algorithms",
+                relationship_weight=0.45,
+                tag_confidence=1.0,
+                rationale="Algorithms support model implementation, but generic algorithms alone are not a direct AI/ML signal.",
+            ),
+            SkillTagRelationship(
+                tag="data-structures",
+                relationship_weight=0.45,
+                tag_confidence=1.0,
+                rationale="Data structures support efficient model pipelines, but are a broad foundation rather than a direct AI/ML signal.",
+            ),
+            SkillTagRelationship(
+                tag="math-foundation",
+                relationship_weight=0.65,
+                tag_confidence=0.9,
+                rationale="Mathematical foundations support model understanding, but this role is more applied than research-focused.",
+            ),
+            SkillTagRelationship(
+                tag="statistics",
+                relationship_weight=0.6,
+                tag_confidence=0.9,
+                rationale="Statistics supports model evaluation, uncertainty, and data-driven reasoning.",
+            ),
+            SkillTagRelationship(
+                tag="mathematics",
+                relationship_weight=0.45,
+                tag_confidence=0.8,
+                rationale="General mathematics can support AI foundations, but it is broader than machine-learning-specific content.",
+            ),
+            SkillTagRelationship(
+                tag="programming",
+                relationship_weight=0.3,
+                tag_confidence=0.9,
+                rationale="Programming is necessary for AI systems, but generic programming alone is too broad to drive AI/ML recommendations.",
+            ),
+            SkillTagRelationship(
+                tag="data-science",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Data-science knowledge helps connect model engineering to datasets, evaluation, and applied analytics goals.",
+            ),
+            SkillTagRelationship(
+                tag="database",
+                relationship_weight=0.3,
+                tag_confidence=0.85,
+                rationale="Database knowledge can support training data workflows, but is an indirect AI/ML signal.",
+            ),
+        ),
+        weight=7,
+        rationale=(
+            "AI engineering still depends on strong programming, algorithmic, and "
+            "mathematical foundations."
+        ),
+        weight_rationale="High weight because foundations make specialised AI modules more practical.",
+    ),
+    CareerSkillMapping(
+        skill="scalable AI infrastructure",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="parallel-computing",
+                relationship_weight=0.85,
+                tag_confidence=0.9,
+                rationale="Parallel computing supports training and serving compute-heavy AI workloads.",
+            ),
+            SkillTagRelationship(
+                tag="cloud-computing",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Cloud platforms are common deployment environments for AI services.",
+            ),
+            SkillTagRelationship(
+                tag="distributed-systems",
+                relationship_weight=0.7,
+                tag_confidence=0.9,
+                rationale="Distributed systems support scalable data processing and model-serving systems.",
+            ),
+        ),
+        weight=5,
+        rationale=(
+            "Production AI work often needs scalable compute, data, and deployment infrastructure."
+        ),
+        weight_rationale="Medium weight because infrastructure matters, but it is not the primary role focus.",
+    ),
+)
+
+DATA_ENGINEER_SKILL_MAPPINGS = (
+    CareerSkillMapping(
+        skill="data storage and modelling",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="database",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Databases are the core storage and modelling foundation for data engineering.",
+            ),
+            SkillTagRelationship(
+                tag="data-science",
+                relationship_weight=0.65,
+                tag_confidence=0.85,
+                rationale="Data-science modules help connect pipelines to downstream analytics needs.",
+            ),
+            SkillTagRelationship(
+                tag="data-engineering",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Directly represents data pipeline and data platform engineering work.",
+            ),
+            SkillTagRelationship(
+                tag="big-data",
+                relationship_weight=0.85,
+                tag_confidence=0.9,
+                rationale="Big-data modules are highly relevant to scalable data storage and processing.",
+            ),
+            SkillTagRelationship(
+                tag="data-analytics",
+                relationship_weight=0.6,
+                tag_confidence=0.85,
+                rationale="Analytics knowledge helps data engineers understand downstream data use cases.",
+            ),
+            SkillTagRelationship(
+                tag="information-retrieval",
+                relationship_weight=0.55,
+                tag_confidence=0.85,
+                rationale="Retrieval knowledge is useful for search-backed data systems, but is less central than storage and pipeline design.",
+            ),
+            SkillTagRelationship(
+                tag="algorithms",
+                relationship_weight=0.55,
+                tag_confidence=0.85,
+                rationale="Algorithms support sorting, partitioning, joins, indexing, and pipeline performance decisions.",
+            ),
+        ),
+        weight=10,
+        rationale=(
+            "Data engineers design storage models, pipelines, and systems that make data usable."
+        ),
+        weight_rationale="Highest weight because storage and data modelling are central to the role.",
+    ),
+    CareerSkillMapping(
+        skill="distributed data platforms",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="distributed-systems",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Distributed systems directly support scalable data pipelines and platforms.",
+            ),
+            SkillTagRelationship(
+                tag="cloud-computing",
+                relationship_weight=0.95,
+                tag_confidence=1.0,
+                rationale="Cloud platforms commonly host storage, processing, and orchestration workflows.",
+            ),
+            SkillTagRelationship(
+                tag="parallel-computing",
+                relationship_weight=0.8,
+                tag_confidence=0.9,
+                rationale="Parallel computing supports batch and performance-heavy data processing.",
+            ),
+            SkillTagRelationship(
+                tag="networks",
+                relationship_weight=0.55,
+                tag_confidence=0.85,
+                rationale="Networking foundations help with latency, throughput, partitioning, and network-aware pipeline design.",
+            ),
+        ),
+        weight=9,
+        rationale=(
+            "Modern data platforms usually run across distributed, cloud, and parallel systems."
+        ),
+        weight_rationale="Very high weight because scalable infrastructure separates data engineering from data science.",
+    ),
+    CareerSkillMapping(
+        skill="software implementation for pipelines",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="backend-engineering",
+                relationship_weight=0.8,
+                tag_confidence=1.0,
+                rationale="Data platforms often expose APIs and backend services.",
+            ),
+            SkillTagRelationship(
+                tag="software-engineering",
+                relationship_weight=0.7,
+                tag_confidence=1.0,
+                rationale="Reliable data pipelines require software design, testing, and maintainability.",
+            ),
+            SkillTagRelationship(
+                tag="programming",
+                relationship_weight=0.65,
+                tag_confidence=0.9,
+                rationale="Programming is necessary for implementation, but is broader than data engineering.",
+            ),
+        ),
+        weight=6,
+        rationale="Data engineers need enough software practice to build reliable production pipelines.",
+        weight_rationale="Medium weight because implementation matters, but data systems should dominate.",
+    ),
+)
+
+CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
+    CareerSkillMapping(
+        skill="cloud and distributed infrastructure",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="cloud-computing",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Directly represents cloud infrastructure and platform concepts.",
+            ),
+            SkillTagRelationship(
+                tag="distributed-systems",
+                relationship_weight=0.95,
+                tag_confidence=1.0,
+                rationale="Distributed systems are foundational for scalable cloud platforms.",
+            ),
+            SkillTagRelationship(
+                tag="networks",
+                relationship_weight=0.75,
+                tag_confidence=1.0,
+                rationale="Networking supports deployment, routing, communication, and reliability.",
+            ),
+        ),
+        weight=10,
+        rationale=(
+            "Cloud and platform engineers build infrastructure for scalable, networked services."
+        ),
+        weight_rationale="Highest weight because infrastructure and distributed platforms define this role.",
+    ),
+    CareerSkillMapping(
+        skill="systems performance and reliability",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="operating-systems",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Operating systems support runtime, resource, and performance understanding.",
+            ),
+            SkillTagRelationship(
+                tag="parallel-computing",
+                relationship_weight=0.8,
+                tag_confidence=0.9,
+                rationale="Parallel computing supports performance-aware infrastructure work.",
+            ),
+            SkillTagRelationship(
+                tag="computer-architecture",
+                relationship_weight=0.55,
+                tag_confidence=0.85,
+                rationale="Architecture knowledge helps reason about performance and hardware constraints.",
+            ),
+            SkillTagRelationship(
+                tag="systems",
+                relationship_weight=0.5,
+                tag_confidence=0.8,
+                rationale="General systems modules can support platform reliability and performance reasoning.",
+            ),
+        ),
+        weight=7,
+        rationale="Platform work benefits from understanding lower-level systems and performance trade-offs.",
+        weight_rationale="High weight because systems knowledge supports reliable infrastructure decisions.",
+    ),
+    CareerSkillMapping(
+        skill="secure platform operation",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="network-security",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Network security is directly relevant to cloud access controls, segmentation, and platform hardening.",
+            ),
+        ),
+        weight=5,
+        rationale="Modern cloud platforms need secure network access and platform hardening, not generic security/privacy electives.",
+        weight_rationale="Medium weight because security is useful for platform work, but infrastructure fundamentals still come first.",
+    ),
+)
+
+CYBERSECURITY_ENGINEER_SKILL_MAPPINGS = (
     CareerSkillMapping(
         skill="security analysis and defence",
         tag_relationships=(
@@ -373,8 +696,8 @@ CYBERSECURITY_ANALYST_SKILL_MAPPINGS = (
         ),
         weight=10,
         rationale=(
-            "Cybersecurity analysts need to identify risks, investigate incidents, "
-            "and reason about defensive controls."
+            "Cybersecurity engineers need to identify risks, investigate incidents, "
+            "build defensive controls, and reason about secure systems."
         ),
         weight_rationale="Highest weight because direct security analysis is central to the role.",
     ),
@@ -396,19 +719,19 @@ CYBERSECURITY_ANALYST_SKILL_MAPPINGS = (
             SkillTagRelationship(
                 tag="distributed-systems",
                 relationship_weight=0.7,
-                tag_confidence=0.85,
+                tag_confidence=0.8,
                 rationale="Distributed systems knowledge helps analyse complex service architectures.",
             ),
             SkillTagRelationship(
                 tag="cloud-computing",
-                relationship_weight=0.65,
-                tag_confidence=0.85,
-                rationale="Cloud concepts are useful as security work increasingly covers cloud-hosted systems.",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Cloud concepts are useful because cloud misconfiguration is a common modern attack surface.",
             ),
         ),
         weight=8,
         rationale=(
-            "Security analysts often investigate networked systems, endpoints, "
+            "Cybersecurity engineers often investigate networked systems, endpoints, "
             "cloud services, and distributed applications."
         ),
         weight_rationale="High weight because systems and network foundations make security analysis practical.",
@@ -424,20 +747,20 @@ CYBERSECURITY_ANALYST_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="software-engineering",
-                relationship_weight=0.55,
+                relationship_weight=0.7,
                 tag_confidence=0.85,
-                rationale="Secure implementation depends on understanding how software is designed and maintained.",
+                rationale="Secure implementation depends on software design, threat modelling, testing, and maintainability.",
             ),
             SkillTagRelationship(
                 tag="programming",
-                relationship_weight=0.45,
+                relationship_weight=0.6,
                 tag_confidence=0.85,
-                rationale="Programming supports practical security tooling and code-level analysis.",
+                rationale="Programming supports security tooling, CVE triage, proof-of-concept analysis, and code-level review.",
             ),
         ),
         weight=6,
         rationale=(
-            "Cybersecurity analysts benefit from understanding cryptography and "
+            "Cybersecurity engineers benefit from understanding cryptography and "
             "secure implementation, especially when reviewing software or protocols."
         ),
         weight_rationale="Medium weight because it is valuable, but more specialised than general security analysis.",
@@ -447,5 +770,8 @@ CYBERSECURITY_ANALYST_SKILL_MAPPINGS = (
 CAREER_SKILL_MAPPINGS = {
     "software-engineer": SOFTWARE_ENGINEER_SKILL_MAPPINGS,
     "data-scientist": DATA_SCIENTIST_SKILL_MAPPINGS,
-    "cybersecurity-analyst": CYBERSECURITY_ANALYST_SKILL_MAPPINGS,
+    "cybersecurity-engineer": CYBERSECURITY_ENGINEER_SKILL_MAPPINGS,
+    "ai-ml-engineer": AI_ML_ENGINEER_SKILL_MAPPINGS,
+    "data-engineer": DATA_ENGINEER_SKILL_MAPPINGS,
+    "cloud-platform-engineer": CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS,
 }

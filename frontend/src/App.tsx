@@ -21,7 +21,10 @@ const EMPTY_RECOMMENDATION_TAGS: string[] = []
 const SUPPORTED_CAREER_GOALS = new Set([
   'software-engineer',
   'data-scientist',
-  'cybersecurity-analyst',
+  'cybersecurity-engineer',
+  'ai-ml-engineer',
+  'data-engineer',
+  'cloud-platform-engineer',
 ])
 
 function getCurriculumCourseTitle(course: CurriculumGuideResponse['nodes'][number]) {

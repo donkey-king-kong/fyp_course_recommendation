@@ -47,14 +47,15 @@ SOFTWARE_ENGINEER_TAG_WEIGHTS = {
     "frontend-engineering": 4,
     "web-development": 3,
     "database": 5,
-    "computer-network": 5,
-    "computer-security": 5,
+    "networks": 5,
+    "cybersecurity": 5,
     "algorithms": 5,
     "data-structures": 5,
     "operating-systems": 5,
     "distributed-systems": 5,
     "cloud-computing": 4,
-    "ai-ml": 2,
+    "artificial-intelligence": 2,
+    "machine-learning": 2,
     "data-science": 2,
     "compiler": 3,
     "parallel-computing": 2,
@@ -75,23 +76,111 @@ PREFERENCE_TAG_BOOST_CAP = 60
 SECURITY_PRIVACY_ADJACENCY_BOOST = 8
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
 CURRENT_SEMESTER_BONUS = 3
-CURRENT_PREFERENCE_TAG_BONUSES = {"computer-network": 9}
+CURRENT_PREFERENCE_TAG_BONUSES = {"networks": 9}
 SAME_FACULTY_BOOST = 8
 MPE_SPECIALISATION_CAREER_BOOST = 12
+CAREER_GOAL_ALIASES = {
+    "cybersecurity-analyst": "cybersecurity-engineer",
+}
 CAREER_MPE_SPECIALISATION_BOOSTS = {
     "data-scientist": {"data-science": MPE_SPECIALISATION_CAREER_BOOST},
-    "cybersecurity-analyst": {"security": MPE_SPECIALISATION_CAREER_BOOST},
+    "cybersecurity-engineer": {"security": MPE_SPECIALISATION_CAREER_BOOST},
+    "ai-ml-engineer": {
+        "artificial-intelligence": MPE_SPECIALISATION_CAREER_BOOST,
+        "data-science": 6,
+    },
+    "data-engineer": {
+        "data-science": MPE_SPECIALISATION_CAREER_BOOST,
+        "high-performance-computing": 8,
+    },
+    "cloud-platform-engineer": {
+        "high-performance-computing": MPE_SPECIALISATION_CAREER_BOOST,
+    },
 }
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
 DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
 BROAD_DEFAULT_PROFILE_BOOST = 14
+MIN_ASSIGNED_RECOMMENDATION_SCORE = 10
+AI_ML_WEAK_STANDALONE_TAGS = {"algorithms", "database", "programming"}
+AI_ML_DEFAULT_BDE_TAGS = {
+    "artificial-intelligence",
+    "computer-vision",
+    "data-science",
+    "machine-learning",
+    "natural-language-processing",
+}
+AI_ML_INFRASTRUCTURE_BDE_TAGS = {
+    "cloud-computing",
+    "computer-architecture",
+    "distributed-systems",
+    "embedded-systems",
+    "networks",
+    "parallel-computing",
+    "systems",
+}
+AI_ML_LOW_VALUE_BDE_TAGS = {"product-management"}
+CLOUD_PLATFORM_DIRECT_TAGS = {
+    "cloud-computing",
+    "infrastructure",
+    "network-security",
+    "networks",
+    "operating-systems",
+}
+CLOUD_PLATFORM_DATA_STORAGE_TAGS = {
+    "big-data",
+    "data-analytics",
+    "data-engineering",
+    "data-mining",
+    "database",
+}
+CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS = {"cyber-physical-systems", "privacy"}
+CLOUD_PLATFORM_RECOMMENDABLE_COURSE_CODES = {
+    "SC3030",  # Advanced Computer Networks
+    "SC3050",  # Advanced Computer Architecture
+    "SC4030",  # Wireless & Mobile Networks
+    "SC4031",  # Internet Of Things: Communications & Networking
+    "SC4050",  # Parallel Computing
+    "SC4051",  # Distributed Systems
+    "SC4052",  # Cloud Computing
+    "SC4063",  # Network Security
+}
+CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES = {
+    "SC4000",  # Machine Learning
+    "SC4001",  # Neural Network & Deep Learning
+    "SC4020",  # Data Analytics & Mining
+    "SC4023",  # Big Data Management
+    "SC4053",  # Blockchain Technology
+    "SC4054",  # Simulation & Modelling
+    "SC4055",  # Introduction To Quantum Computing
+    "SC4062",  # Generative Artificial Intelligence - Advanced Topics
+    "SC4064",  # GPU Programming
+}
+RECOMMENDATION_TAG_ALIASES = {
+    "ai-ml": (),
+    "computer-network": ("networks",),
+    "computer-security": ("cybersecurity",),
+    "hardware-embedded": ("embedded-systems",),
+}
 SPECIALIST_PROFILE_PENALTY = -16
 EXTRA_PREREQUISITE_PLANNING_PENALTY = -20
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
 DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 # Core project modules are fixed curriculum requirements, not elective recommendation targets.
 NON_RECOMMENDABLE_CORE_PROJECT_CODES = {"SC2079", "SC3099"}
+# These courses require Turing AI Scholar/TAISP status and should not be suggested to a general CSC profile.
+SPECIAL_TRACK_ONLY_COURSE_CODES = {
+    "SC1301",
+    "SC1302",
+    "SC1303",
+    "SC1305",
+    "SC1315",
+    "SC2300",
+    "SC2301",
+    "SC2302",
+    "SC2320",
+    "SC2500",
+}
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -140,12 +229,17 @@ def recommend_courses(
     excluded_course_titles: list[str],
     limit: int,
 ) -> RecommendationResponse:
+    career_goal = normalize_career_goal(career_goal)
+
     # Keep unsupported career goals empty instead of pretending we can recommend them.
     if career_goal not in CAREER_SKILL_MAPPINGS:
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
-    preferred_tags = normalize_recommendation_tags(preferred_recommendation_tags)
+    preferred_tags = normalize_preferred_tags_for_career(
+        career_goal,
+        normalize_recommendation_tags(preferred_recommendation_tags),
+    )
     normalized_student_faculty = normalize_student_faculty(student_faculty)
     excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
     excluded_titles = get_excluded_title_keys(excluded_course_titles)
@@ -187,6 +281,9 @@ def recommend_courses(
         if is_non_recommendable_core_project(module):
             continue
 
+        if is_special_track_only_course(module):
+            continue
+
         if is_unavailable_to_student_programme(module, normalized_student_faculty):
             continue
 
@@ -198,6 +295,14 @@ def recommend_courses(
         # Rank remaining modules by deterministic career signals before softer profile boosts.
         career_match = score_career_match(module, career_goal)
         mpe_specialisation_boost = get_mpe_specialisation_boost(module, career_goal)
+
+        if is_weak_specialized_career_match(
+            career_goal,
+            career_match,
+            mpe_specialisation_boost,
+            preferred_tags,
+        ):
+            continue
 
         if (
             career_match.career_tag_score == 0 and
@@ -211,6 +316,12 @@ def recommend_courses(
         unlock_codes = unlocks_by_module.get(module.code, [])
 
         for slot in eligible_slots:
+            if should_skip_ai_ml_bde_candidate(module, slot, career_goal, preferred_tags):
+                continue
+
+            if should_skip_cloud_platform_candidate(module, career_goal):
+                continue
+
             readiness = evaluate_recommendation_readiness(
                 prerequisites=prerequisites,
                 completed_codes=completed_codes,
@@ -236,7 +347,7 @@ def recommend_courses(
                 get_current_preference_match_boost(module, preferred_tags)
             )
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
-            default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags)
+            default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags, career_goal)
             unlock_contribution = get_unlock_contribution(readiness.unlock_value)
             adjusted_score = max(1, (
                 career_match.career_tag_score +
@@ -249,6 +360,10 @@ def recommend_courses(
                 default_profile_adjustment +
                 readiness.prerequisite_planning_penalty
             ))
+
+            if adjusted_score < MIN_ASSIGNED_RECOMMENDATION_SCORE:
+                continue
+
             score_breakdown = RecommendationScoreBreakdown(
                 careerTagScore=career_match.career_tag_score,
                 careerSkillScore=career_match.career_skill_score,
@@ -1213,11 +1328,30 @@ def build_career_skill_evidence(
     )
 
 def normalize_recommendation_tags(tags: list[str]) -> set[str]:
-    return {
-        tag.strip().lower()
-        for tag in tags
-        if tag.strip()
-    }
+    normalized_tags: set[str] = set()
+    for tag in tags:
+        normalized_tag = tag.strip().lower()
+        if not normalized_tag:
+            continue
+
+        normalized_tags.update(RECOMMENDATION_TAG_ALIASES.get(normalized_tag, (normalized_tag,)))
+
+    return normalized_tags
+
+def normalize_preferred_tags_for_career(career_goal: str, preferred_tags: set[str]) -> set[str]:
+    if career_goal != "cloud-platform-engineer":
+        return preferred_tags
+
+    cloud_tags = set(preferred_tags)
+    if "cybersecurity" in cloud_tags:
+        cloud_tags.remove("cybersecurity")
+        cloud_tags.add("network-security")
+
+    # Privacy-heavy modules are not platform recommendations unless they also
+    # carry a direct network-security/platform signal.
+    cloud_tags.discard("privacy")
+
+    return cloud_tags
 
 def normalize_student_faculty(student_faculty: Optional[str]) -> Optional[str]:
     if not student_faculty:
@@ -1239,7 +1373,7 @@ def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
     additional_match_count = matching_count - 1
     stepped_boost = sum(PREFERENCE_ADDITIONAL_BOOST_STEPS[:additional_match_count])
     total_boost = PREFERENCE_FIRST_MATCH_BOOST + stepped_boost
-    if preferred_tags == {"computer-security", "cryptography"} and "privacy" in module_tags:
+    if preferred_tags == {"cybersecurity", "cryptography"} and "privacy" in module_tags:
         total_boost += SECURITY_PRIVACY_ADJACENCY_BOOST
 
     return min(total_boost, PREFERENCE_TAG_BOOST_CAP)
@@ -1278,7 +1412,75 @@ def get_mpe_specialisation_signals(module: ModuleModel, career_goal: str) -> lis
         if specialisation in boost_by_specialisation
     ]
 
-def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]) -> int:
+def is_weak_specialized_career_match(
+    career_goal: str,
+    career_match: CareerMatchScore,
+    mpe_specialisation_boost: int,
+    preferred_tags: set[str],
+) -> bool:
+    if career_goal != "ai-ml-engineer" or mpe_specialisation_boost > 0:
+        return False
+
+    matched_tags = {
+        contribution.relationship.tag
+        for contribution in career_match.matched_skill_contributions
+    }
+
+    return bool(
+        matched_tags and
+        matched_tags.issubset(AI_ML_WEAK_STANDALONE_TAGS) and
+        not matched_tags.intersection(preferred_tags)
+    )
+
+def should_skip_ai_ml_bde_candidate(
+    module: ModuleModel,
+    slot: RecommendationChoiceSlot,
+    career_goal: str,
+    preferred_tags: set[str],
+) -> bool:
+    if career_goal != "ai-ml-engineer" or normalize_choice_slot_code(slot.courseCode) != "BDE":
+        return False
+
+    module_tags = set(module.recommendation_tags or [])
+
+    if module_tags.intersection(preferred_tags):
+        return False
+
+    if module_tags.intersection(AI_ML_LOW_VALUE_BDE_TAGS):
+        return True
+
+    if module_tags.intersection(AI_ML_INFRASTRUCTURE_BDE_TAGS):
+        return not module_tags.intersection(AI_ML_DEFAULT_BDE_TAGS)
+
+    return not module_tags.intersection(AI_ML_DEFAULT_BDE_TAGS)
+
+def should_skip_cloud_platform_candidate(module: ModuleModel, career_goal: str) -> bool:
+    if career_goal != "cloud-platform-engineer":
+        return False
+
+    if module.code.upper() not in CLOUD_PLATFORM_RECOMMENDABLE_COURSE_CODES:
+        return True
+
+    if module.code.upper() in CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES:
+        return True
+
+    module_tags = set(module.recommendation_tags or [])
+    if "network-security" in module_tags:
+        return False
+
+    if (
+        module_tags.intersection(CLOUD_PLATFORM_DATA_STORAGE_TAGS) and
+        not module_tags.intersection(CLOUD_PLATFORM_DIRECT_TAGS)
+    ):
+        return True
+
+    return bool(module_tags.intersection(CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS))
+
+def get_default_profile_adjustment(
+    module: ModuleModel,
+    preferred_tags: set[str],
+    career_goal: str,
+) -> int:
     module_tags = set(module.recommendation_tags or [])
 
     if (
@@ -1289,6 +1491,9 @@ def get_default_profile_adjustment(module: ModuleModel, preferred_tags: set[str]
         return SPECIALIST_PROFILE_PENALTY
 
     if preferred_tags and preferred_tags != {"software-engineering"}:
+        return 0
+
+    if career_goal != "software-engineer":
         return 0
 
     if module.recommendation_profile == "broad-default":
@@ -1306,6 +1511,9 @@ def is_deprecated_course_code(module: ModuleModel) -> bool:
 
 def is_non_recommendable_core_project(module: ModuleModel) -> bool:
     return module.code.upper() in NON_RECOMMENDABLE_CORE_PROJECT_CODES
+
+def is_special_track_only_course(module: ModuleModel) -> bool:
+    return module.code.upper() in SPECIAL_TRACK_ONLY_COURSE_CODES
 
 def is_unavailable_to_student_programme(
     module: ModuleModel,
@@ -1386,7 +1594,19 @@ def build_recommendation_reason(
     return f"{base_reason} Also {' and '.join(extra_reasons)}."
 
 def format_career_goal_label(career_goal: str) -> str:
-    return " ".join(word.capitalize() for word in career_goal.split("-"))
+    labels = {
+        "software-engineer": "Software Engineer",
+        "data-scientist": "Data Scientist",
+        "cybersecurity-engineer": "Cybersecurity Engineer",
+        "ai-ml-engineer": "AI / ML Engineer",
+        "data-engineer": "Data Engineer",
+        "cloud-platform-engineer": "Cloud / Platform Engineer",
+    }
+
+    return labels.get(career_goal, " ".join(word.capitalize() for word in career_goal.split("-")))
+
+def normalize_career_goal(career_goal: str) -> str:
+    return CAREER_GOAL_ALIASES.get(career_goal, career_goal)
 
 def build_career_skill_reason(
     career_goal: str,

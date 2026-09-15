@@ -149,7 +149,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which narrowly beats backend and data services -> distributed-systems (8 * 1.0 * 1.0 = 8.0). Both paths are strongly relevant; expectedSkillPath reflects the backend-engineering tag contributing the higher score. Strong signal for backend SWE roles. NOTE: isCurrentSemester=false \u2014 verify availability before use as a benchmark reference."
+          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which narrowly beats backend and data services -> distributed-systems (8 * 1.0 * 1.0 = 8.0). Both paths are strongly relevant; expectedSkillPath reflects the backend-engineering tag contributing the higher score. Strong signal for backend SWE roles. NOTE: isCurrentSemester=false — verify availability before use as a benchmark reference."
         },
         {
           "courseCode": "SC4052",
@@ -180,12 +180,12 @@
         },
         {
           "courseCode": "CZ4013",
-          "title": "Distributed Systems (old code \u2014 excluded)",
+          "title": "Distributed Systems (old code — excluded)",
           "targetSlotId": "y4-s1-mpe1",
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
+          "expectedSkillPath": "N/A — old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "reviewNotes": "NEGATIVE EXAMPLE. CZ4013 is topically relevant \u2014 it covers distributed systems, which directly matches this student's backend-engineering and distributed-systems preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. Must never surface as a valid recommendation."
+          "reviewNotes": "NEGATIVE EXAMPLE. CZ4013 is topically relevant — it covers distributed systems, which directly matches this student's backend-engineering and distributed-systems preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. Must never surface as a valid recommendation."
         }
       ]
     },
@@ -328,7 +328,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: software-engineering. Maps directly to the highest-weight Software Engineer skill area \u2014 software design and delivery \u2014 via the software-engineering tag (score 10 * 1.0 * 1.0 = 10.0). This makes it career-goal relevant for any Software Engineer student regardless of topic preference. It is weaker than SC4001, SC4061, and SC4002 for this particular student because those modules align with the stated ai-ml, computer-vision, and natural-language-processing preference tags. Included as a diversity option for the SC3xxx slot, where AI/ML-specific choices at level 3 are absent from the current MPE catalogue. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: software-engineering. Maps directly to the highest-weight Software Engineer skill area — software design and delivery — via the software-engineering tag (score 10 * 1.0 * 1.0 = 10.0). This makes it career-goal relevant for any Software Engineer student regardless of topic preference. It is weaker than SC4001, SC4061, and SC4002 for this particular student because those modules align with the stated ai-ml, computer-vision, and natural-language-processing preference tags. Included as a diversity option for the SC3xxx slot, where AI/ML-specific choices at level 3 are absent from the current MPE catalogue. isCurrentSemester=true."
         },
         {
           "courseCode": "SC3099",
@@ -350,12 +350,12 @@
         },
         {
           "courseCode": "CZ4042",
-          "title": "Neural Network & Deep Learning (old code \u2014 excluded)",
+          "title": "Neural Network & Deep Learning (old code — excluded)",
           "targetSlotId": "y4-s1-mpe3",
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
+          "expectedSkillPath": "N/A — old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "reviewNotes": "NEGATIVE EXAMPLE. CZ4042 is topically relevant \u2014 it covers neural networks and deep learning, which directly matches this student's ai-ml preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. The equivalent live offering is SC4001 (Neural Network & Deep Learning). This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance."
+          "reviewNotes": "NEGATIVE EXAMPLE. CZ4042 is topically relevant — it covers neural networks and deep learning, which directly matches this student's ai-ml preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. The equivalent live offering is SC4001 (Neural Network & Deep Learning). This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance."
         }
       ]
     },
@@ -508,9 +508,9 @@
           "title": "Cryptography & Network Security",
           "targetSlotId": "y4-s1-mpe1",
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
+          "expectedSkillPath": "N/A — old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "reviewNotes": "NEGATIVE EXAMPLE. CZ4024 (Cryptography & Network Security) is used here as a verified old-code exclusion test. The CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter. The module is topically relevant to this student's computer-security and cryptography preference \u2014 its modules.json tags include computer-security and cryptography \u2014 but topical relevance does not override the code-family exclusion rule. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. The live equivalent is SC4010 (Applied Cryptography)."
+          "reviewNotes": "NEGATIVE EXAMPLE. CZ4024 (Cryptography & Network Security) is used here as a verified old-code exclusion test. The CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter. The module is topically relevant to this student's computer-security and cryptography preference — its modules.json tags include computer-security and cryptography — but topical relevance does not override the code-family exclusion rule. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. The live equivalent is SC4010 (Applied Cryptography)."
         }
       ]
     },
@@ -619,7 +619,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Database System Principles",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: backend-engineering, database. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which outscores backend and data services -> backend-engineering (8 * 0.9 * 1.0 = 7.2) and backend and data services -> database (8 * 0.8 * 1.0 = 6.4). Directly extends SC2207 (Introduction to Databases) which is completed. Covers storage internals, indexing, and query optimisation \u2014 core skills for backend SWEs. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: backend-engineering, database. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which outscores backend and data services -> backend-engineering (8 * 0.9 * 1.0 = 7.2) and backend and data services -> database (8 * 0.8 * 1.0 = 6.4). Directly extends SC2207 (Introduction to Databases) which is completed. Covers storage internals, indexing, and query optimisation — core skills for backend SWEs. isCurrentSemester=true."
         },
         {
           "courseCode": "SC3040",
@@ -646,7 +646,7 @@
           "expectedRelevance": "somewhat-relevant",
           "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: data-science. The data-science tag is not currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The student's preference is database and backend-engineering; data-science is adjacent to that preference \u2014 data analytics pipelines sit near backend/data work \u2014 but is not a direct match. Labelled somewhat-relevant rather than relevant because there is no mapped career-skill evidence and the subject-matter fit with the stated preference is indirect. SC3020 and SC4023 are stronger choices for this preference profile. Revisit if data-science is added to the Software Engineer career-skill mapping. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: data-science. The data-science tag is not currently mapped in backend/services/career_skill_mappings.py under the Software Engineer skill areas, so the backend produces no career-skill evidence score for this module (expectedSkillPath is N/A). The student's preference is database and backend-engineering; data-science is adjacent to that preference — data analytics pipelines sit near backend/data work — but is not a direct match. Labelled somewhat-relevant rather than relevant because there is no mapped career-skill evidence and the subject-matter fit with the stated preference is indirect. SC3020 and SC4023 are stronger choices for this preference profile. Revisit if data-science is added to the Software Engineer career-skill mapping. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4023",
@@ -655,22 +655,22 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: backend-engineering, database, data-science. data-science is not mapped under the Software Engineer skill areas and does not contribute to the score. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which outscores backend and data services -> backend-engineering (8 * 0.9 * 1.0 = 7.2) and backend and data services -> database (8 * 0.8 * 1.0 = 6.4). Covers large-scale data storage and processing \u2014 core skills for backend data engineers. NOTE: isCurrentSemester=false \u2014 verify availability before treating this as a stable benchmark reference. Listed as alternative to SC4020 for the same slot."
+          "reviewNotes": "Module tags in modules.json: backend-engineering, database, data-science. data-science is not mapped under the Software Engineer skill areas and does not contribute to the score. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), which outscores backend and data services -> backend-engineering (8 * 0.9 * 1.0 = 7.2) and backend and data services -> database (8 * 0.8 * 1.0 = 6.4). Covers large-scale data storage and processing — core skills for backend data engineers. NOTE: isCurrentSemester=false — verify availability before treating this as a stable benchmark reference. Listed as alternative to SC4020 for the same slot."
         },
         {
           "courseCode": "CZ2007",
-          "title": "Introduction To Databases (old code \u2014 excluded)",
+          "title": "Introduction To Databases (old code — excluded)",
           "targetSlotId": "y3-s2-mpe1",
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 old CZ code hard-excluded before ranking",
+          "expectedSkillPath": "N/A — old CZ code hard-excluded before ranking",
           "oldCodeHandling": "excluded",
-          "reviewNotes": "NEGATIVE EXAMPLE. CZ2007 is topically relevant \u2014 it covers introductory databases, which is adjacent to this student's database and backend-engineering preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. The module is also the wrong academic level for an SC3xxx slot. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. The live equivalent at introductory level is SC2207 (already completed); the appropriate advanced equivalent is SC3020 (recommended above). This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance."
+          "reviewNotes": "NEGATIVE EXAMPLE. CZ2007 is topically relevant — it covers introductory databases, which is adjacent to this student's database and backend-engineering preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. The module is also the wrong academic level for an SC3xxx slot. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. The live equivalent at introductory level is SC2207 (already completed); the appropriate advanced equivalent is SC3020 (recommended above). This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance."
         }
       ]
     },
     {
       "caseId": "software-engineer-csc-005",
-      "description": "Y4 CSC student with no topic preference. All core modules and internship completed using the actual sample transcript (U2320608L). Three SC4xxx MPE slots remain. Tests the recommender default behaviour when no preference tags are set \u2014 expects diverse, broadly SWE-relevant recommendations, correct exclusion of already-completed modules.",
+      "description": "Y4 CSC student with no topic preference. All core modules and internship completed using the actual sample transcript (U2320608L). Three SC4xxx MPE slots remain. Tests the recommender default behaviour when no preference tags are set — expects diverse, broadly SWE-relevant recommendations, correct exclusion of already-completed modules.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
       "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
@@ -788,7 +788,7 @@
           "title": "Blockchain Technology",
           "targetSlotId": "y4-s2-mpe3",
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 niche blockchain module is not a default no-preference Software Engineer recommendation",
+          "expectedSkillPath": "N/A — niche blockchain module is not a default no-preference Software Engineer recommendation",
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "Tagged computer-security, distributed-systems in modules.json. Blockchain can be adjacent to security and distributed systems, but it is a specialised distributed-ledger domain rather than a broad default Software Engineer recommendation when the student has no topic preference. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended by default\", not a claim that the module has no technical value. It may become somewhat-relevant or relevant in a future benchmark case where the student explicitly prefers security, cryptography, distributed systems, blockchain, or fintech-style topics. isCurrentSemester=true."
         },
@@ -799,7 +799,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Big Data Management",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Added after comparing the project-owner-reviewed draft labels with live backend predictions. Module tags in modules.json: backend-engineering, database, data-science. The strongest career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Big data management is relevant for backend and data-service software engineering because it builds exposure to large-scale data storage, query, and processing concerns. It is not labelled highly-relevant for the generic no-preference case because it is more specialised than broad software design or application security. NOTE: isCurrentSemester=false \u2014 availability is currently a scoring caveat, not a hard benchmark-invalidity rule."
+          "reviewNotes": "Added after comparing the project-owner-reviewed draft labels with live backend predictions. Module tags in modules.json: backend-engineering, database, data-science. The strongest career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Big data management is relevant for backend and data-service software engineering because it builds exposure to large-scale data storage, query, and processing concerns. It is not labelled highly-relevant for the generic no-preference case because it is more specialised than broad software design or application security. NOTE: isCurrentSemester=false — availability is currently a scoring caveat, not a hard benchmark-invalidity rule."
         },
         {
           "courseCode": "SC4051",
@@ -808,7 +808,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Added after the no-preference recommendation profile calibration caused the refreshed live benchmark to return SC4051 instead of the niche SC4053 Blockchain Technology. Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), narrowly ahead of backend and data services -> distributed-systems (score 8 * 1.0 * 1.0 = 8.0). Distributed systems is relevant for a Year 4 no-preference Software Engineer case because it supports scalable backend and platform engineering, while remaining broader than blockchain. NOTE: isCurrentSemester=false \u2014 availability is currently a scoring caveat, not a hard benchmark-invalidity rule."
+          "reviewNotes": "Added after the no-preference recommendation profile calibration caused the refreshed live benchmark to return SC4051 instead of the niche SC4053 Blockchain Technology. Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path is software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5), narrowly ahead of backend and data services -> distributed-systems (score 8 * 1.0 * 1.0 = 8.0). Distributed systems is relevant for a Year 4 no-preference Software Engineer case because it supports scalable backend and platform engineering, while remaining broader than blockchain. NOTE: isCurrentSemester=false — availability is currently a scoring caveat, not a hard benchmark-invalidity rule."
         },
         {
           "courseCode": "SC4050",
@@ -824,9 +824,9 @@
           "title": "Artificial Intelligence",
           "targetSlotId": null,
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 module already completed by student",
+          "expectedSkillPath": "N/A — module already completed by student",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "NEGATIVE EXAMPLE \u2014 completed module. SC3000 (Artificial Intelligence) is topically relevant to many software engineering paths, including AI/ML-oriented ones. However, it appears in both completedCourseCodes and curriculumCourses for this student, so the backend hard-excludes it from all recommendation slots before ranking begins. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. targetSlotId is null because this entry tests the completed-module exclusion filter, not slot-level fit. oldCodeHandling is not-applicable because the SC prefix is valid \u2014 the exclusion reason is prior completion, not code family."
+          "reviewNotes": "NEGATIVE EXAMPLE — completed module. SC3000 (Artificial Intelligence) is topically relevant to many software engineering paths, including AI/ML-oriented ones. However, it appears in both completedCourseCodes and curriculumCourses for this student, so the backend hard-excludes it from all recommendation slots before ranking begins. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. targetSlotId is null because this entry tests the completed-module exclusion filter, not slot-level fit. oldCodeHandling is not-applicable because the SC prefix is valid — the exclusion reason is prior completion, not code family."
         }
       ]
     },
@@ -933,7 +933,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems, cloud-computing. Matches 3 of 4 stated preferences (backend-engineering, cloud-computing, distributed-systems). Preference boost: PREFERENCE_FIRST_MATCH_BOOST(30) + step1(12) + step2(8) = +50. Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Highest preference overlap of any SC4xxx module in the catalog for this preference set. recommendationProfile=broad-default. NOTE: isCurrentSemester=false \u2014 availability is a scoring caveat, not a hard filter. Requires MH2802 as prerequisite; the student's prior math coursework should satisfy this but verify before treating as a hard requirement for slot assignment."
+          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems, cloud-computing. Matches 3 of 4 stated preferences (backend-engineering, cloud-computing, distributed-systems). Preference boost: PREFERENCE_FIRST_MATCH_BOOST(30) + step1(12) + step2(8) = +50. Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). Highest preference overlap of any SC4xxx module in the catalog for this preference set. recommendationProfile=broad-default. NOTE: isCurrentSemester=false — availability is a scoring caveat, not a hard filter. Requires MH2802 as prerequisite; the student's prior math coursework should satisfy this but verify before treating as a hard requirement for slot assignment."
         },
         {
           "courseCode": "SC4051",
@@ -966,7 +966,7 @@
     },
     {
       "caseId": "software-engineer-csc-008",
-      "description": "Y4 CSC student with computer-security and cryptography preferences. One SC4xxx MPE slot and one BDE slot open. Tests two hard filters: (1) BDE slot year-level matching \u2014 a level-3 module (SC3030) should be excluded from a year-4 BDE slot because get_preferred_bde_level(4)=4 requires level-4 modules. (2) Programme availability \u2014 SC2304 (Ethical AI) lists CSC in notAvailableToProgramme and should be hard-excluded from all slots including the BDE slot, even though it has ai-ml tags that might otherwise produce a career-relevance score. Valid BDE candidates are SC4xxx level modules that pass both programme and BDE-level filters.",
+      "description": "Y4 CSC student with computer-security and cryptography preferences. One SC4xxx MPE slot and one BDE slot open. Tests two hard filters: (1) BDE slot year-level matching — a level-3 module (SC3030) should be excluded from a year-4 BDE slot because get_preferred_bde_level(4)=4 requires level-4 modules. (2) Programme availability — SC2304 (Ethical AI) lists CSC in notAvailableToProgramme and should be hard-excluded from all slots including the BDE slot, even though it has ai-ml tags that might otherwise produce a career-relevance score. Valid BDE candidates are SC4xxx level modules that pass both programme and BDE-level filters.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
       "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
@@ -1090,18 +1090,18 @@
           "title": "Advanced Computer Networks",
           "targetSlotId": null,
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 wrong module level for year-4 BDE slot",
+          "expectedSkillPath": "N/A — wrong module level for year-4 BDE slot",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "NEGATIVE EXAMPLE \u2014 BDE slot year-level mismatch. SC3030 is a level-3 module (SC3xxx). The year-4 BDE slot requires get_preferred_bde_level(4) = 4. can_fit_bde_slot() should return False for SC3030 because module.level (3) != preferred BDE level (4). SC3030 also has computer-network tags, which are adjacent to the student's preferences but not a direct security/cryptography match. The primary exclusion reason is year-level mismatch on the BDE slot, not tag mismatch. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended'. targetSlotId is null because this module should not appear as a recommendation for any slot. isCurrentSemester=true."
+          "reviewNotes": "NEGATIVE EXAMPLE — BDE slot year-level mismatch. SC3030 is a level-3 module (SC3xxx). The year-4 BDE slot requires get_preferred_bde_level(4) = 4. can_fit_bde_slot() should return False for SC3030 because module.level (3) != preferred BDE level (4). SC3030 also has computer-network tags, which are adjacent to the student's preferences but not a direct security/cryptography match. The primary exclusion reason is year-level mismatch on the BDE slot, not tag mismatch. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended'. targetSlotId is null because this module should not appear as a recommendation for any slot. isCurrentSemester=true."
         },
         {
           "courseCode": "SC2304",
           "title": "Ethical Artificial Intelligence",
           "targetSlotId": null,
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 module excluded from CSC programme via notAvailableToProgramme",
+          "expectedSkillPath": "N/A — module excluded from CSC programme via notAvailableToProgramme",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "NEGATIVE EXAMPLE \u2014 programme availability exclusion. SC2304 notAvailableToProgramme includes 'CSC' as an exact comma-separated token (verified from modules.json). is_unavailable_to_student_programme() splits on comma and checks for exact uppercase match, so 'CSC' matches the student's programme. The module is hard-excluded from ALL slots (including BDE) before ranking. Tags ai-ml and ethics would otherwise produce a career-relevance score, but programme availability is a pre-filter with higher priority. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended'. This entry validates that the programme-availability filter does not accidentally allow a CSC-excluded module into the BDE pool. isCurrentSemester=true."
+          "reviewNotes": "NEGATIVE EXAMPLE — programme availability exclusion. SC2304 notAvailableToProgramme includes 'CSC' as an exact comma-separated token (verified from modules.json). is_unavailable_to_student_programme() splits on comma and checks for exact uppercase match, so 'CSC' matches the student's programme. The module is hard-excluded from ALL slots (including BDE) before ranking. Tags ai-ml and ethics would otherwise produce a career-relevance score, but programme availability is a pre-filter with higher priority. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended'. This entry validates that the programme-availability filter does not accidentally allow a CSC-excluded module into the BDE pool. isCurrentSemester=true."
         }
       ]
     },
@@ -1203,7 +1203,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Application Security",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: web-development, computer-security. Top career-skill evidence path: secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0). isCurrentSemester=true \u2014 receives CURRENT_SEMESTER_BONUS=3. recommendationProfile=broad-default. Labelled relevant, not highly-relevant, because with no stated preferences, application security is a good but not exceptional default choice; the computer-security career-skill score (6.0) is lower than backend-engineering (8.5). The current-semester bonus should make this slightly more likely to be selected over a similar-quality module that is not currently offered, but should not dominate ranking."
+          "reviewNotes": "Module tags in modules.json: web-development, computer-security. Top career-skill evidence path: secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0). isCurrentSemester=true — receives CURRENT_SEMESTER_BONUS=3. recommendationProfile=broad-default. Labelled relevant, not highly-relevant, because with no stated preferences, application security is a good but not exceptional default choice; the computer-security career-skill score (6.0) is lower than backend-engineering (8.5). The current-semester bonus should make this slightly more likely to be selected over a similar-quality module that is not currently offered, but should not dominate ranking."
         },
         {
           "courseCode": "SC4051",
@@ -1212,7 +1212,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Distributed Systems",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). isCurrentSemester=false \u2014 does NOT receive CURRENT_SEMESTER_BONUS. recommendationProfile=broad-default. Labelled relevant despite the missing current-semester bonus, because the career-skill evidence score (8.5) is stronger than SC4013 (6.0). This shows that current-semester availability is a tie-breaker, not a relevance override: a stronger career-signal module can still rank ahead even without the bonus."
+          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems. Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). isCurrentSemester=false — does NOT receive CURRENT_SEMESTER_BONUS. recommendationProfile=broad-default. Labelled relevant despite the missing current-semester bonus, because the career-skill evidence score (8.5) is stronger than SC4013 (6.0). This shows that current-semester availability is a tie-breaker, not a relevance override: a stronger career-signal module can still rank ahead even without the bonus."
         },
         {
           "courseCode": "SC4040",
@@ -1221,7 +1221,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> algorithmic problem solving -> algorithms -> Advanced Topics In Algorithms",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: algorithms. Career-skill evidence path: algorithmic problem solving -> algorithms (score 5 * 1.0 * 1.0 = 5.0). isCurrentSemester=true \u2014 receives CURRENT_SEMESTER_BONUS=3. recommendationProfile=broad-default. Labelled relevant; included to show that the current-semester bonus is available to multiple modules and does not uniquely distinguish candidates when career scores differ. SC4040 has the same current-semester bonus as SC4013 but a weaker career-skill score."
+          "reviewNotes": "Module tags in modules.json: algorithms. Career-skill evidence path: algorithmic problem solving -> algorithms (score 5 * 1.0 * 1.0 = 5.0). isCurrentSemester=true — receives CURRENT_SEMESTER_BONUS=3. recommendationProfile=broad-default. Labelled relevant; included to show that the current-semester bonus is available to multiple modules and does not uniquely distinguish candidates when career scores differ. SC4040 has the same current-semester bonus as SC4013 but a weaker career-skill score."
         },
         {
           "courseCode": "SC4023",
@@ -1239,7 +1239,7 @@
           "expectedRelevance": "relevant",
           "expectedSkillPath": "Software Engineer -> software design and delivery -> backend-engineering -> Cloud Computing",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems, cloud-computing. Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). isCurrentSemester=false \u2014 does NOT receive CURRENT_SEMESTER_BONUS. recommendationProfile=broad-default. Similar career signal to SC4051 (both backend-engineering score 8.5). Without the current-semester bonus, the tie-break between SC4051 and SC4052 depends on secondary scoring factors (cloud-computing tag contributes an additional career path). Both are relevant; the benchmark does not prescribe which ranks ahead because both are strong backend/cloud options. Requires MH2802 prerequisite."
+          "reviewNotes": "Module tags in modules.json: backend-engineering, distributed-systems, cloud-computing. Top career-skill evidence path: software design and delivery -> backend-engineering (score 10 * 0.85 * 1.0 = 8.5). isCurrentSemester=false — does NOT receive CURRENT_SEMESTER_BONUS. recommendationProfile=broad-default. Similar career signal to SC4051 (both backend-engineering score 8.5). Without the current-semester bonus, the tie-break between SC4051 and SC4052 depends on secondary scoring factors (cloud-computing tag contributes an additional career path). Both are relevant; the benchmark does not prescribe which ranks ahead because both are strong backend/cloud options. Requires MH2802 prerequisite."
         }
       ]
     },
@@ -1364,7 +1364,7 @@
           "title": "Computer Graphics & Visualisation",
           "targetSlotId": null,
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 computer-graphics tag has no Software Engineer career-skill mapping",
+          "expectedSkillPath": "N/A — computer-graphics tag has no Software Engineer career-skill mapping",
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "Module tags in modules.json: computer-graphics. The computer-graphics tag is NOT in SOFTWARE_ENGINEER_TAG_WEIGHTS and is not mapped in career_skill_mappings.py under any Software Engineer skill area. With no preference for computer-graphics and no career-skill evidence, SC3060 should score zero and be filtered out before ranking (career_tag_score == 0 check). expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended'. This negative example tests that the pre-ranking career-relevance filter removes modules with no Software Engineer signal regardless of slot level compatibility. isCurrentSemester=true."
         }
@@ -1372,7 +1372,7 @@
     },
     {
       "caseId": "software-engineer-csc-011",
-      "description": "Y3 CSC student with backend-engineering, distributed-systems, and cloud-computing preferences. Two SC3xxx MPE slots open \u2014 no SC4xxx slots in this case. Tests that the recommender routes backend-relevant SC3 modules to SC3xxx slots and does not surface SC4xxx modules (wrong level) or niche/non-career-matched SC3 modules. At SC3 level, SC3020 (database+backend) is the strongest preference match. SC3040 is a weaker preference-match (software-engineering tag, not backend/distributed). SC3060 (computer-graphics) has no career signal and should be excluded.",
+      "description": "Y3 CSC student with backend-engineering, distributed-systems, and cloud-computing preferences. Two SC3xxx MPE slots open — no SC4xxx slots in this case. Tests that the recommender routes backend-relevant SC3 modules to SC3xxx slots and does not surface SC4xxx modules (wrong level) or niche/non-career-matched SC3 modules. At SC3 level, SC3020 (database+backend) is the strongest preference match. SC3040 is a weaker preference-match (software-engineering tag, not backend/distributed). SC3060 (computer-graphics) has no career signal and should be excluded.",
       "studentFaculty": "CSC",
       "careerGoal": "software-engineer",
       "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
@@ -1503,7 +1503,7 @@
           "title": "Computer Graphics & Visualisation",
           "targetSlotId": null,
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 computer-graphics tag has no Software Engineer career-skill mapping",
+          "expectedSkillPath": "N/A — computer-graphics tag has no Software Engineer career-skill mapping",
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "NEGATIVE EXAMPLE. Module tags in modules.json: computer-graphics. computer-graphics is not in SOFTWARE_ENGINEER_TAG_WEIGHTS and not mapped under any Software Engineer career-skill area. Zero preference overlap with stated preferences. Should be filtered by the career_tag_score == 0 check before ranking. expectedRelevance is 'irrelevant' under the benchmark definition. isCurrentSemester=true."
         }
@@ -1615,7 +1615,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Software Engineer -> secure software practice -> computer-security -> Applied Cryptography",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: computer-security, cryptography. Matches 2 of 3 stated preferences (computer-security, cryptography). Top career-skill evidence path: secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0). Strong SC4xxx cryptography recommendation. SC3010 is not completed, so the prerequisite check for SC4010 should flag SC3010 as a recommended prerequisite. NOTE: SC4010 prerequisites per ntu_prerequisite_unlock_graph.json are AB1202 and SC2000 \u2014 verify whether SC3010 is actually a prerequisite or merely recommended. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: computer-security, cryptography. Matches 2 of 3 stated preferences (computer-security, cryptography). Top career-skill evidence path: secure software practice -> computer-security (score 6 * 1.0 * 1.0 = 6.0). Strong SC4xxx cryptography recommendation. SC3010 is not completed, so the prerequisite check for SC4010 should flag SC3010 as a recommended prerequisite. NOTE: SC4010 prerequisites per ntu_prerequisite_unlock_graph.json are AB1202 and SC2000 — verify whether SC3010 is actually a prerequisite or merely recommended. isCurrentSemester=true."
         },
         {
           "courseCode": "SC3040",
@@ -1744,9 +1744,9 @@
           "title": "Machine Learning",
           "targetSlotId": null,
           "expectedRelevance": "irrelevant",
-          "expectedSkillPath": "N/A \u2014 module already completed by student",
+          "expectedSkillPath": "N/A — module already completed by student",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "NEGATIVE EXAMPLE \u2014 completed module. SC4000 is listed in completedCourseCodes. The backend hard-excludes completed modules before ranking. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended', not a judgement on the module's technical quality. This entry validates that the completed-module exclusion filter operates correctly when completed SC4 modules narrow the field of AI/ML candidates. isCurrentSemester=true."
+          "reviewNotes": "NEGATIVE EXAMPLE — completed module. SC4000 is listed in completedCourseCodes. The backend hard-excludes completed modules before ranking. expectedRelevance is 'irrelevant' under the benchmark definition of 'should be recommended', not a judgement on the module's technical quality. This entry validates that the completed-module exclusion filter operates correctly when completed SC4 modules narrow the field of AI/ML candidates. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4003",
@@ -1755,7 +1755,7 @@
           "expectedRelevance": "somewhat-relevant",
           "expectedSkillPath": "N/A - no mapped Software Engineer career-skill evidence yet",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: ai-ml. Matches 1 of 2 stated preferences (ai-ml). isCurrentSemester=false \u2014 does not receive CURRENT_SEMESTER_BONUS. Labelled somewhat-relevant rather than relevant because Intelligent Agents is a less applied and more classical AI topic compared with NLP or deep learning, and the absence of current-semester offering makes it a weaker recommendation when SC4001 and SC4002 are available. Included to test that non-current ai-ml modules rank below current ones when the preference signals are otherwise equal."
+          "reviewNotes": "Module tags in modules.json: ai-ml. Matches 1 of 2 stated preferences (ai-ml). isCurrentSemester=false — does not receive CURRENT_SEMESTER_BONUS. Labelled somewhat-relevant rather than relevant because Intelligent Agents is a less applied and more classical AI topic compared with NLP or deep learning, and the absence of current-semester offering makes it a weaker recommendation when SC4001 and SC4002 are available. Included to test that non-current ai-ml modules rank below current ones when the preference signals are otherwise equal."
         }
       ]
     },
@@ -1884,7 +1884,1025 @@
           "expectedRelevance": "somewhat-relevant",
           "expectedSkillPath": "Software Engineer -> systems and infrastructure -> parallel-computing -> Parallel Computing",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Module tags in modules.json: parallel-computing. Does not match either stated preference (computer-network, operating-systems). Career-skill evidence path: systems and infrastructure -> parallel-computing (score 7 * 0.6 * 0.85 = 3.57). recommendationProfile=specialist \u2014 receives SPECIALIST_PROFILE_PENALTY = -16. Despite being systems-adjacent, the specialist profile penalty and weaker career-skill score make SC4050 weaker than SC4051 (broad-default, score 8.0) and SC4030 (preference match). Labelled somewhat-relevant to give partial credit for systems area coverage while verifying it does not outrank the preference-matched and broad-default alternatives. isCurrentSemester=true."
+          "reviewNotes": "Module tags in modules.json: parallel-computing. Does not match either stated preference (computer-network, operating-systems). Career-skill evidence path: systems and infrastructure -> parallel-computing (score 7 * 0.6 * 0.85 = 3.57). recommendationProfile=specialist — receives SPECIALIST_PROFILE_PENALTY = -16. Despite being systems-adjacent, the specialist profile penalty and weaker career-skill score make SC4050 weaker than SC4051 (broad-default, score 8.0) and SC4030 (preference match). Labelled somewhat-relevant to give partial credit for systems area coverage while verifying it does not outrank the preference-matched and broad-default alternatives. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "ai-ml-engineer-csc-001",
+      "description": "Y3 CSC student with ai-ml, natural-language-processing, and computer-vision preferences. Core Year 1-2 modules completed; SC3000 (AI) already done. One SC3xxx MPE slot and one SC4xxx MPE slot open. Tests that the recommender surfaces NLP and CV modules at SC4 level ahead of security and unrelated modules.",
+      "studentFaculty": "CSC",
+      "careerGoal": "ai-ml-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "ai-ml",
+        "natural-language-processing",
+        "computer-vision"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3000",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y3-s2-mpe1",
+          "courseCode": "SC3xxx",
+          "year": 3,
+          "semester": 2
+        },
+        {
+          "slotId": "y4-s1-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3000",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4002",
+          "title": "Natural Language Processing",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> natural-language-processing -> Natural Language Processing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml, natural-language-processing. Official artificial-intelligence MPE path. Directly matches the natural-language-processing preference tag and the machine learning systems career-skill area. Prerequisites: MH1403, SC2001 — SC2001 is completed; prereq graph counts any one met, so this is ready. isCurrentSemester=true. Should rank as the top SC4xxx candidate for this profile."
+        },
+        {
+          "courseCode": "SC4061",
+          "title": "Computer Vision",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> computer-vision -> Computer Vision",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml, computer-vision, computer-graphics. Official artificial-intelligence MPE path. Directly matches computer-vision preference and the machine learning systems career-skill area. No prerequisites in the prereq graph — no barriers. Programme restriction excludes EEE, EEEC, IEEC, IEM; CSC students are not affected. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4000",
+          "title": "Machine Learning",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> ai-ml -> Machine Learning",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. Strong career match via ai-ml tag. Ranked below SC4002 and SC4061 because this profile's top preferences are natural-language-processing and computer-vision rather than general ML. Prerequisites: several alternatives including SC1004, SC1007, SC2000 — all completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4001",
+          "title": "Neural Network & Deep Learning",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> ai-ml -> Neural Network & Deep Learning",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. Strong fit for AI/ML engineering; also unlocks SC4062 (Generative AI), adding unlock value. Prerequisites: SC1004, SC1007 in the list — both completed (any one is sufficient). Extensive programme restriction but CSC is not in the excluded list. isCurrentSemester=true. Ranked below SC4002 and SC4061 because explicit preferences call out NLP and CV over general deep learning."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> scalable AI infrastructure -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing. Official high-performance-computing MPE path. Maps to the scalable AI infrastructure skill area, which is a supporting dimension for AI/ML engineers. Not in the student's explicit preference tags, so it should not outrank the primary ML and NLP modules. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC3021",
+          "title": "Data Science Fundamentals",
+          "targetSlotId": "y3-s2-mpe1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> model implementation foundations -> data-science -> Data Science Fundamentals",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science. Official data-science MPE path. Data foundations are a supporting skill under model implementation foundations for AI/ML engineers, but the module is not in the artificial-intelligence MPE path and carries no ai-ml tag. Valid SC3xxx fill when SC3000 is already done. Programme restriction explicitly excludes CSC(2011-2023) cohort — verify student's intake year before recommending. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "targetSlotId": "y3-s2-mpe1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> model implementation foundations -> database -> Database System Principles",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, database. Official data-science MPE path. Database foundations support training data access, feature storage, and evaluation datasets for AI/ML systems, but this is a supporting fit rather than the student's primary NLP/CV interest. Prerequisite: SC2207 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4010",
+          "title": "Applied Cryptography",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — security module; computer-security and cryptography tags have no mapping to ai-ml-engineer skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: computer-security, cryptography. Official security MPE path. Neither tag maps to any ai-ml-engineer career-skill area (machine learning systems, model implementation foundations, scalable AI infrastructure). Student preferences are ai-ml, NLP, and CV. Should rank very low for this profile. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "ai-ml-engineer-csc-002",
+      "description": "Y4 CSC student targeting AI infrastructure with preferences for ai-ml, parallel-computing, and distributed-systems. SC3000, SC4000, SC4001, and SC4002 already completed. One SC4xxx MPE slot remaining. Tests that the recommender surfaces SC4062 (Generative AI, now unlocked) and infrastructure-adjacent modules, and ranks pure security modules low.",
+      "studentFaculty": "CSC",
+      "careerGoal": "ai-ml-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "ai-ml",
+        "parallel-computing",
+        "distributed-systems"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3000",
+        "SC4000",
+        "SC4001",
+        "SC4002",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y4-s2-mpe1",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 2
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3000",
+        "SC4000",
+        "SC4001",
+        "SC4002",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4062",
+          "title": "Generative Artificial Intelligence - Advanced Topics",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> ai-ml -> Generative Artificial Intelligence - Advanced Topics",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. Prerequisites: SC4001, SC4002 — both completed in this profile, so the module is now unlocked. Strong career match as the logical advanced step after Neural Networks and NLP. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> scalable AI infrastructure -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing. Official high-performance-computing MPE path. Directly matches the parallel-computing preference and maps to scalable AI infrastructure. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "AI/ML Engineer -> scalable AI infrastructure -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. Distributed systems is a stated preference and maps to scalable AI infrastructure for AI/ML engineers. The backend-engineering tag gives a secondary skill path hit. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4064",
+          "title": "Gpu Programming",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "AI/ML Engineer -> scalable AI infrastructure -> parallel-computing -> Gpu Programming",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: programming, parallel-computing, hardware-embedded. Maps to scalable AI infrastructure via parallel-computing. GPU programming is directly applicable to training and deploying ML models at scale. Prerequisites: SC2001, SC2005, SC2008 — all completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4003",
+          "title": "Intelligent Agents",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> ai-ml -> Intelligent Agents",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. Matches via ai-ml tag, but focuses on agent-based AI rather than the infrastructure and generative AI angle this student is pursuing. SC4062, SC4050, and SC4051 should all rank higher given this profile's preferences. Prerequisites: MH2500, SC1007, SC2000 — SC1007 and SC2000 are completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4061",
+          "title": "Computer Vision",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> computer-vision -> Computer Vision",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml, computer-vision, computer-graphics. Official artificial-intelligence MPE path. A clear AI/ML module and valid SC4xxx candidate, but less aligned than SC4062, SC4050, or SC4051 for this case because the student's secondary preferences are parallel-computing and distributed-systems. No prerequisites in the prereq graph. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4016",
+          "title": "Cyber Threat Intelligence",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — computer-security tag has no mapping to ai-ml-engineer skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: computer-security. Official security MPE path. computer-security has no mapping to any ai-ml-engineer career-skill area. Student preferences are ai-ml, parallel-computing, and distributed-systems. No prerequisites in the prereq graph. Should not rank in the top recommendations despite being generally accessible. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "data-engineer-csc-001",
+      "description": "Y3 CSC student with database, distributed-systems, and backend-engineering preferences targeting a data engineering career. Core Year 1-2 modules completed. One SC3xxx MPE slot and one SC4xxx MPE slot open. Tests that the recommender surfaces database and distributed data processing modules and ranks pure AI/ML modules low.",
+      "studentFaculty": "CSC",
+      "careerGoal": "data-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "database",
+        "distributed-systems",
+        "backend-engineering"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y3-s1-mpe1",
+          "courseCode": "SC3xxx",
+          "year": 3,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s1-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "targetSlotId": "y3-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Engineer -> data storage and modelling -> database -> Database System Principles",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, database. Official data-science MPE path. Directly matches two of the three preference tags (database, backend-engineering) and maps to the primary career-skill area (data storage and modelling -> database). Prerequisite: SC2207 — completed. isCurrentSemester=true. Should rank as the top SC3xxx candidate for this profile."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. Official high-performance-computing MPE path. Both tags directly match the data-engineer career (distributed data platforms -> distributed-systems) and stated preferences. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Engineer -> data storage and modelling -> database -> Big Data Management",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, database, data-science. Official data-science MPE path. Three-tag hit across database, backend-engineering, and data-science — all relevant to data engineering pipelines. No prerequisites in the prereq graph. isCurrentSemester=false — verify availability. Strong alternative to SC4051 for the SC4xxx slot."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing. Official high-performance-computing MPE path. Maps to distributed data platforms -> parallel-computing for data engineers. Not in the explicit preference tags but the career-skill mapping is clear. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4040",
+          "title": "Advanced Topics In Algorithms",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Data Engineer -> data storage and modelling -> algorithms -> Advanced Topics In Algorithms",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: algorithms. Maps to data storage and modelling -> algorithms for data engineers, but algorithms is a secondary supporting skill rather than a core data engineering competency for this preference profile. Should not outrank SC4051 or SC4023. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC3030",
+          "title": "Advanced Computer Networks",
+          "targetSlotId": "y3-s1-mpe1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> computer-network -> Advanced Computer Networks",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-network. Maps to distributed data platforms -> computer-network for data engineers. Networking is a supporting skill for distributed data infrastructure, but the student's explicit preferences are database, distributed-systems, and backend-engineering. SC3020 should rank above SC3030 for the SC3xxx slot. Prerequisite: SC2008 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4001",
+          "title": "Neural Network & Deep Learning",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — ai-ml tag has no mapping to data-engineer career-skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. ai-ml maps to no data-engineer career-skill area (data storage and modelling, distributed data platforms, software implementation for pipelines). Student preferences are database, distributed-systems, backend-engineering — none matched by ai-ml. Should not rank in the top recommendations for this profile. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "data-engineer-csc-002",
+      "description": "Y4 CSC student with cloud-computing, parallel-computing, and database preferences targeting a data engineering career. Core Year 1-2 modules plus SC3020 (Database Principles) completed. Two SC4xxx MPE slots open. Tests that cloud and parallel data platform modules are surfaced and that pure security modules are ranked low.",
+      "studentFaculty": "CSC",
+      "careerGoal": "data-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "cloud-computing",
+        "parallel-computing",
+        "database"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3020",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y4-s1-mpe1",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s2-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 2
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3020",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4052",
+          "title": "Cloud Computing",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> cloud-computing -> Cloud Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems, cloud-computing. Official high-performance-computing MPE path. All three tags align with data engineering; cloud-computing is the top stated preference and maps to distributed data platforms. Prerequisite: MH2802 only — not in the completed SC list, so readiness depends on whether MH2802 is satisfied. Prereq graph shows ready=false with the standard profile, which may attract a prerequisite planning penalty. isCurrentSemester=false — verify availability. Despite the planning requirement, this is the strongest cloud-specific match and should rank highly once the prereq situation is resolved."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing. Official high-performance-computing MPE path. Directly matches the parallel-computing preference and the distributed data platforms career-skill area. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. Maps to distributed data platforms. Distributed systems underpins cloud data pipeline architecture. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Data Engineer -> data storage and modelling -> database -> Big Data Management",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, database, data-science. Official data-science MPE path. Database tag matches the third stated preference; backend-engineering adds another skill-path hit. Solid complement to SC4052 and SC4051 for the second SC4xxx slot. No prerequisites in the prereq graph. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4064",
+          "title": "Gpu Programming",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> parallel-computing -> Gpu Programming",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: programming, parallel-computing, hardware-embedded. Official high-performance-computing and edge-computing MPE paths. Parallel computing supports performance-heavy data processing and large-scale data workloads, though the module is lower-level than Cloud Computing, Distributed Systems, or Big Data Management. Prerequisites: SC2001, SC2005 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4020",
+          "title": "Data Analytics & Mining",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Data Engineer -> data storage and modelling -> data-science -> Data Analytics & Mining",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science. Official data-science MPE path. data-science maps to the data storage and modelling skill area, but the module focuses on analytics and mining rather than storage, pipelines, or cloud infrastructure. Less aligned with the student's cloud-computing and parallel-computing preferences. Prerequisites: MH1403, SC2001 — SC2001 is completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4014",
+          "title": "Concepts & Techniques For Malware Analysis",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — malware-analysis and computer-security tags have no mapping to data-engineer career-skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: computer-security, malware-analysis. Official security MPE path. Neither tag maps to any data-engineer career-skill area (data storage and modelling, distributed data platforms, software implementation for pipelines). Student preferences are cloud-computing, parallel-computing, database. Should not rank in the top recommendations. isCurrentSemester=false — verify availability."
+        }
+      ]
+    },
+    {
+      "caseId": "cloud-platform-engineer-csc-001",
+      "description": "Y3 CSC student with cloud-computing, distributed-systems, and computer-network preferences targeting cloud platform engineering. Core Year 1-2 modules completed. One SC3xxx MPE slot and one SC4xxx MPE slot open. Tests that distributed systems and networking modules surface ahead of pure AI/ML and data science modules.",
+      "studentFaculty": "CSC",
+      "careerGoal": "cloud-platform-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "cloud-computing",
+        "distributed-systems",
+        "computer-network"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y3-s1-mpe1",
+          "courseCode": "SC3xxx",
+          "year": 3,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s1-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC3030",
+          "title": "Advanced Computer Networks",
+          "targetSlotId": "y3-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> computer-network -> Advanced Computer Networks",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-network. Official edge-computing MPE path. Directly matches the computer-network preference and the cloud and distributed infrastructure career-skill area. Strong SC3xxx foundation for cloud networking. Prerequisite: SC2008 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. Directly matches the distributed-systems preference and the cloud and distributed infrastructure career-skill area. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability. Should be the top SC4xxx candidate for this profile."
+        },
+        {
+          "courseCode": "SC4052",
+          "title": "Cloud Computing",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> cloud-computing -> Cloud Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems, cloud-computing. cloud-computing is the top stated preference and maps directly to cloud and distributed infrastructure. Prerequisite: MH2802 only — not in completed list, so prereq graph marks this as not ready. May attract a prerequisite planning penalty. isCurrentSemester=false — verify availability. Despite the planning requirement, topically the strongest cloud-specific match."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> systems performance and reliability -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing. Official high-performance-computing and edge-computing MPE paths. Maps to systems performance and reliability for cloud platform engineers. Useful cloud infrastructure skill even though not in the explicit top-3 preferences. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4030",
+          "title": "Wireless & Mobile Networks",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> computer-network -> Wireless & Mobile Networks",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-network. Official edge-computing MPE path. Networking tag aligns with cloud and distributed infrastructure, but wireless and mobile focus is less directly relevant to cloud platform engineering than datacenter or wired distributed networking. A valid pick if the student has an edge-computing or mobile-cloud interest. Prerequisite: SC2008 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC3050",
+          "title": "Advanced Computer Architecture",
+          "targetSlotId": "y3-s1-mpe1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> systems performance and reliability -> computer-architecture -> Advanced Computer Architecture",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-architecture. Official high-performance-computing MPE path. Maps to systems performance and reliability for cloud platform engineers. Less directly aligned with the student's explicit cloud-computing and computer-network preferences than SC3030. Ranked as somewhat relevant for the SC3xxx slot. Prerequisite: SC1006 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4000",
+          "title": "Machine Learning",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — ai-ml tag has no mapping to cloud-platform-engineer skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. ai-ml maps to no cloud-platform-engineer career-skill area (cloud and distributed infrastructure, systems performance and reliability, secure platform operation). Student preferences are cloud-computing, distributed-systems, computer-network. Should not rank in the top recommendations despite being widely available. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "cloud-platform-engineer-csc-002",
+      "description": "Y4 CSC student with operating-systems, computer-security, and privacy preferences, targeting the secure platform operation dimension of cloud platform engineering. Core Year 1-2 modules plus SC3010, SC3030, and SC3050 completed. Two SC4xxx MPE slots open. Tests that systems security and privacy modules surface and that pure NLP or CV modules are ranked low.",
+      "studentFaculty": "CSC",
+      "careerGoal": "cloud-platform-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "operating-systems",
+        "computer-security",
+        "privacy"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3010",
+        "SC3030",
+        "SC3050",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y4-s1-mpe1",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s2-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 2
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3010",
+        "SC3030",
+        "SC3050",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4017",
+          "title": "Data Privacy & Security",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> secure platform operation -> privacy -> Data Privacy & Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, privacy. Directly matches two of the three stated preferences (computer-security, privacy) and maps to the secure platform operation career-skill area. Prerequisites: SC2000, SC2001 — both completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4063",
+          "title": "Network Security",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> secure platform operation -> computer-security -> Network Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security. Official security MPE path. Maps to secure platform operation and builds logically on SC3010 (Computer Security, already done) and SC3030 (Advanced Computer Networks, already done). Good cloud security specialisation choice. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> systems performance and reliability -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing. Official high-performance-computing MPE path. Maps to systems performance and reliability for cloud platform engineers. Not in the explicit preference tags but a legitimate infrastructure skill. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. Maps to cloud and distributed infrastructure. Distributed systems is a core platform engineering skill even though it is not the student's top stated preference for this case. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4015",
+          "title": "Cyber Physical System Security",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> secure platform operation -> computer-security -> Cyber Physical System Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, cyber-physical-systems. Official security and edge-computing MPE paths. computer-security maps to secure platform operation. However, cyber-physical-systems is a specialist tag that does not map to any cloud-platform-engineer skill area, making the overall fit narrower than SC4063 or SC4017. Relevant if the student has an IoT/OT-cloud interest. Prerequisite: SC1006 — completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4002",
+          "title": "Natural Language Processing",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — natural-language-processing and ai-ml tags have no mapping to cloud-platform-engineer skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: ai-ml, natural-language-processing. Official artificial-intelligence MPE path. Neither tag maps to any cloud-platform-engineer career-skill area (cloud and distributed infrastructure, systems performance and reliability, secure platform operation). Student preferences are operating-systems, computer-security, privacy. Should not rank in the top recommendations for this profile. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "cybersecurity-engineer-csc-001",
+      "description": "Y4 CSC student with computer-security, cryptography, and malware-analysis preferences targeting cybersecurity engineering. Core Year 1-2 modules plus SC3010 (Computer Security) completed. Two SC4xxx MPE slots open. Tests that cryptography, malware analysis, and threat intelligence modules surface and that pure AI/ML modules are ranked low.",
+      "studentFaculty": "CSC",
+      "careerGoal": "cybersecurity-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "computer-security",
+        "cryptography",
+        "malware-analysis"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3010",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y4-s1-mpe1",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s2-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 2
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3010",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4010",
+          "title": "Applied Cryptography",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> cryptography and secure implementation -> cryptography -> Applied Cryptography",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, cryptography. Official security MPE path. Directly matches the cryptography preference and the cryptography and secure implementation career-skill area. Prerequisites: AB1202, SC2000 — SC2000 is completed; prereq graph ready=true via SC2000. isCurrentSemester=true. Should rank as a top candidate for this profile."
+        },
+        {
+          "courseCode": "SC4014",
+          "title": "Concepts & Techniques For Malware Analysis",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> security analysis and defence -> malware-analysis -> Concepts & Techniques For Malware Analysis",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, malware-analysis. Official security MPE path. Directly matches the malware-analysis preference and the security analysis and defence career-skill area. Prerequisites: SC1006, SC2005 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4016",
+          "title": "Cyber Threat Intelligence",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> security analysis and defence -> computer-security -> Cyber Threat Intelligence",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security. Official security MPE path. Maps to security analysis and defence. No prerequisites in the prereq graph — immediately accessible. A strong pick for a student who has SC3010 as a foundation and wants to move into threat analysis. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4012",
+          "title": "Software Security",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> cryptography and secure implementation -> computer-security -> Software Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security. Official security MPE path. Maps to the cryptography and secure implementation area through the software security implementation dimension. Matches the computer-security preference. Prerequisites: SC2002, SC2005 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4013",
+          "title": "Application Security",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> cryptography and secure implementation -> computer-security -> Application Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: web-development, computer-security. Official security MPE path. computer-security tag aligns with the career goal. web-development is secondary. Builds naturally on SC3010 and is relevant for application-layer attack defence. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4017",
+          "title": "Data Privacy & Security",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> security analysis and defence -> privacy -> Data Privacy & Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, privacy. Official security MPE path. privacy maps to security analysis and defence as a secondary dimension. Valid security elective, but this student's stated preferences lean toward cryptography and malware-analysis rather than data privacy, so it ranks below the core security picks. Prerequisites: SC2000, SC2001 — both completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4000",
+          "title": "Machine Learning",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — ai-ml tag has no mapping to cybersecurity-engineer skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. ai-ml maps to no cybersecurity-engineer career-skill area (security analysis and defence, networks and systems security, cryptography and secure implementation). Student preferences are computer-security, cryptography, malware-analysis. Should not rank in the top recommendations despite being generally popular. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "cybersecurity-engineer-csc-002",
+      "description": "Y4 CSC student with computer-security, computer-network, and privacy preferences targeting network and systems security. Core Year 1-2 modules plus SC3010 (Computer Security) and SC3030 (Advanced Computer Networks) completed. Two SC4xxx MPE slots open. Tests that network security and privacy modules are recommended ahead of pure data science or data visualisation modules.",
+      "studentFaculty": "CSC",
+      "careerGoal": "cybersecurity-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "computer-security",
+        "computer-network",
+        "privacy"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3010",
+        "SC3030",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y4-s1-mpe1",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s2-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 2
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3010",
+        "SC3030",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4063",
+          "title": "Network Security",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> networks and systems security -> computer-security -> Network Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security. Official security MPE path. Maps directly to the networks and systems security career-skill area and matches both the computer-security and computer-network preferences. Builds logically on SC3010 and SC3030. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4017",
+          "title": "Data Privacy & Security",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> security analysis and defence -> privacy -> Data Privacy & Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, privacy. Official security MPE path. Directly matches both the computer-security and privacy preferences. Maps to security analysis and defence via the privacy tag. Prerequisites: SC2000, SC2001 — both completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4013",
+          "title": "Application Security",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> networks and systems security -> computer-security -> Application Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: web-development, computer-security. Official security MPE path. computer-security tag aligns with career goal and preference. Relevant for network-layer and application-layer attack defence. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4016",
+          "title": "Cyber Threat Intelligence",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> security analysis and defence -> computer-security -> Cyber Threat Intelligence",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security. Official security MPE path. Maps to security analysis and defence. No prerequisites in the prereq graph. Strong complement to SC4063 for a network security specialisation. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4010",
+          "title": "Applied Cryptography",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> cryptography and secure implementation -> cryptography -> Applied Cryptography",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, cryptography. Official security MPE path. Cryptography is still strongly relevant to cybersecurity engineering even though this case emphasises network/privacy security rather than cryptography specifically. Prerequisites: AB1202, SC2000 — SC2000 is completed; prereq graph ready=true via SC2000. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> networks and systems security -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. distributed-systems maps to networks and systems security for cybersecurity engineers. Understanding distributed system internals is useful for network security analysis, but the primary fit is as infrastructure context rather than a core security module. Should not outrank SC4063 or SC4017 for this profile. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4024",
+          "title": "Data Visualisation",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — data-visualisation, data-science, frontend-engineering, computer-graphics tags have no mapping to cybersecurity-engineer skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: frontend-engineering, data-science, data-visualisation, computer-graphics. None of these tags map to any cybersecurity-engineer career-skill area (security analysis and defence, networks and systems security, cryptography and secure implementation). Student preferences are computer-security, computer-network, privacy. Should not rank in the top recommendations for this profile. Programme restriction excludes many non-CSC programmes; CSC students are not affected but prereq graph requires several non-SC prerequisites — verify before using in evaluation. isCurrentSemester=true."
         }
       ]
     }
