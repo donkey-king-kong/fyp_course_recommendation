@@ -87,7 +87,6 @@ CAREER_MPE_SPECIALISATION_BOOSTS = {
     "ai-ml-engineer": {
         "artificial-intelligence": MPE_SPECIALISATION_CAREER_BOOST,
         "data-science": 6,
-        "high-performance-computing": 5,
     },
     "data-engineer": {
         "data-science": MPE_SPECIALISATION_CAREER_BOOST,
@@ -104,12 +103,34 @@ DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
 BROAD_DEFAULT_PROFILE_BOOST = 14
 MIN_ASSIGNED_RECOMMENDATION_SCORE = 10
 AI_ML_WEAK_STANDALONE_TAGS = {"algorithms", "database", "programming"}
+AI_ML_DEFAULT_BDE_TAGS = {"ai-ml", "computer-vision", "data-science", "natural-language-processing"}
+AI_ML_INFRASTRUCTURE_BDE_TAGS = {
+    "cloud-computing",
+    "computer-architecture",
+    "distributed-systems",
+    "hardware-embedded",
+    "parallel-computing",
+}
+AI_ML_LOW_VALUE_BDE_TAGS = {"product-management"}
 SPECIALIST_PROFILE_PENALTY = -16
 EXTRA_PREREQUISITE_PLANNING_PENALTY = -20
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
 DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 # Core project modules are fixed curriculum requirements, not elective recommendation targets.
 NON_RECOMMENDABLE_CORE_PROJECT_CODES = {"SC2079", "SC3099"}
+# These courses require Turing AI Scholar/TAISP status and should not be suggested to a general CSC profile.
+SPECIAL_TRACK_ONLY_COURSE_CODES = {
+    "SC1301",
+    "SC1302",
+    "SC1303",
+    "SC1305",
+    "SC1315",
+    "SC2300",
+    "SC2301",
+    "SC2302",
+    "SC2320",
+    "SC2500",
+}
 CHOICE_SLOT_LEVEL_PATTERN = re.compile(r"^[A-Z]{2}([3-4])xxx$", re.IGNORECASE)
 logger = logging.getLogger(__name__)
 
@@ -207,6 +228,9 @@ def recommend_courses(
         if is_non_recommendable_core_project(module):
             continue
 
+        if is_special_track_only_course(module):
+            continue
+
         if is_unavailable_to_student_programme(module, normalized_student_faculty):
             continue
 
@@ -220,7 +244,6 @@ def recommend_courses(
         mpe_specialisation_boost = get_mpe_specialisation_boost(module, career_goal)
 
         if is_weak_specialized_career_match(
-            module,
             career_goal,
             career_match,
             mpe_specialisation_boost,
@@ -240,6 +263,9 @@ def recommend_courses(
         unlock_codes = unlocks_by_module.get(module.code, [])
 
         for slot in eligible_slots:
+            if should_skip_ai_ml_bde_candidate(module, slot, career_goal, preferred_tags):
+                continue
+
             readiness = evaluate_recommendation_readiness(
                 prerequisites=prerequisites,
                 completed_codes=completed_codes,
@@ -1312,7 +1338,6 @@ def get_mpe_specialisation_signals(module: ModuleModel, career_goal: str) -> lis
     ]
 
 def is_weak_specialized_career_match(
-    module: ModuleModel,
     career_goal: str,
     career_match: CareerMatchScore,
     mpe_specialisation_boost: int,
@@ -1331,6 +1356,28 @@ def is_weak_specialized_career_match(
         matched_tags.issubset(AI_ML_WEAK_STANDALONE_TAGS) and
         not matched_tags.intersection(preferred_tags)
     )
+
+def should_skip_ai_ml_bde_candidate(
+    module: ModuleModel,
+    slot: RecommendationChoiceSlot,
+    career_goal: str,
+    preferred_tags: set[str],
+) -> bool:
+    if career_goal != "ai-ml-engineer" or normalize_choice_slot_code(slot.courseCode) != "BDE":
+        return False
+
+    module_tags = set(module.recommendation_tags or [])
+
+    if module_tags.intersection(preferred_tags):
+        return False
+
+    if module_tags.intersection(AI_ML_LOW_VALUE_BDE_TAGS):
+        return True
+
+    if module_tags.intersection(AI_ML_INFRASTRUCTURE_BDE_TAGS):
+        return not module_tags.intersection(AI_ML_DEFAULT_BDE_TAGS)
+
+    return not module_tags.intersection(AI_ML_DEFAULT_BDE_TAGS)
 
 def get_default_profile_adjustment(
     module: ModuleModel,
@@ -1367,6 +1414,9 @@ def is_deprecated_course_code(module: ModuleModel) -> bool:
 
 def is_non_recommendable_core_project(module: ModuleModel) -> bool:
     return module.code.upper() in NON_RECOMMENDABLE_CORE_PROJECT_CODES
+
+def is_special_track_only_course(module: ModuleModel) -> bool:
+    return module.code.upper() in SPECIAL_TRACK_ONLY_COURSE_CODES
 
 def is_unavailable_to_student_programme(
     module: ModuleModel,
