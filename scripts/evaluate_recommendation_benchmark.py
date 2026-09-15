@@ -132,6 +132,14 @@ def ranked_prediction_summary(predictions: list[dict[str, Any]]) -> list[dict[st
         for prediction in rank_predictions_for_relevance_metrics(predictions)
     ]
 
+def assigned_slot_ids(predictions: list[dict[str, Any]], case: dict[str, Any]) -> set[str]:
+    valid_slot_ids = {slot["slotId"] for slot in case.get("choiceSlots", [])}
+    return {
+        slot_id
+        for slot_id in (prediction_slot_id(prediction) for prediction in predictions)
+        if slot_id in valid_slot_ids
+    }
+
 def career_skill_path(prediction: dict[str, Any]) -> str | None:
     evidence = (
         prediction.get("scoreBreakdown", {})
@@ -182,15 +190,23 @@ def prediction_is_constraint_valid(prediction: dict[str, Any], case: dict[str, A
 
 
 def evaluate_case(case: dict[str, Any], predictions: list[dict[str, Any]], k: int) -> dict[str, Any]:
-    top_predictions = rank_predictions_for_relevance_metrics(predictions)[:k]
+    ranked_predictions = rank_predictions_for_relevance_metrics(predictions)
+    top_predictions = ranked_predictions[:k]
     candidates = candidate_lookup(case)
     relevant_count = sum(
         1
         for prediction in top_predictions
         if candidates.get(prediction_course_code(prediction), {}).get("expectedRelevance") in RELEVANT_LABELS
     )
+    returned_relevant_count = sum(
+        1
+        for prediction in ranked_predictions
+        if candidates.get(prediction_course_code(prediction), {}).get("expectedRelevance") in RELEVANT_LABELS
+    )
     old_code_count = sum(1 for prediction in top_predictions if is_old_code(prediction_course_code(prediction)))
     valid_count = sum(1 for prediction in top_predictions if prediction_is_constraint_valid(prediction, case))
+    expected_slot_count = len(case.get("choiceSlots", []))
+    assigned_slot_count = len(assigned_slot_ids(predictions, case))
     evidence_predictions = [
         prediction
         for prediction in top_predictions
@@ -216,6 +232,23 @@ def evaluate_case(case: dict[str, Any], predictions: list[dict[str, Any]], k: in
         "rankedCourseOrder": ranked_prediction_summary(predictions)[:k],
         "precisionAtK": relevant_count / k,
         "ndcgAtK": ndcg_at_k(top_predictions, candidates, k),
+        "precisionAtReturned": (
+            returned_relevant_count / len(ranked_predictions)
+            if ranked_predictions
+            else 0.0
+        ),
+        "ndcgAtReturned": (
+            ndcg_at_k(ranked_predictions, candidates, len(ranked_predictions))
+            if ranked_predictions
+            else 0.0
+        ),
+        "expectedSlotCount": expected_slot_count,
+        "assignedSlotCount": assigned_slot_count,
+        "slotFillRate": (
+            min(assigned_slot_count, expected_slot_count) / expected_slot_count
+            if expected_slot_count
+            else 0.0
+        ),
         "explanationCoverage": len(evidence_predictions) / len(top_predictions) if top_predictions else 0.0,
         "explanationFidelity": (
             sum(1 for item in explanation_checks if item) / len(explanation_checks)
@@ -258,6 +291,11 @@ def evaluate_benchmark(
         "totalPredictionsEvaluated": total_predictions,
         "averagePrecisionAtK": average([result["precisionAtK"] for result in case_results]),
         "averageNdcgAtK": average([result["ndcgAtK"] for result in case_results]),
+        "averagePrecisionAtReturned": average(
+            [result["precisionAtReturned"] for result in case_results]
+        ),
+        "averageNdcgAtReturned": average([result["ndcgAtReturned"] for result in case_results]),
+        "averageSlotFillRate": average([result["slotFillRate"] for result in case_results]),
         "averageExplanationCoverage": average([result["explanationCoverage"] for result in case_results]),
         "averageExplanationFidelity": average(fidelity_values),
         "averageSkillAreaDiversityAtK": average([result["skillAreaDiversityAtK"] for result in case_results]),
