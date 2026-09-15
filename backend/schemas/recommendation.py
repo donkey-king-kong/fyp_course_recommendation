@@ -3,7 +3,7 @@ from typing import Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field
 
 RecommendationReadinessStatus = Literal["ready", "needs-prerequisite-planning"]
-RecommendationConfidence = Literal["standard", "low"]
+RecommendationConfidence = Literal["standard", "low", "general"]
 
 class RecommendationChoiceSlot(BaseModel):
     slotId: Optional[str] = Field(
@@ -261,9 +261,9 @@ class CourseRecommendation(BaseModel):
     recommendationConfidence: RecommendationConfidence = Field(
         default="standard",
         description=(
-            "Confidence label for frontend display. Low confidence is used only for "
-            "BDE fallback picks that pass the fallback score threshold but not the "
-            "main recommendation threshold."
+            "Confidence label for frontend display. Low confidence is used for BDE "
+            "career fallback picks below the main threshold. General is used for "
+            "broader BDE suggestions when no career-relevant candidate remains."
         ),
     )
     scoreBreakdown: RecommendationScoreBreakdown

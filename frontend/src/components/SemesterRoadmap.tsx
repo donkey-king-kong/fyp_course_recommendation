@@ -167,6 +167,18 @@ function getSemesterGroupLabel(group: SemesterGroup) {
   }
 }
 
+function getRecommendationConfidenceLabel(confidence: RecommendationConfidence) {
+  if (confidence === 'low') {
+    return 'Low confidence'
+  }
+
+  if (confidence === 'general') {
+    return 'General BDE'
+  }
+
+  return ''
+}
+
 function assignRecommendationsToChoiceSlots(
   choiceSlots: ChoiceSlotCandidate[],
   recommendations: CourseRecommendation[],
@@ -851,6 +863,9 @@ function SemesterRoadmap({
                   const isCompletionLocked = eligibility.status === 'locked' && !isCompleted
                   const isCompletionDisabled =
                     course.isTranscriptOnly || course.isRecommendedPrerequisite || isCompletionLocked
+                  const recommendationConfidenceLabel = slotRecommendation
+                    ? getRecommendationConfidenceLabel(slotRecommendation.recommendationConfidence)
+                    : ''
 
                   return (
                     // Each card stores its DOM ref so arrow endpoints can be measured.
@@ -907,8 +922,10 @@ function SemesterRoadmap({
                         >
                           <span className="recommendation-label-row">
                             <span>{slotRecommendation.label}</span>
-                            {slotRecommendation.recommendationConfidence === 'low' && (
-                              <span className="recommendation-confidence-badge">Low confidence</span>
+                            {recommendationConfidenceLabel && (
+                              <span className="recommendation-confidence-badge">
+                                {recommendationConfidenceLabel}
+                              </span>
                             )}
                           </span>
                           <strong>{slotRecommendation.courseCode}</strong>
