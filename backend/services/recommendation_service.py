@@ -47,14 +47,15 @@ SOFTWARE_ENGINEER_TAG_WEIGHTS = {
     "frontend-engineering": 4,
     "web-development": 3,
     "database": 5,
-    "computer-network": 5,
-    "computer-security": 5,
+    "networks": 5,
+    "cybersecurity": 5,
     "algorithms": 5,
     "data-structures": 5,
     "operating-systems": 5,
     "distributed-systems": 5,
     "cloud-computing": 4,
-    "ai-ml": 2,
+    "artificial-intelligence": 2,
+    "machine-learning": 2,
     "data-science": 2,
     "compiler": 3,
     "parallel-computing": 2,
@@ -75,7 +76,7 @@ PREFERENCE_TAG_BOOST_CAP = 60
 SECURITY_PRIVACY_ADJACENCY_BOOST = 8
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
 CURRENT_SEMESTER_BONUS = 3
-CURRENT_PREFERENCE_TAG_BONUSES = {"computer-network": 9}
+CURRENT_PREFERENCE_TAG_BONUSES = {"networks": 9}
 SAME_FACULTY_BOOST = 8
 MPE_SPECIALISATION_CAREER_BOOST = 12
 CAREER_GOAL_ALIASES = {
@@ -94,7 +95,6 @@ CAREER_MPE_SPECIALISATION_BOOSTS = {
     },
     "cloud-platform-engineer": {
         "high-performance-computing": MPE_SPECIALISATION_CAREER_BOOST,
-        "edge-computing": 8,
     },
 }
 DIVERSITY_TAG_REPEAT_PENALTY = 8
@@ -103,15 +103,44 @@ DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
 BROAD_DEFAULT_PROFILE_BOOST = 14
 MIN_ASSIGNED_RECOMMENDATION_SCORE = 10
 AI_ML_WEAK_STANDALONE_TAGS = {"algorithms", "database", "programming"}
-AI_ML_DEFAULT_BDE_TAGS = {"ai-ml", "computer-vision", "data-science", "natural-language-processing"}
+AI_ML_DEFAULT_BDE_TAGS = {
+    "artificial-intelligence",
+    "computer-vision",
+    "data-science",
+    "machine-learning",
+    "natural-language-processing",
+}
 AI_ML_INFRASTRUCTURE_BDE_TAGS = {
     "cloud-computing",
     "computer-architecture",
     "distributed-systems",
-    "hardware-embedded",
+    "embedded-systems",
+    "networks",
     "parallel-computing",
+    "systems",
 }
 AI_ML_LOW_VALUE_BDE_TAGS = {"product-management"}
+CLOUD_PLATFORM_DIRECT_TAGS = {
+    "cloud-computing",
+    "infrastructure",
+    "network-security",
+    "networks",
+    "operating-systems",
+}
+CLOUD_PLATFORM_DATA_STORAGE_TAGS = {
+    "big-data",
+    "data-analytics",
+    "data-engineering",
+    "data-mining",
+    "database",
+}
+CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS = {"cyber-physical-systems", "privacy"}
+RECOMMENDATION_TAG_ALIASES = {
+    "ai-ml": (),
+    "computer-network": ("networks",),
+    "computer-security": ("cybersecurity",),
+    "hardware-embedded": ("embedded-systems",),
+}
 SPECIALIST_PROFILE_PENALTY = -16
 EXTRA_PREREQUISITE_PLANNING_PENALTY = -20
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
@@ -186,7 +215,10 @@ def recommend_courses(
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
-    preferred_tags = normalize_recommendation_tags(preferred_recommendation_tags)
+    preferred_tags = normalize_preferred_tags_for_career(
+        career_goal,
+        normalize_recommendation_tags(preferred_recommendation_tags),
+    )
     normalized_student_faculty = normalize_student_faculty(student_faculty)
     excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
     excluded_titles = get_excluded_title_keys(excluded_course_titles)
@@ -264,6 +296,9 @@ def recommend_courses(
 
         for slot in eligible_slots:
             if should_skip_ai_ml_bde_candidate(module, slot, career_goal, preferred_tags):
+                continue
+
+            if should_skip_cloud_platform_candidate(module, career_goal):
                 continue
 
             readiness = evaluate_recommendation_readiness(
@@ -1272,11 +1307,30 @@ def build_career_skill_evidence(
     )
 
 def normalize_recommendation_tags(tags: list[str]) -> set[str]:
-    return {
-        tag.strip().lower()
-        for tag in tags
-        if tag.strip()
-    }
+    normalized_tags: set[str] = set()
+    for tag in tags:
+        normalized_tag = tag.strip().lower()
+        if not normalized_tag:
+            continue
+
+        normalized_tags.update(RECOMMENDATION_TAG_ALIASES.get(normalized_tag, (normalized_tag,)))
+
+    return normalized_tags
+
+def normalize_preferred_tags_for_career(career_goal: str, preferred_tags: set[str]) -> set[str]:
+    if career_goal != "cloud-platform-engineer":
+        return preferred_tags
+
+    cloud_tags = set(preferred_tags)
+    if "cybersecurity" in cloud_tags:
+        cloud_tags.remove("cybersecurity")
+        cloud_tags.add("network-security")
+
+    # Privacy-heavy modules are not platform recommendations unless they also
+    # carry a direct network-security/platform signal.
+    cloud_tags.discard("privacy")
+
+    return cloud_tags
 
 def normalize_student_faculty(student_faculty: Optional[str]) -> Optional[str]:
     if not student_faculty:
@@ -1298,7 +1352,7 @@ def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
     additional_match_count = matching_count - 1
     stepped_boost = sum(PREFERENCE_ADDITIONAL_BOOST_STEPS[:additional_match_count])
     total_boost = PREFERENCE_FIRST_MATCH_BOOST + stepped_boost
-    if preferred_tags == {"computer-security", "cryptography"} and "privacy" in module_tags:
+    if preferred_tags == {"cybersecurity", "cryptography"} and "privacy" in module_tags:
         total_boost += SECURITY_PRIVACY_ADJACENCY_BOOST
 
     return min(total_boost, PREFERENCE_TAG_BOOST_CAP)
@@ -1378,6 +1432,22 @@ def should_skip_ai_ml_bde_candidate(
         return not module_tags.intersection(AI_ML_DEFAULT_BDE_TAGS)
 
     return not module_tags.intersection(AI_ML_DEFAULT_BDE_TAGS)
+
+def should_skip_cloud_platform_candidate(module: ModuleModel, career_goal: str) -> bool:
+    if career_goal != "cloud-platform-engineer":
+        return False
+
+    module_tags = set(module.recommendation_tags or [])
+    if "network-security" in module_tags:
+        return False
+
+    if (
+        module_tags.intersection(CLOUD_PLATFORM_DATA_STORAGE_TAGS) and
+        not module_tags.intersection(CLOUD_PLATFORM_DIRECT_TAGS)
+    ):
+        return True
+
+    return bool(module_tags.intersection(CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS))
 
 def get_default_profile_adjustment(
     module: ModuleModel,

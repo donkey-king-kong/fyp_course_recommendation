@@ -353,7 +353,13 @@ AI_ML_ENGINEER_SKILL_MAPPINGS = (
         skill="machine learning systems",
         tag_relationships=(
             SkillTagRelationship(
-                tag="ai-ml",
+                tag="artificial-intelligence",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Directly represents AI concepts and model-driven system design.",
+            ),
+            SkillTagRelationship(
+                tag="machine-learning",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Directly represents applied machine learning and model-building work.",
@@ -398,6 +404,18 @@ AI_ML_ENGINEER_SKILL_MAPPINGS = (
                 relationship_weight=0.65,
                 tag_confidence=0.9,
                 rationale="Mathematical foundations support model understanding, but this role is more applied than research-focused.",
+            ),
+            SkillTagRelationship(
+                tag="statistics",
+                relationship_weight=0.6,
+                tag_confidence=0.9,
+                rationale="Statistics supports model evaluation, uncertainty, and data-driven reasoning.",
+            ),
+            SkillTagRelationship(
+                tag="mathematics",
+                relationship_weight=0.45,
+                tag_confidence=0.8,
+                rationale="General mathematics can support AI foundations, but it is broader than machine-learning-specific content.",
             ),
             SkillTagRelationship(
                 tag="programming",
@@ -472,6 +490,24 @@ DATA_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Data-science modules help connect pipelines to downstream analytics needs.",
             ),
             SkillTagRelationship(
+                tag="data-engineering",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Directly represents data pipeline and data platform engineering work.",
+            ),
+            SkillTagRelationship(
+                tag="big-data",
+                relationship_weight=0.85,
+                tag_confidence=0.9,
+                rationale="Big-data modules are highly relevant to scalable data storage and processing.",
+            ),
+            SkillTagRelationship(
+                tag="data-analytics",
+                relationship_weight=0.6,
+                tag_confidence=0.85,
+                rationale="Analytics knowledge helps data engineers understand downstream data use cases.",
+            ),
+            SkillTagRelationship(
                 tag="information-retrieval",
                 relationship_weight=0.55,
                 tag_confidence=0.85,
@@ -512,7 +548,7 @@ DATA_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Parallel computing supports batch and performance-heavy data processing.",
             ),
             SkillTagRelationship(
-                tag="computer-network",
+                tag="networks",
                 relationship_weight=0.55,
                 tag_confidence=0.85,
                 rationale="Networking foundations help with latency, throughput, partitioning, and network-aware pipeline design.",
@@ -569,7 +605,7 @@ CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Distributed systems are foundational for scalable cloud platforms.",
             ),
             SkillTagRelationship(
-                tag="computer-network",
+                tag="networks",
                 relationship_weight=0.75,
                 tag_confidence=1.0,
                 rationale="Networking supports deployment, routing, communication, and reliability.",
@@ -602,6 +638,12 @@ CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
                 tag_confidence=0.85,
                 rationale="Architecture knowledge helps reason about performance and hardware constraints.",
             ),
+            SkillTagRelationship(
+                tag="systems",
+                relationship_weight=0.5,
+                tag_confidence=0.8,
+                rationale="General systems modules can support platform reliability and performance reasoning.",
+            ),
         ),
         weight=7,
         rationale="Platform work benefits from understanding lower-level systems and performance trade-offs.",
@@ -611,21 +653,15 @@ CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
         skill="secure platform operation",
         tag_relationships=(
             SkillTagRelationship(
-                tag="computer-security",
-                relationship_weight=0.85,
-                tag_confidence=0.9,
-                rationale="Platform engineers need security knowledge for IAM, network policies, audit trails, and deployed-system risk.",
-            ),
-            SkillTagRelationship(
-                tag="privacy",
-                relationship_weight=0.65,
-                tag_confidence=0.8,
-                rationale="Privacy supports data residency, access controls, logging, and compliance-sensitive platform operations.",
+                tag="network-security",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Network security is directly relevant to cloud access controls, segmentation, and platform hardening.",
             ),
         ),
-        weight=6,
-        rationale="Modern cloud platforms need secure operation across identity, network access, data handling, and auditability.",
-        weight_rationale="Medium-high weight because security is central to platform work, but infrastructure fundamentals still come first.",
+        weight=5,
+        rationale="Modern cloud platforms need secure network access and platform hardening, not generic security/privacy electives.",
+        weight_rationale="Medium weight because security is useful for platform work, but infrastructure fundamentals still come first.",
     ),
 )
 

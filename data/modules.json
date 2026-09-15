@@ -69663,9 +69663,7 @@
       "recommendationTags": [
         "backend-engineering",
         "database",
-        "data-engineering",
-        "business",
-        "design"
+        "data-engineering"
       ]
     },
     {
@@ -69746,10 +69744,7 @@
       "isCurrentSemester": true,
       "recommendationTags": [
         "computer-architecture",
-        "networks",
-        "embedded-systems",
-        "communication",
-        "design"
+        "embedded-systems"
       ]
     },
     {
@@ -70223,12 +70218,7 @@
         "big-data",
         "distributed-systems",
         "data-science",
-        "systems",
-        "cloud-computing",
-        "embedded-systems",
-        "design",
-        "philosophy",
-        "sociology"
+        "systems"
       ]
     },
     {
@@ -70403,13 +70393,10 @@
         "distributed-systems",
         "cloud-computing",
         "infrastructure",
-        "artificial-intelligence",
-        "machine-learning",
         "data-science",
         "database",
         "algorithms",
-        "networks",
-        "education"
+        "networks"
       ]
     },
     {
@@ -70467,11 +70454,8 @@
       "isCurrentSemester": true,
       "recommendationTags": [
         "quantum-computing",
-        "artificial-intelligence",
-        "machine-learning",
         "programming",
         "algorithms",
-        "cloud-computing",
         "mathematics",
         "optimization",
         "physics",
@@ -70511,10 +70495,7 @@
       "recommendationTags": [
         "computer-vision",
         "artificial-intelligence",
-        "programming",
-        "networks",
-        "business",
-        "communication"
+        "programming"
       ]
     },
     {
@@ -70610,14 +70591,10 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "artificial-intelligence",
         "machine-learning",
-        "data-science",
-        "networks",
-        "cloud-computing",
+        "artificial-intelligence",
         "embedded-systems",
-        "education",
-        "energy"
+        "internet-of-things"
       ]
     },
     {
