@@ -102,7 +102,6 @@ PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
 DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
 BROAD_DEFAULT_PROFILE_BOOST = 14
 MIN_ASSIGNED_RECOMMENDATION_SCORE = 10
-MIN_BDE_FALLBACK_RECOMMENDATION_SCORE = 5
 AI_ML_WEAK_STANDALONE_TAGS = {"algorithms", "database", "programming"}
 AI_ML_DEFAULT_BDE_TAGS = {
     "artificial-intelligence",
@@ -342,9 +341,7 @@ def recommend_courses(
                 readiness.prerequisite_planning_penalty
             ))
 
-            minimum_assignment_score = get_minimum_assignment_score(slot)
-
-            if adjusted_score < minimum_assignment_score:
+            if adjusted_score < MIN_ASSIGNED_RECOMMENDATION_SCORE:
                 continue
 
             score_breakdown = RecommendationScoreBreakdown(
@@ -389,7 +386,6 @@ def recommend_courses(
                     readinessStatus=readiness.status,
                     unlockValue=readiness.unlock_value,
                     score=adjusted_score,
-                    recommendationConfidence=get_recommendation_confidence(slot, adjusted_score),
                     scoreBreakdown=score_breakdown,
                     reason=build_recommendation_reason(
                         career_goal,
@@ -1011,21 +1007,6 @@ def normalize_choice_slot_code(choice_slot_code: str) -> str:
     mpe_level = get_mpe_slot_level(normalized_code)
 
     return f"SC{mpe_level}xxx" if mpe_level else choice_slot_code
-
-def get_minimum_assignment_score(slot: RecommendationChoiceSlot) -> int:
-    if normalize_choice_slot_code(slot.courseCode) == "BDE":
-        return MIN_BDE_FALLBACK_RECOMMENDATION_SCORE
-
-    return MIN_ASSIGNED_RECOMMENDATION_SCORE
-
-def get_recommendation_confidence(slot: RecommendationChoiceSlot, score: int) -> str:
-    if (
-        normalize_choice_slot_code(slot.courseCode) == "BDE" and
-        score < MIN_ASSIGNED_RECOMMENDATION_SCORE
-    ):
-        return "low"
-
-    return "standard"
 
 def assign_ranked_slot_recommendations(
     choice_slots: list[RecommendationChoiceSlot],

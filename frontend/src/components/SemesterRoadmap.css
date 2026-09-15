@@ -397,12 +397,27 @@
   background: rgba(126, 34, 206, 0.12);
 }
 
-.choice-slot-recommendations > span {
+.choice-slot-recommendations .recommendation-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
   color: #c4b5fd;
   font-size: 0.62rem;
   font-weight: 900;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.recommendation-confidence-badge {
+  padding: 0.1rem 0.3rem;
+  border: 1px solid rgba(245, 158, 11, 0.45);
+  border-radius: 999px;
+  color: #d97706;
+  font-size: 0.48rem;
+  letter-spacing: 0.06em;
+  background: rgba(245, 158, 11, 0.1);
 }
 
 .choice-slot-recommendations strong {
