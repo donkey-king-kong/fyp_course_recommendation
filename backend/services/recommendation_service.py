@@ -135,6 +135,27 @@ CLOUD_PLATFORM_DATA_STORAGE_TAGS = {
     "database",
 }
 CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS = {"cyber-physical-systems", "privacy"}
+CLOUD_PLATFORM_RECOMMENDABLE_COURSE_CODES = {
+    "SC3030",  # Advanced Computer Networks
+    "SC3050",  # Advanced Computer Architecture
+    "SC4030",  # Wireless & Mobile Networks
+    "SC4031",  # Internet Of Things: Communications & Networking
+    "SC4050",  # Parallel Computing
+    "SC4051",  # Distributed Systems
+    "SC4052",  # Cloud Computing
+    "SC4063",  # Network Security
+}
+CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES = {
+    "SC4000",  # Machine Learning
+    "SC4001",  # Neural Network & Deep Learning
+    "SC4020",  # Data Analytics & Mining
+    "SC4023",  # Big Data Management
+    "SC4053",  # Blockchain Technology
+    "SC4054",  # Simulation & Modelling
+    "SC4055",  # Introduction To Quantum Computing
+    "SC4062",  # Generative Artificial Intelligence - Advanced Topics
+    "SC4064",  # GPU Programming
+}
 RECOMMENDATION_TAG_ALIASES = {
     "ai-ml": (),
     "computer-network": ("networks",),
@@ -1436,6 +1457,12 @@ def should_skip_ai_ml_bde_candidate(
 def should_skip_cloud_platform_candidate(module: ModuleModel, career_goal: str) -> bool:
     if career_goal != "cloud-platform-engineer":
         return False
+
+    if module.code.upper() not in CLOUD_PLATFORM_RECOMMENDABLE_COURSE_CODES:
+        return True
+
+    if module.code.upper() in CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES:
+        return True
 
     module_tags = set(module.recommendation_tags or [])
     if "network-security" in module_tags:
