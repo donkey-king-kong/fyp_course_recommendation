@@ -28,7 +28,7 @@ export interface RecommendationRequest {
 }
 
 export type RecommendationReadinessStatus = 'ready' | 'needs-prerequisite-planning'
-export type RecommendationConfidence = 'standard' | 'low' | 'general'
+export type RecommendationConfidence = 'standard' | 'low'
 
 export interface RecommendationCareerSkillEvidence {
   careerGoal: string
