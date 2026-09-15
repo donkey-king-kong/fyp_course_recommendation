@@ -78,9 +78,21 @@ CURRENT_SEMESTER_BONUS = 3
 CURRENT_PREFERENCE_TAG_BONUSES = {"computer-network": 9}
 SAME_FACULTY_BOOST = 8
 MPE_SPECIALISATION_CAREER_BOOST = 12
+CAREER_GOAL_ALIASES = {
+    "cybersecurity-analyst": "cybersecurity-engineer",
+}
 CAREER_MPE_SPECIALISATION_BOOSTS = {
     "data-scientist": {"data-science": MPE_SPECIALISATION_CAREER_BOOST},
-    "cybersecurity-analyst": {"security": MPE_SPECIALISATION_CAREER_BOOST},
+    "cybersecurity-engineer": {"security": MPE_SPECIALISATION_CAREER_BOOST},
+    "ai-ml-engineer": {"artificial-intelligence": MPE_SPECIALISATION_CAREER_BOOST},
+    "data-engineer": {
+        "data-science": MPE_SPECIALISATION_CAREER_BOOST,
+        "high-performance-computing": 8,
+    },
+    "cloud-platform-engineer": {
+        "high-performance-computing": MPE_SPECIALISATION_CAREER_BOOST,
+        "edge-computing": 8,
+    },
 }
 DIVERSITY_TAG_REPEAT_PENALTY = 8
 PREFERRED_DIVERSITY_TAG_REPEAT_PENALTY = 2
@@ -140,6 +152,8 @@ def recommend_courses(
     excluded_course_titles: list[str],
     limit: int,
 ) -> RecommendationResponse:
+    career_goal = normalize_career_goal(career_goal)
+
     # Keep unsupported career goals empty instead of pretending we can recommend them.
     if career_goal not in CAREER_SKILL_MAPPINGS:
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
@@ -1386,7 +1400,19 @@ def build_recommendation_reason(
     return f"{base_reason} Also {' and '.join(extra_reasons)}."
 
 def format_career_goal_label(career_goal: str) -> str:
-    return " ".join(word.capitalize() for word in career_goal.split("-"))
+    labels = {
+        "software-engineer": "Software Engineer",
+        "data-scientist": "Data Scientist",
+        "cybersecurity-engineer": "Cybersecurity Engineer",
+        "ai-ml-engineer": "AI / ML Engineer",
+        "data-engineer": "Data Engineer",
+        "cloud-platform-engineer": "Cloud / Platform Engineer",
+    }
+
+    return labels.get(career_goal, " ".join(word.capitalize() for word in career_goal.split("-")))
+
+def normalize_career_goal(career_goal: str) -> str:
+    return CAREER_GOAL_ALIASES.get(career_goal, career_goal)
 
 def build_career_skill_reason(
     career_goal: str,

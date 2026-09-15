@@ -47,6 +47,9 @@ const DEFAULT_PROFILE: StudentProfile = {
   careerGoal: '',
   preferredRecommendationTags: [],
 }
+const CAREER_GOAL_ALIASES: Record<string, string> = {
+  'cybersecurity-analyst': 'cybersecurity-engineer',
+}
 
 interface ProfileState {
   activeStudentId: string
@@ -96,6 +99,14 @@ function normalizeStudentId(studentId: string) {
   return studentId.trim().toUpperCase()
 }
 
+function normalizeCareerGoal(careerGoal: string | undefined) {
+  if (!careerGoal) {
+    return DEFAULT_PROFILE.careerGoal
+  }
+
+  return CAREER_GOAL_ALIASES[careerGoal] ?? careerGoal
+}
+
 // Create the default profile values for a new Student ID.
 // This keeps new users consistent with the same starting year, semester, and major
 function createStudentProfile(studentId: string): StudentProfile {
@@ -109,7 +120,7 @@ function hydrateStudentProfile(profile: Partial<StudentProfile> | undefined, stu
   return {
     studentId,
     major: profile?.major ?? DEFAULT_PROFILE.major,
-    careerGoal: profile?.careerGoal ?? DEFAULT_PROFILE.careerGoal,
+    careerGoal: normalizeCareerGoal(profile?.careerGoal),
     preferredRecommendationTags:
       profile?.preferredRecommendationTags ?? DEFAULT_PROFILE.preferredRecommendationTags,
   }

@@ -66,7 +66,10 @@ const EMPTY_RECOMMENDATION_TAGS: string[] = []
 const CAREER_GOAL_OPTIONS = [
   { value: 'software-engineer', label: 'Software Engineer' },
   { value: 'data-scientist', label: 'Data Scientist' },
-  { value: 'cybersecurity-analyst', label: 'Cybersecurity Analyst' },
+  { value: 'cybersecurity-engineer', label: 'Cybersecurity Engineer' },
+  { value: 'ai-ml-engineer', label: 'AI / Machine Learning Engineer' },
+  { value: 'data-engineer', label: 'Data Engineer' },
+  { value: 'cloud-platform-engineer', label: 'Cloud / Platform Engineer' },
 ]
 const SUPPORTED_CAREER_GOALS = new Set(CAREER_GOAL_OPTIONS.map((option) => option.value))
 
