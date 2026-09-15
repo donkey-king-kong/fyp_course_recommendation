@@ -334,7 +334,7 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="programming",
-                relationship_weight=0.7,
+                relationship_weight=0.65,
                 tag_confidence=0.85,
                 rationale="Programming is needed to implement data workflows, but it is broader than data science.",
             ),
@@ -623,9 +623,9 @@ CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Privacy supports data residency, access controls, logging, and compliance-sensitive platform operations.",
             ),
         ),
-        weight=7,
+        weight=6,
         rationale="Modern cloud platforms need secure operation across identity, network access, data handling, and auditability.",
-        weight_rationale="High weight because platform work is strongly entangled with security and compliance.",
+        weight_rationale="Medium-high weight because security is central to platform work, but infrastructure fundamentals still come first.",
     ),
 )
 
