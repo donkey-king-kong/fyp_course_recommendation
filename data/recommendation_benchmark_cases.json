@@ -2005,6 +2005,15 @@
           "reviewNotes": "Tags in modules.json: data-science. Official data-science MPE path. Data foundations are a supporting skill under model implementation foundations for AI/ML engineers, but the module is not in the artificial-intelligence MPE path and carries no ai-ml tag. Valid SC3xxx fill when SC3000 is already done. Programme restriction explicitly excludes CSC(2011-2023) cohort — verify student's intake year before recommending. isCurrentSemester=false — verify availability."
         },
         {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "targetSlotId": "y3-s2-mpe1",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "AI/ML Engineer -> model implementation foundations -> database -> Database System Principles",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, database. Official data-science MPE path. Database foundations support training data access, feature storage, and evaluation datasets for AI/ML systems, but this is a supporting fit rather than the student's primary NLP/CV interest. Prerequisite: SC2207 — completed. isCurrentSemester=true."
+        },
+        {
           "courseCode": "SC4010",
           "title": "Applied Cryptography",
           "targetSlotId": "y4-s1-mpe2",
@@ -2121,6 +2130,15 @@
           "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> ai-ml -> Intelligent Agents",
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. Matches via ai-ml tag, but focuses on agent-based AI rather than the infrastructure and generative AI angle this student is pursuing. SC4062, SC4050, and SC4051 should all rank higher given this profile's preferences. Prerequisites: MH2500, SC1007, SC2000 — SC1007 and SC2000 are completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4061",
+          "title": "Computer Vision",
+          "targetSlotId": "y4-s2-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "AI/ML Engineer -> machine learning systems -> computer-vision -> Computer Vision",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: ai-ml, computer-vision, computer-graphics. Official artificial-intelligence MPE path. A clear AI/ML module and valid SC4xxx candidate, but less aligned than SC4062, SC4050, or SC4051 for this case because the student's secondary preferences are parallel-computing and distributed-systems. No prerequisites in the prereq graph. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4016",
@@ -2355,6 +2373,15 @@
           "expectedSkillPath": "Data Engineer -> data storage and modelling -> database -> Big Data Management",
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "Tags in modules.json: backend-engineering, database, data-science. Official data-science MPE path. Database tag matches the third stated preference; backend-engineering adds another skill-path hit. Solid complement to SC4052 and SC4051 for the second SC4xxx slot. No prerequisites in the prereq graph. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4064",
+          "title": "Gpu Programming",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Data Engineer -> distributed data platforms -> parallel-computing -> Gpu Programming",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: programming, parallel-computing, hardware-embedded. Official high-performance-computing and edge-computing MPE paths. Parallel computing supports performance-heavy data processing and large-scale data workloads, though the module is lower-level than Cloud Computing, Distributed Systems, or Big Data Management. Prerequisites: SC2001, SC2005 — both completed. isCurrentSemester=false — verify availability."
         },
         {
           "courseCode": "SC4020",
@@ -2849,6 +2876,15 @@
           "expectedSkillPath": "Cybersecurity Engineer -> security analysis and defence -> computer-security -> Cyber Threat Intelligence",
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "Tags in modules.json: computer-security. Official security MPE path. Maps to security analysis and defence. No prerequisites in the prereq graph. Strong complement to SC4063 for a network security specialisation. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4010",
+          "title": "Applied Cryptography",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cybersecurity Engineer -> cryptography and secure implementation -> cryptography -> Applied Cryptography",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: computer-security, cryptography. Official security MPE path. Cryptography is still strongly relevant to cybersecurity engineering even though this case emphasises network/privacy security rather than cryptography specifically. Prerequisites: AB1202, SC2000 — SC2000 is completed; prereq graph ready=true via SC2000. isCurrentSemester=true."
         },
         {
           "courseCode": "SC4051",
