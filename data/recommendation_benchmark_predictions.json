@@ -1,6 +1,6 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-15T09:43:34.929039+00:00",
+  "generatedAt": "2026-09-15T10:29:44.404972+00:00",
   "apiUrl": "http://127.0.0.1:8001/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
@@ -5434,7 +5434,7 @@
           "matchedChoiceSlotYear": 3,
           "matchedChoiceSlotSemester": 1,
           "matchedKeywords": [
-            "skill:cloud and distributed infrastructure:networks"
+            "skill:cloud and distributed infrastructure:network-infrastructure"
           ],
           "prerequisites": [
             "SC2008"
@@ -5455,11 +5455,11 @@
               "careerGoal": "cloud-platform-engineer",
               "skillArea": "cloud and distributed infrastructure",
               "skillAreaWeight": 10,
-              "tag": "networks",
+              "tag": "network-infrastructure",
               "relationshipWeight": 0.75,
               "tagConfidence": 1.0,
               "contributionScore": 7.5,
-              "rationale": "Networking supports deployment, routing, communication, and reliability."
+              "rationale": "Network infrastructure modules cover routing, protocols, and transport-layer concepts that are directly applicable to cloud platform networking. Uses a precise tag so generic security or graph-theory modules that happen to mention 'networks' do not score here."
             },
             "currentSemesterBonus": 3,
             "preferenceBoost": 44,
@@ -5471,7 +5471,7 @@
             "unlockContribution": 0,
             "finalScore": 63
           },
-          "reason": "Recommended for the Cloud / Platform Engineer career goal. Also top career-skill path: Cloud / Platform Engineer -> cloud and distributed infrastructure -> networks -> Advanced Computer Networks and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Cloud / Platform Engineer career goal. Also top career-skill path: Cloud / Platform Engineer -> cloud and distributed infrastructure -> network-infrastructure -> Advanced Computer Networks and matches selected topic preference(s) and matches your profile faculty."
         },
         {
           "courseCode": "SC4050",
@@ -5671,7 +5671,7 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
           "matchedKeywords": [
-            "skill:cloud and distributed infrastructure:networks",
+            "skill:cloud and distributed infrastructure:network-infrastructure",
             "skill:secure platform operation:network-security"
           ],
           "prerequisites": [
@@ -5694,11 +5694,11 @@
               "careerGoal": "cloud-platform-engineer",
               "skillArea": "cloud and distributed infrastructure",
               "skillAreaWeight": 10,
-              "tag": "networks",
+              "tag": "network-infrastructure",
               "relationshipWeight": 0.75,
               "tagConfidence": 1.0,
               "contributionScore": 7.5,
-              "rationale": "Networking supports deployment, routing, communication, and reliability."
+              "rationale": "Network infrastructure modules cover routing, protocols, and transport-layer concepts that are directly applicable to cloud platform networking. Uses a precise tag so generic security or graph-theory modules that happen to mention 'networks' do not score here."
             },
             "currentSemesterBonus": 0,
             "preferenceBoost": 35,
@@ -5710,7 +5710,7 @@
             "unlockContribution": 0,
             "finalScore": 55
           },
-          "reason": "Recommended for the Cloud / Platform Engineer career goal. Also top career-skill path: Cloud / Platform Engineer -> cloud and distributed infrastructure -> networks -> Network Security and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Cloud / Platform Engineer career goal. Also top career-skill path: Cloud / Platform Engineer -> cloud and distributed infrastructure -> network-infrastructure -> Network Security and matches selected topic preference(s) and matches your profile faculty."
         },
         {
           "courseCode": "SC4051",

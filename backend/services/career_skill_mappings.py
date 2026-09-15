@@ -605,10 +605,10 @@ CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Distributed systems are foundational for scalable cloud platforms.",
             ),
             SkillTagRelationship(
-                tag="networks",
+                tag="network-infrastructure",
                 relationship_weight=0.75,
                 tag_confidence=1.0,
-                rationale="Networking supports deployment, routing, communication, and reliability.",
+                rationale="Network infrastructure modules cover routing, protocols, and transport-layer concepts that are directly applicable to cloud platform networking. Uses a precise tag so generic security or graph-theory modules that happen to mention 'networks' do not score here.",
             ),
         ),
         weight=10,

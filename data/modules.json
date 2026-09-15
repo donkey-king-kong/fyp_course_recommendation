@@ -69703,6 +69703,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
+        "network-infrastructure",
         "networks",
         "design",
         "media",
@@ -70278,6 +70279,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
+        "network-infrastructure",
         "networks",
         "communication",
         "design",
@@ -70299,6 +70301,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
       "recommendationTags": [
+        "network-infrastructure",
         "hardware-embedded",
         "networks",
         "communication",
@@ -70532,6 +70535,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
+        "network-infrastructure",
         "network-security",
         "cybersecurity",
         "networks",

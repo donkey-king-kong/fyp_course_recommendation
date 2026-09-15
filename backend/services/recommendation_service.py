@@ -120,41 +120,21 @@ AI_ML_INFRASTRUCTURE_BDE_TAGS = {
     "systems",
 }
 AI_ML_LOW_VALUE_BDE_TAGS = {"product-management"}
-CLOUD_PLATFORM_DIRECT_TAGS = {
-    "cloud-computing",
-    "infrastructure",
-    "network-security",
-    "networks",
-    "operating-systems",
-}
-CLOUD_PLATFORM_DATA_STORAGE_TAGS = {
-    "big-data",
-    "data-analytics",
-    "data-engineering",
-    "data-mining",
-    "database",
-}
 CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS = {"cyber-physical-systems", "privacy"}
-CLOUD_PLATFORM_RECOMMENDABLE_COURSE_CODES = {
-    "SC3030",  # Advanced Computer Networks
-    "SC3050",  # Advanced Computer Architecture
-    "SC4030",  # Wireless & Mobile Networks
-    "SC4031",  # Internet Of Things: Communications & Networking
-    "SC4050",  # Parallel Computing
-    "SC4051",  # Distributed Systems
-    "SC4052",  # Cloud Computing
-    "SC4063",  # Network Security
-}
+# Modules that score cloud-relevant tags for the wrong reason and must be suppressed.
+# Blockchain and GPU use distributed-systems / parallel-computing but are not platform modules.
+# Data-platform modules (Big Data, ML, Data Analytics) belong to data-engineer / ai-ml, not here.
+# Simulation, Quantum, and Generative AI have no cloud-platform signal at all.
 CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES = {
     "SC4000",  # Machine Learning
     "SC4001",  # Neural Network & Deep Learning
     "SC4020",  # Data Analytics & Mining
-    "SC4023",  # Big Data Management
-    "SC4053",  # Blockchain Technology
+    "SC4023",  # Big Data Management — data platform, not cloud platform
+    "SC4053",  # Blockchain Technology — distributed-systems in a consensus/crypto context
     "SC4054",  # Simulation & Modelling
     "SC4055",  # Introduction To Quantum Computing
     "SC4062",  # Generative Artificial Intelligence - Advanced Topics
-    "SC4064",  # GPU Programming
+    "SC4064",  # GPU Programming — parallel-computing in a GPU/HPC context, not cloud
 }
 RECOMMENDATION_TAG_ALIASES = {
     "ai-ml": (),
@@ -1458,21 +1438,12 @@ def should_skip_cloud_platform_candidate(module: ModuleModel, career_goal: str) 
     if career_goal != "cloud-platform-engineer":
         return False
 
-    if module.code.upper() not in CLOUD_PLATFORM_RECOMMENDABLE_COURSE_CODES:
-        return True
-
+    # Modules that match cloud-relevant tags for the wrong reason (blockchain, GPU, data platform).
     if module.code.upper() in CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES:
         return True
 
+    # Cyber-physical-systems and privacy-only modules are not platform recommendations.
     module_tags = set(module.recommendation_tags or [])
-    if "network-security" in module_tags:
-        return False
-
-    if (
-        module_tags.intersection(CLOUD_PLATFORM_DATA_STORAGE_TAGS) and
-        not module_tags.intersection(CLOUD_PLATFORM_DIRECT_TAGS)
-    ):
-        return True
 
     return bool(module_tags.intersection(CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS))
 
