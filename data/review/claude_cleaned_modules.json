@@ -4486,7 +4486,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -4517,7 +4517,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -4547,7 +4547,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -7640,8 +7640,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -7702,8 +7701,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "biology",
-        "research"
+        "general"
       ]
     },
     {
@@ -7718,8 +7716,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "research"
+        "general"
       ]
     },
     {
@@ -7832,9 +7829,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "healthcare",
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -7932,8 +7927,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "computing",
-        "programming"
+        "general"
       ]
     },
     {
@@ -7948,8 +7942,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "biology",
-        "research"
+        "general"
       ]
     },
     {
@@ -7964,8 +7957,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "research"
+        "general"
       ]
     },
     {
@@ -7980,8 +7972,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "electrical-engineering"
+        "general"
       ]
     },
     {
@@ -8011,8 +8002,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "biology",
-        "electrical-engineering"
+        "general"
       ]
     },
     {
@@ -8076,9 +8066,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "biology",
-        "healthcare",
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -8093,8 +8081,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "biology",
-        "research"
+        "general"
       ]
     },
     {
@@ -8293,8 +8280,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, AISC, ARED, ASEC, BACF, BASA, BCE, BCG, BEEC 1, BEEC 2, BIE 1, BIE 2, BMS, BS, BSB, BSPY, BUS, CBE, CBE 1, CBE 2, CBE 3, CBEC, CBEC 1, CBEC 2, CBEC 3, CE, CEE, CEE 1, CEEC, CHEM, CHEM 1, CHEM 2, CHEM 3, CHIN, CMED, CNEL, CNLM, COMP, CS, CSC, CSEC, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENE 1, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(CBE), REP(CE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
       "recommendationTags": [
-        "biology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -9950,7 +9936,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -10028,7 +10014,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -10405,8 +10391,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "biology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -10482,7 +10467,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -10589,8 +10574,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -11198,8 +11182,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "healthcare",
-        "history"
+        "general"
       ]
     },
     {
@@ -11214,8 +11197,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "healthcare",
-        "history"
+        "general"
       ]
     },
     {
@@ -11260,7 +11242,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -11290,7 +11272,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -11307,8 +11289,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, AISC, ARED, ASEC, BACF, BASA, BCE, BCG, BEEC, BIE, BS, BSPY, BUS, CBE, CBEC, CE, CEE, CEEC, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MACS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS(ITG), MS(NULL), MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM",
       "recommendationTags": [
-        "biology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -11339,8 +11320,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "healthcare",
-        "history"
+        "general"
       ]
     },
     {
@@ -13596,8 +13576,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry",
-        "biology"
+        "general"
       ]
     },
     {
@@ -14863,9 +14842,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "EEE, EEEC, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME)",
       "recommendationTags": [
+        "ai-ml",
         "computer-vision",
-        "computer-graphics",
-        "artificial-intelligence"
+        "computer-graphics"
       ]
     },
     {
@@ -15100,9 +15079,9 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
+        "ai-ml",
         "machine-learning",
-        "education",
-        "artificial-intelligence"
+        "education"
       ]
     },
     {
@@ -15138,9 +15117,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CHEM, CHIN, CS, CSC, CSEC, CVEC, DSAI, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MACS, MAEC, MAEO, MAT, MATH, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CSC), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
       "recommendationTags": [
+        "ai-ml",
         "natural-language-processing",
-        "language",
-        "artificial-intelligence"
+        "language"
       ]
     },
     {
@@ -15527,11 +15506,11 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
+        "ai-ml",
         "internet-of-things",
         "machine-learning",
         "networks",
-        "education",
-        "artificial-intelligence"
+        "education"
       ]
     },
     {
@@ -16595,8 +16574,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "CNEL, CNLM, ELHS, ELPL, HSCN, HSLM, LMEL, LMPL, PLCN, PLHS, REP(CBE) 1, REP(CBE) 2",
       "recommendationTags": [
-        "chemistry",
-        "biology",
+        "networks",
         "seminar"
       ]
     },
@@ -17462,7 +17440,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry"
+        "general"
       ]
     },
     {
@@ -17758,7 +17736,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "chemistry"
+        "general"
       ]
     },
     {
@@ -17823,8 +17801,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry",
-        "law"
+        "general"
       ]
     },
     {
@@ -17875,8 +17852,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry",
-        "law"
+        "general"
       ]
     },
     {
@@ -17909,8 +17885,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry",
-        "law"
+        "general"
       ]
     },
     {
@@ -18030,8 +18005,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry",
-        "law"
+        "general"
       ]
     },
     {
@@ -18083,8 +18057,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry",
-        "law"
+        "general"
       ]
     },
     {
@@ -18101,8 +18074,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "chemistry",
-        "law"
+        "general"
       ]
     },
     {
@@ -18311,9 +18283,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "By permission",
       "recommendationTags": [
-        "chemistry",
-        "biology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -18330,8 +18300,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "By permission",
       "recommendationTags": [
-        "chemistry",
-        "biology"
+        "general"
       ]
     },
     {
@@ -18613,9 +18582,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
       "recommendationTags": [
+        "ai-ml",
         "computer-vision",
-        "computer-graphics",
-        "artificial-intelligence"
+        "computer-graphics"
       ]
     },
     {
@@ -18724,9 +18693,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
       "recommendationTags": [
+        "ai-ml",
         "machine-learning",
-        "education",
-        "artificial-intelligence"
+        "education"
       ]
     },
     {
@@ -22576,7 +22545,7 @@
       "isCurrentSemester": false,
       "recommendationTags": [
         "web-development",
-        "networks",
+        "computer-network",
         "computing"
       ]
     },
@@ -22659,9 +22628,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
       "recommendationTags": [
+        "ai-ml",
         "computer-vision",
-        "computer-graphics",
-        "artificial-intelligence"
+        "computer-graphics"
       ]
     },
     {
@@ -22752,9 +22721,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
       "recommendationTags": [
+        "ai-ml",
         "machine-learning",
-        "education",
-        "artificial-intelligence"
+        "education"
       ]
     },
     {
@@ -22771,9 +22740,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "BCE(2011-onwards), BCG(2011-onwards), CE(2011-onwards), CSC(2011-onwards)",
       "recommendationTags": [
+        "ai-ml",
         "natural-language-processing",
-        "language",
-        "artificial-intelligence"
+        "language"
       ]
     },
     {
@@ -24999,9 +24968,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "EEE, EEEC, IEEC, IEM, REP(CE)",
       "recommendationTags": [
+        "ai-ml",
         "computer-vision",
-        "computer-graphics",
-        "artificial-intelligence"
+        "computer-graphics"
       ]
     },
     {
@@ -25258,9 +25227,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO(AMAS), MAEO(NULL), MAEO(PMAS), MAEO(STAT), MAT, MATH(AMAS), MATH(NULL), MATH(PMAS), MATH(STAT), ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
       "recommendationTags": [
+        "ai-ml",
         "machine-learning",
-        "education",
-        "artificial-intelligence"
+        "education"
       ]
     },
     {
@@ -25296,9 +25265,9 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACBS, ACC, ADM, AERO, ARED, ASEC, BCE, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEE 1, CEEC, CHEM, CHIN, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEE 1, EEEC, EESS, ELAH, ELH, ENE, ENE 1, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH 1, MATH 2, MATH 3, ME 1, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SSM",
       "recommendationTags": [
+        "ai-ml",
         "natural-language-processing",
-        "language",
-        "artificial-intelligence"
+        "language"
       ]
     },
     {
@@ -54296,9 +54265,10 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "AERO 1, AERO 2, ASEC 1, ASEC 2, BEEC 1, BEEC 2, BIE 1, BIE 2, CBE 1, CBE 2, CBEC 1, CBEC 2, CE 1, CE 2, CEE 1, CEE 2, CEEC 1, CEEC 2, CSC 1, CSC 2, CSEC 1, CSEC 2, CVEC 1, CVEC 2, EEE 2, ENE 1, ENE 2, ENEC 1, ENEC 2, IEM 2, MAT 1, MAT 2, ME(DES) 2, ME(IDMS) 2, ME(IMS) 2, ME(NULL) 2, ME(RMS) 2, MEEC(DES) 2, MEEC(IDMS) 2, MEEC(IMS) 2, MEEC(NULL) 2, MEEC(RMS) 2, MS 3, MS 4, MS(2019-onwards), MTEC 1, MTEC 2",
       "recommendationTags": [
+        "database",
         "communication",
         "writing",
-        "professional-skills"
+        "project"
       ]
     },
     {
@@ -60468,7 +60438,7 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS)",
       "recommendationTags": [
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -60677,7 +60647,7 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS)",
       "recommendationTags": [
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -60757,7 +60727,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -60896,7 +60866,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "mechanical-engineering"
+        "general"
       ]
     },
     {
@@ -64367,8 +64337,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "computing",
-        "programming"
+        "general"
       ]
     },
     {
@@ -64399,8 +64368,13 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ENE(Direct Entry)",
       "recommendationTags": [
+        "law",
+        "biology",
         "physics",
-        "materials"
+        "materials",
+        "electrical-engineering",
+        "energy",
+        "research"
       ]
     },
     {
@@ -64576,7 +64550,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "materials"
+        "general"
       ]
     },
     {
@@ -64607,8 +64581,7 @@
       "latestSemester": "1",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "materials",
-        "research"
+        "general"
       ]
     },
     {
@@ -64623,8 +64596,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "materials",
-        "research"
+        "general"
       ]
     },
     {
@@ -64654,7 +64626,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "materials"
+        "general"
       ]
     },
     {
@@ -64701,7 +64673,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "materials"
+        "general"
       ]
     },
     {
@@ -64777,8 +64749,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "materials",
-        "research"
+        "general"
       ]
     },
     {
@@ -64808,8 +64779,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "materials",
-        "business"
+        "general"
       ]
     },
     {
@@ -64938,9 +64908,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "healthcare",
-        "materials"
+        "general"
       ]
     },
     {
@@ -64973,9 +64941,7 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
-        "biology",
-        "healthcare",
-        "materials"
+        "general"
       ]
     },
     {
@@ -65074,7 +65040,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "materials"
+        "general"
       ]
     },
     {
@@ -65156,7 +65122,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, AISC, ARED, ASEC, BACF, BASA, BCE, BCG, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CE, CEE, CEEC, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CSC, CSEC, CVEC, DSAI, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MACS, MAEC, MAEO, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP, ROBO, SCED, SOC, SPPE, SSM",
       "recommendationTags": [
-        "materials"
+        "general"
       ]
     },
     {
@@ -65311,8 +65277,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "ACC, ADM, AERO, ASEC, BCE, BCG, BEEC, BIE, BMS, BS, BSPY, CBE, CBEC, CE, CEE, CEEC, CHEM, CHIN, CS, CSC, CSEC, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(NULL), ME(RMS), MEEC(DES), MEEC(NULL), MEEC(RMS), MS(NULL)-2ndMaj/Spec(MSB), MS(NULL)-2ndMaj/Spec(NULL), MTEC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, SOC, SSM",
       "recommendationTags": [
-        "materials",
-        "environmental"
+        "general"
       ]
     },
     {
@@ -65363,8 +65328,7 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "environmental",
-        "economics"
+        "general"
       ]
     },
     {
@@ -68584,9 +68548,17 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
+        "cybersecurity",
+        "systems",
         "business",
         "marketing",
-        "entrepreneurship"
+        "design",
+        "philosophy",
+        "education",
+        "language",
+        "materials",
+        "environmental",
+        "project"
       ]
     },
     {
@@ -69626,8 +69598,11 @@
       "isCurrentSemester": true,
       "recommendationTags": [
         "artificial-intelligence",
-        "machine-learning",
-        "algorithms"
+        "embedded-systems",
+        "finance",
+        "communication",
+        "art",
+        "materials"
       ]
     },
     {
@@ -69905,11 +69880,11 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
+        "ai-ml",
         "data-science",
         "statistics",
         "machine-learning",
-        "education",
-        "artificial-intelligence"
+        "education"
       ]
     },
     {
@@ -69947,9 +69922,9 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, COMP, CS, CVEC, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ENE, ENEC, ENG, ESPP, HIST, IEEC, IEM, LMS, MAEC, MAEO, MAT, MATH 1, MATH 2, MATH 3, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHY, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
       "recommendationTags": [
+        "ai-ml",
         "natural-language-processing",
-        "language",
-        "artificial-intelligence"
+        "language"
       ]
     },
     {
@@ -70272,7 +70247,8 @@
         "statistics",
         "communication",
         "education",
-        "language"
+        "language",
+        "materials"
       ]
     },
     {
@@ -70474,8 +70450,11 @@
         "cloud-computing",
         "mathematics",
         "optimization",
+        "design",
+        "education",
         "physics",
-        "electrical-engineering"
+        "electrical-engineering",
+        "mechanical-engineering"
       ]
     },
     {
@@ -70686,9 +70665,9 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
+        "ai-ml",
         "natural-language-processing",
-        "language",
-        "artificial-intelligence"
+        "language"
       ]
     },
     {
@@ -70705,9 +70684,9 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
+        "ai-ml",
         "computer-vision",
-        "computer-graphics",
-        "artificial-intelligence"
+        "computer-graphics"
       ]
     },
     {
@@ -70762,9 +70741,9 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "Must be a Turing AI Scholar",
       "recommendationTags": [
+        "ai-ml",
         "theory-of-computing",
-        "computing",
-        "artificial-intelligence"
+        "computing"
       ]
     },
     {
@@ -70866,8 +70845,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "mathematics",
-        "statistics"
+        "general"
       ]
     },
     {
@@ -70916,7 +70894,7 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "philosophy"
+        "general"
       ]
     },
     {
@@ -70950,7 +70928,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "economics"
+        "general"
       ]
     },
     {
@@ -71037,7 +71015,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "economics"
+        "general"
       ]
     },
     {
@@ -71110,8 +71088,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "computing",
-        "media"
+        "general"
       ]
     },
     {
@@ -71145,8 +71122,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "psychology",
-        "philosophy"
+        "general"
       ]
     },
     {
@@ -71198,8 +71174,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "media",
-        "literature"
+        "general"
       ]
     },
     {
@@ -71234,8 +71209,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "history",
-        "geography"
+        "general"
       ]
     },
     {
@@ -71305,8 +71279,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "psychology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -71323,7 +71296,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "economics"
+        "general"
       ]
     },
     {
@@ -71340,8 +71313,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "biology",
-        "history"
+        "general"
       ]
     },
     {
@@ -71393,8 +71365,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "history",
-        "geography"
+        "general"
       ]
     },
     {
@@ -71553,8 +71524,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "philosophy",
-        "psychology"
+        "general"
       ]
     },
     {
@@ -71571,7 +71541,7 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "physics"
+        "general"
       ]
     },
     {
@@ -71588,8 +71558,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "public-policy",
-        "history"
+        "general"
       ]
     },
     {
@@ -71606,8 +71575,7 @@
       "isCurrentSemester": true,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "healthcare",
-        "philosophy"
+        "general"
       ]
     },
     {
@@ -71624,8 +71592,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "biology",
-        "healthcare"
+        "general"
       ]
     },
     {
@@ -71743,8 +71710,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "psychology",
-        "philosophy"
+        "general"
       ]
     },
     {
@@ -71798,8 +71764,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "media",
-        "sociology"
+        "general"
       ]
     },
     {
@@ -71816,8 +71781,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "sociology",
-        "psychology"
+        "general"
       ]
     },
     {
@@ -71851,8 +71815,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "philosophy",
-        "history"
+        "general"
       ]
     },
     {
@@ -71869,7 +71832,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "sociology"
+        "general"
       ]
     },
     {
@@ -71973,8 +71936,7 @@
       "isCurrentSemester": false,
       "notAvailableToProgramme": "Only for University Scholars Programme (USP) students.",
       "recommendationTags": [
-        "philosophy",
-        "media"
+        "general"
       ]
     },
     {
