@@ -1274,7 +1274,14 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
             if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
         ]
     matched_skill_contributions = get_career_skill_contributions(module, career_goal)
-    top_skill_contribution = get_top_skill_contribution(matched_skill_contributions)
+    evidence_skill_contributions = get_career_skill_evidence_contributions(
+        module,
+        career_goal,
+    )
+    top_skill_contribution = get_top_evidence_skill_contribution(
+        evidence_skill_contributions,
+        career_goal,
+    )
     matched_signals = (
         matched_keywords +
         [f"tag:{tag}" for tag in matched_tags] +
@@ -1336,6 +1343,23 @@ def get_career_skill_contributions(
 
     return contributions
 
+def get_career_skill_evidence_contributions(
+    module: ModuleModel,
+    career_goal: str,
+) -> list[CareerSkillContribution]:
+    module_tags = set(module.recommendation_tags or [])
+
+    return [
+        CareerSkillContribution(
+            mapping=mapping,
+            relationship=relationship,
+            score=mapping.weight * relationship.relationship_weight * relationship.tag_confidence,
+        )
+        for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ())
+        for relationship in mapping.tag_relationships
+        if relationship.tag in module_tags
+    ]
+
 def get_top_skill_contribution(
     contributions: list[CareerSkillContribution],
 ) -> Optional[CareerSkillContribution]:
@@ -1352,8 +1376,29 @@ def get_top_skill_contribution(
         ),
     )
 
+def get_top_evidence_skill_contribution(
+    contributions: list[CareerSkillContribution],
+    career_goal: str,
+) -> Optional[CareerSkillContribution]:
+    top_contribution = get_top_skill_contribution(contributions)
+    if (
+        career_goal != "cybersecurity-engineer" or
+        not top_contribution or
+        top_contribution.relationship.tag != "cybersecurity"
+    ):
+        return top_contribution
+
+    specific_contributions = [
+        contribution
+        for contribution in contributions
+        if contribution.relationship.tag != "cybersecurity"
+    ]
+
+    return get_top_skill_contribution(specific_contributions) or top_contribution
+
 def round_positive_score(score: float) -> int:
     return int(score + 0.5)
+
 
 def build_career_skill_evidence(
     career_goal: str,

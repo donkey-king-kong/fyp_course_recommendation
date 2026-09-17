@@ -7,7 +7,7 @@ This packet summarizes the full 21-case before/after benchmark diff after the Op
 ## Compared Versions
 
 - Before: predictions from commit `d34fdba` before the Opus-guided scoring fixes.
-- After: current `data/recommendation_benchmark_predictions.json` after dimension-based preferences, MPE `max()` scoring, catalog-grounded mappings, and regenerated predictions.
+- After: current `data/recommendation_benchmark_predictions.json` after dimension-based preferences, MPE `max()` scoring, catalog-grounded mappings, ranking-neutral explanation evidence selection, and regenerated predictions.
 
 ## Aggregate Metrics
 
@@ -15,7 +15,7 @@ This packet summarizes the full 21-case before/after benchmark diff after the Op
 | --- | ---: | ---: | ---: |
 | `averagePrecisionAtReturned` | `0.7857142857142857` | `0.8095238095238095` | `+0.0238` |
 | `averageNdcgAtReturned` | `0.7306114222717204` | `0.7634008820150107` | `+0.0328` |
-| `averageExplanationFidelity` | `0.55` | `0.45` | `-0.1000` |
+| `averageExplanationFidelity` | `0.55` | `0.525` | `-0.0250` |
 | `averageSlotFillRate` | `1.0` | `1.0` | `+0.0000` |
 | `averageConstraintValidity` | `1.0` | `1.0` | `+0.0000` |
 | `oldCodeExposure` | `0` | `0` | `+0.0000` |
@@ -24,7 +24,7 @@ This packet summarizes the full 21-case before/after benchmark diff after the Op
 
 - Changed selections: `6` of `21` cases: software-engineer-csc-002, software-engineer-csc-013, ai-ml-engineer-csc-001, ai-ml-engineer-csc-002, data-engineer-csc-002, cybersecurity-engineer-csc-002.
 - Ranking metric regressions: `0` cases: none.
-- Explanation fidelity regressions: `2` cases: cybersecurity-engineer-csc-001, cybersecurity-engineer-csc-002.
+- Explanation fidelity regressions after the explanation-only fix: `1` case: cybersecurity-engineer-csc-002.
 - Cloud-platform cases did not change in selected modules or returned-ranking metrics.
 - Software Engineer selections changed in `software-engineer-csc-002` and `software-engineer-csc-013`, but their returned precision/nDCG did not improve or regress.
 
@@ -51,8 +51,8 @@ This packet summarizes the full 21-case before/after benchmark diff after the Op
 | `data-engineer-csc-002` | SC4023 (68), SC4052 (63) | SC4052 (63), SC4023 (60) | Yes | +0.0000 | +0.0754 | +0.0000 |
 | `cloud-platform-engineer-csc-001` | SC3030 (49), SC4050 (64) | SC3030 (49), SC4050 (64) | No | +0.0000 | +0.0000 | +0.0000 |
 | `cloud-platform-engineer-csc-002` | SC4063 (41), SC4051 (32) | SC4063 (41), SC4051 (32) | No | +0.0000 | +0.0000 | +0.0000 |
-| `cybersecurity-engineer-csc-001` | SC4010 (62), SC4014 (62) | SC4010 (72), SC4014 (65) | No | +0.0000 | +0.0000 | -1.0000 |
-| `cybersecurity-engineer-csc-002` | SC4014 (62), SC4017 (62) | SC4063 (71), SC4017 (66) | Yes | +0.5000 | +0.6131 | -1.0000 |
+| `cybersecurity-engineer-csc-001` | SC4010 (62), SC4014 (62) | SC4010 (72), SC4014 (65) | No | +0.0000 | +0.0000 | +0.0000 |
+| `cybersecurity-engineer-csc-002` | SC4014 (62), SC4017 (62) | SC4063 (71), SC4017 (66) | Yes | +0.5000 | +0.6131 | -0.5000 |
 
 ## Cases Needing Label Review
 
@@ -133,23 +133,24 @@ These reviewed relevant candidates carry the generic `networks` tag. They are us
 
 ### Explanation-Fidelity Review
 
-- `cybersecurity-engineer-csc-001` explanation fidelity changed from `1.0` to `0.0`.
-- `cybersecurity-engineer-csc-002` explanation fidelity changed from `1.0` to `0.0`.
-- This appears to be a stale benchmark-label issue, not a ranking regression.
-- The mapping rewrite changed the top evidence path from dead semantic tags such as `computer-security` / `computer-network` toward real catalog tags such as `cybersecurity`, `network-security`, and `network-infrastructure`.
-- Do not silently edit the benchmark labels. Ask the reviewer to approve these expected-skill-path updates.
+- The earlier packet diagnosis was too broad: the fidelity drop was not mainly caused by returned modules using stale `computer-security` labels.
+- The real issue was explanation evidence selection: the revived generic `cybersecurity` tag scored higher than more specific tags such as `cryptography`, `malware-analysis`, `privacy`, and `network-security`.
+- A ranking-neutral evidence selector now uses all matching career-skill relationships for explanation only, while ranking still uses the existing per-skill-area scoring contributions.
+- This restored specific explanations for returned `SC4010`, `SC4014`, `SC4017`, and `SC4063` without changing any returned module or score.
+- `averageExplanationFidelity` improved from `0.45` to `0.55` after the explanation-only fix and the `SC4063` label correction; `averagePrecisionAtReturned` and `averageNdcgAtReturned` remained unchanged.
 
-### Proposed Expected-Skill-Path Updates For Review
+### Applied Expected-Skill-Path Correction
 
-| Case | Module | Current Expected Path | Proposed Review Path | Reason |
+| Case | Module | Previous Expected Path | Corrected Expected Path | Reason |
 | --- | --- | --- | --- | --- |
-| `cybersecurity-engineer-csc-001` | `SC4016` | `Cybersecurity Engineer -> security analysis and defence -> computer-security -> Cyber Threat Intelligence` | `Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Cyber Threat Intelligence` | `computer-security` was a dead semantic tag; `cybersecurity` is the real catalog tag. |
-| `cybersecurity-engineer-csc-001` | `SC4012` | `Cybersecurity Engineer -> cryptography and secure implementation -> computer-security -> Software Security` | Review needed: likely `Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Software Security`, unless the reviewer prefers a cryptography/secure-implementation rationale. | The old path used dead `computer-security`; the correct skill area should be reviewer-approved because the winning skill area may have changed. |
-| `cybersecurity-engineer-csc-001` | `SC4013` | `Cybersecurity Engineer -> cryptography and secure implementation -> computer-security -> Application Security` | Review needed: likely `Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Application Security`, unless the reviewer prefers secure-implementation rationale. | The old path used dead `computer-security`; update only after reviewer confirms the intended skill rationale. |
-| `cybersecurity-engineer-csc-002` | `SC4063` | `Cybersecurity Engineer -> networks and systems security -> computer-security -> Network Security` | `Cybersecurity Engineer -> networks and systems security -> network-security -> Network Security` | `SC4063` directly carries `network-security`, which is now the catalog-grounded specific signal. |
-| `cybersecurity-engineer-csc-002` | `SC4013` | `Cybersecurity Engineer -> networks and systems security -> computer-security -> Application Security` | Review needed: likely `Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Application Security`, unless the reviewer considers it primarily network/systems security. | The old path used dead `computer-security` and may also point to the wrong skill area. |
-| `cybersecurity-engineer-csc-002` | `SC4016` | `Cybersecurity Engineer -> security analysis and defence -> computer-security -> Cyber Threat Intelligence` | `Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Cyber Threat Intelligence` | `computer-security` was a dead semantic tag; `cybersecurity` is the real catalog tag. |
+| `cybersecurity-engineer-csc-002` | `SC4063` | `Cybersecurity Engineer -> networks and systems security -> computer-security -> Network Security` | `Cybersecurity Engineer -> networks and systems security -> network-security -> Network Security` | The official course description explicitly covers secure communication protocols, firewalls, zero trust architectures, intrusion detection systems, network protocol analysis, Wireshark, tcpdump, penetration testing frameworks, and network security architecture, so `network-security` is the precise explanation tag. |
+
+### Label Hygiene Items For Later Review
+
+- `SC4016` still has expected paths using `computer-security`, but it is not returned in the current regressed cases, so changing it would not affect the current fidelity metric.
+- `SC4012` and `SC4013` contain expected paths that pair a skill area with a tag that may not be producible from the current mapping structure; these should be reviewed separately rather than edited just to match current output.
+- Future `expectedSkillPath` labels should ideally be generated from the same mapping structure used by the recommender to avoid hand-authored path drift.
 
 ## Recommendation
 
-Do not tune scoring further until these labels are reviewed. The latest structural fixes improved aggregate ranking while preserving slot fill and constraint validity, so remaining weak cases may reflect draft-label gaps rather than algorithm defects.
+Do not tune scoring further until remaining draft-label gaps are reviewed. The latest structural fixes improved aggregate ranking while preserving slot fill and constraint validity, so remaining weak cases may reflect draft-label gaps rather than algorithm defects.

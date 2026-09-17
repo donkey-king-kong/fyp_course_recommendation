@@ -1,7 +1,7 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-17T08:51:29.695804+00:00",
-  "apiUrl": "http://127.0.0.1:8012/recommendations",
+  "generatedAt": "2026-09-17T09:53:44.570317+00:00",
+  "apiUrl": "http://127.0.0.1:8013/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
     {
@@ -6076,13 +6076,13 @@
             "careerSkillScore": 16,
             "careerSkillEvidence": {
               "careerGoal": "cybersecurity-engineer",
-              "skillArea": "security analysis and defence",
-              "skillAreaWeight": 10,
-              "tag": "cybersecurity",
+              "skillArea": "cryptography and secure implementation",
+              "skillAreaWeight": 6,
+              "tag": "cryptography",
               "relationshipWeight": 1.0,
               "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents security concepts, threats, and defensive practice."
+              "contributionScore": 6.0,
+              "rationale": "Cryptography directly supports secure protocols and data protection."
             },
             "currentSemesterBonus": 3,
             "preferenceBoost": 33,
@@ -6094,7 +6094,7 @@
             "unlockContribution": 0,
             "finalScore": 72
           },
-          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
+          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> cryptography and secure implementation -> cryptography -> Applied Cryptography and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
         },
         {
           "courseCode": "SC4014",
@@ -6135,11 +6135,11 @@
               "careerGoal": "cybersecurity-engineer",
               "skillArea": "security analysis and defence",
               "skillAreaWeight": 10,
-              "tag": "cybersecurity",
-              "relationshipWeight": 1.0,
+              "tag": "malware-analysis",
+              "relationshipWeight": 0.85,
               "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents security concepts, threats, and defensive practice."
+              "contributionScore": 8.5,
+              "rationale": "Malware analysis is a specialised but direct security-analysis skill."
             },
             "currentSemesterBonus": 0,
             "preferenceBoost": 33,
@@ -6151,7 +6151,7 @@
             "unlockContribution": 0,
             "finalScore": 65
           },
-          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Concepts & Techniques For Malware Analysis and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
+          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> security analysis and defence -> malware-analysis -> Concepts & Techniques For Malware Analysis and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
         }
       ]
     },
@@ -6314,13 +6314,13 @@
             "careerSkillScore": 18,
             "careerSkillEvidence": {
               "careerGoal": "cybersecurity-engineer",
-              "skillArea": "security analysis and defence",
-              "skillAreaWeight": 10,
-              "tag": "cybersecurity",
+              "skillArea": "networks and systems security",
+              "skillAreaWeight": 8,
+              "tag": "network-security",
               "relationshipWeight": 1.0,
               "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents security concepts, threats, and defensive practice."
+              "contributionScore": 8.0,
+              "rationale": "Network security directly represents secure network design, monitoring, and defence."
             },
             "currentSemesterBonus": 0,
             "preferenceBoost": 33,
@@ -6332,7 +6332,7 @@
             "unlockContribution": 0,
             "finalScore": 71
           },
-          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Network Security and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
+          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> networks and systems security -> network-security -> Network Security and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
         },
         {
           "courseCode": "SC4017",
@@ -6372,11 +6372,11 @@
               "careerGoal": "cybersecurity-engineer",
               "skillArea": "security analysis and defence",
               "skillAreaWeight": 10,
-              "tag": "cybersecurity",
-              "relationshipWeight": 1.0,
-              "tagConfidence": 1.0,
-              "contributionScore": 10.0,
-              "rationale": "Directly represents security concepts, threats, and defensive practice."
+              "tag": "privacy",
+              "relationshipWeight": 0.7,
+              "tagConfidence": 0.9,
+              "contributionScore": 6.3,
+              "rationale": "Privacy knowledge supports responsible handling of sensitive systems and data."
             },
             "currentSemesterBonus": 3,
             "preferenceBoost": 33,
@@ -6388,7 +6388,7 @@
             "unlockContribution": 0,
             "finalScore": 66
           },
-          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> security analysis and defence -> cybersecurity -> Data Privacy & Security and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
+          "reason": "Recommended for the Cybersecurity Engineer career goal. Also top career-skill path: Cybersecurity Engineer -> security analysis and defence -> privacy -> Data Privacy & Security and matches selected topic preference(s) and matches your profile faculty and matches an official MPE specialisation path for this career goal."
         }
       ]
     }
