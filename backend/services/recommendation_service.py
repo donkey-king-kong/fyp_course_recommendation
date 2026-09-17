@@ -61,6 +61,52 @@ SOFTWARE_ENGINEER_TAG_WEIGHTS = {
     "parallel-computing": 2,
     "computer-architecture": 3,
 }
+CAREER_KEYWORDS = {
+    "software-engineer": SOFTWARE_ENGINEER_KEYWORDS,
+    "ai-ml-engineer": {
+        "artificial intelligence": 5,
+        "machine learning": 5,
+        "deep learning": 5,
+        "neural network": 5,
+        "natural language": 5,
+        "computer vision": 5,
+        "generative": 4,
+        "model": 3,
+        "data science": 3,
+        "parallel": 2,
+    },
+    "data-engineer": {
+        "database": 5,
+        "data": 4,
+        "big data": 5,
+        "distributed": 4,
+        "cloud": 4,
+        "parallel": 3,
+        "pipeline": 4,
+        "analytics": 2,
+        "mining": 2,
+    },
+    "cloud-platform-engineer": {
+        "cloud": 5,
+        "distributed": 5,
+        "network": 4,
+        "operating system": 4,
+        "parallel": 3,
+        "architecture": 3,
+        "security": 2,
+        "platform": 4,
+    },
+    "cybersecurity-engineer": {
+        "security": 5,
+        "cryptography": 5,
+        "malware": 5,
+        "forensics": 4,
+        "threat": 4,
+        "privacy": 4,
+        "network": 3,
+        "secure": 4,
+    },
+}
 # Used for near-duplicate titles where the curriculum and catalog use slightly different wording.
 TITLE_SIGNATURE_STOP_WORDS = {"principle", "principles"}
 TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
@@ -923,13 +969,14 @@ def build_prerequisite_recommendations(
 def build_relevance_filters(career_goal: str) -> list:
     filters = []
 
-    for keyword in SOFTWARE_ENGINEER_KEYWORDS:
+    for keyword in CAREER_KEYWORDS.get(career_goal, {}):
         pattern = f"%{keyword}%"
         filters.append(ModuleModel.title.ilike(pattern))
         filters.append(ModuleModel.description.ilike(pattern))
 
-    for tag in SOFTWARE_ENGINEER_TAG_WEIGHTS:
-        filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
+    if career_goal == "software-engineer":
+        for tag in SOFTWARE_ENGINEER_TAG_WEIGHTS:
+            filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
 
     for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ()):
         for relationship in mapping.tag_relationships:
