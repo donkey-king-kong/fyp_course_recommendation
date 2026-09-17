@@ -128,7 +128,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Strong signal for infrastructure and networked software behavior.",
             ),
             SkillTagRelationship(
-                tag="computer-network",
+                tag="networks",
                 relationship_weight=0.75,
                 tag_confidence=1.0,
                 rationale="Networking knowledge directly supports distributed and internet-facing software.",
@@ -160,7 +160,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
         skill="secure software practice",
         tag_relationships=(
             SkillTagRelationship(
-                tag="computer-security",
+                tag="cybersecurity",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Directly represents secure software and systems practice.",
@@ -268,10 +268,16 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
         skill="machine learning and statistical reasoning",
         tag_relationships=(
             SkillTagRelationship(
-                tag="ai-ml",
+                tag="machine-learning",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Directly supports model training, evaluation, and applied machine learning work.",
+            ),
+            SkillTagRelationship(
+                tag="artificial-intelligence",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="AI modules support model reasoning and intelligent-system design, but can be broader than statistical machine learning.",
             ),
             SkillTagRelationship(
                 tag="math-foundation",
@@ -720,7 +726,7 @@ CYBERSECURITY_ENGINEER_SKILL_MAPPINGS = (
         skill="security analysis and defence",
         tag_relationships=(
             SkillTagRelationship(
-                tag="computer-security",
+                tag="cybersecurity",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Directly represents security concepts, threats, and defensive practice.",
@@ -755,16 +761,22 @@ CYBERSECURITY_ENGINEER_SKILL_MAPPINGS = (
         skill="networks and systems security",
         tag_relationships=(
             SkillTagRelationship(
-                tag="computer-network",
-                relationship_weight=1.0,
-                tag_confidence=1.0,
-                rationale="Network knowledge is essential for analysing attacks, traffic, and defences.",
-            ),
-            SkillTagRelationship(
                 tag="network-security",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Network security directly represents secure network design, monitoring, and defence.",
+            ),
+            SkillTagRelationship(
+                tag="network-infrastructure",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Network infrastructure knowledge supports analysing and hardening real networked systems.",
+            ),
+            SkillTagRelationship(
+                tag="networks",
+                relationship_weight=0.3,
+                tag_confidence=1.0,
+                rationale="Generic network coverage is useful background, but weaker evidence than explicit network-security content.",
             ),
             SkillTagRelationship(
                 tag="operating-systems",
