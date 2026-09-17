@@ -169,6 +169,8 @@ AI_ML_INFRASTRUCTURE_BDE_TAGS = {
 AI_ML_LOW_VALUE_BDE_TAGS = {"product-management"}
 CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS = {"cyber-physical-systems", "privacy"}
 # Modules that score cloud-relevant tags for the wrong reason and must be suppressed.
+# Keep SC4051 Distributed Systems and SC4052 Cloud Computing eligible: both are core
+# cloud-platform signals through distributed-systems and cloud-computing tags.
 # Blockchain and GPU use distributed-systems / parallel-computing but are not platform modules.
 # Data-platform modules (Big Data, ML, Data Analytics) belong to data-engineer / ai-ml, not here.
 # Simulation, Quantum, and Generative AI have no cloud-platform signal at all.
