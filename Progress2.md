@@ -1115,3 +1115,67 @@ Status: Implemented on `recommendation-scoring-calibration`
 ### Next Step
 
 - Review remaining weak Software Engineer cases separately, especially `software-engineer-csc-013`, because the Opus-targeted fixes improved AI / ML, Data Engineer, and Cybersecurity cases but did not address all Software Engineer ranking issues.
+
+## Recommendation Calibration Outcome Summary
+
+Status: Current recommendation benchmark baseline after Opus-guided fixes
+
+### Outcome
+
+- The Opus-guided scoring changes produced a real benchmark improvement without adding external data, AI, RAG, embeddings, or ML ranking.
+- The system remains deterministic and explainable.
+- The main successful structural changes were:
+  - Preference dimensions are counted by original student-selected preference rather than raw expanded tag overlap.
+  - MPE specialisation boost now uses the strongest matching specialisation instead of additive stacking.
+  - Career-skill mappings are grounded in actual catalog tags instead of dead semantic tags.
+  - A validation script now catches future career-skill mapping tags that are missing from the module catalog.
+
+### Metrics
+
+- Previous baseline after prerequisite-penalty and network-security fixes:
+  - `averagePrecisionAtReturned`: `0.7857142857142857`
+  - `averageNdcgAtReturned`: `0.7306114222717204`
+- Current baseline after Opus-guided fixes:
+  - `averagePrecisionAtReturned`: `0.8095238095238095`
+  - `averageNdcgAtReturned`: `0.7634008820150107`
+- Improvement:
+  - `averagePrecisionAtReturned`: `+0.023809523809523725`
+  - `averageNdcgAtReturned`: `+0.0327894597432903`
+
+### Key Case Outcomes
+
+- `ai-ml-engineer-csc-001`
+  - Before: `SC3020`, `SC4002`
+  - After: `SC3020`, `SC4061`
+  - Outcome: improved because `SC4061` now beats `SC4002` after `ai-ml` preference dimension counting and MPE `max()` scoring.
+- `data-engineer-csc-002`
+  - Before earlier diagnosis: `SC4023`, `SC4020`
+  - After prerequisite penalty fix: `SC4023`, `SC4052`
+  - After Opus-guided fixes: `SC4052`, `SC4023`
+  - Outcome: improved because `SC4052` now ranks first and `SC4020` is no longer selected.
+- `cybersecurity-engineer-csc-002`
+  - Before: `SC4014`, `SC4017`
+  - After: `SC4063`, `SC4017`
+  - Outcome: improved because `SC4063` now beats `SC4014` after catalog-grounded cybersecurity mapping.
+- `software-engineer-csc-004`
+  - Before: `SC3020`, `SC3040`, `SC4052`
+  - After: `SC3020`, `SC3040`, `SC4052`
+  - Outcome: unchanged; remaining Software Engineer weak cases need separate investigation.
+
+### Current Interpretation
+
+- The largest quality gains came from fixing signal interaction and mapping/data consistency, not from tuning constants.
+- Preference remains useful but no longer double-counts broad aliases like `ai-ml`.
+- MPE specialisation now confirms career fit rather than rewarding administrative cross-listing.
+- Catalog-grounded career mappings are more academically defensible than runtime blanket alias resolution.
+- Hard constraints remain healthy:
+  - `averageSlotFillRate`: `1.0`
+  - `averageConstraintValidity`: `1.0`
+  - `oldCodeExposure`: `0`
+
+### Remaining Work
+
+- Investigate remaining weak Software Engineer cases, especially `software-engineer-csc-013`.
+- Review explanation fidelity separately because `averageExplanationFidelity` is now `0.45`, even though ranking metrics improved.
+- Keep IDF-weighted preference and diversity-band-on-`careerFit` deferred unless a specific remaining case proves they are needed.
+- Do not start Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, or ML ranking yet.
