@@ -1116,83 +1116,6 @@ Status: Implemented on `recommendation-scoring-calibration`
 
 - Review remaining weak Software Engineer cases separately, especially `software-engineer-csc-013`, because the Opus-targeted fixes improved AI / ML, Data Engineer, and Cybersecurity cases but did not address all Software Engineer ranking issues.
 
-## Benchmark Regression And Label Review Packet
-
-Status: Completed on `recommendation-scoring-calibration`
-
-### Completed
-
-- Compared the current regenerated predictions against the pre-Opus prediction baseline from commit `d34fdba`.
-- Added preference-alias validation to `scripts/validate_recommendation_mappings.py`.
-- Created `Recommendation_Benchmark_Label_Review_Packet.md` for supervisor / TA label review.
-- The packet includes:
-  - aggregate before / after metrics
-  - all 21 case before / after selected recommendations
-  - per-case `precisionAtReturned`, `nDCGAtReturned`, and `explanationFidelity` deltas
-  - changed-selection cases
-  - ranking metric regression check
-  - explanation fidelity regression check
-  - cases with returned modules that are unlabelled or below the evaluator relevance threshold
-  - reviewed relevant candidates carrying the generic `networks` tag
-  - reviewer questions for label cleanup
-
-### Additional Validation
-
-- `scripts/validate_recommendation_mappings.py` now checks:
-  - every career-skill mapping tag exists in `data/modules.json`
-  - every preference alias resolves to at least one tag
-  - every preference alias target exists in `data/modules.json`
-- Validation command:
-  - `PYTHONPATH=. .venv/bin/python scripts/validate_recommendation_mappings.py`
-- Result:
-  - `All career-skill mapping tags and preference aliases are valid.`
-
-### Full Diff Findings
-
-- Changed selections:
-  - `software-engineer-csc-002`
-  - `software-engineer-csc-013`
-  - `ai-ml-engineer-csc-001`
-  - `ai-ml-engineer-csc-002`
-  - `data-engineer-csc-002`
-  - `cybersecurity-engineer-csc-002`
-- Ranking metric regressions:
-  - none
-- Explanation fidelity regressions:
-  - `cybersecurity-engineer-csc-001`
-  - `cybersecurity-engineer-csc-002`
-- Cloud-platform cases:
-  - no selected-module changes
-  - no returned-ranking metric changes
-- Software Engineer changed cases:
-  - `software-engineer-csc-002`
-  - `software-engineer-csc-013`
-  - returned precision / nDCG did not improve or regress, but selected modules changed.
-
-### Label Review Priority
-
-- Send `Recommendation_Benchmark_Label_Review_Packet.md` to a supervisor, TA, senior student, or trusted reviewer before doing more scoring calibration.
-- Review unlabelled returned modules first:
-  - `SC4025` in `software-engineer-csc-002`
-  - `SC4063` in `software-engineer-csc-003`
-  - `SC4052` in `software-engineer-csc-004`
-  - `SC4052` in `software-engineer-csc-005`
-  - `SC4052` in `software-engineer-csc-010`
-  - `SC4025` and `SC4020` in `software-engineer-csc-013`
-- Review low-label returned modules:
-  - `SC3020` in `software-engineer-csc-002`
-  - `SC4050` in `software-engineer-csc-014`
-  - `SC3020` in `ai-ml-engineer-csc-001`
-
-### Current Recommendation
-
-- Do not tune scoring further until benchmark labels and explanation skill paths are reviewed.
-- Remaining weak cases may reflect draft-label gaps rather than algorithm defects.
-- If work continues before external review, focus only on analysis/reporting:
-  - explanation fidelity cleanup
-  - reviewer packet refinement
-  - benchmark label rationale improvements
-
 ## Recommendation Calibration Outcome Summary
 
 Status: Current recommendation benchmark baseline after Opus-guided fixes
@@ -1256,3 +1179,37 @@ Status: Current recommendation benchmark baseline after Opus-guided fixes
 - Review explanation fidelity separately because `averageExplanationFidelity` is now `0.45`, even though ranking metrics improved.
 - Keep IDF-weighted preference and diversity-band-on-`careerFit` deferred unless a specific remaining case proves they are needed.
 - Do not start Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, or ML ranking yet.
+
+## Benchmark Label Review Follow-Up
+
+Status: Completed follow-up diligence after Opus review
+
+### Completed
+
+- Rechecked the three remaining concerns raised after the Opus-guided fixes:
+  - explanation-fidelity regressions in Cybersecurity cases
+  - changed Software Engineer selections in `software-engineer-csc-002` and `software-engineer-csc-013`
+  - changed `ai-ml-engineer-csc-002` selection
+- Updated `Recommendation_Benchmark_Label_Review_Packet.md` with:
+  - explicit Software Engineer changed-selection checks
+  - `ai-ml-engineer-csc-002` label-mix check
+  - Cloud Platform no-regression confirmation
+  - cybersecurity explanation-fidelity review section
+  - proposed `expectedSkillPath` updates for reviewer approval
+
+### Findings
+
+- `software-engineer-csc-002` changed selected modules, but returned precision and nDCG stayed unchanged.
+- `software-engineer-csc-013` changed selected modules, but returned precision and nDCG stayed unchanged.
+- `ai-ml-engineer-csc-002` changed from `SC4064` to `SC4061`, but returned precision and nDCG stayed unchanged.
+- Cloud Platform cases did not change after MPE `max()` scoring.
+- The only observed metric regressions are explanation-fidelity regressions in:
+  - `cybersecurity-engineer-csc-001`
+  - `cybersecurity-engineer-csc-002`
+- These appear to be stale benchmark `expectedSkillPath` strings after the catalog-grounded mapping rewrite, not ranking regressions.
+
+### Important Decision
+
+- Do not directly edit `data/recommendation_benchmark_cases.json` yet.
+- Proposed `expectedSkillPath` edits are documented in the review packet for supervisor / TA approval.
+- This avoids silently changing benchmark ground truth to match the latest recommender output.
