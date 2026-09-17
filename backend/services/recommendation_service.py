@@ -186,7 +186,7 @@ CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES = {
     "SC4064",  # GPU Programming — parallel-computing in a GPU/HPC context, not cloud
 }
 RECOMMENDATION_TAG_ALIASES = {
-    "ai-ml": (),
+    "ai-ml": ("artificial-intelligence", "machine-learning"),
     "computer-network": ("networks",),
     "computer-security": ("cybersecurity",),
     "hardware-embedded": ("embedded-systems",),
@@ -265,10 +265,11 @@ def recommend_courses(
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
-    preferred_tags = normalize_preferred_tags_for_career(
+    preferred_tag_dimensions = normalize_preferred_tag_dimensions_for_career(
         career_goal,
-        normalize_recommendation_tags(preferred_recommendation_tags),
+        normalize_recommendation_tag_dimensions(preferred_recommendation_tags),
     )
+    preferred_tags = flatten_preferred_tag_dimensions(preferred_tag_dimensions)
     normalized_student_faculty = normalize_student_faculty(student_faculty)
     excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
     excluded_titles = get_excluded_title_keys(excluded_course_titles)
@@ -372,7 +373,7 @@ def recommend_courses(
                 excluded_titles,
             )
             preference_boost = (
-                get_preference_boost(module, preferred_tags) +
+                get_preference_boost(module, preferred_tag_dimensions) +
                 get_current_preference_match_boost(module, preferred_tags)
             )
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
@@ -1386,20 +1387,66 @@ def normalize_recommendation_tags(tags: list[str]) -> set[str]:
 
     return normalized_tags
 
-def normalize_preferred_tags_for_career(career_goal: str, preferred_tags: set[str]) -> set[str]:
+def normalize_recommendation_tag_dimensions(tags: list[str]) -> list[set[str]]:
+    dimensions: list[set[str]] = []
+    seen_dimensions: set[frozenset[str]] = set()
+
+    for tag in tags:
+        normalized_tag = tag.strip().lower()
+        if not normalized_tag:
+            continue
+
+        dimension = set(RECOMMENDATION_TAG_ALIASES.get(normalized_tag, (normalized_tag,)))
+        if not dimension:
+            continue
+
+        dimension_key = frozenset(dimension)
+        if dimension_key in seen_dimensions:
+            continue
+
+        dimensions.append(dimension)
+        seen_dimensions.add(dimension_key)
+
+    return dimensions
+
+def flatten_preferred_tag_dimensions(preferred_tag_dimensions: list[set[str]]) -> set[str]:
+    return {
+        tag
+        for dimension in preferred_tag_dimensions
+        for tag in dimension
+    }
+
+def normalize_preferred_tag_dimensions_for_career(
+    career_goal: str,
+    preferred_tag_dimensions: list[set[str]],
+) -> list[set[str]]:
     if career_goal != "cloud-platform-engineer":
-        return preferred_tags
+        return preferred_tag_dimensions
 
-    cloud_tags = set(preferred_tags)
-    if "cybersecurity" in cloud_tags:
-        cloud_tags.remove("cybersecurity")
-        cloud_tags.add("network-security")
+    cloud_dimensions: list[set[str]] = []
+    seen_dimensions: set[frozenset[str]] = set()
 
-    # Privacy-heavy modules are not platform recommendations unless they also
-    # carry a direct network-security/platform signal.
-    cloud_tags.discard("privacy")
+    for dimension in preferred_tag_dimensions:
+        cloud_dimension = set(dimension)
+        if "cybersecurity" in cloud_dimension:
+            cloud_dimension.remove("cybersecurity")
+            cloud_dimension.add("network-security")
 
-    return cloud_tags
+        # Privacy-heavy modules are not platform recommendations unless they also
+        # carry a direct network-security/platform signal.
+        cloud_dimension.discard("privacy")
+
+        if not cloud_dimension:
+            continue
+
+        dimension_key = frozenset(cloud_dimension)
+        if dimension_key in seen_dimensions:
+            continue
+
+        cloud_dimensions.append(cloud_dimension)
+        seen_dimensions.add(dimension_key)
+
+    return cloud_dimensions
 
 def normalize_student_faculty(student_faculty: Optional[str]) -> Optional[str]:
     if not student_faculty:
@@ -1409,18 +1456,26 @@ def normalize_student_faculty(student_faculty: Optional[str]) -> Optional[str]:
 
     return normalized_faculty or None
 
-def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
-    if not preferred_tags:
+def get_preference_boost(
+    module: ModuleModel,
+    preferred_tag_dimensions: list[set[str]],
+) -> int:
+    if not preferred_tag_dimensions:
         return 0
 
     module_tags = set(module.recommendation_tags or [])
-    matching_count = len(preferred_tags.intersection(module_tags))
+    matching_count = sum(
+        1
+        for dimension in preferred_tag_dimensions
+        if dimension.intersection(module_tags)
+    )
     if matching_count == 0:
         return 0
 
     additional_match_count = matching_count - 1
     stepped_boost = sum(PREFERENCE_ADDITIONAL_BOOST_STEPS[:additional_match_count])
     total_boost = PREFERENCE_FIRST_MATCH_BOOST + stepped_boost
+    preferred_tags = flatten_preferred_tag_dimensions(preferred_tag_dimensions)
     if preferred_tags == {"cybersecurity", "cryptography"} and "privacy" in module_tags:
         total_boost += SECURITY_PRIVACY_ADJACENCY_BOOST
 
