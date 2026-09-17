@@ -4,17 +4,20 @@ This file continues the project progress log after `Progress.md` became large.
 
 ## Current Branch
 
-- `main` includes merged recommendation calibration, prototype bug fixes, and roadmap UI polish.
+- `main` includes merged recommendation calibration, expanded career-goal support, prototype bug fixes, and roadmap UI polish.
 - `ntu-sso-auth` exists as open PR #40 but is parked because NTU controls Azure app access.
+- `career-goal-options` was merged in PR #43 and contains the latest recommendation tag, career mapping, Cloud / Platform, and BDE fallback calibration work.
 
 ## Latest Commits
 
+- `a875465 Merge pull request #43 from donkey-king-kong/career-goal-options`
+- `9f1ed17 Revert "feat: add general bde fallback recommendations"`
+- `f76bcbc feat: add general bde fallback recommendations`
+- `4fecdf1 feat: add low-confidence bde fallback recommendations`
+- `66f1f8f docs: add cloud recommendation review artifacts`
+- `5d47d60 fix: tighten cloud platform recommendation tags`
 - `996b4f9 feat: expose expanded career goals`
 - `730d84e feat: add data and security career mappings`
-- `0fc947f docs: update progress handoff`
-- `cee8d4a Merge pull request #39 from donkey-king-kong/impeccable-product-init`
-- `2c1c761 Merge pull request #38 from donkey-king-kong/prototype-bug-fixes`
-- `06d181d Merge pull request #37 from donkey-king-kong/recommendation-score-calibration`
 
 ## Current Direction
 
@@ -24,20 +27,24 @@ This file continues the project progress log after `Progress.md` became large.
 - Keep recommendation ranking and exact-slot allocation in the backend.
 - Treat benchmark cases as project-owner-reviewed draft calibration data, not expert ground truth.
 - Avoid blind constant tuning just to improve nDCG.
-- Career coverage now includes `Software Engineer`, `Data Scientist`, and `Cybersecurity Analyst`.
+- Career coverage now includes `Software Engineer`, `AI / ML Engineer`, `Data Engineer`, `Cloud / Platform Engineer`, and `Cybersecurity Engineer`.
+- Keep the third-layer general BDE fallback removed for now; use only strong recommendations and the score-5 low-confidence BDE fallback.
 
 ## Current Benchmark Snapshot
 
-After merged recommendation calibration and deferring the AI/ML case:
+After PR #43 career-goal and Cloud / Platform calibration:
 
-- `caseCount`: `13`
+- `caseCount`: `21`
 - `caseCoverage`: `1.0`
-- `totalPredictionsEvaluated`: `31`
-- `averagePrecisionAtK`: `0.4615384615384617`
-- `averageNdcgAtK`: `0.805841645834225`
-- `averageExplanationCoverage`: `0.8846153846153846`
-- `averageExplanationFidelity`: `1.0`
-- `averageSkillAreaDiversityAtK`: `1.1538461538461537`
+- `totalPredictionsEvaluated`: `46`
+- `averagePrecisionAtK`: `0.3333333333333335`
+- `averageNdcgAtK`: `0.543122098259448`
+- `averagePrecisionAtReturned`: `0.7857142857142857`
+- `averageNdcgAtReturned`: `0.736751943021475`
+- `averageSlotFillRate`: `1.0`
+- `averageExplanationCoverage`: `0.861111111111111`
+- `averageExplanationFidelity`: `0.55`
+- `averageSkillAreaDiversityAtK`: `1.1904761904761905`
 - `oldCodeExposure`: `0`
 - `averageConstraintValidity`: `1.0`
 
@@ -50,20 +57,26 @@ After merged recommendation calibration and deferring the AI/ML case:
 - Implemented NTU SSO on `ntu-sso-auth` and opened PR #40, but left it unmerged because Azure app registration access depends on NTU.
 - Added deterministic career-skill mappings for Data Scientist and Cybersecurity Analyst.
 - Updated the frontend career dropdown and recommendation guard to support all three mapped careers.
+- Merged PR #43 for expanded career-goal options, module tag cleanup, Cloud / Platform calibration, Claude review artifacts, and low-confidence BDE fallback recommendations.
+- Added `network-infrastructure` as a precise tag for true infrastructure-networking courses and moved Cloud / Platform scoring away from the broad `networks` tag.
+- Removed the over-strict Cloud / Platform allowlist and kept a focused off-track blocklist for modules such as GPU, blockchain, data analytics, and quantum computing.
+- Added then reverted a broader third-layer general BDE fallback; this is intentionally not active because it can fill BDE slots with non-career suggestions that need separate UX/product treatment.
 
 ## Current Assessment
 
 - Constraint validity is strong and old CE/CPE/CSC/CZ code exposure remains zero.
-- The benchmark review/calibration pass is stable enough to pause; current active-case nDCG is about `0.806`.
+- The benchmark review/calibration pass now covers more careers, so the aggregate nDCG is lower than the previous Software Engineer-only snapshot and should not be compared directly without noting the expanded case set.
 - SSO code exists but should remain parked until real NTU Azure credentials and redirect registration are available.
 - The main app can continue improving prototype reliability, documentation, and evaluation without introducing deferred AI/database integrations.
-- The new career mappings are a first pass and do not yet have dedicated benchmark cases.
+- Cloud / Platform false positives from broad `networks` scoring are fixed, but Cloud BDE coverage still needs a dedicated benchmark case because the UI can expose more open BDE slots than the current benchmark cases.
+- The expanded career mappings are still deterministic first-pass mappings and need review against more student scenarios.
 
 ## Recommended Next Step
 
 Pick one non-auth task:
 
 - Add lightweight benchmark/evaluation cases for the new Data Scientist and Cybersecurity Analyst mappings.
+- Add at least one Cloud / Platform benchmark case with several BDE slots to catch BDE spillover and empty-slot behavior.
 - Coverage audit planning: design a lightweight script/checklist to measure whether valid MPE/BDE slots can be filled across supported curriculum inputs.
 - Counterfactual sensitivity checks: verify that changing career goals shifts recommendations in sensible ways.
 - Evaluation prep: document benchmark methodology and current metrics for the FYP report.
@@ -648,3 +661,341 @@ Status: Implemented locally
 - No regenerated prediction file because the saved predictions are still current; only draft benchmark labels changed.
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
+
+## Career Goal Options And Cloud Calibration
+
+Status: Merged in PR #43
+
+### Completed
+
+- Expanded the recommendation UI and backend flow to support more explicit career goals, including AI / ML Engineer, Data Engineer, Cloud / Platform Engineer, and Cybersecurity Engineer.
+- Updated `data/modules.json` with Claude-reviewed recommendation tag cleanup and committed the review artifacts under `data/review/`.
+- Regenerated `data/recommendation_benchmark_predictions.json` after career mapping and recommendation-service changes.
+- Tightened AI/ML filtering so weak standalone tags such as generic `algorithms`, `database`, and `programming` do not over-promote unrelated AI/ML recommendations.
+- Calibrated career-skill mappings after the module tag cleanup so career goals continue to match the normalized tag vocabulary.
+- Fixed Cloud / Platform false positives by replacing the broad Cloud mapping tag `networks` with the precise `network-infrastructure` tag.
+- Added `network-infrastructure` to `SC3030 Advanced Computer Networks`, `SC4030 Wireless & Mobile Networks`, `SC4031 IoT: Communications & Networking`, and `SC4063 Network Security`.
+- Removed the strict Cloud / Platform allowlist because it would block future valid Cloud / Platform modules.
+- Kept a focused Cloud / Platform off-track blocklist for contextual false positives such as `SC4023`, `SC4053`, `SC4064`, and related non-cloud specialist modules.
+- Added a low-confidence BDE fallback threshold of `5`, while keeping the main assignment threshold at `10`.
+- Added `recommendationConfidence` to recommendation responses so frontend cards can distinguish normal recommendations from low-confidence BDE fallback picks.
+- Added frontend support for a small `Low confidence` badge on BDE fallback recommendations.
+- Added a broader third-layer general BDE fallback experimentally, then reverted it because it can fill slots with general non-career suggestions that need separate product treatment.
+
+### Rationale Notes
+
+- The main Cloud / Platform issue was data/mapping noise, not broken slot assignment.
+- The old broad `networks` tag appeared on many unrelated modules, so it gave Cloud / Platform score to modules that only mentioned networks incidentally.
+- `network-infrastructure` distinguishes infrastructure-networking courses from malware, privacy, graph-theory, or generic security modules.
+- `SC4053 Blockchain Technology` and `SC4064 GPU Programming` have technically valid tags, but their context is not Cloud / Platform for this recommender, so a focused blocklist is appropriate.
+- The removed Cloud allowlist was too rigid because it hardcoded today’s acceptable modules and would prevent future valid Cloud / Platform courses from being recommended.
+- Empty BDE slots are acceptable when no career-relevant candidate remains above threshold; forcing general BDEs into the same recommendation label can make the recommender look random.
+
+### Verified
+
+- Ran `python3 -m json.tool data/modules.json >/dev/null`.
+- Ran `.venv/bin/python -m py_compile backend/schemas/recommendation.py backend/services/recommendation_service.py backend/services/career_skill_mappings.py`.
+- Ran `.venv/bin/python -u -m backend.database.seed`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8001/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Ran `npm run build` in `frontend`.
+- Confirmed benchmark `caseCount` is `21`, `averageNdcgAtK` is about `0.543`, `averageNdcgAtReturned` is about `0.737`, `oldCodeExposure` is `0`, and `averageConstraintValidity` is `1.0`.
+- Confirmed a fuller Cloud / Platform roadmap-style request no longer returned bad spillover modules such as `SC4014`, `SC4015`, `SC4017`, `SC4020`, `SC4023`, `SC4053`, or `SC4064`.
+- Confirmed the active third-layer general BDE fallback was removed by revert commit `9f1ed17`.
+
+### Not Included
+
+- No third-layer general BDE fallback is active after PR #43.
+- No general BDE suggestion UX beyond the current low-confidence BDE career fallback.
+- No frontend score-breakdown display.
+- No automated recommender test suite.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, MyCareersFuture scraping, auth, SSO, or backend user persistence.
+
+### Next Step
+
+- Add a Cloud / Platform benchmark case with multiple BDE slots to evaluate whether empty BDE slots are acceptable or whether a separate general-BDE suggestion UX is needed.
+- Continue career expansion review with more Data Engineer, AI / ML Engineer, and Cybersecurity Engineer cases.
+- Keep NTU SSO parked until Azure app registration details are available.
+
+## Recommendation Scoring Calibration Follow-Up
+
+Status: Implemented locally on `recommendation-scoring-calibration`
+
+### Completed
+
+- Created branch `recommendation-scoring-calibration` for the scoring-calibration follow-up.
+- Read `backend/services/recommendation_service.py`, `backend/services/career_skill_mappings.py`, and `data/recommendation_benchmark_cases.json` before editing.
+- Added per-career SQL relevance keyword sets in `backend/services/recommendation_service.py`.
+- Changed `build_relevance_filters()` so Software Engineer keyword/tag signals are only added for `software-engineer`, instead of polluting every career goal's SQL candidate prefilter.
+- Reduced the preference boost strength so preferences influence ranking without overwhelming career fit:
+  - `PREFERENCE_FIRST_MATCH_BOOST` changed from `35` to `21`.
+  - `PREFERENCE_TAG_BOOST_CAP` changed from `60` to `45`.
+- Audited `CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES` and confirmed `SC4051 Distributed Systems` and `SC4052 Cloud Computing` are not currently blocked.
+- Added a source comment documenting that `SC4051` and `SC4052` should remain eligible Cloud / Platform candidates because they represent core distributed-systems and cloud-computing signals.
+- Added an `applied model specialisation` skill area to `AI_ML_ENGINEER_SKILL_MAPPINGS`, covering `natural-language-processing`, `computer-vision`, `machine-learning`, and `artificial-intelligence`.
+- Strengthened `DATA_ENGINEER_SKILL_MAPPINGS` with modest `systems-programming` and `optimization` relationships for implementation-heavy pipeline and platform modules.
+- Made four separate commits as requested:
+  - `768069c fix: separate career relevance prefilters`
+  - `bfd5add fix: reduce recommendation preference boost`
+  - `48839fd docs: clarify cloud platform blocklist`
+  - `544d7b8 fix: strengthen ai and data engineering mappings`
+
+### Rationale Notes
+
+- The old `build_relevance_filters()` always added Software Engineer keywords and Software Engineer tag filters, which widened the SQL candidate pool for AI / ML, Data Engineer, Cloud / Platform, and Cybersecurity careers before Python scoring ran.
+- The new per-career keyword prefilter keeps candidate retrieval broad enough to find relevant modules while avoiding unconditional Software Engineer spillover.
+- Preference matching should be a soft preference signal, not a dominant override. Lowering the first-match boost and cap makes career-skill evidence more competitive.
+- `SC4051` and `SC4052` were already eligible for Cloud / Platform in the current source, so no blocklist removal was needed.
+- The AI / ML mapping issue was not total absence of signal for all target modules; the recommender kept only the top tag contribution per skill area, so specific applied AI modules could still be under-expressed without a separate applied-specialisation skill area.
+- The Data Engineer mapping now gives some credit to implementation and performance infrastructure without turning generic systems modules into top-ranked data modules by default.
+
+### Verified
+
+- Ran IDE diagnostics for `backend/services/recommendation_service.py`; no errors reported.
+- Ran IDE diagnostics for `backend/services/career_skill_mappings.py`; no errors reported.
+- Ran `python3 scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5` on the existing saved predictions.
+- Started the backend with `.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000`.
+- Regenerated fresh predictions into temporary `data/recommendation_benchmark_predictions_after.json`.
+- Ran `python3 scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions_after.json --k 5`.
+- Deleted the temporary prediction file after comparison.
+- Stopped the temporary backend server.
+
+### Benchmark Result
+
+- Existing saved-prediction baseline:
+  - `averagePrecisionAtReturned`: `0.7857142857142857`
+  - `averageNdcgAtReturned`: `0.736751943021475`
+- Fresh regenerated predictions after the fixes:
+  - `averagePrecisionAtReturned`: `0.7857142857142857`
+  - `averageNdcgAtReturned`: `0.736751943021475`
+- Net aggregate metric change: unchanged.
+- No previously weak/failing case improved by evaluator metrics because the final selected course assignments stayed the same.
+- Diagnostic finding: remaining weak cases are mostly no longer simple zero-career-signal issues. The remaining behaviour is driven more by exact-slot constraints, prerequisite planning penalties, and benchmark labels expecting alternatives that cannot all appear when only one matching slot is available.
+
+### Not Included
+
+- No benchmark case changes, including no edits to cases `001` through `005`.
+- No benchmark format or convention changes.
+- No kept regenerated prediction file.
+- No frontend UI changes.
+- No automated recommender test suite.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, MyCareersFuture scraping, auth, SSO, or backend user persistence.
+
+### Next Step
+
+- Inspect weak cases with live per-candidate score tables, especially where the expected module is eligible but loses after prerequisite planning penalties or exact-slot allocation.
+- Review whether benchmark expectations should distinguish "ideal top five" from "one exact assignment per open slot".
+- If ranking changes are still desired, calibrate prerequisite planning and exact-slot assignment next rather than only adding more career-skill mapping weight.
+
+## Targeted Benchmark Diagnosis Fixes
+
+Status: Implemented locally on `recommendation-scoring-calibration`
+
+### Completed
+
+- Added `network-security` as a cybersecurity career-skill relationship under the `networks and systems security` skill area.
+- Verified `SC4063 Network Security` carries `network-security`, `network-infrastructure`, `cybersecurity`, `networks`, `communication`, and `design` tags in the local modules table.
+- Verified the new `SC4063` cybersecurity career-skill contribution manually:
+  - Skill area weight: `8`
+  - Relationship weight: `1.0`
+  - Tag confidence: `1.0`
+  - Contribution: `8 * 1.0 * 1.0 = 8`
+- Softened `EXTRA_PREREQUISITE_PLANNING_PENALTY` from `-20` to `-10`.
+- Audited `SC4061 Computer Vision` versus `SC4002 Natural Language Processing` for `ai-ml-engineer`.
+- Confirmed `SC4061` already has stronger AI / ML career-skill score than `SC4002`:
+  - `SC4061 careerSkill = 18`
+  - `SC4002 careerSkill = 16`
+- Confirmed `SC4002` still wins because it has two MPE specialisations, `artificial-intelligence` and `data-science`, giving it `mpeBoost = 18`.
+- Confirmed `SC4061` has only `artificial-intelligence`, giving it `mpeBoost = 12`.
+- Made no AI / ML mapping change because the current mapping is accurate under the current MPE stacking rules.
+- Regenerated `data/recommendation_benchmark_predictions.json` against a fresh local backend on port `8011`.
+- Made the following commits:
+  - `056f79d fix: map network security career skill`
+  - `622fb16 fix: soften prerequisite planning penalty`
+  - `a02571d chore: record ai ml mapping audit`
+  - `d34fdba test: regenerate recommendation benchmark predictions`
+
+### Rationale Notes
+
+- `SC4063` was not hard-filtered or SQL-filtered, but its `careerSkill` was `0` for Cybersecurity because the mapping had `computer-network` while the module uses `network-security`.
+- Adding `network-security` is a precise mapping fix rather than a score inflation because Network Security directly represents secure network design, monitoring, and defence.
+- The original `-20` prerequisite-planning penalty was large enough to almost veto strong recommendations. In `data-engineer-csc-002`, `SC4052` lost to `SC4020` by only one point before this fix.
+- Reducing the penalty to `-10` keeps prerequisite planning visible but lets strong career/profile fit compete.
+- The AI / ML issue is not a missing `SC4061` skill mapping. The remaining gap is caused by `SC4002` legitimately stacking two MPE specialisations.
+
+### Verified
+
+- Ran `PYTHONPATH=. .venv/bin/python` checks against the local database for `SC4063`, `SC4061`, and `SC4002` metadata.
+- Verified `SC4063` now receives `careerSkill = 8` for `cybersecurity-engineer`.
+- Verified IDE diagnostics reported no errors in `backend/services/career_skill_mappings.py`.
+- Verified IDE diagnostics reported no errors in `backend/services/recommendation_service.py`.
+- Started a fresh backend with `.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8011`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8011/recommendations`.
+- Ran `python3 scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`.
+- Stopped the temporary backend server.
+
+### Benchmark Result
+
+- Before:
+  - `averagePrecisionAtReturned`: `0.7857142857142857`
+  - `averageNdcgAtReturned`: `0.736751943021475`
+- After:
+  - `averagePrecisionAtReturned`: `0.7857142857142857`
+  - `averageNdcgAtReturned`: `0.7306114222717204`
+- Net result:
+  - `averagePrecisionAtReturned` unchanged.
+  - `averageNdcgAtReturned` decreased by about `0.0061`.
+
+### Diagnosed Case Changes
+
+- `software-engineer-csc-004`
+  - Before selected: `SC4052`, `SC3020`, `SC3040`
+  - After selected: `SC4052`, `SC3020`, `SC3040`
+  - Result: no selection change.
+- `ai-ml-engineer-csc-001`
+  - Before selected: `SC4002`, `SC3020`
+  - After selected: `SC4002`, `SC3020`
+  - Result: no selection change. `SC4061` still does not beat `SC4002`.
+- `data-engineer-csc-002`
+  - Before selected: `SC4023`, `SC4020`
+  - After selected: `SC4023`, `SC4052`
+  - Result: improved. `SC4052` now beats `SC4020`.
+- `cybersecurity-engineer-csc-002`
+  - Before selected: `SC4014`, `SC4017`
+  - After selected: `SC4014`, `SC4017`
+  - Result: no selection change. `SC4063` still does not beat `SC4014`.
+
+### Not Included
+
+- No benchmark case changes.
+- No benchmark format changes.
+- No frontend UI changes.
+- No automated recommender test suite.
+- No arbitrary AI / ML score inflation for `SC4061`.
+- No changes to MPE-specialisation stacking rules.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, MyCareersFuture scraping, auth, SSO, or backend user persistence.
+
+### Next Step
+
+- Decide whether the MPE-specialisation boost should stack additively or use the strongest matching specialisation only.
+- If `SC4063` should beat malware/application-security modules for network-focused cybersecurity cases, add preference-aware or pathway-aware cybersecurity subskill calibration rather than raising all network-security scores globally.
+- Review whether the slight nDCG regression is acceptable in exchange for the targeted `data-engineer-csc-002` improvement, or whether the benchmark labels need a separate exact-slot assignment interpretation.
+
+## Opus Scoring Architecture Review
+
+Status: Discussion complete; implementation not started yet
+
+### Context Sent To Opus
+
+- The recommender is currently a deterministic scoring engine, not an AI / RAG / MCF pipeline.
+- The final score is assembled as a flat sum of:
+  - `careerTagScore`
+  - `careerSkillScore`
+  - `currentSemesterBonus`
+  - `unlockContribution`
+  - `preferenceBoost`
+  - `sameFacultyBoost`
+  - `mpeSpecialisationBoost`
+  - `defaultProfileAdjustment`
+  - `prerequisitePlanningPenalty`
+- The key concern was that `preferenceBoost` and additive MPE boosts can dominate the intended career-relevance signal.
+- The remaining diagnosed weak cases were:
+  - `cybersecurity-engineer-csc-002`: `SC4063` still loses to `SC4014`.
+  - `ai-ml-engineer-csc-001`: `SC4061` still loses to `SC4002`.
+- Constraints given to Opus:
+  - No external job data.
+  - No scraping.
+  - No APIs.
+  - No OpenAI, embeddings, Neo4j, ChromaDB, LangGraph, or full ML recommender.
+  - Prefer deterministic, explainable, implementable changes using current data.
+
+### What Was Already Done Before Opus Review
+
+- `build_relevance_filters()` had already been changed so Software Engineer SQL keyword/tag filters no longer leak into every career goal.
+- Preference boost had already been reduced:
+  - `PREFERENCE_FIRST_MATCH_BOOST`: `35` -> `21`
+  - `PREFERENCE_TAG_BOOST_CAP`: `60` -> `45`
+- `SC4051` and `SC4052` had already been confirmed eligible for `cloud-platform-engineer`.
+- `network-security` had already been added under the Cybersecurity `networks and systems security` mapping.
+- `EXTRA_PREREQUISITE_PLANNING_PENALTY` had already been softened:
+  - `-20` -> `-10`
+- `data-engineer-csc-002` had already improved:
+  - Before: `SC4023`, `SC4020`
+  - After: `SC4023`, `SC4052`
+- `SC4061` vs `SC4002` had already been audited:
+  - `SC4061 careerSkill = 18`
+  - `SC4002 careerSkill = 16`
+  - `SC4002` still wins because it stacks `artificial-intelligence` and `data-science` MPE boosts.
+- `SC4014` vs `SC4063` had already been audited:
+  - Both modules match normalized preferences through `cybersecurity` and `networks`.
+  - `SC4063` is not missing a justified broad preference tag.
+
+### Opus Findings
+
+- Opus agreed that the remaining failures are mostly mapping and signal-interaction problems, not hard-filter problems.
+- Opus warned that the next fixes must not be implemented independently because some interact.
+- Important finding 1:
+  - Changing `RECOMMENDATION_TAG_ALIASES["ai-ml"]` from empty to `("artificial-intelligence", "machine-learning")` without changing preference counting can regress AI / ML ranking.
+  - Reason: the current preference function counts raw tag overlaps, so one broad preference can count twice if a module has both expanded tags.
+  - Opus recommended preference dimension counting: each original selected preference counts at most once, even if it expands to multiple catalog tags.
+- Important finding 2:
+  - Blanket alias resolution inside career-skill scoring is unsafe.
+  - Example: full-strength `computer-network -> networks` gives generic `networks` modules the same career-skill credit as specific network-security modules.
+  - Opus recommended rewriting dead mapping tags to explicit catalog tags with intentional weights, not runtime alias resolution.
+- Important finding 3:
+  - `get_mpe_specialisation_boost()` should use strict `max()` instead of additive `sum()`.
+  - Reason: official cross-listing indicates path membership, not extra career relevance.
+  - A smaller secondary versatility bonus was rejected because it reintroduces the same failure mode.
+- Important finding 4:
+  - IDF-weighted preference and diversity-band-on-`careerFit` are not needed yet.
+  - They are larger scoring redesigns and should be deferred unless a specific post-fix case proves they are necessary.
+
+### Revised Implementation Plan
+
+- Continue on the current branch, `recommendation-scoring-calibration`.
+- Do not create a new branch.
+- Next code changes should be made in this order:
+  1. Fix `ai-ml` preference alias and implement dimension-based preference counting in the same commit.
+  2. Change `get_mpe_specialisation_boost()` from additive `sum()` to strict `max()`.
+  3. Rewrite dead career-skill mapping tags to actual catalog tags with deliberate career-specific weights.
+  4. Add a catalog consistency test or validation script to catch dead mapping tags.
+  5. Regenerate predictions and evaluate benchmark metrics.
+- Expected effects from Opus simulation:
+  - `ai-ml-engineer-csc-001` should move toward `SC4061` winning the SC4 slot.
+  - `data-engineer-csc-002` should improve further because `SC4023` loses artificial additive MPE stacking.
+  - `cybersecurity-engineer-csc-002` should return `SC4063` and `SC4017` if the cybersecurity mappings are rewritten to prefer specific network-security evidence over generic `networks`.
+
+### Mapping Rewrite Guidance
+
+- Do not use blanket alias resolution inside `get_career_skill_contributions()`.
+- Treat aliases differently by type:
+  - Rename aliases can be rewritten at full strength.
+  - Broadening aliases should be replaced by explicit specific tags plus a weak generic fallback.
+- Cybersecurity example:
+  - Replace dead `computer-security` with actual catalog tag `cybersecurity` at full strength where appropriate.
+  - Replace dead `computer-network` with:
+    - `network-security` as strong evidence.
+    - `network-infrastructure` as strong evidence.
+    - `networks` only as weak generic evidence, around `relationship_weight = 0.3`.
+- AI / ML and Data Scientist examples:
+  - Replace dead `ai-ml` with explicit catalog tags such as `artificial-intelligence` and `machine-learning`.
+  - Avoid letting one broad `ai-ml` preference count as multiple selected preferences.
+- Software Engineer example:
+  - Replace dead tags carefully with career-specific weights.
+  - Generic `networks` can be defensible for Software Engineer, but should not automatically inherit full `computer-network` weight.
+
+### Deferred Ideas
+
+- Do not implement IDF-weighted preference yet.
+- Do not change the diversity band to use `careerFit` yet.
+- Do not add external data, job scraping, APIs, RAG, embeddings, OpenAI, Neo4j, ChromaDB, LangGraph, or ML ranking.
+- Do not tune constants blindly until the structural fixes are evaluated.
+
+### No Further Questions Before Implementation
+
+- The next implementation step is clear enough to proceed:
+  - Start with `ai-ml` alias plus preference dimension counting.
+  - Then MPE `max()`.
+  - Then catalog-grounded career mapping rewrite and consistency validation.
+- Main caution:
+  - Rebaseline after each commit because the fixes are interaction-sensitive.
