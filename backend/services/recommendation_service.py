@@ -192,7 +192,7 @@ RECOMMENDATION_TAG_ALIASES = {
     "hardware-embedded": ("embedded-systems",),
 }
 SPECIALIST_PROFILE_PENALTY = -16
-EXTRA_PREREQUISITE_PLANNING_PENALTY = -20
+EXTRA_PREREQUISITE_PLANNING_PENALTY = -10
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
 DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 # Core project modules are fixed curriculum requirements, not elective recommendation targets.
