@@ -1501,9 +1501,12 @@ def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> in
 def get_mpe_specialisation_boost(module: ModuleModel, career_goal: str) -> int:
     boost_by_specialisation = CAREER_MPE_SPECIALISATION_BOOSTS.get(career_goal, {})
 
-    return sum(
-        boost_by_specialisation.get(specialisation, 0)
-        for specialisation in (module.mpe_specialisations or [])
+    return max(
+        (
+            boost_by_specialisation.get(specialisation, 0)
+            for specialisation in (module.mpe_specialisations or [])
+        ),
+        default=0,
     )
 
 def get_mpe_specialisation_signals(module: ModuleModel, career_goal: str) -> list[str]:
