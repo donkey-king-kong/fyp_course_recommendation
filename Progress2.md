@@ -999,3 +999,119 @@ Status: Discussion complete; implementation not started yet
   - Then catalog-grounded career mapping rewrite and consistency validation.
 - Main caution:
   - Rebaseline after each commit because the fixes are interaction-sensitive.
+
+## Opus Scoring Plan Implementation
+
+Status: Implemented on `recommendation-scoring-calibration`
+
+### Completed
+
+- Committed the Opus discussion notes first:
+  - `9ebc03f docs: record opus scoring review`
+- Implemented `ai-ml` alias expansion together with preference dimension counting:
+  - `da30ded fix: count preference dimensions`
+- Changed MPE specialisation scoring from additive `sum()` to strict `max()`:
+  - `a1a0b5e fix: use max mpe specialisation boost`
+- Rewrote dead career-skill mapping tags to real catalog tags:
+  - `eaf356e fix: ground career mappings in catalog tags`
+- Added a validation script to catch future dead career mapping tags:
+  - `9597a4c test: validate recommendation mapping tags`
+- Regenerated benchmark predictions from the updated backend:
+  - `af035d0 test: regenerate scoring benchmark predictions`
+
+### Implementation Details
+
+- `RECOMMENDATION_TAG_ALIASES["ai-ml"]` now expands to:
+  - `artificial-intelligence`
+  - `machine-learning`
+- Preference scoring now counts original preference dimensions, not raw expanded tag overlap.
+- Example:
+  - `ai-ml` expands to `{artificial-intelligence, machine-learning}`.
+  - A module matching one or both tags still gets credit for one original `ai-ml` preference dimension.
+  - A module only gets a second preference dimension if it also matches another original preference such as `computer-vision` or `natural-language-processing`.
+- MPE specialisation boost now uses the strongest matching specialisation only.
+- This prevents cross-listed modules from receiving extra career relevance purely because they appear in multiple MPE paths.
+- Career-skill mappings no longer contain dead tags that are absent from `data/modules.json`.
+- Cybersecurity mappings now distinguish specific network-security evidence from generic network evidence:
+  - `network-security`: strong
+  - `network-infrastructure`: strong
+  - `networks`: weak generic fallback
+- Data Scientist mappings now use real AI / ML catalog tags instead of dead `ai-ml`.
+- Software Engineer mappings now use real catalog tags for networking and security mappings.
+
+### Validation
+
+- Ran IDE diagnostics on:
+  - `backend/services/recommendation_service.py`
+  - `backend/services/career_skill_mappings.py`
+- Ran:
+  - `PYTHONPATH=. .venv/bin/python scripts/validate_recommendation_mappings.py`
+- Result:
+  - `All career-skill mapping tags exist in the module catalog.`
+- Started backend on clean port `8012`:
+  - `.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8012`
+- Regenerated predictions:
+  - `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8012/recommendations`
+- Evaluated:
+  - `python3 scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5`
+- Stopped the temporary backend.
+
+### Benchmark Result
+
+- Before Opus implementation:
+  - `averagePrecisionAtReturned`: `0.7857142857142857`
+  - `averageNdcgAtReturned`: `0.7306114222717204`
+- After Opus implementation:
+  - `averagePrecisionAtReturned`: `0.8095238095238095`
+  - `averageNdcgAtReturned`: `0.7634008820150107`
+- Net change:
+  - `averagePrecisionAtReturned`: `+0.023809523809523725`
+  - `averageNdcgAtReturned`: `+0.0327894597432903`
+
+### Diagnosed Case Changes
+
+- `software-engineer-csc-004`
+  - Before selected: `SC3020`, `SC3040`, `SC4052`
+  - After selected: `SC3020`, `SC3040`, `SC4052`
+  - Result: no selection change.
+- `ai-ml-engineer-csc-001`
+  - Before selected: `SC3020`, `SC4002`
+  - After selected: `SC3020`, `SC4061`
+  - Result: improved. `SC4061` now beats `SC4002`.
+- `data-engineer-csc-002`
+  - Before selected: `SC4023`, `SC4052`
+  - After selected: `SC4052`, `SC4023`
+  - Result: still improved compared with the earlier `SC4020` result; ordering now puts `SC4052` first.
+- `cybersecurity-engineer-csc-002`
+  - Before selected: `SC4014`, `SC4017`
+  - After selected: `SC4063`, `SC4017`
+  - Result: improved. `SC4063` now beats `SC4014`.
+
+### Current Metrics Snapshot
+
+- `caseCount`: `21`
+- `caseCoverage`: `1.0`
+- `totalPredictionsEvaluated`: `46`
+- `averagePrecisionAtK`: `0.34285714285714297`
+- `averageNdcgAtK`: `0.5550599117323818`
+- `averagePrecisionAtReturned`: `0.8095238095238095`
+- `averageNdcgAtReturned`: `0.7634008820150107`
+- `averageSlotFillRate`: `1.0`
+- `averageExplanationCoverage`: `0.9880952380952381`
+- `averageExplanationFidelity`: `0.45`
+- `averageSkillAreaDiversityAtK`: `1.2380952380952381`
+- `oldCodeExposure`: `0`
+- `averageConstraintValidity`: `1.0`
+
+### Not Included
+
+- No benchmark case changes.
+- No benchmark format changes.
+- No frontend UI changes.
+- No IDF-weighted preference scoring.
+- No diversity-band-on-careerFit redesign.
+- No external job data, scraping, APIs, OpenAI, embeddings, Neo4j, ChromaDB, LangGraph, or ML ranking.
+
+### Next Step
+
+- Review remaining weak Software Engineer cases separately, especially `software-engineer-csc-013`, because the Opus-targeted fixes improved AI / ML, Data Engineer, and Cybersecurity cases but did not address all Software Engineer ranking issues.
