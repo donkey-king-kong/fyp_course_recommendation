@@ -761,6 +761,12 @@ CYBERSECURITY_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Network knowledge is essential for analysing attacks, traffic, and defences.",
             ),
             SkillTagRelationship(
+                tag="network-security",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Network security directly represents secure network design, monitoring, and defence.",
+            ),
+            SkillTagRelationship(
                 tag="operating-systems",
                 relationship_weight=0.9,
                 tag_confidence=1.0,
