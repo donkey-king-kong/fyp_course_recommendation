@@ -385,6 +385,44 @@ AI_ML_ENGINEER_SKILL_MAPPINGS = (
         weight_rationale="Highest weight because model-building is central to this career goal.",
     ),
     CareerSkillMapping(
+        skill="applied model specialisation",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="natural-language-processing",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="NLP is a direct applied AI engineering specialisation for language products and generative systems.",
+            ),
+            SkillTagRelationship(
+                tag="computer-vision",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Computer vision is a direct applied AI engineering specialisation for image and video systems.",
+            ),
+            SkillTagRelationship(
+                tag="machine-learning",
+                relationship_weight=0.75,
+                tag_confidence=1.0,
+                rationale="General machine-learning modules support applied model specialisation, but are less specific than NLP or vision modules.",
+            ),
+            SkillTagRelationship(
+                tag="artificial-intelligence",
+                relationship_weight=0.65,
+                tag_confidence=0.9,
+                rationale="General AI content supports applied specialisation but is broader than a named ML subfield.",
+            ),
+        ),
+        weight=6,
+        rationale=(
+            "AI/ML engineers often specialise in applied model domains such as NLP, "
+            "computer vision, and generative AI beyond general ML foundations."
+        ),
+        weight_rationale=(
+            "Medium weight so specific AI application areas can outrank generic "
+            "supporting modules without overwhelming core model-building evidence."
+        ),
+    ),
+    CareerSkillMapping(
         skill="model implementation foundations",
         tag_relationships=(
             SkillTagRelationship(
@@ -570,6 +608,12 @@ DATA_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Data platforms often expose APIs and backend services.",
             ),
             SkillTagRelationship(
+                tag="systems-programming",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Systems programming supports high-throughput data pipeline components and performance-sensitive infrastructure.",
+            ),
+            SkillTagRelationship(
                 tag="software-engineering",
                 relationship_weight=0.7,
                 tag_confidence=1.0,
@@ -580,6 +624,12 @@ DATA_ENGINEER_SKILL_MAPPINGS = (
                 relationship_weight=0.65,
                 tag_confidence=0.9,
                 rationale="Programming is necessary for implementation, but is broader than data engineering.",
+            ),
+            SkillTagRelationship(
+                tag="optimization",
+                relationship_weight=0.6,
+                tag_confidence=0.85,
+                rationale="Optimization supports efficient batch processing, resource usage, and data platform performance tuning.",
             ),
         ),
         weight=6,
