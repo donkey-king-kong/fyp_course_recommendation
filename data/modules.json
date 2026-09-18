@@ -70256,14 +70256,11 @@
       "latestSemester": "1",
       "isCurrentSemester": true,
       "recommendationTags": [
-        "machine-learning",
-        "programming",
-        "algorithms",
-        "natural-language-processing",
-        "statistics",
-        "communication",
-        "education",
-        "language"
+        "product-management",
+        "design",
+        "strategy",
+        "metrics",
+        "ethics"
       ]
     },
     {
@@ -70281,10 +70278,7 @@
       "recommendationTags": [
         "network-infrastructure",
         "networks",
-        "communication",
-        "design",
-        "biology",
-        "energy"
+        "design"
       ]
     },
     {
@@ -70538,9 +70532,7 @@
         "network-infrastructure",
         "network-security",
         "cybersecurity",
-        "networks",
-        "communication",
-        "design"
+        "networks"
       ]
     },
     {

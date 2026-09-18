@@ -1224,3 +1224,56 @@ Status: Completed follow-up diligence after Opus review
 - Only the `SC4063` benchmark expected path was edited because the course description directly supports `network-security`.
 - Do not make further benchmark-label edits without similarly explicit course-description evidence or supervisor / TA review.
 - This keeps label correction separate from scorer tuning.
+
+## Targeted Admin Review Label Updates
+
+Status: Implemented locally on `benchmark-admin-dashboard`
+
+### Completed
+
+- Reviewed `software-engineer-csc-013` after `SC4025 Digital Product Management` appeared above advanced AI / ML modules.
+- Confirmed the old `SC4025` tags were stale for the current course description.
+- Updated `SC4025` recommendation tags in `data/modules.json` from technical AI / NLP / programming signals to:
+  - `product-management`
+  - `design`
+  - `strategy`
+  - `metrics`
+  - `ethics`
+- Excluded `artificial-intelligence` from `SC4025` by reviewer decision because AI is only integrated as a product-management consideration, not the core recommendation signal.
+- Reseeded the local module database from `data/modules.json`.
+- Regenerated `data/recommendation_benchmark_predictions.json` after reseeding.
+- Confirmed `software-engineer-csc-013` now selects:
+  - `SC4001 Neural Network & Deep Learning`
+  - `SC4002 Natural Language Processing`
+- Reviewed `software-engineer-csc-003` after the admin dashboard showed `SC4063 Network Security` as an unreviewed third recommendation.
+- Added `SC4063 Network Security` to the `software-engineer-csc-003` reviewed candidates with `expectedRelevance` set to `relevant`.
+- Kept `SC4063` as `relevant`, not `highly-relevant`, because it is a strong security-track fit but less directly aligned than `SC4010 Applied Cryptography` for cryptography and `SC4017 Data Privacy & Security` for privacy.
+
+### Verification
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m backend.database.seed` to sync the local database with the updated `SC4025` tags.
+- Started a temporary backend on port `8013`.
+- Ran `.venv/bin/python scripts/run_recommendation_benchmark_predictions.py --api-url http://127.0.0.1:8013/recommendations`.
+- Ran `.venv/bin/python scripts/evaluate_recommendation_benchmark.py --predictions data/recommendation_benchmark_predictions.json --k 5` after the `SC4025` tag fix.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json` after adding the `SC4063` reviewed label.
+- Ran IDE diagnostics for `data/recommendation_benchmark_cases.json`; no issues reported.
+- Did not rerun the evaluator after the `SC4063` benchmark-label addition, by explicit instruction.
+
+### Current Result
+
+- `software-engineer-csc-013` no longer selects `SC4025`; the saved predictions now select `SC4001` and `SC4002`.
+- `software-engineer-csc-003` now treats `SC4063 Network Security` as a reviewed relevant recommendation.
+- The admin approval is case-level only; the per-course relevance label was updated directly in the benchmark case data.
+
+### Not Included
+
+- No scoring-logic changes.
+- No frontend admin UI changes for per-candidate relevance editing.
+- No benchmark evaluator run after the final `SC4063` label update.
+- No automated recommender test suite.
+- No Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML logic, MyCareersFuture scraping, auth, SSO, or backend user persistence.
+
+### Next Step
+
+- If per-course review becomes frequent, add admin UI controls for setting `expectedRelevance` per recommendation instead of editing benchmark labels manually.

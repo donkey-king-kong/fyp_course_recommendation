@@ -495,6 +495,15 @@
           "reviewNotes": "Tagged computer-security and distributed-systems in modules.json. The catalog description covers security, privacy, consensus protocols, distributed systems, and decentralized applications, making it a valid security-adjacent BDE recommendation for this preference profile. Labelled relevant rather than highly-relevant because SC4010 and SC4013 are more directly aligned with cryptography and application-security practice. isCurrentSemester=true."
         },
         {
+          "courseCode": "SC4063",
+          "title": "Network Security",
+          "targetSlotId": "y4-s2-bde1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Software Engineer -> secure software practice -> network-security -> Network Security",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tagged network-infrastructure, network-security, cybersecurity, and networks in modules.json. Suitable as a security-track recommendation for a Software Engineer student with computer-security, cryptography, and privacy preferences. Labelled relevant rather than highly-relevant because SC4010 is a more direct cryptography match and SC4017 is a more direct privacy match. Current offering status should be considered separately from topical fit."
+        },
+        {
           "courseCode": "SC4016",
           "title": "Cyber Threat Intelligence",
           "targetSlotId": "y4-s1-mpe1",

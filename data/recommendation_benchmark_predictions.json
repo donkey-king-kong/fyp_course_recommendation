@@ -1,6 +1,6 @@
 {
   "source": "live-backend",
-  "generatedAt": "2026-09-17T09:53:44.570317+00:00",
+  "generatedAt": "2026-09-18T08:05:45.555819+00:00",
   "apiUrl": "http://127.0.0.1:8013/recommendations",
   "benchmarkStatus": "project-owner-reviewed-draft-cases",
   "cases": [
@@ -666,33 +666,36 @@
           "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> software-engineering -> Advanced Software Engineering and matches your profile faculty."
         },
         {
-          "courseCode": "SC4025",
-          "title": "Digital Product Management",
+          "courseCode": "SC4001",
+          "title": "Neural Network & Deep Learning",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
           "mpeSpecialisations": [
-            "data-science"
+            "artificial-intelligence"
           ],
           "matchedChoiceSlot": "SC4xxx",
           "matchedChoiceSlotId": "y4-s1-mpe3",
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
           "matchedKeywords": [
-            "software",
-            "programming",
-            "systems",
             "algorithm",
-            "testing",
-            "tag:machine-learning",
-            "tag:programming",
+            "architecture",
+            "tag:artificial-intelligence",
+            "tag:data-science",
             "tag:algorithms",
-            "skill:software design and delivery:programming",
+            "tag:networks",
             "skill:backend and data services:algorithms",
+            "skill:systems and infrastructure:networks",
             "skill:algorithmic problem solving:algorithms"
           ],
           "prerequisites": [
-            "SC2006"
+            "MH1201",
+            "MH1403",
+            "MH2802",
+            "SC1004",
+            "SC1007",
+            "SC1123"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -702,11 +705,65 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 69,
+          "score": 52,
           "recommendationConfidence": "standard",
           "scoreBreakdown": {
-            "careerTagScore": 10,
-            "careerSkillScore": 15,
+            "careerTagScore": 6,
+            "careerSkillScore": 14,
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "systems and infrastructure",
+              "skillAreaWeight": 7,
+              "tag": "networks",
+              "relationshipWeight": 0.75,
+              "tagConfidence": 1.0,
+              "contributionScore": 5.25,
+              "rationale": "Networking knowledge directly supports distributed and internet-facing software."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 21,
+            "sameFacultyBoost": 8,
+            "mpeSpecialisationBoost": 0,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 52
+          },
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> networks -> Neural Network & Deep Learning and matches selected topic preference(s) and matches your profile faculty."
+        },
+        {
+          "courseCode": "SC4061",
+          "title": "Computer Vision",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 4,
+          "mpeSpecialisations": [
+            "artificial-intelligence"
+          ],
+          "matchedChoiceSlot": "SC4xxx",
+          "matchedChoiceSlotId": "y4-s2-mpe4",
+          "matchedChoiceSlotYear": 4,
+          "matchedChoiceSlotSemester": 2,
+          "matchedKeywords": [
+            "tag:artificial-intelligence",
+            "tag:programming",
+            "skill:software design and delivery:programming"
+          ],
+          "prerequisites": [],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 51,
+          "recommendationConfidence": "standard",
+          "scoreBreakdown": {
+            "careerTagScore": 0,
+            "careerSkillScore": 7,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
               "skillArea": "software design and delivery",
@@ -725,56 +782,9 @@
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 69
+            "finalScore": 51
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> programming -> Digital Product Management and matches selected topic preference(s) and matches your profile faculty."
-        },
-        {
-          "courseCode": "SC4002",
-          "title": "Natural Language Processing",
-          "academicUnits": 3.0,
-          "faculty": "CSC",
-          "level": 4,
-          "mpeSpecialisations": [
-            "artificial-intelligence",
-            "data-science"
-          ],
-          "matchedChoiceSlot": "SC4xxx",
-          "matchedChoiceSlotId": "y4-s2-mpe4",
-          "matchedChoiceSlotYear": 4,
-          "matchedChoiceSlotSemester": 2,
-          "matchedKeywords": [
-            "tag:artificial-intelligence"
-          ],
-          "prerequisites": [
-            "MH1403",
-            "SC2001"
-          ],
-          "missingPrerequisites": [],
-          "existingPrerequisiteCourseCodes": [],
-          "plannedPrerequisiteCourseCodes": [],
-          "prerequisiteRecommendations": [],
-          "plannedRoadmapNodes": [],
-          "plannedRoadmapEdges": [],
-          "readinessStatus": "ready",
-          "unlockValue": 0,
-          "score": 46,
-          "recommendationConfidence": "standard",
-          "scoreBreakdown": {
-            "careerTagScore": 2,
-            "careerSkillScore": 0,
-            "careerSkillEvidence": null,
-            "currentSemesterBonus": 3,
-            "preferenceBoost": 33,
-            "sameFacultyBoost": 8,
-            "mpeSpecialisationBoost": 0,
-            "legacyCodePenalty": 0,
-            "defaultProfileAdjustment": 0,
-            "prerequisitePlanningPenalty": 0,
-            "unlockContribution": 0,
-            "finalScore": 46
-          },
-          "reason": "Recommended for the Software Engineer career goal. Also matches career signals: tag:artificial-intelligence and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> programming -> Computer Vision and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },
@@ -4125,33 +4135,36 @@
       },
       "recommendations": [
         {
-          "courseCode": "SC4025",
-          "title": "Digital Product Management",
+          "courseCode": "SC4001",
+          "title": "Neural Network & Deep Learning",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
           "mpeSpecialisations": [
-            "data-science"
+            "artificial-intelligence"
           ],
           "matchedChoiceSlot": "SC4xxx",
           "matchedChoiceSlotId": "y4-s1-mpe1",
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 1,
           "matchedKeywords": [
-            "software",
-            "programming",
-            "systems",
             "algorithm",
-            "testing",
-            "tag:machine-learning",
-            "tag:programming",
+            "architecture",
+            "tag:artificial-intelligence",
+            "tag:data-science",
             "tag:algorithms",
-            "skill:software design and delivery:programming",
+            "tag:networks",
             "skill:backend and data services:algorithms",
+            "skill:systems and infrastructure:networks",
             "skill:algorithmic problem solving:algorithms"
           ],
           "prerequisites": [
-            "SC2006"
+            "MH1201",
+            "MH1403",
+            "MH2802",
+            "SC1004",
+            "SC1007",
+            "SC1123"
           ],
           "missingPrerequisites": [],
           "existingPrerequisiteCourseCodes": [],
@@ -4161,40 +4174,41 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 69,
+          "score": 52,
           "recommendationConfidence": "standard",
           "scoreBreakdown": {
-            "careerTagScore": 10,
-            "careerSkillScore": 15,
+            "careerTagScore": 6,
+            "careerSkillScore": 14,
             "careerSkillEvidence": {
               "careerGoal": "software-engineer",
-              "skillArea": "software design and delivery",
-              "skillAreaWeight": 10,
-              "tag": "programming",
+              "skillArea": "systems and infrastructure",
+              "skillAreaWeight": 7,
+              "tag": "networks",
               "relationshipWeight": 0.75,
-              "tagConfidence": 0.9,
-              "contributionScore": 6.75,
-              "rationale": "Programming is foundational but can be broad or introductory."
+              "tagConfidence": 1.0,
+              "contributionScore": 5.25,
+              "rationale": "Networking knowledge directly supports distributed and internet-facing software."
             },
             "currentSemesterBonus": 3,
-            "preferenceBoost": 33,
+            "preferenceBoost": 21,
             "sameFacultyBoost": 8,
             "mpeSpecialisationBoost": 0,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 69
+            "finalScore": 52
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> software design and delivery -> programming -> Digital Product Management and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> systems and infrastructure -> networks -> Neural Network & Deep Learning and matches selected topic preference(s) and matches your profile faculty."
         },
         {
-          "courseCode": "SC4020",
-          "title": "Data Analytics & Mining",
+          "courseCode": "SC4002",
+          "title": "Natural Language Processing",
           "academicUnits": 3.0,
           "faculty": "CSC",
           "level": 4,
           "mpeSpecialisations": [
+            "artificial-intelligence",
             "data-science"
           ],
           "matchedChoiceSlot": "SC4xxx",
@@ -4202,13 +4216,7 @@
           "matchedChoiceSlotYear": 4,
           "matchedChoiceSlotSemester": 2,
           "matchedKeywords": [
-            "engineering",
-            "database",
-            "systems",
-            "tag:data-science",
-            "tag:machine-learning",
-            "tag:database",
-            "skill:backend and data services:database"
+            "tag:artificial-intelligence"
           ],
           "prerequisites": [
             "MH1403",
@@ -4222,32 +4230,23 @@
           "plannedRoadmapEdges": [],
           "readinessStatus": "ready",
           "unlockValue": 0,
-          "score": 50,
+          "score": 46,
           "recommendationConfidence": "standard",
           "scoreBreakdown": {
-            "careerTagScore": 12,
-            "careerSkillScore": 6,
-            "careerSkillEvidence": {
-              "careerGoal": "software-engineer",
-              "skillArea": "backend and data services",
-              "skillAreaWeight": 8,
-              "tag": "database",
-              "relationshipWeight": 0.8,
-              "tagConfidence": 1.0,
-              "contributionScore": 6.4,
-              "rationale": "Data modelling and querying are common backend service responsibilities."
-            },
+            "careerTagScore": 2,
+            "careerSkillScore": 0,
+            "careerSkillEvidence": null,
             "currentSemesterBonus": 3,
-            "preferenceBoost": 21,
+            "preferenceBoost": 33,
             "sameFacultyBoost": 8,
             "mpeSpecialisationBoost": 0,
             "legacyCodePenalty": 0,
             "defaultProfileAdjustment": 0,
             "prerequisitePlanningPenalty": 0,
             "unlockContribution": 0,
-            "finalScore": 50
+            "finalScore": 46
           },
-          "reason": "Recommended for the Software Engineer career goal. Also top career-skill path: Software Engineer -> backend and data services -> database -> Data Analytics & Mining and matches selected topic preference(s) and matches your profile faculty."
+          "reason": "Recommended for the Software Engineer career goal. Also matches career signals: tag:artificial-intelligence and matches selected topic preference(s) and matches your profile faculty."
         }
       ]
     },
