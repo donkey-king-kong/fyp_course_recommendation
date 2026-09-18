@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import './App.css'
+import AdminDashboard from './components/AdminDashboard'
 import CourseList from './components/CourseList'
 import LoginPage from './components/LoginPage'
 import ModulesPage from './components/ModulesPage'
@@ -12,11 +13,12 @@ import type { CurriculumGuideResponse } from './types/curriculum'
 import type { RoadmapResponse } from './types/roadmap'
 import type { RoadmapRecommendationStaleReason } from './store/useProfileStore'
 
-type ViewState = 'roadmap' | 'modules' | 'profile'
+type ViewState = 'roadmap' | 'modules' | 'profile' | 'admin'
 
+const ADMIN_TOKEN_STORAGE_KEY = 'ntu-course-recommender-admin-token'
 const VIEW_STORAGE_KEY = 'ntu-course-recommender-current-view'
 const DEFAULT_VIEW: ViewState = 'roadmap'
-const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile']
+const VALID_VIEWS: ViewState[] = ['roadmap', 'modules', 'profile', 'admin']
 const EMPTY_RECOMMENDATION_TAGS: string[] = []
 const SUPPORTED_CAREER_GOALS = new Set([
   'software-engineer',
@@ -48,6 +50,10 @@ function getInitialView(): ViewState {
   }
 
   return DEFAULT_VIEW
+}
+
+function getInitialAdminToken() {
+  return window.localStorage.getItem(ADMIN_TOKEN_STORAGE_KEY) ?? ''
 }
 
 function getChoiceSlotCode(course: CurriculumGuideResponse['nodes'][number]) {
@@ -89,6 +95,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [theme, setTheme] = useState<'light' | 'dark'>('light') // Toggle Button
   const [currentView, setCurrentView] = useState<ViewState>(getInitialView)
+  const [adminToken, setAdminToken] = useState(getInitialAdminToken)
   const [isLoadingRecommendations, setIsLoadingRecommendations] = useState(false)
   const [recommendationError, setRecommendationError] = useState('')
   const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
@@ -118,6 +125,7 @@ function App() {
     roadmapRecommendationStaleReasons,
     hasLoadedRoadmapRecommendations,
   )
+  const hasAdminSession = Boolean(adminToken)
   const roadmapPageError = roadmapProjectionError || recommendationError
   const appliedTranscriptCompletedCourses = useMemo(
     () => (isTranscriptAppliedToRoadmap ? transcriptCompletedCourses : []),
@@ -135,6 +143,12 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
   }, [currentView])
+
+  useEffect(() => {
+    if (currentView === 'admin' && !hasAdminSession) {
+      setCurrentView(DEFAULT_VIEW)
+    }
+  }, [currentView, hasAdminSession])
 
   useEffect(() => {
     setRecommendationError('')
@@ -205,12 +219,27 @@ function App() {
     }) ?? []
 
   // Show the login page until a studentID is entered
-  if (!activeStudentId) {
-    return <LoginPage />
+  if (!activeStudentId && !hasAdminSession) {
+    return <LoginPage onAdminLogin={handleAdminLogin} />
+  }
+
+  function handleAdminLogin(nextAdminToken: string) {
+    window.localStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, nextAdminToken)
+    setAdminToken(nextAdminToken)
+    setCurrentView('admin')
+  }
+
+  function handleAdminLogout() {
+    window.localStorage.removeItem(ADMIN_TOKEN_STORAGE_KEY)
+    setAdminToken('')
+    if (!activeStudentId) {
+      setCurrentView(DEFAULT_VIEW)
+    }
   }
 
   function handleLogout() {
     setCurrentView(DEFAULT_VIEW)
+    handleAdminLogout()
     logout()
   }
 
@@ -329,6 +358,14 @@ function App() {
             >
               Profile
             </button>
+            {hasAdminSession && (
+              <button
+                className={`nav-button ${currentView === 'admin' ? 'active' : ''}`}
+                onClick={() => setCurrentView('admin')}
+              >
+                Admin
+              </button>
+            )}
             <button className="nav-button logout-button" onClick={handleLogout}>
               Log out
             </button>
@@ -409,6 +446,10 @@ function App() {
       )}
 
       {currentView === 'modules' && <ModulesPage />}
+
+      {currentView === 'admin' && hasAdminSession && (
+        <AdminDashboard adminToken={adminToken} onAdminLogout={handleAdminLogout} />
+      )}
 
       {/* Show profile page when selected */}
       {currentView === 'profile' && (
