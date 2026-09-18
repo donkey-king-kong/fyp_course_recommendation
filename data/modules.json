@@ -70021,9 +70021,8 @@
       "notAvailableToProgramme": "ACBS, ACC, ACDA, ADM, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP(ASEN), REP(BIE), REP(CBE), REP(CVEN), REP(EEE), REP(ENE), REP(MAT), REP(ME), ROBO, SCED, SOC, SPPE, SSM",
       "recommendationTags": [
         "software-security",
-        "programming",
         "cybersecurity",
-        "psychology"
+        "secure-coding"
       ]
     },
     {
@@ -70041,10 +70040,11 @@
       "recommendationProfile": "broad-default",
       "notAvailableToProgramme": "ACBS, ACC, ADM, ADMC, AERO, ARED, ASEC, BACF, BASA, BEEC, BIE, BMS, BS, BSB, BSPY, BUS, BUSD, BUSS, CBE, CBEC, CEE, CHEM, CHIN, CMED, CNEL, CNLM, COMP, CS, CVEC, ECDS, ECMA, ECON, ECPP, ECPS, EEE, EEEC, EESS, ELAH, ELH, ELHS, ELPL, ENE, ENEC, ENG, ESPP, HIST, HSCN, HSLM, IEEC, IEM, LMEL, LMPL, LMS, MAEC, MAEO, MAT, MATH, ME(DES), ME(IDMS), ME(IMS), ME(NULL), ME(RMS), MEEC(DES), MEEC(IDMS), MEEC(IMS), MEEC(NULL), MEEC(RMS), MS, MS-2ndMaj/Spec(MSB), MTEC, PESC, PHIL, PHMS, PHY, PLCN, PLHS, PPGA, PSLM, PSMA, PSY, REP 1, REP 2, REP 3, REP(ASEN) 4, REP(BIE) 4, REP(CBE) 4, REP(CVEN) 4, REP(EEE) 4, REP(ENE) 4, REP(MAT) 4, REP(ME) 4, ROBO, SCED, SOC, SPPE, SSM",
       "recommendationTags": [
+        "application-security",
+        "web-security",
         "software-security",
         "cybersecurity",
-        "design",
-        "environmental"
+        "vulnerability-assessment"
       ]
     },
     {

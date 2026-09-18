@@ -1277,3 +1277,48 @@ Status: Implemented locally on `benchmark-admin-dashboard`
 ### Next Step
 
 - If per-course review becomes frequent, add admin UI controls for setting `expectedRelevance` per recommendation instead of editing benchmark labels manually.
+
+## Security Module Tag Review
+
+Status: Implemented locally on `benchmark-admin-dashboard`
+
+### Completed
+
+- Reviewed `SC4012 Software Security` against the course description supplied during admin benchmark review.
+- Updated `SC4012` recommendation tags in `data/modules.json` to better reflect software attack/defence and secure coding content:
+  - `software-security`
+  - `cybersecurity`
+  - `secure-coding`
+- Removed noisy `SC4012` tags:
+  - `programming`
+  - `psychology`
+- Reviewed `SC4013 Application Security` against the official NTUMods description shown in the browser.
+- Updated `SC4013` recommendation tags in `data/modules.json` to represent web application security and vulnerability-focused practice:
+  - `application-security`
+  - `web-security`
+  - `software-security`
+  - `cybersecurity`
+  - `vulnerability-assessment`
+- Removed noisy `SC4013` tags:
+  - `design`
+  - `environmental`
+
+### Rationale
+
+- `SC4012` explicitly teaches security attacks against software components and secure coding techniques, so `secure-coding` is more precise than broad `programming`.
+- `SC4013` repeatedly references web applications, web application security principles, testing methodologies, and identifying/exploiting vulnerabilities in simulated environments.
+- `design`, `environmental`, and `psychology` were removed because the reviewed descriptions do not support them as recommendation tags.
+
+### Verification
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Did not reseed the database.
+- Did not regenerate benchmark predictions.
+- Did not run the benchmark evaluator.
+
+### Not Included
+
+- No scoring-logic changes.
+- No benchmark-label changes.
+- No frontend admin UI changes.
+- No automated recommender tests.
