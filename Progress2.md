@@ -1316,6 +1316,46 @@ Status: Implemented locally on `benchmark-admin-dashboard`
 - Did not regenerate benchmark predictions.
 - Did not run the benchmark evaluator.
 
+## Cloud-Platform Career Scoring Calibration
+
+Status: Implemented locally on `benchmark-admin-dashboard`
+
+### Completed
+
+- Reviewed `cloud-platform-engineer-csc-001` after seeing `SC4050 Parallel Computing` returned above `SC4052 Cloud Computing` and `SC4051 Distributed Systems`.
+- Confirmed the desired SC4xxx ordering for this profile is:
+  - `SC4052 Cloud Computing`
+  - `SC4051 Distributed Systems`
+  - `SC4050 Parallel Computing`
+- Updated `backend/services/career_skill_mappings.py` so `cloud-platform-engineer` has clearer career-priority layers:
+  - `cloud platform services` as the highest-weight skill area.
+  - `distributed platform foundations` as the next core skill area.
+  - `systems performance and reliability` as a lower supporting skill area.
+- Lowered the `parallel-computing` relationship for `cloud-platform-engineer` so broad performance/system fit does not outrank direct cloud-platform fit.
+- Updated `backend/services/recommendation_service.py` so `cloud-platform-engineer` receives only a small `high-performance-computing` MPE-specialisation boost of `4`, instead of the full `12` career boost.
+- Kept `SC4050 Parallel Computing` relevant, but calibrated it as a supporting module below direct cloud/distributed modules for cloud-platform profiles.
+- Updated `data/recommendation_benchmark_cases.json` review notes for:
+  - `SC4051 Distributed Systems`
+  - `SC4052 Cloud Computing`
+  - `SC4050 Parallel Computing`
+
+### Rationale
+
+- The career goal should set the main direction of the ranking; preference tags should personalize within that direction.
+- For a `cloud-platform-engineer`, direct cloud-platform content should beat broad systems/performance overlap.
+- `SC4052 Cloud Computing` directly teaches cloud computing and should be the strongest SC4xxx match.
+- `SC4051 Distributed Systems` directly teaches distributed systems and should rank above `SC4050` for this profile.
+- `SC4050 Parallel Computing` is still useful, but it teaches parallel performance/implementation rather than cloud platforms or distributed systems directly.
+
+### Verification
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Ran `.venv/bin/python -m json.tool data/recommendation_benchmark_cases.json`.
+- Ran `.venv/bin/python -m compileall backend/services/career_skill_mappings.py backend/services/recommendation_service.py`.
+- Did not reseed the database.
+- Did not regenerate benchmark predictions.
+- Did not run the benchmark evaluator.
+
 ## Cloud Computing Tag Review
 
 Status: Implemented locally on `benchmark-admin-dashboard`

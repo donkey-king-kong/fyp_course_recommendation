@@ -140,7 +140,8 @@ CAREER_MPE_SPECIALISATION_BOOSTS = {
         "high-performance-computing": 8,
     },
     "cloud-platform-engineer": {
-        "high-performance-computing": MPE_SPECIALISATION_CAREER_BOOST,
+        "edge-computing": MPE_SPECIALISATION_CAREER_BOOST,
+        "high-performance-computing": 4,
     },
 }
 DIVERSITY_TAG_REPEAT_PENALTY = 8

@@ -646,7 +646,7 @@ DATA_ENGINEER_SKILL_MAPPINGS = (
 
 CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
     CareerSkillMapping(
-        skill="cloud and distributed infrastructure",
+        skill="cloud platform services",
         tag_relationships=(
             SkillTagRelationship(
                 tag="cloud-computing",
@@ -655,23 +655,52 @@ CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Directly represents cloud infrastructure and platform concepts.",
             ),
             SkillTagRelationship(
+                tag="infrastructure",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Infrastructure concepts directly support cloud platform design and operation.",
+            ),
+            SkillTagRelationship(
+                tag="distributed-computing",
+                relationship_weight=0.75,
+                tag_confidence=0.95,
+                rationale="Distributed computing techniques support cloud services, but are broader than cloud platform operation.",
+            ),
+        ),
+        weight=13,
+        rationale=(
+            "Cloud platform engineers need direct cloud service, infrastructure, and "
+            "distributed-computing knowledge."
+        ),
+        weight_rationale="Highest weight because cloud platform concepts define this role.",
+    ),
+    CareerSkillMapping(
+        skill="distributed platform foundations",
+        tag_relationships=(
+            SkillTagRelationship(
                 tag="distributed-systems",
-                relationship_weight=0.95,
+                relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Distributed systems are foundational for scalable cloud platforms.",
             ),
             SkillTagRelationship(
+                tag="distributed-computing",
+                relationship_weight=0.85,
+                tag_confidence=0.95,
+                rationale="Distributed computing covers execution patterns used by scalable platform services.",
+            ),
+            SkillTagRelationship(
                 tag="network-infrastructure",
-                relationship_weight=0.75,
+                relationship_weight=0.8,
                 tag_confidence=1.0,
                 rationale="Network infrastructure modules cover routing, protocols, and transport-layer concepts that are directly applicable to cloud platform networking. Uses a precise tag so generic security or graph-theory modules that happen to mention 'networks' do not score here.",
             ),
         ),
-        weight=10,
+        weight=9,
         rationale=(
-            "Cloud and platform engineers build infrastructure for scalable, networked services."
+            "Cloud platform engineers build on distributed systems and networked service foundations."
         ),
-        weight_rationale="Highest weight because infrastructure and distributed platforms define this role.",
+        weight_rationale="High weight because distributed systems are core platform foundations, but direct cloud concepts should come first.",
     ),
     CareerSkillMapping(
         skill="systems performance and reliability",
@@ -684,26 +713,26 @@ CLOUD_PLATFORM_ENGINEER_SKILL_MAPPINGS = (
             ),
             SkillTagRelationship(
                 tag="parallel-computing",
-                relationship_weight=0.8,
+                relationship_weight=0.6,
                 tag_confidence=0.9,
-                rationale="Parallel computing supports performance-aware infrastructure work.",
+                rationale="Parallel computing supports performance-aware infrastructure work, but is secondary to direct cloud and distributed-systems topics.",
             ),
             SkillTagRelationship(
                 tag="computer-architecture",
-                relationship_weight=0.55,
+                relationship_weight=0.5,
                 tag_confidence=0.85,
                 rationale="Architecture knowledge helps reason about performance and hardware constraints.",
             ),
             SkillTagRelationship(
                 tag="systems",
-                relationship_weight=0.5,
+                relationship_weight=0.45,
                 tag_confidence=0.8,
                 rationale="General systems modules can support platform reliability and performance reasoning.",
             ),
         ),
-        weight=7,
+        weight=5,
         rationale="Platform work benefits from understanding lower-level systems and performance trade-offs.",
-        weight_rationale="High weight because systems knowledge supports reliable infrastructure decisions.",
+        weight_rationale="Medium weight because systems performance is useful, but it should not outrank direct cloud/distributed platform content.",
     ),
     CareerSkillMapping(
         skill="secure platform operation",
