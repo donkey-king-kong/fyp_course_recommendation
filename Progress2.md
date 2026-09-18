@@ -1316,6 +1316,46 @@ Status: Implemented locally on `benchmark-admin-dashboard`
 - Did not regenerate benchmark predictions.
 - Did not run the benchmark evaluator.
 
+## GPU Programming Tag Review
+
+Status: Implemented locally on `benchmark-admin-dashboard`
+
+### Tag Review Rule
+
+- A tag is valid only if the course teaches that topic directly.
+- Mentioning a topic as an application area is not enough.
+
+### Completed
+
+- Reviewed `SC4064 GPU Programming` against the course description supplied during benchmark review.
+- Updated `SC4064` recommendation tags in `data/modules.json` to:
+  - `gpu-programming`
+  - `systems-programming`
+  - `parallel-computing`
+  - `high-performance-computing`
+  - `programming`
+  - `systems`
+  - `optimization`
+- Removed noisy tags:
+  - `hardware-embedded`
+  - `artificial-intelligence`
+
+### Rationale
+
+- `gpu-programming`, `programming`, and `systems-programming` are supported because the course explicitly teaches GPU programming and efficient programming of modern computer systems.
+- `parallel-computing` is supported because GPU and multi-GPU execution are parallel computing topics.
+- `high-performance-computing` is supported because the course explicitly mentions HPC applications.
+- `optimization` is supported because profiling and performance optimization are central course topics.
+- `artificial-intelligence` was removed because the course runs AI models as workloads, but the description does not say it teaches AI concepts.
+- `hardware-embedded` was removed because GPU architecture is covered, but embedded systems are not taught directly.
+
+### Verification
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Did not reseed the database.
+- Did not regenerate benchmark predictions.
+- Did not run the benchmark evaluator.
+
 ## Parallel Computing Tag Review
 
 Status: Implemented locally on `benchmark-admin-dashboard`

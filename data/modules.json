@@ -70542,10 +70542,10 @@
       "latestSemester": "2",
       "isCurrentSemester": false,
       "recommendationTags": [
+        "gpu-programming",
         "systems-programming",
         "parallel-computing",
-        "hardware-embedded",
-        "artificial-intelligence",
+        "high-performance-computing",
         "programming",
         "systems",
         "optimization"
