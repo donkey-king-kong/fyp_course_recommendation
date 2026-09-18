@@ -6,6 +6,8 @@ from fastapi import APIRouter, Header, HTTPException, Query, status
 
 from backend.schemas.admin import (
     AdminBenchmarkCaseDetailResponse,
+    AdminBenchmarkCaseReviewRequest,
+    AdminBenchmarkCaseReviewResponse,
     AdminBenchmarkSummaryResponse,
     AdminLoginRequest,
     AdminLoginResponse,
@@ -13,6 +15,7 @@ from backend.schemas.admin import (
 from backend.services.admin_benchmark_service import (
     get_admin_benchmark_case_detail,
     get_admin_benchmark_summary,
+    update_admin_benchmark_case_reviews,
 )
 
 router = APIRouter(prefix="/admin", tags=["Admin"])
@@ -65,6 +68,27 @@ def read_admin_benchmark_summary(
 ) -> AdminBenchmarkSummaryResponse:
     require_admin_token(x_admin_token)
     return get_admin_benchmark_summary(k=k)
+
+@router.patch(
+    "/benchmark/reviews",
+    response_model=AdminBenchmarkCaseReviewResponse,
+    summary="Persist local benchmark review decisions",
+    response_description="Updated case IDs and refreshed benchmark case summaries.",
+)
+def update_admin_benchmark_reviews(
+    request: AdminBenchmarkCaseReviewRequest,
+    x_admin_token: Optional[str] = Header(default=None, alias="X-Admin-Token"),
+    k: int = Query(default=5, ge=1, le=20, description="Ranking cutoff used for refreshed summaries."),
+) -> AdminBenchmarkCaseReviewResponse:
+    require_admin_token(x_admin_token)
+    result = update_admin_benchmark_case_reviews(request.cases, k=k)
+    if result is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="One or more benchmark cases were not found.",
+        )
+
+    return result
 
 @router.get(
     "/benchmark/{case_id}",

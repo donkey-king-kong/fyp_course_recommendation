@@ -5,7 +5,10 @@ from typing import Any, Optional
 
 from backend.schemas.admin import (
     AdminAnnotatedRecommendation,
+    AdminBenchmarkCaseReviewItem,
+    AdminBenchmarkCaseReviewResponse,
     AdminBenchmarkCaseDetailResponse,
+    AdminBenchmarkReviewStatus,
     AdminBenchmarkCaseStatus,
     AdminBenchmarkCaseSummary,
     AdminBenchmarkPredictionSummary,
@@ -28,6 +31,11 @@ RELEVANT_LABELS = {"highly-relevant", "relevant"}
 def load_json(path: Path) -> dict[str, Any]:
     with path.open() as file:
         return json.load(file)
+
+def write_json(path: Path, data: dict[str, Any]) -> None:
+    with path.open("w") as file:
+        json.dump(data, file, indent=2)
+        file.write("\n")
 
 def prediction_course_code(prediction: dict[str, Any]) -> str:
     return str(prediction.get("courseCode", "")).strip().upper()
@@ -177,6 +185,12 @@ def evaluate_case(case: dict[str, Any], predictions: list[dict[str, Any]], k: in
 def average(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
 
+def admin_review_status(case: dict[str, Any]) -> AdminBenchmarkReviewStatus:
+    status = case.get("adminReviewStatus", "unreviewed")
+    if status in {"approved", "disapproved"}:
+        return status
+    return "unreviewed"
+
 def benchmark_status(metrics: dict[str, Any]) -> AdminBenchmarkCaseStatus:
     if metrics["recommendationCount"] == 0:
         return "missing-predictions"
@@ -222,6 +236,8 @@ def build_case_summary(
         slotFillRate=metrics["slotFillRate"],
         constraintValidity=metrics["constraintValidity"],
         status=benchmark_status(metrics),
+        adminReviewStatus=admin_review_status(case),
+        adminReviewNotes=case.get("adminReviewNotes"),
         topPredictions=build_prediction_summary(predictions, candidates, top_prediction_limit),
     )
 
@@ -328,6 +344,8 @@ def get_admin_benchmark_case_detail(case_id: str, k: int = 5) -> Optional[AdminB
         studentFaculty=case.get("studentFaculty"),
         careerGoal=case.get("careerGoal", ""),
         reviewerStatus=case.get("reviewerStatus"),
+        adminReviewStatus=admin_review_status(case),
+        adminReviewNotes=case.get("adminReviewNotes"),
         preferredRecommendationTags=case.get("preferredRecommendationTags", []),
         completedCourseCodes=case.get("completedCourseCodes", []),
         choiceSlots=case.get("choiceSlots", []),
@@ -342,4 +360,29 @@ def get_admin_benchmark_case_detail(case_id: str, k: int = 5) -> Optional[AdminB
             build_reviewed_candidate(candidate, ranked_predictions)
             for candidate in case.get("reviewedCandidates", [])
         ],
+    )
+
+def update_admin_benchmark_case_reviews(
+    reviews: list[AdminBenchmarkCaseReviewItem],
+    k: int = 5,
+) -> Optional[AdminBenchmarkCaseReviewResponse]:
+    benchmark = load_json(BENCHMARK_CASES_PATH)
+    cases_by_id = case_lookup(benchmark)
+    updated_case_ids = []
+
+    for review in reviews:
+        case = cases_by_id.get(review.caseId)
+        if case is None:
+            return None
+
+        case["adminReviewStatus"] = review.adminReviewStatus
+        case["adminReviewNotes"] = review.adminReviewNotes or None
+        updated_case_ids.append(review.caseId)
+
+    write_json(BENCHMARK_CASES_PATH, benchmark)
+    summary = get_admin_benchmark_summary(k=k)
+
+    return AdminBenchmarkCaseReviewResponse(
+        updatedCaseIds=updated_case_ids,
+        cases=summary.cases,
     )

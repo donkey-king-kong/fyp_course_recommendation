@@ -3,6 +3,7 @@ from typing import Any, Literal, Optional, Union
 from pydantic import BaseModel, Field
 
 AdminBenchmarkCaseStatus = Literal["ok", "needs-review", "missing-predictions"]
+AdminBenchmarkReviewStatus = Literal["unreviewed", "approved", "disapproved"]
 
 class AdminLoginRequest(BaseModel):
     username: str = Field(description="Local development admin username.", examples=["admin"])
@@ -34,6 +35,8 @@ class AdminBenchmarkCaseSummary(BaseModel):
     slotFillRate: float
     constraintValidity: float
     status: AdminBenchmarkCaseStatus
+    adminReviewStatus: AdminBenchmarkReviewStatus
+    adminReviewNotes: Optional[str]
     topPredictions: list[AdminBenchmarkPredictionSummary]
 
 class AdminBenchmarkSummaryResponse(BaseModel):
@@ -82,6 +85,8 @@ class AdminBenchmarkCaseDetailResponse(BaseModel):
     studentFaculty: Optional[str]
     careerGoal: str
     reviewerStatus: Optional[str]
+    adminReviewStatus: AdminBenchmarkReviewStatus
+    adminReviewNotes: Optional[str]
     preferredRecommendationTags: list[str]
     completedCourseCodes: list[str]
     choiceSlots: list[dict[str, Any]]
@@ -90,3 +95,17 @@ class AdminBenchmarkCaseDetailResponse(BaseModel):
     request: dict[str, Any]
     rankedRecommendations: list[AdminAnnotatedRecommendation]
     reviewedCandidates: list[AdminReviewedCandidate]
+
+class AdminBenchmarkCaseReviewItem(BaseModel):
+    caseId: str
+    adminReviewStatus: AdminBenchmarkReviewStatus
+    adminReviewNotes: Optional[str] = None
+
+class AdminBenchmarkCaseReviewRequest(BaseModel):
+    cases: list[AdminBenchmarkCaseReviewItem] = Field(
+        description="Benchmark case review decisions to persist into the local benchmark JSON file.",
+    )
+
+class AdminBenchmarkCaseReviewResponse(BaseModel):
+    updatedCaseIds: list[str]
+    cases: list[AdminBenchmarkCaseSummary]
