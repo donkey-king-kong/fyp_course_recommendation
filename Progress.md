@@ -2459,4 +2459,39 @@ Status: Implemented locally
 - No rerun benchmark button yet.
 - No recommendation scoring or ranking changes.
 - No embeddings, ChromaDB, Neo4j, LangGraph, OpenAI, ML logic, or MyCareersFuture scraping.
+
+## Benchmark Admin Review Decisions
+
+Status: Implemented locally
+
+### Completed
+
+- Confirmed every current benchmark case already has `reviewerStatus` set to `project-owner-reviewed-draft-not-expert-ground-truth`.
+- Added a separate `adminReviewStatus` field for dashboard decisions so the existing reviewer-status meaning stays intact.
+- Added optional `adminReviewNotes` for recording why a case was approved or disapproved.
+- Added `PATCH /admin/benchmark/reviews` to persist multiple review decisions into `data/recommendation_benchmark_cases.json`.
+- Added frontend approve/disapprove controls on each benchmark case detail.
+- Added a pending review save bar so decisions are only written after clicking `Save Review Decisions`.
+- Added review-status pills in the case list and reviewed-count summary.
+
+### Rationale Notes
+
+- `reviewerStatus` describes the benchmark labels themselves, while `adminReviewStatus` describes whether the current saved prediction output is accepted after visual inspection.
+- The write endpoint only updates `adminReviewStatus` and `adminReviewNotes` for matching cases.
+- Keeping a save button prevents accidental file writes while browsing cases.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran `npm --prefix frontend run build`.
+- Ran the Impeccable UI detector on the changed dashboard files.
+- Ran editor diagnostics and found no issues.
+
+### Not Included
+
+- No automatic benchmark rerun before approval.
+- No candidate-level approve/disapprove flow.
+- No editing labels or reviewed candidates from the dashboard.
+- No production audit trail, database persistence, or user identity.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.

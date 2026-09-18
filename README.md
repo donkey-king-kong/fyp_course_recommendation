@@ -37,6 +37,7 @@ Frontend runs at `http://127.0.0.1:5173`.
 - Default local credentials are `admin` / `admin` unless `ADMIN_USERNAME` and `ADMIN_PASSWORD` are set.
 - The backend returns a prototype admin token from `ADMIN_TOKEN`, defaulting to `local-admin-token`.
 - After login, the frontend shows an extra `Admin` tab with benchmark summary metrics, weak cases, saved predictions, reviewed labels, and score breakdowns.
+- The dashboard can mark cases as `approved` or `disapproved`; saving writes `adminReviewStatus` and `adminReviewNotes` back to `data/recommendation_benchmark_cases.json`.
 - This is not production authentication and should be replaced by real SSO-backed roles later.
 
 ## Module Data
