@@ -70217,9 +70217,9 @@
         "database",
         "data-engineering",
         "big-data",
+        "distributed-storage",
         "distributed-systems",
-        "data-science",
-        "systems"
+        "nosql"
       ]
     },
     {
@@ -70337,16 +70337,11 @@
       "recommendationProfile": "specialist",
       "recommendationTags": [
         "parallel-computing",
-        "programming",
+        "parallel-programming",
         "algorithms",
-        "networks",
         "systems",
-        "cloud-computing",
         "optimization",
-        "communication",
-        "design",
-        "education",
-        "research"
+        "performance-analysis"
       ]
     },
     {

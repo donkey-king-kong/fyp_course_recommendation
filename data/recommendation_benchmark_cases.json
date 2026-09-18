@@ -2245,7 +2245,7 @@
           "expectedRelevance": "highly-relevant",
           "expectedSkillPath": "Data Engineer -> data storage and modelling -> database -> Big Data Management",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Tags in modules.json: backend-engineering, database, data-science. Official data-science MPE path. Three-tag hit across database, backend-engineering, and data-science — all relevant to data engineering pipelines. No prerequisites in the prereq graph. isCurrentSemester=false — verify availability. Strong alternative to SC4051 for the SC4xxx slot."
+          "reviewNotes": "Tags in modules.json: database, data-engineering, big-data, distributed-storage, distributed-systems, nosql. The course description covers big data management, scalable data infrastructure, distributed storage and computation, NoSQL key-value stores, and parallel queries/analytics. Highly relevant to data engineering because it combines storage/modelling and distributed data-platform content. No prerequisites in the prereq graph. isCurrentSemester=false — verify availability. Strong SC4xxx alternative to SC4051 Distributed Systems; SC4051 remains highly relevant because it directly matches the distributed-systems preference."
         },
         {
           "courseCode": "SC4050",

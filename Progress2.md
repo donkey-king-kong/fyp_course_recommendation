@@ -1316,9 +1316,79 @@ Status: Implemented locally on `benchmark-admin-dashboard`
 - Did not regenerate benchmark predictions.
 - Did not run the benchmark evaluator.
 
+## Parallel Computing Tag Review
+
+Status: Implemented locally on `benchmark-admin-dashboard`
+
+### Completed
+
+- Reviewed `SC4050 Parallel Computing` against the course description supplied during benchmark review.
+- Updated `SC4050` recommendation tags in `data/modules.json` to:
+  - `parallel-computing`
+  - `parallel-programming`
+  - `algorithms`
+  - `systems`
+  - `optimization`
+  - `performance-analysis`
+- Removed broad/noisy `SC4050` tags that were not directly supported by the description:
+  - `networks`
+  - `cloud-computing`
+  - `communication`
+  - `design`
+  - `education`
+  - `research`
+
+### Rationale
+
+- The course focuses on parallel algorithm design, parallel programming patterns, execution models, performance-aware implementation, load balancing, and scalability.
+- `cloud-computing` was removed because the description mentions parallel systems and distributed-memory execution, but not cloud platforms or cloud deployment.
+- `networks` and `communication` were removed because communication appears as parallel-program synchronization/coordination, not as a networking topic or human communication topic.
+- `design`, `education`, and `research` were removed because they are too broad or unsupported by the course description.
+
+### Verification
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Did not reseed the database.
+- Did not regenerate benchmark predictions.
+- Did not run the benchmark evaluator.
+
 ### Not Included
 
 - No scoring-logic changes.
 - No benchmark-label changes.
 - No frontend admin UI changes.
 - No automated recommender tests.
+
+## Big Data Management Tag Review
+
+Status: Implemented locally on `benchmark-admin-dashboard`
+
+### Completed
+
+- Reviewed `SC4023 Big Data Management` against the official course description supplied during benchmark review.
+- Confirmed `database` is a valid tag because the course covers data management, data storage, NoSQL key-value stores, and query/analytics execution.
+- Confirmed the stronger interpretation is big-data infrastructure and distributed data systems rather than generic data science.
+- Updated `SC4023` recommendation tags in `data/modules.json` to:
+  - `database`
+  - `data-engineering`
+  - `big-data`
+  - `distributed-storage`
+  - `distributed-systems`
+  - `nosql`
+- Removed weaker or less precise `SC4023` tags:
+  - `data-science`
+  - `systems`
+- Updated the `data-engineer-csc-001` reviewed-candidate note for `SC4023` so it matches the revised tags and explains why `SC4051 Distributed Systems` remains highly relevant even if only one SC4xxx slot can be returned.
+
+### Rationale
+
+- `SC4023` is highly relevant for a Data Engineer because it covers scalable data infrastructure, distributed storage/computation, NoSQL key-value stores, and parallel queries/analytics.
+- `SC4051 Distributed Systems` is also highly relevant because it directly matches the `distributed-systems` preference, but it competes with `SC4023` for the single SC4xxx slot in `data-engineer-csc-001`.
+- `SC3020 Database System Principles` remains highly relevant and is assigned to the SC3xxx slot, so its score should not be interpreted as losing the same slot to `SC4023`.
+
+### Verification
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Did not reseed the database.
+- Did not regenerate benchmark predictions.
+- Did not run the benchmark evaluator.
