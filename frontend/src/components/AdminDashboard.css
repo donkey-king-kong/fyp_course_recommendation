@@ -80,6 +80,52 @@
   background: rgba(254, 226, 226, 0.82);
 }
 
+.admin-review-save-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--header-bg) 88%, var(--accent-text));
+}
+
+.admin-review-save-bar strong,
+.admin-review-save-bar span {
+  display: block;
+}
+
+.admin-review-save-bar strong {
+  color: var(--heading-text);
+}
+
+.admin-review-save-bar span,
+.admin-review-save-bar p {
+  margin: 0.25rem 0 0;
+  color: var(--muted-text);
+  font-size: 0.88rem;
+}
+
+.admin-review-save-bar button,
+.admin-review-actions button {
+  flex: 0 0 auto;
+  padding: 0.7rem 1rem;
+  border: 0;
+  border-radius: 0.65rem;
+  color: #0f172a;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  background: #38bdf8;
+}
+
+.admin-review-save-bar button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 .admin-metric-strip {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -204,7 +250,8 @@
 
 .admin-detail-metrics span,
 .admin-status-pill,
-.admin-relevance-pill {
+.admin-relevance-pill,
+.admin-review-pill {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -222,7 +269,8 @@
 }
 
 .admin-status-pill,
-.admin-relevance-pill {
+.admin-relevance-pill,
+.admin-review-pill {
   padding: 0.25rem 0.5rem;
 }
 
@@ -242,6 +290,21 @@
 .admin-status-pill.missing-predictions,
 .admin-relevance-pill.irrelevant,
 .admin-relevance-pill.unreviewed {
+  color: #7f1d1d;
+  background: #fecaca;
+}
+
+.admin-review-pill.unreviewed {
+  color: #475569;
+  background: #e2e8f0;
+}
+
+.admin-review-pill.approved {
+  color: #065f46;
+  background: #bbf7d0;
+}
+
+.admin-review-pill.disapproved {
   color: #7f1d1d;
   background: #fecaca;
 }
@@ -294,6 +357,82 @@
 
 .admin-panel {
   padding: 1rem;
+}
+
+.admin-review-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 1rem;
+  background: color-mix(in srgb, var(--input-bg) 78%, transparent);
+}
+
+.admin-review-panel h4,
+.admin-review-panel p {
+  margin: 0;
+}
+
+.admin-review-panel h4 {
+  color: var(--heading-text);
+}
+
+.admin-review-panel p {
+  margin-top: 0.35rem;
+  color: var(--muted-text);
+  line-height: 1.5;
+}
+
+.admin-review-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-review-actions button {
+  color: #065f46;
+  background: #bbf7d0;
+}
+
+.admin-review-actions button.danger {
+  color: #7f1d1d;
+  background: #fecaca;
+}
+
+.admin-review-actions button.selected {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-text) 22%, transparent);
+}
+
+.admin-review-note {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  grid-column: 1 / -1;
+  color: var(--muted-text);
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.admin-review-note textarea {
+  min-height: 5rem;
+  resize: vertical;
+  padding: 0.75rem;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.75rem;
+  color: var(--input-text);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.45;
+  text-transform: none;
+  background: var(--input-bg);
+}
+
+.admin-review-note textarea:focus {
+  outline: 3px solid color-mix(in srgb, var(--accent-text) 18%, transparent);
 }
 
 .admin-panel + .admin-panel {
@@ -395,7 +534,9 @@
 
 @media (max-width: 950px) {
   .admin-dashboard-header,
-  .admin-detail-header {
+  .admin-detail-header,
+  .admin-review-save-bar,
+  .admin-review-panel {
     flex-direction: column;
   }
 
@@ -411,6 +552,10 @@
   .admin-case-list {
     position: static;
     max-height: none;
+  }
+
+  .admin-review-panel {
+    display: flex;
   }
 }
 

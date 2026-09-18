@@ -1,5 +1,7 @@
 import type {
   AdminBenchmarkCaseDetailResponse,
+  AdminBenchmarkCaseReviewItem,
+  AdminBenchmarkCaseReviewResponse,
   AdminBenchmarkSummaryResponse,
   AdminLoginRequest,
   AdminLoginResponse,
@@ -55,5 +57,24 @@ export async function fetchAdminBenchmarkCase(
   return parseAdminResponse<AdminBenchmarkCaseDetailResponse>(
     response,
     'Could not load benchmark case.',
+  )
+}
+
+export async function saveAdminBenchmarkReviews(
+  adminToken: string,
+  cases: AdminBenchmarkCaseReviewItem[],
+): Promise<AdminBenchmarkCaseReviewResponse> {
+  const response = await fetch(`${ADMIN_API_BASE_URL}/benchmark/reviews`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-Admin-Token': adminToken,
+    },
+    body: JSON.stringify({ cases }),
+  })
+
+  return parseAdminResponse<AdminBenchmarkCaseReviewResponse>(
+    response,
+    'Could not save benchmark review decisions.',
   )
 }

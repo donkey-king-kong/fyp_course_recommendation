@@ -9,6 +9,7 @@ export interface AdminLoginResponse {
 }
 
 export type AdminBenchmarkCaseStatus = 'ok' | 'needs-review' | 'missing-predictions'
+export type AdminBenchmarkReviewStatus = 'unreviewed' | 'approved' | 'disapproved'
 
 export interface AdminBenchmarkPredictionSummary {
   courseCode: string
@@ -33,6 +34,8 @@ export interface AdminBenchmarkCaseSummary {
   slotFillRate: number
   constraintValidity: number
   status: AdminBenchmarkCaseStatus
+  adminReviewStatus: AdminBenchmarkReviewStatus
+  adminReviewNotes: string | null
   topPredictions: AdminBenchmarkPredictionSummary[]
 }
 
@@ -85,6 +88,8 @@ export interface AdminBenchmarkCaseDetailResponse {
   studentFaculty: string | null
   careerGoal: string
   reviewerStatus: string | null
+  adminReviewStatus: AdminBenchmarkReviewStatus
+  adminReviewNotes: string | null
   preferredRecommendationTags: string[]
   completedCourseCodes: string[]
   choiceSlots: Record<string, unknown>[]
@@ -93,4 +98,15 @@ export interface AdminBenchmarkCaseDetailResponse {
   request: Record<string, unknown>
   rankedRecommendations: AdminAnnotatedRecommendation[]
   reviewedCandidates: AdminReviewedCandidate[]
+}
+
+export interface AdminBenchmarkCaseReviewItem {
+  caseId: string
+  adminReviewStatus: AdminBenchmarkReviewStatus
+  adminReviewNotes?: string | null
+}
+
+export interface AdminBenchmarkCaseReviewResponse {
+  updatedCaseIds: string[]
+  cases: AdminBenchmarkCaseSummary[]
 }

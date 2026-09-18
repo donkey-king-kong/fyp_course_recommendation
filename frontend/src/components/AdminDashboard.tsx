@@ -1,9 +1,15 @@
 import { useEffect, useMemo, useState } from 'react'
-import { fetchAdminBenchmarkCase, fetchAdminBenchmarkSummary } from '../api/adminApi'
+import {
+  fetchAdminBenchmarkCase,
+  fetchAdminBenchmarkSummary,
+  saveAdminBenchmarkReviews,
+} from '../api/adminApi'
 import type {
   AdminAnnotatedRecommendation,
   AdminBenchmarkCaseDetailResponse,
+  AdminBenchmarkCaseReviewItem,
   AdminBenchmarkCaseSummary,
+  AdminBenchmarkReviewStatus,
   AdminBenchmarkSummaryResponse,
   AdminReviewedCandidate,
 } from '../types/admin'
@@ -40,13 +46,23 @@ function scoreBreakdownRows(recommendation: AdminAnnotatedRecommendation) {
     .map(([key, value]) => [key, value as number] as const)
 }
 
+function getEffectiveReviewStatus(
+  benchmarkCase: AdminBenchmarkCaseSummary,
+  pendingReviews: Record<string, AdminBenchmarkCaseReviewItem>,
+) {
+  return pendingReviews[benchmarkCase.caseId]?.adminReviewStatus ?? benchmarkCase.adminReviewStatus
+}
+
 function AdminDashboard({ adminToken, onAdminLogout }: AdminDashboardProps) {
   const [summary, setSummary] = useState<AdminBenchmarkSummaryResponse | null>(null)
   const [selectedCaseId, setSelectedCaseId] = useState('')
   const [caseDetail, setCaseDetail] = useState<AdminBenchmarkCaseDetailResponse | null>(null)
+  const [pendingReviews, setPendingReviews] = useState<Record<string, AdminBenchmarkCaseReviewItem>>({})
   const [isLoadingSummary, setIsLoadingSummary] = useState(true)
   const [isLoadingCase, setIsLoadingCase] = useState(false)
+  const [isSavingReviews, setIsSavingReviews] = useState(false)
   const [error, setError] = useState('')
+  const [saveMessage, setSaveMessage] = useState('')
 
   useEffect(() => {
     let shouldIgnoreResult = false
@@ -120,6 +136,59 @@ function AdminDashboard({ adminToken, onAdminLogout }: AdminDashboardProps) {
     [selectedCaseId, summary],
   )
   const weakCaseCount = summary?.cases.filter((item) => item.status !== 'ok').length ?? 0
+  const pendingReviewItems = Object.values(pendingReviews)
+  const reviewedCaseCount = summary?.cases.filter(
+    (item) => getEffectiveReviewStatus(item, pendingReviews) !== 'unreviewed',
+  ).length ?? 0
+
+  function updatePendingReview(
+    caseId: string,
+    adminReviewStatus: AdminBenchmarkReviewStatus,
+    adminReviewNotes?: string,
+  ) {
+    setSaveMessage('')
+    setPendingReviews((currentReviews) => ({
+      ...currentReviews,
+      [caseId]: {
+        caseId,
+        adminReviewStatus,
+        adminReviewNotes: adminReviewNotes ?? currentReviews[caseId]?.adminReviewNotes ?? null,
+      },
+    }))
+  }
+
+  function updatePendingReviewNote(caseId: string, adminReviewNotes: string) {
+    const currentCase = summary?.cases.find((item) => item.caseId === caseId)
+    const currentStatus = pendingReviews[caseId]?.adminReviewStatus ?? currentCase?.adminReviewStatus ?? 'unreviewed'
+    updatePendingReview(caseId, currentStatus, adminReviewNotes)
+  }
+
+  async function handleSaveReviews() {
+    if (pendingReviewItems.length === 0) {
+      return
+    }
+
+    try {
+      setIsSavingReviews(true)
+      setError('')
+      setSaveMessage('')
+      const result = await saveAdminBenchmarkReviews(adminToken, pendingReviewItems)
+      setSummary((currentSummary) => (
+        currentSummary
+          ? {
+              ...currentSummary,
+              cases: result.cases,
+            }
+          : currentSummary
+      ))
+      setPendingReviews({})
+      setSaveMessage(`Saved ${result.updatedCaseIds.length} review decision(s).`)
+    } catch {
+      setError('Could not save benchmark review decisions.')
+    } finally {
+      setIsSavingReviews(false)
+    }
+  }
 
   if (isLoadingSummary) {
     return (
@@ -161,9 +230,26 @@ function AdminDashboard({ adminToken, onAdminLogout }: AdminDashboardProps) {
       <div className="admin-metric-strip" aria-label="Benchmark metrics">
         <MetricCard label="Cases" value={summary.caseCount.toString()} />
         <MetricCard label="Weak cases" value={weakCaseCount.toString()} />
+        <MetricCard label="Reviewed" value={`${reviewedCaseCount}/${summary.caseCount}`} />
         <MetricCard label="Avg nDCG@5" value={formatMetric(summary.averageNdcgAtK)} />
         <MetricCard label="Precision@5" value={formatMetric(summary.averagePrecisionAtK)} />
-        <MetricCard label="Constraint validity" value={formatMetric(summary.averageConstraintValidity)} />
+      </div>
+
+      <div className="admin-review-save-bar">
+        <div>
+          <strong>{pendingReviewItems.length} pending review change(s)</strong>
+          <span>
+            Approve cases you accept as good enough. Disapprove cases that need scoring or label review.
+          </span>
+        </div>
+        {saveMessage && <p>{saveMessage}</p>}
+        <button
+          type="button"
+          disabled={pendingReviewItems.length === 0 || isSavingReviews}
+          onClick={handleSaveReviews}
+        >
+          {isSavingReviews ? 'Saving...' : 'Save Review Decisions'}
+        </button>
       </div>
 
       <div className="admin-dashboard-grid">
@@ -182,6 +268,7 @@ function AdminDashboard({ adminToken, onAdminLogout }: AdminDashboardProps) {
                 key={benchmarkCase.caseId}
                 benchmarkCase={benchmarkCase}
                 isSelected={benchmarkCase.caseId === selectedCaseId}
+                effectiveReviewStatus={getEffectiveReviewStatus(benchmarkCase, pendingReviews)}
                 onSelect={() => setSelectedCaseId(benchmarkCase.caseId)}
               />
             ))}
@@ -194,6 +281,9 @@ function AdminDashboard({ adminToken, onAdminLogout }: AdminDashboardProps) {
               benchmarkCase={selectedCase}
               caseDetail={caseDetail}
               isLoadingCase={isLoadingCase}
+              pendingReview={pendingReviews[selectedCase.caseId]}
+              onReviewChange={updatePendingReview}
+              onReviewNoteChange={updatePendingReviewNote}
             />
           )}
         </article>
@@ -214,10 +304,12 @@ function MetricCard({ label, value }: { label: string; value: string }) {
 function CaseButton({
   benchmarkCase,
   isSelected,
+  effectiveReviewStatus,
   onSelect,
 }: {
   benchmarkCase: AdminBenchmarkCaseSummary
   isSelected: boolean
+  effectiveReviewStatus: AdminBenchmarkReviewStatus
   onSelect: () => void
 }) {
   return (
@@ -228,6 +320,9 @@ function CaseButton({
     >
       <span className={`admin-status-pill ${benchmarkCase.status}`}>
         {formatLabel(benchmarkCase.status)}
+      </span>
+      <span className={`admin-review-pill ${effectiveReviewStatus}`}>
+        {formatLabel(effectiveReviewStatus)}
       </span>
       <strong>{benchmarkCase.caseId}</strong>
       <span>
@@ -241,11 +336,24 @@ function CaseOverview({
   benchmarkCase,
   caseDetail,
   isLoadingCase,
+  pendingReview,
+  onReviewChange,
+  onReviewNoteChange,
 }: {
   benchmarkCase: AdminBenchmarkCaseSummary
   caseDetail: AdminBenchmarkCaseDetailResponse | null
   isLoadingCase: boolean
+  pendingReview?: AdminBenchmarkCaseReviewItem
+  onReviewChange: (
+    caseId: string,
+    adminReviewStatus: AdminBenchmarkReviewStatus,
+    adminReviewNotes?: string,
+  ) => void
+  onReviewNoteChange: (caseId: string, adminReviewNotes: string) => void
 }) {
+  const effectiveReviewStatus = pendingReview?.adminReviewStatus ?? benchmarkCase.adminReviewStatus
+  const effectiveReviewNotes = pendingReview?.adminReviewNotes ?? benchmarkCase.adminReviewNotes ?? ''
+
   return (
     <>
       <div className="admin-detail-header">
@@ -276,6 +384,40 @@ function CaseOverview({
           <span key={tag}>{tag}</span>
         ))}
       </div>
+
+      <section className="admin-review-panel">
+        <div>
+          <h4>Admin Review Decision</h4>
+          <p>
+            Mark whether this case/prediction outcome is acceptable for the benchmark.
+            Save writes the decision into the local benchmark JSON.
+          </p>
+        </div>
+        <div className="admin-review-actions">
+          <button
+            type="button"
+            className={effectiveReviewStatus === 'approved' ? 'selected' : ''}
+            onClick={() => onReviewChange(benchmarkCase.caseId, 'approved', effectiveReviewNotes)}
+          >
+            Approve
+          </button>
+          <button
+            type="button"
+            className={effectiveReviewStatus === 'disapproved' ? 'selected danger' : 'danger'}
+            onClick={() => onReviewChange(benchmarkCase.caseId, 'disapproved', effectiveReviewNotes)}
+          >
+            Disapprove
+          </button>
+        </div>
+        <label className="admin-review-note">
+          Notes
+          <textarea
+            value={effectiveReviewNotes}
+            onChange={(event) => onReviewNoteChange(benchmarkCase.caseId, event.target.value)}
+            placeholder="Optional reason, e.g. SC4051 should rank above cloud because it is the direct distributed-systems match."
+          />
+        </label>
+      </section>
 
       {isLoadingCase && <p className="admin-loading">Loading case detail...</p>}
 
