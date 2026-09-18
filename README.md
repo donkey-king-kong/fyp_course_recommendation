@@ -31,6 +31,14 @@ npm run dev
 
 Frontend runs at `http://127.0.0.1:5173`.
 
+## Local Admin Benchmark Dashboard
+
+- The login page includes an admin benchmark access form for local evaluation work.
+- Default local credentials are `admin` / `admin` unless `ADMIN_USERNAME` and `ADMIN_PASSWORD` are set.
+- The backend returns a prototype admin token from `ADMIN_TOKEN`, defaulting to `local-admin-token`.
+- After login, the frontend shows an extra `Admin` tab with benchmark summary metrics, weak cases, saved predictions, reviewed labels, and score breakdowns.
+- This is not production authentication and should be replaced by real SSO-backed roles later.
+
 ## Module Data
 
 The module data currently comes from the standalone NTU scraper in `scraper/`. The scraper fetches NTU course pages, parses module information, and saves raw scraped output under `scraper/output/`.

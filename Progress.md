@@ -2419,4 +2419,44 @@ Status: Implemented locally
 - No regenerated prediction file because the saved predictions are still current; only evaluator interpretation and draft labels changed.
 - No frontend UI changes.
 - No automated recommender tests unless explicitly requested.
+
+## Benchmark Admin Dashboard
+
+Status: Implemented locally
+
+### Completed
+
+- Created a new branch named `benchmark-admin-dashboard`.
+- Added a read-only backend admin API for benchmark review.
+- Added local prototype admin login with `ADMIN_USERNAME`, `ADMIN_PASSWORD`, and `ADMIN_TOKEN`.
+- Added `GET /admin/benchmark` for benchmark summary metrics and weak-case-first case summaries.
+- Added `GET /admin/benchmark/{case_id}` for case inputs, saved predictions, score breakdowns, reviewed labels, and case metrics.
+- Added a frontend admin login section to the existing login page.
+- Added an `Admin` tab that appears only after admin login.
+- Added a visual benchmark dashboard with summary metric cards, selectable benchmark cases, ranked predictions, reviewed candidate cards, and case input chips.
+- Documented the local admin dashboard usage in `README.md` and `.env.example`.
+
+### Rationale Notes
+
+- The benchmark cases are too long to inspect comfortably as raw JSON, so the dashboard makes weak-case review faster and more visual.
+- The dashboard reads existing saved benchmark files and evaluator-style metrics instead of changing recommendation scoring.
+- The admin login is intentionally local/prototype-only so it does not conflict with the later NTU SSO milestone.
+
+### Verified
+
+- Ran `.venv/bin/python -m compileall backend`.
+- Ran `.venv/bin/python -c "import backend.main; print('backend import ok')"`.
+- Ran a backend service smoke check for benchmark summary and case detail loading.
+- Ran `npm run build` in `frontend`.
+- Ran the Impeccable UI detector on the changed frontend admin/login files.
+- Ran editor diagnostics and found no issues.
+
+### Not Included
+
+- No NTU SSO or production role system.
+- No database-backed admin accounts.
+- No editing benchmark cases from the UI.
+- No rerun benchmark button yet.
+- No recommendation scoring or ranking changes.
+- No embeddings, ChromaDB, Neo4j, LangGraph, OpenAI, ML logic, or MyCareersFuture scraping.
 - No Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, ML logic, auth, SSO, backend persistence, or API renaming.
