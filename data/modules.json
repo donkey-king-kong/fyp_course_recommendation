@@ -70381,14 +70381,13 @@
       "isCurrentSemester": false,
       "recommendationProfile": "broad-default",
       "recommendationTags": [
-        "backend-engineering",
-        "distributed-systems",
         "cloud-computing",
+        "distributed-systems",
         "infrastructure",
-        "data-science",
+        "distributed-computing",
         "database",
-        "algorithms",
-        "networks"
+        "networks",
+        "algorithms"
       ]
     },
     {

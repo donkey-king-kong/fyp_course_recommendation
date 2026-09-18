@@ -1316,6 +1316,42 @@ Status: Implemented locally on `benchmark-admin-dashboard`
 - Did not regenerate benchmark predictions.
 - Did not run the benchmark evaluator.
 
+## Cloud Computing Tag Review
+
+Status: Implemented locally on `benchmark-admin-dashboard`
+
+### Completed
+
+- Reviewed `SC4052 Cloud Computing` against the course description supplied during benchmark review.
+- Updated `SC4052` recommendation tags in `data/modules.json` to:
+  - `cloud-computing`
+  - `distributed-systems`
+  - `infrastructure`
+  - `distributed-computing`
+  - `database`
+  - `networks`
+  - `algorithms`
+- Removed weaker or unsupported tags:
+  - `backend-engineering`
+  - `data-science`
+- Reviewed `data-engineer-csc-002` and concluded the recommendations are good overall, but `SC4050 Parallel Computing` should likely rank above `SC4023 Big Data Management` for this exact profile.
+
+### Rationale
+
+- The course directly teaches cloud computing, IaaS/PaaS/SaaS concepts, distributed computing techniques, edge/fog computing, database and networking services, and frameworks such as MapReduce/Spark.
+- `backend-engineering` was removed because the description does not say the course teaches backend API design, server-side application architecture, or backend implementation directly.
+- `data-science` was removed because the description mentions analytics and intelligence as cloud service/application areas, but does not say the course teaches data-science methods directly.
+- For `data-engineer-csc-002`, `SC4052 Cloud Computing` remains a strong top recommendation because it directly matches the `cloud-computing` preference.
+- `SC4050 Parallel Computing` should likely be preferred over `SC4023 Big Data Management` for the second slot because it directly matches the student's `parallel-computing` preference.
+- `SC4023 Big Data Management` remains relevant for data engineering, but it is less direct than the cloud + parallel-computing pair expected for this profile.
+
+### Verification
+
+- Ran `.venv/bin/python -m json.tool data/modules.json`.
+- Did not reseed the database.
+- Did not regenerate benchmark predictions.
+- Did not run the benchmark evaluator.
+
 ## GPU Programming Tag Review
 
 Status: Implemented locally on `benchmark-admin-dashboard`
