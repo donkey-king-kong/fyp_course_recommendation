@@ -2846,9 +2846,9 @@
           "title": "Network Security",
           "targetSlotId": "y4-s1-mpe1",
           "expectedRelevance": "highly-relevant",
-          "expectedSkillPath": "Cybersecurity Engineer -> networks and systems security -> computer-security -> Network Security",
+          "expectedSkillPath": "Cybersecurity Engineer -> networks and systems security -> network-security -> Network Security",
           "oldCodeHandling": "not-applicable",
-          "reviewNotes": "Tags in modules.json: computer-security. Official security MPE path. Maps directly to the networks and systems security career-skill area and matches both the computer-security and computer-network preferences. Builds logically on SC3010 and SC3030. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+          "reviewNotes": "Tags in modules.json: cybersecurity, network-security, network-infrastructure. Official security MPE path. The official description covers secure communication protocols, firewalls, zero trust architectures, intrusion detection systems, network protocol analysis, Wireshark, tcpdump, penetration testing frameworks, and robust network security architecture, so network-security is the precise expected explanation tag. Builds logically on SC3010 and SC3030. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
         },
         {
           "courseCode": "SC4017",

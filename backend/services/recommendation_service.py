@@ -61,6 +61,52 @@ SOFTWARE_ENGINEER_TAG_WEIGHTS = {
     "parallel-computing": 2,
     "computer-architecture": 3,
 }
+CAREER_KEYWORDS = {
+    "software-engineer": SOFTWARE_ENGINEER_KEYWORDS,
+    "ai-ml-engineer": {
+        "artificial intelligence": 5,
+        "machine learning": 5,
+        "deep learning": 5,
+        "neural network": 5,
+        "natural language": 5,
+        "computer vision": 5,
+        "generative": 4,
+        "model": 3,
+        "data science": 3,
+        "parallel": 2,
+    },
+    "data-engineer": {
+        "database": 5,
+        "data": 4,
+        "big data": 5,
+        "distributed": 4,
+        "cloud": 4,
+        "parallel": 3,
+        "pipeline": 4,
+        "analytics": 2,
+        "mining": 2,
+    },
+    "cloud-platform-engineer": {
+        "cloud": 5,
+        "distributed": 5,
+        "network": 4,
+        "operating system": 4,
+        "parallel": 3,
+        "architecture": 3,
+        "security": 2,
+        "platform": 4,
+    },
+    "cybersecurity-engineer": {
+        "security": 5,
+        "cryptography": 5,
+        "malware": 5,
+        "forensics": 4,
+        "threat": 4,
+        "privacy": 4,
+        "network": 3,
+        "secure": 4,
+    },
+}
 # Used for near-duplicate titles where the curriculum and catalog use slightly different wording.
 TITLE_SIGNATURE_STOP_WORDS = {"principle", "principles"}
 TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
@@ -70,9 +116,9 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
     "systems": "system",
 }
 # Preferences use diminishing returns so topic fit matters without dominating ranking.
-PREFERENCE_FIRST_MATCH_BOOST = 35
+PREFERENCE_FIRST_MATCH_BOOST = 21
 PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
-PREFERENCE_TAG_BOOST_CAP = 60
+PREFERENCE_TAG_BOOST_CAP = 45
 SECURITY_PRIVACY_ADJACENCY_BOOST = 8
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
 CURRENT_SEMESTER_BONUS = 3
@@ -123,6 +169,8 @@ AI_ML_INFRASTRUCTURE_BDE_TAGS = {
 AI_ML_LOW_VALUE_BDE_TAGS = {"product-management"}
 CLOUD_PLATFORM_LOW_VALUE_SECURITY_TAGS = {"cyber-physical-systems", "privacy"}
 # Modules that score cloud-relevant tags for the wrong reason and must be suppressed.
+# Keep SC4051 Distributed Systems and SC4052 Cloud Computing eligible: both are core
+# cloud-platform signals through distributed-systems and cloud-computing tags.
 # Blockchain and GPU use distributed-systems / parallel-computing but are not platform modules.
 # Data-platform modules (Big Data, ML, Data Analytics) belong to data-engineer / ai-ml, not here.
 # Simulation, Quantum, and Generative AI have no cloud-platform signal at all.
@@ -138,13 +186,13 @@ CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES = {
     "SC4064",  # GPU Programming — parallel-computing in a GPU/HPC context, not cloud
 }
 RECOMMENDATION_TAG_ALIASES = {
-    "ai-ml": (),
+    "ai-ml": ("artificial-intelligence", "machine-learning"),
     "computer-network": ("networks",),
     "computer-security": ("cybersecurity",),
     "hardware-embedded": ("embedded-systems",),
 }
 SPECIALIST_PROFILE_PENALTY = -16
-EXTRA_PREREQUISITE_PLANNING_PENALTY = -20
+EXTRA_PREREQUISITE_PLANNING_PENALTY = -10
 # Old CE/CSC course-code families should not be recommended; current curricula use SC codes.
 DEPRECATED_COURSE_CODE_PREFIXES = ("CE", "CSC", "CZ", "CPE")
 # Core project modules are fixed curriculum requirements, not elective recommendation targets.
@@ -217,10 +265,11 @@ def recommend_courses(
         return RecommendationResponse(careerGoal=career_goal, recommendations=[])
 
     completed_codes = {course_code.upper() for course_code in completed_course_codes}
-    preferred_tags = normalize_preferred_tags_for_career(
+    preferred_tag_dimensions = normalize_preferred_tag_dimensions_for_career(
         career_goal,
-        normalize_recommendation_tags(preferred_recommendation_tags),
+        normalize_recommendation_tag_dimensions(preferred_recommendation_tags),
     )
+    preferred_tags = flatten_preferred_tag_dimensions(preferred_tag_dimensions)
     normalized_student_faculty = normalize_student_faculty(student_faculty)
     excluded_codes = {course_code.upper() for course_code in excluded_course_codes}
     excluded_titles = get_excluded_title_keys(excluded_course_titles)
@@ -324,7 +373,7 @@ def recommend_courses(
                 excluded_titles,
             )
             preference_boost = (
-                get_preference_boost(module, preferred_tags) +
+                get_preference_boost(module, preferred_tag_dimensions) +
                 get_current_preference_match_boost(module, preferred_tags)
             )
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
@@ -923,13 +972,14 @@ def build_prerequisite_recommendations(
 def build_relevance_filters(career_goal: str) -> list:
     filters = []
 
-    for keyword in SOFTWARE_ENGINEER_KEYWORDS:
+    for keyword in CAREER_KEYWORDS.get(career_goal, {}):
         pattern = f"%{keyword}%"
         filters.append(ModuleModel.title.ilike(pattern))
         filters.append(ModuleModel.description.ilike(pattern))
 
-    for tag in SOFTWARE_ENGINEER_TAG_WEIGHTS:
-        filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
+    if career_goal == "software-engineer":
+        for tag in SOFTWARE_ENGINEER_TAG_WEIGHTS:
+            filters.append(ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%"))
 
     for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ()):
         for relationship in mapping.tag_relationships:
@@ -1224,7 +1274,14 @@ def score_career_match(module: ModuleModel, career_goal: str) -> CareerMatchScor
             if tag in SOFTWARE_ENGINEER_TAG_WEIGHTS
         ]
     matched_skill_contributions = get_career_skill_contributions(module, career_goal)
-    top_skill_contribution = get_top_skill_contribution(matched_skill_contributions)
+    evidence_skill_contributions = get_career_skill_evidence_contributions(
+        module,
+        career_goal,
+    )
+    top_skill_contribution = get_top_evidence_skill_contribution(
+        evidence_skill_contributions,
+        career_goal,
+    )
     matched_signals = (
         matched_keywords +
         [f"tag:{tag}" for tag in matched_tags] +
@@ -1286,6 +1343,23 @@ def get_career_skill_contributions(
 
     return contributions
 
+def get_career_skill_evidence_contributions(
+    module: ModuleModel,
+    career_goal: str,
+) -> list[CareerSkillContribution]:
+    module_tags = set(module.recommendation_tags or [])
+
+    return [
+        CareerSkillContribution(
+            mapping=mapping,
+            relationship=relationship,
+            score=mapping.weight * relationship.relationship_weight * relationship.tag_confidence,
+        )
+        for mapping in CAREER_SKILL_MAPPINGS.get(career_goal, ())
+        for relationship in mapping.tag_relationships
+        if relationship.tag in module_tags
+    ]
+
 def get_top_skill_contribution(
     contributions: list[CareerSkillContribution],
 ) -> Optional[CareerSkillContribution]:
@@ -1302,8 +1376,29 @@ def get_top_skill_contribution(
         ),
     )
 
+def get_top_evidence_skill_contribution(
+    contributions: list[CareerSkillContribution],
+    career_goal: str,
+) -> Optional[CareerSkillContribution]:
+    top_contribution = get_top_skill_contribution(contributions)
+    if (
+        career_goal != "cybersecurity-engineer" or
+        not top_contribution or
+        top_contribution.relationship.tag != "cybersecurity"
+    ):
+        return top_contribution
+
+    specific_contributions = [
+        contribution
+        for contribution in contributions
+        if contribution.relationship.tag != "cybersecurity"
+    ]
+
+    return get_top_skill_contribution(specific_contributions) or top_contribution
+
 def round_positive_score(score: float) -> int:
     return int(score + 0.5)
+
 
 def build_career_skill_evidence(
     career_goal: str,
@@ -1337,20 +1432,66 @@ def normalize_recommendation_tags(tags: list[str]) -> set[str]:
 
     return normalized_tags
 
-def normalize_preferred_tags_for_career(career_goal: str, preferred_tags: set[str]) -> set[str]:
+def normalize_recommendation_tag_dimensions(tags: list[str]) -> list[set[str]]:
+    dimensions: list[set[str]] = []
+    seen_dimensions: set[frozenset[str]] = set()
+
+    for tag in tags:
+        normalized_tag = tag.strip().lower()
+        if not normalized_tag:
+            continue
+
+        dimension = set(RECOMMENDATION_TAG_ALIASES.get(normalized_tag, (normalized_tag,)))
+        if not dimension:
+            continue
+
+        dimension_key = frozenset(dimension)
+        if dimension_key in seen_dimensions:
+            continue
+
+        dimensions.append(dimension)
+        seen_dimensions.add(dimension_key)
+
+    return dimensions
+
+def flatten_preferred_tag_dimensions(preferred_tag_dimensions: list[set[str]]) -> set[str]:
+    return {
+        tag
+        for dimension in preferred_tag_dimensions
+        for tag in dimension
+    }
+
+def normalize_preferred_tag_dimensions_for_career(
+    career_goal: str,
+    preferred_tag_dimensions: list[set[str]],
+) -> list[set[str]]:
     if career_goal != "cloud-platform-engineer":
-        return preferred_tags
+        return preferred_tag_dimensions
 
-    cloud_tags = set(preferred_tags)
-    if "cybersecurity" in cloud_tags:
-        cloud_tags.remove("cybersecurity")
-        cloud_tags.add("network-security")
+    cloud_dimensions: list[set[str]] = []
+    seen_dimensions: set[frozenset[str]] = set()
 
-    # Privacy-heavy modules are not platform recommendations unless they also
-    # carry a direct network-security/platform signal.
-    cloud_tags.discard("privacy")
+    for dimension in preferred_tag_dimensions:
+        cloud_dimension = set(dimension)
+        if "cybersecurity" in cloud_dimension:
+            cloud_dimension.remove("cybersecurity")
+            cloud_dimension.add("network-security")
 
-    return cloud_tags
+        # Privacy-heavy modules are not platform recommendations unless they also
+        # carry a direct network-security/platform signal.
+        cloud_dimension.discard("privacy")
+
+        if not cloud_dimension:
+            continue
+
+        dimension_key = frozenset(cloud_dimension)
+        if dimension_key in seen_dimensions:
+            continue
+
+        cloud_dimensions.append(cloud_dimension)
+        seen_dimensions.add(dimension_key)
+
+    return cloud_dimensions
 
 def normalize_student_faculty(student_faculty: Optional[str]) -> Optional[str]:
     if not student_faculty:
@@ -1360,18 +1501,26 @@ def normalize_student_faculty(student_faculty: Optional[str]) -> Optional[str]:
 
     return normalized_faculty or None
 
-def get_preference_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
-    if not preferred_tags:
+def get_preference_boost(
+    module: ModuleModel,
+    preferred_tag_dimensions: list[set[str]],
+) -> int:
+    if not preferred_tag_dimensions:
         return 0
 
     module_tags = set(module.recommendation_tags or [])
-    matching_count = len(preferred_tags.intersection(module_tags))
+    matching_count = sum(
+        1
+        for dimension in preferred_tag_dimensions
+        if dimension.intersection(module_tags)
+    )
     if matching_count == 0:
         return 0
 
     additional_match_count = matching_count - 1
     stepped_boost = sum(PREFERENCE_ADDITIONAL_BOOST_STEPS[:additional_match_count])
     total_boost = PREFERENCE_FIRST_MATCH_BOOST + stepped_boost
+    preferred_tags = flatten_preferred_tag_dimensions(preferred_tag_dimensions)
     if preferred_tags == {"cybersecurity", "cryptography"} and "privacy" in module_tags:
         total_boost += SECURITY_PRIVACY_ADJACENCY_BOOST
 
@@ -1397,9 +1546,12 @@ def get_faculty_boost(module: ModuleModel, student_faculty: Optional[str]) -> in
 def get_mpe_specialisation_boost(module: ModuleModel, career_goal: str) -> int:
     boost_by_specialisation = CAREER_MPE_SPECIALISATION_BOOSTS.get(career_goal, {})
 
-    return sum(
-        boost_by_specialisation.get(specialisation, 0)
-        for specialisation in (module.mpe_specialisations or [])
+    return max(
+        (
+            boost_by_specialisation.get(specialisation, 0)
+            for specialisation in (module.mpe_specialisations or [])
+        ),
+        default=0,
     )
 
 def get_mpe_specialisation_signals(module: ModuleModel, career_goal: str) -> list[str]:

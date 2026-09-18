@@ -128,7 +128,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Strong signal for infrastructure and networked software behavior.",
             ),
             SkillTagRelationship(
-                tag="computer-network",
+                tag="networks",
                 relationship_weight=0.75,
                 tag_confidence=1.0,
                 rationale="Networking knowledge directly supports distributed and internet-facing software.",
@@ -160,7 +160,7 @@ SOFTWARE_ENGINEER_SKILL_MAPPINGS = (
         skill="secure software practice",
         tag_relationships=(
             SkillTagRelationship(
-                tag="computer-security",
+                tag="cybersecurity",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Directly represents secure software and systems practice.",
@@ -268,10 +268,16 @@ DATA_SCIENTIST_SKILL_MAPPINGS = (
         skill="machine learning and statistical reasoning",
         tag_relationships=(
             SkillTagRelationship(
-                tag="ai-ml",
+                tag="machine-learning",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Directly supports model training, evaluation, and applied machine learning work.",
+            ),
+            SkillTagRelationship(
+                tag="artificial-intelligence",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="AI modules support model reasoning and intelligent-system design, but can be broader than statistical machine learning.",
             ),
             SkillTagRelationship(
                 tag="math-foundation",
@@ -383,6 +389,44 @@ AI_ML_ENGINEER_SKILL_MAPPINGS = (
             "NLP, vision, generative AI, and applied ML products."
         ),
         weight_rationale="Highest weight because model-building is central to this career goal.",
+    ),
+    CareerSkillMapping(
+        skill="applied model specialisation",
+        tag_relationships=(
+            SkillTagRelationship(
+                tag="natural-language-processing",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="NLP is a direct applied AI engineering specialisation for language products and generative systems.",
+            ),
+            SkillTagRelationship(
+                tag="computer-vision",
+                relationship_weight=1.0,
+                tag_confidence=1.0,
+                rationale="Computer vision is a direct applied AI engineering specialisation for image and video systems.",
+            ),
+            SkillTagRelationship(
+                tag="machine-learning",
+                relationship_weight=0.75,
+                tag_confidence=1.0,
+                rationale="General machine-learning modules support applied model specialisation, but are less specific than NLP or vision modules.",
+            ),
+            SkillTagRelationship(
+                tag="artificial-intelligence",
+                relationship_weight=0.65,
+                tag_confidence=0.9,
+                rationale="General AI content supports applied specialisation but is broader than a named ML subfield.",
+            ),
+        ),
+        weight=6,
+        rationale=(
+            "AI/ML engineers often specialise in applied model domains such as NLP, "
+            "computer vision, and generative AI beyond general ML foundations."
+        ),
+        weight_rationale=(
+            "Medium weight so specific AI application areas can outrank generic "
+            "supporting modules without overwhelming core model-building evidence."
+        ),
     ),
     CareerSkillMapping(
         skill="model implementation foundations",
@@ -570,6 +614,12 @@ DATA_ENGINEER_SKILL_MAPPINGS = (
                 rationale="Data platforms often expose APIs and backend services.",
             ),
             SkillTagRelationship(
+                tag="systems-programming",
+                relationship_weight=0.75,
+                tag_confidence=0.9,
+                rationale="Systems programming supports high-throughput data pipeline components and performance-sensitive infrastructure.",
+            ),
+            SkillTagRelationship(
                 tag="software-engineering",
                 relationship_weight=0.7,
                 tag_confidence=1.0,
@@ -580,6 +630,12 @@ DATA_ENGINEER_SKILL_MAPPINGS = (
                 relationship_weight=0.65,
                 tag_confidence=0.9,
                 rationale="Programming is necessary for implementation, but is broader than data engineering.",
+            ),
+            SkillTagRelationship(
+                tag="optimization",
+                relationship_weight=0.6,
+                tag_confidence=0.85,
+                rationale="Optimization supports efficient batch processing, resource usage, and data platform performance tuning.",
             ),
         ),
         weight=6,
@@ -670,7 +726,7 @@ CYBERSECURITY_ENGINEER_SKILL_MAPPINGS = (
         skill="security analysis and defence",
         tag_relationships=(
             SkillTagRelationship(
-                tag="computer-security",
+                tag="cybersecurity",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
                 rationale="Directly represents security concepts, threats, and defensive practice.",
@@ -705,10 +761,22 @@ CYBERSECURITY_ENGINEER_SKILL_MAPPINGS = (
         skill="networks and systems security",
         tag_relationships=(
             SkillTagRelationship(
-                tag="computer-network",
+                tag="network-security",
                 relationship_weight=1.0,
                 tag_confidence=1.0,
-                rationale="Network knowledge is essential for analysing attacks, traffic, and defences.",
+                rationale="Network security directly represents secure network design, monitoring, and defence.",
+            ),
+            SkillTagRelationship(
+                tag="network-infrastructure",
+                relationship_weight=0.9,
+                tag_confidence=1.0,
+                rationale="Network infrastructure knowledge supports analysing and hardening real networked systems.",
+            ),
+            SkillTagRelationship(
+                tag="networks",
+                relationship_weight=0.3,
+                tag_confidence=1.0,
+                rationale="Generic network coverage is useful background, but weaker evidence than explicit network-security content.",
             ),
             SkillTagRelationship(
                 tag="operating-systems",
