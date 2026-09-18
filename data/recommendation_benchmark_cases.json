@@ -187,7 +187,9 @@
           "oldCodeHandling": "excluded",
           "reviewNotes": "NEGATIVE EXAMPLE. CZ4013 is topically relevant \u2014 it covers distributed systems, which directly matches this student's backend-engineering and distributed-systems preference. However, the CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter before any ranking occurs. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. Must never surface as a valid recommendation."
         }
-      ]
+      ],
+      "adminReviewStatus": "approved",
+      "adminReviewNotes": null
     },
     {
       "caseId": "software-engineer-csc-002",
@@ -521,7 +523,9 @@
           "oldCodeHandling": "excluded",
           "reviewNotes": "NEGATIVE EXAMPLE. CZ4024 (Cryptography & Network Security) is used here as a verified old-code exclusion test. The CZ prefix is hard-excluded from all recommendation candidates by the backend pre-filter. The module is topically relevant to this student's computer-security and cryptography preference \u2014 its modules.json tags include computer-security and cryptography \u2014 but topical relevance does not override the code-family exclusion rule. expectedRelevance is \"irrelevant\" under the benchmark definition of \"should be recommended\", not a judgement on subject-matter fit. This entry validates that the pre-filter rejects CZ-coded modules regardless of topical relevance. The live equivalent is SC4010 (Applied Cryptography)."
         }
-      ]
+      ],
+      "adminReviewStatus": "approved",
+      "adminReviewNotes": null
     },
     {
       "caseId": "software-engineer-csc-004",
@@ -971,7 +975,9 @@
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "Module tags in modules.json: computer-security, distributed-systems. Matches 1 of 4 stated preferences (distributed-systems). Preference boost: PREFERENCE_FIRST_MATCH_BOOST(30) only = +30. Career-skill evidence: backend and data services -> distributed-systems (score 8 * 1.0 * 1.0 = 8.0). Despite matching a preference, labelled somewhat-relevant rather than relevant because the recommendationProfile=specialist attracts SPECIALIST_PROFILE_PENALTY = -16, and blockchain is a niche domain rather than a broadly applied distributed-systems recommendation. This calibration check verifies that a 1-match specialist does not outrank a 0-match broad-default (SC4040) in overall score. isCurrentSemester=true."
         }
-      ]
+      ],
+      "adminReviewStatus": "approved",
+      "adminReviewNotes": null
     },
     {
       "caseId": "software-engineer-csc-008",
@@ -2543,7 +2549,9 @@
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: ai-ml. Official artificial-intelligence MPE path. ai-ml maps to no cloud-platform-engineer career-skill area (cloud and distributed infrastructure, systems performance and reliability, secure platform operation). Student preferences are cloud-computing, distributed-systems, computer-network. Should not rank in the top recommendations despite being widely available. isCurrentSemester=true."
         }
-      ]
+      ],
+      "adminReviewStatus": "disapproved",
+      "adminReviewNotes": "Disapprove because SC4052 Cloud Computing and SC4051 Distributed Systems are highly relevant for cloud platform engineering but were not returned. SC4050 is relevant supporting systems/performance knowledge, but should not rank above the direct cloud/distributed systems matches."
     },
     {
       "caseId": "cloud-platform-engineer-csc-002",
@@ -2921,7 +2929,9 @@
           "oldCodeHandling": "not-applicable",
           "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: frontend-engineering, data-science, data-visualisation, computer-graphics. None of these tags map to any cybersecurity-engineer career-skill area (security analysis and defence, networks and systems security, cryptography and secure implementation). Student preferences are computer-security, computer-network, privacy. Should not rank in the top recommendations for this profile. Programme restriction excludes many non-CSC programmes; CSC students are not affected but prereq graph requires several non-SC prerequisites \u2014 verify before using in evaluation. isCurrentSemester=true."
         }
-      ]
+      ],
+      "adminReviewStatus": "approved",
+      "adminReviewNotes": null
     }
   ]
 }
