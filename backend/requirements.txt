@@ -1,4 +1,6 @@
 fastapi
+itsdangerous
+msal
 PyMuPDF
 python-multipart
 python-dotenv

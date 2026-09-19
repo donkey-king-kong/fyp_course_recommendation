@@ -1,6 +1,11 @@
+import os
+
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.sessions import SessionMiddleware
 
+from backend.routers.auth import router as auth_router
 from backend.routers.curriculum import router as curriculum_router
 from backend.routers.faculties import router as faculties_router
 from backend.routers.health import router as health_router
@@ -9,6 +14,8 @@ from backend.routers.recommendations import router as recommendations_router
 from backend.routers.roadmap import router as roadmap_router
 from backend.routers.roadmap_readiness import router as roadmap_readiness_router
 from backend.routers.transcript import router as transcript_router
+
+load_dotenv()
 
 app = FastAPI(
     title="NTU Course Recommendation API",
@@ -21,6 +28,15 @@ app = FastAPI(
 )
 
 app.add_middleware(
+    SessionMiddleware,
+    secret_key=os.getenv("SESSION_SECRET", "local-dev-session-secret"),
+    same_site="lax",
+    https_only=False,
+    max_age=60 * 60 * 8,
+    session_cookie="ntu_course_recommender_session",
+)
+
+app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://127.0.0.1:5173", "http://localhost:5173", "http://127.0.0.1:5174", "http://localhost:5174"],
     allow_credentials=True,
@@ -28,6 +44,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.include_router(auth_router)
 app.include_router(health_router)
 app.include_router(roadmap_router)
 app.include_router(roadmap_readiness_router)
