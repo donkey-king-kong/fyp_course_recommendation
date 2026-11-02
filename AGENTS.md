@@ -177,7 +177,7 @@ Page -> Hook/Store -> API Client -> Backend -> Component UI
 - Good umbrella branch example: `roadmap-list-improvements` for grouping, search, and readability improvements to the roadmap course list.
 - Bad umbrella branch example: one branch that mixes roadmap UI, transcript upload, database setup, and AI logic.
 - Do not create commits unless I explicitly give the green light.
-- When creating commits, use Conventional Commits.
+- When creating commits, use Conventional Commits format: `<type>: <description>`.
 - Prefer small, meaningful commits over large mixed commits.
 - Do not combine multiple major developments into one commit.
 - Each commit should represent one clear logical change.
