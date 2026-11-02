@@ -214,8 +214,8 @@ Struck-through items are complete. They are kept for history.
 
 ### Phase 3: Recommendation Depth and Evaluation
 
-14. Expand career coverage beyond Software Engineer
-15. Counterfactual sensitivity tests
+14. ~~Expand career coverage beyond Software Engineer~~
+15. ~~Counterfactual sensitivity tests~~ (script done; 1 finding recorded: cloud-platform + computer-network insensitivity)
 16. Coverage audit (check slot-fill rate across degree/cohort combinations)
 17. Expert review / think-aloud evaluation session
 18. RAGAS evaluation layer for explanation quality
@@ -241,10 +241,10 @@ This table tracks the improvement work on the deterministic recommendation engin
 | 3 | Prerequisite readiness and unlock-value logic | ~~Done~~ |
 | 4 | Curated course taxonomy and student preference profile | ~~Done~~ |
 | 5 | Diversity-aware assignment across slots | ~~Done~~ |
-| 6 | Static career-to-skill mapping | ~~Done~~ (Software Engineer only) |
-| 7 | Benchmark calibration and weak-case review | In progress (`recommendation-score-calibration`) |
-| 8 | Expand career-skill mapping to more career goals | Next after benchmark stabilises |
-| 9 | Counterfactual sensitivity tests | After career expansion |
+| 6 | Static career-to-skill mapping | ~~Done~~ (all 6 career goals) |
+| 7 | Benchmark calibration and weak-case review | ~~Done~~ (24-case benchmark, all careers covered) |
+| 8 | Expand career-skill mapping to more career goals | ~~Done~~ (AI/ML, Data Engineer, Cloud/Platform, Cybersecurity, Data Scientist) |
+| 9 | Counterfactual sensitivity tests | ~~Done~~ (6/7 pass; 1 finding: cloud-platform + computer-network insensitivity) |
 | 10 | RAGAS / expert review evaluation | After system is stable |
 | 11 | Neo4j or graph traversal | Later — only if prerequisite/skill queries outgrow SQL |
 | 12 | Embeddings or vector search | Later — only for semantic matching of messy free text |
