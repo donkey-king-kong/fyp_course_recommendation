@@ -243,7 +243,57 @@ These are recommendation-quality observations. Slots are filled, not empty. Whet
 
 After `coverage-audit-request-fix` is merged, the next tasks are:
 - Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
-- NTU SSO authentication (pending Azure app registration access).
+- NTU SSO authentication (parked — see section below).
+
+## NTU SSO Auth0 Implementation (ntu-sso-auth)
+
+_Added: 2026-11-03 SGT_
+
+Branch: `ntu-sso-auth`. Previous PR #40 (old ntu-sso-auth) was closed; branch was deleted; a fresh branch was created from main.
+
+### What was implemented
+
+Backend:
+- `backend/auth/settings.py` — loads `AUTH0_DOMAIN`, `AUTH0_CLIENT_ID`, `AUTH0_CLIENT_SECRET`, `AUTH0_SECRET`, `APP_BASE_URL`, `FRONTEND_URL` from env; fails fast if any are missing.
+- `backend/clients/auth0_client.py` — Authlib OAuth registration; `build_auth0_logout_url()` helper.
+- `backend/services/auth_service.py` — `is_allowed_ntu_email()` (checks `@e.ntu.edu.sg`), `build_session_user()`.
+- `backend/dependencies/auth.py` — `require_user(request)` returns session user or raises 401.
+- `backend/schemas/auth.py` — `AuthUser` Pydantic model (`sub`, `email`, `name`).
+- `backend/routers/auth.py` — `GET /login`, `GET /callback`, `GET /logout`, `GET /`, `GET /me`.
+- `backend/main.py` — added `SessionMiddleware`, included auth router (public), protected all data routers with `dependencies=[Depends(require_user)]`.
+- `backend/requirements.txt` — added `authlib`, `httpx`, `itsdangerous`.
+
+Frontend:
+- `frontend/src/api/apiConfig.ts` — `API_BASE_URL` constant and `apiFetch()` wrapper with `credentials: 'include'`.
+- `frontend/src/api/authApi.ts` — `fetchCurrentUser()` calling `/me`, returns null on 401.
+- `frontend/src/types/auth.ts` — `AuthUser` TypeScript interface.
+- All 6 API files updated to use `apiFetch()` or `API_BASE_URL` with `credentials: 'include'`.
+- `LoginPage.tsx` — replaced Student ID form with "Sign in with Microsoft" button.
+- `App.tsx` — `/me` check on mount; `loginWithStudentId(user.sub)` on success; user name in header; logout navigates to `/logout`.
+- `ProfilePage.tsx` — removed editable Student ID field.
+
+Eval scripts:
+- All three eval scripts (`run_recommendation_benchmark_predictions.py`, `run_coverage_audit.py`, `run_counterfactual_sensitivity.py`) updated to use `TestClient` with `app.dependency_overrides[require_user]` to bypass auth in-process; `--live` flag added to fall back to a running server.
+
+### Blocker
+
+Auth0 `windowslive` Microsoft social connection requires real Azure app credentials (Client ID and Client Secret) set in the Auth0 dashboard. Without them, Auth0 falls back to dev keys that Microsoft rejects, producing `OAuthError: access_denied: Unauthorized` at the callback step.
+
+The `connection="windowslive"` parameter has been removed from `GET /login` pending credential setup (Auth0 universal login is shown instead).
+
+NTU student accounts are Microsoft 365 work/school accounts; even with correct credentials, the `windowslive` personal-account connection may be rejected at the Microsoft level. If so, the Auth0 connection would need to be switched to "Microsoft Azure AD" enterprise, changing only the `connection=` parameter.
+
+### Current status
+
+All code is on branch `ntu-sso-auth`, uncommitted. The OAuth redirect and callback routing work correctly; the failure is external (missing Azure app credentials in Auth0). SSO is parked until credentials are available.
+
+Identity key decision: Auth0 `sub` is used as the stable user key (stored as `activeStudentId` in `useProfileStore`), not Azure `oid` as originally described in AGENTS.md.
+
+### Out of scope (not implemented)
+
+- Server-side user/profile storage (milestone 13 remains separate).
+- Automatic `/me` retry or 401-intercept in every API call.
+- Staff or non-student account handling.
 
 ## Out Of Scope
 
