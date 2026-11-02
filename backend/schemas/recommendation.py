@@ -174,8 +174,19 @@ class RecommendationScoreBreakdown(BaseModel):
         examples=[1],
     )
     preferenceBoost: int = Field(
-        description="Soft boost from matching the student's selected topic preferences.",
-        examples=[30],
+        description=(
+            "Scaled preference boost applied to the final score. When career fit is strong "
+            "this equals rawPreferenceBoost; it is reduced when career fit is weak."
+        ),
+        examples=[21],
+    )
+    rawPreferenceBoost: int = Field(
+        default=0,
+        description=(
+            "Unscaled preference boost before career-fit scaling, for evaluator debugging only. "
+            "Equals preferenceBoost when career fit is full-strength."
+        ),
+        examples=[33],
     )
     sameFacultyBoost: int = Field(
         description="Soft boost when the module faculty matches the student's profile faculty.",
@@ -268,6 +279,15 @@ class CourseRecommendation(BaseModel):
     )
     scoreBreakdown: RecommendationScoreBreakdown
     reason: str
+    recommendationSource: str = Field(
+        default="career",
+        description=(
+            "'career' for modules ranked by career-skill fit (pass 1). "
+            "'interest' for modules ranked by preference match only, used to fill leftover "
+            "slots when no career-relevant candidate is available (pass 2)."
+        ),
+        examples=["career", "interest"],
+    )
 
 class RecommendationResponse(BaseModel):
     careerGoal: str

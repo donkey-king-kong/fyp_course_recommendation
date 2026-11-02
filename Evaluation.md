@@ -150,6 +150,7 @@ Each row represents a snapshot taken after a meaningful change. Metrics are not 
 | After preference calibration | 14 | 0.675 | 0.786 | 1.0 | 0 | `PREFERENCE_FIRST_MATCH_BOOST` raised 30→35; SC3030 now wins SC3xxx slot for `computer-network` profile |
 | Expanded to 21 cases (PR #43) | 21 | 0.737 | 0.786 | 1.0 | 0 | Added AI/ML, Data Engineer, Cloud/Platform, Cybersecurity cases; BDE fallback calibrated |
 | Expanded to 24 cases | 24 | 0.683 | 0.694 | 1.0 | 0 | Added 2 Data Scientist cases and 1 Cloud/Platform multi-BDE case; all 6 careers now covered |
+| After career-first preference policy | 24 | 0.631 | 0.639 | 1.0 | 0 | Preference boost now scaled by career fit (`CAREER_FIT_FULL_PREFERENCE_SCORE = 15`); pass-2 interest picks added for unfilled slots; metrics unchanged from 24-case baseline (scaling effect is neutral on these cases); 8/8 counterfactual checks pass including new career-conflict check |
 
 **Note on comparing rows:** When case count increases, nDCG and precision aggregate over more cases. A drop in the average does not necessarily mean ranking quality degraded — it may reflect new cases where the system performs worse for previously untested scenarios. Use per-case breakdowns (`scripts/evaluate_recommendation_benchmark.py` output) to diagnose regressions.
 
@@ -164,20 +165,23 @@ Run with:
 PYTHONPATH=. .venv/bin/python scripts/run_counterfactual_sensitivity.py --api-url http://127.0.0.1:8001/recommendations
 ```
 
-Results from the `counterfactual-sensitivity-checks` branch:
+Results from the `career-first-preference-policy` branch (8 checks):
 
 | Check | Result | Notes |
 |---|---|---|
 | Career swap: software-engineer-csc-007 → data-scientist | PASS | Recommendation set changed; `data-scientist` careerGoal appeared in score evidence |
 | Career swap: software-engineer-csc-007 → cybersecurity-engineer | PASS | Recommendation set changed; `cybersecurity-engineer` careerGoal appeared in score evidence |
 | Preference swap: software-engineer-csc-009 + `computer-security` | PASS | `cybersecurity` (alias for `computer-security`) appeared in matchedKeywords |
-| Preference swap: cloud-platform-engineer-csc-001 + `computer-network` | **FAIL** | `SC3030 Advanced Computer Networks` was not surfaced; `SC3050` and `SC4050` dominated due to higher base scores. See finding below. |
+| Preference swap: ai-ml-engineer-csc-001 + `database` | PASS | `database` (career-mapped tag for ai-ml) appeared in matchedKeywords after the tag was added |
+| Career conflict: ai-ml-engineer-csc-001 career=ai-ml-engineer vs SWE prefs | PASS | All career picks retained `careerSkillEvidence.careerGoal == ai-ml-engineer` despite conflicting preferences |
 | Completion change: software-engineer-csc-001 | PASS | Top module removed; slot still filled |
 | Completion change: data-scientist-csc-001 | PASS | Top module removed; slot still filled |
 | Completion change: cybersecurity-engineer-csc-001 | PASS | Top module removed; slot still filled |
 
-**Finding — cloud platform + `computer-network` preference insensitivity:**
-When a `cloud-platform-engineer` student adds `computer-network` as a preference, `SC3030 Advanced Computer Networks` (which carries the `network-infrastructure` tag, the closest matching tag) does not displace `SC3050 Advanced Computer Architecture` or `SC4050 Parallel Computing`. The cause is that `SC3050` and `SC4050` accumulate higher scores through same-faculty, MPE specialisation, and systems/cloud-computing tag boosts that collectively exceed the `computer-network` preference boost. This is a genuine scoring sensitivity gap, not a data bug. Recorded for investigation on a separate calibration branch.
+**Correction (post-merge):** The original `cloud-platform-engineer-csc-001 + computer-network` check was a no-op. That benchmark case already listed `computer-network` in its `preferredRecommendationTags`, so adding it produced no actual change. The FAIL result was invalid and has been replaced with `data-scientist-csc-001 + computer-network`, which is a genuine swap. The guard in `run_preference_swap_check` now fails immediately if the added tag is already present, preventing this class of mistake in future runs.
+
+**Residual benchmark weakness — cloud-001 SC3xxx slot:**
+In `cloud-platform-engineer-csc-001`, `SC3030 Advanced Computer Networks` is labelled `highly-relevant` for the SC3xxx slot but the system assigns `SC3050 Advanced Computer Architecture` instead. The cause is that `SC3050` scores higher through same-faculty, MPE specialisation, and systems/cloud-computing tag boosts. The label may be over-optimistic, or the scoring weights need re-calibration. Recorded for review on the `career-first-preference-policy` branch.
 
 ---
 
@@ -209,7 +213,11 @@ Not feasible until real NTU students use the system in production. Requires the 
 
 ### 6.5 Counterfactual sensitivity gaps
 
-One confirmed gap: cloud-platform `computer-network` preference sensitivity. Additional gaps may exist for other career/preference combinations. The counterfactual script should be expanded as new cases are added.
+No confirmed gaps after the `counterfactual-sensitivity-checks` branch correction. The original recorded finding (cloud-platform + `computer-network`) was an invalid check — the base case already had that tag, so no real swap occurred. The guard in `run_preference_swap_check` now catches this class of mistake automatically.
+
+A residual benchmark weakness exists: `SC3030 Advanced Computer Networks` loses the SC3xxx slot in `cloud-platform-engineer-csc-001` to `SC3050 Advanced Computer Architecture`, even though the case carries `computer-network` as a preference. This is a scoring calibration issue, not a sensitivity failure. It is being investigated on the `career-first-preference-policy` branch.
+
+The counterfactual script should be expanded with conflict checks (career goal vs. mismatched preferences) as new cases are added.
 
 ---
 

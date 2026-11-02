@@ -215,7 +215,7 @@ Struck-through items are complete. They are kept for history.
 ### Phase 3: Recommendation Depth and Evaluation
 
 14. ~~Expand career coverage beyond Software Engineer~~
-15. ~~Counterfactual sensitivity tests~~ (script done; 1 finding recorded: cloud-platform + computer-network insensitivity)
+15. ~~Counterfactual sensitivity tests~~ (script done; original FAIL was invalid — base case already had the tag; corrected on career-first-preference-policy branch)
 16. Coverage audit (check slot-fill rate across degree/cohort combinations)
 17. Expert review / think-aloud evaluation session
 18. RAGAS evaluation layer for explanation quality
@@ -244,7 +244,7 @@ This table tracks the improvement work on the deterministic recommendation engin
 | 6 | Static career-to-skill mapping | ~~Done~~ (all 6 career goals) |
 | 7 | Benchmark calibration and weak-case review | ~~Done~~ (24-case benchmark, all careers covered) |
 | 8 | Expand career-skill mapping to more career goals | ~~Done~~ (AI/ML, Data Engineer, Cloud/Platform, Cybersecurity, Data Scientist) |
-| 9 | Counterfactual sensitivity tests | ~~Done~~ (6/7 pass; 1 finding: cloud-platform + computer-network insensitivity) |
+| 9 | Counterfactual sensitivity tests | ~~Done~~ (7/7 pass after fix; original FAIL was a no-op check — base case already had the tag) |
 | 10 | RAGAS / expert review evaluation | After system is stable |
 | 11 | Neo4j or graph traversal | Later — only if prerequisite/skill queries outgrow SQL |
 | 12 | Embeddings or vector search | Later — only for semantic matching of messy free text |
@@ -267,7 +267,7 @@ See `Progress.md` and `Progress2.md` for the full history. Summary of completed 
 - Recommendation system: backend-owned deterministic scoring, exact-slot assignment, career-skill mapping layer (`backend/services/career_skill_mappings.py`), near-duplicate detection, diversity tiebreaker, planned prerequisite nodes/edges.
 - Offline benchmark evaluator with 14 cases; current nDCG ~0.705.
 
-Current branch: `recommendation-score-calibration`
+Current branch: `career-first-preference-policy`
 
 Active rules and constraints:
 - Keep recommendation ranking and slot allocation in the backend; frontend is a rendering layer only.

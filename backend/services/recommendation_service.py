@@ -119,6 +119,10 @@ TITLE_SIGNATURE_TOKEN_REPLACEMENTS = {
 PREFERENCE_FIRST_MATCH_BOOST = 21
 PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
 PREFERENCE_TAG_BOOST_CAP = 45
+# Career-fit threshold used to scale the preference boost in pass 1 (career picks).
+# A module whose career_skill_score >= this value keeps the full preference boost;
+# weaker career fits receive a proportionally reduced boost so career always leads.
+CAREER_FIT_FULL_PREFERENCE_SCORE = 15
 SECURITY_PRIVACY_ADJACENCY_BOOST = 8
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
 CURRENT_SEMESTER_BONUS = 3
@@ -372,9 +376,12 @@ def recommend_courses(
                 completed_codes | excluded_codes,
                 excluded_titles,
             )
-            preference_boost = (
+            raw_preference_boost = (
                 get_preference_boost(module, preferred_tag_dimensions) +
                 get_current_preference_match_boost(module, preferred_tags)
+            )
+            preference_boost = scale_preference_boost_by_career_fit(
+                raw_preference_boost, career_match.career_skill_score
             )
             faculty_boost = get_faculty_boost(module, normalized_student_faculty)
             default_profile_adjustment = get_default_profile_adjustment(module, preferred_tags, career_goal)
@@ -405,6 +412,7 @@ def recommend_courses(
                 ),
                 currentSemesterBonus=career_match.current_semester_bonus,
                 preferenceBoost=preference_boost,
+                rawPreferenceBoost=raw_preference_boost,
                 sameFacultyBoost=faculty_boost,
                 mpeSpecialisationBoost=mpe_specialisation_boost,
                 legacyCodePenalty=0,
@@ -459,6 +467,46 @@ def recommend_courses(
         preferred_tags,
         limit,
     )
+
+    # Pass 2: fill any slots still empty with preference-matched modules (interest picks).
+    # This only runs when preferences exist and pass 1 left at least one slot empty.
+    filled_slot_ids = {r.matchedChoiceSlotId for r in sorted_recommendations}
+    unfilled_slots = [
+        slot
+        for slot in candidate_slots
+        if get_choice_slot_identity(slot) not in filled_slot_ids
+    ]
+    if unfilled_slots and preferred_tags:
+        used_codes = {r.courseCode for r in sorted_recommendations}
+        used_titles: set[str] = set()
+        for r in sorted_recommendations:
+            add_used_title_keys(used_titles, r.title)
+        interest_picks = fill_interest_slots(
+            db=db,
+            unfilled_slots=unfilled_slots,
+            preferred_tag_dimensions=preferred_tag_dimensions,
+            preferred_tags=preferred_tags,
+            completed_codes=completed_codes,
+            excluded_codes=excluded_codes,
+            excluded_titles=excluded_titles,
+            already_used_codes=used_codes,
+            already_used_titles=used_titles,
+            normalized_student_faculty=normalized_student_faculty,
+            prerequisites_by_module=prerequisites_by_module,
+            prerequisite_modules_by_code=prerequisite_modules_by_code,
+            unlocks_by_module=unlocks_by_module,
+            candidate_slots=candidate_slots,
+            curriculum_courses=curriculum_courses,
+            active_faculties=active_faculties,
+        )
+        sorted_recommendations = sorted_recommendations + interest_picks
+        if interest_picks:
+            logger.info(
+                "Interest picks (pass 2): count=%s, items=%s",
+                len(interest_picks),
+                summarize_recommendations(interest_picks),
+            )
+
     final_recommendations = add_planned_roadmap_artifacts(
         sorted_recommendations,
         candidate_slots,
@@ -969,6 +1017,13 @@ def build_prerequisite_recommendations(
 
     return recommendations
 
+def build_preference_tag_filters(preferred_tags: set[str]) -> list:
+    """Return SQL OR-filters matching any of the given preference tags in recommendation_tags."""
+    return [
+        ModuleModel.recommendation_tags.cast(String).ilike(f"%{tag}%")
+        for tag in preferred_tags
+    ]
+
 def build_relevance_filters(career_goal: str) -> list:
     filters = []
 
@@ -1136,6 +1191,163 @@ def assign_ranked_slot_recommendations(
             remaining_unfilled_mpe_slots -= 1
 
     return ranked_recommendations
+
+def fill_interest_slots(
+    db: Session,
+    unfilled_slots: list[RecommendationChoiceSlot],
+    preferred_tag_dimensions: list[set[str]],
+    preferred_tags: set[str],
+    completed_codes: set[str],
+    excluded_codes: set[str],
+    excluded_titles: set[str],
+    already_used_codes: set[str],
+    already_used_titles: set[str],
+    normalized_student_faculty: Optional[str],
+    prerequisites_by_module: dict[str, list[str]],
+    prerequisite_modules_by_code: dict[str, "ModuleModel"],
+    unlocks_by_module: dict[str, list[str]],
+    candidate_slots: list[RecommendationChoiceSlot],
+    curriculum_courses: list[RecommendationCurriculumCourse],
+    active_faculties: list[str],
+) -> list[CourseRecommendation]:
+    """Pass 2: fill remaining slots using preference match only (no career filter).
+
+    Called only when pass 1 left slots empty and the student declared preferences.
+    Returns a list of interest-pick CourseRecommendation objects, one per unfilled slot at most.
+    Modules are not re-used across slots (already_used_codes is respected and updated in place).
+    """
+    if not unfilled_slots or not preferred_tags:
+        return []
+
+    mpe_levels = get_mpe_candidate_levels([slot.courseCode for slot in unfilled_slots])
+    has_bde_slot = any(slot.courseCode.upper() == "BDE" for slot in unfilled_slots)
+    slot_filters = build_slot_filters(mpe_levels, has_bde_slot)
+    pref_filters = build_preference_tag_filters(preferred_tags)
+
+    if not slot_filters or not pref_filters:
+        return []
+
+    interest_modules = (
+        db.query(ModuleModel)
+        .filter(
+            ModuleModel.faculty.in_(active_faculties),
+            or_(*slot_filters),
+            or_(*pref_filters),
+        )
+        .order_by(ModuleModel.code)
+        .all()
+    )
+
+    interest_picks: list[CourseRecommendation] = []
+    used_codes = set(already_used_codes)
+    used_titles = set(already_used_titles)
+
+    for slot in unfilled_slots:
+        candidates: list[tuple[int, CourseRecommendation]] = []
+
+        for module in interest_modules:
+            if is_excluded_module(module, completed_codes | excluded_codes, excluded_titles):
+                continue
+            if is_deprecated_course_code(module):
+                continue
+            if is_non_recommendable_core_project(module):
+                continue
+            if is_special_track_only_course(module):
+                continue
+            if is_unavailable_to_student_programme(module, normalized_student_faculty):
+                continue
+            if module.code in used_codes:
+                continue
+            norm_title = normalize_title(module.title)
+            sig_title = get_title_signature(module.title)
+            if norm_title in used_titles or sig_title in used_titles:
+                continue
+
+            eligible_slots = get_matching_choice_slots(module, candidate_slots, normalized_student_faculty)
+            if not any(get_choice_slot_identity(s) == get_choice_slot_identity(slot) for s in eligible_slots):
+                continue
+
+            prerequisites = prerequisites_by_module.get(module.code, [])
+            unlock_codes = unlocks_by_module.get(module.code, [])
+            readiness = evaluate_recommendation_readiness(
+                prerequisites=prerequisites,
+                completed_codes=completed_codes,
+                slot=slot,
+                choice_slots=candidate_slots,
+                curriculum_courses=curriculum_courses,
+                prerequisite_modules_by_code=prerequisite_modules_by_code,
+                unlock_codes=unlock_codes,
+                student_programme=normalized_student_faculty,
+            )
+            if readiness is None:
+                continue
+
+            raw_pref = get_preference_boost(module, preferred_tag_dimensions)
+            if raw_pref == 0:
+                continue
+
+            prerequisite_recommendations = build_prerequisite_recommendations(
+                readiness.planned_prerequisite_course_codes,
+                prerequisite_modules_by_code,
+                completed_codes | excluded_codes,
+                excluded_titles,
+            )
+            # Interest picks use a simple preference-only score; career scores are 0.
+            score = max(1, raw_pref + get_unlock_contribution(readiness.unlock_value))
+            matched_tags = sorted(preferred_tags.intersection(module.recommendation_tags or []))
+            candidates.append((score, CourseRecommendation(
+                courseCode=module.code,
+                title=module.title,
+                academicUnits=module.au,
+                faculty=module.faculty,
+                level=module.level,
+                mpeSpecialisations=module.mpe_specialisations or [],
+                matchedChoiceSlot=normalize_choice_slot_code(slot.courseCode),
+                matchedChoiceSlotId=slot.slotId,
+                matchedChoiceSlotYear=slot.year,
+                matchedChoiceSlotSemester=slot.semester,
+                matchedKeywords=[f"tag:{t}" for t in matched_tags],
+                prerequisites=prerequisites,
+                missingPrerequisites=readiness.missing_prerequisites,
+                existingPrerequisiteCourseCodes=readiness.existing_prerequisite_course_codes,
+                plannedPrerequisiteCourseCodes=readiness.planned_prerequisite_course_codes,
+                prerequisiteRecommendations=prerequisite_recommendations,
+                readinessStatus=readiness.status,
+                unlockValue=readiness.unlock_value,
+                score=score,
+                recommendationConfidence=get_recommendation_confidence(slot, score),
+                scoreBreakdown=RecommendationScoreBreakdown(
+                    careerTagScore=0,
+                    careerSkillScore=0,
+                    careerSkillEvidence=None,
+                    currentSemesterBonus=0,
+                    preferenceBoost=raw_pref,
+                    rawPreferenceBoost=raw_pref,
+                    sameFacultyBoost=0,
+                    mpeSpecialisationBoost=0,
+                    legacyCodePenalty=0,
+                    defaultProfileAdjustment=0,
+                    prerequisitePlanningPenalty=readiness.prerequisite_planning_penalty,
+                    unlockContribution=get_unlock_contribution(readiness.unlock_value),
+                    finalScore=score,
+                ),
+                reason=(
+                    f"Interest pick: matches your selected topic preference(s) "
+                    f"({', '.join(matched_tags)}). Not directly tied to your career goal."
+                ),
+                recommendationSource="interest",
+            )))
+
+        if not candidates:
+            continue
+
+        # Pick the best by score, then code for determinism.
+        best_score, best_pick = max(candidates, key=lambda item: (item[0], item[1].courseCode))
+        interest_picks.append(best_pick)
+        used_codes.add(best_pick.courseCode)
+        add_used_title_keys(used_titles, best_pick.title)
+
+    return interest_picks
 
 def get_assignment_ordered_choice_slots(
     choice_slots: list[RecommendationChoiceSlot],
@@ -1525,6 +1737,19 @@ def get_preference_boost(
         total_boost += SECURITY_PRIVACY_ADJACENCY_BOOST
 
     return min(total_boost, PREFERENCE_TAG_BOOST_CAP)
+
+def scale_preference_boost_by_career_fit(raw_boost: int, career_skill_score: int) -> int:
+    """Scale down the preference boost when career fit is weak.
+
+    Modules with career_skill_score >= CAREER_FIT_FULL_PREFERENCE_SCORE keep the full boost.
+    Below that, the boost is proportionally reduced so career signal always leads.
+    This prevents a weak-career-fit module with strong preference matches from
+    outranking a strong-career-fit module with no preference matches.
+    """
+    if raw_boost == 0 or career_skill_score >= CAREER_FIT_FULL_PREFERENCE_SCORE:
+        return raw_boost
+    scale = career_skill_score / CAREER_FIT_FULL_PREFERENCE_SCORE
+    return round(raw_boost * scale)
 
 def get_current_preference_match_boost(module: ModuleModel, preferred_tags: set[str]) -> int:
     if not module.is_current_semester or not preferred_tags:

@@ -168,13 +168,26 @@ def run_preference_swap_check(
     base_case_id: str,
     added_tag: str,
 ) -> CheckResult:
-    """Adding a tag to preferredRecommendationTags should surface that tag in the top result."""
+    """Adding a tag to preferredRecommendationTags should surface that tag in the top result.
+
+    Fails immediately if the base case already has the added_tag as a preference, because
+    then no real swap occurs and any pass/fail result is meaningless.
+    """
     name = f"preference-swap: {base_case_id} + tag '{added_tag}'"
     result = CheckResult(name)
 
     base_case = case_by_id(benchmark, base_case_id)
     original_tags = list(base_case.get("preferredRecommendationTags", []))
-    new_tags = original_tags + ([added_tag] if added_tag not in original_tags else [])
+
+    # Guard: the tag must be genuinely new — if it's already present the check is a no-op.
+    if added_tag in original_tags:
+        result.fail(
+            f"Base case '{base_case_id}' already has tag '{added_tag}' in preferredRecommendationTags "
+            f"({original_tags}). Choose a tag that is not in the base case."
+        )
+        return result
+
+    new_tags = original_tags + [added_tag]
 
     base_recs = get_recommendations(base_case, api_url)
     swap_recs = get_recommendations(
@@ -282,6 +295,57 @@ def run_completion_change_check(
     return result
 
 
+def run_career_conflict_check(
+    benchmark: dict[str, Any],
+    api_url: str,
+    base_case_id: str,
+    conflicting_tags: list[str],
+) -> CheckResult:
+    """Under the career-first policy, career picks should still show the original career goal
+    even when the student's preferences are entirely from a different career domain.
+
+    Checks that every recommendation whose recommendationSource == 'career' carries
+    scoreBreakdown.careerSkillEvidence.careerGoal equal to the base case's career goal.
+    """
+    base_case = case_by_id(benchmark, base_case_id)
+    career_goal = base_case["careerGoal"]
+    name = f"career-conflict: {base_case_id} career={career_goal} vs conflicting prefs {conflicting_tags}"
+    result = CheckResult(name)
+
+    recs = get_recommendations(
+        base_case, api_url, overrides={"preferredRecommendationTags": conflicting_tags}
+    )
+
+    for rec in recs:
+        source = rec.get("recommendationSource", "career")
+        if source != "career":
+            continue  # interest picks are allowed to have no career evidence
+
+        evidence_goal = (rec.get("scoreBreakdown") or {}).get("careerSkillEvidence", {}).get("careerGoal")
+        if evidence_goal is not None and evidence_goal != career_goal:
+            result.fail(
+                f"Career pick {rec.get('courseCode')} has careerSkillEvidence.careerGoal='{evidence_goal}' "
+                f"but expected '{career_goal}'. Conflicting prefs should not change the career goal."
+            )
+
+    if not recs:
+        result.fail("No recommendations returned — cannot verify career-first policy.")
+    else:
+        result.ok()
+
+    # Invariants.
+    inv_failures = check_invariants(
+        recs,
+        base_case.get("completedCourseCodes", []),
+        base_case.get("choiceSlots", []),
+        label=name,
+    )
+    for msg in inv_failures:
+        result.fail(msg)
+
+    return result
+
+
 def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]:
     results: list[CheckResult] = []
 
@@ -289,11 +353,27 @@ def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]
     results.append(run_career_swap_check(benchmark, api_url, "software-engineer-csc-007", "data-scientist"))
     results.append(run_career_swap_check(benchmark, api_url, "software-engineer-csc-007", "cybersecurity-engineer"))
 
-    # Preference swap: add computer-security to a case that doesn't have it.
+    # Preference swap: add computer-security to a software-engineer case that doesn't have it.
     results.append(run_preference_swap_check(benchmark, api_url, "software-engineer-csc-009", "computer-security"))
 
-    # Preference swap: add computer-network to a cloud platform case that doesn't have it listed.
-    results.append(run_preference_swap_check(benchmark, api_url, "cloud-platform-engineer-csc-001", "computer-network"))
+    # Preference swap: add cybersecurity to an ai-ml case that currently lacks it.
+    # ai-ml-engineer-csc-001 prefs are ['ai-ml', 'natural-language-processing', 'computer-vision'].
+    # cybersecurity is in SOFTWARE_ENGINEER_TAG_WEIGHTS but not in AI_ML_SKILL_MAPPINGS.
+    # NOTE: this swap tests a career-irrelevant tag — under career-first the tag should NOT appear
+    # in pass-1 matchedKeywords (since ai-ml career mapping doesn't include cybersecurity).
+    # This is intentionally noted here as a known limitation of the preference-swap check:
+    # it can only assert tag presence when a career-mapped, eligible module carries that tag.
+    #
+    # Instead verify the swap with a career-mapped tag: 'database' is in AI_ML_SKILL_MAPPINGS
+    # (data modelling / statistical reasoning) — and SC3020 has 'database' tag.
+    results.append(run_preference_swap_check(benchmark, api_url, "ai-ml-engineer-csc-001", "database"))
+
+    # Career-conflict: ai-ml student with SWE-type preferences — career picks should still show ai-ml-engineer.
+    results.append(run_career_conflict_check(
+        benchmark, api_url,
+        "ai-ml-engineer-csc-001",
+        conflicting_tags=["backend-engineering", "software-engineering", "web-development"],
+    ))
 
     # Completion change: remove the top recommendation by marking it done.
     results.append(run_completion_change_check(benchmark, api_url, "software-engineer-csc-001"))
