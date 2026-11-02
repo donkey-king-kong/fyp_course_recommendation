@@ -2,8 +2,8 @@ import type {
   RoadmapReadinessRequest,
   RoadmapReadinessResponse,
 } from '../types/roadmapReadiness'
+import { apiFetch } from './apiConfig'
 
-const ROADMAP_READINESS_API_URL = 'http://127.0.0.1:8000/roadmap/readiness'
 const ROADMAP_READINESS_TIMEOUT_MS = 10000
 
 export async function fetchRoadmapReadiness(
@@ -13,11 +13,8 @@ export async function fetchRoadmapReadiness(
   const timeoutId = window.setTimeout(() => controller.abort(), ROADMAP_READINESS_TIMEOUT_MS)
 
   try {
-    const response = await fetch(ROADMAP_READINESS_API_URL, {
+    const response = await apiFetch('/roadmap/readiness', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(request),
       signal: controller.signal,
     })

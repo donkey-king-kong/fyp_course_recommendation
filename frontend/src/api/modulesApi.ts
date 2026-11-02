@@ -1,6 +1,5 @@
 import type { ModuleFilterOptions, ModuleListResponse, ModuleQuery, ModuleSummary } from '../types/module'
-
-const MODULES_API_URL = 'http://127.0.0.1:8000/modules'
+import { apiFetch } from './apiConfig'
 
 function buildModuleQueryString(query: ModuleQuery): string {
   const params = new URLSearchParams()
@@ -32,7 +31,7 @@ function buildModuleQueryString(query: ModuleQuery): string {
 
 export async function fetchModules(query: ModuleQuery = {}): Promise<ModuleListResponse> {
   const queryString = buildModuleQueryString(query)
-  const response = await fetch(queryString ? `${MODULES_API_URL}?${queryString}` : MODULES_API_URL)
+  const response = await apiFetch(queryString ? `/modules?${queryString}` : '/modules')
 
   if (!response.ok) {
     throw new Error('Failed to load modules')
@@ -42,7 +41,7 @@ export async function fetchModules(query: ModuleQuery = {}): Promise<ModuleListR
 }
 
 export async function fetchModuleFilters(): Promise<ModuleFilterOptions> {
-  const response = await fetch(`${MODULES_API_URL}/filters`)
+  const response = await apiFetch('/modules/filters')
 
   if (!response.ok) {
     throw new Error('Failed to load module filters')
@@ -52,7 +51,7 @@ export async function fetchModuleFilters(): Promise<ModuleFilterOptions> {
 }
 
 export async function fetchModuleByCode(code: string): Promise<ModuleSummary> {
-  const response = await fetch(`${MODULES_API_URL}/${encodeURIComponent(code)}`)
+  const response = await apiFetch(`/modules/${encodeURIComponent(code)}`)
 
   if (!response.ok) {
     throw new Error('Failed to load module details')

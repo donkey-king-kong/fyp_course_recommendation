@@ -5,9 +5,12 @@ import LoginPage from './components/LoginPage'
 import ModulesPage from './components/ModulesPage'
 import SemesterRoadmap from './components/SemesterRoadmap'
 import ProfilePage from './components/ProfilePage'
+import { fetchCurrentUser } from './api/authApi'
+import { API_BASE_URL } from './api/apiConfig'
 import { fetchRecommendations } from './api/recommendationsApi'
 import { fetchPersonalizedRoadmap } from './api/roadmapApi'
 import { useProfileStore } from './store/useProfileStore'
+import type { AuthUser } from './types/auth'
 import type { CurriculumGuideResponse } from './types/curriculum'
 import type { RoadmapResponse } from './types/roadmap'
 import type { RoadmapRecommendationStaleReason } from './store/useProfileStore'
@@ -93,7 +96,10 @@ function App() {
   const [recommendationError, setRecommendationError] = useState('')
   const [roadmap, setRoadmap] = useState<RoadmapResponse | null>(null)
   const [roadmapProjectionError, setRoadmapProjectionError] = useState('')
+  const [authUser, setAuthUser] = useState<AuthUser | null | undefined>(undefined)
+  const [accessDenied, setAccessDenied] = useState(false)
   const activeStudentId = useProfileStore((state) => state.activeStudentId)
+  const loginWithStudentId = useProfileStore((state) => state.loginWithStudentId)
   const curriculumGuide = useProfileStore((state) => state.curriculumGuide)
   const completedCourseIds = useProfileStore((state) => state.completedCourseIds)
   const profile = useProfileStore((state) => state.profile)
@@ -135,6 +141,27 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem(VIEW_STORAGE_KEY, currentView)
   }, [currentView])
+
+  // Check for the ?login=denied query param set by the backend on 403.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get('login') === 'denied') {
+      setAccessDenied(true)
+      window.history.replaceState({}, '', window.location.pathname)
+    }
+  }, [])
+
+  // On mount, ask the backend if there is an active session.
+  useEffect(() => {
+    fetchCurrentUser()
+      .then((user) => {
+        setAuthUser(user)
+        if (user) {
+          loginWithStudentId(user.sub)
+        }
+      })
+      .catch(() => setAuthUser(null))
+  }, [])
 
   useEffect(() => {
     setRecommendationError('')
@@ -204,14 +231,21 @@ function App() {
       )
     }) ?? []
 
-  // Show the login page until a studentID is entered
-  if (!activeStudentId) {
-    return <LoginPage />
+  // Wait for the /me check to complete before deciding which screen to show.
+  if (authUser === undefined) {
+    return null
+  }
+
+  // Show the login page when there is no active session.
+  if (!authUser || !activeStudentId) {
+    return <LoginPage accessDenied={accessDenied} />
   }
 
   function handleLogout() {
     setCurrentView(DEFAULT_VIEW)
     logout()
+    setAuthUser(null)
+    window.location.href = `${API_BASE_URL}/logout`
   }
 
   async function handleLoadRoadmapRecommendations() {
@@ -329,6 +363,11 @@ function App() {
             >
               Profile
             </button>
+            {authUser && (
+              <span className="nav-user-label" title={authUser.email}>
+                {authUser.name || authUser.email}
+              </span>
+            )}
             <button className="nav-button logout-button" onClick={handleLogout}>
               Log out
             </button>

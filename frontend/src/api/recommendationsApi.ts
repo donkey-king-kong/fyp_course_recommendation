@@ -2,8 +2,8 @@ import type {
   RecommendationRequest,
   RecommendationResponse,
 } from '../types/recommendation'
+import { apiFetch } from './apiConfig'
 
-const RECOMMENDATIONS_API_URL = 'http://127.0.0.1:8000/recommendations'
 const RECOMMENDATIONS_TIMEOUT_MS = 15000
 
 export async function fetchRecommendations(
@@ -14,11 +14,8 @@ export async function fetchRecommendations(
   const timeoutId = window.setTimeout(() => controller.abort(), RECOMMENDATIONS_TIMEOUT_MS)
 
   try {
-    const response = await fetch(RECOMMENDATIONS_API_URL, {
+    const response = await apiFetch('/recommendations', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify(request),
       signal: controller.signal,
     })

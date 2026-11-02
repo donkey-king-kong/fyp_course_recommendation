@@ -328,20 +328,9 @@ function ProfilePage({
       </div>
 
       <form className="profile-form" onSubmit={(e) => e.preventDefault()}>
-        {/* Student ID is the browser-side profile identity. */}
-        {/* Keep primary profile inputs together to avoid wasting a full row on Student ID. */}
+        {/* Keep primary profile inputs together in one row. */}
         <div className="profile-row profile-identity-row">
-          <label className="profile-field">
-            <span>Student ID</span>
-            <input
-              type="text"
-              value={profile.studentId}
-              onChange={(e) => updateProfile({ studentId: e.target.value })}
-              placeholder="Enter your student ID"
-            />
-          </label>
-
-          {/* Major is included now so future roadmap/recommendation logic can branch by programme */}
+          {/* Major is included so future roadmap/recommendation logic can branch by programme. */}
           <label className="profile-field">
             <span>Major</span>
             <select

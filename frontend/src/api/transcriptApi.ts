@@ -4,10 +4,7 @@ import type {
   TranscriptCurriculumMatchResponse,
   TranscriptUploadResponse,
 } from '../types/transcript'
-
-// Backend endpoint that accepts the uploaded transcript PDF
-const TRANSCRIPT_API_URL = 'http://127.0.0.1:8000/transcript'
-const TRANSCRIPT_MATCH_API_URL = 'http://127.0.0.1:8000/transcript/match-curriculum'
+import { API_BASE_URL, apiFetch } from './apiConfig'
 
 export async function uploadTranscript(file: File): Promise<TranscriptUploadResponse> {
   // File uploads must be sent as multipart/form-data, not JSON
@@ -16,8 +13,10 @@ export async function uploadTranscript(file: File): Promise<TranscriptUploadResp
   // The key must be "file" because the FastAPI route parameter is named file
   formData.append('file', file)
 
-  const response = await fetch(TRANSCRIPT_API_URL, {
+  // File uploads use FormData; don't set Content-Type (browser sets multipart boundary).
+  const response = await fetch(`${API_BASE_URL}/transcript`, {
     method: 'POST',
+    credentials: 'include',
     body: formData,
   })
 
@@ -35,11 +34,8 @@ export async function matchTranscriptToCurriculum(
   transcriptCompletedCourses: TranscriptCourse[],
   curriculumGuide: CurriculumGuideResponse,
 ): Promise<TranscriptCurriculumMatchResponse> {
-  const response = await fetch(TRANSCRIPT_MATCH_API_URL, {
+  const response = await apiFetch('/transcript/match-curriculum', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({
       completedCourseCodes,
       transcriptCompletedCourses,

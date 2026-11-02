@@ -1,78 +1,35 @@
-import { useState } from 'react'
-import { useProfileStore } from '../store/useProfileStore'
+import { API_BASE_URL } from '../api/apiConfig'
 import './LoginPage.css'
 
-const STUDENT_ID_PATTERN = /^[A-Z]{4}\d{4}$/
+interface LoginPageProps {
+  // Set to true when Auth0 returned a 403 (non-NTU account).
+  accessDenied?: boolean
+}
 
-function LoginPage() {
-  // Activate an existing browser-saved profile, or create one for this Student ID.
-  const loginWithStudentId = useProfileStore((state) => state.loginWithStudentId)
-
-  // Keep what the user is typing before it is saved into the profile store
-  const [studentIdInput, setStudentIdInput] = useState('')
-  const [error, setError] = useState('')
-
-  function handleSubmit(event: { preventDefault: () => void }) {
-    // HTML forms reload the page by default
-    // React handles this submit instead.
-    event.preventDefault()
-
-    const normalizedStudentId = studentIdInput.trim().toUpperCase()
-
-    // Empty Student ID should not create a profile
-    if (!normalizedStudentId) {
-      setError('Enter your Student ID to continue.')
-      return
-    }
-
-    // Student IDs currently follow a four-letter, four-digit format.
-    if (!STUDENT_ID_PATTERN.test(normalizedStudentId)) {
-      setError('Enter a valid Student ID.')
-      return
-    }
-
-    setError('')
-
-    // Load the saved browser profile for this ID, or create one if it is new
-    loginWithStudentId(normalizedStudentId)
+function LoginPage({ accessDenied = false }: LoginPageProps) {
+  function handleSignIn() {
+    window.location.href = `${API_BASE_URL}/login`
   }
 
   return (
     <main className="login-shell">
       <section className="login-card">
         <p className="login-eyebrow">NTU Course Recommender</p>
-        <h1>Start with your student profile</h1>
+        <h1>Sign in with your NTU account</h1>
         <p className="login-copy">
-          Enter your Student ID to continue. This identifies your profile and keeps
-          your roadmap progress available.
+          Use your NTU Microsoft account (@e.ntu.edu.sg) to continue. Your profile
+          and roadmap progress will be saved to your account.
         </p>
 
-        <form className="login-form" onSubmit={handleSubmit}>
-          {/* Student ID is the user identity for the profile flow. */}
-          <label>
-            <span>Student ID</span>
-            <input
-              type="text"
-              value={studentIdInput}
-              onChange={(event) => {
-                setStudentIdInput(event.target.value)
-                setError('')
-              }}
-              placeholder="Enter your student ID"
-              aria-invalid={Boolean(error)}
-              aria-describedby={error ? 'student-id-error' : undefined}
-              autoFocus
-            />
-          </label>
+        {accessDenied && (
+          <p className="login-error" role="alert">
+            Access is restricted to NTU student accounts. Please sign in with your @e.ntu.edu.sg email.
+          </p>
+        )}
 
-          {error && (
-            <p className="login-error" id="student-id-error">
-              {error}
-            </p>
-          )}
-
-          <button type="submit">Continue</button>
-        </form>
+        <button type="button" className="login-microsoft-button" onClick={handleSignIn}>
+          Sign in with Microsoft
+        </button>
       </section>
     </main>
   )

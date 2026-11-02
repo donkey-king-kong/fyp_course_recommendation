@@ -1,19 +1,15 @@
 import type { CurriculumGuideResponse } from '../types/curriculum'
 import type { RoadmapResponse } from '../types/roadmap'
 import type { TranscriptCourse } from '../types/transcript'
-
-const PERSONALIZED_ROADMAP_API_URL = 'http://127.0.0.1:8000/roadmap/personalized'
+import { apiFetch } from './apiConfig'
 
 export async function fetchPersonalizedRoadmap(
   curriculumGuide: CurriculumGuideResponse,
   transcriptCompletedCourses: TranscriptCourse[],
   transcriptUnmatchedCourseCodes: string[],
 ): Promise<RoadmapResponse> {
-  const response = await fetch(PERSONALIZED_ROADMAP_API_URL, {
+  const response = await apiFetch('/roadmap/personalized', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
     body: JSON.stringify({
       curriculumGuide,
       transcriptCompletedCourses,
