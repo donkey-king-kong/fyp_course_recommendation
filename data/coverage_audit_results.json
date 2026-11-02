@@ -1,0 +1,3056 @@
+{
+  "totalCells": 180,
+  "careers": [
+    "software-engineer",
+    "ai-ml-engineer",
+    "data-engineer",
+    "cloud-platform-engineer",
+    "cybersecurity-engineer",
+    "data-scientist"
+  ],
+  "slotConfigs": [
+    "SC3xxx-only",
+    "SC4xxx-only",
+    "SC3-and-SC4",
+    "SC4-BDE-BDE",
+    "BDE-only"
+  ],
+  "progressStages": [
+    "Y2-end",
+    "Y4-end"
+  ],
+  "preferenceModes": [
+    "none",
+    "aligned",
+    "conflicting"
+  ],
+  "cells": [
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC2107",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4025",
+        "SC4022"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC2107",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4025",
+        "SC4022"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC2107"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4025"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC2107"
+      ]
+    },
+    {
+      "career": "software-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4025"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3000",
+        "SC4017"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4017"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4000",
+        "SC3000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4000",
+        "SC3000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4172",
+        "SC4000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4001",
+        "SC4061"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4055",
+        "SC4001"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4172",
+        "SC4001"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4000"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4001"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4172",
+        "SC4055"
+      ]
+    },
+    {
+      "career": "ai-ml-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4022"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4022"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4022"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3020",
+        "SC4022"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020",
+        "SC4050"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4022",
+        "SC4023",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020",
+        "SC4050"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4022",
+        "SC4023",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4022",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC3020"
+      ]
+    },
+    {
+      "career": "data-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4022",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050",
+        "SC4050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050",
+        "SC4050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3050",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4050",
+        "SC4051",
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4051",
+        "SC4050",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4050",
+        "SC4051",
+        "SC3050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4051",
+        "SC4050",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4050",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4051",
+        "SC4050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4050",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4051",
+        "SC4050"
+      ]
+    },
+    {
+      "career": "cloud-platform-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4052",
+        "SC4051"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 0,
+      "slotFillRate": 0.0,
+      "emptySlots": [
+        "audit-slot-1"
+      ],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": []
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 0,
+      "slotFillRate": 0.0,
+      "emptySlots": [
+        "audit-slot-1"
+      ],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": []
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 0,
+      "slotFillRate": 0.0,
+      "emptySlots": [
+        "audit-slot-1"
+      ],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": []
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3010",
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3010",
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3010",
+        "SC4017"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 1,
+      "slotFillRate": 0.5,
+      "emptySlots": [
+        "audit-slot-1"
+      ],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 1,
+      "slotFillRate": 0.5,
+      "emptySlots": [
+        "audit-slot-1"
+      ],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 1,
+      "slotFillRate": 0.5,
+      "emptySlots": [
+        "audit-slot-1"
+      ],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063",
+        "SC4011"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063",
+        "SC4011"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063",
+        "SC4011"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063",
+        "SC4011"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4010"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4010"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4000"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4000"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4020"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4020"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4xxx-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 1,
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021",
+        "SC4000"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021",
+        "SC4000"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021",
+        "SC4020"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021",
+        "SC4020"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC3-and-SC4",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC3021",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4000",
+        "SC4020",
+        "SC4022"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4000",
+        "SC4020",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC4172",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4020",
+        "SC4022",
+        "SC4023"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4020",
+        "SC4172",
+        "SC4017"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "SC4-BDE-BDE",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 3,
+      "assignedSlots": 3,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC4172",
+        "SC4052"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4000",
+        "SC4020"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4000",
+        "SC4020"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y2-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4020",
+        "SC4022"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4020",
+        "SC4172"
+      ]
+    },
+    {
+      "career": "data-scientist",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4023",
+        "SC4172"
+      ]
+    }
+  ]
+}
