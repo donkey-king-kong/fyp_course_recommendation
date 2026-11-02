@@ -25,6 +25,7 @@ from urllib.error import HTTPError, URLError
 # Reuse helpers from existing scripts to stay consistent.
 from run_recommendation_benchmark_predictions import (
     build_recommendation_request,
+    get_post_fn,
     post_json,
 )
 from run_counterfactual_sensitivity import check_invariants, slot_fits_code
@@ -156,10 +157,13 @@ def run_audit_cell(
     preferred_tags: list[str],
     api_url: str,
     limit: int,
+    post_fn: Any = None,
 ) -> dict[str, Any]:
     """Run one audit cell and return a result dict."""
+    if post_fn is None:
+        post_fn = post_json
     payload = build_request(career, slot_types, completed, curriculum, preferred_tags, limit)
-    response = post_json(api_url, payload, timeout=15.0)
+    response = post_fn(api_url, payload, timeout=15.0)
     recs = response.get("recommendations", [])
 
     expected_slots = len(slot_types)
@@ -325,7 +329,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--api-url",
         default=DEFAULT_API_URL,
-        help=f"Recommendation endpoint URL (default: {DEFAULT_API_URL})",
+        help=f"Recommendation endpoint URL (default: {DEFAULT_API_URL}, only used with --live)",
     )
     parser.add_argument(
         "--limit",
@@ -338,14 +342,21 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional path to write results JSON.",
     )
+    parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Call a running backend server instead of running in-process.",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    post_fn = get_post_fn(args.live)
+    mode = f"live backend at {args.api_url}" if args.live else "in-process"
 
     total_cells = len(CAREERS) * len(SLOT_CONFIGS) * len(PROGRESS_STAGES) * len(PREFERENCE_MODES)
-    print(f"Running coverage audit against {args.api_url}...")
+    print(f"Running coverage audit ({mode})...")
     print(f"Grid: {len(CAREERS)} careers × {len(SLOT_CONFIGS)} slot configs × "
           f"{len(PROGRESS_STAGES)} progress stages × {len(PREFERENCE_MODES)} pref modes "
           f"= {total_cells} cells")
@@ -377,6 +388,7 @@ def main() -> None:
                             preferred_tags=preferred_tags,
                             api_url=args.api_url,
                             limit=args.limit,
+                            post_fn=post_fn,
                         )
                         results.append(cell)
                         cell_count += 1

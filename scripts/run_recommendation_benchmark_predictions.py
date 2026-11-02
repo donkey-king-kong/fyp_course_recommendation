@@ -1,13 +1,15 @@
 """Capture live backend recommendation outputs for benchmark cases.
 
-Run the FastAPI backend separately before using this script. The output JSON can
-then be passed into `scripts/evaluate_recommendation_benchmark.py`.
+By default this script now runs the FastAPI app in-process using TestClient so
+no running server is required. Pass --live to call a running backend instead.
+The output JSON can then be passed into `scripts/evaluate_recommendation_benchmark.py`.
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Optional
@@ -17,6 +19,35 @@ from urllib.request import Request, urlopen
 DEFAULT_BENCHMARK_PATH = "data/recommendation_benchmark_cases.json"
 DEFAULT_OUTPUT_PATH = "data/recommendation_benchmark_predictions.json"
 DEFAULT_API_URL = "http://127.0.0.1:8000/recommendations"
+
+
+def get_post_fn(live: bool) -> Any:
+    """Return either the live HTTP post_json or the in-process TestClient version."""
+    return post_json if live else _get_testclient_post_json()
+
+
+def _get_testclient_post_json() -> Any:
+    """Return a post_json function backed by TestClient with auth bypassed."""
+    # Add the repo root to sys.path so backend imports resolve when the script
+    # is run from anywhere inside the project.
+    repo_root = Path(__file__).resolve().parent.parent
+    if str(repo_root) not in sys.path:
+        sys.path.insert(0, str(repo_root))
+
+    from fastapi.testclient import TestClient
+    from backend.main import app
+    from backend.dependencies.auth import require_user
+
+    _EVAL_USER = {"sub": "eval-script", "email": "eval@script", "name": "Eval Script"}
+    app.dependency_overrides[require_user] = lambda: _EVAL_USER
+    client = TestClient(app, raise_server_exceptions=True)
+
+    def _post_json(api_url: str, payload: dict[str, Any], timeout: float) -> dict[str, Any]:
+        response = client.post("/recommendations", json=payload)
+        response.raise_for_status()
+        return response.json()
+
+    return _post_json
 
 def load_json(path: Path) -> dict[str, Any]:
     with path.open() as file:
@@ -86,6 +117,7 @@ def build_recommendation_request(case: dict[str, Any], limit_override: Optional[
     }
 
 def post_json(api_url: str, payload: dict[str, Any], timeout: float) -> dict[str, Any]:
+    """Call the recommendations endpoint over HTTP. Used when --live is passed."""
     encoded_payload = json.dumps(payload).encode("utf-8")
     request = Request(
         api_url,
@@ -104,12 +136,15 @@ def capture_predictions(
     api_url: str,
     timeout: float,
     limit_override: Optional[int],
+    post_fn: Any = None,
 ) -> dict[str, Any]:
+    if post_fn is None:
+        post_fn = post_json
     cases = []
     for case in benchmark.get("cases", []):
         request_payload = build_recommendation_request(case, limit_override)
         try:
-            response_payload = post_json(api_url, request_payload, timeout)
+            response_payload = post_fn(api_url, request_payload, timeout)
             cases.append(
                 {
                     "caseId": case["caseId"],
@@ -128,7 +163,7 @@ def capture_predictions(
             ) from error
 
     return {
-        "source": "live-backend",
+        "source": "in-process" if post_fn is not post_json else "live-backend",
         "generatedAt": datetime.now(timezone.utc).isoformat(),
         "apiUrl": api_url,
         "benchmarkStatus": benchmark.get("status"),
@@ -137,7 +172,7 @@ def capture_predictions(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Call the live backend recommender for each benchmark case and save predictions."
+        description="Call the backend recommender for each benchmark case and save predictions."
     )
     parser.add_argument(
         "--benchmark",
@@ -152,29 +187,36 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--api-url",
         default=DEFAULT_API_URL,
-        help="Live backend POST /recommendations URL.",
+        help="Live backend POST /recommendations URL (only used with --live).",
     )
     parser.add_argument(
         "--timeout",
         type=float,
         default=30.0,
-        help="Per-request timeout in seconds.",
+        help="Per-request timeout in seconds (only used with --live).",
     )
     parser.add_argument(
         "--limit",
         type=int,
         help="Optional recommendation limit override for every case. Defaults to each case's slot count.",
     )
+    parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Call a running backend server instead of running in-process. Requires the backend to be started separately.",
+    )
     return parser.parse_args()
 
 def main() -> None:
     args = parse_args()
     benchmark = load_json(Path(args.benchmark))
+    post_fn = post_json if args.live else _get_testclient_post_json()
     predictions = capture_predictions(
         benchmark=benchmark,
         api_url=args.api_url,
         timeout=args.timeout,
         limit_override=args.limit,
+        post_fn=post_fn,
     )
     write_json(Path(args.output), predictions)
     print(f"Saved predictions for {len(predictions['cases'])} cases to {args.output}")

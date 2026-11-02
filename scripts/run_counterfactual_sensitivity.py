@@ -22,6 +22,7 @@ from urllib.error import HTTPError, URLError
 # Reuse request helpers from the benchmark runner to stay consistent.
 from run_recommendation_benchmark_predictions import (
     build_recommendation_request,
+    get_post_fn,
     post_json,
 )
 
@@ -47,12 +48,15 @@ def get_recommendations(
     api_url: str,
     overrides: Optional[dict[str, Any]] = None,
     limit: int = 5,
+    post_fn: Any = None,
 ) -> list[dict[str, Any]]:
     """Post a recommendation request for case, applying overrides to the payload."""
+    if post_fn is None:
+        post_fn = post_json
     payload = build_recommendation_request(case, limit_override=limit)
     if overrides:
         payload.update(overrides)
-    response = post_json(api_url, payload, timeout=10.0)
+    response = post_fn(api_url, payload, timeout=10.0)
     return response.get("recommendations", [])
 
 
@@ -121,14 +125,15 @@ def run_career_swap_check(
     api_url: str,
     base_case_id: str,
     swap_career: str,
+    post_fn: Any = None,
 ) -> CheckResult:
     """Changing career goal should produce a different recommendation set."""
     name = f"career-swap: {base_case_id} -> {swap_career}"
     result = CheckResult(name)
 
     base_case = case_by_id(benchmark, base_case_id)
-    base_recs = get_recommendations(base_case, api_url)
-    swap_recs = get_recommendations(base_case, api_url, overrides={"careerGoal": swap_career})
+    base_recs = get_recommendations(base_case, api_url, post_fn=post_fn)
+    swap_recs = get_recommendations(base_case, api_url, overrides={"careerGoal": swap_career}, post_fn=post_fn)
 
     base_codes = set(course_codes(base_recs))
     swap_codes = set(course_codes(swap_recs))
@@ -173,6 +178,7 @@ def run_preference_swap_check(
     api_url: str,
     base_case_id: str,
     added_tag: str,
+    post_fn: Any = None,
 ) -> CheckResult:
     """Adding a tag to preferredRecommendationTags should produce an observable change.
 
@@ -204,9 +210,9 @@ def run_preference_swap_check(
 
     new_tags = original_tags + [added_tag]
 
-    base_recs = get_recommendations(base_case, api_url)
+    base_recs = get_recommendations(base_case, api_url, post_fn=post_fn)
     swap_recs = get_recommendations(
-        base_case, api_url, overrides={"preferredRecommendationTags": new_tags}
+        base_case, api_url, overrides={"preferredRecommendationTags": new_tags}, post_fn=post_fn
     )
 
     # Aliases from RECOMMENDATION_TAG_ALIASES in recommendation_service.py.
@@ -283,13 +289,14 @@ def run_completion_change_check(
     benchmark: dict[str, Any],
     api_url: str,
     base_case_id: str,
+    post_fn: Any = None,
 ) -> CheckResult:
     """Marking the top recommended module as completed should remove it from recommendations."""
     name = f"completion-change: {base_case_id}"
     result = CheckResult(name)
 
     base_case = case_by_id(benchmark, base_case_id)
-    base_recs = get_recommendations(base_case, api_url)
+    base_recs = get_recommendations(base_case, api_url, post_fn=post_fn)
 
     if not base_recs:
         result.fail("Base case returned no recommendations — cannot test completion change.")
@@ -309,6 +316,7 @@ def run_completion_change_check(
             "completedCourseCodes": new_completed,
             "excludedCourseCodes": new_curriculum,
         },
+        post_fn=post_fn,
     )
 
     swap_codes = [r.get("courseCode", "") for r in swap_recs]
@@ -345,6 +353,7 @@ def run_career_conflict_check(
     api_url: str,
     base_case_id: str,
     conflicting_tags: list[str],
+    post_fn: Any = None,
 ) -> CheckResult:
     """Under the career-first policy, career picks should still show the original career goal
     even when the student's preferences are entirely from a different career domain.
@@ -358,7 +367,7 @@ def run_career_conflict_check(
     result = CheckResult(name)
 
     recs = get_recommendations(
-        base_case, api_url, overrides={"preferredRecommendationTags": conflicting_tags}
+        base_case, api_url, overrides={"preferredRecommendationTags": conflicting_tags}, post_fn=post_fn
     )
 
     for rec in recs:
@@ -391,15 +400,15 @@ def run_career_conflict_check(
     return result
 
 
-def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]:
+def run_all_checks(benchmark: dict[str, Any], api_url: str, post_fn: Any = None) -> list[CheckResult]:
     results: list[CheckResult] = []
 
     # Career swap: base case uses software-engineer; swap to data-scientist and cybersecurity-engineer.
-    results.append(run_career_swap_check(benchmark, api_url, "software-engineer-csc-007", "data-scientist"))
-    results.append(run_career_swap_check(benchmark, api_url, "software-engineer-csc-007", "cybersecurity-engineer"))
+    results.append(run_career_swap_check(benchmark, api_url, "software-engineer-csc-007", "data-scientist", post_fn=post_fn))
+    results.append(run_career_swap_check(benchmark, api_url, "software-engineer-csc-007", "cybersecurity-engineer", post_fn=post_fn))
 
     # Preference swap: add computer-security to a software-engineer case that doesn't have it.
-    results.append(run_preference_swap_check(benchmark, api_url, "software-engineer-csc-009", "computer-security"))
+    results.append(run_preference_swap_check(benchmark, api_url, "software-engineer-csc-009", "computer-security", post_fn=post_fn))
 
     # Preference swap: add cybersecurity to an ai-ml case that currently lacks it.
     # ai-ml-engineer-csc-001 prefs are ['ai-ml', 'natural-language-processing', 'computer-vision'].
@@ -411,31 +420,32 @@ def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]
     #
     # Instead verify the swap with a career-mapped tag: 'database' is in AI_ML_SKILL_MAPPINGS
     # (data modelling / statistical reasoning) — and SC3020 has 'database' tag.
-    results.append(run_preference_swap_check(benchmark, api_url, "ai-ml-engineer-csc-001", "database"))
+    results.append(run_preference_swap_check(benchmark, api_url, "ai-ml-engineer-csc-001", "database", post_fn=post_fn))
 
     # Career-conflict: ai-ml student with SWE-type preferences — career picks should still show ai-ml-engineer.
     results.append(run_career_conflict_check(
         benchmark, api_url,
         "ai-ml-engineer-csc-001",
         conflicting_tags=["backend-engineering", "software-engineering", "web-development"],
+        post_fn=post_fn,
     ))
 
     # Completion change: remove the top recommendation by marking it done.
-    results.append(run_completion_change_check(benchmark, api_url, "software-engineer-csc-001"))
-    results.append(run_completion_change_check(benchmark, api_url, "data-scientist-csc-001"))
-    results.append(run_completion_change_check(benchmark, api_url, "cybersecurity-engineer-csc-001"))
+    results.append(run_completion_change_check(benchmark, api_url, "software-engineer-csc-001", post_fn=post_fn))
+    results.append(run_completion_change_check(benchmark, api_url, "data-scientist-csc-001", post_fn=post_fn))
+    results.append(run_completion_change_check(benchmark, api_url, "cybersecurity-engineer-csc-001", post_fn=post_fn))
 
     return results
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run counterfactual sensitivity checks against the live recommendation backend."
+        description="Run counterfactual sensitivity checks against the recommendation backend."
     )
     parser.add_argument(
         "--api-url",
         default=DEFAULT_API_URL,
-        help=f"Recommendation endpoint URL (default: {DEFAULT_API_URL})",
+        help=f"Recommendation endpoint URL (default: {DEFAULT_API_URL}, only used with --live)",
     )
     parser.add_argument(
         "--benchmark",
@@ -447,17 +457,23 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional path to write results JSON for reporting.",
     )
+    parser.add_argument(
+        "--live",
+        action="store_true",
+        help="Call a running backend server instead of running in-process.",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
     benchmark = load_benchmark(Path(args.benchmark))
-
-    print(f"Running counterfactual sensitivity checks against {args.api_url}...")
+    post_fn = get_post_fn(args.live)
+    mode = f"live backend at {args.api_url}" if args.live else "in-process"
+    print(f"Running counterfactual sensitivity checks ({mode})...")
 
     try:
-        results = run_all_checks(benchmark, args.api_url)
+        results = run_all_checks(benchmark, args.api_url, post_fn=post_fn)
     except (HTTPError, URLError) as e:
         print(f"ERROR: Could not reach backend at {args.api_url}. Start the FastAPI backend first.")
         print(f"Details: {e}")
