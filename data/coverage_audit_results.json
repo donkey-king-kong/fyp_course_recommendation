@@ -36,6 +36,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -52,6 +54,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -68,6 +72,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000"
@@ -84,6 +90,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -100,6 +108,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -116,6 +126,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -132,6 +144,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -148,6 +162,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -164,6 +180,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -180,6 +198,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -196,6 +216,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -212,6 +234,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -228,6 +252,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -245,6 +271,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -262,6 +290,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000",
@@ -279,6 +309,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -296,6 +328,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -313,6 +347,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -330,11 +366,13 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC4051",
-        "SC4023"
+        "SC4013",
+        "SC4051"
       ]
     },
     {
@@ -348,11 +386,13 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC2107",
-        "SC3020"
+        "SC3020",
+        "SC4051"
       ]
     },
     {
@@ -366,6 +406,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -384,11 +426,13 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC4051",
-        "SC4023"
+        "SC4013",
+        "SC4051"
       ]
     },
     {
@@ -402,11 +446,13 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC2107",
-        "SC3020"
+        "SC3020",
+        "SC4051"
       ]
     },
     {
@@ -420,6 +466,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -438,10 +486,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC4051"
+        "SC4013"
       ]
     },
     {
@@ -455,10 +505,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC2107"
+        "SC3020"
       ]
     },
     {
@@ -472,6 +524,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -489,10 +543,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC4051"
+        "SC4013"
       ]
     },
     {
@@ -506,10 +562,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
-        "SC2107"
+        "SC3020"
       ]
     },
     {
@@ -523,6 +581,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -540,6 +600,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000"
@@ -556,6 +618,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000"
@@ -572,6 +636,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000"
@@ -588,6 +654,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3020"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -604,6 +674,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3020"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -620,6 +694,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3020"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -636,6 +714,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172"
@@ -652,6 +732,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172"
@@ -668,6 +750,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017"
@@ -684,6 +768,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172"
@@ -700,6 +786,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172"
@@ -716,6 +804,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017"
@@ -732,6 +822,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000",
@@ -749,6 +841,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000",
@@ -766,6 +860,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3000",
@@ -783,6 +879,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3020"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -800,6 +900,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3020"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -817,6 +921,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3020"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -834,6 +942,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -852,6 +962,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -870,6 +982,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017",
@@ -888,6 +1002,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -906,6 +1022,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -924,6 +1042,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017",
@@ -942,6 +1062,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -959,6 +1081,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -976,6 +1100,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017",
@@ -993,6 +1119,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -1010,6 +1138,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4172",
@@ -1027,6 +1157,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017",
@@ -1044,6 +1176,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -1060,6 +1194,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -1076,6 +1212,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -1092,6 +1230,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -1108,6 +1248,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -1124,6 +1266,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020"
@@ -1140,6 +1284,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023"
@@ -1156,6 +1302,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023"
@@ -1172,6 +1320,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4022"
@@ -1188,6 +1338,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023"
@@ -1204,6 +1356,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023"
@@ -1220,6 +1374,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4022"
@@ -1236,6 +1392,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -1253,6 +1411,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -1270,6 +1430,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -1287,6 +1449,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -1304,6 +1468,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -1321,6 +1487,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3020",
@@ -1338,6 +1506,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023",
@@ -1356,6 +1526,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023",
@@ -1374,11 +1546,13 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4022",
-        "SC4023",
-        "SC3020"
+        "SC3020",
+        "SC4055"
       ]
     },
     {
@@ -1392,6 +1566,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023",
@@ -1410,6 +1586,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023",
@@ -1428,11 +1606,13 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4022",
-        "SC4023",
-        "SC3020"
+        "SC3020",
+        "SC4055"
       ]
     },
     {
@@ -1446,10 +1626,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
-        "SC4023",
-        "SC3020"
+        "SC3020",
+        "SC4050"
       ]
     },
     {
@@ -1463,10 +1645,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
-        "SC4023",
-        "SC3020"
+        "SC3020",
+        "SC4052"
       ]
     },
     {
@@ -1480,10 +1664,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4022",
-        "SC4023"
+        "SC3020"
       ]
     },
     {
@@ -1497,10 +1683,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
-        "SC4023",
-        "SC3020"
+        "SC3020",
+        "SC4050"
       ]
     },
     {
@@ -1514,10 +1702,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
-        "SC4023",
-        "SC3020"
+        "SC3020",
+        "SC4052"
       ]
     },
     {
@@ -1531,10 +1721,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4022",
-        "SC4023"
+        "SC3020"
       ]
     },
     {
@@ -1548,6 +1740,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050"
@@ -1564,6 +1760,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050"
@@ -1580,6 +1780,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050"
@@ -1596,6 +1800,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050"
@@ -1612,6 +1820,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050"
@@ -1628,6 +1840,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050"
@@ -1644,6 +1860,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4050"
@@ -1660,6 +1878,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4051"
@@ -1676,6 +1896,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -1692,6 +1914,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4050"
@@ -1708,6 +1932,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4051"
@@ -1724,6 +1950,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052"
@@ -1740,6 +1968,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050",
@@ -1757,6 +1989,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050",
@@ -1774,6 +2010,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050",
@@ -1791,6 +2031,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050",
@@ -1808,6 +2052,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050",
@@ -1825,6 +2073,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3050",
@@ -1842,6 +2094,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4050",
@@ -1860,6 +2116,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4051",
@@ -1878,6 +2136,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -1896,6 +2156,10 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3050"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4050",
@@ -1914,6 +2178,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4051",
@@ -1932,6 +2198,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -1950,6 +2218,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4050",
@@ -1967,6 +2237,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4051",
@@ -1984,6 +2256,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -2001,6 +2275,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4050",
@@ -2018,6 +2294,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4051",
@@ -2035,6 +2313,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4052",
@@ -2052,6 +2332,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3010"
@@ -2068,6 +2350,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3010"
@@ -2084,6 +2368,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3010"
@@ -2095,15 +2381,19 @@
       "progressStage": "Y4-end",
       "preferenceMode": "none",
       "expectedSlots": 1,
-      "assignedSlots": 0,
-      "slotFillRate": 0.0,
-      "emptySlots": [
-        "audit-slot-1"
-      ],
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3040"
+      ],
       "invariantViolations": [],
-      "recommendedCodes": []
+      "recommendedCodes": [
+        "SC3040"
+      ]
     },
     {
       "career": "cybersecurity-engineer",
@@ -2111,15 +2401,19 @@
       "progressStage": "Y4-end",
       "preferenceMode": "aligned",
       "expectedSlots": 1,
-      "assignedSlots": 0,
-      "slotFillRate": 0.0,
-      "emptySlots": [
-        "audit-slot-1"
-      ],
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3040"
+      ],
       "invariantViolations": [],
-      "recommendedCodes": []
+      "recommendedCodes": [
+        "SC3040"
+      ]
     },
     {
       "career": "cybersecurity-engineer",
@@ -2127,15 +2421,19 @@
       "progressStage": "Y4-end",
       "preferenceMode": "conflicting",
       "expectedSlots": 1,
-      "assignedSlots": 0,
-      "slotFillRate": 0.0,
-      "emptySlots": [
-        "audit-slot-1"
-      ],
+      "assignedSlots": 1,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3040"
+      ],
       "invariantViolations": [],
-      "recommendedCodes": []
+      "recommendedCodes": [
+        "SC3040"
+      ]
     },
     {
       "career": "cybersecurity-engineer",
@@ -2148,6 +2446,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010"
@@ -2164,6 +2464,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010"
@@ -2180,6 +2482,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017"
@@ -2196,6 +2500,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010"
@@ -2212,6 +2518,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010"
@@ -2228,6 +2536,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017"
@@ -2244,6 +2554,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3010",
@@ -2261,6 +2573,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3010",
@@ -2278,6 +2592,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3010",
@@ -2290,15 +2606,18 @@
       "progressStage": "Y4-end",
       "preferenceMode": "none",
       "expectedSlots": 2,
-      "assignedSlots": 1,
-      "slotFillRate": 0.5,
-      "emptySlots": [
-        "audit-slot-1"
-      ],
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3040"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
+        "SC3040",
         "SC4010"
       ]
     },
@@ -2308,15 +2627,18 @@
       "progressStage": "Y4-end",
       "preferenceMode": "aligned",
       "expectedSlots": 2,
-      "assignedSlots": 1,
-      "slotFillRate": 0.5,
-      "emptySlots": [
-        "audit-slot-1"
-      ],
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3040"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
+        "SC3040",
         "SC4010"
       ]
     },
@@ -2326,15 +2648,18 @@
       "progressStage": "Y4-end",
       "preferenceMode": "conflicting",
       "expectedSlots": 2,
-      "assignedSlots": 1,
-      "slotFillRate": 0.5,
-      "emptySlots": [
-        "audit-slot-1"
-      ],
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 1,
+      "weakFitCodes": [
+        "SC3040"
+      ],
       "invariantViolations": [],
       "recommendedCodes": [
+        "SC3040",
         "SC4017"
       ]
     },
@@ -2349,6 +2674,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010",
@@ -2367,6 +2694,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010",
@@ -2385,6 +2714,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017",
@@ -2403,6 +2734,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010",
@@ -2421,6 +2754,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010",
@@ -2439,6 +2774,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017",
@@ -2457,6 +2794,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010",
@@ -2474,6 +2813,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4010",
@@ -2491,57 +2832,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
-      "invariantViolations": [],
-      "recommendedCodes": [
-        "SC4017",
-        "SC4010"
-      ]
-    },
-    {
-      "career": "cybersecurity-engineer",
-      "slotConfig": "BDE-only",
-      "progressStage": "Y4-end",
-      "preferenceMode": "none",
-      "expectedSlots": 2,
-      "assignedSlots": 2,
-      "slotFillRate": 1.0,
-      "emptySlots": [],
-      "interestPicks": 0,
-      "lowConfidencePicks": 0,
-      "invariantViolations": [],
-      "recommendedCodes": [
-        "SC4010",
-        "SC4063"
-      ]
-    },
-    {
-      "career": "cybersecurity-engineer",
-      "slotConfig": "BDE-only",
-      "progressStage": "Y4-end",
-      "preferenceMode": "aligned",
-      "expectedSlots": 2,
-      "assignedSlots": 2,
-      "slotFillRate": 1.0,
-      "emptySlots": [],
-      "interestPicks": 0,
-      "lowConfidencePicks": 0,
-      "invariantViolations": [],
-      "recommendedCodes": [
-        "SC4010",
-        "SC4063"
-      ]
-    },
-    {
-      "career": "cybersecurity-engineer",
-      "slotConfig": "BDE-only",
-      "progressStage": "Y4-end",
-      "preferenceMode": "conflicting",
-      "expectedSlots": 2,
-      "assignedSlots": 2,
-      "slotFillRate": 1.0,
-      "emptySlots": [],
-      "interestPicks": 0,
-      "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4017",
@@ -2549,6 +2841,63 @@
       ]
     },
     {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "none",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "aligned",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4010",
+        "SC4063"
+      ]
+    },
+    {
+      "career": "cybersecurity-engineer",
+      "slotConfig": "BDE-only",
+      "progressStage": "Y4-end",
+      "preferenceMode": "conflicting",
+      "expectedSlots": 2,
+      "assignedSlots": 2,
+      "slotFillRate": 1.0,
+      "emptySlots": [],
+      "interestPicks": 0,
+      "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
+      "invariantViolations": [],
+      "recommendedCodes": [
+        "SC4017",
+        "SC4010"
+      ]
+    },
+    {
       "career": "data-scientist",
       "slotConfig": "SC3xxx-only",
       "progressStage": "Y2-end",
@@ -2559,6 +2908,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021"
@@ -2575,6 +2926,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021"
@@ -2591,6 +2944,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021"
@@ -2607,6 +2962,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021"
@@ -2623,6 +2980,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021"
@@ -2639,6 +2998,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021"
@@ -2655,6 +3016,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4000"
@@ -2671,6 +3034,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4000"
@@ -2687,6 +3052,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023"
@@ -2703,6 +3070,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4020"
@@ -2719,6 +3088,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4020"
@@ -2735,6 +3106,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023"
@@ -2751,6 +3124,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021",
@@ -2768,6 +3143,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021",
@@ -2785,6 +3162,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021",
@@ -2802,6 +3181,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021",
@@ -2819,6 +3200,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021",
@@ -2836,6 +3219,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC3021",
@@ -2853,6 +3238,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4000",
@@ -2871,6 +3258,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4000",
@@ -2889,6 +3278,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023",
@@ -2907,11 +3298,13 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4020",
         "SC4022",
-        "SC4023"
+        "SC4025"
       ]
     },
     {
@@ -2925,6 +3318,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4020",
@@ -2943,6 +3338,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4023",
@@ -2961,6 +3358,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4000",
@@ -2978,6 +3377,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4000",
@@ -2995,10 +3396,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
-        "SC4023",
-        "SC4172"
+        "SC4172",
+        "SC4052"
       ]
     },
     {
@@ -3012,6 +3415,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4020",
@@ -3029,6 +3434,8 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
         "SC4020",
@@ -3046,10 +3453,12 @@
       "emptySlots": [],
       "interestPicks": 0,
       "lowConfidencePicks": 0,
+      "weakFitPicks": 0,
+      "weakFitCodes": [],
       "invariantViolations": [],
       "recommendedCodes": [
-        "SC4023",
-        "SC4172"
+        "SC4172",
+        "SC4052"
       ]
     }
   ]
