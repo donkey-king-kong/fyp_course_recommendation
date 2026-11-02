@@ -23,7 +23,10 @@ from typing import Any
 from urllib.error import HTTPError, URLError
 
 # Reuse helpers from existing scripts to stay consistent.
-from run_recommendation_benchmark_predictions import post_json
+from run_recommendation_benchmark_predictions import (
+    build_recommendation_request,
+    post_json,
+)
 from run_counterfactual_sensitivity import check_invariants, slot_fits_code
 
 CAREERS = [
@@ -121,18 +124,25 @@ def build_request(
     preferred_tags: list[str],
     limit: int,
 ) -> dict[str, Any]:
-    """Build a recommendation request payload for an audit cell."""
+    """Build a recommendation request payload for an audit cell.
+
+    Delegates to build_recommendation_request() via a synthetic case dict so
+    the audit is always in sync with the benchmark runner's request shape. This
+    prevents the audit from accidentally omitting fields such as studentFaculty
+    or choiceSlotCodes that affect scoring (e.g. the CSC faculty boost).
+    """
     slots = build_slots(slot_types)
-    return {
+    # curriculumCourses as dicts so normalise_curriculum_courses passes them through.
+    curriculum_dicts = [{"courseCode": c} for c in curriculum]
+    synthetic_case: dict[str, Any] = {
         "careerGoal": career,
         "preferredRecommendationTags": preferred_tags,
+        "studentFaculty": "CSC",
         "completedCourseCodes": completed,
-        "excludedCourseCodes": curriculum,
         "choiceSlots": slots,
-        "limit": limit,
-        "majorCode": "CSC",
-        "year": 3,
+        "curriculumCourses": curriculum_dicts,
     }
+    return build_recommendation_request(synthetic_case, limit_override=limit)
 
 
 def run_audit_cell(
@@ -159,6 +169,18 @@ def run_audit_cell(
     interest_picks = sum(1 for r in recs if r.get("recommendationSource") == "interest")
     low_confidence = sum(1 for r in recs if r.get("recommendationConfidence") == "low")
 
+    # Weak fit: slot filled only by faculty/non-career signal.  Flags picks where
+    # the career skill score is low and no direct career tag matched, so a reviewer
+    # can spot "filled but poorly matched" cases without treating them as empty slots.
+    def is_weak_fit(rec: dict[str, Any]) -> bool:
+        bd = rec.get("scoreBreakdown") or {}
+        career_skill = bd.get("careerSkillScore", 0) or 0
+        career_tag = bd.get("careerTagScore", 0) or 0
+        return career_skill < 5 and career_tag == 0
+
+    weak_fit_picks = sum(1 for r in recs if is_weak_fit(r))
+    weak_fit_codes = [r.get("courseCode", "") for r in recs if is_weak_fit(r)]
+
     slots = build_slots(slot_types)
     inv_failures = check_invariants(recs, completed, slots, label=f"{career}/{slot_label}/{progress_label}/{pref_mode}")
 
@@ -179,6 +201,8 @@ def run_audit_cell(
         "emptySlots": empty_slots,
         "interestPicks": interest_picks,
         "lowConfidencePicks": low_confidence,
+        "weakFitPicks": weak_fit_picks,
+        "weakFitCodes": weak_fit_codes,
         "invariantViolations": inv_failures,
         "recommendedCodes": [r.get("courseCode", "") for r in recs],
     }
@@ -218,12 +242,15 @@ def print_summary_table(results: list[dict[str, Any]]) -> None:
                         interest = cell["interestPicks"]
                         low = cell["lowConfidencePicks"]
                         viol = len(cell["invariantViolations"])
+                        weak = cell.get("weakFitPicks", 0)
                         flag = "✓" if fill >= 1.0 and viol == 0 else "✗"
                         marker = ""
                         if interest > 0:
                             marker += f"i{interest}"
                         if low > 0:
                             marker += f"l{low}"
+                        if weak > 0:
+                            marker += f"w{weak}"
                         if viol > 0:
                             marker += f"!{viol}"
                         cell_str = f"{flag}{fill:.2f}{(' '+marker) if marker else ''}"
@@ -269,6 +296,25 @@ def print_summary_table(results: list[dict[str, Any]]) -> None:
             )
     else:
         print("  Pass-2 interest picks: none fired (all slots filled by career picks).")
+    print()
+
+    # Weak-fit picks summary (filled but low career signal — slot not empty, but poor quality match).
+    weak_findings = [r for r in results if r.get("weakFitPicks", 0) > 0]
+    if weak_findings:
+        print(f"  Weak-fit picks (careerSkillScore < 5 and careerTagScore == 0) in {len(weak_findings)} cell(s):")
+        # Deduplicate by code across cells for a concise view.
+        seen_codes: set[str] = set()
+        for r in weak_findings:
+            codes = r.get("weakFitCodes", [])
+            new_codes = [c for c in codes if c not in seen_codes]
+            seen_codes.update(new_codes)
+            if new_codes:
+                print(
+                    f"     {r['career']}/{r['slotConfig']}/{r['progressStage']}/{r['preferenceMode']}: "
+                    f"{new_codes}"
+                )
+    else:
+        print("  Weak-fit picks: none (all filled slots have adequate career signal).")
     print()
 
 
