@@ -216,7 +216,7 @@ Struck-through items are complete. They are kept for history.
 
 14. ~~Expand career coverage beyond Software Engineer~~
 15. ~~Counterfactual sensitivity tests~~ (script done; original FAIL was invalid — base case already had the tag; corrected on career-first-preference-policy branch)
-16. Coverage audit (check slot-fill rate across degree/cohort combinations)
+16. ~~Coverage audit (check slot-fill rate across degree/cohort combinations)~~ (script done; 180 cells, 0 invariant violations, 1 gap: cybersecurity SC3xxx at Y4-end when SC3010 already completed)
 17. Expert review / think-aloud evaluation session
 18. RAGAS evaluation layer for explanation quality
 
@@ -267,7 +267,7 @@ See `Progress.md` and `Progress2.md` for the full history. Summary of completed 
 - Recommendation system: backend-owned deterministic scoring, exact-slot assignment, career-skill mapping layer (`backend/services/career_skill_mappings.py`), near-duplicate detection, diversity tiebreaker, planned prerequisite nodes/edges.
 - Offline benchmark evaluator with 14 cases; current nDCG ~0.705.
 
-Current branch: `career-first-preference-policy`
+Current branch: `coverage-audit`
 
 Active rules and constraints:
 - Keep recommendation ranking and slot allocation in the backend; frontend is a rendering layer only.
@@ -280,7 +280,7 @@ Active rules and constraints:
 - Academic-standing requirements should use completed AU from transcript, not self-declared profile year.
 
 Current next steps (from `Progress2.md`):
-- Review weak benchmark cases: `software-engineer-csc-014`, `-006`, `-008`, `-011`.
+- Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
 - Then: NTU SSO authentication (see section below).
 
 ## NTU SSO Authentication

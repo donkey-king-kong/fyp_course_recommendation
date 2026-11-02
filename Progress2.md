@@ -115,13 +115,15 @@ Results (7 checks):
 - `[PASS]` completion-change: data-scientist-csc-001
 - `[PASS]` completion-change: cybersecurity-engineer-csc-001
 
-**Correction (career-first-preference-policy branch):** The original fourth check was `cloud-platform-engineer-csc-001 + computer-network`. That check was a no-op: the base case already had `computer-network` in its `preferredRecommendationTags`, so adding it again produced no real change. The recorded FAIL was invalid. The check has been replaced with `ai-ml-engineer-csc-001 + database`, which is a genuine new tag that is career-mapped for ai-ml. The guard in `run_preference_swap_check` now fails immediately if the added tag is already present.
+**Correction (career-first-preference-policy branch):** The original fourth check was `cloud-platform-engineer-csc-001 + computer-network`. That check was a no-op: the base case already had `computer-network` in its `preferredRecommendationTags`, so adding it again produced no real change. The recorded FAIL was invalid. The check was replaced with `ai-ml-engineer-csc-001 + database`.
 
-Updated results (8 checks, all PASS):
+**Further correction (coverage-audit branch, 2026-11-03 01:41 SGT):** The `ai-ml-001 + database` check is also INCONCLUSIVE. `database` already appeared in SC3020's baseline matchedKeywords (`skill:model implementation foundations:database`), so adding the preference tag produced no new signal. The check now returns INCONCLUSIVE instead of PASS. This is not a bug — it documents a known property of career-first: a preference tag only shifts recommendations when a career-mapped eligible module that wasn't already recommended carries that tag. `run_preference_swap_check` now compares against the baseline to detect this case.
+
+Updated results (8 checks, 6 PASS + 1 INCONCLUSIVE + 1 PASS):
 - `[PASS]` career-swap: software-engineer-csc-007 → data-scientist
 - `[PASS]` career-swap: software-engineer-csc-007 → cybersecurity-engineer
 - `[PASS]` preference-swap: software-engineer-csc-009 + `computer-security`
-- `[PASS]` preference-swap: ai-ml-engineer-csc-001 + `database`
+- `[INCONCLUSIVE]` preference-swap: ai-ml-engineer-csc-001 + `database` — tag already in baseline matchedKeywords
 - `[PASS]` career-conflict: ai-ml-engineer-csc-001 with SWE-type prefs — all career picks retained `ai-ml-engineer` evidence
 - `[PASS]` completion-change: software-engineer-csc-001
 - `[PASS]` completion-change: data-scientist-csc-001
@@ -155,12 +157,12 @@ Branch: `career-first-preference-policy`. Implements the agreed career-first rul
 
 ### Benchmark impact
 
-The preference scaling is neutral on the current 24-case benchmark:
-- nDCG@returned: 0.631 (unchanged from 24-case baseline)
-- precision@returned: 0.639 (unchanged)
+The preference scaling changed the 24-case benchmark metrics (correction added 2026-11-03 01:41 SGT):
+- nDCG@returned: 0.631 (down from 0.683 in the 24-case baseline — career-first scaling reduces preference boosts for weak-career-signal modules, pushing some previously passing picks down)
+- precision@returned: 0.639 (down from 0.694)
 - constraintValidity: 1.0, oldCodeExposure: 0, slotFill: 1.0
 
-The scaling will have visible effect when a case has a module that previously beat a strong career match via preference boost alone. No such case currently exists in the benchmark because weak-career-fit modules tended to already lose on other factors.
+The metric drop is expected: career-first deliberately deprioritises modules whose career signal is weak even if they match a preference. The drop is real and should not be described as "neutral" or "unchanged".
 
 ### Next steps
 
@@ -169,10 +171,46 @@ The scaling will have visible effect when a case has a module that previously be
 - Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
 - NTU SSO authentication (pending Azure app registration access).
 
+## Coverage Audit (coverage-audit)
+
+_Added: 2026-11-03 01:49 SGT_
+
+Branch: `coverage-audit`.
+
+### What was done
+
+Part A: Fixes carried forward from the merged `career-first-preference-policy` branch:
+- `scripts/run_counterfactual_sensitivity.py`: `run_preference_swap_check` now compares against the baseline. If the tag is already in baseline matchedKeywords, the check returns `INCONCLUSIVE` (not PASS or FAIL). `CheckResult` got an `inconclusive` flag and an `inconc()` method. The summary line now counts PASS / FAIL / INCONCLUSIVE separately.
+- `Evaluation.md` §4: corrected "metrics unchanged" note — career-first did drop nDCG@returned from 0.683 to 0.631 and precision from 0.694 to 0.639.
+- `Evaluation.md` §5: updated table to show `ai-ml-001 + database` as INCONCLUSIVE; added explanation of the INCONCLUSIVE status; documented the four earlier failed swap probes as a known property of career-first.
+- `Progress2.md`: corrected "unchanged from 24-case baseline" to "dropped from 0.683 to 0.631".
+
+Part B: Coverage audit script and results:
+- `scripts/run_coverage_audit.py`: new script. Imports `post_json` from the benchmark runner and `check_invariants` / `slot_fits_code` from the sensitivity script. Runs a 180-cell grid (6 careers × 5 slot configs × 2 progress stages × 3 pref modes) against the live backend. Records slot fill rate, empty slots, interest picks, low-confidence picks, and invariant violations per cell. Prints a summary table and writes `data/coverage_audit_results.json`.
+- `data/coverage_audit_results.json`: audit output from November 2026.
+
+### Results
+
+- **0 invariant violations** across all 180 cells.
+- **Pass-2 interest picks: 0 fired** — all assigned slots were career picks; pass-2 did not trigger on any tested profile.
+- **174/180 cells: 100% slot fill rate**.
+- **6 empty-slot cells** (all the same root cause): `cybersecurity-engineer` at Y4-end progress stage with any slot config containing SC3xxx slots.
+
+### Gap: cybersecurity SC3xxx at Y4-end
+
+Only `SC3010 Computer Security` has a `cybersecurity` tag at SC3xxx level. The Y4-end progress profile includes SC3010 as completed, so it is excluded. With SC3010 gone there are zero eligible SC3xxx candidates. The gap affects all three preference modes (none, aligned, conflicting), confirming it is a curriculum coverage gap, not a filtering bug.
+
+SC4xxx slots for cybersecurity fill correctly at both progress stages. The gap is specific to SC3xxx at late-stage.
+
+### What is not included
+
+- No scoring changes on this branch.
+- Non-CSC faculties not covered (documented limitation).
+- No automated fix for the SC3xxx gap — intentional; document the gap and let the module catalogue grow.
+
 ## Recommended Next Step
 
-After `career-first-preference-policy` is merged, the next tasks are:
-- Coverage audit: script to measure slot-fill rate across all slot types and career combinations.
+After `coverage-audit` is merged, the next tasks are:
 - Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
 - NTU SSO authentication (pending Azure app registration access).
 

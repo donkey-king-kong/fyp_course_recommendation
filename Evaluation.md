@@ -150,7 +150,7 @@ Each row represents a snapshot taken after a meaningful change. Metrics are not 
 | After preference calibration | 14 | 0.675 | 0.786 | 1.0 | 0 | `PREFERENCE_FIRST_MATCH_BOOST` raised 30→35; SC3030 now wins SC3xxx slot for `computer-network` profile |
 | Expanded to 21 cases (PR #43) | 21 | 0.737 | 0.786 | 1.0 | 0 | Added AI/ML, Data Engineer, Cloud/Platform, Cybersecurity cases; BDE fallback calibrated |
 | Expanded to 24 cases | 24 | 0.683 | 0.694 | 1.0 | 0 | Added 2 Data Scientist cases and 1 Cloud/Platform multi-BDE case; all 6 careers now covered |
-| After career-first preference policy | 24 | 0.631 | 0.639 | 1.0 | 0 | Preference boost now scaled by career fit (`CAREER_FIT_FULL_PREFERENCE_SCORE = 15`); pass-2 interest picks added for unfilled slots; metrics unchanged from 24-case baseline (scaling effect is neutral on these cases); 8/8 counterfactual checks pass including new career-conflict check |
+| After career-first preference policy | 24 | 0.631 | 0.639 | 1.0 | 0 | Preference boost now scaled by career fit (`CAREER_FIT_FULL_PREFERENCE_SCORE = 15`); pass-2 interest picks added for unfilled slots; metrics dropped from the 24-case baseline (0.683→0.631 nDCG, 0.694→0.639 precision) because career-first scaling depresses preference boosts for modules with weak career signal, which pushes some previously passing modules down; 8 counterfactual checks (6 PASS, 1 INCONCLUSIVE, 1 new career-conflict PASS) |
 
 **Note on comparing rows:** When case count increases, nDCG and precision aggregate over more cases. A drop in the average does not necessarily mean ranking quality degraded — it may reflect new cases where the system performs worse for previously untested scenarios. Use per-case breakdowns (`scripts/evaluate_recommendation_benchmark.py` output) to diagnose regressions.
 
@@ -165,20 +165,24 @@ Run with:
 PYTHONPATH=. .venv/bin/python scripts/run_counterfactual_sensitivity.py --api-url http://127.0.0.1:8001/recommendations
 ```
 
-Results from the `career-first-preference-policy` branch (8 checks):
+Results from the `coverage-audit` branch (8 checks):
 
 | Check | Result | Notes |
 |---|---|---|
 | Career swap: software-engineer-csc-007 → data-scientist | PASS | Recommendation set changed; `data-scientist` careerGoal appeared in score evidence |
 | Career swap: software-engineer-csc-007 → cybersecurity-engineer | PASS | Recommendation set changed; `cybersecurity-engineer` careerGoal appeared in score evidence |
-| Preference swap: software-engineer-csc-009 + `computer-security` | PASS | `cybersecurity` (alias for `computer-security`) appeared in matchedKeywords |
-| Preference swap: ai-ml-engineer-csc-001 + `database` | PASS | `database` (career-mapped tag for ai-ml) appeared in matchedKeywords after the tag was added |
+| Preference swap: software-engineer-csc-009 + `computer-security` | PASS | `cybersecurity` (alias for `computer-security`) appeared in matchedKeywords but not in baseline |
+| Preference swap: ai-ml-engineer-csc-001 + `database` | INCONCLUSIVE | `database` was already in the baseline matchedKeywords (SC3020 via `skill:model implementation foundations:database`); adding the tag produced no new signal. See note below. |
 | Career conflict: ai-ml-engineer-csc-001 career=ai-ml-engineer vs SWE prefs | PASS | All career picks retained `careerSkillEvidence.careerGoal == ai-ml-engineer` despite conflicting preferences |
 | Completion change: software-engineer-csc-001 | PASS | Top module removed; slot still filled |
 | Completion change: data-scientist-csc-001 | PASS | Top module removed; slot still filled |
 | Completion change: cybersecurity-engineer-csc-001 | PASS | Top module removed; slot still filled |
 
-**Correction (post-merge):** The original `cloud-platform-engineer-csc-001 + computer-network` check was a no-op. That benchmark case already listed `computer-network` in its `preferredRecommendationTags`, so adding it produced no actual change. The FAIL result was invalid and has been replaced with `data-scientist-csc-001 + computer-network`, which is a genuine swap. The guard in `run_preference_swap_check` now fails immediately if the added tag is already present, preventing this class of mistake in future runs.
+**INCONCLUSIVE defined:** A check returns INCONCLUSIVE when the input change caused no observable difference in recommendations. It is not a failure — it documents a known property. Under the career-first policy, a preference tag only surfaces when a career-mapped, eligible module carries that tag and was not already recommended. If the module was already the top pick, the tag appears in both baseline and swap, so no new signal is produced.
+
+**Preference-swap INCONCLUSIVE — documented property of career-first:** The `ai-ml-001 + database` swap is INCONCLUSIVE because SC3020 scores well enough on career signal alone to be the top pick regardless of the `database` preference. Four other tags were probed before settling on this check; all failed to trigger a genuine change because career-first suppresses off-career preferences before they can shift rankings: DS-001 + computer-network (career blocks it), DS-001 + computer-vision (no eligible CV module at SC3/4 level), DE-001 + cloud-computing (SC4052 prereq MH2802 is not CSC faculty), SE-011 + NLP (no eligible NLP module with SC4xxx slot fit). This is accurate behaviour, not a scoring bug — it confirms career-first is working. A genuine preference-swap PASS requires a case where the student's preferred tag introduces a module they would not otherwise see.
+
+**Earlier correction (cloud-platform + computer-network):** The original `cloud-platform-engineer-csc-001 + computer-network` check was a no-op. That benchmark case already listed `computer-network` in its `preferredRecommendationTags`, so adding it again produced no change. The FAIL result was invalid. The guard in `run_preference_swap_check` now fails immediately if the added tag is already in the base case, preventing this class of mistake in future runs. A separate baseline comparison was added to detect the INCONCLUSIVE case.
 
 **Residual benchmark weakness — cloud-001 SC3xxx slot:**
 In `cloud-platform-engineer-csc-001`, `SC3030 Advanced Computer Networks` is labelled `highly-relevant` for the SC3xxx slot but the system assigns `SC3050 Advanced Computer Architecture` instead. The cause is that `SC3050` scores higher through same-faculty, MPE specialisation, and systems/cloud-computing tag boosts. The label may be over-optimistic, or the scoring weights need re-calibration. Recorded for review on the `career-first-preference-policy` branch.
@@ -195,9 +199,30 @@ All labels are owner-reviewed drafts. Until a lecturer, TA, or senior student pe
 
 ### 6.2 Coverage audit
 
-The benchmark does not yet test all degree/cohort/semester combinations. A student whose open slots are all in semester 2, or whose faculty is not CSC, may see systematically lower slot fill rates.
+Script: `scripts/run_coverage_audit.py`. Run with:
+```bash
+PYTHONPATH=. .venv/bin/python scripts/run_coverage_audit.py --api-url http://127.0.0.1:8001/recommendations --output data/coverage_audit_results.json
+```
 
-**Planned:** A lightweight slot-fill audit script that calls the recommender with synthetic profiles covering all slot types and checks that `averageSlotFillRate >= 1.0` for each.
+**Grid:** 6 careers × 5 slot configurations × 2 progress stages × 3 preference modes = 180 cells.
+- Slot configs: `SC3xxx-only`, `SC4xxx-only`, `SC3-and-SC4`, `SC4-BDE-BDE`, `BDE-only`.
+- Progress stages: Y2-end (15 modules completed) and Y4-end (35 modules completed).
+- Preference modes: none, career-aligned, and career-conflicting.
+- Faculty: CSC only (non-CSC is a known limitation, not covered by this audit).
+
+**Results (November 2026):**
+- Invariant violations: **0** across all 180 cells.
+- Pass-2 interest picks: **0 fired** — all assigned slots were filled by career picks, confirming pass-2 is a fallback that does not trigger on any of the tested profiles.
+- Overall slot fill rate: **100% except one gap** — `cybersecurity-engineer` at Y4-end progress with SC3xxx slots fills **0%** (0/1 slot).
+
+**Gap: cybersecurity SC3xxx at Y4-end**
+
+The only SC3xxx module with a cybersecurity tag is `SC3010 Computer Security`. The Y4-end progress profile includes SC3010 as completed, so it is excluded. With SC3010 gone, there are zero eligible SC3xxx candidates for cybersecurity. All preference modes (none, aligned, conflicting) produce the same result — the gap is not caused by preference filtering.
+
+This is a genuine curriculum coverage gap for late-stage cybersecurity students who have already completed SC3010. The system correctly returns no recommendation rather than a poor one. Possible mitigations:
+- Accept and document that a Y4 cybersecurity student with a single SC3xxx open slot cannot be served (they should not have such a slot open).
+- Add more SC3xxx modules with cybersecurity tags to the module catalogue as they become available.
+- Extend career-skill mapping to allow `SC3030 Computer Networks` as a cybersecurity-adjacent pick (it is infrastructure-relevant but not currently tagged for cybersecurity).
 
 ### 6.3 RAGAS evaluation layer
 
