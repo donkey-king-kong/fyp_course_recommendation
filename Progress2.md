@@ -62,13 +62,37 @@ After PR #43 career-goal and Cloud / Platform calibration:
 - Removed the over-strict Cloud / Platform allowlist and kept a focused off-track blocklist for modules such as GPU, blockchain, data analytics, and quantum computing.
 - Added then reverted a broader third-layer general BDE fallback; this is intentionally not active because it can fill BDE slots with non-career suggestions that need separate UX/product treatment.
 
+## Benchmark Snapshot: 24 Cases (benchmark-coverage-expansion)
+
+Added 2 Data Scientist cases and 1 Cloud / Platform multi-BDE case on `benchmark-coverage-expansion`.
+Metrics below are not directly comparable with the 21-case snapshot: new cases cover a previously unmapped career (data-scientist) and a new BDE slot shape, so aggregate nDCG shifts reflect expanded coverage, not regression.
+
+- `caseCount`: `24`
+- `caseCoverage`: `1.0`
+- `totalPredictionsEvaluated`: `53`
+- `averagePrecisionAtK`: `0.3000000000000001`
+- `averageNdcgAtK`: `0.4933429097046378`
+- `averagePrecisionAtReturned`: `0.6944444444444443`
+- `averageNdcgAtReturned`: `0.6825390542913282`
+- `averageSlotFillRate`: `1.0`
+- `averageExplanationCoverage`: `1.0`
+- `averageExplanationFidelity`: `0.6666666666666666`
+- `averageSkillAreaDiversityAtK`: `1.4166666666666667`
+- `oldCodeExposure`: `0`
+- `averageConstraintValidity`: `1.0`
+
+New case results:
+- `data-scientist-csc-001`: `precisionAtReturned=1.0`, `ndcgAtReturned=1.0`, `constraintValidity=1.0`. SC4000 + SC3021 selected.
+- `data-scientist-csc-002`: `precisionAtReturned=1.0`, `ndcgAtReturned=0.871`, `constraintValidity=1.0`. SC4020 + SC4023 selected.
+- `cloud-platform-engineer-csc-003`: `precisionAtReturned=1.0`, `ndcgAtReturned=0.915`, `constraintValidity=1.0`. SC4050 (MPE), SC4052 (BDE1), SC4051 (BDE2) selected. Blocklisted SC4053 and SC4055 correctly absent.
+
 ## Current Assessment
 
 - Constraint validity is strong and old CE/CPE/CSC/CZ code exposure remains zero.
-- The benchmark review/calibration pass now covers more careers, so the aggregate nDCG is lower than the previous Software Engineer-only snapshot and should not be compared directly without noting the expanded case set.
+- `data-scientist` career is now covered by 2 benchmark cases. All 6 career mappings now have at least one case.
+- Cloud / Platform BDE gap is closed: `cloud-platform-engineer-csc-003` covers 1 MPE + 2 BDE slots and confirms the off-track blocklist applies to BDE candidates.
 - SSO code exists but should remain parked until real NTU Azure credentials and redirect registration are available.
 - The main app can continue improving prototype reliability, documentation, and evaluation without introducing deferred AI/database integrations.
-- Cloud / Platform false positives from broad `networks` scoring are fixed, but Cloud BDE coverage still needs a dedicated benchmark case because the UI can expose more open BDE slots than the current benchmark cases.
 - The expanded career mappings are still deterministic first-pass mappings and need review against more student scenarios.
 
 ## Model Configuration
@@ -78,15 +102,33 @@ After PR #43 career-goal and Cloud / Platform calibration:
 - `ANTHROPIC_DEFAULT_SONNET_MODEL`: `claude-sonnet-4-6` — pins execution model to Sonnet 4.6, preventing silent upgrades when Claude Code updates its defaults.
 - Set in `~/.claude/settings.json` (user-level, not project-level).
 
+## Counterfactual Sensitivity Checks (counterfactual-sensitivity-checks)
+
+Script: `scripts/run_counterfactual_sensitivity.py`. Run with `PYTHONPATH=. .venv/bin/python scripts/run_counterfactual_sensitivity.py --api-url http://127.0.0.1:8001/recommendations`.
+
+Results (7 checks):
+- `[PASS]` career-swap: software-engineer-csc-007 -> data-scientist
+- `[PASS]` career-swap: software-engineer-csc-007 -> cybersecurity-engineer
+- `[PASS]` preference-swap: software-engineer-csc-009 + tag 'computer-security'
+- `[FAIL]` preference-swap: cloud-platform-engineer-csc-001 + tag 'computer-network' — adding `computer-network` preference did not surface a `networks`-tagged module. `SC3050` and `SC4050` still won, driven by `computer-architecture` and `cloud-computing` tags respectively. The preference boost is not strong enough to overcome the existing high-scoring modules for this specific profile.
+- `[PASS]` completion-change: software-engineer-csc-001
+- `[PASS]` completion-change: data-scientist-csc-001
+- `[PASS]` completion-change: cybersecurity-engineer-csc-001
+
+Finding: cloud platform + `computer-network` preference insensitivity. When a student adds `computer-network` as a preference for a cloud platform career, `SC3030 Advanced Computer Networks` (the closest matching module) is not surfaced because higher-scoring infrastructure modules already fill the slots. The preference boost for `computer-network` is not enough to overcome `SC3050` + `SC4050` dominance in this profile. Requires a separate scoring calibration branch to fix — do not address on this branch.
+
 ## Recommended Next Step
 
-Pick one non-auth task:
+All four evaluation tasks are now complete:
+- `benchmark-coverage-expansion`: 24-case benchmark covering all 6 careers, including 2 Data Scientist cases and 1 Cloud/Platform multi-BDE case.
+- `counterfactual-sensitivity-checks`: sensitivity script with 7 checks; 1 finding recorded (cloud-platform + `computer-network` insensitivity).
+- `evaluation-methodology-docs`: `Evaluation.md` written with full methodology, metrics, history, and known weaknesses.
 
-- Add lightweight benchmark/evaluation cases for the new Data Scientist and Cybersecurity Analyst mappings.
-- Add at least one Cloud / Platform benchmark case with several BDE slots to catch BDE spillover and empty-slot behavior.
-- Coverage audit planning: design a lightweight script/checklist to measure whether valid MPE/BDE slots can be filled across supported curriculum inputs.
-- Counterfactual sensitivity checks: verify that changing career goals shifts recommendations in sensible ways.
-- Evaluation prep: document benchmark methodology and current metrics for the FYP report.
+Remaining non-auth tasks to pick from:
+- Fix the cloud-platform `computer-network` preference sensitivity finding on a new `recommendation-score-calibration` branch.
+- Coverage audit: design a script to measure slot-fill rate across all slot types and career combinations.
+- Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
+- NTU SSO authentication (pending Azure app registration access).
 
 ## Out Of Scope
 

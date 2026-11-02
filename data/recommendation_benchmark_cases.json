@@ -2905,6 +2905,383 @@
           "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: frontend-engineering, data-science, data-visualisation, computer-graphics. None of these tags map to any cybersecurity-engineer career-skill area (security analysis and defence, networks and systems security, cryptography and secure implementation). Student preferences are computer-security, computer-network, privacy. Should not rank in the top recommendations for this profile. Programme restriction excludes many non-CSC programmes; CSC students are not affected but prereq graph requires several non-SC prerequisites — verify before using in evaluation. isCurrentSemester=true."
         }
       ]
+    },
+    {
+      "caseId": "data-scientist-csc-001",
+      "description": "Y3 CSC student with data-science, machine-learning, and data-visualisation preferences targeting a data scientist career. Core Year 1-2 modules completed. One SC3xxx MPE slot and one SC4xxx MPE slot open. Tests that the recommender surfaces data-science and ML modules and ranks pure systems modules low.",
+      "studentFaculty": "CSC",
+      "careerGoal": "data-scientist",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "data-science",
+        "machine-learning",
+        "data-visualisation"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y3-s1-mpe1",
+          "courseCode": "SC3xxx",
+          "year": 3,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s1-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "targetSlotId": "y3-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Scientist -> data modelling and analytics -> database -> Database System Principles",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, database. Official data-science MPE path. Maps to data modelling and analytics -> database (weight 0.85). Essential foundation for data storage, querying, and modelling. Prerequisite: SC2207 — completed. isCurrentSemester=true. Should be a top SC3xxx candidate for data-science preferences."
+        },
+        {
+          "courseCode": "SC3021",
+          "title": "Data Science Fundamentals",
+          "targetSlotId": "y3-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Scientist -> data modelling and analytics -> data-science -> Data Science Fundamentals",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science, data-analytics, statistics. Official data-science MPE path. Directly matches the data-science preference tag and maps to data modelling and analytics -> data-science (weight 1.0). No prerequisites in the prereq graph. isCurrentSemester=false — verify availability. Strong SC3xxx candidate alongside SC3020."
+        },
+        {
+          "courseCode": "SC4020",
+          "title": "Data Analytics & Mining",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Scientist -> data modelling and analytics -> data-science -> Data Analytics & Mining",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science, data-analytics, data-mining, machine-learning, database, statistics. Official data-science MPE path. Hits all three career skill areas: data modelling and analytics (data-science, database), machine learning and statistical reasoning (machine-learning, statistics). Five-tag career hit. No prerequisites listed. isCurrentSemester=true. Should be a top SC4xxx candidate for this profile."
+        },
+        {
+          "courseCode": "SC4024",
+          "title": "Data Visualisation",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Scientist -> data modelling and analytics -> data-visualisation -> Data Visualisation",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science, data-analytics, computer-graphics. Official data-science MPE path. Directly matches the data-visualisation preference tag and maps to data modelling and analytics -> data-visualisation (weight 0.8). Communicating insights visually is a core data scientist output. No prerequisites listed. isCurrentSemester=true. Strong SC4xxx candidate, especially with data-visualisation preference declared."
+        },
+        {
+          "courseCode": "SC4000",
+          "title": "Machine Learning",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Scientist -> machine learning and statistical reasoning -> machine-learning -> Machine Learning",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science, statistics, machine-learning. Official data-science MPE path. Maps to machine learning and statistical reasoning -> machine-learning (weight 1.0) and data modelling and analytics -> data-science. Matches machine-learning preference. No prerequisites listed. isCurrentSemester=true. Strong SC4xxx candidate. May compete with SC4020 and SC4024 for the SC4xxx slot."
+        },
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s1-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Data Scientist -> data systems and scalable processing -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. Official high-performance-computing MPE path. Maps to data systems and scalable processing -> distributed-systems (weight 0.85) for data scientists. Useful supporting skill for large-scale data pipelines, but not a data-science or machine-learning preference match. Should rank below SC4020, SC4024, SC4000 for this preference profile. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC3050",
+          "title": "Advanced Computer Architecture",
+          "targetSlotId": null,
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — computer-architecture tag has no mapping to data-scientist career-skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: computer-architecture, embedded-systems. Official high-performance-computing MPE path. Neither tag maps to any data-scientist career-skill area (data modelling and analytics, machine learning and statistical reasoning, data systems and scalable processing). Student preferences are data-science, machine-learning, data-visualisation — none matched. Should not rank in the top recommendations for this profile. isCurrentSemester=true."
+        }
+      ]
+    },
+    {
+      "caseId": "data-scientist-csc-002",
+      "description": "Y4 CSC student with machine-learning and database preferences targeting a data scientist career. Core Year 1-3 modules plus SC3020 (Database System Principles) and SC4000 (Machine Learning) completed. Two SC4xxx MPE slots open. Tests near-duplicate filtering so the student does not receive two near-identical ML modules, and diversity so the top 2 picks cover distinct data scientist skill areas.",
+      "studentFaculty": "CSC",
+      "careerGoal": "data-scientist",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "machine-learning",
+        "database"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3020",
+        "SC4000",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y4-s1-mpe1",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s2-mpe2",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 2
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3020",
+        "SC4000",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4020",
+          "title": "Data Analytics & Mining",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Scientist -> data modelling and analytics -> data-science -> Data Analytics & Mining",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science, data-analytics, data-mining, machine-learning, database, statistics. Official data-science MPE path. Strong multi-tag hit across data modelling and analytics and machine learning career skill areas. Matches both preference tags (machine-learning, database). Distinct from the completed SC4000 (Machine Learning) — it emphasises mining and analytics rather than model training. No prerequisites listed. isCurrentSemester=true. Should be a top SC4xxx pick."
+        },
+        {
+          "courseCode": "SC4024",
+          "title": "Data Visualisation",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Data Scientist -> data modelling and analytics -> data-visualisation -> Data Visualisation",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: data-science, data-analytics, computer-graphics. Official data-science MPE path. Maps to data modelling and analytics -> data-visualisation (weight 0.8). Provides a distinct data scientist skill (visualisation and communication) that SC4020 and SC4001 do not cover. Good diversity pick for the second SC4xxx slot. No prerequisites listed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4001",
+          "title": "Neural Network & Deep Learning",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Data Scientist -> machine learning and statistical reasoning -> artificial-intelligence -> Neural Network & Deep Learning",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: artificial-intelligence, data-science, algorithms. Official artificial-intelligence MPE path. Maps to machine learning and statistical reasoning -> artificial-intelligence (weight 0.9). Extends ML skills beyond the completed SC4000. However it is in the same career skill area as SC4000 and covers closely related deep learning content — the near-duplicate check may or may not flag it depending on title-signature distance. Should rank below SC4020 due to less distinct diversity contribution. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4023",
+          "title": "Big Data Management",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Data Scientist -> data systems and scalable processing -> distributed-systems -> Big Data Management",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: database, data-engineering, big-data, distributed-systems, data-science. Official data-science MPE path. Maps to data modelling and analytics (database, data-science) and data systems and scalable processing (distributed-systems). Matches the database preference. Provides a scale-out data systems perspective distinct from analytics and visualisation. No prerequisites listed. isCurrentSemester=false — verify availability."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s2-mpe2",
+          "expectedRelevance": "somewhat-relevant",
+          "expectedSkillPath": "Data Scientist -> data systems and scalable processing -> parallel-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing, programming, algorithms. Official high-performance-computing MPE path. Maps to data systems and scalable processing -> parallel-computing (weight 0.7). Useful for performance-heavy analytics but does not match either stated preference (machine-learning, database). Should rank below SC4020, SC4024, and SC4001 for this profile. Prerequisite: SC2001 — completed. isCurrentSemester=true."
+        },
+        {
+          "courseCode": "SC4060",
+          "title": "Virtual & Augmented Reality",
+          "targetSlotId": null,
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — computer-graphics and embedded-systems tags have no mapping to data-scientist career-skill areas",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: computer-graphics, embedded-systems. Neither tag maps to any data-scientist career-skill area. Student preferences are machine-learning and database — neither matched. Should not rank in the top recommendations for this profile. isCurrentSemester=false — also not currently available."
+        }
+      ]
+    },
+    {
+      "caseId": "cloud-platform-engineer-csc-003",
+      "description": "Y4 CSC student with cloud-computing, distributed-systems, and computer-network preferences targeting cloud platform engineering. Core Year 1-2 modules plus SC3020 (Database System Principles) completed. One SC4xxx MPE slot and two BDE slots open. Tests that cloud and distributed infrastructure modules fill the MPE slot, that BDE slots receive infrastructure-relevant modules, that blocklisted modules (SC4053 Blockchain, SC4055 Quantum) are excluded, and that an empty BDE slot is acceptable when no further qualifying module is available.",
+      "studentFaculty": "CSC",
+      "careerGoal": "cloud-platform-engineer",
+      "reviewerStatus": "project-owner-reviewed-draft-not-expert-ground-truth",
+      "preferredRecommendationTags": [
+        "cloud-computing",
+        "distributed-systems",
+        "computer-network"
+      ],
+      "completedCourseCodes": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3020",
+        "MH1810",
+        "MH1812"
+      ],
+      "choiceSlots": [
+        {
+          "slotId": "y4-s1-mpe1",
+          "courseCode": "SC4xxx",
+          "year": 4,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s1-bde1",
+          "courseCode": "BDE",
+          "year": 4,
+          "semester": 1
+        },
+        {
+          "slotId": "y4-s2-bde2",
+          "courseCode": "BDE",
+          "year": 4,
+          "semester": 2
+        }
+      ],
+      "curriculumCourses": [
+        "SC1003",
+        "SC1004",
+        "SC1005",
+        "SC1006",
+        "SC1007",
+        "SC1015",
+        "SC2000",
+        "SC2001",
+        "SC2002",
+        "SC2005",
+        "SC2006",
+        "SC2008",
+        "SC2207",
+        "SC3020",
+        "MH1810",
+        "MH1812"
+      ],
+      "reviewedCandidates": [
+        {
+          "courseCode": "SC4051",
+          "title": "Distributed Systems",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> distributed-systems -> Distributed Systems",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems. Official high-performance-computing MPE path. Directly matches the distributed-systems preference and maps to the highest-weight career skill (cloud and distributed infrastructure -> distributed-systems, weight 0.95). Core cloud platform engineering skill. Prerequisites: SC2005, SC2008 — both completed. isCurrentSemester=false — verify availability. Should be the top SC4xxx candidate for this profile."
+        },
+        {
+          "courseCode": "SC4052",
+          "title": "Cloud Computing",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "highly-relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> cloud-computing -> Cloud Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: backend-engineering, distributed-systems, cloud-computing, infrastructure. Official other-mpes listing. Directly matches the cloud-computing preference and maps to the cloud and distributed infrastructure skill at weight 1.0. Multi-tag hit covering cloud-computing, distributed-systems, infrastructure. Prerequisites: none in prereq graph. isCurrentSemester=false — verify availability. Strong alternative to SC4051 for the SC4xxx slot."
+        },
+        {
+          "courseCode": "SC3030",
+          "title": "Advanced Computer Networks",
+          "targetSlotId": "y4-s1-bde1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> network-infrastructure -> Advanced Computer Networks",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: network-infrastructure, networks. Official other-mpes listing. Has GLOAD category — eligible as BDE at year 4. Maps to cloud and distributed infrastructure -> network-infrastructure (weight 0.75). Matches computer-network preference via the network-infrastructure tag alias. Provides cloud platform networking depth (routing, protocols, transport layer) not covered by distributed systems modules. Prerequisite: SC2008 — completed. isCurrentSemester=true. Expected as the best available BDE candidate for this preference set."
+        },
+        {
+          "courseCode": "SC4030",
+          "title": "Wireless & Mobile Networks",
+          "targetSlotId": "y4-s2-bde2",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> network-infrastructure -> Wireless & Mobile Networks",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: network-infrastructure, networks. Official edge-computing MPE path. Has GLOAD category — eligible as BDE at year 4. Maps to cloud and distributed infrastructure -> network-infrastructure (weight 0.75). Matches computer-network preference. Provides wireless/mobile networking context relevant to edge and hybrid cloud scenarios. Prerequisite: SC2008 — completed. isCurrentSemester=true. Expected BDE candidate if SC3030 fills the first BDE slot, though availability may vary by semester."
+        },
+        {
+          "courseCode": "SC4050",
+          "title": "Parallel Computing",
+          "targetSlotId": "y4-s1-mpe1",
+          "expectedRelevance": "relevant",
+          "expectedSkillPath": "Cloud Platform Engineer -> cloud and distributed infrastructure -> cloud-computing -> Parallel Computing",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "Tags in modules.json: parallel-computing, cloud-computing. Official high-performance-computing MPE path. Has GLOAD category. Maps to cloud and distributed infrastructure -> cloud-computing (weight 1.0) and systems performance and reliability -> parallel-computing (weight 0.8). A legitimate cloud platform engineering module for performance-aware infrastructure work. Does not match the distributed-systems preference as precisely as SC4051, but the cloud-computing tag hit makes it a reasonable SC4xxx candidate. No prerequisites listed. isCurrentSemester=true. Expected as a runner-up for the SC4xxx slot behind SC4051 given the distributed-systems preference, but may win if cloud-computing scoring outweighs it."
+        },
+        {
+          "courseCode": "SC4053",
+          "title": "Blockchain Technology",
+          "targetSlotId": null,
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — SC4053 is in CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES and must be blocked",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: distributed-systems, cybersecurity. SC4053 is explicitly in CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES because distributed-systems here is used in a blockchain/consensus context, not a cloud platform context. Although it has GLOAD and matches the distributed-systems preference tag, it must be hard-filtered out regardless of score. Confirming that the blocklist is applied to BDE candidates as well as MPE candidates."
+        },
+        {
+          "courseCode": "SC4055",
+          "title": "Introduction To Quantum Computing",
+          "targetSlotId": null,
+          "expectedRelevance": "irrelevant",
+          "expectedSkillPath": "N/A — SC4055 is in CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES and must be blocked",
+          "oldCodeHandling": "not-applicable",
+          "reviewNotes": "NEGATIVE EXAMPLE. Tags in modules.json: quantum-computing, programming, algorithms. SC4055 is explicitly in CLOUD_PLATFORM_OFF_TRACK_COURSE_CODES. No tag maps to any cloud-platform-engineer career-skill area. Neither GLOAD category nor preference match can override the blocklist."
+        }
+      ]
     }
   ]
 }
