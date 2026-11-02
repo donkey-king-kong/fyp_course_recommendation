@@ -75,6 +75,7 @@ After PR #43 career-goal and Cloud / Platform calibration:
 
 - `model`: `opusplan` — Opus 5.5 in plan mode, Sonnet 5.5 for execution.
 - `CLAUDE_CODE_SUBAGENT_MODEL`: `haiku` — Haiku 5.5 for subagents.
+- `ANTHROPIC_DEFAULT_SONNET_MODEL`: `claude-sonnet-4-6` — pins execution model to Sonnet 4.6, preventing silent upgrades when Claude Code updates its defaults.
 - Set in `~/.claude/settings.json` (user-level, not project-level).
 
 ## Recommended Next Step
