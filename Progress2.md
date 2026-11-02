@@ -71,6 +71,13 @@ After PR #43 career-goal and Cloud / Platform calibration:
 - Cloud / Platform false positives from broad `networks` scoring are fixed, but Cloud BDE coverage still needs a dedicated benchmark case because the UI can expose more open BDE slots than the current benchmark cases.
 - The expanded career mappings are still deterministic first-pass mappings and need review against more student scenarios.
 
+## Model Configuration
+
+- `model`: `opusplan` — Opus 5.5 in plan mode, Sonnet 5.5 for execution.
+- `CLAUDE_CODE_SUBAGENT_MODEL`: `haiku` — Haiku 5.5 for subagents.
+- `ANTHROPIC_DEFAULT_SONNET_MODEL`: `claude-sonnet-4-6` — pins execution model to Sonnet 4.6, preventing silent upgrades when Claude Code updates its defaults.
+- Set in `~/.claude/settings.json` (user-level, not project-level).
+
 ## Recommended Next Step
 
 Pick one non-auth task:
