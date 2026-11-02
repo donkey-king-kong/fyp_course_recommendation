@@ -210,19 +210,24 @@ PYTHONPATH=. .venv/bin/python scripts/run_coverage_audit.py --api-url http://127
 - Preference modes: none, career-aligned, and career-conflicting.
 - Faculty: CSC only (non-CSC is a known limitation, not covered by this audit).
 
-**Results (November 2026):**
+**Results (re-run 2026-11-03 after request-shape fix):**
 - Invariant violations: **0** across all 180 cells.
-- Pass-2 interest picks: **0 fired** — all assigned slots were filled by career picks, confirming pass-2 is a fallback that does not trigger on any of the tested profiles.
-- Overall slot fill rate: **100% except one gap** — `cybersecurity-engineer` at Y4-end progress with SC3xxx slots fills **0%** (0/1 slot).
+- Pass-2 interest picks: **0 fired** — all assigned slots were filled by career picks.
+- Overall slot fill rate: **100%** across all 180 cells. No empty slot findings.
 
-**Gap: cybersecurity SC3xxx at Y4-end**
+**Weak-fit picks (filled but low career signal):**
 
-The only SC3xxx module with a cybersecurity tag is `SC3010 Computer Security`. The Y4-end progress profile includes SC3010 as completed, so it is excluded. With SC3010 gone, there are zero eligible SC3xxx candidates for cybersecurity. All preference modes (none, aligned, conflicting) produce the same result — the gap is not caused by preference filtering.
+The audit flags picks where `careerSkillScore < 5` and `careerTagScore == 0` — slots that are filled but only on faculty or structural signal rather than direct career relevance. Three distinct module codes appear across 26 cells:
 
-This is a genuine curriculum coverage gap for late-stage cybersecurity students who have already completed SC3010. The system correctly returns no recommendation rather than a poor one. Possible mitigations:
-- Accept and document that a Y4 cybersecurity student with a single SC3xxx open slot cannot be served (they should not have such a slot open).
-- Add more SC3xxx modules with cybersecurity tags to the module catalogue as they become available.
-- Extend career-skill mapping to allow `SC3030 Computer Networks` as a cybersecurity-adjacent pick (it is infrastructure-relevant but not currently tagged for cybersecurity).
+| Module | Career | Slot config | Progress | Why weak |
+|---|---|---|---|---|
+| `SC3040 Advanced Software Engineering` | cybersecurity-engineer | SC3xxx-only | Y4-end | SC3010 (the only cyber-tagged SC3xxx module) is already completed; SC3040 fills via faculty boost, no direct cyber tag |
+| `SC3050 Advanced Computer Architecture` | cloud-platform-engineer | SC3xxx-only | Y2/Y4-end | Fills on faculty + systems tag; cloud-computing tag is not present at SC3 level |
+| `SC3020 Database Management Systems` | ai-ml-engineer | SC3xxx-only | Y4-end | Strong data tag but no direct AI/ML career-tag match at SC3 level after SC3 AI modules are completed |
+
+These are quality observations, not invariant failures. The system fills the slot rather than leaving it empty, which is the correct behaviour. Whether these picks should be labelled `low-confidence` or suppressed in favour of an explicit "no strong match" message is a product decision for a later milestone.
+
+**Correction note:** The first run of this audit (merged in PR #50, 2026-11-03) reported a false cybersecurity SC3xxx gap at Y4-end. The root cause was a bug in `build_request()`: it sent `majorCode` and `year` (not recognised API fields) and omitted `studentFaculty`. Without `studentFaculty: "CSC"`, the CSC faculty bonus (+8 points) was absent, dropping SC3040's score below the MPE minimum threshold of 10. With the correct request shape, SC3040 scores 15 and fills the slot. The bug affected all 180 cells — the first run's "100% fill rate in 174 cells" was also measured on unrealistic requests without faculty context.
 
 ### 6.3 RAGAS evaluation layer
 

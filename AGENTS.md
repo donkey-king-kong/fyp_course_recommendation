@@ -216,7 +216,7 @@ Struck-through items are complete. They are kept for history.
 
 14. ~~Expand career coverage beyond Software Engineer~~
 15. ~~Counterfactual sensitivity tests~~ (script done; original FAIL was invalid — base case already had the tag; corrected on career-first-preference-policy branch)
-16. ~~Coverage audit (check slot-fill rate across degree/cohort combinations)~~ (script done; 180 cells, 0 invariant violations, 1 gap: cybersecurity SC3xxx at Y4-end when SC3010 already completed)
+16. ~~Coverage audit (check slot-fill rate across degree/cohort combinations)~~ (script done; 180 cells, 0 invariant violations, 0 empty slots after request-shape fix; earlier reported cybersecurity SC3xxx gap was a script bug — omitting `studentFaculty` suppressed the CSC faculty bonus, giving a false empty result; 26 cells with weak-fit picks flagged as quality observations)
 17. Expert review / think-aloud evaluation session
 18. RAGAS evaluation layer for explanation quality
 
@@ -267,7 +267,7 @@ See `Progress.md` and `Progress2.md` for the full history. Summary of completed 
 - Recommendation system: backend-owned deterministic scoring, exact-slot assignment, career-skill mapping layer (`backend/services/career_skill_mappings.py`), near-duplicate detection, diversity tiebreaker, planned prerequisite nodes/edges.
 - Offline benchmark evaluator with 14 cases; current nDCG ~0.705.
 
-Current branch: `coverage-audit`
+Current branch: `coverage-audit-request-fix`
 
 Active rules and constraints:
 - Keep recommendation ranking and slot allocation in the backend; frontend is a rendering layer only.

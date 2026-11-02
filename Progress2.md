@@ -208,9 +208,40 @@ SC4xxx slots for cybersecurity fill correctly at both progress stages. The gap i
 - Non-CSC faculties not covered (documented limitation).
 - No automated fix for the SC3xxx gap — intentional; document the gap and let the module catalogue grow.
 
+## Coverage Audit Request-Shape Fix (coverage-audit-request-fix)
+
+_Added: 2026-11-03 SGT_
+
+Branch: `coverage-audit-request-fix`.
+
+### Root Cause
+
+The first coverage audit run (PR #50) contained a bug in `build_request()` inside `scripts/run_coverage_audit.py`. The function sent `majorCode` and `year` (fields the API does not recognise and silently ignores) and omitted `studentFaculty`, `choiceSlotCodes`, and `curriculumCourses`. As a result, all 180 audit cells ran without the CSC faculty bonus (+8 points). For the `cybersecurity-engineer / SC3xxx-only / Y4-end` configuration, SC3040 Advanced Software Engineering would have scored 7 without the bonus — below the MPE minimum threshold of 10 — producing an empty slot result.
+
+With `studentFaculty: "CSC"` correctly sent, SC3040 scores 15 (7 base + 8 faculty bonus) and fills the slot. The previously reported gap was entirely an artifact of the script bug.
+
+### What was done
+
+- Rewrote `build_request()` to build a synthetic case dict and delegate to `build_recommendation_request()` from `run_recommendation_benchmark_predictions.py`. This ensures the audit can never drift from the benchmark runner's request shape.
+- Added a weak-fit counter to audit cells: picks where `careerSkillScore < 5` and `careerTagScore == 0`. These are filled slots with low career signal — the system fills the slot rather than leaving it empty, but the pick quality is weak.
+- Re-ran the audit and regenerated `data/coverage_audit_results.json`.
+- Corrected `Evaluation.md` §6.2 and this section.
+
+### Corrected Results
+
+- **0 invariant violations** across all 180 cells.
+- **0 empty slot findings** — 100% slot fill rate across all 180 cells. The cybersecurity SC3xxx gap was an artifact; it does not exist when requests include `studentFaculty`.
+- **Pass-2 interest picks: 0 fired**.
+- **Weak-fit picks** in 26 cells. Three distinct codes:
+  - `SC3040` for `cybersecurity-engineer / SC3xxx / Y4-end` — fills via faculty bonus after SC3010 is completed; no direct cyber tag.
+  - `SC3050` for `cloud-platform-engineer / SC3xxx` — fills on faculty + systems tag; no SC3-level cloud-computing tag.
+  - `SC3020` for `ai-ml-engineer / SC3xxx / Y4-end` — strong data tag but no direct AI/ML career tag at SC3 level once SC3 AI modules are completed.
+
+These are recommendation-quality observations. Slots are filled, not empty. Whether to suppress weak-fit picks or show a "no strong match" message is a product decision for a future milestone.
+
 ## Recommended Next Step
 
-After `coverage-audit` is merged, the next tasks are:
+After `coverage-audit-request-fix` is merged, the next tasks are:
 - Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
 - NTU SSO authentication (pending Azure app registration access).
 
