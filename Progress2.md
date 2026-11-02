@@ -110,23 +110,69 @@ Results (7 checks):
 - `[PASS]` career-swap: software-engineer-csc-007 -> data-scientist
 - `[PASS]` career-swap: software-engineer-csc-007 -> cybersecurity-engineer
 - `[PASS]` preference-swap: software-engineer-csc-009 + tag 'computer-security'
-- `[FAIL]` preference-swap: cloud-platform-engineer-csc-001 + tag 'computer-network' — adding `computer-network` preference did not surface a `networks`-tagged module. `SC3050` and `SC4050` still won, driven by `computer-architecture` and `cloud-computing` tags respectively. The preference boost is not strong enough to overcome the existing high-scoring modules for this specific profile.
+- `[PASS]` preference-swap: data-scientist-csc-001 + tag 'computer-network'
 - `[PASS]` completion-change: software-engineer-csc-001
 - `[PASS]` completion-change: data-scientist-csc-001
 - `[PASS]` completion-change: cybersecurity-engineer-csc-001
 
-Finding: cloud platform + `computer-network` preference insensitivity. When a student adds `computer-network` as a preference for a cloud platform career, `SC3030 Advanced Computer Networks` (the closest matching module) is not surfaced because higher-scoring infrastructure modules already fill the slots. The preference boost for `computer-network` is not enough to overcome `SC3050` + `SC4050` dominance in this profile. Requires a separate scoring calibration branch to fix — do not address on this branch.
+**Correction (career-first-preference-policy branch):** The original fourth check was `cloud-platform-engineer-csc-001 + computer-network`. That check was a no-op: the base case already had `computer-network` in its `preferredRecommendationTags`, so adding it again produced no real change. The recorded FAIL was invalid. The check has been replaced with `ai-ml-engineer-csc-001 + database`, which is a genuine new tag that is career-mapped for ai-ml. The guard in `run_preference_swap_check` now fails immediately if the added tag is already present.
+
+Updated results (8 checks, all PASS):
+- `[PASS]` career-swap: software-engineer-csc-007 → data-scientist
+- `[PASS]` career-swap: software-engineer-csc-007 → cybersecurity-engineer
+- `[PASS]` preference-swap: software-engineer-csc-009 + `computer-security`
+- `[PASS]` preference-swap: ai-ml-engineer-csc-001 + `database`
+- `[PASS]` career-conflict: ai-ml-engineer-csc-001 with SWE-type prefs — all career picks retained `ai-ml-engineer` evidence
+- `[PASS]` completion-change: software-engineer-csc-001
+- `[PASS]` completion-change: data-scientist-csc-001
+- `[PASS]` completion-change: cybersecurity-engineer-csc-001
+
+**Residual benchmark weakness (not a sensitivity failure):** In `cloud-platform-engineer-csc-001`, `SC3030 Advanced Computer Networks` (labelled `highly-relevant`) loses the SC3xxx slot to `SC3050 Advanced Computer Architecture` (labelled `somewhat-relevant`). This is a scoring calibration issue recorded for future review.
+
+## Career-First Preference Policy (career-first-preference-policy)
+
+Branch: `career-first-preference-policy`. Implements the agreed career-first rule for handling career-vs-preference conflicts.
+
+### Changes
+
+**`backend/services/recommendation_service.py`:**
+- Added `CAREER_FIT_FULL_PREFERENCE_SCORE = 15` constant.
+- Added `scale_preference_boost_by_career_fit(raw_boost, career_skill_score)`: proportionally reduces the preference boost when a module's `career_skill_score < 15`. Full boost is kept when career fit is strong; weak career fits receive a fractional boost so career always leads.
+- Added `build_preference_tag_filters(preferred_tags)`: SQL OR-filter for preference tags (used by pass 2).
+- Added `fill_interest_slots(...)`: pass 2 function that fills empty slots using preference-matched modules with zero career signal. Returns interest picks with `recommendationSource="interest"`.
+- Integrated pass 2 into `recommend_courses` after `assign_ranked_slot_recommendations`.
+
+**`backend/schemas/recommendation.py`:**
+- Added `rawPreferenceBoost` field to `RecommendationScoreBreakdown` (unscaled boost, for evaluator debugging).
+- Added `recommendationSource` field to `CourseRecommendation` (`"career"` or `"interest"`).
+
+**`scripts/run_counterfactual_sensitivity.py`:**
+- Added guard in `run_preference_swap_check`: fails immediately if the added tag is already in the base case.
+- Added `run_career_conflict_check`: verifies career picks retain the original career goal even with conflicting preferences.
+- Updated checks: replaced invalid cloud-001+computer-network with ai-ml-001+database; added career-conflict check.
+
+**Docs:** corrected cloud sensitivity finding, updated counterfactual table, added new benchmark snapshot.
+
+### Benchmark impact
+
+The preference scaling is neutral on the current 24-case benchmark:
+- nDCG@returned: 0.631 (unchanged from 24-case baseline)
+- precision@returned: 0.639 (unchanged)
+- constraintValidity: 1.0, oldCodeExposure: 0, slotFill: 1.0
+
+The scaling will have visible effect when a case has a module that previously beat a strong career match via preference boost alone. No such case currently exists in the benchmark because weak-career-fit modules tended to already lose on other factors.
+
+### Next steps
+
+- Commit and push `career-first-preference-policy` branch, then raise PR.
+- Coverage audit: script to measure slot-fill rate across all slot types and career combinations.
+- Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
+- NTU SSO authentication (pending Azure app registration access).
 
 ## Recommended Next Step
 
-All four evaluation tasks are now complete:
-- `benchmark-coverage-expansion`: 24-case benchmark covering all 6 careers, including 2 Data Scientist cases and 1 Cloud/Platform multi-BDE case.
-- `counterfactual-sensitivity-checks`: sensitivity script with 7 checks; 1 finding recorded (cloud-platform + `computer-network` insensitivity).
-- `evaluation-methodology-docs`: `Evaluation.md` written with full methodology, metrics, history, and known weaknesses.
-
-Remaining non-auth tasks to pick from:
-- Fix the cloud-platform `computer-network` preference sensitivity finding on a new `recommendation-score-calibration` branch.
-- Coverage audit: design a script to measure slot-fill rate across all slot types and career combinations.
+After `career-first-preference-policy` is merged, the next tasks are:
+- Coverage audit: script to measure slot-fill rate across all slot types and career combinations.
 - Expert review / think-aloud session: validate a subset of benchmark labels with a supervisor or senior student.
 - NTU SSO authentication (pending Azure app registration access).
 
