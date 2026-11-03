@@ -8,6 +8,7 @@ from backend.routers.modules import router as modules_router
 from backend.routers.recommendations import router as recommendations_router
 from backend.routers.roadmap import router as roadmap_router
 from backend.routers.roadmap_readiness import router as roadmap_readiness_router
+from backend.routers.student_skills import router as student_skills_router
 from backend.routers.transcript import router as transcript_router
 
 app = FastAPI(
@@ -36,3 +37,4 @@ app.include_router(curriculum_router)
 app.include_router(faculties_router)
 app.include_router(modules_router)
 app.include_router(recommendations_router)
+app.include_router(student_skills_router)

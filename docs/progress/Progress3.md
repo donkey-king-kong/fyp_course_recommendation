@@ -180,3 +180,41 @@ Status: Policy implementation and local comparison complete; provisional evidenc
 - The separate no-strong-career pair now yields an explained open `SC3xxx` slot without interest, and a backend-labelled `SC3061` HCI interest alternative with explicit interest. Every newly open slot in these captures is this previously reviewed synthetic example.
 - Counterfactual checks are 6 pass / 1 inconclusive / **1 fail**. Adding a database preference to the AI/ML case no longer changes the career-first selection, contrary to that existing check's expectation. Preserve the failed result for policy/evaluation review; do not manipulate the mapped-evidence constants or labels to turn it green.
 - Frontend build, backend response-schema smoke checks and `git diff --check` passed. Actual transcript AU, offering, cohort and registration permission, and independent expert review remain outside these checks. Next: review this provisional boundary and the counterfactual expectation before starting the separate student-skills work unit.
+
+## Weak-Fit Policy Handoff
+
+Date: 2026-11-03
+
+Status: The owner accepted the career-first behavior despite the one failed database-preference counterfactual and chose to review that check's expectation separately. This does not turn the failed check into a pass or validate the provisional strength threshold. The policy and its complete comparison were published in [PR #56](https://github.com/donkey-king-kong/fyp_course_recommendation/pull/56), assigned to the owner and merged into `main`. No frozen benchmark input, label, historical prediction or evaluator was changed to accommodate the failure.
+
+## Pilot Student Skills Preview
+
+Date: 2026-11-03
+
+Status: First small evidence-backed slice on `student-skills-picture`; no recommendation ranking change.
+
+- Added `data/student_skill_evidence.json`, a six-course/seven-link pilot ledger for four skill IDs (three applicable to DE) and the existing Software Engineer and Data Engineer role areas. Each link carries an exact excerpt from `data/course_catalog.json` and an introductory or advanced **course-content** depth. `SC4051` is introductory *for distributed-systems exposure* because its description says it introduces those concepts; course level alone does not establish advanced learning.
+- Added request/response schemas, a pure service, and `POST /student-skills/preview`. It separates submitted completed-course evidence (likely prior learning) from submitted candidate-course evidence (possible next learning), reports unmapped codes rather than assigning zero skill, and rejects unsupported career goals. A completed course is not repeated as candidate learning. The result does not certify transcripts, student mastery, prerequisites, offering, eligibility or recommendation quality.
+- Checked that all seven excerpts occur in the named catalog entries and all shared IDs point to real static pilot role areas. The catalog snapshot SHA-256 is `e94466a7834bd551bf86dfbca33c5c30c2ec6e4f9dbb59df3aa7389752a61d63`. HTTP smoke checks cover introductory, advanced, unknown, overlap and unsupported-goal behavior; the in-process test helper required optional `httpx`, so live HTTP was used without adding a dependency. A fresh 24-case recommendation capture matches the saved policy recommendations and open slots exactly: 53 picks, nDCG@returned 0.7413, precision@returned 0.7778 and zero supplementary contract violations. Frozen inputs and historical predictions retain their recorded hashes.
+- The [seven-link content review](../evaluation/Student_Skills_Pilot_Review_2026-11-03.md) narrowed `SC1003` to programming foundations, separated `SC2006`/`SC3040` into SWE-only software-engineering practice, and distinguished `SC4023`'s advanced data-storage topic from its introductory distributed-systems slice. DE submissions of `SC2006`/`SC3040` are now explicitly unmapped for this role rather than silently credited as pipeline skill or zero skill. Rechecked all excerpts, role areas and both role responses; no ranking change. Next: independent review of contested depth/role relevance before using likely prior exposure for ranking. Keep the separate counterfactual expectation review visible.
+
+## Pilot Skills Coverage Follow-Up
+
+Date: 2026-11-03
+
+Status: Read-only pilot-case audit and one source-backed cloud-platform evidence addition on `student-skills-picture`; no ranking, labels or evaluator changed. The earlier six-course/seven-link counts above describe the initial preview commit.
+
+- Across 15 saved Software Engineer / Data Engineer cases, the initial ledger covered 14/35 selected-course occurrences. Nine unmapped selections were `SC4052`. Its catalog introduces cloud computing, service models and distributed services, and both pilot roles have an existing cloud-related infrastructure area; added an introductory `cloud-service-platforms` link without claiming backend implementation or AI/ML skills.
+- The [coverage audit](../evaluation/Student_Skills_Coverage_2026-11-03.md) now counts 23/35 mapped occurrences and 12 unknown across the same saved policy responses. Three SWE cases have no mapped selection. These counts measure ledger coverage, not recommendation validity, skill mastery, or live eligibility; disputed security, neural-network and network-science paths remain unmapped.
+- The ledger now holds seven courses, eight links and five IDs (four applicable to DE). All excerpts and role references were rechecked. Independent depth/role review and a separate evaluated design for likely-prior-learning ranking are still pending; the accepted failed preference counterfactual remains separate.
+
+## Pilot Skills Second Source Review
+
+Date: 2026-11-03
+
+Status: Author-performed second pass on `student-skills-picture`, as delegated by the owner; not independent supervisor/TA validation. The earlier counts above describe the initial and cloud-follow-up commits.
+
+- Rechecked all seven linked course descriptions and pilot-role areas. `SC3040` teaches advanced software delivery **management and maintenance**, not advanced general SWE implementation. Split it from the `SC2006` software-engineering-practice ID into `software-delivery-management`; `SC2006` also has a source-backed introductory management slice. Narrowed the `data-storage` label to "Database and data storage" because the excerpts do not establish data-modelling depth.
+- The ledger now has seven courses, nine exact excerpts and six SWE skill IDs (four DE). `SC4023` remains advanced only for its storage slice and introductory for distributed-systems exposure; `SC4051`/`SC4052` remain introductory in their specified topics. The 23/35 saved-selection coverage count is unchanged; this review does not validate selection quality, actual completions or mastery.
+- Existing `SC3040` recommendation tags include software architecture and testing, which its management-focused catalog description does not establish as advanced course outcomes. Leave seed/database/ranking data unchanged and review this as a separate semantic issue before reusing those tags for student prior learning. The pushed `career-first-preference-check` branch addresses the separate evaluator expectation, not this skills work unit.
+- No clear evidence judgment remains that needs an owner call now. Next: specify an auditable, bounded pilot ranking use of likely prior exposure, verify all-six-career behavior, and keep external course-content validation as a production-advice limitation. No job data or chat integration began.
