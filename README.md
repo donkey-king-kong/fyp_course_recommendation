@@ -77,4 +77,4 @@ curl -X POST http://127.0.0.1:8000/student-skills/preview \
   -d '{"careerGoal":"data-engineer","completedCourseCodes":["SC3020"],"candidateCourseCodes":["SC4023"]}'
 ```
 
-The response separates likely prior exposure from possible next learning, cites excerpts from `data/course_catalog.json`, and reports unmapped codes as unknown. The initial six-course ledger is in `data/student_skill_evidence.json`. This preview does not verify a transcript, measure mastery, establish course eligibility, or change recommendation ranking.
+The response separates likely prior exposure from possible next learning, cites excerpts from `data/course_catalog.json`, and reports unmapped codes as unknown. The initial seven-course ledger is in `data/student_skill_evidence.json`. This preview does not verify a transcript, measure mastery, establish course eligibility, or change recommendation ranking.

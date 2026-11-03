@@ -31,6 +31,14 @@
         "software-engineer": "systems and infrastructure",
         "data-engineer": "distributed data platforms"
       }
+    },
+    {
+      "id": "cloud-service-platforms",
+      "label": "Cloud service platforms",
+      "roleSkillAreas": {
+        "software-engineer": "systems and infrastructure",
+        "data-engineer": "distributed data platforms"
+      }
     }
   ],
   "courseEvidence": [
@@ -75,6 +83,12 @@
       "skillId": "distributed-systems",
       "depth": "introductory",
       "excerpt": "introduces the concepts and design of distributed systems"
+    },
+    {
+      "courseCode": "SC4052",
+      "skillId": "cloud-service-platforms",
+      "depth": "introductory",
+      "excerpt": "This course introduces the students to the basic concepts and theory behind cloud computing."
     }
   ]
 }
