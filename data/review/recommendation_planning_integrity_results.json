@@ -1,0 +1,1076 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-03T03:38:21.560091+00:00",
+  "purpose": "Compact evidence for recommendation-planning-integrity; full requests/responses remain temporary, not committed.",
+  "scope": {
+    "benchmark": "Same 24 draft-labelled cases and database before/after; labels, seeds, career-skill mappings and scoring constants unchanged; new prerequisite rule mapping added.",
+    "validation": "Observable request/response contracts only; not full academic, cohort, standing, offering or programme certification.",
+    "baselineServingRevision": "cdd488b (operator confirmed owned server launch before backend edits)",
+    "afterServingRevision": "cdd488b+uncommitted-planning-fixes",
+    "servingRevisionEvidence": "operator-declared owned-process launch, not inferred from local Git",
+    "rawCapturesAreEphemeral": true
+  },
+  "sourceHashes": {
+    "baselineGitRevision": "cdd488b",
+    "baselineFileSha256": {
+      "backend/services/recommendation_service.py": "821afd646c74686c28969029fbc6b7bc0c676b423c161753b6711ced979fda22",
+      "backend/services/prerequisite_rules.py": null,
+      "backend/schemas/recommendation.py": "44f86900ffaddf64642e085cf0247a614556ffbb8665e1e1d7057bce751e6bab",
+      "backend/routers/recommendations.py": "8bafcd22a352835ba3d9456c1cbbee66ce938d7413adfeb9e2285553ec531e9e",
+      "backend/services/career_skill_mappings.py": "593c1b7ce3875b0ba704a12faef828e4e07347c7fc5a89a680956e4302df38ed",
+      "backend/database/seed.py": "b8dc9d8f1b7284fe6935bcd7f28536970b0f893d41d629a7ec92f5a63515d013"
+    },
+    "afterReviewedFileSha256": {
+      "backend/services/recommendation_service.py": "c7d7a612bfabeaa24fd8ef5e9e46a3ae2115578ada6a81eb18a94245f9436816",
+      "backend/services/prerequisite_rules.py": "5615203cdbf45cadadbf20770045224ce88123c84dc161242f06c1448a08c34c",
+      "backend/schemas/recommendation.py": "11b2924d8b4f3ca6308922d25f70be0cdbd77db2d9a5ec8cdc0df18cfda7dbdd",
+      "backend/routers/recommendations.py": "7ece5154e44dff1e65462286b9aac5a9fd3b7f5f0d8d6491850f34f29c92aeef",
+      "backend/services/career_skill_mappings.py": "593c1b7ce3875b0ba704a12faef828e4e07347c7fc5a89a680956e4302df38ed",
+      "backend/database/seed.py": "b8dc9d8f1b7284fe6935bcd7f28536970b0f893d41d629a7ec92f5a63515d013"
+    },
+    "afterCaptureProvenance": {
+      "capturedAt": "2026-11-03T03:27:37.344707+00:00",
+      "localCaptureRevision": "cdd488ba58e9aebb7c7d1784321ca5a46a137ec9",
+      "localCaptureWorktreeDirty": true,
+      "localFileSha256": {
+        "data/modules.json": "9ece3ab75a50f49c44be233bf40d0cd1a25e063640145d7b783b2149e554eb4e",
+        "data/ntu_prerequisite_unlock_graph.json": "4acc84f186d116ab7398e1499be4897105748a8ec7982dcfb7a32dc41f703321",
+        "data/course_catalog.json": "e94466a7834bd551bf86dfbca33c5c30c2ec6e4f9dbb59df3aa7389752a61d63",
+        "data/course_offerings.json": "07f32b9431fdf8c1b1e3f142a088a802b0530c76372f1a0fbaf5ad639fe98ba5",
+        "data/mpe_specialisation_paths.json": "763fddf6cf12da5fb43783781db6d966565438b3cfcca36d389746f3417e1d5c",
+        "backend/services/career_skill_mappings.py": "593c1b7ce3875b0ba704a12faef828e4e07347c7fc5a89a680956e4302df38ed",
+        "backend/services/recommendation_service.py": "c7d7a612bfabeaa24fd8ef5e9e46a3ae2115578ada6a81eb18a94245f9436816",
+        "backend/services/prerequisite_rules.py": "5615203cdbf45cadadbf20770045224ce88123c84dc161242f06c1448a08c34c",
+        "backend/database/seed.py": "b8dc9d8f1b7284fe6935bcd7f28536970b0f893d41d629a7ec92f5a63515d013"
+      },
+      "servingRevision": "cdd488b+uncommitted-planning-fixes",
+      "servingRevisionEvidence": "operator-declared",
+      "databaseFingerprint": "d77d095a173a8e5d83c55c203c68c2ba0a97eeaccd7a76b83e1471e66e544146",
+      "databaseFingerprintEvidence": "operator-declared",
+      "databaseState": "unverified; local seed hashes do not identify the serving database"
+    }
+  },
+  "database": {
+    "evidence": "read-only query using the same local database configuration as the agent-owned backend; no reseed performed",
+    "tables": {
+      "faculties": {
+        "rowCount": 34,
+        "sha256": "46283480f8fded9803613ddcf6ef63f8f84c8921388364dd52523f1a1ea305ff"
+      },
+      "module_prerequisites": {
+        "rowCount": 4178,
+        "sha256": "0a24280b8441d6da7c0d611c102df7783ed7e4090ba5ba30a5ee48e7a7e4e678"
+      },
+      "modules": {
+        "rowCount": 4318,
+        "sha256": "4d86106372403ff2f5fc8824be2af6ba950a0e21c998542478e3f5e4415afa74"
+      }
+    },
+    "operatorDeclaredFingerprint": "d77d095a173a8e5d83c55c203c68c2ba0a97eeaccd7a76b83e1471e66e544146",
+    "comparison": "Parent verified identical table counts/hashes before and after using the same local database configuration; no reseed."
+  },
+  "rawArtifacts": {
+    "baseline-predictions.json": {
+      "path": "/private/tmp/recommendation-planning-T66qUE/baseline-predictions.json",
+      "sha256": "562e0632a44997d812f256ea8e2edafe377540a6bdb582101c327d95d0f6b84a",
+      "capturedAt": "2026-11-03T03:09:17.408139+00:00"
+    },
+    "updated-predictions.json": {
+      "path": "/private/tmp/recommendation-planning-T66qUE/updated-predictions.json",
+      "sha256": "c7267e78ddb9b5aacbc7459355c2ec346b6d722aacbc16e5907289d454ee7a34",
+      "capturedAt": "2026-11-03T03:27:37.287998+00:00"
+    },
+    "baseline-coverage.json": {
+      "path": "/private/tmp/recommendation-planning-T66qUE/baseline-coverage.json",
+      "sha256": "2e1e404822bd972b1b179980e699febd8643586c1292bd8c3d3395e86e95e31c",
+      "capturedAt": "2026-11-03T03:14:37.081162+00:00"
+    },
+    "updated-coverage.json": {
+      "path": "/private/tmp/recommendation-planning-T66qUE/updated-coverage.json",
+      "sha256": "d9b01731138ba571a8b176ab602cc7594045e64330c21fbb73209f49e6d48c08",
+      "capturedAt": "2026-11-03T03:28:20.590360+00:00"
+    },
+    "positioned-coverage.json": {
+      "path": "/private/tmp/recommendation-planning-T66qUE/positioned-coverage.json",
+      "sha256": "1cbcd3383f4b84d0422ef70eaf1d221d08010a6c73b216f47e51383083f57ee7",
+      "capturedAt": "2026-11-03T03:27:39.599647+00:00"
+    },
+    "updated-counterfactual.json": {
+      "path": "/private/tmp/recommendation-planning-T66qUE/updated-counterfactual.json",
+      "sha256": "db879fe0fbbeb507586e4128bd339f6320330584d6eb3a4801d07a586450da72",
+      "capturedAt": "2026-11-03T03:28:57.196284+00:00"
+    },
+    "database-provenance.json": {
+      "path": "/private/tmp/recommendation-planning-T66qUE/database-provenance.json",
+      "sha256": "0b7ae122cab60adfbc40f4c8c3560d33cd82f854e913cf2a8f9427c468ea0695",
+      "capturedAt": null
+    }
+  },
+  "preservedHistoricalArtifacts": {
+    "data/recommendation_benchmark_cases.json": "41dd39fd9c84b4ebdab56c749fb032e714c35e297e2e4affd77a1824b929eb3a",
+    "data/recommendation_benchmark_predictions.json": "0716130f7e8df95f95d2bfb25df90fb0efd1fb905c34598c644fc4ed562dbf1b",
+    "data/coverage_audit_results.json": "97252c22f5027814154cb8997ef729453f53e3bef865d27047bf9e80e6b7e815"
+  },
+  "benchmark": {
+    "before": {
+      "k": 5,
+      "metricOrder": "backend-score-desc",
+      "supplementaryViolationCount": 5,
+      "caseCount": 24,
+      "caseCoverage": 1.0,
+      "totalPredictionsEvaluated": 53,
+      "averagePrecisionAtK": 0.3333333333333335,
+      "averageNdcgAtK": 0.548175035381263,
+      "averagePrecisionAtReturned": 0.7777777777777777,
+      "averageNdcgAtReturned": 0.7571050903913039,
+      "averageSlotFillRate": 1.0,
+      "averageExplanationCoverage": 1.0,
+      "averageExplanationFidelity": 0.5652173913043478,
+      "averageSkillAreaDiversityAtK": 1.3333333333333333,
+      "oldCodeExposure": 0,
+      "averageConstraintValidity": 1.0
+    },
+    "after": {
+      "k": 5,
+      "metricOrder": "backend-score-desc",
+      "supplementaryViolationCount": 0,
+      "caseCount": 24,
+      "caseCoverage": 1.0,
+      "totalPredictionsEvaluated": 53,
+      "averagePrecisionAtK": 0.3250000000000001,
+      "averageNdcgAtK": 0.5175144754484818,
+      "averagePrecisionAtReturned": 0.7569444444444443,
+      "averageNdcgAtReturned": 0.7157687115138366,
+      "averageSlotFillRate": 1.0,
+      "averageExplanationCoverage": 1.0,
+      "averageExplanationFidelity": 0.5652173913043478,
+      "averageSkillAreaDiversityAtK": 1.3333333333333333,
+      "oldCodeExposure": 0,
+      "averageConstraintValidity": 1.0
+    },
+    "changedCases": [
+      {
+        "caseId": "software-engineer-csc-001",
+        "before": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 87,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s2-mpe2",
+            "score": 68,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 97,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s2-mpe2",
+            "score": 68,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4052",
+          "SC4051"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC4051"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-002",
+        "before": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s2-mpe1",
+            "score": 30,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC3040",
+            "slotId": "y3-s2-mpe2",
+            "score": 24,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4001",
+            "slotId": "y4-s1-mpe3",
+            "score": 51,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4064",
+            "slotId": "y4-s2-mpe4",
+            "score": 38,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s2-mpe1",
+            "score": 30,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC3040",
+            "slotId": "y3-s2-mpe2",
+            "score": 24,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4001",
+            "slotId": "y4-s1-mpe3",
+            "score": 51,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s2-mpe4",
+            "score": 56,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4001",
+          "SC4064",
+          "SC3020",
+          "SC3040"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC4001",
+          "SC3020",
+          "SC3040"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-003",
+        "before": [
+          {
+            "courseCode": "SC4010",
+            "slotId": "y4-s1-mpe1",
+            "score": 61,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4022",
+            "slotId": "y4-s2-mpe2",
+            "score": 58,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4012",
+            "slotId": "y4-s2-bde1",
+            "score": 43,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4010",
+            "slotId": "y4-s1-mpe1",
+            "score": 61,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4022",
+            "slotId": "y4-s2-mpe2",
+            "score": 58,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s2-bde1",
+            "score": 56,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4010",
+          "SC4022",
+          "SC4012"
+        ],
+        "afterScoreRank": [
+          "SC4010",
+          "SC4022",
+          "SC4052"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-004",
+        "before": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s2-mpe1",
+            "score": 63,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC3040",
+            "slotId": "y3-s2-mpe2",
+            "score": 24,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe3",
+            "score": 79,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s2-mpe1",
+            "score": 63,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC3040",
+            "slotId": "y3-s2-mpe2",
+            "score": 24,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe3",
+            "score": 89,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4052",
+          "SC3020",
+          "SC3040"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC3020",
+          "SC3040"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-005",
+        "before": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 60,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          },
+          {
+            "courseCode": "SC4013",
+            "slotId": "y4-s2-mpe2",
+            "score": 39,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s2-mpe3",
+            "score": 49,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 70,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4013",
+            "slotId": "y4-s2-mpe2",
+            "score": 39,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s2-mpe3",
+            "score": 49,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4052",
+          "SC4051",
+          "SC4013"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC4051",
+          "SC4013"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-007",
+        "before": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 87,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s2-mpe2",
+            "score": 68,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 97,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s2-mpe2",
+            "score": 68,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4052",
+          "SC4051"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC4051"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-009",
+        "before": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 60,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          },
+          {
+            "courseCode": "SC4013",
+            "slotId": "y4-s2-mpe2",
+            "score": 39,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 70,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4013",
+            "slotId": "y4-s2-mpe2",
+            "score": 39,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4052",
+          "SC4013"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC4013"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-010",
+        "before": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s2-mpe1",
+            "score": 30,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe2",
+            "score": 60,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s2-mpe1",
+            "score": 30,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe2",
+            "score": 70,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4052",
+          "SC3020"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC3020"
+        ]
+      },
+      {
+        "caseId": "software-engineer-csc-013",
+        "before": [
+          {
+            "courseCode": "SC4001",
+            "slotId": "y4-s1-mpe1",
+            "score": 51,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4064",
+            "slotId": "y4-s2-mpe2",
+            "score": 38,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 56,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4001",
+            "slotId": "y4-s2-mpe2",
+            "score": 51,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4001",
+          "SC4064"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC4001"
+        ]
+      },
+      {
+        "caseId": "data-engineer-csc-001",
+        "before": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s1-mpe1",
+            "score": 71,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4023",
+            "slotId": "y4-s1-mpe2",
+            "score": 72,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "y3-s1-mpe1",
+            "score": 71,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe2",
+            "score": 81,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4023",
+          "SC3020"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC3020"
+        ]
+      },
+      {
+        "caseId": "data-engineer-csc-002",
+        "before": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 63,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          },
+          {
+            "courseCode": "SC4023",
+            "slotId": "y4-s2-mpe2",
+            "score": 60,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-mpe1",
+            "score": 73,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4023",
+            "slotId": "y4-s2-mpe2",
+            "score": 60,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4052",
+          "SC4023"
+        ],
+        "afterScoreRank": [
+          "SC4052",
+          "SC4023"
+        ]
+      },
+      {
+        "caseId": "cloud-platform-engineer-csc-003",
+        "before": [
+          {
+            "courseCode": "SC4050",
+            "slotId": "y4-s1-mpe1",
+            "score": 64,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s1-bde1",
+            "score": 49,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s2-bde2",
+            "score": 47,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "MH2802"
+            ]
+          }
+        ],
+        "after": [
+          {
+            "courseCode": "SC4050",
+            "slotId": "y4-s1-mpe1",
+            "score": 64,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4052",
+            "slotId": "y4-s1-bde1",
+            "score": 57,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          },
+          {
+            "courseCode": "SC4051",
+            "slotId": "y4-s2-bde2",
+            "score": 49,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": []
+          }
+        ],
+        "beforeScoreRank": [
+          "SC4050",
+          "SC4051",
+          "SC4052"
+        ],
+        "afterScoreRank": [
+          "SC4050",
+          "SC4052",
+          "SC4051"
+        ]
+      }
+    ]
+  },
+  "coverage": {
+    "before": {
+      "cells": 180,
+      "fullyFilledCells": 180,
+      "emptySlots": 0,
+      "legacyInvariantViolations": 0,
+      "supplementaryContractViolations": 36,
+      "weakFitCells": 20,
+      "weakFitPicks": 20,
+      "interestPicks": 0,
+      "scope": "Historical unpositioned CSC grid; no BDE year or curriculum timing validation."
+    },
+    "after": {
+      "cells": 180,
+      "fullyFilledCells": 180,
+      "emptySlots": 0,
+      "legacyInvariantViolations": 0,
+      "supplementaryContractViolations": 0,
+      "weakFitCells": 18,
+      "weakFitPicks": 18,
+      "interestPicks": 0,
+      "scope": "Historical unpositioned CSC grid; no BDE year or curriculum timing validation."
+    },
+    "olderSavedWeakFitCells": 26,
+    "olderSavedArtifact": "data/coverage_audit_results.json"
+  },
+  "positionedScenarios": {
+    "total": 9,
+    "passed": 8,
+    "failed": 0,
+    "inconclusive": 1,
+    "scenarios": [
+      {
+        "name": "completed-cloud-alternative",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "target",
+            "score": 77,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": [],
+            "source": "career",
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "tag": "backend-engineering"
+            },
+            "plannedNodes": [],
+            "plannedEdges": []
+          }
+        ]
+      },
+      {
+        "name": "earlier-fixed-prerequisite",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": [
+          {
+            "courseCode": "SC4052",
+            "slotId": "target",
+            "score": 77,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [],
+            "source": "career",
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "tag": "backend-engineering"
+            },
+            "plannedNodes": [],
+            "plannedEdges": [
+              {
+                "source": "fixed-mh2802",
+                "target": "target"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "earlier-open-prerequisite-plan",
+        "observation": {
+          "status": "inconclusive",
+          "messages": [
+            "Expected catalog fixture SC4052 was not returned; serving catalog/eligibility is unverified."
+          ]
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": []
+      },
+      {
+        "name": "reviewed-supplementary-prerequisite-plan",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": [
+          {
+            "courseCode": "SC4012",
+            "slotId": "target",
+            "score": 33,
+            "readinessStatus": "needs-prerequisite-planning",
+            "plannedPrerequisiteCodes": [
+              "SC2002"
+            ],
+            "source": "career",
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "tag": "programming"
+            },
+            "plannedNodes": [
+              {
+                "id": "recommended-prerequisite-sc2002-year3-sem1",
+                "courseCode": "SC2002",
+                "title": "Object Oriented Design & Programming",
+                "type": "Recommended Pre-Requisite",
+                "year": 3,
+                "semester": 1,
+                "academicUnits": 3.0,
+                "prerequisiteText": "Recommended prerequisite for SC4012",
+                "recommendedForCourseCode": "SC4012"
+              }
+            ],
+            "plannedEdges": [
+              {
+                "source": "recommended-prerequisite-sc2002-year3-sem1",
+                "target": "target"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "no-earlier-placement",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": []
+      },
+      {
+        "name": "bde-year-level",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": [
+          {
+            "courseCode": "SC2002",
+            "slotId": "target",
+            "score": 44,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": [],
+            "source": "career",
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "tag": "software-engineering"
+            },
+            "plannedNodes": [],
+            "plannedEdges": []
+          }
+        ]
+      },
+      {
+        "name": "title-equivalence-control",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": [
+          {
+            "courseCode": "SC3020",
+            "slotId": "target",
+            "score": 51,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": [],
+            "source": "career",
+            "careerSkillEvidence": {
+              "careerGoal": "software-engineer",
+              "skillArea": "software design and delivery",
+              "tag": "backend-engineering"
+            },
+            "plannedNodes": [],
+            "plannedEdges": []
+          }
+        ]
+      },
+      {
+        "name": "fixed-title-equivalence",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": []
+      },
+      {
+        "name": "interest-fallback-graphics",
+        "observation": {
+          "status": "pass",
+          "messages": []
+        },
+        "supplementaryViolationCount": 0,
+        "recommendations": [
+          {
+            "courseCode": "SC3060",
+            "slotId": "target",
+            "score": 21,
+            "readinessStatus": "ready",
+            "plannedPrerequisiteCodes": [],
+            "source": "interest",
+            "careerSkillEvidence": null,
+            "plannedNodes": [],
+            "plannedEdges": []
+          }
+        ]
+      }
+    ]
+  },
+  "counterfactual": {
+    "totalChecks": 8,
+    "passed": 6,
+    "failed": 0,
+    "inconclusive": 2,
+    "supplementaryViolationCount": 0,
+    "results": [
+      {
+        "name": "career-swap: software-engineer-csc-007 -> data-scientist",
+        "passed": true,
+        "inconclusive": false,
+        "messages": []
+      },
+      {
+        "name": "career-swap: software-engineer-csc-007 -> cybersecurity-engineer",
+        "passed": true,
+        "inconclusive": false,
+        "messages": []
+      },
+      {
+        "name": "preference-swap: software-engineer-csc-009 + tag 'computer-security'",
+        "passed": false,
+        "inconclusive": true,
+        "messages": [
+          "Tag 'computer-security' (or aliases {'cybersecurity', 'computer-security'}) already appears in baseline matchedKeywords. Adding it to preferences produces no new signal under the career-first policy. Baseline keywords containing the tag: ['tag:cybersecurity', 'skill:secure software practice:cybersecurity']. This is an INCONCLUSIVE check, not a failure \u2014 it documents a known property of career-first: a preference tag only surfaces when a career-mapped, eligible module carries that tag and was not already going to be recommended."
+        ]
+      },
+      {
+        "name": "preference-swap: ai-ml-engineer-csc-001 + tag 'database'",
+        "passed": false,
+        "inconclusive": true,
+        "messages": [
+          "Tag 'database' (or aliases {'database'}) already appears in baseline matchedKeywords. Adding it to preferences produces no new signal under the career-first policy. Baseline keywords containing the tag: ['skill:model implementation foundations:database']. This is an INCONCLUSIVE check, not a failure \u2014 it documents a known property of career-first: a preference tag only surfaces when a career-mapped, eligible module carries that tag and was not already going to be recommended."
+        ]
+      },
+      {
+        "name": "career-conflict: ai-ml-engineer-csc-001 career=ai-ml-engineer vs conflicting prefs ['backend-engineering', 'software-engineering', 'web-development']",
+        "passed": true,
+        "inconclusive": false,
+        "messages": []
+      },
+      {
+        "name": "completion-change: software-engineer-csc-001",
+        "passed": true,
+        "inconclusive": false,
+        "messages": []
+      },
+      {
+        "name": "completion-change: data-scientist-csc-001",
+        "passed": true,
+        "inconclusive": false,
+        "messages": []
+      },
+      {
+        "name": "completion-change: cybersecurity-engineer-csc-001",
+        "passed": true,
+        "inconclusive": false,
+        "messages": []
+      }
+    ]
+  }
+}
