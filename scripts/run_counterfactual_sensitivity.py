@@ -421,6 +421,56 @@ def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]
 
     return results
 
+def run_open_slot_interest_check(controls: dict[str, Any], api_url: str) -> CheckResult:
+    name = "open-slot-interest: AI/ML Y4 + human-computer-interaction"
+    result = CheckResult(name)
+    no_interest = case_by_id(controls, "remaining-ai-y4-no-interest")
+    with_interest = case_by_id(controls, "remaining-ai-y4-hci-interest")
+    base_request = build_recommendation_request(no_interest, limit_override=None)
+    interest_request = build_recommendation_request(with_interest, limit_override=None)
+    expected_interest = ["human-computer-interaction"]
+    if (
+        base_request["preferredRecommendationTags"]
+        or interest_request["preferredRecommendationTags"] != expected_interest
+        or len(base_request["choiceSlots"]) != 1
+        or {key: value for key, value in base_request.items() if key != "preferredRecommendationTags"}
+        != {key: value for key, value in interest_request.items() if key != "preferredRecommendationTags"}
+    ):
+        result.fail("Control requests must differ only by the explicit HCI preference.")
+        return result
+
+    base_recs = get_recommendations(
+        no_interest, api_url, limit=no_interest["limit"], captures=result.captures,
+    )
+    interest_recs = get_recommendations(
+        with_interest, api_url, limit=with_interest["limit"], captures=result.captures,
+    )
+    base_response = result.captures[0]["response"]
+    interest_response = result.captures[1]["response"]
+    slot_id = base_request["choiceSlots"][0]["slotId"]
+    open_slots = base_response.get("openChoiceSlots", [])
+
+    if base_recs or len(open_slots) != 1 or (
+        open_slots[0].get("slotId") != slot_id
+        or open_slots[0].get("reason") != "no-supported-match"
+    ):
+        result.fail("Without interest, the reviewed slot must remain open with no supported match.")
+    if len(interest_recs) != 1 or (
+        interest_recs[0].get("recommendationSource") != "interest"
+        or interest_recs[0].get("matchedChoiceSlotId") != slot_id
+        or "tag:human-computer-interaction" not in interest_recs[0].get("matchedKeywords", [])
+    ):
+        result.fail("Explicit HCI interest must produce a labelled alternative in the same slot.")
+    if interest_response.get("openChoiceSlots"):
+        result.fail("The interest-filled slot must not also remain open.")
+    for recs, case in ((base_recs, no_interest), (interest_recs, with_interest)):
+        for message in check_invariants(
+            recs, case["completedCourseCodes"], case["choiceSlots"], label=name,
+        ):
+            result.fail(message)
+    result.ok()
+    return result
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run counterfactual sensitivity checks against the live recommendation backend."
@@ -440,6 +490,10 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional path to write results JSON for reporting.",
     )
+    parser.add_argument(
+        "--interest-control",
+        help="Opt in to the reviewed remaining-slot HCI preference control JSON.",
+    )
     add_provenance_args(parser)
     return parser.parse_args()
 
@@ -451,6 +505,10 @@ def main() -> None:
 
     try:
         results = run_all_checks(benchmark, args.api_url)
+        if args.interest_control:
+            results.append(run_open_slot_interest_check(
+                load_benchmark(Path(args.interest_control)), args.api_url,
+            ))
     except (HTTPError, URLError) as e:
         print(f"ERROR: Could not reach backend at {args.api_url}. Start the FastAPI backend first.")
         print(f"Details: {e}")
