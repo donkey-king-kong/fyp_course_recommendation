@@ -29,7 +29,7 @@ The system should eventually support:
 - Curriculum guide upload and roadmap extraction
 - Transcript upload and completed course extraction
 - Chat-based course recommendations
-- Job-market-aware recommendations using MyCareersFuture data
+- Job-market-aware recommendations using a permitted source, with MyCareersFuture as a candidate
 - Future integration with Neo4j, ChromaDB, LangGraph, and OpenAI
 
 ## Tech Stack
@@ -189,6 +189,7 @@ Page -> Hook/Store -> API Client -> Backend -> Component UI
 
 - Read [docs/STATUS.md](docs/STATUS.md) for current capabilities, evidence boundaries, priorities, and deferred work. Update that file after a coherent work unit; replace outdated status rather than appending history.
 - Read [docs/plans/Development_Plan.md](docs/plans/Development_Plan.md) when milestone order, SSO design, or future evaluation planning is relevant. Do not start deferred integrations before the agreed prerequisite work is complete.
+- Follow the dependency-based plan without calendar deadlines: baseline/policy, student skills picture, job-market evidence, pathway chat, combined evaluation, then SSO and server persistence. The initial improvement pilot targets Software Engineer and Data Engineer; retain the other supported careers.
 - Read [docs/progress/README.md](docs/progress/README.md) to find the active progress log. Consult older logs only when their historical context is relevant.
 - Preserve closed progress logs as historical records. Old branch names, paths, and metrics in those logs describe their original work, not the current session.
 - Get the actual branch from Git; do not infer it from a documentation snapshot.
@@ -199,11 +200,17 @@ Page -> Hook/Store -> API Client -> Backend -> Component UI
 - Hard-filter before ranking: completed/fixed modules, slot fit, prerequisite feasibility, and near-duplicate prior learning.
 - Exclude `CE`, `CPE`, `CSC`, and `CZ` course-code prefixes from recommendation candidates as a hard filter.
 - Career relevance is one factor alongside eligibility, student interests, curriculum fit, unlock value, and diversity.
+- Approved weak-fit direction: recommend strong career matches, offer useful explicit interest matches as labelled interest alternatives, and otherwise leave slots open with an explanation. This direction still requires baseline review and implementation; do not assume current score thresholds enforce it.
+- Do not optimize for slot fill alone or infer strong career relevance from structural/faculty bonuses. Eligibility applies to all recommendation types; choose career/interest thresholds only after reviewing evidence.
+- Treat transcript-derived skills as likely prior learning, not verified mastery. Ground course-skill and future job-skill mappings in source evidence.
 - Do not show score breakdowns in the roadmap UI unless explicitly requested.
 - Do not add automated recommender tests yet. Existing benchmark, coverage, and counterfactual scripts remain the evaluation tools.
 - Use completed AU from the transcript for academic-standing requirements, not self-declared profile year.
-- Do not add Neo4j, ChromaDB, LangGraph, OpenAI, MyCareersFuture scraping, embeddings, or ML logic yet.
+- During baseline/policy work, do not add Neo4j, ChromaDB, LangGraph, OpenAI, job scraping, embeddings, or ML logic. Later integrations follow the development plan and separate work-unit approval.
+- Verify job-data collection, storage and reuse permissions before integration; do not assume an accessible endpoint is an authorized public API or build around unauthorized LinkedIn scraping.
+- Keep future pathway chat grounded in recommendation evidence. Confirm preference changes before applying them and have the backend recalculate; LLM-controlled scoring is not part of the pilot.
 - Do not change benchmark labels without explicit course-content evidence or supervisor / TA review. Do not tune constants solely to improve draft-label metrics.
+- Preserve frozen Software Engineer benchmark cases 001-005 unchanged; record review findings and new scenarios separately.
 - Add RAGAS alongside the offline benchmark only after the recommendation system is stable and explanation evaluation warrants it. Expert review remains the next evaluation priority.
 
 ## Project Skills And Pull Requests
