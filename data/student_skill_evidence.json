@@ -17,8 +17,15 @@
       }
     },
     {
+      "id": "software-delivery-management",
+      "label": "Software delivery management",
+      "roleSkillAreas": {
+        "software-engineer": "software design and delivery"
+      }
+    },
+    {
       "id": "data-storage",
-      "label": "Data storage and modelling",
+      "label": "Database and data storage",
       "roleSkillAreas": {
         "software-engineer": "backend and data services",
         "data-engineer": "data storage and modelling"
@@ -55,8 +62,14 @@
       "excerpt": "Software Design and Construction; Testing and Integration"
     },
     {
+      "courseCode": "SC2006",
+      "skillId": "software-delivery-management",
+      "depth": "introductory",
+      "excerpt": "Software Project Management; Software Quality"
+    },
+    {
       "courseCode": "SC3040",
-      "skillId": "software-engineering-practice",
+      "skillId": "software-delivery-management",
       "depth": "advanced",
       "excerpt": "advanced software engineering management topics to you including Quality Management, Project Management, Configuration Management, and Maintenance"
     },
