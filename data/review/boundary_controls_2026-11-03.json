@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "status": "synthetic-boundary-diagnostics-not-benchmark-labels",
+  "purpose": "Compare an unchanged full-catalog interest pair and expose alternatives behind weak returned picks.",
+  "notes": [
+    "The cloud pair shares the Y2-end completed and curriculum codes from the frozen coverage-grid cell; only the interest tags differ.",
+    "The diagnostic cases deliberately exclude exactly one prior winner, not the rest of the catalog. Their outcomes do not prove registration eligibility or the result of a new policy.",
+    "There are no human relevance labels. Year and standing cannot be verified from this recommendation request alone."
+  ],
+  "cases": [
+    {
+      "caseId": "boundary-cloud-y2-none",
+      "careerGoal": "cloud-platform-engineer",
+      "studentFaculty": "CSC",
+      "preferredRecommendationTags": [],
+      "completedCourseCodes": ["SC1003", "SC1004", "SC1005", "SC1006", "SC1007", "SC1015", "SC2000", "SC2001", "SC2002", "SC2005", "SC2006", "SC2008", "SC2207", "MH1810", "MH1812"],
+      "choiceSlots": [{"slotId": "audit-slot-1", "courseCode": "SC3xxx"}],
+      "curriculumCourses": ["SC1003", "SC1004", "SC1005", "SC1006", "SC1007", "SC1015", "SC2000", "SC2001", "SC2002", "SC2005", "SC2006", "SC2008", "SC2207", "MH1810", "MH1812"],
+      "limit": 5
+    },
+    {
+      "caseId": "boundary-cloud-y2-graphics-interest",
+      "careerGoal": "cloud-platform-engineer",
+      "studentFaculty": "CSC",
+      "preferredRecommendationTags": ["computer-graphics"],
+      "completedCourseCodes": ["SC1003", "SC1004", "SC1005", "SC1006", "SC1007", "SC1015", "SC2000", "SC2001", "SC2002", "SC2005", "SC2006", "SC2008", "SC2207", "MH1810", "MH1812"],
+      "choiceSlots": [{"slotId": "audit-slot-1", "courseCode": "SC3xxx"}],
+      "curriculumCourses": ["SC1003", "SC1004", "SC1005", "SC1006", "SC1007", "SC1015", "SC2000", "SC2001", "SC2002", "SC2005", "SC2006", "SC2008", "SC2207", "MH1810", "MH1812"],
+      "limit": 5
+    },
+    {
+      "caseId": "boundary-cloud-y2-without-architecture-diagnostic",
+      "careerGoal": "cloud-platform-engineer",
+      "studentFaculty": "CSC",
+      "preferredRecommendationTags": [],
+      "completedCourseCodes": ["SC1003", "SC1004", "SC1005", "SC1006", "SC1007", "SC1015", "SC2000", "SC2001", "SC2002", "SC2005", "SC2006", "SC2008", "SC2207", "MH1810", "MH1812"],
+      "choiceSlots": [{"slotId": "audit-slot-1", "courseCode": "SC3xxx"}],
+      "curriculumCourses": ["SC1003", "SC1004", "SC1005", "SC1006", "SC1007", "SC1015", "SC2000", "SC2001", "SC2002", "SC2005", "SC2006", "SC2008", "SC2207", "MH1810", "MH1812"],
+      "excludedCourseCodes": ["SC3050"],
+      "limit": 5
+    },
+    {
+      "caseId": "boundary-ai-y4-without-database-diagnostic",
+      "careerGoal": "ai-ml-engineer",
+      "studentFaculty": "CSC",
+      "preferredRecommendationTags": [],
+      "completedCourseCodes": ["SC1003", "SC1013", "MH1810", "MH1812", "CC0003", "CC0005", "AB1201", "AB1501", "AD1102", "CC0001", "CC0002", "EG1001", "SC1004", "SC1005", "SC1007", "SC1015", "CC0007", "SC1006", "SC2000", "SC2001", "SC2002", "SC2006", "AB1601", "CC0006", "ML0004", "SC2005", "SC2008", "SC2207", "SC3000", "SC3920", "AD2102", "BE1402", "SC3010", "SC4000", "SC4002"],
+      "choiceSlots": [{"slotId": "audit-slot-1", "courseCode": "SC3xxx"}],
+      "curriculumCourses": ["SC1003", "SC1013", "MH1810", "MH1812", "CC0003", "CC0005", "SC1005", "SC1007", "SC1015", "EG1001", "CC0001", "CC0002", "SC1004", "SC1006", "SC2001", "SC2002", "CC0007", "SC2000", "SC2005", "SC2006", "SC2207", "CC0006", "ML0004", "SC2008", "SC2079", "SC3000", "SC3010", "HW0288", "SC4079", "SC3920"],
+      "excludedCourseCodes": ["SC3020"],
+      "limit": 5
+    }
+  ]
+}

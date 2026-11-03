@@ -134,3 +134,15 @@ Status: Owner course-value judgment recorded; full-catalog controls and implemen
 
 - `SC3050` Advanced Computer Architecture is useful complementary systems study, but is not a strong default Cloud/Platform recommendation merely because no direct course is available. A verified explicit architecture interest remains a separate possible reason to consider it.
 - An open slot is conditional on checking the full set of eligible career and interest candidates. Updated the boundary packet and status; no scoring, catalog, benchmark or evaluator changes were made.
+
+## Step 1 Full-Catalog Boundary Controls
+
+Date: 2026-11-03
+
+Status: Captured six separate synthetic diagnostics; interest masking confirmed, true relevance-based abstention not observed. No policy implementation.
+
+- Added two versioned scenario sets and unchanged-backend full request/response captures, documented in `docs/evaluation/Recommendation_Boundary_Controls_2026-11-03.md`. The frozen 24-case inputs, labels, historical predictions and original captures were preserved.
+- Cloud/Platform Y2-end returns weak `SC3050` with and without a graphics interest, but excluding it solely for diagnosis exposes `SC3030` Advanced Computer Networks with supported prerequisite `SC2008`; do not call that slot a no-career-fit example.
+- AI/ML Y4-end returns indirect `SC3020` with and without an HCI interest. `SC3061` has matching content and supported slot/course prerequisites, yet receives no slot under current career-first fill. A one-course diagnostic exclusion exposes `SC3021`, an unreviewed data-science foundation after completed AI/ML courses.
+- Existing response-contract validation reported zero violations for all six cases. The owned backend, source-file hashes and local DB fingerprint were consistent with the baseline; the DB fingerprint was unchanged after capture. The absent transcript-AU/standing and real registration checks are still separate gaps.
+- Stop before policy implementation: inspect the eligible candidate frontier and course depth for a defensible no-fit/true-open example; do not tune constants to force one. The project-owner `SC3050` judgment remains recorded, but is not an unconditional open-slot instruction.
