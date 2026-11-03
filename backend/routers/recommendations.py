@@ -39,11 +39,13 @@ def get_db() -> Session:
         "open BDE/MPE choice slots. Each returned recommendation includes "
         "`matchedChoiceSlotId`, so the frontend should render it in that slot instead "
         "of re-ranking or allocating candidates. Career relevance uses weighted static "
-        "career-to-skill mappings, curated recommendation tags, and keyword fallback. "
+        "career-to-skill mappings; only sufficiently supported mapped evidence qualifies "
+        "for career-first assignment. Explicit interests can fill remaining slots. "
+        "Unassigned slots include a reason, which does not certify registration eligibility. "
         "Diversity is a gentle tiebreaker and does not override eligibility, career "
         "relevance, or student topic preferences."
     ),
-    response_description="Assigned module recommendations with slot IDs, planning artifacts, and reasons.",
+    response_description="Assigned module recommendations and explained unassigned choice slots.",
     responses={
         422: {"description": "Invalid request, including repeated choice-slot IDs or invalid roadmap positions."},
         503: RECOMMENDATION_DATABASE_ERROR_RESPONSE,

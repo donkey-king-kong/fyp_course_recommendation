@@ -313,6 +313,16 @@ class CourseRecommendation(BaseModel):
         examples=["career", "interest"],
     )
 
+class RecommendationOpenSlot(BaseModel):
+    slotId: str = Field(description="Exact unassigned choice-slot node ID.")
+    courseCode: str = Field(description="Unassigned choice-slot placeholder code.")
+    reason: Literal["no-supported-match", "limit-reached"] = Field(
+        description="Whether selection found no supported match or the request limit stopped assignment.",
+    )
+    message: str = Field(
+        description="Student-facing explanation; does not certify registration eligibility or course offering.",
+    )
+
 class RecommendationResponse(BaseModel):
     careerGoal: str
     recommendations: list[CourseRecommendation] = Field(
@@ -320,6 +330,10 @@ class RecommendationResponse(BaseModel):
             "Backend-assigned recommendations. Each item should be rendered using "
             "`matchedChoiceSlotId`; the frontend should not re-rank or reassign them."
         ),
+    )
+    openChoiceSlots: list[RecommendationOpenSlot] = Field(
+        default_factory=list,
+        description="Unassigned requested slots, with backend-owned reasons distinct from assigned courses.",
     )
 
     model_config = ConfigDict(
@@ -380,6 +394,7 @@ class RecommendationResponse(BaseModel):
                         ),
                     }
                 ],
+                "openChoiceSlots": [],
             }
         }
     )

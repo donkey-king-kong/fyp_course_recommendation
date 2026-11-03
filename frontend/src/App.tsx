@@ -107,13 +107,14 @@ function App() {
   )
   const isTranscriptAppliedToRoadmap = useProfileStore((state) => state.isTranscriptAppliedToRoadmap)
   const recommendations = useProfileStore((state) => state.roadmapRecommendations)
+  const openRecommendationSlots = useProfileStore((state) => state.roadmapOpenSlots)
   const roadmapRecommendationStaleReasons = useProfileStore(
     (state) => state.roadmapRecommendationStaleReasons,
   )
   const setRoadmapRecommendations = useProfileStore((state) => state.setRoadmapRecommendations)
   const clearRoadmapRecommendations = useProfileStore((state) => state.clearRoadmapRecommendations)
   const logout = useProfileStore((state) => state.logout)
-  const hasLoadedRoadmapRecommendations = recommendations.length > 0
+  const hasLoadedRoadmapRecommendations = recommendations.length > 0 || openRecommendationSlots.length > 0
   const recommendationNotice = getRecommendationNotice(
     roadmapRecommendationStaleReasons,
     hasLoadedRoadmapRecommendations,
@@ -298,7 +299,7 @@ function App() {
         limit: getRecommendationLimit(openChoiceSlots),
       })
 
-      setRoadmapRecommendations(result.recommendations)
+      setRoadmapRecommendations(result)
     } catch {
       setRecommendationError('Could not load recommendations. Make sure the backend is running.')
     } finally {
@@ -386,6 +387,7 @@ function App() {
             courses={roadmap.nodes}
             prerequisiteLinks={roadmap.edges}
             recommendations={recommendations}
+            openRecommendationSlots={openRecommendationSlots}
             isLoadingRecommendations={isLoadingRecommendations}
             recommendationError={recommendationError}
             recommendationNotice={recommendationNotice}

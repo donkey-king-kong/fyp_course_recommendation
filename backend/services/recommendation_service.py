@@ -12,6 +12,7 @@ from backend.schemas.recommendation import (
     RecommendationCareerSkillEvidence,
     RecommendationChoiceSlot,
     RecommendationCurriculumCourse,
+    RecommendationOpenSlot,
     RecommendationPlannedRoadmapEdge,
     RecommendationPlannedRoadmapNode,
     RecommendationPrerequisite,
@@ -158,6 +159,11 @@ DIVERSITY_RELEVANCE_TIE_THRESHOLD = 10
 BROAD_DEFAULT_PROFILE_BOOST = 14
 MIN_ASSIGNED_RECOMMENDATION_SCORE = 10
 MIN_BDE_FALLBACK_RECOMMENDATION_SCORE = 5
+# A strong career pick needs a substantial skill area with a well-supported tag
+# relationship. Total score includes structural bonuses and cannot establish fit.
+MIN_STRONG_SKILL_AREA_WEIGHT = 6
+MIN_STRONG_RELATIONSHIP_WEIGHT = 0.75
+MIN_STRONG_TAG_CONFIDENCE = 0.85
 AI_ML_WEAK_STANDALONE_TAGS = {"algorithms", "database", "programming"}
 AI_ML_DEFAULT_BDE_TAGS = {
     "artificial-intelligence",
@@ -352,6 +358,9 @@ def recommend_courses(
         ):
             continue
 
+        if not has_strong_career_evidence(career_match):
+            continue
+
         # Readiness selects one verified requirement branch for arrows and extra nodes.
         prerequisites = prerequisites_by_module.get(module.code)
         unlock_codes = unlocks_by_module.get(module.code, [])
@@ -536,9 +545,55 @@ def recommend_courses(
         summarize_recommendations(final_recommendations),
     )
 
+    assigned_slot_ids = {
+        recommendation.matchedChoiceSlotId for recommendation in final_recommendations
+    }
+    open_slots = [
+        build_open_slot(slot, preferred_tags, len(final_recommendations) >= limit)
+        for slot in candidate_slots
+        if get_choice_slot_identity(slot) not in assigned_slot_ids
+    ]
+
     return RecommendationResponse(
         careerGoal=career_goal,
         recommendations=final_recommendations,
+        openChoiceSlots=open_slots,
+    )
+
+def has_strong_career_evidence(career_match: CareerMatchScore) -> bool:
+    return any(
+        contribution.mapping.weight >= MIN_STRONG_SKILL_AREA_WEIGHT and
+        contribution.relationship.relationship_weight >= MIN_STRONG_RELATIONSHIP_WEIGHT and
+        contribution.relationship.tag_confidence >= MIN_STRONG_TAG_CONFIDENCE
+        for contribution in career_match.matched_skill_contributions
+    )
+
+def build_open_slot(
+    slot: RecommendationChoiceSlot,
+    preferred_tags: set[str],
+    limit_reached: bool,
+) -> RecommendationOpenSlot:
+    if limit_reached:
+        reason = "limit-reached"
+        message = "The request limit was reached before this slot could be assigned. Reload with a higher limit."
+    elif preferred_tags:
+        reason = "no-supported-match"
+        message = (
+            "No strong career match or suitable course matching your selected interests "
+            "was found for this slot. Check module eligibility and offerings before registering."
+        )
+    else:
+        reason = "no-supported-match"
+        message = (
+            "No strong career match was found for this slot. You can leave it open or add "
+            "topic interests and reload. Check module eligibility and offerings before registering."
+        )
+
+    return RecommendationOpenSlot(
+        slotId=get_choice_slot_identity(slot),
+        courseCode=normalize_choice_slot_code(slot.courseCode),
+        reason=reason,
+        message=message,
     )
 
 def normalize_title(title: str) -> str:
