@@ -113,3 +113,15 @@ Status: Product priority clarified; weak-fit boundary review and implementation 
 
 - The owner confirmed career-first selection: strong eligible career matches take priority even when preferences differ; use remaining slots for useful eligible explicit-interest alternatives, otherwise leave slots open with an explanation. A plausible or structurally high-scoring course is not automatically a strong career match.
 - Updated the development plan, current status and seven-case review packet to distinguish this decision from unchosen strength thresholds, unverified academic eligibility and the separate implementation work. The existing baseline captures, draft labels, scripts and application code were not changed.
+
+## Step 1 Recommendation Boundary Review
+
+Date: 2026-11-03
+
+Status: Internal qualitative review recorded; full-catalog transition, true abstention and one course-value judgment remain open. No policy implementation.
+
+- Created `docs/evaluation/Recommendation_Boundary_Review_2026-11-03.md` from the unchanged benchmark, coverage, positioned and counterfactual captures. Compared direct Data Engineer and AI/ML positives with indirect AI/ML database and Cloud/Platform architecture picks, the constrained graphics interest source path, and inconclusive Cloud prerequisite planning.
+- Proposed a content-evidenced minimum career-fit rule, a verified explicit-interest fallback and explained abstention reasons. No universal numeric threshold is approved; a weak full-catalog winner is not proof that no better eligible alternative exists.
+- Rechecked the database fingerprint and the frozen input, historical prediction and new-capture hashes against the baseline packet. No application, course data, evaluators, case labels or captures were changed.
+- Found a separate standing/fixture gap: `SC3060`'s catalog requires Year 2 standing, but its no-completions positioned request returns `ready`; the recommender does not establish standing from completed AU. Its interest-source routing passes, but student eligibility is unproven. No policy or eligibility code was changed.
+- Next: verify an unrestricted interest-versus-weak-career pair with valid academic standing and a genuinely relevance-based open-slot case. Ask the owner only whether low-level architecture alone should count as a strong Cloud/Platform default; investigate mapping defects and unresolved registration separately.
