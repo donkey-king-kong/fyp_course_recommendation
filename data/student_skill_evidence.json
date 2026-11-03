@@ -1,0 +1,80 @@
+{
+  "source": "data/course_catalog.json",
+  "skills": [
+    {
+      "id": "programming-foundations",
+      "label": "Programming foundations",
+      "roleSkillAreas": {
+        "software-engineer": "software design and delivery",
+        "data-engineer": "software implementation for pipelines"
+      }
+    },
+    {
+      "id": "software-engineering-practice",
+      "label": "Software engineering practice",
+      "roleSkillAreas": {
+        "software-engineer": "software design and delivery"
+      }
+    },
+    {
+      "id": "data-storage",
+      "label": "Data storage and modelling",
+      "roleSkillAreas": {
+        "software-engineer": "backend and data services",
+        "data-engineer": "data storage and modelling"
+      }
+    },
+    {
+      "id": "distributed-systems",
+      "label": "Distributed systems",
+      "roleSkillAreas": {
+        "software-engineer": "systems and infrastructure",
+        "data-engineer": "distributed data platforms"
+      }
+    }
+  ],
+  "courseEvidence": [
+    {
+      "courseCode": "SC1003",
+      "skillId": "programming-foundations",
+      "depth": "introductory",
+      "excerpt": "basic program construct and simple data structures"
+    },
+    {
+      "courseCode": "SC2006",
+      "skillId": "software-engineering-practice",
+      "depth": "introductory",
+      "excerpt": "Software Design and Construction; Testing and Integration"
+    },
+    {
+      "courseCode": "SC3040",
+      "skillId": "software-engineering-practice",
+      "depth": "advanced",
+      "excerpt": "advanced software engineering management topics to you including Quality Management, Project Management, Configuration Management, and Maintenance"
+    },
+    {
+      "courseCode": "SC3020",
+      "skillId": "data-storage",
+      "depth": "introductory",
+      "excerpt": "fundamentals of the implementation of database management systems"
+    },
+    {
+      "courseCode": "SC4023",
+      "skillId": "data-storage",
+      "depth": "advanced",
+      "excerpt": "distributed storage and computation of big data, as well as NoSQL key-value stores"
+    },
+    {
+      "courseCode": "SC4023",
+      "skillId": "distributed-systems",
+      "depth": "introductory",
+      "excerpt": "distributed storage and computation of big data"
+    },
+    {
+      "courseCode": "SC4051",
+      "skillId": "distributed-systems",
+      "depth": "introductory",
+      "excerpt": "introduces the concepts and design of distributed systems"
+    }
+  ]
+}

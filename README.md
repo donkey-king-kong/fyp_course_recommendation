@@ -66,3 +66,15 @@ This creates `data/course_catalog.json` for unique module details and `data/cour
 - Recommendation score breakdowns are returned by the API for inspection, but the roadmap UI does not display them yet.
 - Roadmap readiness is handled by `POST /roadmap/readiness`, including academic-standing requirements based on completed AU.
 - This project does not use Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML ranking, MyCareersFuture scraping, backend user persistence, or production auth yet.
+
+## Pilot Student Skills Preview
+
+With the backend running, inspect a small source-linked skills picture for Software Engineer or Data Engineer:
+
+```bash
+curl -X POST http://127.0.0.1:8000/student-skills/preview \
+  -H 'Content-Type: application/json' \
+  -d '{"careerGoal":"data-engineer","completedCourseCodes":["SC3020"],"candidateCourseCodes":["SC4023"]}'
+```
+
+The response separates likely prior exposure from possible next learning, cites excerpts from `data/course_catalog.json`, and reports unmapped codes as unknown. The initial six-course ledger is in `data/student_skill_evidence.json`. This preview does not verify a transcript, measure mastery, establish course eligibility, or change recommendation ranking.

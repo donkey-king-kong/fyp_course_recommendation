@@ -10,6 +10,7 @@ Last updated: 2026-11-03. This is the session handoff; detailed history is in th
 - Deterministic backend scoring for six career goals: Software Engineer, AI/ML Engineer, Data Engineer, Cloud/Platform Engineer, Cybersecurity Engineer, and Data Scientist.
 - Two-pass assignment: mapped-evidence career recommendations first, then explicit-interest picks for remaining slots. Unassigned slots receive backend explanations and interest picks are labelled in the roadmap. Reviewed prerequisite rules and earlier planning nodes enforce the supported response contract.
 - Existing offline benchmark, coverage audit, and counterfactual scripts record ranking, fill, and contract results. User state remains browser-side prototype persistence.
+- A small backend-only `POST /student-skills/preview` maps selected completed and candidate courses to four pilot skill IDs for Software Engineer (three applicable to Data Engineer). It labels course-content exposure, not mastery, and leaves role-unmapped courses unknown. It does not affect recommendation ranking.
 
 ## Latest Evidence And Its Limits
 
@@ -23,13 +24,16 @@ The [remaining-slot review](evaluation/Recommendation_Remaining_Slot_Review_2026
 
 The [weak-fit policy comparison](evaluation/Recommendation_Weak_Fit_Policy_2026-11-03.md) records the new policy endpoint run on the same local database. The frozen 24-case results retain 53 picks, nDCG@returned `0.7413`, precision@returned `0.7778`, and zero contract violations; the one changed pick is owner-reviewed `SC3021` instead of indirect `SC3020` for AI/ML. The 180-cell grid has no open slots or diagnostic weak-fit picks. The separate remaining-slot pair now produces an explained open slot without interest or labelled `SC3061` with HCI interest. Counterfactual results are **6 pass / 1 inconclusive / 1 fail**: the database-preference check expects an observable change even though career-first now preserves the stronger picks. This failure is recorded, not tuned away. The numeric mapped-evidence rule is provisional and still needs expert review; these captures do not establish registration eligibility.
 
+The owner accepted the career-first behavior with that failure retained for separate evaluation review; [PR #56](https://github.com/donkey-king-kong/fyp_course_recommendation/pull/56) merged the policy into `main`. The new [pilot course-skill ledger](../data/student_skill_evidence.json) covers six courses and seven evidence links with exact catalog excerpts and [reviewed depth judgments](evaluation/Student_Skills_Pilot_Review_2026-11-03.md). This narrow skills preview has no job evidence, skill-mastery inference, or ranking effect; real student completions remain user-controlled prototype input.
+
 See the [latest previous progress entry](progress/Progress2.md#cloud-career-tag-correction-and-deferred-interest-ranking-review), [evaluation](evaluation/Evaluation.md), and [technical audit](evaluation/Recommendation_Technical_Audit.md) for provenance and limitations.
 
 ## Next Priorities
 
-1. Review the provisional weak-fit evidence boundary and the one failed database-preference counterfactual for the **Software Engineer and Data Engineer pilot**, retaining all-six-career regression coverage. The separate synthetic pair demonstrates the intended interest/open-slot behavior under supported code rules, not actual registration eligibility. Obtain expert input on disputed course content and strength calibration; preserve the frozen benchmark, especially cases 001-005. Resolve stale Cloud label paths and `SC4001`'s neural-versus-computer-network semantic defect separately from threshold changes; `SC4022`'s secure-software credit remains contested.
-2. After reviewing this bounded policy work unit, build a small evidence-backed student skills picture using completed courses and static mappings first. Then add permitted job-market evidence for the two pilot roles, followed by grounded pathway chat and combined evaluation. Keep ranking and allocation deterministic and backend-owned; retain the other four careers and full-suite regression checks.
-3. Work on NTU SSO and identity-scoped server persistence **after the recommendation-and-chat phase**, not as the next major feature. Retain backend-owned MSAL authentication, tenant-validated Azure `oid` and server-session boundaries.
+1. Seek independent review of the documented pilot course-skill depth and role-relevance judgments for **Software Engineer and Data Engineer** before using prior learning to rank candidates. Keep unknown coverage explicit, use transcript-derived completions as likely exposure rather than mastery, and compare any later ranking change against the frozen all-six-career benchmark. The new preview is a foundation, not a complete skills-gap recommender.
+2. Review the accepted-but-failed database-preference counterfactual separately from policy scoring; obtain expert input on the provisional strength boundary and disputed course content. Preserve frozen cases 001-005. Resolve stale Cloud label paths and `SC4001`'s neural-versus-computer-network semantic defect separately; `SC4022`'s secure-software credit remains contested.
+3. Only after the static skills picture is reviewed, add permitted job-market evidence for the two pilot roles, then grounded pathway chat and combined evaluation. Keep ranking and allocation backend-owned and deterministic; retain the other four careers.
+4. Work on NTU SSO and identity-scoped server persistence **after the recommendation-and-chat phase**, not as the next major feature. Retain backend-owned MSAL authentication, tenant-validated Azure `oid` and server-session boundaries.
 
 The [development plan](plans/Development_Plan.md) replaces the old SSO-first sequence with dependency-based steps and no calendar deadlines. Source-access research can begin early, but this plan does not authorize starting all integrations.
 
@@ -39,8 +43,8 @@ The [development plan](plans/Development_Plan.md) replaces the old SSO-first seq
 - Cloud planning for a new prerequisite card is inconclusive where `SC1004` co-requisites or `MH2802` H2 Maths conditions remain unreviewed. Completed or existing earlier prerequisite paths have narrower supported behavior.
 - Full prerequisite chains, co-requisites, cohort registration, offering availability, and workload/AU capacity remain outside current guarantees.
 - Browser profile, transcript, curriculum, and completion state is inspectable and user-controlled; there is no production identity or cross-device user persistence.
-- Job-source access and skill-depth representation remain undecided; the new weak-fit evidence threshold is provisional, not expert-calibrated. MyCareersFuture is a candidate source, not a verified public API; permitted collection, storage and reuse must be established before integration.
-- No job-market pipeline, student skills-gap model or LLM chat has been implemented. LangGraph/model work follows a working chat stub and understood workflow; RAGAS follows generated explanations. Keep the existing offline evaluator.
+- Job-source access remains undecided; the pilot introductory/advanced course-depth judgments and weak-fit evidence threshold are provisional, not expert-calibrated. MyCareersFuture is a candidate source, not a verified public API; permitted collection, storage and reuse must be established before integration.
+- No job-market pipeline, skills-gap ranking model or LLM chat has been implemented. LangGraph/model work follows a working chat stub and understood workflow; RAGAS follows generated explanations. Keep the existing offline evaluator.
 - Neo4j, ChromaDB, embeddings, ML/LLM ranking and A/B infrastructure are not required for the pilot and remain deferred.
 
 ## Documentation And Workflows
