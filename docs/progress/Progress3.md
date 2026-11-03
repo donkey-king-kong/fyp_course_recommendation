@@ -156,3 +156,15 @@ Status: Owner judgment recorded after the six-case capture; no benchmark relabel
 - The owner considers `SC3021` Data Science Fundamentals a **strong AI/ML career fit** for the reviewed student despite completed `SC3000`, `SC4000` and `SC4002`. The diagnostic output had found it behind weak `SC3020`; its supported prerequisite path returned `ready`, without verifying live registration.
 - This corrects the initial interpretation of the AI/ML HCI pair: HCI is a plausible explicit interest, but should not displace the owner-approved strong `SC3021` career course. Like Cloud's `SC3030` behind `SC3050`, it demonstrates why a weak first pick does not prove there is no strong career option.
 - A separate full-catalog profile with no strong eligible career course is still required to review interest fallback and an explained open slot. Updated the current boundary review and status; no scripts, scorer, evaluator, catalog, labels or raw captures were altered.
+
+## Step 1 Remaining-Slot Review
+
+Date: 2026-11-03
+
+Status: Separately captured and reviewed a conditional no-strong-career example; no policy implementation or observed abstention.
+
+- Added `data/review/remaining_slot_controls_2026-11-03.json`, its live unchanged-backend response capture, and `docs/evaluation/Recommendation_Remaining_Slot_Review_2026-11-03.md`. The hypothetical AI/ML Y4-end profile additionally completes the previously owner-approved strong `SC3021`; the no-interest and HCI-interest requests otherwise match.
+- Audited all 26 CSC level-3 modules using the service's candidate filters and readiness rules. The two remaining `ready` career picks, `SC3020` (database, career skill 2) and `SC3060` (graphics/mathematics, career skill 3), do not provide strong default applied-AI content. The owner reviewed `SC3271` as an optional mathematical foundation, not a strong default; its description triggers retrieval, but its empty scored tags drop it. This data/mapping gap is separate from the weak-fit policy.
+- The current endpoint still selects `SC3020` for both cases. Calling pass 2 alone with a free HCI slot returns `SC3061` labelled `interest`. Proposed outcomes are an explained open slot with no interest or an HCI interest alternative, subject to eligibility; neither is an observed endpoint response under the unchanged policy.
+- The existing response checker reports zero violations for both requests. Serving source hashes and the read-only pre/post database fingerprint match the frozen baseline. Frozen cases, labels, historical predictions, ranking, thresholds, catalog and evaluator remain unchanged.
+- Stop for review before a separate implementation work unit. Transcript-completed AU, exact programme/cohort/semester conditions, course offering and registration permission are not established by these synthetic browser-controlled requests; evaluate each newly open slot after any later policy change.
