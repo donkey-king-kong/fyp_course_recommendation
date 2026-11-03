@@ -146,3 +146,13 @@ Status: Captured six separate synthetic diagnostics; interest masking confirmed,
 - AI/ML Y4-end returns indirect `SC3020` with and without an HCI interest. `SC3061` has matching content and supported slot/course prerequisites, yet receives no slot under current career-first fill. A one-course diagnostic exclusion exposes `SC3021`, an unreviewed data-science foundation after completed AI/ML courses.
 - Existing response-contract validation reported zero violations for all six cases. The owned backend, source-file hashes and local DB fingerprint were consistent with the baseline; the DB fingerprint was unchanged after capture. The absent transcript-AU/standing and real registration checks are still separate gaps.
 - Stop before policy implementation: inspect the eligible candidate frontier and course depth for a defensible no-fit/true-open example; do not tune constants to force one. The project-owner `SC3050` judgment remains recorded, but is not an unconditional open-slot instruction.
+
+## AI/ML Course-Value Decision
+
+Date: 2026-11-03
+
+Status: Owner judgment recorded after the six-case capture; no benchmark relabelling or policy change.
+
+- The owner considers `SC3021` Data Science Fundamentals a **strong AI/ML career fit** for the reviewed student despite completed `SC3000`, `SC4000` and `SC4002`. The diagnostic output had found it behind weak `SC3020`; its supported prerequisite path returned `ready`, without verifying live registration.
+- This corrects the initial interpretation of the AI/ML HCI pair: HCI is a plausible explicit interest, but should not displace the owner-approved strong `SC3021` career course. Like Cloud's `SC3030` behind `SC3050`, it demonstrates why a weak first pick does not prove there is no strong career option.
+- A separate full-catalog profile with no strong eligible career course is still required to review interest fallback and an explained open slot. Updated the current boundary review and status; no scripts, scorer, evaluator, catalog, labels or raw captures were altered.
