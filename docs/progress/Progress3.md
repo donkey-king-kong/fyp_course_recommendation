@@ -180,3 +180,13 @@ Status: Policy implementation and local comparison complete; provisional evidenc
 - The separate no-strong-career pair now yields an explained open `SC3xxx` slot without interest, and a backend-labelled `SC3061` HCI interest alternative with explicit interest. Every newly open slot in these captures is this previously reviewed synthetic example.
 - Counterfactual checks are 6 pass / 1 inconclusive / **1 fail**. Adding a database preference to the AI/ML case no longer changes the career-first selection, contrary to that existing check's expectation. Preserve the failed result for policy/evaluation review; do not manipulate the mapped-evidence constants or labels to turn it green.
 - Frontend build, backend response-schema smoke checks and `git diff --check` passed. Actual transcript AU, offering, cohort and registration permission, and independent expert review remain outside these checks. Next: review this provisional boundary and the counterfactual expectation before starting the separate student-skills work unit.
+
+## Career-First Preference Check Review
+
+Date: 2026-11-03
+
+Status: Separate evaluation-only change on `career-first-preference-check`; historical policy counterfactual capture retained, no recommender, benchmark labels, skill data or thresholds changed.
+
+- The [review](../evaluation/Recommendation_Preference_Check_Review_2026-11-03.md) identifies two distinct classifications: SWE security preference changes the selected set despite an already-present baseline keyword, while AI/ML database preference leaves two stronger career picks in fully assigned slots. The latter is inconclusive sensitivity under the owner-approved career-first priority, **not a pass** or a retrospective relabelling of the saved failure.
+- Updated the runner so an observed change is counted even if a keyword was present before; only the explicitly reviewed AI/ML case may be inconclusive without any observable tag or set change when all slots remain filled by career picks. Other silent swaps and invariant failures still fail.
+- Fresh owned-backend rerun: 7 pass / 1 inconclusive / 0 fail, zero supplementary contract violations; all 15 request/response pairs are identical to the saved 6 pass / 1 inconclusive / 1 fail capture. The new run did not independently fingerprint the database. Positive interest-fallback usefulness and expert strength calibration remain separate.

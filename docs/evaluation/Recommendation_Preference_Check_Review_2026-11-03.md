@@ -1,0 +1,16 @@
+# Career-First Preference Check Review
+
+Date: 2026-11-03
+
+This review changes **evaluation interpretation only**, on `career-first-preference-check`. It compares the historical [policy counterfactual capture](../../data/review/weak_fit_policy_2026-11-03/counterfactual.json) with a fresh run of the same eight checks against an owned backend serving the merged policy. All 15 paired requests and responses match the saved capture, including assignments and matched keywords. The historical file remains unchanged; this run did not independently fingerprint the serving database, so identical responses are the observed comparison, not proof of identical database state.
+
+| Controlled preference change | Saved classification | Reviewed classification | Reason |
+| --- | --- | --- | --- |
+| SWE `009` + `computer-security` | Inconclusive | **Pass for observed sensitivity only** | Although `cybersecurity` already appeared in baseline career evidence, the selected set changes from `SC4052`/`SC4013` to `SC4053`/`SC4022`. The old check returned early on baseline keyword presence and missed this change. A pass does **not** endorse `SC4022` as strong secure-software learning or validate the changed picks. |
+| AI/ML `001` + `database` | **Fail** | **Inconclusive, not pass** | Both slots remain filled by the same stronger career picks, `SC3021` and `SC4061`. The reviewed `SC3020` database carrier has only indirect AI/ML relevance and does not enter the career pass; no slot remains for an interest alternative. An unchanged response therefore cannot demonstrate preference sensitivity, but also does not violate the approved career-first priority. |
+
+The check still fails for a no-op added tag, a silent swap in any *unreviewed* case, or a request/response invariant violation. The AI/ML inconclusive classification is explicitly scoped to this reviewed case **and** requires both before/after responses to fill every requested slot with career picks. If the response becomes empty, leaves a slot open, or changes source, the generic observation rules apply. A common `CheckResult.fail()` fix ensures a subsequent invariant failure cannot remain classified inconclusive.
+
+Fresh results: **7 pass / 1 inconclusive / 0 fail**, zero supplementary contract violations, versus the preserved historical **6 pass / 1 inconclusive / 1 fail**. This is a changed expectation, not an improved recommendation benchmark or new proof of positive interest fallback. The separately reviewed HCI remaining-slot pair shows an interest alternative when a slot is open; a future positive preference sensitivity check should use an eligible, explicit-interest carrier with a truly available slot. Do not change frozen labels or tune the weak-fit threshold for this audit.
+
+Reproduce with the same backend and data using `scripts/run_counterfactual_sensitivity.py --api-url http://127.0.0.1:8000/recommendations --benchmark data/recommendation_benchmark_cases.json --serving-revision <actual-revision> --output <new-output-path>`. The runner's revision field is operator-declared; verify the owned backend and database provenance separately for a production-grade capture. Compare the full `captures[*].request` and `captures[*].response` arrays with the historical file, not just the result counts.

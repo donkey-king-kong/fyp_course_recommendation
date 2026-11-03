@@ -108,6 +108,7 @@ class CheckResult:
     def fail(self, msg: str) -> None:
         self.messages.append(msg)
         self.passed = False
+        self.inconclusive = False
 
     def inconc(self, msg: str) -> None:
         """Mark as inconclusive (neither pass nor fail). The check ran but observed no change."""
@@ -174,20 +175,13 @@ def run_preference_swap_check(
     api_url: str,
     base_case_id: str,
     added_tag: str,
+    reviewed_career_first_no_effect: bool = False,
 ) -> CheckResult:
-    """Adding a tag to preferredRecommendationTags should produce an observable change.
+    """Check whether adding a preference causes an observable response change.
 
-    The check compares the baseline result against the swapped result. A genuine PASS requires
-    that the tag appears in the swap's matchedKeywords but NOT in the baseline's (i.e. the tag
-    actually caused a new match), or that the recommended set or order changed.
-
-    Returns INCONCLUSIVE (not a FAIL) if the tag was already in the baseline matchedKeywords or
-    if adding it produced no observable change. INCONCLUSIVE indicates a known limitation of the
-    career-first policy: a preference tag only surfaces when an eligible career-mapped module
-    carries that tag AND the module wasn't already going to appear.
-
-    Fails immediately if the base case already has the added_tag as a preference, because then
-    no real swap occurs and any result is meaningless.
+    A changed set/order or a newly matched tag is observable sensitivity. The explicitly
+    reviewed career-first case may be inconclusive when both responses fill every slot
+    with career picks; other silent swaps remain failures. A no-op input is always a failure.
     """
     name = f"preference-swap: {base_case_id} + tag '{added_tag}'"
     result = CheckResult(name)
@@ -242,31 +236,6 @@ def run_preference_swap_check(
     swap_codes = course_codes(swap_recs)
     set_changed = set(base_codes) != set(swap_codes) or base_codes != swap_codes
 
-    if tag_in_baseline:
-        # Tag was already present in the baseline — adding it does nothing new.
-        result.inconc(
-            f"Tag '{added_tag}' (or aliases {tag_variants}) already appears in baseline matchedKeywords. "
-            f"Adding it to preferences produces no new signal under the career-first policy. "
-            f"Baseline keywords containing the tag: {[kw for kw in base_keywords if any(v in kw for v in tag_variants)]}. "
-            f"This is an INCONCLUSIVE check, not a failure — it documents a known property of career-first: "
-            f"a preference tag only surfaces when a career-mapped, eligible module carries that tag and was "
-            f"not already going to be recommended."
-        )
-        return result
-
-    if not tag_in_swap and not set_changed:
-        # Tag not in baseline but still doesn't appear after the swap — no eligible carrier module.
-        result.fail(
-            f"Tag '{added_tag}' (or aliases {tag_variants}) does not appear in matchedKeywords after "
-            f"being added to preferences, and the recommended set did not change. "
-            f"Got recommendations: {swap_codes}. "
-            f"matchedKeywords: {list(swap_keywords)}"
-        )
-    elif not tag_in_swap and set_changed:
-        # Set changed but not because of the tag — PASS because there's an observable effect.
-        pass
-
-    # Invariants on swapped result.
     inv_failures = check_invariants(
         swap_recs,
         base_case.get("completedCourseCodes", []),
@@ -275,8 +244,39 @@ def run_preference_swap_check(
     )
     for msg in inv_failures:
         result.fail(msg)
+    if inv_failures:
+        return result
 
-    result.ok()
+    if set_changed:
+        result.ok()
+    elif tag_in_baseline:
+        result.inconc(
+            f"Tag '{added_tag}' (or aliases {tag_variants}) already appears in baseline matchedKeywords. "
+            f"Adding it to preferences produced no observable response change. "
+            f"Baseline keywords containing the tag: {[kw for kw in base_keywords if any(v in kw for v in tag_variants)]}. "
+            f"This is an INCONCLUSIVE check, not evidence that the preference was ignored."
+        )
+    elif tag_in_swap:
+        result.ok()
+    elif (
+        reviewed_career_first_no_effect
+        and base_recs
+        and len(base_recs) == len(base_case.get("choiceSlots", []))
+        and len(swap_recs) == len(base_recs)
+        and all(rec.get("recommendationSource") == "career" for rec in base_recs + swap_recs)
+    ):
+        result.inconc(
+            f"Reviewed career-first profile: adding '{added_tag}' left all slots assigned to "
+            f"the same career picks {swap_codes}, without a new matched keyword. This is "
+            f"INCONCLUSIVE preference sensitivity, not a passing positive control."
+        )
+    else:
+        result.fail(
+            f"Tag '{added_tag}' (or aliases {tag_variants}) does not appear in matchedKeywords after "
+            f"being added to preferences, and the recommended set did not change. "
+            f"Got recommendations: {swap_codes}. "
+            f"matchedKeywords: {list(swap_keywords)}"
+        )
     return result
 
 def run_completion_change_check(
@@ -400,17 +400,12 @@ def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]
     # Preference swap: add computer-security to a software-engineer case that doesn't have it.
     results.append(run_preference_swap_check(benchmark, api_url, "software-engineer-csc-009", "computer-security"))
 
-    # Preference swap: add cybersecurity to an ai-ml case that currently lacks it.
-    # ai-ml-engineer-csc-001 prefs are ['ai-ml', 'natural-language-processing', 'computer-vision'].
-    # cybersecurity is in SOFTWARE_ENGINEER_TAG_WEIGHTS but not in AI_ML_SKILL_MAPPINGS.
-    # NOTE: this swap tests a career-irrelevant tag — under career-first the tag should NOT appear
-    # in pass-1 matchedKeywords (since ai-ml career mapping doesn't include cybersecurity).
-    # This is intentionally noted here as a known limitation of the preference-swap check:
-    # it can only assert tag presence when a career-mapped, eligible module carries that tag.
-    #
-    # Instead verify the swap with a career-mapped tag: 'database' is in AI_ML_SKILL_MAPPINGS
-    # (data modelling / statistical reasoning) — and SC3020 has 'database' tag.
-    results.append(run_preference_swap_check(benchmark, api_url, "ai-ml-engineer-csc-001", "database"))
+    # The reviewed database carrier SC3020 is below the career-strength boundary,
+    # while both slots already hold stronger AI/ML career picks.
+    results.append(run_preference_swap_check(
+        benchmark, api_url, "ai-ml-engineer-csc-001", "database",
+        reviewed_career_first_no_effect=True,
+    ))
 
     # Career-conflict: ai-ml student with SWE-type preferences — career picks should still show ai-ml-engineer.
     results.append(run_career_conflict_check(
@@ -497,7 +492,10 @@ def main() -> None:
         output = {
             "provenance": capture_provenance(args.serving_revision, args.database_fingerprint),
             "apiUrl": args.api_url,
-            "historicalChecksNote": "Existing sensitivity outcomes retained; supplementary contract checks are reported separately.",
+            "historicalChecksNote": (
+                "Historical captures remain separate; current classifications use reviewed "
+                "career-first expectation semantics. Supplementary contract checks are separate."
+            ),
             "supplementaryViolationCount": len(supplementary_failures),
             "captures": response_captures,
             "totalChecks": len(results),
