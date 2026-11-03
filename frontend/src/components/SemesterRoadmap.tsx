@@ -6,7 +6,7 @@ import type { ModuleSummary } from '../types/module'
 import type { CourseNode, RoadmapEdge } from '../types/roadmap'
 import { useProfileStore } from '../store/useProfileStore'
 import type { StandingRequirement } from '../types/curriculum'
-import type { CourseRecommendation, RecommendationConfidence } from '../types/recommendation'
+import type { CourseRecommendation, RecommendationConfidence, RecommendationOpenSlot } from '../types/recommendation'
 import ClassicLoader from './ClassicLoader'
 
 // Pass courses and prerequisite links into this component
@@ -14,6 +14,7 @@ interface SemesterRoadmapProps {
   courses: CourseNode[]
   prerequisiteLinks: RoadmapEdge[]
   recommendations: CourseRecommendation[]
+  openRecommendationSlots: RecommendationOpenSlot[]
   isLoadingRecommendations: boolean
   recommendationError: string
   recommendationNotice: string
@@ -198,7 +199,9 @@ function assignRecommendationsToChoiceSlots(
       [choiceSlot.course.id]: {
         courseCode: recommendation.courseCode,
         title: recommendation.title,
-        label: 'Recommended option',
+        label: recommendation.recommendationSource === 'interest'
+          ? 'Interest alternative'
+          : 'Recommended option',
         missingPrerequisites: recommendation.missingPrerequisites,
         existingPrerequisiteCourseCodes: recommendation.existingPrerequisiteCourseCodes,
         plannedPrerequisiteCourseCodes: recommendation.plannedPrerequisiteCourseCodes,
@@ -365,6 +368,7 @@ function SemesterRoadmap({
   courses,
   prerequisiteLinks,
   recommendations,
+  openRecommendationSlots,
   isLoadingRecommendations,
   recommendationError,
   recommendationNotice,
@@ -669,7 +673,7 @@ function SemesterRoadmap({
             type="button"
             className="clear-recommendations-button"
             onClick={onClearRecommendations}
-            disabled={recommendations.length === 0 || isLoadingRecommendations}
+            disabled={(recommendations.length === 0 && openRecommendationSlots.length === 0) || isLoadingRecommendations}
           >
             Clear recommendations
           </button>
@@ -839,6 +843,7 @@ function SemesterRoadmap({
                       standingRequirements,
                     )
                   const slotRecommendation = recommendationByChoiceSlotId[course.id]
+                  const openSlot = openRecommendationSlots.find((slot) => slot.slotId === course.id)
                   const recommendationEligibility =
                     slotRecommendation && !isCompleted
                       ? getRecommendationEligibility(slotRecommendation, completedCourseCodes)
@@ -922,6 +927,13 @@ function SemesterRoadmap({
                           <div className="choice-slot-loading">
                             <ClassicLoader className="choice-slot-loader" />
                             Loading recommendations...
+                          </div>
+                        )}
+                      {course.isChoiceSlot && !isCompleted && !slotRecommendation &&
+                        !isLoadingRecommendations && openSlot && (
+                          <div className="choice-slot-open" role="status">
+                            <strong>Slot left open</strong>
+                            <p>{openSlot.message}</p>
                           </div>
                         )}
                       <div className="semester-course-card-bottom">

@@ -81,6 +81,14 @@ export interface CourseRecommendation {
   recommendationConfidence?: RecommendationConfidence
   scoreBreakdown: RecommendationScoreBreakdown
   reason: string
+  recommendationSource?: 'career' | 'interest'
+}
+
+export interface RecommendationOpenSlot {
+  slotId: string
+  courseCode: string
+  reason: 'no-supported-match' | 'limit-reached'
+  message: string
 }
 
 export interface RecommendationPrerequisite {
@@ -111,4 +119,5 @@ export interface RecommendationPlannedRoadmapEdge {
 export interface RecommendationResponse {
   careerGoal: string
   recommendations: CourseRecommendation[]
+  openChoiceSlots: RecommendationOpenSlot[]
 }

@@ -29,7 +29,7 @@ SSO and server-side user persistence come after this recommendation-and-chat pha
 
 ## Agreed Weak-Fit Policy
 
-**Approved product direction; not yet implemented or calibrated.**
+**Approved product direction; bounded implementation captured, evidence threshold provisional.** See the [policy comparison](../evaluation/Recommendation_Weak_Fit_Policy_2026-11-03.md) for the observed outcomes and the failed counterfactual.
 
 | Outcome | Intended behavior |
 | --- | --- |
@@ -49,7 +49,7 @@ SSO and server-side user persistence come after this recommendation-and-chat pha
 
 | Step | Scope | Completion evidence | Status |
 | --- | --- | --- | --- |
-| 1. Baseline and policy | Capture current behavior, review pilot cases, define policy boundaries, then implement the bounded weak-fit change separately. | Reproducible baseline, reviewed examples, agreed acceptance criteria and a controlled policy comparison. | Next; product direction agreed, capture/review/implementation pending. |
+| 1. Baseline and policy | Capture current behavior, review pilot cases, define policy boundaries, then implement the bounded weak-fit change separately. | Reproducible baseline, reviewed examples, agreed acceptance criteria and a controlled policy comparison. | Local comparison captured; provisional evidence strength and failed preference counterfactual await review. |
 | 2. Student skills picture | Map relevant completed and candidate courses to shared skill identifiers and learning depth, using static role mappings first. | Traceable course-content evidence and reviewed examples of useful next learning. | Planned; depends on Step 1. |
 | 3. Job-market evidence | Integrate one permitted source for the two pilot roles; normalize and version extracted skills. | Reviewed extraction quality, dated snapshots and static-versus-market comparison. | Planned; source feasibility research can begin early. |
 | 4. Pathway chat | Build a chat stub, understand a small workflow, then add grounded model responses and confirmed preference changes. | Supported explanations, validated recalculation and deterministic fallback behavior. | Planned; depends on stable recommendation evidence. |
@@ -58,7 +58,7 @@ SSO and server-side user persistence come after this recommendation-and-chat pha
 
 ### Step 1: Baseline And Policy Checklist
 
-This is preparation and review before tuning. No fresh baseline capture or expert validation has been completed by this planning update.
+This checklist describes the work sequence. The baseline, reviews and bounded policy comparison have now been captured; expert validation and strength calibration remain outstanding.
 
 1. **Capture the unchanged baseline.** Use existing benchmark, coverage and counterfactual runners against a verified backend and database. Record serving revision, database fingerprint, mapping/rule versions, exact requests, full responses and evaluator configuration. Keep historical predictions unchanged; use a separate labelled capture and retain a durable, privacy-reviewed evidence summary.
 2. **Preserve evaluation inputs.** Keep the current 24 cases and labels stable, especially `software-engineer-csc-001` through `005`. Review findings are separate from label edits. Add necessary positioned or abstention scenarios separately; do not rewrite the frozen cases.
