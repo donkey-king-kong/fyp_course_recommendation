@@ -44,7 +44,10 @@ def get_db() -> Session:
         "relevance, or student topic preferences."
     ),
     response_description="Assigned module recommendations with slot IDs, planning artifacts, and reasons.",
-    responses={503: RECOMMENDATION_DATABASE_ERROR_RESPONSE},
+    responses={
+        422: {"description": "Invalid request, including repeated choice-slot IDs or invalid roadmap positions."},
+        503: RECOMMENDATION_DATABASE_ERROR_RESPONSE,
+    },
 )
 def create_recommendations(
     request: RecommendationRequest,

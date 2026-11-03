@@ -70392,7 +70392,6 @@
       "isCurrentSemester": false,
       "recommendationProfile": "broad-default",
       "recommendationTags": [
-        "backend-engineering",
         "distributed-systems",
         "cloud-computing",
         "infrastructure",

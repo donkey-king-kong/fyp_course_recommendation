@@ -25,12 +25,154 @@ METRIC_ORDER_NOTE = (
     "Rank-sensitive metrics sort predictions by backend score because "
     "recommendation responses are exact slot assignments for roadmap rendering."
 )
+LEGACY_VALIDITY_NOTE = (
+    "Historical constraintValidity checks only nonempty/current codes, completed/fixed "
+    "code exclusion and limited slot compatibility, over the score-ranked top K. "
+    "Supplementary validation uses the complete response; it does not prove academic "
+    "or programme eligibility. Missing evidence is reported as not-observable."
+)
+SCORE_COMPONENTS = (
+    "careerTagScore", "careerSkillScore", "currentSemesterBonus", "preferenceBoost",
+    "sameFacultyBoost", "mpeSpecialisationBoost", "legacyCodePenalty",
+    "defaultProfileAdjustment", "prerequisitePlanningPenalty", "unlockContribution",
+)
 
+# Compact benchmark inputs may contain strings or positioned curriculum records.
+def curriculum_code(item: Any) -> str:
+    value = item.get("courseCode", "") if isinstance(item, dict) else item
+    return str(value or "").strip().upper()
+
+def fixed_curriculum_items(request: dict[str, Any]) -> list[Any]:
+    return [
+        item for item in request.get("curriculumCourses", [])
+        if not (isinstance(item, dict) and item.get("isChoiceSlot"))
+        and "XXX" not in curriculum_code(item)
+        and curriculum_code(item) not in {"BDE", "MPE"}
+    ]
+
+def semester_position(item: dict[str, Any]) -> tuple[int, int] | None:
+    year, semester = item.get("year"), item.get("semester")
+    if isinstance(year, int) and not isinstance(year, bool) and year > 0 and semester in (1, 2):
+        return year, semester
+    return None
+
+def is_number(value: Any) -> bool:
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and math.isfinite(value)
+
+def validation_check(checked: int, failures: list[str], skipped: int = 0) -> dict[str, Any]:
+    return {
+        "status": "fail" if failures else "pass" if checked else "not-observable",
+        "checked": checked,
+        "skipped": skipped,
+        "violations": failures,
+    }
+
+# This checker reads output contracts; it never reconstructs prerequisite or programme policy.
+def validate_response(request: dict[str, Any], response: dict[str, Any]) -> dict[str, Any]:
+    recommendations = response.get("recommendations", [])
+    slots = request.get("choiceSlots", [])
+    slots_by_id = {slot["slotId"]: slot for slot in slots if slot.get("slotId")}
+    all_slots_identified = bool(slots) and len(slots_by_id) == len(slots)
+    limit = request.get("limit")
+    budget_failures = []
+    if isinstance(limit, int) and len(recommendations) > limit:
+        budget_failures.append(f"Returned {len(recommendations)} recommendations for limit={limit}.")
+    checks = {"resultBudget": validation_check(int(isinstance(limit, int)), budget_failures)}
+
+    slot_failures, duplicate_slot_failures, duplicate_code_failures = [], [], []
+    seen_slots, seen_codes = set(), set()
+    slot_checked = 0
+    score_failures, score_skipped = [], 0
+    nodes_by_id = {
+        item["nodeId"]: item for item in request.get("curriculumCourses", [])
+        if isinstance(item, dict) and item.get("nodeId")
+    }
+    nodes_by_id.update(slots_by_id)
+    for rec in recommendations:
+        for node in rec.get("plannedRoadmapNodes", []):
+            if node.get("id"):
+                nodes_by_id[node["id"]] = node
+
+    for rec in recommendations:
+        code, slot_id = prediction_course_code(rec), prediction_slot_id(rec)
+        if slot_id and slot_id in seen_slots:
+            duplicate_slot_failures.append(f"Slot {slot_id} is assigned more than once.")
+        if slot_id:
+            seen_slots.add(slot_id)
+        if code in seen_codes:
+            duplicate_code_failures.append(f"Module {code} is assigned more than once.")
+        seen_codes.add(code)
+        slot = slots_by_id.get(slot_id)
+        if slot or all_slots_identified:
+            slot_checked += 1
+            if slot is None:
+                slot_failures.append(f"{code} has unknown or missing exact slot ID {slot_id!r}.")
+            else:
+                for request_key, response_key in (
+                    ("year", "matchedChoiceSlotYear"), ("semester", "matchedChoiceSlotSemester"),
+                ):
+                    if slot.get(request_key) is not None and rec.get(response_key) != slot[request_key]:
+                        slot_failures.append(f"{code}: {response_key} differs from request slot {slot_id}.")
+        breakdown = rec.get("scoreBreakdown") or {}
+        if not all(is_number(breakdown.get(key)) for key in (*SCORE_COMPONENTS, "finalScore")) or not is_number(rec.get("score")):
+            score_skipped += 1
+        else:
+            expected = max(1, sum(breakdown[key] for key in SCORE_COMPONENTS))
+            if breakdown["finalScore"] != expected or rec["score"] != breakdown["finalScore"]:
+                score_failures.append(
+                    f"{code}: score={rec['score']}, finalScore={breakdown['finalScore']}, "
+                    f"floored component sum={expected}."
+                )
+    checks.update({
+        "knownExactSlots": validation_check(slot_checked, slot_failures, len(recommendations) - slot_checked),
+        "uniqueSlotAssignments": validation_check(len(seen_slots), duplicate_slot_failures, len(recommendations) - sum(bool(prediction_slot_id(rec)) for rec in recommendations)),
+        "uniqueModuleAssignments": validation_check(len(recommendations), duplicate_code_failures),
+        "scoreConsistency": validation_check(len(recommendations) - score_skipped, score_failures, score_skipped),
+    })
+
+    endpoint_failures, placement_failures = [], []
+    edge_count, placement_count, placement_skipped = 0, 0, 0
+    completed = {curriculum_code(code) for code in request.get("completedCourseCodes", [])}
+    for rec in recommendations:
+        for edge in rec.get("plannedRoadmapEdges", []):
+            edge_count += 1
+            source, target = nodes_by_id.get(edge.get("source")), nodes_by_id.get(edge.get("target"))
+            if source is None or target is None:
+                endpoint_failures.append(f"Dangling planning edge {edge.get('source')} -> {edge.get('target')}.")
+                placement_skipped += 1
+                continue
+            if curriculum_code(source) in completed:
+                placement_skipped += 1
+                continue
+            source_position, target_position = semester_position(source), semester_position(target)
+            if source_position is None or target_position is None:
+                placement_skipped += 1
+            else:
+                placement_count += 1
+                if source_position >= target_position:
+                    placement_failures.append(f"Prerequisite edge {edge['source']} -> {edge['target']} is not strictly earlier.")
+        target = slots_by_id.get(prediction_slot_id(rec), {
+            "year": rec.get("matchedChoiceSlotYear"), "semester": rec.get("matchedChoiceSlotSemester"),
+        })
+        for node in rec.get("plannedRoadmapNodes", []):
+            source_position, target_position = semester_position(node), semester_position(target)
+            if source_position is None or target_position is None:
+                placement_skipped += 1
+            else:
+                placement_count += 1
+                if source_position >= target_position:
+                    placement_failures.append(f"Planned node {node.get('id')} does not precede {prediction_slot_id(rec)}.")
+    artifact_fields_present = all("plannedRoadmapNodes" in rec and "plannedRoadmapEdges" in rec for rec in recommendations)
+    checks.update({
+        "planningEdgeEndpoints": validation_check(edge_count or int(artifact_fields_present and bool(recommendations)), endpoint_failures),
+        "precedingPrerequisitePlacement": validation_check(placement_count, placement_failures, placement_skipped),
+    })
+    failures = [message for check in checks.values() for message in check["violations"]]
+    return {"scope": "request-response-contract-only", "recommendationCount": len(recommendations), "checks": checks, "violations": failures}
 
 def load_json(path: Path) -> dict[str, Any]:
     with path.open() as file:
         return json.load(file)
-
 
 def normalise_predictions(raw_predictions: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
     if isinstance(raw_predictions.get("cases"), list):
@@ -45,13 +187,11 @@ def normalise_predictions(raw_predictions: dict[str, Any]) -> dict[str, list[dic
         if isinstance(recommendations, list)
     }
 
-
 def reviewed_candidates_as_predictions(benchmark: dict[str, Any]) -> dict[str, list[dict[str, Any]]]:
     return {
         case["caseId"]: case.get("reviewedCandidates", [])
         for case in benchmark.get("cases", [])
     }
-
 
 def candidate_lookup(case: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {
@@ -59,10 +199,8 @@ def candidate_lookup(case: dict[str, Any]) -> dict[str, dict[str, Any]]:
         for candidate in case.get("reviewedCandidates", [])
     }
 
-
 def prediction_course_code(prediction: dict[str, Any]) -> str:
     return str(prediction.get("courseCode", "")).strip().upper()
-
 
 def prediction_slot_id(prediction: dict[str, Any]) -> str | None:
     return prediction.get("matchedChoiceSlotId") or prediction.get("targetSlotId")
@@ -75,20 +213,16 @@ def prediction_score(prediction: dict[str, Any]) -> float | None:
 def display_career_goal(career_goal: str) -> str:
     return career_goal.replace("-", " ").title()
 
-
 def is_old_code(course_code: str) -> bool:
     return course_code.startswith(OLD_CODE_PREFIXES)
-
 
 def gain_for_prediction(prediction: dict[str, Any], candidates: dict[str, dict[str, Any]]) -> int:
     course_code = prediction_course_code(prediction)
     expected_label = candidates.get(course_code, {}).get("expectedRelevance", "irrelevant")
     return RELEVANCE_GAINS.get(expected_label, 0)
 
-
 def dcg(gains: list[int]) -> float:
     return sum(gain / math.log2(index + 2) for index, gain in enumerate(gains))
-
 
 def ndcg_at_k(predictions: list[dict[str, Any]], candidates: dict[str, dict[str, Any]], k: int) -> float:
     predicted_gains = [
@@ -157,7 +291,6 @@ def career_skill_path(prediction: dict[str, Any]) -> str | None:
 
     return f"{display_career_goal(career_goal)} -> {skill_area} -> {tag} -> {title}"
 
-
 def slot_fits(prediction: dict[str, Any], case: dict[str, Any]) -> bool:
     slot_id = prediction_slot_id(prediction)
     if slot_id is None:
@@ -172,14 +305,13 @@ def slot_fits(prediction: dict[str, Any], case: dict[str, Any]) -> bool:
     if slot_code == "BDE":
         return True
     if slot_code.startswith("SC") and course_code.startswith("SC"):
-        return course_code[2] == slot_code[2]
+        return len(course_code) > 2 and len(slot_code) > 2 and course_code[2] == slot_code[2]
     return course_code == slot_code
-
 
 def prediction_is_constraint_valid(prediction: dict[str, Any], case: dict[str, Any]) -> bool:
     course_code = prediction_course_code(prediction)
     completed_codes = {code.upper() for code in case.get("completedCourseCodes", [])}
-    curriculum_codes = {code.upper() for code in case.get("curriculumCourses", [])}
+    curriculum_codes = {curriculum_code(item) for item in fixed_curriculum_items(case)}
     return (
         bool(course_code)
         and not is_old_code(course_code)
@@ -187,7 +319,6 @@ def prediction_is_constraint_valid(prediction: dict[str, Any], case: dict[str, A
         and course_code not in curriculum_codes
         and slot_fits(prediction, case)
     )
-
 
 def evaluate_case(case: dict[str, Any], predictions: list[dict[str, Any]], k: int) -> dict[str, Any]:
     ranked_predictions = rank_predictions_for_relevance_metrics(predictions)
@@ -260,15 +391,14 @@ def evaluate_case(case: dict[str, Any], predictions: list[dict[str, Any]], k: in
         "constraintValidity": valid_count / len(top_predictions) if top_predictions else 0.0,
     }
 
-
 def average(values: list[float]) -> float:
     return sum(values) / len(values) if values else 0.0
-
 
 def evaluate_benchmark(
     benchmark: dict[str, Any],
     predictions_by_case: dict[str, list[dict[str, Any]]],
     k: int,
+    captures_by_case: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     case_results = [
         evaluate_case(case, predictions_by_case.get(case["caseId"], []), k)
@@ -281,11 +411,20 @@ def evaluate_benchmark(
     ]
     total_predictions = sum(result["recommendationCount"] for result in case_results)
     cases_with_predictions = sum(1 for result in case_results if result["recommendationCount"] > 0)
+    captures_by_case = captures_by_case or {}
+    for case, result in zip(benchmark.get("cases", []), case_results):
+        capture = captures_by_case.get(case["caseId"], {})
+        result["supplementaryValidation"] = validate_response(
+            capture.get("request", case),
+            capture.get("response", {"recommendations": predictions_by_case.get(case["caseId"], [])}),
+        )
 
     return {
         "k": k,
         "metricOrder": "backend-score-desc",
         "metricOrderNote": METRIC_ORDER_NOTE,
+        "constraintValidityNote": LEGACY_VALIDITY_NOTE,
+        "supplementaryViolationCount": sum(len(result["supplementaryValidation"]["violations"]) for result in case_results),
         "caseCount": len(case_results),
         "caseCoverage": cases_with_predictions / len(case_results) if case_results else 0.0,
         "totalPredictionsEvaluated": total_predictions,
@@ -303,7 +442,6 @@ def evaluate_benchmark(
         "averageConstraintValidity": average([result["constraintValidity"] for result in case_results]),
         "cases": case_results,
     }
-
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
@@ -324,22 +462,25 @@ def parse_args() -> argparse.Namespace:
         help="Use reviewedCandidates as draft predictions. This is for smoke testing only.",
     )
     parser.add_argument("--k", type=int, default=5, help="Ranking cutoff for @K metrics.")
+    parser.add_argument("--fail-on-contract-violations", action="store_true", help="Exit nonzero on supplementary response violations; historical metrics are still printed.")
     return parser.parse_args()
-
 
 def main() -> None:
     args = parse_args()
     benchmark = load_json(Path(args.benchmark))
     if args.predictions:
-        predictions_by_case = normalise_predictions(load_json(Path(args.predictions)))
+        raw_predictions = load_json(Path(args.predictions))
+        predictions_by_case = normalise_predictions(raw_predictions)
     elif args.use_reviewed_candidates:
         predictions_by_case = reviewed_candidates_as_predictions(benchmark)
     else:
         raise SystemExit("Provide --predictions or use --use-reviewed-candidates for a smoke run.")
 
-    result = evaluate_benchmark(benchmark, predictions_by_case, args.k)
+    captures = {case["caseId"]: case for case in raw_predictions.get("cases", [])} if args.predictions else {}
+    result = evaluate_benchmark(benchmark, predictions_by_case, args.k, captures)
     print(json.dumps(result, indent=2))
-
+    if args.fail_on_contract_violations and result["supplementaryViolationCount"]:
+        raise SystemExit(1)
 
 if __name__ == "__main__":
     main()

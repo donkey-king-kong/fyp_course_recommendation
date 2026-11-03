@@ -1391,7 +1391,7 @@ Status: Completed follow-up diligence after Opus review
 
 ## Technical Audit Correction After Sol Max Review
 
-Status: Documentation corrected locally on `recommendation-technical-audit-update`; uncommitted
+Status: Historical documentation correction; committed as `b7ed357` and merged in PR #52. Findings below describe the pre-fix implementation; their resolution is recorded in the next entry.
 
 ### Completed
 
@@ -1415,3 +1415,86 @@ Status: Documentation corrected locally on `recommendation-technical-audit-updat
 - Expand evaluation checks and recapture predictions with serving-code, seed/mapping, and database provenance in future scoped work units. Current saved metrics do not establish performance against the current live database.
 - The allocation edge-case probes and aggregate seed disagreement count remain attributed to Sol Max. No live recommendation capture, PostgreSQL query, browser run, or live coverage/counterfactual rerun occurred here. Recorded counterfactual results remain 7 PASS / 0 FAIL / 1 INCONCLUSIVE.
 - No production fixes, new tests, dependencies, benchmark/artifact edits, commits, pushes, or PR creation are included.
+
+## Recommendation Planning Integrity And Evaluation Provenance
+
+Status: Implemented and verified on `recommendation-planning-integrity`; included in the follow-up commits on `recommendation-career-relevance`
+
+### What Was Created And Changed
+
+- Added `backend/services/prerequisite_rules.py` with reviewed OR alternatives containing AND requirements. Sources are the local current MPE listing and the applicable core curriculum rows; the older `SC2002` rule is distinct from `SC2003`.
+- Corrected `SC4052` to `SC1004 OR MH2802`; the graph had omitted `SC1004`. Replaced the any-one shortcut for reviewed multi-course requirements, including `SC4012` and `SC4051`.
+- Made `SC3103` explicitly unresolved because its source prerequisite is pending approval. Missing maps and unreviewed multi-code unions are rejected; empty/singleton graph compatibility is limited to stored direct course requirements.
+- Required new prerequisite cards to have permitted catalog details, a real earlier remaining roadmap semester and reviewed own requirements already completed. They are supplementary cards and do not consume elective slots. Shared nodes and collision-safe IDs now produce edges with actual endpoints across the complete response.
+- Fixed pass-2 prerequisite/detail/unlock retrieval, result-budget enforcement, omitted slot-ID normalization and score/penalty consistency. Explicit duplicate slot IDs and invalid positions return `422`.
+- Extended the existing evaluation/capture scripts with separately labeled full-response contract checks, positioned/titled request support, complete-response capture, source/seed/rule hashes and optional operator-declared serving/database provenance. No permanent automated recommender test suite or new dependency was added.
+- Updated `Recommendation_Technical_Audit.md` and `Evaluation.md`, and generated `data/review/recommendation_planning_integrity_results.json` as compact persistent evidence.
+
+### How It Was Verified
+
+- The parent captured a fresh baseline from an owned backend loaded at `cdd488b`, stopped it, and restarted the completed backend on port `8002` using the same database. Read-only before/after table fingerprints matched: 4,318 modules, 4,178 prerequisite rows and 34 faculties. No reseed or database mutation occurred.
+- Temporary probes covered reviewed AND/OR semantics, missing-map rejection, programme denial, generated-ID collisions, budgets, score floors, shared prerequisite nodes and valid earlier placement. No browser verification is claimed.
+- Labels, seed data, career-skill mappings and scoring constants remained unchanged. The added prerequisite rule mapping and fixes are the evaluated behavior changes.
+
+| Fresh 24-case metric | Baseline | After fixes |
+| --- | ---: | ---: |
+| Recommendations | 53 | 53 |
+| Precision@5 | 0.3333333333333335 | 0.3250000000000001 |
+| nDCG@5 | 0.548175035381263 | 0.5175144754484818 |
+| Precision@returned | 0.7777777777777777 | 0.7569444444444443 |
+| nDCG@returned | 0.7571050903913039 | 0.7157687115138366 |
+| Slot fill / case coverage | 1.0 / 1.0 | 1.0 / 1.0 |
+| Explanation coverage | 1.0 | 1.0 |
+| Explanation fidelity | 0.5652173913043478 | 0.5652173913043478 |
+| Skill-area diversity@5 | 1.3333333333333333 | 1.3333333333333333 |
+| Legacy validity / old-code exposure | 1.0 / 0 | 1.0 / 0 |
+| Supplementary contract violations | 5 dangling edges | 0 |
+
+- The fresh 180-cell unpositioned grid retains 100% fill and zero legacy invariant violations. Supplementary failures drop from 36 dangling edges to zero; weak-fit cells drop from 20 to 18; neither run contains interest picks. The older saved coverage file's 26 weak-fit cells remain a separate historical snapshot.
+- Nine separate positioned scenarios return 8 PASS / 0 FAIL / 1 INCONCLUSIVE and zero contract violations. `SC4012` generates an earlier `SC2002` card and edge using an uncompleted fixed `CC0001` semester, without an earlier elective slot. `SC3060` returns a real interest pick at score `21` with null career evidence. BDE year fit, title exclusion and supported Cloud alternatives pass.
+- New Cloud prerequisite planning is explicitly inconclusive: `SC1004`'s own co-requisites and `MH2802`'s H2 Maths condition remain unreviewed for new cards. Completed `SC1004` and earlier fixed `MH2802` paths work; existing-path reuse is not full academic certification.
+- The live counterfactual rerun returns 6 PASS / 0 FAIL / 2 INCONCLUSIVE and zero supplementary failures. Both Software Engineer `009 + computer-security` and AI/ML `001 + database` already carry the tag/alias in baseline output evidence. The historical 7 PASS / 1 INCONCLUSIVE record remains distinct; a fresh baseline counterfactual run was not taken.
+
+### Interpretation And Retained Evidence
+
+- The valid comparison is nDCG `0.7571` → `0.7158`, not the old saved file's `0.6313` → current result. Contract correctness improved while agreement with draft relevance labels decreased.
+- Software Engineer cases `002` and `013` replace `SC4064` with `SC4052`; case `003` replaces `SC4012`; Data Engineer `001` replaces `SC4023`. Cloud/Platform `003` keeps the same modules but Cloud score changes `47` → `57` and becomes ready, moving ahead of `SC4051`. Restored Cloud readiness changes scores and selection without constant tuning. Case `003` has both Software Security prerequisites completed; its replacement is not an AND-gate rejection.
+- Twelve cases have code, score, readiness or slot-position changes; four change their selected module set. Exact before/after values are in the summary.
+- Raw captures remain ephemeral under `/private/tmp/recommendation-planning-T66qUE/`. The persistent summary stores their hashes/locations, source fingerprints, metrics, compact scenario and counterfactual outcomes, and database table hashes. Local code/seed hashes are distinct from the operator-confirmed launch and declared database fingerprint; no credentials are stored.
+- Historical benchmark labels, `data/recommendation_benchmark_predictions.json` and `data/coverage_audit_results.json` remain unchanged. Those files have not been overwritten with the current results.
+
+### How To Reproduce And Next Step
+
+- Start a backend separately, capture predictions to a new temporary output, and run `scripts/evaluate_recommendation_benchmark.py --predictions <path> --k 5 --fail-on-contract-violations`.
+- Run coverage with `--mode historical-grid` or `--mode positioned-scenarios`, reporting those results separately. Capture runners support `--serving-revision` and `--database-fingerprint` for explicitly declared provenance.
+- Conduct expert review / think-aloud on changed and weak-fit selections before changing labels or tuning constants. Lower draft-label alignment must be discussed, not presented as an across-the-board metric improvement.
+- Full prerequisite chains, co-requisites, standing, cohort registration, offerings, workload/AU capacity and verified browser identity remain outside these guarantees. NTU SSO/persistence and all deferred AI/data integrations remain separate future work.
+- These captures were taken before the planning fixes were committed. The code, documentation and compact evidence summary are included in the follow-up commits on `recommendation-career-relevance`; capture-time revision declarations remain unchanged.
+
+## Cloud Career-Tag Correction And Deferred Interest-Ranking Review
+
+Status: Small tag correction committed as `1e30917` on `recommendation-career-relevance`; broader ranking review deferred at the project owner's request
+
+### Completed Correction
+
+- Removed only `backend-engineering` from `SC4052 Cloud Computing` in `data/modules.json` and applied the same correction to its local PostgreSQL row. Commit: `fix: correct Cloud Computing career relevance tags`. The source JSON also gained a trailing newline.
+- The local course description covers cloud platforms, distributed services and MapReduce/Spark, but does not clearly establish backend software implementation as a learning outcome. Retained the database, cloud and distributed-systems tags. `SC4023 Big Data Management` directly covers distributed data storage/computation, parallel queries and NoSQL key-value stores.
+- Both modules compete in the first career pass. The second pass fills remaining empty slots with interest picks; it did not cause Cloud to replace Big Data.
+- For `data-engineer-csc-001`, Cloud's career score falls from `24` to `19`, preference boost from `41` to `33`, and total from `81` to `68`. Big Data remains at `72` and now fills the SC4xxx slot. `data-engineer-csc-002`, which explicitly prefers cloud computing and has two SC4xxx slots, still receives Cloud ahead of Big Data. There is no universal rule that Big Data must always rank first.
+
+### Verification And Evidence Boundaries
+
+- Fresh API captures for all 24 benchmark cases exactly match the preceding read-only diagnostic. With the existing uncommitted planning-integrity fixes in place, nDCG@returned improves from `0.7157687115` to `0.7413165112`, precision@returned from `0.7569444444` to `0.7777777778`, and slot fill remains `1.0`; all 53 recommendations have zero supplementary contract violations and zero old-code exposure.
+- The 180-cell coverage audit reports zero empty slots, zero invariant/contract violations and 18 weak-fit cells. Positioned scenarios remain 8 PASS / 1 INCONCLUSIVE / 0 FAIL. Counterfactual checks remain 6 PASS / 2 INCONCLUSIVE / 0 FAIL, with zero supplementary violations.
+- Draft explanation-path fidelity falls from `0.5652173913` to `0.5`. Cloud's evidence moves from backend implementation to distributed infrastructure while some expected paths retain the old tag. This needs label/content review; the metric alone does not establish worse factual explanations.
+- `data-engineer-csc-001` omits Cloud from its reviewed candidate list and contains stale Big Data tag/prerequisite notes. Missing candidates receive zero benchmark credit, so the nDCG change does not prove Cloud irrelevant. Benchmark labels and historical prediction files were not changed.
+- Raw captures, evaluation, source hashes and the review are temporary artifacts under `/private/tmp/recommendation-career-relevance/`. These results include the still-uncommitted planning-integrity changes and must not be attributed to the standalone tag commit alone. No fresh full-database fingerprint was taken after the targeted row update. The owned verification server was stopped after the checks.
+
+### Deferred Issue And Return Plan
+
+- This is a ranking-quality follow-up, not an urgent fix for an observed contract failure. Defer scorer changes while other project work proceeds. Current checks support slot-fill and response-contract correctness, not full academic eligibility or expert validation.
+- In AI-focused Software Engineer cases `software-engineer-csc-002` and `software-engineer-csc-013`, Cloud still scores `52`, Deep Learning `51`, and GPU Programming `38` after the tag correction. The smaller correction does restore Software Security for the security-focused `software-engineer-csc-003` case.
+- Software Engineer ranking uses a raw keyword/tag top-up: combined career credit is the greater of raw relevance and mapped skill score. Broad Cloud keyword/tag matches therefore retain substantial credit even after its mapped career score drops. GPU's weaker generic Software Engineer mapping also scales down its explicit preference boost.
+- On return, review the affected course content and profiles, decide how strongly explicit interests should steer specialisation within the career pass, and then assess the raw relevance top-up and preference scaling. Preserve the two-pass flow unless a separate policy decision justifies changing it. Do not hardcode winning courses, restore incorrect prerequisite penalties, or tune constants solely to improve draft-label nDCG.
+- Use expert review / think-aloud to validate the contested selections and expected explanation paths before broader calibration. Rerun the existing benchmark, coverage and counterfactual checks after any implemented ranking change.
+- The tag correction, earlier planning/evaluation changes and this progress note are included on `recommendation-career-relevance` for publication together. The broader interest-ranking review remains deferred; no broader interest-ranking change has been implemented.

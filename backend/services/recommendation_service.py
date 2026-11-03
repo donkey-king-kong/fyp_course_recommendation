@@ -22,6 +22,11 @@ from backend.schemas.recommendation import (
 from backend.services.career_skill_mappings import CAREER_SKILL_MAPPINGS, CareerSkillMapping, SkillTagRelationship
 from backend.services.faculty_service import list_active_faculty_names
 from backend.services.module_service import get_prerequisites_by_module, get_unlocks_by_module
+from backend.services.prerequisite_rules import (
+    PREREQUISITE_EQUIVALENTS,
+    get_prerequisite_groups,
+    get_reviewed_prerequisite_groups,
+)
 
 # First recommendation MVP: one career goal with hand-picked keywords.
 # Later milestones can replace or enrich this with job-market data, embeddings, or graph logic.
@@ -121,7 +126,7 @@ PREFERENCE_ADDITIONAL_BOOST_STEPS = (12, 8, 6, 4)
 PREFERENCE_TAG_BOOST_CAP = 45
 # Career-fit threshold used to scale the preference boost in pass 1 (career picks).
 # A module whose career_skill_score >= this value keeps the full preference boost;
-# weaker career fits receive a proportionally reduced boost so career always leads.
+# weaker career fits receive a proportionally reduced boost.
 CAREER_FIT_FULL_PREFERENCE_SCORE = 15
 SECURITY_PRIVACY_ADJACENCY_BOOST = 8
 UNLOCK_CONTRIBUTION_STEPS = (4, 3, 2, 1)
@@ -225,6 +230,8 @@ class RecommendationReadiness:
     missing_prerequisites: list[str]
     prerequisite_planning_penalty: int
     unlock_value: int
+    prerequisite_course_codes: list[str]
+    planned_prerequisite_semester_order: Optional[int] = None
 
 @dataclass(frozen=True)
 class CareerSkillContribution:
@@ -345,8 +352,8 @@ def recommend_courses(
         ):
             continue
 
-        # Send all prerequisites for arrows, and missing ones for extra planning nodes.
-        prerequisites = prerequisites_by_module.get(module.code, [])
+        # Readiness selects one verified requirement branch for arrows and extra nodes.
+        prerequisites = prerequisites_by_module.get(module.code)
         unlock_codes = unlocks_by_module.get(module.code, [])
 
         for slot in eligible_slots:
@@ -357,6 +364,7 @@ def recommend_courses(
                 continue
 
             readiness = evaluate_recommendation_readiness(
+                course_code=module.code,
                 prerequisites=prerequisites,
                 completed_codes=completed_codes,
                 slot=slot,
@@ -376,6 +384,9 @@ def recommend_courses(
                 completed_codes | excluded_codes,
                 excluded_titles,
             )
+            if len(prerequisite_recommendations) != len(readiness.planned_prerequisite_course_codes):
+                continue
+
             raw_preference_boost = (
                 get_preference_boost(module, preferred_tag_dimensions) +
                 get_current_preference_match_boost(module, preferred_tags)
@@ -438,11 +449,14 @@ def recommend_courses(
                         career_match.matched_signals +
                         get_mpe_specialisation_signals(module, career_goal)
                     ),
-                    prerequisites=prerequisites,
+                    prerequisites=readiness.prerequisite_course_codes,
                     missingPrerequisites=readiness.missing_prerequisites,
                     existingPrerequisiteCourseCodes=readiness.existing_prerequisite_course_codes,
                     plannedPrerequisiteCourseCodes=readiness.planned_prerequisite_course_codes,
                     prerequisiteRecommendations=prerequisite_recommendations,
+                    plannedRoadmapNodes=build_planned_roadmap_nodes(
+                        module.code, readiness, prerequisite_recommendations,
+                    ),
                     readinessStatus=readiness.status,
                     unlockValue=readiness.unlock_value,
                     score=adjusted_score,
@@ -476,7 +490,8 @@ def recommend_courses(
         for slot in candidate_slots
         if get_choice_slot_identity(slot) not in filled_slot_ids
     ]
-    if unfilled_slots and preferred_tags:
+    remaining_budget = limit - len(sorted_recommendations)
+    if unfilled_slots and preferred_tags and remaining_budget > 0:
         used_codes = {r.courseCode for r in sorted_recommendations}
         used_titles: set[str] = set()
         for r in sorted_recommendations:
@@ -492,12 +507,10 @@ def recommend_courses(
             already_used_codes=used_codes,
             already_used_titles=used_titles,
             normalized_student_faculty=normalized_student_faculty,
-            prerequisites_by_module=prerequisites_by_module,
-            prerequisite_modules_by_code=prerequisite_modules_by_code,
-            unlocks_by_module=unlocks_by_module,
             candidate_slots=candidate_slots,
             curriculum_courses=curriculum_courses,
             active_faculties=active_faculties,
+            limit=remaining_budget,
         )
         sorted_recommendations = sorted_recommendations + interest_picks
         if interest_picks:
@@ -560,13 +573,27 @@ def build_recommendation_choice_slots(
     choice_slot_codes: list[str],
     choice_slots: list[RecommendationChoiceSlot],
 ) -> list[RecommendationChoiceSlot]:
-    if choice_slots:
-        return choice_slots
-
-    return [
+    slots = choice_slots or [
         RecommendationChoiceSlot(courseCode=course_code)
         for course_code in choice_slot_codes
     ]
+    used_ids = {slot.slotId for slot in slots if slot.slotId is not None}
+
+    if len(used_ids) != sum(slot.slotId is not None for slot in slots):
+        raise ValueError("choiceSlots must have unique slotId values.")
+
+    normalized_slots = []
+    for index, slot in enumerate(slots):
+        slot_id = slot.slotId
+        if slot_id is None:
+            slot_id = f"recommendation-slot-{index + 1}"
+            while slot_id in used_ids:
+                slot_id += "-generated"
+            used_ids.add(slot_id)
+
+        normalized_slots.append(slot.model_copy(update={"slotId": slot_id}))
+
+    return normalized_slots
 
 def build_slot_filters(mpe_levels: list[int], has_bde_slot: bool) -> list:
     filters = []
@@ -598,7 +625,8 @@ def get_semester_from_order(semester_order: int) -> tuple[int, int]:
     return year, semester
 
 def evaluate_recommendation_readiness(
-    prerequisites: list[str],
+    course_code: str,
+    prerequisites: Optional[list[str]],
     completed_codes: set[str],
     slot: RecommendationChoiceSlot,
     choice_slots: list[RecommendationChoiceSlot],
@@ -607,93 +635,151 @@ def evaluate_recommendation_readiness(
     unlock_codes: list[str],
     student_programme: Optional[str],
 ) -> Optional[RecommendationReadiness]:
-    prerequisite_codes = [prerequisite.upper() for prerequisite in prerequisites]
-    existing_prerequisite_codes = get_existing_prerequisite_course_codes(
-        prerequisite_codes,
-        slot,
-        curriculum_courses,
-        prerequisite_modules_by_code,
-    )
+    groups = get_prerequisite_groups(course_code, prerequisites)
+    if groups is None:
+        return None
+
     unlock_value = get_unlock_value(unlock_codes, slot, curriculum_courses)
-
-    if not prerequisite_codes:
-        return RecommendationReadiness(
-            status="ready",
-            existing_prerequisite_course_codes=[],
-            planned_prerequisite_course_codes=[],
-            missing_prerequisites=[],
-            prerequisite_planning_penalty=0,
-            unlock_value=unlock_value,
-        )
-
-    # The parsed prerequisite graph is currently flat. If one listed prerequisite is completed
-    # or already planned earlier, treat the recommendation as pathway-ready instead of adding
-    # every other listed code as a separate requirement.
-    if any(prerequisite in completed_codes for prerequisite in prerequisite_codes):
-        return RecommendationReadiness(
-            status="ready",
-            existing_prerequisite_course_codes=existing_prerequisite_codes,
-            planned_prerequisite_course_codes=[],
-            missing_prerequisites=[],
-            prerequisite_planning_penalty=0,
-            unlock_value=unlock_value,
-        )
-
-    if existing_prerequisite_codes:
-        return RecommendationReadiness(
-            status="needs-prerequisite-planning",
-            existing_prerequisite_course_codes=existing_prerequisite_codes,
-            planned_prerequisite_course_codes=[],
-            missing_prerequisites=[],
-            prerequisite_planning_penalty=0,
-            unlock_value=unlock_value,
-        )
-
-    planned_prerequisite_codes = get_plannable_prerequisite_course_codes(
-        prerequisite_codes,
-        slot,
-        choice_slots,
-        prerequisite_modules_by_code,
-        student_programme,
+    planning_order = get_prerequisite_planning_order(
+        slot, choice_slots, curriculum_courses, completed_codes,
     )
+    feasible_branches = []
 
-    if not planned_prerequisite_codes:
-        # In curriculum-only mode, keep strong modules visible when their missing
-        # prerequisite is known, but make the extra planning cost affect ranking.
-        catalog_known_prerequisite_codes = [
-            prerequisite_code
-            for prerequisite_code in prerequisite_codes
-            if prerequisite_code in prerequisite_modules_by_code
-        ]
+    for group in groups:
+        selected_codes = []
+        existing_codes = []
+        planned_codes = []
+        for prerequisite_code in group:
+            completed_code = get_completed_prerequisite_code(
+                prerequisite_code, completed_codes, prerequisite_modules_by_code,
+            )
+            if completed_code is not None:
+                selected_codes.append(completed_code)
+                continue
 
-        if not catalog_known_prerequisite_codes:
-            return None
+            existing = get_existing_prerequisite_course_codes(
+                [prerequisite_code], slot, curriculum_courses,
+                prerequisite_modules_by_code, student_programme,
+            )
+            if existing:
+                selected_codes.append(existing[0])
+                existing_codes.append(existing[0])
+                continue
 
-        return RecommendationReadiness(
-            status="needs-prerequisite-planning",
-            existing_prerequisite_course_codes=[],
-            planned_prerequisite_course_codes=catalog_known_prerequisite_codes,
-            missing_prerequisites=catalog_known_prerequisite_codes,
-            prerequisite_planning_penalty=EXTRA_PREREQUISITE_PLANNING_PENALTY,
-            unlock_value=unlock_value,
-        )
+            if not can_plan_prerequisite(
+                prerequisite_code, course_code, planning_order, completed_codes,
+                curriculum_courses, prerequisite_modules_by_code, student_programme,
+            ):
+                break
 
-    planned_prerequisite_codes = sorted(set(planned_prerequisite_codes))
+            selected_codes.append(prerequisite_code)
+            planned_codes.append(prerequisite_code)
+        else:
+            feasible_branches.append(RecommendationReadiness(
+                status="needs-prerequisite-planning" if existing_codes or planned_codes else "ready",
+                existing_prerequisite_course_codes=existing_codes,
+                planned_prerequisite_course_codes=planned_codes,
+                missing_prerequisites=planned_codes.copy(),
+                prerequisite_planning_penalty=EXTRA_PREREQUISITE_PLANNING_PENALTY if planned_codes else 0,
+                unlock_value=unlock_value,
+                prerequisite_course_codes=selected_codes,
+                planned_prerequisite_semester_order=planning_order if planned_codes else None,
+            ))
 
-    return RecommendationReadiness(
-        status="needs-prerequisite-planning",
-        existing_prerequisite_course_codes=[],
-        planned_prerequisite_course_codes=planned_prerequisite_codes,
-        missing_prerequisites=planned_prerequisite_codes,
-        prerequisite_planning_penalty=EXTRA_PREREQUISITE_PLANNING_PENALTY,
-        unlock_value=unlock_value,
-    )
+    if not feasible_branches:
+        return None
+
+    return min(feasible_branches, key=lambda branch: (
+        len(branch.planned_prerequisite_course_codes),
+        len(branch.existing_prerequisite_course_codes),
+        tuple(branch.prerequisite_course_codes),
+    ))
+
+# Completed learning can satisfy the same code or a reviewed legacy pair, never a title guess.
+def get_completed_prerequisite_code(
+    prerequisite_code: str,
+    completed_codes: set[str],
+    modules_by_code: dict[str, ModuleModel],
+) -> Optional[str]:
+    if prerequisite_code not in modules_by_code:
+        return None
+
+    for code in (prerequisite_code, PREREQUISITE_EQUIVALENTS.get(prerequisite_code)):
+        if code is not None and code in completed_codes and code in modules_by_code:
+            return code
+
+    return None
+
+# Supplementary cards use a real earlier, still-planned roadmap semester; they do not
+# consume a choice slot or assert an AU capacity, offering, or registration permission.
+def get_prerequisite_planning_order(
+    slot: RecommendationChoiceSlot,
+    choice_slots: list[RecommendationChoiceSlot],
+    curriculum_courses: list[RecommendationCurriculumCourse],
+    completed_codes: set[str],
+) -> Optional[int]:
+    target_order = get_semester_order(slot.year, slot.semester)
+    if target_order is None:
+        return None
+
+    positioned_items = [
+        (course.year, course.semester)
+        for course in curriculum_courses
+        if course.nodeId and course.courseCode.upper() not in completed_codes
+    ] + [(item.year, item.semester) for item in choice_slots if item.slotId]
+    earlier_orders = [
+        order
+        for year, semester in positioned_items
+        for order in [get_semester_order(year, semester)]
+        if order is not None and order < target_order
+    ]
+
+    return max(earlier_orders) if earlier_orders else None
+
+# Only direct supporting nodes are planned. Their reviewed own requirements must
+# be completed: the current supplementary-card renderer has no dependency field.
+# An unknown/co-requisite chain or an incomplete earlier dependency is not hidden.
+def can_plan_prerequisite(
+    prerequisite_code: str,
+    target_code: str,
+    planning_order: Optional[int],
+    completed_codes: set[str],
+    curriculum_courses: list[RecommendationCurriculumCourse],
+    modules_by_code: dict[str, ModuleModel],
+    student_programme: Optional[str],
+) -> bool:
+    module = modules_by_code.get(prerequisite_code)
+    groups = get_reviewed_prerequisite_groups(prerequisite_code)
+    if (
+        module is None or groups is None or planning_order is None or
+        module.au is None or not module.title or
+        prerequisite_code == target_code or
+        is_deprecated_course_code(module) or
+        is_special_track_only_course(module) or
+        is_non_recommendable_core_project(module) or
+        is_unavailable_to_student_programme(module, student_programme)
+    ):
+        return False
+
+    equivalent_codes = {prerequisite_code, PREREQUISITE_EQUIVALENTS.get(prerequisite_code)}
+    if any(
+        not course.isChoiceSlot and course.courseCode.upper() in equivalent_codes
+        for course in curriculum_courses
+    ):
+        return False
+
+    return any(all(
+        code not in {prerequisite_code, target_code} and
+        get_completed_prerequisite_code(code, completed_codes, modules_by_code) is not None
+        for code in group
+    ) for group in groups)
 
 def get_existing_prerequisite_course_codes(
     prerequisite_codes: list[str],
     slot: RecommendationChoiceSlot,
     curriculum_courses: list[RecommendationCurriculumCourse],
     prerequisite_modules_by_code: dict[str, ModuleModel],
+    student_programme: Optional[str] = None,
 ) -> list[str]:
     target_order = get_semester_order(slot.year, slot.semester)
 
@@ -705,19 +791,23 @@ def get_existing_prerequisite_course_codes(
     for course in curriculum_courses:
         course_order = get_semester_order(course.year, course.semester)
         course_code = course.courseCode.upper()
-        course_title = course.title or ""
+        course_module = prerequisite_modules_by_code.get(course_code)
+        matching_requirements = [
+            code for code in prerequisite_codes
+            if course_code in (code, PREREQUISITE_EQUIVALENTS.get(code))
+        ]
 
         if (
-            not course.isChoiceSlot and
+            course.nodeId and not course.isChoiceSlot and
             course_order is not None and
             course_order < target_order and
-            (
-                course_code in prerequisite_codes or
-                has_equivalent_prerequisite_title(
-                    course_title,
-                    prerequisite_codes,
-                    prerequisite_modules_by_code,
-                )
+            course_module is not None and
+            not is_special_track_only_course(course_module) and
+            not is_unavailable_to_student_programme(course_module, student_programme) and
+            any(
+                prerequisite_modules_by_code.get(code) is not None and
+                not is_unavailable_to_student_programme(prerequisite_modules_by_code[code], student_programme)
+                for code in matching_requirements
             )
         ):
             existing_codes.append(course_code)
@@ -759,80 +849,77 @@ def add_planned_roadmap_artifacts(
     choice_slots: list[RecommendationChoiceSlot],
     curriculum_courses: list[RecommendationCurriculumCourse],
 ) -> list[CourseRecommendation]:
-    remaining_semester_orders = sorted({
-        semester_order
-        for slot in choice_slots
-        for semester_order in [get_semester_order(slot.year, slot.semester)]
-        if semester_order is not None
-    })
+    occupied_ids = {
+        course.nodeId for course in curriculum_courses if course.nodeId
+    } | {slot.slotId for slot in choice_slots if slot.slotId}
+    planned_nodes_by_code: dict[str, RecommendationPlannedRoadmapNode] = {}
+    ordered_nodes = sorted(
+        [node for recommendation in recommendations for node in recommendation.plannedRoadmapNodes],
+        key=lambda node: (node.year, node.semester, node.courseCode),
+    )
+    for node in ordered_nodes:
+        if node.courseCode in planned_nodes_by_code:
+            continue
+        node_id = node.id
+        while node_id in occupied_ids:
+            node_id += "-generated"
+        occupied_ids.add(node_id)
+        planned_nodes_by_code[node.courseCode] = node.model_copy(update={"id": node_id})
 
-    return [
-        recommendation.model_copy(
-            update={
-                "plannedRoadmapNodes": build_planned_roadmap_nodes(
-                    recommendation,
-                    remaining_semester_orders,
-                ),
-                "plannedRoadmapEdges": build_planned_roadmap_edges(
-                    recommendation,
-                    curriculum_courses,
-                ),
-            }
-        )
-        for recommendation in recommendations
-    ]
+    emitted_codes: set[str] = set()
+    results = []
+    for recommendation in recommendations:
+        nodes = []
+        for code in recommendation.plannedPrerequisiteCourseCodes:
+            if code in planned_nodes_by_code and code not in emitted_codes:
+                nodes.append(planned_nodes_by_code[code])
+                emitted_codes.add(code)
+
+        results.append(recommendation.model_copy(update={
+            "plannedRoadmapNodes": nodes,
+            "plannedRoadmapEdges": build_planned_roadmap_edges(
+                recommendation, curriculum_courses, planned_nodes_by_code,
+            ),
+        }))
+
+    return results
 
 def build_planned_roadmap_nodes(
-    recommendation: CourseRecommendation,
-    remaining_semester_orders: list[int],
+    course_code: str,
+    readiness: RecommendationReadiness,
+    prerequisite_recommendations: list[RecommendationPrerequisite],
 ) -> list[RecommendationPlannedRoadmapNode]:
-    target_order = get_semester_order(
-        recommendation.matchedChoiceSlotYear,
-        recommendation.matchedChoiceSlotSemester,
-    )
-
-    if target_order is None:
-        return []
-
-    prerequisite_semester_order = next(
-        (
-            semester_order
-            for semester_order in reversed(remaining_semester_orders)
-            if semester_order < target_order
-        ),
-        None,
-    )
-
-    if prerequisite_semester_order is None:
+    if readiness.planned_prerequisite_semester_order is None:
         return []
 
     prerequisite_year, prerequisite_semester = get_semester_from_order(
-        prerequisite_semester_order,
+        readiness.planned_prerequisite_semester_order,
     )
     prerequisites_by_code = {
         prerequisite.courseCode: prerequisite
-        for prerequisite in recommendation.prerequisiteRecommendations
+        for prerequisite in prerequisite_recommendations
     }
 
     return [
         RecommendationPlannedRoadmapNode(
-            id=get_recommended_prerequisite_node_id(recommendation, prerequisite_code),
+            id=f"recommended-prerequisite-{prerequisite_code.lower()}-year{prerequisite_year}-sem{prerequisite_semester}",
             courseCode=prerequisite_code,
             title=prerequisites_by_code[prerequisite_code].title,
             type="Recommended Pre-Requisite",
             year=prerequisite_year,
             semester=prerequisite_semester,
             academicUnits=prerequisites_by_code[prerequisite_code].academicUnits or 0,
-            prerequisiteText=f"Recommended prerequisite for {recommendation.courseCode}",
-            recommendedForCourseCode=recommendation.courseCode,
+            prerequisiteText=f"Recommended prerequisite for {course_code}",
+            recommendedForCourseCode=course_code,
         )
-        for prerequisite_code in recommendation.plannedPrerequisiteCourseCodes
+        for prerequisite_code in readiness.planned_prerequisite_course_codes
         if prerequisite_code in prerequisites_by_code
     ]
 
 def build_planned_roadmap_edges(
     recommendation: CourseRecommendation,
     curriculum_courses: list[RecommendationCurriculumCourse],
+    planned_nodes_by_code: dict[str, RecommendationPlannedRoadmapNode],
 ) -> list[RecommendationPlannedRoadmapEdge]:
     if not recommendation.matchedChoiceSlotId:
         return []
@@ -842,8 +929,9 @@ def build_planned_roadmap_edges(
     prerequisite_node_ids = [
         *get_existing_prerequisite_node_ids(recommendation, curriculum_courses),
         *[
-            get_recommended_prerequisite_node_id(recommendation, prerequisite_code)
+            planned_nodes_by_code[prerequisite_code].id
             for prerequisite_code in recommendation.plannedPrerequisiteCourseCodes
+            if prerequisite_code in planned_nodes_by_code
         ],
     ]
 
@@ -860,71 +948,6 @@ def build_planned_roadmap_edges(
             edge_keys.add(edge_key)
 
     return edges
-
-def get_recommended_prerequisite_node_id(
-    recommendation: CourseRecommendation,
-    prerequisite_course_code: str,
-) -> str:
-    return (
-        "recommended-prerequisite-"
-        f"{recommendation.matchedChoiceSlotId}-"
-        f"{prerequisite_course_code.lower()}"
-    )
-
-# Older CZ prerequisites can correspond to newer SC curriculum rows with the same title.
-def has_equivalent_prerequisite_title(
-    course_title: str,
-    prerequisite_codes: list[str],
-    prerequisite_modules_by_code: dict[str, ModuleModel],
-) -> bool:
-    course_title_keys = {normalize_title(course_title), get_title_signature(course_title)}
-
-    return any(
-        bool(course_title_keys.intersection({
-            normalize_title(prerequisite_module.title),
-            get_title_signature(prerequisite_module.title),
-        }))
-        for prerequisite_code in prerequisite_codes
-        for prerequisite_module in [prerequisite_modules_by_code.get(prerequisite_code)]
-        if prerequisite_module is not None
-    )
-
-def get_plannable_prerequisite_course_codes(
-    prerequisite_codes: list[str],
-    slot: RecommendationChoiceSlot,
-    choice_slots: list[RecommendationChoiceSlot],
-    prerequisite_modules_by_code: dict[str, ModuleModel],
-    student_programme: Optional[str],
-) -> list[str]:
-    target_order = get_semester_order(slot.year, slot.semester)
-
-    if target_order is None:
-        return []
-
-    earlier_slots = [
-        choice_slot
-        for choice_slot in choice_slots
-        if (
-            get_semester_order(choice_slot.year, choice_slot.semester) is not None and
-            get_semester_order(choice_slot.year, choice_slot.semester) < target_order
-        )
-    ]
-
-    if not earlier_slots:
-        return []
-
-    plannable_codes = []
-
-    for prerequisite_code in prerequisite_codes:
-        prerequisite_module = prerequisite_modules_by_code.get(prerequisite_code)
-
-        if prerequisite_module and any(
-            can_module_fit_choice_slot(prerequisite_module, earlier_slot, student_programme)
-            for earlier_slot in earlier_slots
-        ):
-            plannable_codes.append(prerequisite_code)
-
-    return sorted(set(plannable_codes))
 
 def get_unlock_value(
     unlock_codes: list[str],
@@ -956,10 +979,24 @@ def get_prerequisite_modules_by_code(
     prerequisites_by_module: dict[str, list[str]],
 ) -> dict[str, ModuleModel]:
     prerequisite_codes = {
-        prerequisite
+        prerequisite.upper()
         for prerequisites in prerequisites_by_module.values()
         for prerequisite in prerequisites
     }
+    for code in prerequisites_by_module:
+        for group in get_reviewed_prerequisite_groups(code) or ():
+            prerequisite_codes.update(group)
+
+    supporting_codes = set(prerequisite_codes)
+    for code in supporting_codes:
+        for group in get_reviewed_prerequisite_groups(code) or ():
+            prerequisite_codes.update(group)
+
+    prerequisite_codes.update(
+        PREREQUISITE_EQUIVALENTS[code]
+        for code in set(prerequisite_codes)
+        if code in PREREQUISITE_EQUIVALENTS
+    )
 
     if not prerequisite_codes:
         return {}
@@ -1203,12 +1240,10 @@ def fill_interest_slots(
     already_used_codes: set[str],
     already_used_titles: set[str],
     normalized_student_faculty: Optional[str],
-    prerequisites_by_module: dict[str, list[str]],
-    prerequisite_modules_by_code: dict[str, "ModuleModel"],
-    unlocks_by_module: dict[str, list[str]],
     candidate_slots: list[RecommendationChoiceSlot],
     curriculum_courses: list[RecommendationCurriculumCourse],
     active_faculties: list[str],
+    limit: int,
 ) -> list[CourseRecommendation]:
     """Pass 2: fill remaining slots using preference match only (no career filter).
 
@@ -1216,7 +1251,7 @@ def fill_interest_slots(
     Returns a list of interest-pick CourseRecommendation objects, one per unfilled slot at most.
     Modules are not re-used across slots (already_used_codes is respected and updated in place).
     """
-    if not unfilled_slots or not preferred_tags:
+    if not unfilled_slots or not preferred_tags or limit <= 0:
         return []
 
     mpe_levels = get_mpe_candidate_levels([slot.courseCode for slot in unfilled_slots])
@@ -1237,12 +1272,19 @@ def fill_interest_slots(
         .order_by(ModuleModel.code)
         .all()
     )
+    interest_codes = [module.code for module in interest_modules]
+    prerequisites_by_module = get_prerequisites_by_module(db, interest_codes)
+    unlocks_by_module = get_unlocks_by_module(db, interest_codes)
+    prerequisite_modules_by_code = get_prerequisite_modules_by_code(db, prerequisites_by_module)
 
     interest_picks: list[CourseRecommendation] = []
     used_codes = set(already_used_codes)
     used_titles = set(already_used_titles)
 
     for slot in unfilled_slots:
+        if len(interest_picks) >= limit:
+            break
+
         candidates: list[tuple[int, CourseRecommendation]] = []
 
         for module in interest_modules:
@@ -1267,9 +1309,10 @@ def fill_interest_slots(
             if not any(get_choice_slot_identity(s) == get_choice_slot_identity(slot) for s in eligible_slots):
                 continue
 
-            prerequisites = prerequisites_by_module.get(module.code, [])
+            prerequisites = prerequisites_by_module.get(module.code)
             unlock_codes = unlocks_by_module.get(module.code, [])
             readiness = evaluate_recommendation_readiness(
+                course_code=module.code,
                 prerequisites=prerequisites,
                 completed_codes=completed_codes,
                 slot=slot,
@@ -1292,8 +1335,18 @@ def fill_interest_slots(
                 completed_codes | excluded_codes,
                 excluded_titles,
             )
-            # Interest picks use a simple preference-only score; career scores are 0.
-            score = max(1, raw_pref + get_unlock_contribution(readiness.unlock_value))
+            if len(prerequisite_recommendations) != len(readiness.planned_prerequisite_course_codes):
+                continue
+
+            # Interest picks include preference, unlock value and planning cost; career scores are 0.
+            score = max(1, (
+                raw_pref +
+                get_unlock_contribution(readiness.unlock_value) +
+                readiness.prerequisite_planning_penalty
+            ))
+            if score < get_minimum_assignment_score(slot):
+                continue
+
             matched_tags = sorted(preferred_tags.intersection(module.recommendation_tags or []))
             candidates.append((score, CourseRecommendation(
                 courseCode=module.code,
@@ -1307,11 +1360,14 @@ def fill_interest_slots(
                 matchedChoiceSlotYear=slot.year,
                 matchedChoiceSlotSemester=slot.semester,
                 matchedKeywords=[f"tag:{t}" for t in matched_tags],
-                prerequisites=prerequisites,
+                prerequisites=readiness.prerequisite_course_codes,
                 missingPrerequisites=readiness.missing_prerequisites,
                 existingPrerequisiteCourseCodes=readiness.existing_prerequisite_course_codes,
                 plannedPrerequisiteCourseCodes=readiness.planned_prerequisite_course_codes,
                 prerequisiteRecommendations=prerequisite_recommendations,
+                plannedRoadmapNodes=build_planned_roadmap_nodes(
+                    module.code, readiness, prerequisite_recommendations,
+                ),
                 readinessStatus=readiness.status,
                 unlockValue=readiness.unlock_value,
                 score=score,
@@ -1610,7 +1666,6 @@ def get_top_evidence_skill_contribution(
 
 def round_positive_score(score: float) -> int:
     return int(score + 0.5)
-
 
 def build_career_skill_evidence(
     career_goal: str,

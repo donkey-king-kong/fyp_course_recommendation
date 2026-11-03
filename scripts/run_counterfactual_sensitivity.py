@@ -21,19 +21,21 @@ from urllib.error import HTTPError, URLError
 
 # Reuse request helpers from the benchmark runner to stay consistent.
 from run_recommendation_benchmark_predictions import (
+    add_provenance_args,
     build_recommendation_request,
+    capture_provenance,
     post_json,
+    unique_course_codes,
 )
+from evaluate_recommendation_benchmark import validate_response
 
 OLD_CODE_PREFIXES = ("CE", "CPE", "CSC", "CZ")
 DEFAULT_BENCHMARK_PATH = "data/recommendation_benchmark_cases.json"
 DEFAULT_API_URL = "http://127.0.0.1:8000/recommendations"
 
-
 def load_benchmark(path: Path) -> dict[str, Any]:
     with path.open() as f:
         return json.load(f)
-
 
 def case_by_id(benchmark: dict[str, Any], case_id: str) -> dict[str, Any]:
     for case in benchmark.get("cases", []):
@@ -41,36 +43,37 @@ def case_by_id(benchmark: dict[str, Any], case_id: str) -> dict[str, Any]:
             return case
     raise KeyError(f"Case '{case_id}' not found in benchmark file")
 
-
 def get_recommendations(
     case: dict[str, Any],
     api_url: str,
     overrides: Optional[dict[str, Any]] = None,
     limit: int = 5,
+    captures: Optional[list[dict[str, Any]]] = None,
 ) -> list[dict[str, Any]]:
     """Post a recommendation request for case, applying overrides to the payload."""
     payload = build_recommendation_request(case, limit_override=limit)
     if overrides:
         payload.update(overrides)
     response = post_json(api_url, payload, timeout=10.0)
+    if captures is not None:
+        captures.append({
+            "caseId": case["caseId"], "request": payload, "response": response,
+            "supplementaryValidation": validate_response(payload, response),
+        })
     return response.get("recommendations", [])
-
 
 def course_codes(recs: list[dict[str, Any]]) -> list[str]:
     return [r.get("courseCode", "") for r in recs]
 
-
 def is_old_code(code: str) -> bool:
     return any(code.upper().startswith(p) for p in OLD_CODE_PREFIXES)
-
 
 def slot_fits_code(course_code: str, slot_code: str) -> bool:
     if slot_code == "BDE":
         return True
     if slot_code.startswith("SC") and course_code.startswith("SC"):
-        return course_code[2] == slot_code[2]
+        return len(course_code) > 2 and len(slot_code) > 2 and course_code[2] == slot_code[2]
     return course_code == slot_code
-
 
 def check_invariants(
     recs: list[dict[str, Any]],
@@ -84,7 +87,7 @@ def check_invariants(
     for rec in recs:
         code = rec.get("courseCode", "")
         slot_id = rec.get("matchedChoiceSlotId") or rec.get("slotId") or rec.get("choiceSlotId")
-        slot = next((s for s in choice_slots if s["slotId"] == slot_id), None)
+        slot = next((s for s in choice_slots if s.get("slotId") == slot_id), None)
 
         if is_old_code(code):
             failures.append(f"[{label}] Old code in recommendations: {code}")
@@ -94,13 +97,13 @@ def check_invariants(
             failures.append(f"[{label}] Slot mismatch: {code} assigned to {slot_id} (slot type {slot['courseCode']})")
     return failures
 
-
 class CheckResult:
     def __init__(self, name: str) -> None:
         self.name = name
         self.passed = False
         self.inconclusive = False
         self.messages: list[str] = []
+        self.captures: list[dict[str, Any]] = []
 
     def fail(self, msg: str) -> None:
         self.messages.append(msg)
@@ -115,7 +118,6 @@ class CheckResult:
         if not self.messages:
             self.passed = True
 
-
 def run_career_swap_check(
     benchmark: dict[str, Any],
     api_url: str,
@@ -127,8 +129,8 @@ def run_career_swap_check(
     result = CheckResult(name)
 
     base_case = case_by_id(benchmark, base_case_id)
-    base_recs = get_recommendations(base_case, api_url)
-    swap_recs = get_recommendations(base_case, api_url, overrides={"careerGoal": swap_career})
+    base_recs = get_recommendations(base_case, api_url, captures=result.captures)
+    swap_recs = get_recommendations(base_case, api_url, overrides={"careerGoal": swap_career}, captures=result.captures)
 
     base_codes = set(course_codes(base_recs))
     swap_codes = set(course_codes(swap_recs))
@@ -141,12 +143,12 @@ def run_career_swap_check(
     # At least one swapped recommendation should show the new career goal in its score evidence.
     # The career goal lives in scoreBreakdown.careerSkillEvidence.careerGoal.
     swap_career_found = any(
-        (rec.get("scoreBreakdown") or {}).get("careerSkillEvidence", {}).get("careerGoal") == swap_career
+        ((rec.get("scoreBreakdown") or {}).get("careerSkillEvidence") or {}).get("careerGoal") == swap_career
         for rec in swap_recs
     )
     if not swap_career_found:
         evidences = [
-            (rec.get("scoreBreakdown") or {}).get("careerSkillEvidence", {}).get("careerGoal")
+            ((rec.get("scoreBreakdown") or {}).get("careerSkillEvidence") or {}).get("careerGoal")
             for rec in swap_recs
         ]
         result.fail(
@@ -166,7 +168,6 @@ def run_career_swap_check(
 
     result.ok()
     return result
-
 
 def run_preference_swap_check(
     benchmark: dict[str, Any],
@@ -204,9 +205,9 @@ def run_preference_swap_check(
 
     new_tags = original_tags + [added_tag]
 
-    base_recs = get_recommendations(base_case, api_url)
+    base_recs = get_recommendations(base_case, api_url, captures=result.captures)
     swap_recs = get_recommendations(
-        base_case, api_url, overrides={"preferredRecommendationTags": new_tags}
+        base_case, api_url, overrides={"preferredRecommendationTags": new_tags}, captures=result.captures,
     )
 
     # Aliases from RECOMMENDATION_TAG_ALIASES in recommendation_service.py.
@@ -278,7 +279,6 @@ def run_preference_swap_check(
     result.ok()
     return result
 
-
 def run_completion_change_check(
     benchmark: dict[str, Any],
     api_url: str,
@@ -289,7 +289,7 @@ def run_completion_change_check(
     result = CheckResult(name)
 
     base_case = case_by_id(benchmark, base_case_id)
-    base_recs = get_recommendations(base_case, api_url)
+    base_recs = get_recommendations(base_case, api_url, captures=result.captures)
 
     if not base_recs:
         result.fail("Base case returned no recommendations — cannot test completion change.")
@@ -301,7 +301,7 @@ def run_completion_change_check(
         return result
 
     new_completed = list(base_case.get("completedCourseCodes", [])) + [top_code]
-    new_curriculum = list(base_case.get("curriculumCourses", [])) + [top_code]
+    new_curriculum = unique_course_codes(build_recommendation_request(base_case, 5)["excludedCourseCodes"] + [top_code])
     swap_recs = get_recommendations(
         base_case,
         api_url,
@@ -309,6 +309,7 @@ def run_completion_change_check(
             "completedCourseCodes": new_completed,
             "excludedCourseCodes": new_curriculum,
         },
+        captures=result.captures,
     )
 
     swap_codes = [r.get("courseCode", "") for r in swap_recs]
@@ -339,7 +340,6 @@ def run_completion_change_check(
     result.ok()
     return result
 
-
 def run_career_conflict_check(
     benchmark: dict[str, Any],
     api_url: str,
@@ -358,7 +358,7 @@ def run_career_conflict_check(
     result = CheckResult(name)
 
     recs = get_recommendations(
-        base_case, api_url, overrides={"preferredRecommendationTags": conflicting_tags}
+        base_case, api_url, overrides={"preferredRecommendationTags": conflicting_tags}, captures=result.captures,
     )
 
     for rec in recs:
@@ -366,7 +366,7 @@ def run_career_conflict_check(
         if source != "career":
             continue  # interest picks are allowed to have no career evidence
 
-        evidence_goal = (rec.get("scoreBreakdown") or {}).get("careerSkillEvidence", {}).get("careerGoal")
+        evidence_goal = ((rec.get("scoreBreakdown") or {}).get("careerSkillEvidence") or {}).get("careerGoal")
         if evidence_goal is not None and evidence_goal != career_goal:
             result.fail(
                 f"Career pick {rec.get('courseCode')} has careerSkillEvidence.careerGoal='{evidence_goal}' "
@@ -389,7 +389,6 @@ def run_career_conflict_check(
         result.fail(msg)
 
     return result
-
 
 def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]:
     results: list[CheckResult] = []
@@ -427,7 +426,6 @@ def run_all_checks(benchmark: dict[str, Any], api_url: str) -> list[CheckResult]
 
     return results
 
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run counterfactual sensitivity checks against the live recommendation backend."
@@ -447,8 +445,8 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional path to write results JSON for reporting.",
     )
+    add_provenance_args(parser)
     return parser.parse_args()
-
 
 def main() -> None:
     args = parse_args()
@@ -466,6 +464,11 @@ def main() -> None:
     passed = [r for r in results if r.passed]
     failed = [r for r in results if not r.passed and not r.inconclusive]
     inconclusive = [r for r in results if r.inconclusive]
+    response_captures = [capture for result in results for capture in result.captures]
+    supplementary_failures = [
+        message for capture in response_captures
+        for message in capture["supplementaryValidation"]["violations"]
+    ]
 
     print()
     for r in results:
@@ -492,6 +495,11 @@ def main() -> None:
 
     if args.output:
         output = {
+            "provenance": capture_provenance(args.serving_revision, args.database_fingerprint),
+            "apiUrl": args.api_url,
+            "historicalChecksNote": "Existing sensitivity outcomes retained; supplementary contract checks are reported separately.",
+            "supplementaryViolationCount": len(supplementary_failures),
+            "captures": response_captures,
             "totalChecks": len(results),
             "passed": len(passed),
             "failed": len(failed),
@@ -512,11 +520,12 @@ def main() -> None:
             f.write("\n")
         print(f"Results written to {args.output}")
 
-    if failed:
+    for message in supplementary_failures:
+        print(f"  [CONTRACT FAIL] {message}")
+    if failed or supplementary_failures:
         print()
         print("Some checks FAILED. Record these as findings; do not tune scoring weights here.")
         sys.exit(1)
-
 
 if __name__ == "__main__":
     main()
