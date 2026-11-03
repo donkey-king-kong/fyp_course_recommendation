@@ -40,7 +40,7 @@ The expected student workflow is:
 
 ## Capabilities and Constraints
 
-Current capabilities include FastAPI routes and services, a PostgreSQL-backed module catalog, static CSC roadmap sample data, curriculum guide PDF parsing, transcript PDF parsing, personalized roadmap matching, roadmap readiness checks, and deterministic recommendations for Software Engineer-oriented skill mapping.
+Current capabilities include FastAPI routes and services, a PostgreSQL-backed module catalog, static CSC roadmap sample data, curriculum guide PDF parsing, transcript PDF parsing, personalized roadmap matching, roadmap readiness checks, and deterministic recommendations with static skill mappings for six career goals.
 
 The frontend is a Vite React TypeScript app with ReactFlow kept as a graph visualization dependency and Zustand for browser-side state. The backend uses Python, FastAPI, Pydantic, PyMuPDF, SQLAlchemy, PostgreSQL support, and Uvicorn.
 
@@ -56,7 +56,7 @@ Confirmed constraints:
 
 Open decisions:
 
-- How broad the career-skill mapping should become beyond Software Engineer.
+- How expert review should validate contested recommendations and explanation paths.
 - When user data should move from browser storage to server-side persistence keyed by `oid`.
 - Whether future explanation quality needs RAGAS, expert review, or both.
 
@@ -70,10 +70,10 @@ The project should remain beginner-friendly for the builder, with simple milesto
 
 Real evidence and source materials include:
 
-- `README.md` for run instructions and recommendation logic summary.
-- `Diagrams.md` for product architecture and student-context flow.
-- `Progress.md` and `Progress2.md` for completed feature history and next steps.
-- `AGENTS.md` for rebuild rules, architecture style, milestone order, and constraints.
+- [README.md](../../README.md) for run instructions and recommendation logic summary.
+- [Diagrams.md](Diagrams.md) for product architecture and student-context flow.
+- [Progress index](../progress/README.md) for feature history and [STATUS.md](../STATUS.md) for next steps.
+- [AGENTS.md](../../AGENTS.md) for project rules and [development plan](../plans/Development_Plan.md) for milestone order.
 - `data/test_csc_roadmap.json` and related roadmap data as sample/test data.
 - Uploaded curriculum guide and transcript PDFs during local prototype use.
 
