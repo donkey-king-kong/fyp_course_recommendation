@@ -15,25 +15,28 @@ Last updated: 2026-11-03. This is the session handoff; detailed history is in th
 
 The latest Cloud career-tag correction removed unsupported `backend-engineering` evidence from `SC4052` in the seed JSON and local database. The recorded 24-case follow-up reports nDCG@returned `0.7413`, precision@returned `0.7778`, full slot fill, and zero supplementary contract violations across 53 recommendations. The 180-cell grid records no empty slots or contract violations and 18 weak-fit cells. Positioned scenarios record 8 PASS / 1 INCONCLUSIVE; counterfactual checks record 6 PASS / 2 INCONCLUSIVE, with no failures.
 
-These are recorded results from the combined planning-integrity and tag-correction work, not fresh validation of this documentation cleanup. Draft explanation-path fidelity is `0.5`; some expected paths still reflect the removed Cloud tag. Historical prediction files remain separate snapshots. Full academic eligibility and expert validation are not established by these checks.
+An unchanged fresh baseline captured on 2026-11-03 against an owned backend and fingerprinted local database reproduced 24 cases / 53 recommendations, nDCG@returned `0.7413`, precision@returned `0.7778`, fill `1.0`, and zero supplementary violations. The 180-cell grid again found 18 weak-fit cells and no empty slots; positioned checks were 8 PASS / 1 INCONCLUSIVE and counterfactual checks 6 PASS / 2 INCONCLUSIVE. The [baseline and seven-case review packet](evaluation/Recommendation_Baseline_Review_2026-11-03.md) contains full traceability, discrepancies, and pending decisions. Historical prediction files remain separate snapshots. Draft explanation-path fidelity is `0.5`; full academic eligibility and expert validation remain unestablished.
 
 See the [latest previous progress entry](progress/Progress2.md#cloud-career-tag-correction-and-deferred-interest-ranking-review), [evaluation](evaluation/Evaluation.md), and [technical audit](evaluation/Recommendation_Technical_Audit.md) for provenance and limitations.
 
 ## Next Priorities
 
-1. Conduct expert review / think-aloud on changed and weak-fit recommendations, contested course content, and expected explanation paths before changing labels or scoring constants.
-2. Implement NTU SSO as the next major feature after benchmark review. Use backend-owned Microsoft MSAL OAuth callback and a server session; keep Azure tokens out of the frontend. Use tenant-validated Azure `oid` as the internal identity, separate from matriculation number and display email. App registration, tenant configuration, and the MSAL dependency require preparation; ask before major new dependencies.
-3. Migrate profile, curriculum, transcript, completion, and recommendation state to server-side storage keyed by authenticated identity after SSO. Browser storage becomes a UI cache.
+1. Use the evidence-based seven-case review for the **Software Engineer and Data Engineer pilot**. The owner confirmed strong eligible career matches first, then useful eligible explicit-interest alternatives for remaining slots, then explained open slots. Strength boundaries and eligibility remain uncalibrated; this internal review is not independent expert validation or policy implementation. Preserve the full 24-case benchmark, especially cases 001-005. Resolve stale Cloud label paths and the `SC4001` neural-versus-computer-network semantic defect separately from threshold changes; `SC4022` does mention cyber-security applications, but strong secure-software credit remains contested.
+2. Review course evidence and career/interest boundaries before choosing thresholds, then implement the bounded weak-fit policy in a separate work unit. Approved direction: strong career match -> normal recommendation; useful explicit interest match without strong career fit -> labelled interest alternative; neither -> leave the slot open with an explanation. This policy is not implemented yet, and 100% slot fill is not the goal.
+3. Build a small, evidence-backed student skills picture using completed courses and static mappings first. Then add permitted job-market evidence for the two pilot roles, followed by grounded pathway chat and combined evaluation. Keep ranking and allocation deterministic and backend-owned; retain the other four careers and full-suite regression checks.
+4. Work on NTU SSO and identity-scoped server persistence **after the recommendation-and-chat phase**, not as the next major feature. Retain backend-owned MSAL authentication, tenant-validated Azure `oid` and server-session boundaries.
 
-Read the [development plan](plans/Development_Plan.md) when starting these features; verify integration details against current official documentation before implementation.
+The [development plan](plans/Development_Plan.md) replaces the old SSO-first sequence with dependency-based steps and no calendar deadlines. Source-access research can begin early, but this plan does not authorize starting all integrations.
 
 ## Unresolved And Deferred Work
 
-- Broader interest-ranking calibration is deferred at the project owner's request. AI-focused Software Engineer cases still expose broad Cloud keyword credit and preference scaling concerns. Review content and policy before tuning; do not hardcode winning courses.
+- AI-focused Software Engineer cases still expose broad Cloud keyword credit and preference scaling concerns. Their policy review is now part of the baseline step; broader weight tuning remains deferred until evidence is reviewed. Do not hardcode winning courses.
 - Cloud planning for a new prerequisite card is inconclusive where `SC1004` co-requisites or `MH2802` H2 Maths conditions remain unreviewed. Completed or existing earlier prerequisite paths have narrower supported behavior.
 - Full prerequisite chains, co-requisites, cohort registration, offering availability, and workload/AU capacity remain outside current guarantees.
 - Browser profile, transcript, curriculum, and completion state is inspectable and user-controlled; there is no production identity or cross-device user persistence.
-- Neo4j, ChromaDB, LangGraph, OpenAI, embeddings, ML ranking, MyCareersFuture scraping, RAGAS, and A/B infrastructure remain deferred. Keep the existing offline evaluator.
+- Job-source access, skill-depth representation and weak-fit thresholds remain undecided. MyCareersFuture is a candidate source, not a verified public API; permitted collection, storage and reuse must be established before integration.
+- No job-market pipeline, student skills-gap model or LLM chat has been implemented. LangGraph/model work follows a working chat stub and understood workflow; RAGAS follows generated explanations. Keep the existing offline evaluator.
+- Neo4j, ChromaDB, embeddings, ML/LLM ranking and A/B infrastructure are not required for the pilot and remain deferred.
 
 ## Documentation And Workflows
 

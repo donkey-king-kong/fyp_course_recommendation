@@ -37,3 +37,79 @@ Status: Implemented; verification is recorded below.
 ### Next Step
 
 Follow `docs/STATUS.md`: expert review before broader recommendation calibration, then NTU SSO and server-side persistence.
+
+## Recommendation Development Plan And Weak-Fit Policy
+
+Date: 2026-11-03
+
+Status: Planning documents updated. Baseline capture, expert review and policy implementation remain pending.
+
+### What Changed
+
+- Replaced the old SSO-first development sequence with dependency-based steps: baseline/policy, student skills picture, job-market evidence, pathway chat, combined evaluation, then SSO and server persistence. No calendar deadlines are assigned.
+- Scoped the improvement pilot to Software Engineer and Data Engineer while retaining existing support and regression coverage for all six careers.
+- Recorded the owner's approved weak-fit direction: normal career recommendations for strong matches, labelled interest alternatives for useful explicit interest matches, and open slots with explanations when neither applies.
+- Added a seven-case review shortlist, evidence checklist and acceptance criteria to `docs/plans/Development_Plan.md`. The shortlist comes from existing case descriptions, not new runtime results.
+- Updated `docs/STATUS.md` and `AGENTS.md` so future work follows the new sequence and does not mistake approved policy for implemented behavior.
+- Retained SSO's backend MSAL, validated-tenant identity and server-session boundaries as deferred guidance. The older 21-case review packet and closed progress logs remain historical records.
+
+### Verification
+
+- Checked local Markdown link targets in the four touched documents; all exist.
+- Confirmed all seven shortlisted case IDs exist in the unchanged 24-case benchmark.
+- Checked live planning guidance for stale SSO-first sequencing and month-based deadlines.
+- `git diff --check` passes. Changes are limited to documentation.
+
+### What Is Not Included Yet
+
+- No scoring, frontend, database, dependency or benchmark-label changes.
+- No fresh baseline capture, new review packet, expert validation or application test run.
+- No job-data pipeline, course-skill model, LLM integration, SSO or server persistence.
+- No commits, pushes or PR publication.
+
+### Next Step
+
+Capture the unchanged baseline with the existing runners and verified serving/data provenance. Prepare a compact review table for the seven pilot cases, adding separately identified boundary scenarios if the capture lacks interest-only or no-strong-match examples. Review evidence before choosing thresholds or implementing the weak-fit behavior.
+
+## Unchanged Baseline Capture And Seven-Case Review Preparation
+
+Date: 2026-11-03
+
+Status: Capture and review preparation complete; human policy review pending.
+
+### What Was Created
+
+- Created `docs/evaluation/Recommendation_Baseline_Review_2026-11-03.md` with reproduction commands, source/database provenance, a seven-case/18-slot review table, discrepancy findings and proposed boundary questions.
+- Saved full exact request/response captures and complete benchmark metrics under `data/review/baseline_2026-11-03/` for the existing 24-case benchmark, 180-cell grid, nine positioned scenarios and eight counterfactual checks.
+- Updated `docs/STATUS.md` with the fresh capture and review stop point. The previously uncommitted planning changes in four documents were inspected and retained.
+
+### Verification
+
+- Owned backend on port 8013 from HEAD `c34650fe0ab8e4de53372b330cb691ef8311db0f`, with no backend/script/catalog diff. Local PostgreSQL had 4,318 modules, 4,178 prerequisites and 34 faculties; read-only row fingerprint `c443b5b0dbb72f014be71ba8780be963cbf09bb23a774b312859a4c1166faf8d` matched before and after. The capture files carry the operator-declared serving/database metadata and local source hashes; the report explains the provenance boundary.
+- Benchmark: 24 unique cases, 53 recommendations, nDCG@returned `0.7413`, precision@returned `0.7778`, all slots filled, zero supplementary violations. Grid: 180/180 filled, 18 weak-fit cells, no violations or pass-2 interest picks. Positioned: 8 pass / 1 inconclusive; counterfactual: 6 pass / 2 inconclusive. The raw/evaluated case, count, response and violation totals agree.
+- Preserved benchmark labels/input, frozen cases 001-005, historical predictions and historical coverage file. The review packet records their SHA-256 digests and the new capture hashes.
+
+### Limitations And Next Step
+
+- Course tags/label notes disagree in some places with current course content or reviewed Cloud prerequisites; these are reported as separate content/data-evidence questions. Code-only curricula do not prove full eligibility or actual offerings. Neither the shortlist nor the grid establishes a no-fit abstention example.
+- Ask the supervisor/TA to review contested course evidence, eligibility and career/interest boundaries. Record extra boundary scenarios separately if needed. Stop before selecting thresholds or implementing the weak-fit policy; no scoring, data, evaluator, labels, commits or pushes were changed for this work unit.
+
+## Internal Pilot Evidence Review
+
+Date: 2026-11-03
+
+Status: Evidence-based course review recorded; owner product decision pending.
+
+- Compared the captured seven cases and 18 assigned slots with the full current database descriptions, curated tags, career mappings and reviewed prerequisite groups. Added per-case judgments to the baseline review packet: 15 plausible career-fit candidates, two explicit-interest candidates and one contested strong-fit candidate. These are internal content judgments, not new benchmark labels or proof of registration eligibility.
+- Corrected an overbroad concern about `SC4022`: its Network Science description explicitly lists cyber-security applications, but does not demonstrate the depth of an applied software-security course. `SC4001`'s neural-network content being credited as computer networking remains a concrete semantic mapping defect. No course data or scores were changed.
+- Escalated only the product trade-off between a supported but interest-mismatched SWE recommendation and a useful explicit-interest option. Missing abstention examples and complete academic eligibility evidence remain to be gathered before policy implementation. External expert validation is distinct from this internal review and would still be needed for an expert-reviewed FYP claim.
+- Verified against the frozen capture and preserved the original uncommitted changes. No benchmark cases, labels, historical captures, policy code, commits or pushes were changed.
+
+## Career-First Slot Priority Confirmed
+
+Date: 2026-11-03
+
+Status: Product priority clarified; weak-fit boundary review and implementation remain pending.
+
+- The owner confirmed career-first selection: strong eligible career matches take priority even when preferences differ; use remaining slots for useful eligible explicit-interest alternatives, otherwise leave slots open with an explanation. A plausible or structurally high-scoring course is not automatically a strong career match.
+- Updated the development plan, current status and seven-case review packet to distinguish this decision from unchosen strength thresholds, unverified academic eligibility and the separate implementation work. The existing baseline captures, draft labels, scripts and application code were not changed.
