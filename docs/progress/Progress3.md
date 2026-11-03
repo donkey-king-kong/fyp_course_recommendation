@@ -124,4 +124,13 @@ Status: Internal qualitative review recorded; full-catalog transition, true abst
 - Proposed a content-evidenced minimum career-fit rule, a verified explicit-interest fallback and explained abstention reasons. No universal numeric threshold is approved; a weak full-catalog winner is not proof that no better eligible alternative exists.
 - Rechecked the database fingerprint and the frozen input, historical prediction and new-capture hashes against the baseline packet. No application, course data, evaluators, case labels or captures were changed.
 - Found a separate standing/fixture gap: `SC3060`'s catalog requires Year 2 standing, but its no-completions positioned request returns `ready`; the recommender does not establish standing from completed AU. Its interest-source routing passes, but student eligibility is unproven. No policy or eligibility code was changed.
-- Next: verify an unrestricted interest-versus-weak-career pair with valid academic standing and a genuinely relevance-based open-slot case. Ask the owner only whether low-level architecture alone should count as a strong Cloud/Platform default; investigate mapping defects and unresolved registration separately.
+- Next: verify an unrestricted interest-versus-weak-career pair with valid academic standing and a genuinely relevance-based open-slot case; investigate mapping defects and unresolved registration separately.
+
+## Cloud/Platform Boundary Decision
+
+Date: 2026-11-03
+
+Status: Owner course-value judgment recorded; full-catalog controls and implementation remain pending.
+
+- `SC3050` Advanced Computer Architecture is useful complementary systems study, but is not a strong default Cloud/Platform recommendation merely because no direct course is available. A verified explicit architecture interest remains a separate possible reason to consider it.
+- An open slot is conditional on checking the full set of eligible career and interest candidates. Updated the boundary packet and status; no scoring, catalog, benchmark or evaluator changes were made.
