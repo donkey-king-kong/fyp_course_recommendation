@@ -202,7 +202,7 @@ Commit `1e30917` removes `backend-engineering` from Cloud Computing's curated ta
 
 Data Engineer case `001` now selects Big Data Management; the cloud-preferring case `002` still ranks Cloud ahead. Draft explanation-path fidelity falls to `0.5`, requiring review of expected paths after Cloud's evidence changes from backend implementation to distributed infrastructure. No benchmark labels were changed. The coverage audit retains 180 filled cells with zero violations and 18 weak-fit cells; positioned scenarios remain 8 PASS / 1 INCONCLUSIVE / 0 FAIL, and counterfactual checks remain 6 PASS / 2 INCONCLUSIVE / 0 FAIL.
 
-The full follow-up captures remain temporary under `/private/tmp/recommendation-career-relevance/`, and no fresh full-database fingerprint was taken after the targeted row update. `Progress2.md` records the course-content rationale and the deferred review of Software Engineer keyword credit and interest scaling. That ranking-quality review does not block other project work.
+The full follow-up captures remain temporary under `/private/tmp/recommendation-career-relevance/`, and no fresh full-database fingerprint was taken after the targeted row update. [Progress2.md](../progress/Progress2.md) records the course-content rationale and the deferred review of Software Engineer keyword credit and interest scaling. That ranking-quality review does not block other project work.
 
 ---
 

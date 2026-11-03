@@ -2,6 +2,8 @@
 
 Clean rebuild of a course recommendation system for NTU students.
 
+See the [documentation guide](docs/README.md) for architecture, evaluation, progress history, and project workflows. Read [current status](docs/STATUS.md) for next priorities and known limitations.
+
 ## Start Backend
 
 From the project root:
@@ -51,13 +53,13 @@ This creates `data/course_catalog.json` for unique module details and `data/cour
 
 ## Recommendation Logic
 
-- The supported career goal is currently `Software Engineer`.
+- Supported career goals: Software Engineer, AI/ML Engineer, Data Engineer, Cloud/Platform Engineer, Cybersecurity Engineer, and Data Scientist.
 - The frontend sends the uploaded curriculum roadmap, open choice slots, completed modules, profile major, career goal, and topic preferences to `POST /recommendations`.
 - The backend owns recommendation filtering, ranking, and exact slot assignment.
 - Hard filters run before scoring: already completed modules, fixed curriculum modules, old CE/CSC code families, slot-level mismatch, prerequisite feasibility, and near-duplicate prior learning.
 - MPE slots such as `SC3xxx` and `SC4xxx` receive current CSC `SC` modules at the matching level.
 - BDE slots can use broader active-faculty module candidates, subject to slot fit and ranking rules.
-- Career relevance is deterministic, not AI-based: `Software Engineer` maps to weighted skill areas, and those skill areas map to curated recommendation tags.
+- Career relevance is deterministic: each supported career maps to weighted skill areas, and those skill areas map to curated recommendation tags.
 - Student topic preferences are soft boosts, not hard filters.
 - Broad-default and specialist metadata helps no-preference Software Engineer recommendations prefer generally useful modules before niche ones.
 - Missing prerequisites can be returned as planned prerequisite roadmap nodes and arrows when useful for planning.
