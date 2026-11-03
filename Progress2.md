@@ -1388,3 +1388,30 @@ Status: Completed follow-up diligence after Opus review
 - Only the `SC4063` benchmark expected path was edited because the course description directly supports `network-security`.
 - Do not make further benchmark-label edits without similarly explicit course-description evidence or supervisor / TA review.
 - This keeps label correction separate from scorer tuning.
+
+## Technical Audit Correction After Sol Max Review
+
+Status: Documentation corrected locally on `recommendation-technical-audit-update`; uncommitted
+
+### Completed
+
+- Corrected `Recommendation_Technical_Audit.md` against source at `8c565e4bf1f9a8e5d9e7b2a9706def514291b65b`. The existing commit only formats `data/ntu_mods.json` and remains intact.
+- Addressed all eight review findings: permissive prerequisite readiness and dangling artifacts; missing pass-2 prerequisite/unlock data; limited constraint-validity checks; pass-2 limit and slot-ID edge cases; saved-snapshot/seed disagreement; synthetic request timing omissions; preference cap and career-ordering inaccuracies; and ranking-neutral Cybersecurity evidence specificity.
+- Separated current source inspection, historical saved benchmark metrics, saved coverage summaries, and previously recorded counterfactual outcomes. The review's 15-of-53 seed disagreement count is explicitly attributed to Sol Max; this correction independently confirmed the `SC3050` mapped-score discrepancy without querying the live database.
+- Preserved expert review / think-aloud as the next evaluation priority and added explicit implementation and provenance follow-ups.
+
+### Verified
+
+- Ran the offline evaluator against existing predictions with bytecode writes disabled and no output file: 24 cases, 53 recommendations, precision@returned `0.6388888888888888`, nDCG@returned `0.6312722104247257`, slot fill `1.0`, implemented-check validity `1.0`, and old-code exposure `0`.
+- Read-only coverage summary confirmed 180 cells, zero recorded violations, zero empty slots, zero interest picks, and 26 weak-fit picks across 26 cells.
+- Independently counted five saved `SC4052` recommendations with `MH2802` prerequisite edges lacking generated source nodes: Software Engineer cases `001`, `005`, `007`, `009`, and `013`.
+- Confirmed all 567 saved curriculum entries lack positions and titles, all saved title-exclusion lists are empty, and the saved benchmark contains zero interest picks.
+- Checked formulas and source paths; isolated helper probes reproduced base preference `45` plus network adjustment `9` giving raw `54`, the career `10` plus scaled raw preference `45` result of `40`, and Cybersecurity generic evidence `10` versus displayed cryptography `6`.
+- Checked trailing whitespace in the untracked audit separately from `git diff --check`, which covers the tracked progress change. Confirmed only the two approved documentation files changed and the JSON commit remains HEAD.
+
+### Outstanding Work And Evidence Boundaries
+
+- Retrieve pass-2 prerequisite/detail/unlock data; enforce remaining budget and consistent slot identity; align the pass-2 penalty with final score; review prerequisite semantics, fallback programme checks, feasible placement, and artifact integrity.
+- Expand evaluation checks and recapture predictions with serving-code, seed/mapping, and database provenance in future scoped work units. Current saved metrics do not establish performance against the current live database.
+- The allocation edge-case probes and aggregate seed disagreement count remain attributed to Sol Max. No live recommendation capture, PostgreSQL query, browser run, or live coverage/counterfactual rerun occurred here. Recorded counterfactual results remain 7 PASS / 0 FAIL / 1 INCONCLUSIVE.
+- No production fixes, new tests, dependencies, benchmark/artifact edits, commits, pushes, or PR creation are included.
