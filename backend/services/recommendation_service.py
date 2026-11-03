@@ -20,6 +20,7 @@ from backend.schemas.recommendation import (
     RecommendationResponse,
     RecommendationScoreBreakdown,
 )
+from backend.services.catalog_mutual_exclusions import conflicts_with_completed_course
 from backend.services.career_skill_mappings import CAREER_SKILL_MAPPINGS, CareerSkillMapping, SkillTagRelationship
 from backend.services.faculty_service import list_active_faculty_names
 from backend.services.module_service import get_prerequisites_by_module, get_unlocks_by_module
@@ -320,6 +321,9 @@ def recommend_courses(
 
     for module in modules:
         if is_excluded_module(module, completed_codes | excluded_codes, excluded_titles):
+            continue
+
+        if conflicts_with_completed_course(module.code, completed_codes):
             continue
 
         if is_deprecated_course_code(module):
@@ -1344,6 +1348,8 @@ def fill_interest_slots(
 
         for module in interest_modules:
             if is_excluded_module(module, completed_codes | excluded_codes, excluded_titles):
+                continue
+            if conflicts_with_completed_course(module.code, completed_codes):
                 continue
             if is_deprecated_course_code(module):
                 continue
