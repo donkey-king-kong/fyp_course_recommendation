@@ -24,10 +24,15 @@ from urllib.error import HTTPError, URLError
 
 # Reuse helpers from existing scripts to stay consistent.
 from run_recommendation_benchmark_predictions import (
+    REPO_ROOT,
+    add_provenance_args,
     build_recommendation_request,
+    capture_provenance,
     post_json,
+    write_json,
 )
 from run_counterfactual_sensitivity import check_invariants, slot_fits_code
+from evaluate_recommendation_benchmark import validate_response
 
 CAREERS = [
     "software-engineer",
@@ -107,14 +112,12 @@ PREFERENCE_MODES: list[tuple[str, str]] = [
 DEFAULT_API_URL = "http://127.0.0.1:8000/recommendations"
 DEFAULT_LIMIT = 5
 
-
 def build_slots(slot_types: list[str]) -> list[dict[str, Any]]:
     """Build choiceSlots list from a list of slot type codes."""
     return [
         {"slotId": f"audit-slot-{i + 1}", "courseCode": slot_type}
         for i, slot_type in enumerate(slot_types)
     ]
-
 
 def build_request(
     career: str,
@@ -143,7 +146,6 @@ def build_request(
         "curriculumCourses": curriculum_dicts,
     }
     return build_recommendation_request(synthetic_case, limit_override=limit)
-
 
 def run_audit_cell(
     career: str,
@@ -191,6 +193,9 @@ def run_audit_cell(
             empty_slots.append(s["slotId"])
 
     return {
+        "request": payload,
+        "response": response,
+        "supplementaryValidation": validate_response(payload, response),
         "career": career,
         "slotConfig": slot_label,
         "progressStage": progress_label,
@@ -207,6 +212,159 @@ def run_audit_cell(
         "recommendedCodes": [r.get("courseCode", "") for r in recs],
     }
 
+# These deliberately constrained catalog fixtures exercise contracts, not recommendation quality.
+def build_positioned_scenarios() -> list[dict[str, Any]]:
+    with (REPO_ROOT / "data/modules.json").open() as file:
+        modules = {module["code"]: module for module in json.load(file)["modules"]}
+    with (REPO_ROOT / "data/course_catalog.json").open() as file:
+        catalog = {module["code"]: module for module in json.load(file)}
+    with (REPO_ROOT / "data/ntu_prerequisite_unlock_graph.json").open() as file:
+        prerequisite_graph = json.load(file)
+    required_codes = {"SC4052", "SC1004", "MH2802", "SC2002", "SC4012", "CC0001", "SC4051", "SC3020", "EE4791", "SC3060"}
+    missing = required_codes - modules.keys()
+    if missing:
+        raise ValueError(f"Positioned scenario fixtures missing from local catalog: {sorted(missing)}")
+    if "MH2802" not in prerequisite_graph.get("SC4052", {}).get("prerequisites", []):
+        raise ValueError("SC4052 planning fixture no longer has graph prerequisite MH2802.")
+    if "computer-graphics" not in modules["SC3060"].get("recommendationTags", []):
+        raise ValueError("SC3060 interest fixture no longer carries computer-graphics.")
+    all_codes = set(modules) | set(catalog)
+
+    def curriculum(code: str, year: int, semester: int) -> dict[str, Any]:
+        return {
+            "nodeId": f"fixed-{code.lower()}", "courseCode": code,
+            "title": modules[code]["title"], "year": year, "semester": semester,
+        }
+
+    def slot(code: str, year: int, semester: int, name: str = "target") -> dict[str, Any]:
+        return {"slotId": name, "courseCode": code, "year": year, "semester": semester}
+
+    def scenario(
+        name: str, allowed: list[str], slots: list[dict[str, Any]],
+        fixed: list[dict[str, Any]], completed: list[str], career: str,
+        preferences: list[str], expectation: dict[str, Any],
+    ) -> dict[str, Any]:
+        case = {
+            "careerGoal": career, "studentFaculty": "CSC", "choiceSlots": slots,
+            "curriculumCourses": [*fixed, *[
+                {
+                    "nodeId": item["slotId"], "courseCode": item["courseCode"],
+                    "title": "Choice slot", "isChoiceSlot": True,
+                    "year": item["year"], "semester": item["semester"],
+                }
+                for item in slots
+            ]],
+            "completedCourseCodes": completed, "preferredRecommendationTags": preferences,
+            "excludedCourseCodes": sorted(all_codes - set(allowed)),
+        }
+        return {
+            "name": name, "request": build_recommendation_request(case, None),
+            "expectation": expectation,
+            "localCatalogRequirements": {code: catalog.get(code, {}).get("prerequisites") for code in allowed},
+        }
+
+    return [
+        scenario(
+            "completed-cloud-alternative", ["SC4052"], [slot("SC4xxx", 4, 1)], [],
+            ["SC1004"], "software-engineer", ["cloud-computing"],
+            {"courseCode": "SC4052", "readinessStatus": "ready", "plannedPrerequisiteCount": 0},
+        ),
+        scenario(
+            "earlier-fixed-prerequisite", ["SC4052"], [slot("SC4xxx", 4, 1)],
+            [curriculum("MH2802", 2, 1)], [], "software-engineer", ["cloud-computing"],
+            {"courseCode": "SC4052", "existingPrerequisite": "MH2802"},
+        ),
+        scenario(
+            "earlier-open-prerequisite-plan", ["SC4052", "SC1004", "MH2802"],
+            [slot("BDE", 2, 2, "earlier"), slot("SC4xxx", 4, 1)], [], ["SC1003", "MH1810"],
+            "software-engineer", ["cloud-computing"],
+            {"courseCode": "SC4052", "plannedPrerequisiteAlternatives": ["SC1004", "MH2802"]},
+        ),
+        scenario(
+            "reviewed-supplementary-prerequisite-plan", ["SC4012", "SC2002"],
+            [slot("SC4xxx", 4, 1)], [curriculum("CC0001", 3, 1)],
+            ["SC1003", "SC2005"], "software-engineer", ["software-security"],
+            {"courseCode": "SC4012", "plannedPrerequisite": "SC2002", "generatedNode": "SC2002"},
+        ),
+        scenario(
+            "no-earlier-placement", ["SC4052", "MH2802"], [slot("SC4xxx", 4, 1)], [], [],
+            "software-engineer", ["cloud-computing"],
+            {"absentCourseCode": "SC4052", "requiredControl": "completed-cloud-alternative"},
+        ),
+        scenario(
+            "bde-year-level", ["SC2002", "SC4051"], [slot("BDE", 2, 1)], [],
+            ["SC1003", "SC1007", "SC1005", "SC2005", "SC2006", "SC2008"], "software-engineer",
+            ["software-engineering"], {"requiredLevel": 2},
+        ),
+        scenario(
+            "title-equivalence-control", ["SC3020"], [slot("SC3xxx", 3, 2)], [],
+            ["SC2207"], "software-engineer", ["database"], {"courseCode": "SC3020"},
+        ),
+        scenario(
+            "fixed-title-equivalence", ["SC3020"], [slot("SC3xxx", 3, 2)],
+            [curriculum("EE4791", 3, 1)], ["SC2207"], "software-engineer",
+            ["database"], {"absentCourseCode": "SC3020", "requiredControl": "title-equivalence-control"},
+        ),
+        scenario(
+            "interest-fallback-graphics", ["SC3060"], [slot("SC3xxx", 3, 1)], [], [],
+            "cybersecurity-engineer", ["computer-graphics"],
+            {"courseCode": "SC3060", "recommendationSource": "interest"},
+        ),
+    ]
+
+def check_scenario_observation(scenario: dict[str, Any], response: dict[str, Any]) -> dict[str, Any]:
+    recs, expectation = response.get("recommendations", []), scenario["expectation"]
+    failures = []
+    absent = expectation.get("absentCourseCode")
+    if absent and any(rec.get("courseCode") == absent for rec in recs):
+        failures.append(f"{absent} should be excluded in this scenario.")
+    if "requiredLevel" in expectation:
+        if not recs:
+            return {"status": "inconclusive", "messages": ["No recommendation returned; year-level behavior was not exercised."]}
+        if any(rec.get("level") != expectation["requiredLevel"] for rec in recs):
+            failures.append("Returned BDE recommendation does not match the requested year-level.")
+    if expectation.get("courseCode"):
+        matches = [rec for rec in recs if rec.get("courseCode") == expectation["courseCode"]]
+        if not matches:
+            return {"status": "inconclusive", "messages": [f"Expected catalog fixture {expectation['courseCode']} was not returned; serving catalog/eligibility is unverified."]}
+        for rec in matches:
+            if expectation.get("generatedNode"):
+                node_ids = {
+                    node["id"] for node in rec.get("plannedRoadmapNodes", [])
+                    if node.get("courseCode") == expectation["generatedNode"] and node.get("id")
+                }
+                if not node_ids:
+                    failures.append(f"Expected supplementary node {expectation['generatedNode']} was not generated.")
+                if not any(edge.get("source") in node_ids and edge.get("target") == rec.get("matchedChoiceSlotId") for edge in rec.get("plannedRoadmapEdges", [])):
+                    failures.append("Expected generated prerequisite edge to the assigned slot was not returned.")
+            if expectation.get("plannedPrerequisiteAlternatives") and not set(expectation["plannedPrerequisiteAlternatives"]).intersection(rec.get("plannedPrerequisiteCourseCodes", [])):
+                failures.append("No supported SC1004/MH2802 prerequisite alternative was planned.")
+            if expectation.get("readinessStatus") and rec.get("readinessStatus") != expectation["readinessStatus"]:
+                failures.append(f"Expected readinessStatus {expectation['readinessStatus']} was not returned.")
+            if "plannedPrerequisiteCount" in expectation and len(rec.get("plannedPrerequisiteCourseCodes", [])) != expectation["plannedPrerequisiteCount"]:
+                failures.append("The completed prerequisite alternative should not need extra planning.")
+            if expectation.get("recommendationSource") and rec.get("recommendationSource") != expectation["recommendationSource"]:
+                failures.append("The intended pass-2 interest path did not fire.")
+            for key, field in (("existingPrerequisite", "existingPrerequisiteCourseCodes"), ("plannedPrerequisite", "plannedPrerequisiteCourseCodes")):
+                if expectation.get(key) and expectation[key] not in rec.get(field, []):
+                    failures.append(f"Expected {key} {expectation[key]} is absent from response metadata.")
+    return {"status": "fail" if failures else "pass", "messages": failures}
+
+def run_positioned_scenarios(api_url: str) -> list[dict[str, Any]]:
+    results = []
+    for scenario in build_positioned_scenarios():
+        response = post_json(api_url, scenario["request"], timeout=15.0)
+        results.append({
+            **scenario, "response": response,
+            "supplementaryValidation": validate_response(scenario["request"], response),
+            "observation": check_scenario_observation(scenario, response),
+        })
+    by_name = {result["name"]: result for result in results}
+    for result in results:
+        control = result["expectation"].get("requiredControl")
+        if control and result["observation"]["status"] == "pass" and by_name[control]["observation"]["status"] != "pass":
+            result["observation"] = {"status": "inconclusive", "messages": [f"Control {control} did not return the candidate; its exclusion cannot be attributed to this scenario."]}
+    return results
 
 def print_summary_table(results: list[dict[str, Any]]) -> None:
     """Print a compact table of fill rates grouped by career x slot config."""
@@ -317,7 +475,6 @@ def print_summary_table(results: list[dict[str, Any]]) -> None:
         print("  Weak-fit picks: none (all filled slots have adequate career signal).")
     print()
 
-
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Coverage audit: measure slot-fill rate across career x slot-type combinations."
@@ -338,11 +495,29 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional path to write results JSON.",
     )
+    parser.add_argument("--mode", choices=["historical-grid", "positioned-scenarios"], default="historical-grid", help="Run separate positioned/titled contract scenarios without mixing historical grid metrics.")
+    add_provenance_args(parser)
     return parser.parse_args()
-
 
 def main() -> None:
     args = parse_args()
+    if args.mode == "positioned-scenarios":
+        try:
+            scenarios = run_positioned_scenarios(args.api_url)
+        except (HTTPError, URLError, ValueError) as error:
+            raise SystemExit(f"Positioned scenarios could not run: {error}") from error
+        for scenario in scenarios:
+            print(f"{scenario['name']}: {scenario['observation']['status']}, contract violations={len(scenario['supplementaryValidation']['violations'])}")
+        output = {
+            "mode": args.mode, "apiUrl": args.api_url, "provenance": capture_provenance(args.serving_revision, args.database_fingerprint),
+            "scope": "Catalog-constrained positioned/titled scenarios; separate from historical coverage and relevance metrics. Raw standing and non-course requirements are not independently validated by the script.",
+            "scenarios": scenarios,
+        }
+        if args.output:
+            write_json(Path(args.output), output)
+        if any(scenario["supplementaryValidation"]["violations"] or scenario["observation"]["status"] == "fail" for scenario in scenarios):
+            raise SystemExit(1)
+        return
 
     total_cells = len(CAREERS) * len(SLOT_CONFIGS) * len(PROGRESS_STAGES) * len(PREFERENCE_MODES)
     print(f"Running coverage audit against {args.api_url}...")
@@ -398,6 +573,11 @@ def main() -> None:
         with output_path.open("w") as f:
             json.dump(
                 {
+                    "mode": args.mode,
+                    "apiUrl": args.api_url,
+                    "provenance": capture_provenance(args.serving_revision, args.database_fingerprint),
+                    "historicalInvariantNote": "Original limited checks retained; supplementary request/response checks are reported separately.",
+                    "supplementaryViolationCount": sum(len(cell["supplementaryValidation"]["violations"]) for cell in results),
                     "totalCells": len(results),
                     "careers": CAREERS,
                     "slotConfigs": [sl for sl, _ in SLOT_CONFIGS],
@@ -413,13 +593,16 @@ def main() -> None:
 
     # Exit nonzero only on invariant violations.
     all_violations = [v for r in results for v in r["invariantViolations"]]
+    supplementary_failures = [message for cell in results for message in cell["supplementaryValidation"]["violations"]]
+    for message in supplementary_failures:
+        print(f"  [CONTRACT FAIL] {message}")
+    all_violations += supplementary_failures
     if all_violations:
         print()
         print(f"AUDIT FAILED: {len(all_violations)} invariant violation(s). See above.")
         sys.exit(1)
     else:
         print("Audit complete. No invariant violations.")
-
 
 if __name__ == "__main__":
     main()
