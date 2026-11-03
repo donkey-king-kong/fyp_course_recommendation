@@ -1,6 +1,6 @@
 from typing import Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 RecommendationReadinessStatus = Literal["ready", "needs-prerequisite-planning"]
 RecommendationConfidence = Literal["standard", "low"]
@@ -8,7 +8,11 @@ RecommendationConfidence = Literal["standard", "low"]
 class RecommendationChoiceSlot(BaseModel):
     slotId: Optional[str] = Field(
         default=None,
-        description="Frontend roadmap node ID for this exact open choice slot.",
+        min_length=1,
+        description=(
+            "Unique frontend roadmap node ID for this exact open choice slot. When omitted, "
+            "the backend returns a deterministic ID based on the slot's request position."
+        ),
         examples=["year3-sem1-slot2"],
     )
     courseCode: str = Field(
@@ -17,11 +21,14 @@ class RecommendationChoiceSlot(BaseModel):
     )
     year: Optional[int] = Field(
         default=None,
+        ge=1,
         description="Roadmap year where this open choice slot appears.",
         examples=[3],
     )
     semester: Optional[int] = Field(
         default=None,
+        ge=1,
+        le=2,
         description="Roadmap semester where this open choice slot appears.",
         examples=[1],
     )
@@ -43,11 +50,14 @@ class RecommendationCurriculumCourse(BaseModel):
     )
     year: Optional[int] = Field(
         default=None,
+        ge=1,
         description="Roadmap year where this course appears.",
         examples=[1],
     )
     semester: Optional[int] = Field(
         default=None,
+        ge=1,
+        le=2,
         description="Roadmap semester where this course appears.",
         examples=[2],
     )
@@ -112,6 +122,15 @@ class RecommendationRequest(BaseModel):
             "currently sends one slot per open choice slot."
         ),
     )
+
+    @model_validator(mode="after")
+    def validate_unique_slot_ids(self) -> "RecommendationRequest":
+        slot_ids = [slot.slotId for slot in self.choiceSlots if slot.slotId is not None]
+
+        if len(slot_ids) != len(set(slot_ids)):
+            raise ValueError("choiceSlots must have unique slotId values.")
+
+        return self
 
 class RecommendationPrerequisite(BaseModel):
     courseCode: str
@@ -251,7 +270,9 @@ class CourseRecommendation(BaseModel):
         description="Roadmap semester of the assigned choice slot.",
     )
     matchedKeywords: list[str]
-    prerequisites: list[str]
+    prerequisites: list[str] = Field(
+        description="Course codes in the selected prerequisite branch, with verified legacy equivalents resolved.",
+    )
     missingPrerequisites: list[str]
     existingPrerequisiteCourseCodes: list[str]
     plannedPrerequisiteCourseCodes: list[str]
@@ -265,7 +286,10 @@ class CourseRecommendation(BaseModel):
         description="Backend-planned prerequisite arrows that connect planned nodes to the assignment.",
     )
     readinessStatus: RecommendationReadinessStatus = Field(
-        description="Whether the recommendation is ready now or needs prerequisite planning.",
+        description=(
+            "Whether the selected course-prerequisite branch is completed or depends on "
+            "earlier curriculum/planned modules. This does not verify standing or registration permission."
+        ),
     )
     unlockValue: int
     score: int
