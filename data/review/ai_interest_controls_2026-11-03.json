@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "status": "synthetic-full-catalog-interest-pair-not-benchmark-labels",
+  "purpose": "Hold the AI/ML Y4-end coverage profile constant and change only an explicit HCI interest.",
+  "notes": [
+    "Completed and curriculum courses match the frozen Y4-end coverage-grid cell.",
+    "SC3061 is a semantically matching interest candidate; no catalog course-code or standing prerequisite is listed, but actual registration remains unverified.",
+    "These are synthetic diagnostics with no human relevance labels, not revised benchmark cases."
+  ],
+  "cases": [
+    {
+      "caseId": "boundary-ai-y4-none",
+      "careerGoal": "ai-ml-engineer",
+      "studentFaculty": "CSC",
+      "preferredRecommendationTags": [],
+      "completedCourseCodes": ["SC1003", "SC1013", "MH1810", "MH1812", "CC0003", "CC0005", "AB1201", "AB1501", "AD1102", "CC0001", "CC0002", "EG1001", "SC1004", "SC1005", "SC1007", "SC1015", "CC0007", "SC1006", "SC2000", "SC2001", "SC2002", "SC2006", "AB1601", "CC0006", "ML0004", "SC2005", "SC2008", "SC2207", "SC3000", "SC3920", "AD2102", "BE1402", "SC3010", "SC4000", "SC4002"],
+      "choiceSlots": [{"slotId": "audit-slot-1", "courseCode": "SC3xxx"}],
+      "curriculumCourses": ["SC1003", "SC1013", "MH1810", "MH1812", "CC0003", "CC0005", "SC1005", "SC1007", "SC1015", "EG1001", "CC0001", "CC0002", "SC1004", "SC1006", "SC2001", "SC2002", "CC0007", "SC2000", "SC2005", "SC2006", "SC2207", "CC0006", "ML0004", "SC2008", "SC2079", "SC3000", "SC3010", "HW0288", "SC4079", "SC3920"],
+      "limit": 5
+    },
+    {
+      "caseId": "boundary-ai-y4-hci-interest",
+      "careerGoal": "ai-ml-engineer",
+      "studentFaculty": "CSC",
+      "preferredRecommendationTags": ["human-computer-interaction"],
+      "completedCourseCodes": ["SC1003", "SC1013", "MH1810", "MH1812", "CC0003", "CC0005", "AB1201", "AB1501", "AD1102", "CC0001", "CC0002", "EG1001", "SC1004", "SC1005", "SC1007", "SC1015", "CC0007", "SC1006", "SC2000", "SC2001", "SC2002", "SC2006", "AB1601", "CC0006", "ML0004", "SC2005", "SC2008", "SC2207", "SC3000", "SC3920", "AD2102", "BE1402", "SC3010", "SC4000", "SC4002"],
+      "choiceSlots": [{"slotId": "audit-slot-1", "courseCode": "SC3xxx"}],
+      "curriculumCourses": ["SC1003", "SC1013", "MH1810", "MH1812", "CC0003", "CC0005", "SC1005", "SC1007", "SC1015", "EG1001", "CC0001", "CC0002", "SC1004", "SC1006", "SC2001", "SC2002", "CC0007", "SC2000", "SC2005", "SC2006", "SC2207", "CC0006", "ML0004", "SC2008", "SC2079", "SC3000", "SC3010", "HW0288", "SC4079", "SC3920"],
+      "limit": 5
+    }
+  ]
+}

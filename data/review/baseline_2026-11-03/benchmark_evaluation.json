@@ -1,0 +1,1895 @@
+{
+  "k": 5,
+  "metricOrder": "backend-score-desc",
+  "metricOrderNote": "Rank-sensitive metrics sort predictions by backend score because recommendation responses are exact slot assignments for roadmap rendering.",
+  "constraintValidityNote": "Historical constraintValidity checks only nonempty/current codes, completed/fixed code exclusion and limited slot compatibility, over the score-ranked top K. Supplementary validation uses the complete response; it does not prove academic or programme eligibility. Missing evidence is reported as not-observable.",
+  "supplementaryViolationCount": 0,
+  "caseCount": 24,
+  "caseCoverage": 1.0,
+  "totalPredictionsEvaluated": 53,
+  "averagePrecisionAtK": 0.3333333333333335,
+  "averageNdcgAtK": 0.5338736010582166,
+  "averagePrecisionAtReturned": 0.7777777777777777,
+  "averageNdcgAtReturned": 0.7413165112123975,
+  "averageSlotFillRate": 1.0,
+  "averageExplanationCoverage": 1.0,
+  "averageExplanationFidelity": 0.5,
+  "averageSkillAreaDiversityAtK": 1.5,
+  "oldCodeExposure": 0,
+  "averageConstraintValidity": 1.0,
+  "cases": [
+    {
+      "caseId": "software-engineer-csc-001",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 85.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4051",
+          "score": 68.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.7496894026006554,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.9134015924715543,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.5,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-002",
+      "recommendationCount": 4,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 52.0,
+          "matchedChoiceSlotId": "y4-s2-mpe4"
+        },
+        {
+          "courseCode": "SC4001",
+          "score": 51.0,
+          "matchedChoiceSlotId": "y4-s1-mpe3"
+        },
+        {
+          "courseCode": "SC3020",
+          "score": 30.0,
+          "matchedChoiceSlotId": "y3-s2-mpe1"
+        },
+        {
+          "courseCode": "SC3040",
+          "score": 24.0,
+          "matchedChoiceSlotId": "y3-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.4053567506977591,
+      "precisionAtReturned": 0.5,
+      "ndcgAtReturned": 0.44859091644534477,
+      "expectedSlotCount": 4,
+      "assignedSlotCount": 4,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 4,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 4,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 4,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 4,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 4,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-003",
+      "recommendationCount": 3,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4010",
+          "score": 61.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4022",
+          "score": 58.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        },
+        {
+          "courseCode": "SC4012",
+          "score": 43.0,
+          "matchedChoiceSlotId": "y4-s2-bde1"
+        }
+      ],
+      "precisionAtK": 0.2,
+      "ndcgAtK": 0.4201095117220563,
+      "precisionAtReturned": 0.3333333333333333,
+      "ndcgAtReturned": 0.5090967735771897,
+      "expectedSlotCount": 3,
+      "assignedSlotCount": 3,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 3,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-004",
+      "recommendationCount": 3,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 73.0,
+          "matchedChoiceSlotId": "y4-s1-mpe3"
+        },
+        {
+          "courseCode": "SC3020",
+          "score": 63.0,
+          "matchedChoiceSlotId": "y3-s2-mpe1"
+        },
+        {
+          "courseCode": "SC3040",
+          "score": 24.0,
+          "matchedChoiceSlotId": "y3-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.4050960946111744,
+      "precisionAtReturned": 0.6666666666666666,
+      "ndcgAtReturned": 0.4909032264228103,
+      "expectedSlotCount": 3,
+      "assignedSlotCount": 3,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 3,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-005",
+      "recommendationCount": 3,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 66.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4051",
+          "score": 49.0,
+          "matchedChoiceSlotId": "y4-s2-mpe3"
+        },
+        {
+          "courseCode": "SC4013",
+          "score": 39.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.4104959434080106,
+      "precisionAtReturned": 0.6666666666666666,
+      "ndcgAtReturned": 0.5307212739772434,
+      "expectedSlotCount": 3,
+      "assignedSlotCount": 3,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.5,
+      "skillAreaDiversityAtK": 3,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 3,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-007",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 85.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4051",
+          "score": 68.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.7737511992517325,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 1.0,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.5,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-008",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4010",
+          "score": 61.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4022",
+          "score": 58.0,
+          "matchedChoiceSlotId": "y4-s2-bde1"
+        }
+      ],
+      "precisionAtK": 0.2,
+      "ndcgAtK": 0.6300059872618923,
+      "precisionAtReturned": 0.5,
+      "ndcgAtReturned": 0.7039180890341347,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-009",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 66.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4013",
+          "score": 39.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.5531464700081437,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 1.0,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-010",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 66.0,
+          "matchedChoiceSlotId": "y4-s1-mpe2"
+        },
+        {
+          "courseCode": "SC3020",
+          "score": 30.0,
+          "matchedChoiceSlotId": "y3-s2-mpe1"
+        }
+      ],
+      "precisionAtK": 0.2,
+      "ndcgAtK": 0.2960819109658652,
+      "precisionAtReturned": 0.5,
+      "ndcgAtReturned": 0.38685280723454163,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-011",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC3020",
+          "score": 51.0,
+          "matchedChoiceSlotId": "y3-s2-mpe1"
+        },
+        {
+          "courseCode": "SC3040",
+          "score": 24.0,
+          "matchedChoiceSlotId": "y3-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.894999002123018,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 1.0,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-012",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4010",
+          "score": 61.0,
+          "matchedChoiceSlotId": "y4-s1-mpe2"
+        },
+        {
+          "courseCode": "SC3010",
+          "score": 33.0,
+          "matchedChoiceSlotId": "y3-s1-mpe1"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.9072836011519267,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 1.0,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-013",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 52.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4001",
+          "score": 51.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.2,
+      "ndcgAtK": 0.35098520806348704,
+      "precisionAtReturned": 0.5,
+      "ndcgAtReturned": 0.3868528072345416,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": null,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "software-engineer-csc-014",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4050",
+          "score": 67.0,
+          "matchedChoiceSlotId": "y4-s1-mpe2"
+        },
+        {
+          "courseCode": "SC3020",
+          "score": 30.0,
+          "matchedChoiceSlotId": "y3-s2-mpe1"
+        }
+      ],
+      "precisionAtK": 0.0,
+      "ndcgAtK": 0.15814112524003557,
+      "precisionAtReturned": 0.0,
+      "ndcgAtReturned": 0.20438239758848614,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "ai-ml-engineer-csc-001",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4061",
+          "score": 74.0,
+          "matchedChoiceSlotId": "y4-s1-mpe2"
+        },
+        {
+          "courseCode": "SC3020",
+          "score": 19.0,
+          "matchedChoiceSlotId": "y3-s2-mpe1"
+        }
+      ],
+      "precisionAtK": 0.2,
+      "ndcgAtK": 0.5084627086233304,
+      "precisionAtReturned": 0.5,
+      "ndcgAtReturned": 0.7420981285103057,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "ai-ml-engineer-csc-002",
+      "recommendationCount": 1,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4061",
+          "score": 62.0,
+          "matchedChoiceSlotId": "y4-s2-mpe1"
+        }
+      ],
+      "precisionAtK": 0.2,
+      "ndcgAtK": 0.2656801787580439,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.6666666666666666,
+      "expectedSlotCount": 1,
+      "assignedSlotCount": 1,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 1,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "data-engineer-csc-001",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4023",
+          "score": 72.0,
+          "matchedChoiceSlotId": "y4-s1-mpe2"
+        },
+        {
+          "courseCode": "SC3020",
+          "score": 71.0,
+          "matchedChoiceSlotId": "y3-s1-mpe1"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.6403340327839019,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 1.0,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "data-engineer-csc-002",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4052",
+          "score": 68.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4023",
+          "score": 60.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.5308844302664371,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.8710490642551529,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.5,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "cloud-platform-engineer-csc-001",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4050",
+          "score": 64.0,
+          "matchedChoiceSlotId": "y4-s1-mpe2"
+        },
+        {
+          "courseCode": "SC3030",
+          "score": 35.0,
+          "matchedChoiceSlotId": "y3-s1-mpe1"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.5094610279060238,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.7956176024115139,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "cloud-platform-engineer-csc-002",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4063",
+          "score": 37.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4051",
+          "score": 32.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.5968159055246046,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.8710490642551529,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.5,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "cybersecurity-engineer-csc-001",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4010",
+          "score": 72.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4063",
+          "score": 59.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.2,
+      "ndcgAtK": 0.37369915365112566,
+      "precisionAtReturned": 0.5,
+      "ndcgAtReturned": 0.6131471927654584,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "cybersecurity-engineer-csc-002",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4063",
+          "score": 71.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4010",
+          "score": 60.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.5661457978496993,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.8710490642551529,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 2,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "data-scientist-csc-001",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4000",
+          "score": 75.0,
+          "matchedChoiceSlotId": "y4-s1-mpe2"
+        },
+        {
+          "courseCode": "SC3021",
+          "score": 51.0,
+          "matchedChoiceSlotId": "y3-s1-mpe1"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.5531464700081437,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 1.0,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.5,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "data-scientist-csc-002",
+      "recommendationCount": 2,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4020",
+          "score": 75.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4023",
+          "score": 56.0,
+          "matchedChoiceSlotId": "y4-s2-mpe2"
+        }
+      ],
+      "precisionAtK": 0.4,
+      "ndcgAtK": 0.5968159055246046,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.8710490642551529,
+      "expectedSlotCount": 2,
+      "assignedSlotCount": 2,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 0.5,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 2,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 2,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    },
+    {
+      "caseId": "cloud-platform-engineer-csc-003",
+      "recommendationCount": 3,
+      "rankedCourseOrder": [
+        {
+          "courseCode": "SC4050",
+          "score": 64.0,
+          "matchedChoiceSlotId": "y4-s1-mpe1"
+        },
+        {
+          "courseCode": "SC4052",
+          "score": 57.0,
+          "matchedChoiceSlotId": "y4-s1-bde1"
+        },
+        {
+          "courseCode": "SC4051",
+          "score": 49.0,
+          "matchedChoiceSlotId": "y4-s2-bde2"
+        }
+      ],
+      "precisionAtK": 0.6,
+      "ndcgAtK": 0.7163786073955268,
+      "precisionAtReturned": 1.0,
+      "ndcgAtReturned": 0.9151505377371351,
+      "expectedSlotCount": 3,
+      "assignedSlotCount": 3,
+      "slotFillRate": 1.0,
+      "explanationCoverage": 1.0,
+      "explanationFidelity": 1.0,
+      "skillAreaDiversityAtK": 1,
+      "oldCodeExposure": 0,
+      "constraintValidity": 1.0,
+      "supplementaryValidation": {
+        "scope": "request-response-contract-only",
+        "recommendationCount": 3,
+        "checks": {
+          "resultBudget": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "knownExactSlots": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueSlotAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "uniqueModuleAssignments": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "scoreConsistency": {
+            "status": "pass",
+            "checked": 3,
+            "skipped": 0,
+            "violations": []
+          },
+          "planningEdgeEndpoints": {
+            "status": "pass",
+            "checked": 1,
+            "skipped": 0,
+            "violations": []
+          },
+          "precedingPrerequisitePlacement": {
+            "status": "not-observable",
+            "checked": 0,
+            "skipped": 0,
+            "violations": []
+          }
+        },
+        "violations": []
+      }
+    }
+  ]
+}

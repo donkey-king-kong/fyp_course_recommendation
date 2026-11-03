@@ -1,205 +1,170 @@
 # Development Plan
 
-Detailed milestone order, recommendation priorities, authentication planning, and evaluation options moved from the root agent instructions.
+This is the agreed forward plan, replacing the previous SSO-first sequence. Work is ordered by dependencies and completion criteria, not calendar deadlines. Historical implementation details remain in the [progress logs](../progress/README.md); current capabilities and recorded evidence remain in [STATUS.md](../STATUS.md).
 
-Read [current status](../STATUS.md) for the next task and current evidence. This document preserves earlier planning guidance; historical completion counts and metrics below are not current runtime claims. Verify the relevant source, official integration documentation, tenant configuration, and available reference paths before implementation.
+## Direction And Scope
 
-## Milestone Order
+The next pilot targets **Software Engineer** and **Data Engineer**. The existing six-career recommender remains available; the pilot does not remove other careers, and the full benchmark remains a regression check.
 
-Follow this order unless I explicitly say otherwise.
+There are three connected parts:
 
-For the high-level architecture and request flow, refer to [Diagrams.md](../architecture/Diagrams.md).
+| Part | Responsibility |
+| --- | --- |
+| Skills-gap recommendations | Use completed-course evidence to identify likely prior learning and useful next learning. |
+| Job-market evidence | Refine the target role's skill requirements using a permitted, periodically refreshed source. |
+| Pathway chat | Explain recommendations and help students explore confirmed preference changes. |
 
-Struck-through items are complete. They are kept for history.
-
-### Phase 1: Core App Foundation
-
-1. ~~FastAPI health check~~
-2. ~~Backend schemas and router structure~~
-
-### Phase 2: Course Recommendation MVP
-
-3. ~~Static roadmap API~~
-4. ~~Minimal React frontend~~
-5. ~~Connect frontend to roadmap API~~
-6. ~~Profile page and state~~
-7. ~~Transcript upload~~
-8. ~~Curriculum guide upload and parsed roadmap display~~
-9. ~~Basic MPE/choice-slot recommendation flow~~ (chat stub was deprioritised; recommendation engine was built instead)
-10. ~~Backend-owned deterministic scoring, exact-slot assignment, career-skill mapping~~
-11. ~~Offline benchmark evaluator (14 cases, nDCG ~0.705)~~
-12. **NTU SSO authentication** ← next major milestone
-13. Migrate user data from `localStorage` to server-side storage keyed by `oid`
-
-### Phase 3: Recommendation Depth and Evaluation
-
-14. ~~Expand career coverage beyond Software Engineer~~
-15. ~~Counterfactual sensitivity tests~~ (script done; original FAIL was invalid — base case already had the tag; corrected on career-first-preference-policy branch)
-16. ~~Coverage audit (check slot-fill rate across degree/cohort combinations)~~ (script done; 180 cells, 0 invariant violations, 0 empty slots after request-shape fix; earlier reported cybersecurity SC3xxx gap was a script bug — omitting `studentFaculty` suppressed the CSC faculty bonus, giving a false empty result; 26 cells with weak-fit picks flagged as quality observations)
-17. Expert review / think-aloud evaluation session
-18. RAGAS evaluation layer for explanation quality
-
-### Phase 4: AI and Data Integrations (deferred)
-
-These are intentionally deferred. Do not start them until phases 1–3 are solid.
-
-19. ~~MyCareersFuture scraper~~ (deprioritised; static career-skill mapping is sufficient for now)
-20. Neo4j client and graph loader
-21. ChromaDB client
-22. LangGraph state, workflow, and nodes
-23. OpenAI integration for explanation generation
-
-## Recommendation Improvement Priority
-
-This table tracks the improvement work on the deterministic recommendation engine specifically. It overlaps with the milestones above intentionally — the milestones track feature delivery order, this table tracks scoring/ranking improvement order within the recommendation system.
-
-| Priority | Improvement | Status |
-| --- | --- | --- |
-| 1 | Backend-side eligibility and per-slot ranking | ~~Done~~ |
-| 2 | Structured scoring features and score breakdown | ~~Done~~ |
-| 3 | Prerequisite readiness and unlock-value logic | ~~Done~~ |
-| 4 | Curated course taxonomy and student preference profile | ~~Done~~ |
-| 5 | Diversity-aware assignment across slots | ~~Done~~ |
-| 6 | Static career-to-skill mapping | ~~Done~~ (all 6 career goals) |
-| 7 | Benchmark calibration and weak-case review | ~~Done~~ (24-case benchmark, all careers covered) |
-| 8 | Expand career-skill mapping to more career goals | ~~Done~~ (AI/ML, Data Engineer, Cloud/Platform, Cybersecurity, Data Scientist) |
-| 9 | Counterfactual sensitivity tests | ~~Done~~ (7/7 pass after fix; original FAIL was a no-op check — base case already had the tag) |
-| 10 | RAGAS / expert review evaluation | After system is stable |
-| 11 | Neo4j or graph traversal | Later — only if prerequisite/skill queries outgrow SQL |
-| 12 | Embeddings or vector search | Later — only for semantic matching of messy free text |
-| 13 | LLM or LangGraph | Last — for explanation generation, not core ranking |
-
-Do not jump to Neo4j, embeddings, LangGraph, or OpenAI before career expansion, counterfactual tests, and evaluation are done.
-
-## NTU SSO Authentication
-
-**Status: Not yet implemented. This is the next major feature after benchmark review.**
-
-NTU SSO is done via **Microsoft Azure AD** (NTU uses Microsoft 365), using the OAuth 2.0 Authorization Code flow with the `msal` Python library. Reference implementation: `NTUCourseGenie` at `/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/NTUCourseGenie/course_v2/login_utils/login_ui.py`.
-
-### How it works
-
-1. **App Registration**: Register an app in NTU's Azure AD tenant. Requires `APP_REG_CLIENT_ID`, `APP_REG_CLIENT_SECRET`, and `AUTHORITY` (`https://login.microsoftonline.com/<ntu-tenant-id>`).
-
-2. **Login initiation**: Backend (or frontend redirect) calls `app.get_authorization_request_url(scopes=["User.Read"])` to get the Azure AD auth URL, then redirects the user there.
-
-3. **Callback**: After NTU login, Azure AD redirects back to the app with `?code=<auth_code>` in the URL.
-
-4. **Token exchange**: Backend calls `app.acquire_token_by_authorization_code(auth_code, scopes=["User.Read"])`. Returns `access_token` and `id_token_claims`.
-
-5. **NTU email validation**: Check `"ntu.edu.sg" in id_token_claims["preferred_username"]` to reject non-NTU accounts.
-
-6. **User identity**: Use `id_token_claims["oid"]` (Azure Object ID) as the stable unique user identifier — it never changes even if the student's email or name changes.
-
-7. **Profile picture**: Optionally fetch from `https://graph.microsoft.com/v1.0/users/{oid}/photo/$value` with the access token.
-
-### Key design decisions
-
-- Use `oid` (Azure Object ID) as the primary key for the user record in the database, not the student ID or email.
-- Store `email` and `name` from `id_token_claims["preferred_username"]` and `id_token_claims["name"]` as display fields only.
-- Do not build a fake NTU password form, scrape NTU login pages, or hardcode captured SAML/auth URLs.
-- Do not use SAML unless NTU specifically provides a SAML metadata URL; prefer OIDC/OAuth via Azure AD.
-- The `oid` is stable across devices and sessions: the same student logging in from any device gets the same `oid`, enabling cross-device persistence.
-
-### How user data persists across sessions and devices
-
-The `oid` from Azure AD is the anchor. It is stable forever — the same value is returned every time the same student logs in, from any device or browser.
-
-**Why `oid` and not email or student ID:**
-
-| Identifier | Problem |
-|---|---|
-| Email | Can change (graduation, name change) |
-| Student/matric number | Not reliably exposed as an OIDC claim |
-| `oid` | Stable forever, unique per user per tenant, same on every device |
-
-**Session token flow:**
-
-After the OAuth code exchange succeeds, the FastAPI backend should:
-1. Verify the `oid` from `msal` token claims.
-2. Look up or create the user record in the database by `oid`.
-3. Issue its own JWT (or signed httpOnly cookie) with the `oid` embedded.
-4. Return that JWT to the frontend.
-
-The frontend sends the JWT on every API request. The Azure access token is used once to verify identity and never sent to the frontend.
-
-```
-First login (any device):
-  Azure returns oid → backend checks DB → not found → create user record → issue JWT
-
-Any later login (same or different device):
-  Azure returns same oid → backend finds existing record → issue JWT with their data
-```
-
-**Current state vs. after SSO:**
-
-- Right now the app uses `localStorage` with a self-declared Student ID.
-- After SSO: the Student ID field goes away; `oid` is the identity.
-- All profile, curriculum, transcript, and recommendation data moves to server-side storage keyed by `oid`.
-- `localStorage` becomes a UI cache only (e.g., last active tab), not a data store.
-- A student logging in on a phone gets the exact same state as on their laptop.
-
-**Watch out for multiple Azure AD tenants:** NTU may have separate tenants for students and staff. Pin the `AUTHORITY` URL to the student tenant so non-NTU Microsoft accounts are rejected at the tenant level, before the email check.
-
-### Required env vars
-
-```
-APP_REG_CLIENT_ID=<azure app registration client id>
-APP_REG_CLIENT_SECRET=<azure client secret>
-AUTHORITY=https://login.microsoftonline.com/<ntu-tenant-id>
-```
-
-### Rules for implementation
-
-- Use Microsoft MSAL (`msal` Python package) for the backend token exchange.
-- The FastAPI backend should own the OAuth callback endpoint (e.g., `GET /auth/callback`).
-- Issue a server-side session token (e.g., JWT or opaque token stored in an httpOnly cookie) after the token exchange succeeds; do not pass the Azure access token to the frontend.
-- Keep the app's internal user ID (`oid`) separate from the student's matriculation number.
-- The student's matriculation number may be derivable from their NTU email but should not be treated as a stable identity key.
-
-## Recommendation Evaluation
-
-### Current approach
-
-The current offline benchmark uses a hand-reviewed set of 14 cases evaluated with precision@k, nDCG@k, explanation coverage, explanation fidelity, skill-area diversity, old-code exposure, and constraint validity. This is deterministic and fast but relies entirely on manually reviewed labels.
-
-### RAGAS eval framework
-
-Explore using **RAGAS** (`ragas` Python package) for a more structured evaluation layer. RAGAS was designed for RAG pipelines but its metrics transfer well to recommendation systems with LLM-generated explanations:
-
-- **Faithfulness**: does the recommendation explanation only make claims supported by the student's actual profile and curriculum data?
-- **Answer relevancy**: does the recommended module actually address the student's career goal and topic preferences?
-- **Context precision / recall**: are the right signals (career-skill mappings, prerequisite chain, student preferences) being used and weighted correctly?
-
-RAGAS needs a dataset of `(question, context, answer, ground_truth)` tuples. For this system that maps to `(student profile, curriculum + career-skill context, recommended modules + explanation, reviewed positive labels)`.
-
-Reference implementation in a past FYP: `/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/NTUCourseGenie/course_v2/ragas_eval/`
-
-### Other evaluation approaches to explore
-
-| Approach | What it measures | When to use it |
-|---|---|---|
-| **Offline benchmark (current)** | Precision@k, nDCG@k against hand-reviewed labels | Fast iteration; catches ranking regressions |
-| **RAGAS** | Faithfulness and relevancy of LLM-generated explanations | Once explanations become a key output |
-| **A/B or interleaving test** | Which ranking produces more clicks/accepts from real users | If real NTU students use the system |
-| **Expert review / think-aloud** | Whether a knowledgeable person (supervisor, senior student) agrees with the top recommendations | Good for FYP evaluation chapter; low sample count is fine |
-| **Counterfactual sensitivity** | Does changing career goal, completed modules, or preferences actually shift the ranked list in a sensible direction? | Catches cases where scoring is correct on average but insensitive to meaningful input changes |
-| **Coverage audit** | What fraction of valid MPE/BDE slots can the system fill with at least one eligible recommendation? | Ensures the system does not silently leave slots empty for certain degree/cohort combinations |
-| **Constraint validity (current)** | Are all hard rules (no old codes, no completed modules, slot type match) always satisfied? | Keep as a required pass on every benchmark run |
-
-### Rules
-
-- Do not replace the current offline benchmark with RAGAS; add it alongside as a complementary layer.
-- Expert review is the most credible evaluation for an undergraduate FYP and should be included in the final report.
-- Counterfactual sensitivity tests can be written as simple assertion scripts without a full test suite.
-- Do not build the RAGAS or A/B evaluation layer until the recommendation system itself is stable.
-
-## Reference Files From Past FYP Repos
-
-Use these only when needed:
+The backend remains responsible for eligibility, deterministic ranking and exact-slot allocation. Job data supplies evidence; an LLM does not override academic constraints or directly control core scores. Keep one FastAPI application and the existing layered architecture described in [Diagrams.md](../architecture/Diagrams.md).
 
 ```text
-/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/NTUCourseGenie/
-/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/CourseNavigator/
-/Users/zacklau/Desktop/y4s1/fyp/past-fyp-github/shing-hao/
+Curriculum guide -> available roadmap slots and planning constraints
+Completed courses -> evidence of likely prior learning
+Career goal -> static role skills, later refined by job-market evidence
+These inputs -> remaining learning needs -> eligible recommended courses
+Recommendation results and supporting evidence -> pathway chat
+Confirmed preference changes -> backend recalculation
 ```
+
+SSO and server-side user persistence come after this recommendation-and-chat phase. Recording the plan does not authorize starting all integrations.
+
+## Agreed Weak-Fit Policy
+
+**Approved product direction; not yet implemented or calibrated.**
+
+| Outcome | Intended behavior |
+| --- | --- |
+| Strong, evidence-supported career match | Recommend normally, subject to eligibility and slot fit. |
+| Weak career fit but useful explicit interest match | Offer a clearly labelled interest-based alternative, not a strong career recommendation. |
+| Neither a strong career match nor a useful interest match | Leave the slot open and explain that no strong match was found under the current constraints. |
+
+- Do not fill slots just to maximize fill rate. Academic eligibility and recommendation relevance are different judgments.
+- Eligibility filters apply to interest alternatives as well as career recommendations.
+- A large total score, faculty bonus or structural fit alone is not evidence of strong career relevance.
+- Confirmed priority: select strong eligible career matches first, even when the student has different explicit interests. Use still-open slots for useful eligible explicit-interest alternatives, clearly labelled; leave slots open with an explanation when neither qualifies. A merely plausible career match must not count as strong solely to fill a slot.
+- Review examples before selecting numeric thresholds. The existing weak-fit audit heuristic and score-based confidence labels are diagnostics, not an approved implementation of this policy.
+- Career-fit and interest-usefulness boundaries and the interaction with pass-2 interest filling still need review. Do not let an LLM choose these thresholds.
+- An intentionally open slot is not automatically a failure. Evaluation must distinguish justified abstention from retrieval, eligibility or allocation defects.
+
+## Work Sequence
+
+| Step | Scope | Completion evidence | Status |
+| --- | --- | --- | --- |
+| 1. Baseline and policy | Capture current behavior, review pilot cases, define policy boundaries, then implement the bounded weak-fit change separately. | Reproducible baseline, reviewed examples, agreed acceptance criteria and a controlled policy comparison. | Next; product direction agreed, capture/review/implementation pending. |
+| 2. Student skills picture | Map relevant completed and candidate courses to shared skill identifiers and learning depth, using static role mappings first. | Traceable course-content evidence and reviewed examples of useful next learning. | Planned; depends on Step 1. |
+| 3. Job-market evidence | Integrate one permitted source for the two pilot roles; normalize and version extracted skills. | Reviewed extraction quality, dated snapshots and static-versus-market comparison. | Planned; source feasibility research can begin early. |
+| 4. Pathway chat | Build a chat stub, understand a small workflow, then add grounded model responses and confirmed preference changes. | Supported explanations, validated recalculation and deterministic fallback behavior. | Planned; depends on stable recommendation evidence. |
+| 5. Combined evaluation | Compare the baseline, skills-gap version, market-informed version and chat experience. | Human-reviewed comparisons, explanation evaluation and reproducible report evidence. | Planned; evaluation also runs throughout Steps 1-4. |
+| 6. SSO and persistence | Add NTU authentication, then move user state to server storage. | Authenticated sessions and identity-scoped persistence. | Deferred until after the recommendation-and-chat phase. |
+
+### Step 1: Baseline And Policy Checklist
+
+This is preparation and review before tuning. No fresh baseline capture or expert validation has been completed by this planning update.
+
+1. **Capture the unchanged baseline.** Use existing benchmark, coverage and counterfactual runners against a verified backend and database. Record serving revision, database fingerprint, mapping/rule versions, exact requests, full responses and evaluator configuration. Keep historical predictions unchanged; use a separate labelled capture and retain a durable, privacy-reviewed evidence summary.
+2. **Preserve evaluation inputs.** Keep the current 24 cases and labels stable, especially `software-engineer-csc-001` through `005`. Review findings are separate from label edits. Add necessary positioned or abstention scenarios separately; do not rewrite the frozen cases.
+3. **Prepare a small pilot review.** Start with the seven cases below. Show student context, slot, returned course, meaningful alternatives, supporting course content, score components and eligibility limitations. Do not treat the highest score or existing label as the correct answer.
+4. **Classify recommendations.** Review career fit, explicit interest fit, new learning beyond completed courses, evidence quality and readiness separately. Record a proposed outcome: career recommendation, interest alternative, open slot or unresolved pending evidence. Seek supervisor/TA review for contested course-content and label judgments.
+5. **Resolve policy boundaries.** Use reviewed positive and negative examples to propose a minimum career-fit rule, an interest fallback rule and reasons for leaving slots open. Identify whether problems come from data, ranking, retrieval or labels before proposing changes. Thresholds remain unset until this review.
+6. **Implement only the bounded policy change in a separate work unit.** After agreeing findings, adjust backend selection and necessary response/UI messaging. Rerun the frozen benchmark and existing audits on the same data; inspect changed courses and every newly open slot. Keep label corrections separate from scoring changes and do not add an automated recommender test suite.
+
+Initial review shortlist, selected from existing case descriptions rather than fresh predictions:
+
+| Case | Review purpose |
+| --- | --- |
+| `software-engineer-csc-001` | Backend/distributed preferences as a career-aligned comparison. |
+| `software-engineer-csc-002` | AI-focused interests under a Software Engineer goal and mixed MPE levels. |
+| `software-engineer-csc-003` | Security preferences, completed learning and a BDE slot. |
+| `software-engineer-csc-005` | No-preference defaults and diversity. |
+| `software-engineer-csc-013` | Advanced AI interests after prior AI/ML learning; contested career/preference balance. |
+| `data-engineer-csc-001` | Database/distributed learning and the changed Cloud-versus-Big-Data selection. |
+| `data-engineer-csc-002` | Cloud/parallel preferences after completed database study. |
+
+This shortlist does not guarantee a weak-fit or empty-slot example in the current capture. Add separately identified scenarios for strong match, interest-only match, neither match and unresolved eligibility if needed. Reuse existing positioned scenarios where appropriate; code-only curriculum inputs do not establish full timing or unlock behavior.
+
+The first review deliverable should be a compact table:
+
+```text
+Case and slot | current recommendation | alternatives | course evidence
+Career fit | interest fit | likely new learning | eligibility uncertainty
+Proposed outcome | reviewer rationale | unresolved question
+```
+
+Step 1 acceptance criteria:
+
+- The baseline can be traced to its actual inputs, code and data, without calling old saved predictions a fresh run.
+- Reviewed examples explain why each outcome is appropriate; unresolved judgments stay explicit.
+- Agreed policy behavior preserves supported eligibility and response contracts, including for interest alternatives.
+- Newly open slots have an evidence-based reason. Fill rate is reported, but is not the optimization target.
+- Existing ranking metrics and all-six-career regression checks remain visible, even when results decline.
+- Labels remain draft ground truth until independently reviewed; metric improvement alone is not approval.
+
+See [Evaluation.md](../evaluation/Evaluation.md) for existing tools and evidence boundaries. The [older label review packet](../evaluation/Recommendation_Benchmark_Label_Review_Packet.md) describes an earlier 21-case comparison; it is historical context, not the new baseline review.
+
+### Step 2: Student Skills Picture
+
+- Use shared skill identifiers for courses, role requirements and later job evidence.
+- Begin with a small relevant set of completed and candidate courses for the two pilot roles, not the entire catalog.
+- Ground mappings in course descriptions or learning outcomes, with source, evidence and introductory/advanced depth. Keep unknown coverage explicit.
+- Describe transcript-derived skills as likely prior learning, not demonstrated mastery. Introductory exposure must not suppress useful advanced study.
+- Rank useful remaining learning using static role mappings first. Retain interests, slot fit, prerequisites, unlock value and diversity.
+- Compare against the frozen baseline before attributing improvements to job data.
+
+### Step 3: Job-Market Evidence
+
+- Verify permitted collection, storage and reuse before selecting a source. MyCareersFuture is a candidate, not a confirmed public API; do not build around unauthorized LinkedIn scraping.
+- Start with Software Engineer and Data Engineer. Entry-level Singapore roles are the proposed initial search scope, to confirm during source review.
+- Collect shared role-based snapshots periodically, not a new scrape per student. Deduplicate advertisements, distinguish required/preferred skills and normalize synonyms.
+- Store permitted provenance, retrieval dates, sample counts and extraction versions. Do not present one job board's frequency counts as the whole labour market.
+- Validate extraction against human-reviewed examples before ranking. Use deterministic parsing where sufficient; model-assisted extraction is a separate dependency decision.
+- Refine the existing role-skill signal rather than adding overlapping relevance bonuses. Check that candidate retrieval can admit courses relevant to the new skills.
+- Retain a clearly labelled static fallback when access fails or evidence is sparse. The refresh interval and source remain undecided.
+
+### Step 4: Pathway Chat
+
+- Support explanations, course comparisons, likely skill development and exploration of different preferences.
+- Follow the existing prerequisite order: working chat stub, understood LangGraph structure, then OpenAI/model integration. Ask before new dependencies.
+- Supply bounded recommendation results and supporting course/job evidence. Do not send raw transcripts or unnecessary student identifiers.
+- Treat external text as untrusted data, validate structured model outputs and prevent instructions in source content from controlling tools.
+- Require confirmation before applying preference changes; the backend recalculates the pathway. An LLM does not waive eligibility or silently replace courses.
+- Keep deterministic explanations available if the model fails. LLM reranking is optional later research, not a requirement for this pilot.
+
+### Step 5: Combined Evaluation
+
+- Compare the current baseline with skills-gap recommendations, static with market-informed requirements, and existing explanations with chat-assisted understanding.
+- Use a static/market by prior-learning-on/off comparison to separate contributions. Disabling inferred skills must not disable completion exclusions or prerequisite checks.
+- Remove other scoring components individually after the main comparisons are stable. Record coupled effects such as career-fit-dependent preference scaling.
+- Keep historical metrics unchanged for comparability; add separately versioned slot-aware relevance and justified-abstention observations where needed.
+- Freeze common inputs for cross-version comparisons. Gen 1 has no ranking, so compare shared usability tasks rather than inventing ranking scores.
+- A freshness claim needs older/newer snapshots of the same source, not merely a comparison with a different historical job dataset.
+- Use human-reviewed relevance and skill evidence. Add RAGAS only when generated explanations exist, alongside human checks, with judge model/prompts/settings recorded.
+- RAGAS faithfulness/relevance concerns explanations; it does not establish optimal ranking, academic eligibility or actual employment outcomes.
+- Local consented usability sessions can use synthetic or anonymized profiles before SSO. Production usage logging and A/B infrastructure remain deferred.
+
+### Step 6: NTU SSO And Persistence
+
+**Deferred until after Steps 1-5.** Retain the design boundaries below, but verify current official Microsoft documentation and NTU tenant requirements before implementation.
+
+- Use Microsoft MSAL OAuth 2.0 Authorization Code flow with a backend-owned callback and server session. Keep Azure tokens out of the frontend.
+- Validate the intended tenant and token claims; an email substring is not an authorization check.
+- Use Azure `oid` as the internal identity within the validated tenant, separate from matriculation number and display email.
+- Prepare app registration, tenant authority, redirect configuration and server-side credentials. Ask before adding the MSAL dependency.
+- Do not build a fake NTU password form, scrape login pages or hardcode captured authentication URLs.
+- After SSO, migrate profile, curriculum, transcript, completion and recommendation state to identity-scoped server storage. Browser storage becomes a UI cache.
+- Until then, browser data remains inspectable, editable prototype input, not a trusted academic record.
+
+## Intentionally Excluded
+
+- No blanket catalog-wide skill annotation or expansion beyond the two-role pilot yet.
+- No Neo4j, ChromaDB or embeddings without a demonstrated need beyond the existing database.
+- No multi-agent architecture, LLM-controlled core ranking or automated recommender test suite.
+- No forced slot filling, unsupported skill-mastery claims or promises of full academic registration eligibility.
+- No benchmark label changes solely to improve metrics, and no changes to frozen cases 001-005.
+
+## Decisions Still Open
+
+- The permitted job-data source, access/storage terms, refresh interval and acceptable sample coverage.
+- Course-skill depth representation and handling of uncertain prior learning.
+- Career/interest boundary thresholds, precise fallback behavior and evidence-based abstention reasons.
+- Reviewer availability, later model/provider budget and privacy arrangements for evaluation.
+
+Resolve these within their relevant steps, not by adding all integrations at once.

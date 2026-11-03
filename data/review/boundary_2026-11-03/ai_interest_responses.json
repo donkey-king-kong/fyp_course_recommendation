@@ -1,0 +1,633 @@
+{
+  "source": "live-backend",
+  "generatedAt": "2026-11-03T07:56:26.842216+00:00",
+  "apiUrl": "http://127.0.0.1:8013/recommendations",
+  "benchmarkStatus": "synthetic-full-catalog-interest-pair-not-benchmark-labels",
+  "provenance": {
+    "capturedAt": "2026-11-03T07:56:27.004715+00:00",
+    "localCaptureRevision": "618e01bfbe86ab5157cc74de7b9e0e15545bcfcd",
+    "localCaptureWorktreeDirty": true,
+    "localFileSha256": {
+      "data/modules.json": "3335301a5ca6da5727484728eea86dd03cc8fd68117a0fa597b6073ebe094950",
+      "data/ntu_prerequisite_unlock_graph.json": "4acc84f186d116ab7398e1499be4897105748a8ec7982dcfb7a32dc41f703321",
+      "data/course_catalog.json": "e94466a7834bd551bf86dfbca33c5c30c2ec6e4f9dbb59df3aa7389752a61d63",
+      "data/course_offerings.json": "07f32b9431fdf8c1b1e3f142a088a802b0530c76372f1a0fbaf5ad639fe98ba5",
+      "data/mpe_specialisation_paths.json": "763fddf6cf12da5fb43783781db6d966565438b3cfcca36d389746f3417e1d5c",
+      "backend/services/career_skill_mappings.py": "593c1b7ce3875b0ba704a12faef828e4e07347c7fc5a89a680956e4302df38ed",
+      "backend/services/recommendation_service.py": "c7d7a612bfabeaa24fd8ef5e9e46a3ae2115578ada6a81eb18a94245f9436816",
+      "backend/services/prerequisite_rules.py": "5615203cdbf45cadadbf20770045224ce88123c84dc161242f06c1448a08c34c",
+      "backend/database/seed.py": "b8dc9d8f1b7284fe6935bcd7f28536970b0f893d41d629a7ec92f5a63515d013"
+    },
+    "servingRevision": "618e01bfbe86ab5157cc74de7b9e0e15545bcfcd",
+    "servingRevisionEvidence": "operator-declared",
+    "databaseFingerprint": "c443b5b0dbb72f014be71ba8780be963cbf09bb23a774b312859a4c1166faf8d",
+    "databaseFingerprintEvidence": "operator-declared",
+    "databaseState": "unverified; local seed hashes do not identify the serving database"
+  },
+  "cases": [
+    {
+      "caseId": "boundary-ai-y4-none",
+      "request": {
+        "careerGoal": "ai-ml-engineer",
+        "preferredRecommendationTags": [],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "SC3920",
+          "AD2102",
+          "BE1402",
+          "SC3010",
+          "SC4000",
+          "SC4002"
+        ],
+        "choiceSlotCodes": [
+          "SC3xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "audit-slot-1",
+            "courseCode": "SC3xxx"
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 5
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 3,
+          "mpeSpecialisations": [
+            "data-science"
+          ],
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "audit-slot-1",
+          "matchedChoiceSlotYear": null,
+          "matchedChoiceSlotSemester": null,
+          "matchedKeywords": [
+            "skill:model implementation foundations:database",
+            "mpe-specialisation:data-science"
+          ],
+          "prerequisites": [
+            "SC2207"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 19,
+          "recommendationConfidence": "standard",
+          "scoreBreakdown": {
+            "careerTagScore": 0,
+            "careerSkillScore": 2,
+            "careerSkillEvidence": {
+              "careerGoal": "ai-ml-engineer",
+              "skillArea": "model implementation foundations",
+              "skillAreaWeight": 7,
+              "tag": "database",
+              "relationshipWeight": 0.3,
+              "tagConfidence": 0.85,
+              "contributionScore": 1.785,
+              "rationale": "Database knowledge can support training data workflows, but is an indirect AI/ML signal."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "rawPreferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "mpeSpecialisationBoost": 6,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 19
+          },
+          "reason": "Recommended for the AI / ML Engineer career goal. Also top career-skill path: AI / ML Engineer -> model implementation foundations -> database -> Database System Principles and matches your profile faculty and matches an official MPE specialisation path for this career goal.",
+          "recommendationSource": "career"
+        }
+      ],
+      "response": {
+        "careerGoal": "ai-ml-engineer",
+        "recommendations": [
+          {
+            "courseCode": "SC3020",
+            "title": "Database System Principles",
+            "academicUnits": 3.0,
+            "faculty": "CSC",
+            "level": 3,
+            "mpeSpecialisations": [
+              "data-science"
+            ],
+            "matchedChoiceSlot": "SC3xxx",
+            "matchedChoiceSlotId": "audit-slot-1",
+            "matchedChoiceSlotYear": null,
+            "matchedChoiceSlotSemester": null,
+            "matchedKeywords": [
+              "skill:model implementation foundations:database",
+              "mpe-specialisation:data-science"
+            ],
+            "prerequisites": [
+              "SC2207"
+            ],
+            "missingPrerequisites": [],
+            "existingPrerequisiteCourseCodes": [],
+            "plannedPrerequisiteCourseCodes": [],
+            "prerequisiteRecommendations": [],
+            "plannedRoadmapNodes": [],
+            "plannedRoadmapEdges": [],
+            "readinessStatus": "ready",
+            "unlockValue": 0,
+            "score": 19,
+            "recommendationConfidence": "standard",
+            "scoreBreakdown": {
+              "careerTagScore": 0,
+              "careerSkillScore": 2,
+              "careerSkillEvidence": {
+                "careerGoal": "ai-ml-engineer",
+                "skillArea": "model implementation foundations",
+                "skillAreaWeight": 7,
+                "tag": "database",
+                "relationshipWeight": 0.3,
+                "tagConfidence": 0.85,
+                "contributionScore": 1.785,
+                "rationale": "Database knowledge can support training data workflows, but is an indirect AI/ML signal."
+              },
+              "currentSemesterBonus": 3,
+              "preferenceBoost": 0,
+              "rawPreferenceBoost": 0,
+              "sameFacultyBoost": 8,
+              "mpeSpecialisationBoost": 6,
+              "legacyCodePenalty": 0,
+              "defaultProfileAdjustment": 0,
+              "prerequisitePlanningPenalty": 0,
+              "unlockContribution": 0,
+              "finalScore": 19
+            },
+            "reason": "Recommended for the AI / ML Engineer career goal. Also top career-skill path: AI / ML Engineer -> model implementation foundations -> database -> Database System Principles and matches your profile faculty and matches an official MPE specialisation path for this career goal.",
+            "recommendationSource": "career"
+          }
+        ]
+      }
+    },
+    {
+      "caseId": "boundary-ai-y4-hci-interest",
+      "request": {
+        "careerGoal": "ai-ml-engineer",
+        "preferredRecommendationTags": [
+          "human-computer-interaction"
+        ],
+        "studentFaculty": "CSC",
+        "completedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "AB1201",
+          "AB1501",
+          "AD1102",
+          "CC0001",
+          "CC0002",
+          "EG1001",
+          "SC1004",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "CC0007",
+          "SC1006",
+          "SC2000",
+          "SC2001",
+          "SC2002",
+          "SC2006",
+          "AB1601",
+          "CC0006",
+          "ML0004",
+          "SC2005",
+          "SC2008",
+          "SC2207",
+          "SC3000",
+          "SC3920",
+          "AD2102",
+          "BE1402",
+          "SC3010",
+          "SC4000",
+          "SC4002"
+        ],
+        "choiceSlotCodes": [
+          "SC3xxx"
+        ],
+        "choiceSlots": [
+          {
+            "slotId": "audit-slot-1",
+            "courseCode": "SC3xxx"
+          }
+        ],
+        "curriculumCourses": [
+          {
+            "courseCode": "SC1003"
+          },
+          {
+            "courseCode": "SC1013"
+          },
+          {
+            "courseCode": "MH1810"
+          },
+          {
+            "courseCode": "MH1812"
+          },
+          {
+            "courseCode": "CC0003"
+          },
+          {
+            "courseCode": "CC0005"
+          },
+          {
+            "courseCode": "SC1005"
+          },
+          {
+            "courseCode": "SC1007"
+          },
+          {
+            "courseCode": "SC1015"
+          },
+          {
+            "courseCode": "EG1001"
+          },
+          {
+            "courseCode": "CC0001"
+          },
+          {
+            "courseCode": "CC0002"
+          },
+          {
+            "courseCode": "SC1004"
+          },
+          {
+            "courseCode": "SC1006"
+          },
+          {
+            "courseCode": "SC2001"
+          },
+          {
+            "courseCode": "SC2002"
+          },
+          {
+            "courseCode": "CC0007"
+          },
+          {
+            "courseCode": "SC2000"
+          },
+          {
+            "courseCode": "SC2005"
+          },
+          {
+            "courseCode": "SC2006"
+          },
+          {
+            "courseCode": "SC2207"
+          },
+          {
+            "courseCode": "CC0006"
+          },
+          {
+            "courseCode": "ML0004"
+          },
+          {
+            "courseCode": "SC2008"
+          },
+          {
+            "courseCode": "SC2079"
+          },
+          {
+            "courseCode": "SC3000"
+          },
+          {
+            "courseCode": "SC3010"
+          },
+          {
+            "courseCode": "HW0288"
+          },
+          {
+            "courseCode": "SC4079"
+          },
+          {
+            "courseCode": "SC3920"
+          }
+        ],
+        "excludedCourseCodes": [
+          "SC1003",
+          "SC1013",
+          "MH1810",
+          "MH1812",
+          "CC0003",
+          "CC0005",
+          "SC1005",
+          "SC1007",
+          "SC1015",
+          "EG1001",
+          "CC0001",
+          "CC0002",
+          "SC1004",
+          "SC1006",
+          "SC2001",
+          "SC2002",
+          "CC0007",
+          "SC2000",
+          "SC2005",
+          "SC2006",
+          "SC2207",
+          "CC0006",
+          "ML0004",
+          "SC2008",
+          "SC2079",
+          "SC3000",
+          "SC3010",
+          "HW0288",
+          "SC4079",
+          "SC3920"
+        ],
+        "excludedCourseTitles": [],
+        "limit": 5
+      },
+      "recommendations": [
+        {
+          "courseCode": "SC3020",
+          "title": "Database System Principles",
+          "academicUnits": 3.0,
+          "faculty": "CSC",
+          "level": 3,
+          "mpeSpecialisations": [
+            "data-science"
+          ],
+          "matchedChoiceSlot": "SC3xxx",
+          "matchedChoiceSlotId": "audit-slot-1",
+          "matchedChoiceSlotYear": null,
+          "matchedChoiceSlotSemester": null,
+          "matchedKeywords": [
+            "skill:model implementation foundations:database",
+            "mpe-specialisation:data-science"
+          ],
+          "prerequisites": [
+            "SC2207"
+          ],
+          "missingPrerequisites": [],
+          "existingPrerequisiteCourseCodes": [],
+          "plannedPrerequisiteCourseCodes": [],
+          "prerequisiteRecommendations": [],
+          "plannedRoadmapNodes": [],
+          "plannedRoadmapEdges": [],
+          "readinessStatus": "ready",
+          "unlockValue": 0,
+          "score": 19,
+          "recommendationConfidence": "standard",
+          "scoreBreakdown": {
+            "careerTagScore": 0,
+            "careerSkillScore": 2,
+            "careerSkillEvidence": {
+              "careerGoal": "ai-ml-engineer",
+              "skillArea": "model implementation foundations",
+              "skillAreaWeight": 7,
+              "tag": "database",
+              "relationshipWeight": 0.3,
+              "tagConfidence": 0.85,
+              "contributionScore": 1.785,
+              "rationale": "Database knowledge can support training data workflows, but is an indirect AI/ML signal."
+            },
+            "currentSemesterBonus": 3,
+            "preferenceBoost": 0,
+            "rawPreferenceBoost": 0,
+            "sameFacultyBoost": 8,
+            "mpeSpecialisationBoost": 6,
+            "legacyCodePenalty": 0,
+            "defaultProfileAdjustment": 0,
+            "prerequisitePlanningPenalty": 0,
+            "unlockContribution": 0,
+            "finalScore": 19
+          },
+          "reason": "Recommended for the AI / ML Engineer career goal. Also top career-skill path: AI / ML Engineer -> model implementation foundations -> database -> Database System Principles and matches your profile faculty and matches an official MPE specialisation path for this career goal.",
+          "recommendationSource": "career"
+        }
+      ],
+      "response": {
+        "careerGoal": "ai-ml-engineer",
+        "recommendations": [
+          {
+            "courseCode": "SC3020",
+            "title": "Database System Principles",
+            "academicUnits": 3.0,
+            "faculty": "CSC",
+            "level": 3,
+            "mpeSpecialisations": [
+              "data-science"
+            ],
+            "matchedChoiceSlot": "SC3xxx",
+            "matchedChoiceSlotId": "audit-slot-1",
+            "matchedChoiceSlotYear": null,
+            "matchedChoiceSlotSemester": null,
+            "matchedKeywords": [
+              "skill:model implementation foundations:database",
+              "mpe-specialisation:data-science"
+            ],
+            "prerequisites": [
+              "SC2207"
+            ],
+            "missingPrerequisites": [],
+            "existingPrerequisiteCourseCodes": [],
+            "plannedPrerequisiteCourseCodes": [],
+            "prerequisiteRecommendations": [],
+            "plannedRoadmapNodes": [],
+            "plannedRoadmapEdges": [],
+            "readinessStatus": "ready",
+            "unlockValue": 0,
+            "score": 19,
+            "recommendationConfidence": "standard",
+            "scoreBreakdown": {
+              "careerTagScore": 0,
+              "careerSkillScore": 2,
+              "careerSkillEvidence": {
+                "careerGoal": "ai-ml-engineer",
+                "skillArea": "model implementation foundations",
+                "skillAreaWeight": 7,
+                "tag": "database",
+                "relationshipWeight": 0.3,
+                "tagConfidence": 0.85,
+                "contributionScore": 1.785,
+                "rationale": "Database knowledge can support training data workflows, but is an indirect AI/ML signal."
+              },
+              "currentSemesterBonus": 3,
+              "preferenceBoost": 0,
+              "rawPreferenceBoost": 0,
+              "sameFacultyBoost": 8,
+              "mpeSpecialisationBoost": 6,
+              "legacyCodePenalty": 0,
+              "defaultProfileAdjustment": 0,
+              "prerequisitePlanningPenalty": 0,
+              "unlockContribution": 0,
+              "finalScore": 19
+            },
+            "reason": "Recommended for the AI / ML Engineer career goal. Also top career-skill path: AI / ML Engineer -> model implementation foundations -> database -> Database System Principles and matches your profile faculty and matches an official MPE specialisation path for this career goal.",
+            "recommendationSource": "career"
+          }
+        ]
+      }
+    }
+  ]
+}
