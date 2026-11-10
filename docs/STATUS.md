@@ -1,6 +1,6 @@
 # Current Project Status
 
-Last updated: 2026-11-03. This is the session handoff; detailed history is in the [progress index](progress/README.md). Check Git for the current branch and working tree.
+Last updated: 2026-11-10. This is the session handoff; detailed history is in the [progress index](progress/README.md). Check Git for the current branch and working tree.
 
 ## What Works
 
@@ -54,3 +54,7 @@ The [development plan](plans/Development_Plan.md) replaces the old SSO-first seq
 - [AGENTS.md](../AGENTS.md) contains lasting project rules and the startup reading order.
 - [Progress3.md](progress/Progress3.md) is the active log; closed logs preserve previous work.
 - The [PR skill](../.agents/skills/create-project-pr/SKILL.md) reads the single [PR template](workflows/PR_template.md). It does not authorize publication by itself.
+- The repository now contains reusable SWE Team and Agent Flow tooling plus a
+  [research-paper insight product plan](../project-records/swe-team/research-paper-insight-planner-20261110/final-plan.md).
+  The plan and its architecture are proposed inputs only; they are not approved
+  course-recommender scope and no application integration has started.
