@@ -13,3 +13,6 @@ frontend/*.log
 sample_transcript.pdf
 .agent/
 .gemini/
+
+# Local Agent Flow telemetry
+project-records/agent-observability/runtime/

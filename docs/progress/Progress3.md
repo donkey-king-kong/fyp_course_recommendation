@@ -2,6 +2,30 @@
 
 Active development log. Earlier work is listed in the [progress index](README.md); current priorities live in [STATUS.md](../STATUS.md).
 
+## SWE Team Tooling And Research-Paper Product Plan
+
+Date: 2026-11-10
+
+Status: Planning and reusable agent tooling transferred; no product implementation.
+
+### What Was Added
+
+- Added eight SWE role agents, the `swe-team` coordination skill and contract,
+  and the tested Agent Flow adapter with its non-runtime research records.
+- Added the research-paper insight product brief, grilling decisions, final
+  plan, technical architecture, browser-readable architecture diagram, and
+  handoff under `project-records/swe-team/`.
+- Kept local Agent Flow runtime telemetry ignored and excluded from Git.
+
+### Verification And Limits
+
+- The Agent Flow adapter's four tests pass.
+- The architecture diagram passes its offline self-check and the planning
+  package's relative links resolve.
+- The transferred architecture remains proposed Shape input. It does not
+  authorize provider integration, source ingestion, model use, new product
+  dependencies, or changes to the course-recommendation application.
+
 ## Documentation Organization And Project PR Skill
 
 Date: 2026-11-03
