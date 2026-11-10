@@ -1,0 +1,39 @@
+diff --git a/extension/src/extension.ts b/extension/src/extension.ts
+index db54657..219d60a 100644
+--- a/extension/src/extension.ts
++++ b/extension/src/extension.ts
+@@ -15,2 +15,3 @@ type ConfiguredRuntimeMode = AgentRuntimeMode | 'auto'
+ let eventSource: JsonlEventSource | undefined
++let eventSourceSessionId: string | undefined
+ let runtimes: AgentRuntime[] = []
+@@ -227,2 +228,3 @@ function connectToJsonl(filePath: string, context: vscode.ExtensionContext): voi
+   eventSource = new JsonlEventSource(filePath)
++  eventSourceSessionId = `jsonl-${Date.now()}`
+   context.subscriptions.push(eventSource)
+@@ -234,3 +236,15 @@ function connectToJsonl(filePath: string, context: vscode.ExtensionContext): voi
++  const now = Date.now()
++  panel.postMessage({
++    type: 'session-started',
++    session: {
++      id: eventSourceSessionId,
++      label: `JSONL ${vscode.Uri.file(filePath).path.split('/').pop() || 'events'}`,
++      status: 'active',
++      startTime: now,
++      lastActivityTime: now,
++    },
++  })
++
+   eventSource.onEvent((event) => {
+-    panel.sendEvent(event)
++    panel.sendEvent({ ...event, sessionId: eventSourceSessionId })
+   })
+@@ -248,4 +262,9 @@ function disconnectEventSource(): void {
+   if (eventSource) {
++    const panel = VisualizerPanel.getCurrent()
++    if (panel && eventSourceSessionId) {
++      panel.postMessage({ type: 'session-ended', sessionId: eventSourceSessionId })
++    }
+     eventSource.dispose()
+     eventSource = undefined
++    eventSourceSessionId = undefined
+   }
